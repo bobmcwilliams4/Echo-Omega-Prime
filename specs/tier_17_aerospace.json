@@ -1,0 +1,295 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "AERO",
+  "tier_name": "Aerospace",
+  "domain_description": "Aerodynamics, propulsion, structural analysis, avionics, flight controls, maintenance planning, safety management, space systems, composite materials, and airworthiness certification for aircraft and spacecraft per FAA, EASA, NASA, and military standards.",
+  "authority_sources": [
+    "14 CFR Part 25 (Airworthiness Standards: Transport Category)",
+    "AC 25.571-1D (Damage Tolerance and Fatigue Evaluation)",
+    "DO-178C (Software Considerations in Airborne Systems)",
+    "DO-254 (Design Assurance for Airborne Electronic Hardware)",
+    "MIL-STD-1553B (Digital Time Division Command/Response Multiplex)",
+    "NASA-STD-5009 (Nondestructive Evaluation Requirements)",
+    "SAE ARP4754A (Development of Civil Aircraft and Systems)",
+    "ATA iSpec 2200 (Aircraft Maintenance Documentation)",
+    "MIL-HDBK-17 (Composite Materials Handbook)",
+    "ICAO Annex 8 (Airworthiness of Aircraft)"
+  ],
+  "engines": [
+    {
+      "engine_id": "AERO01",
+      "name": "Aerodynamics Engine",
+      "function": "Analyze aerodynamic performance including lift, drag, stability, and control characteristics using panel methods, CFD correlation, and flight test data for fixed-wing and rotary-wing aircraft.",
+      "doctrine_topics": [
+        "lift and drag coefficient prediction methods",
+        "boundary layer analysis and transition prediction",
+        "wing design optimization (aspect ratio, taper, sweep)",
+        "high-lift device analysis (flaps, slats, leading edge devices)",
+        "stability and control derivatives",
+        "compressibility effects and transonic aerodynamics",
+        "aircraft performance calculations (range, endurance, climb)",
+        "vortex dynamics and induced drag reduction (winglets)",
+        "rotary-wing aerodynamics and rotor analysis",
+        "wind tunnel to flight test correlation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the aerodynamic performance of a transport category aircraft wing at Mach 0.82 cruise, evaluating shock wave formation, wave drag rise, and the effectiveness of supercritical airfoil sections in delay of drag divergence",
+            "required_elements": ["drag divergence Mach number", "wave drag analysis", "supercritical airfoil characteristics", "lift-to-drag ratio", "compressibility corrections", "design considerations"],
+            "failure_signals": ["no compressibility analysis", "no drag divergence concept", "generic aerodynamics description"]
+          },
+          {
+            "question": "Calculate the takeoff field length for a twin-engine transport aircraft at maximum takeoff weight with one engine inoperative, per 14 CFR Part 25",
+            "required_elements": ["balanced field length concept", "V1, VR, V2 speed definitions", "OEI performance", "Part 25 requirements", "ambient condition effects", "safety margins"],
+            "failure_signals": ["no V-speed analysis", "no Part 25 reference", "missing OEI considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO02",
+      "name": "Propulsion Engine",
+      "function": "Analyze aircraft propulsion systems including turbofan, turboprop, turboshaft, and electric propulsion with thermodynamic cycle analysis, performance matching, and emissions assessment.",
+      "doctrine_topics": [
+        "gas turbine thermodynamic cycle analysis (Brayton)",
+        "turbofan engine performance and bypass ratio optimization",
+        "turboprop and turboshaft performance analysis",
+        "engine-airframe performance matching",
+        "specific fuel consumption and thrust-specific optimization",
+        "compressor and turbine aerodynamics",
+        "combustor design and emission characteristics",
+        "inlet and nozzle design optimization",
+        "electric and hybrid-electric propulsion architectures",
+        "engine health monitoring and trend analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the performance of a high-bypass turbofan engine at design point (35,000 ft, Mach 0.82) and off-design conditions (sea level static, hot day takeoff), calculating thrust, SFC, and component efficiencies",
+            "required_elements": ["Brayton cycle analysis", "design vs off-design performance", "component efficiencies", "SFC calculation", "thrust calculation", "bypass ratio effects"],
+            "failure_signals": ["no cycle calculations", "no off-design analysis", "generic engine description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO03",
+      "name": "Structural Analysis Engine",
+      "function": "Analyze aircraft structural integrity including damage tolerance, fatigue evaluation, and static strength assessment per FAR Part 25 and AC 25.571 for metallic and composite structures.",
+      "doctrine_topics": [
+        "aircraft static strength analysis (limit and ultimate loads)",
+        "damage tolerance assessment per AC 25.571",
+        "fatigue evaluation and safe-life determination",
+        "crack growth analysis using Paris law",
+        "fail-safe and damage-tolerant design philosophy",
+        "pressurized fuselage structural analysis",
+        "wing box structural design and analysis",
+        "landing gear structural loads and fatigue",
+        "bird strike and foreign object damage resistance",
+        "structural repair assessment per SRM"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Perform a damage tolerance assessment for a pressurized fuselage skin panel with a detected 1.5-inch crack at a rivet row, per AC 25.571, determining inspection interval and residual strength",
+            "required_elements": ["crack growth prediction (Paris law)", "residual strength assessment", "inspection interval determination", "AC 25.571 compliance", "fail-safe considerations", "repair threshold"],
+            "failure_signals": ["no crack growth analysis", "no AC 25.571 reference", "missing inspection interval determination"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO04",
+      "name": "Avionics Engine",
+      "function": "Analyze avionics systems including flight management, communication, navigation, surveillance, displays, and data bus architectures per DO-178C, DO-254, and ARINC standards.",
+      "doctrine_topics": [
+        "flight management system (FMS) architecture and function",
+        "ARINC 429 and ARINC 664 data bus protocols",
+        "MIL-STD-1553B multiplex data bus analysis",
+        "integrated modular avionics (IMA) architecture",
+        "display systems (EFIS, HUD, SVS, EVS)",
+        "communication systems (VHF, HF, SATCOM, ACARS)",
+        "navigation systems (IRS, GPS, VOR, ILS, RNAV, RNP)",
+        "surveillance systems (ADS-B, TCAS, TAWS/EGPWS)",
+        "DO-178C software assurance levels (DAL A-E)",
+        "DO-254 hardware design assurance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design the avionics architecture for a Part 25 transport aircraft upgrade from federated to IMA architecture, addressing DO-178C DAL assignments, ARINC 664 network design, and system safety assessment per ARP4754A",
+            "required_elements": ["IMA architecture design", "DAL assignment methodology", "ARINC 664 network topology", "ARP4754A system development", "safety assessment approach", "certification considerations"],
+            "failure_signals": ["no DAL assignment", "no ARP4754A reference", "generic avionics description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO05",
+      "name": "Flight Controls Engine",
+      "function": "Analyze flight control systems including fly-by-wire, mechanical, and autopilot systems with stability augmentation, control law design, and handling qualities assessment per MIL-STD-1797.",
+      "doctrine_topics": [
+        "fly-by-wire flight control architecture and redundancy",
+        "control law design for stability augmentation",
+        "handling qualities criteria per MIL-STD-1797",
+        "autopilot mode logic and engagement criteria",
+        "flight envelope protection systems",
+        "actuator selection and hydraulic/electric comparison",
+        "control surface sizing and hinge moment analysis",
+        "flutter analysis and aeroservoelastic effects",
+        "flight control system safety assessment",
+        "degraded mode operation and manual reversion"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the flight control architecture of a quadruple-redundant fly-by-wire system for a transport aircraft, including dissimilar redundancy strategy, control law modes, and degradation logic from normal to direct law",
+            "required_elements": ["redundancy architecture", "dissimilar implementation", "control law modes", "degradation strategy", "failure detection and isolation", "handling qualities per MIL-STD-1797"],
+            "failure_signals": ["no redundancy discussion", "no degradation logic", "missing safety analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO06",
+      "name": "Maintenance Planning Engine",
+      "function": "Develop and optimize aircraft maintenance programs using MSG-3 analysis, reliability-centered maintenance, and condition monitoring per ATA iSpec 2200 and regulatory requirements.",
+      "doctrine_topics": [
+        "MSG-3 maintenance program development methodology",
+        "maintenance steering group analysis for systems and structures",
+        "Airworthiness Limitations section development",
+        "condition-based maintenance and health monitoring",
+        "reliability program and alert service bulletin management",
+        "maintenance check packaging (A, B, C, D checks)",
+        "non-routine maintenance and defect trending",
+        "maintenance cost analysis and optimization",
+        "continuing airworthiness management (CAME)",
+        "ATA chapter system for maintenance documentation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop an MSG-3 based maintenance program for a new transport aircraft wing structure, including system/component analysis, structural inspection program, and zonal inspection requirements",
+            "required_elements": ["MSG-3 decision logic", "system analysis categories", "structural inspection program (SIP)", "zonal inspection", "inspection intervals", "reliability monitoring"],
+            "failure_signals": ["no MSG-3 methodology", "no structural inspection program", "generic maintenance planning"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO07",
+      "name": "Safety Management Engine",
+      "function": "Implement aviation safety management systems (SMS) including hazard identification, risk assessment, safety assurance, and safety promotion per ICAO Annex 19 and FAA Order 8000.369.",
+      "doctrine_topics": [
+        "safety management system (SMS) framework per ICAO Annex 19",
+        "hazard identification and risk assessment methodology",
+        "safety risk matrix and risk tolerance criteria",
+        "system safety assessment per ARP4761",
+        "fault tree analysis and failure probability",
+        "common cause failure and common mode analysis",
+        "safety occurrence investigation and reporting",
+        "safety performance monitoring and indicators",
+        "safety culture assessment and promotion",
+        "regulatory safety oversight and compliance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Conduct a system safety assessment per ARP4761 for a new engine indication and crew alerting system (EICAS), including functional hazard assessment, fault tree analysis, and failure condition classification",
+            "required_elements": ["functional hazard assessment", "failure condition classification (catastrophic, hazardous, major, minor)", "fault tree analysis", "probability targets per Part 25.1309", "common cause analysis", "ARP4761 methodology"],
+            "failure_signals": ["no FHA", "no failure classification", "missing probability requirements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO08",
+      "name": "Space Systems Engine",
+      "function": "Analyze space systems including orbital mechanics, spacecraft design, launch vehicle performance, thermal control, and mission planning per NASA and ESA standards.",
+      "doctrine_topics": [
+        "orbital mechanics and trajectory design",
+        "launch vehicle performance and payload capacity",
+        "spacecraft thermal control system design",
+        "spacecraft power system sizing (solar, battery, RTG)",
+        "attitude determination and control systems",
+        "space environment effects (radiation, MMOD, thermal)",
+        "spacecraft communication link budget analysis",
+        "constellation design and coverage analysis",
+        "de-orbit and end-of-life disposal planning",
+        "space debris mitigation per NASA-STD-8719.14"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a LEO Earth observation satellite at 550 km altitude, sizing the power system, thermal control, and communication link for a 5-year mission life with eclipse and sunlight thermal cycling considerations",
+            "required_elements": ["orbit parameter analysis", "power budget with eclipse", "thermal analysis (hot/cold case)", "link budget calculation", "radiation environment assessment", "mission life considerations"],
+            "failure_signals": ["no orbital analysis", "no thermal cycling consideration", "missing link budget"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO09",
+      "name": "Composite Materials Engine",
+      "function": "Analyze aerospace composite structures including laminate design, failure prediction, damage assessment, and repair per MIL-HDBK-17/CMH-17 and FAA advisory circulars.",
+      "doctrine_topics": [
+        "classical lamination theory and laminate design",
+        "composite failure criteria (Tsai-Wu, Hashin, LaRC)",
+        "composite manufacturing processes (autoclave, OOA, RTM)",
+        "barely visible impact damage (BVID) assessment",
+        "composite structural repair methods and procedures",
+        "environmental effects (moisture, temperature) on composites",
+        "composite joint design (bonded and bolted)",
+        "CMH-17 material qualification and allowables",
+        "composite fatigue and damage tolerance",
+        "NDI methods for composite inspection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a quasi-isotropic carbon/epoxy laminate for an aircraft control surface skin panel subject to combined tension and shear loads, using Tsai-Wu failure criterion and accounting for environmental knockdown factors per CMH-17",
+            "required_elements": ["laminate stacking sequence", "Tsai-Wu failure analysis", "environmental knockdowns (hot/wet)", "ply-by-ply stress analysis", "CMH-17 allowables reference", "margin of safety calculation"],
+            "failure_signals": ["no failure criterion application", "no environmental factors", "missing CMH-17 reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AERO10",
+      "name": "Certification Engine",
+      "function": "Guide aircraft and systems certification per 14 CFR Part 25, EASA CS-25, and international validation, including type certificate application, compliance demonstration, and certification planning.",
+      "doctrine_topics": [
+        "type certificate application and certification basis",
+        "means of compliance selection (analysis, test, inspection)",
+        "certification plan development and management",
+        "special conditions and equivalent safety findings",
+        "designated engineering representative (DER) role",
+        "certification flight test program planning",
+        "type design organization approval (DOA/ODA)",
+        "supplemental type certificate (STC) process",
+        "EASA-FAA bilateral validation and reciprocity",
+        "continued operational safety and airworthiness directives"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop a certification plan for a major modification to a Part 25 transport aircraft involving new winglet installation, including certification basis determination, applicable paragraphs, means of compliance, and flight test requirements",
+            "required_elements": ["certification basis (STC vs amended TC)", "applicable Part 25 paragraphs", "means of compliance matrix", "flight test requirements", "structural substantiation plan", "systems safety assessment"],
+            "failure_signals": ["no certification basis discussion", "no specific Part 25 paragraphs", "generic certification overview"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

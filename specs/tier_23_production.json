@@ -1,0 +1,295 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "PROD",
+  "tier_name": "Production",
+  "domain_description": "Well production analysis and optimization including decline curve analysis, nodal analysis, well testing interpretation, reservoir simulation, production optimization, sand control, scale and corrosion management, artificial lift optimization, and surface facility design. Based on SPE PRMS resource classification, API recommended practices, and established reservoir engineering methods.",
+  "authority_sources": [
+    "SPE PRMS (Petroleum Resources Management System)",
+    "API RP 14E (Recommended Practice for Design and Installation of Offshore Production Platform Piping Systems)",
+    "API RP 14C (Recommended Practice for Analysis, Design, Installation, and Testing of Safety Systems)",
+    "Arps Decline Curve Analysis (Exponential, Hyperbolic, Harmonic)",
+    "Vogel IPR (Inflow Performance Relationship)",
+    "Fetkovich Type Curves",
+    "Blasingame Type Curve Analysis",
+    "API RP 11V7 (Gas Lift Design)",
+    "API RP 11AR (Recommended Practice for Artificial Lift)",
+    "NACE SP0775 (Preparation, Installation, Analysis, and Interpretation of Corrosion Coupons)"
+  ],
+  "engines": [
+    {
+      "engine_id": "PROD01",
+      "name": "Decline Curve Analysis Engine",
+      "function": "Perform Arps decline curve analysis including exponential, hyperbolic, and harmonic models, modified hyperbolic with terminal decline, stretched exponential, and Duong models for EUR estimation and production forecasting.",
+      "doctrine_topics": [
+        "Arps exponential decline model",
+        "Arps hyperbolic decline b-factor analysis",
+        "harmonic decline and limiting cases",
+        "modified hyperbolic with terminal decline rate",
+        "stretched exponential decline model SEDM",
+        "Duong rate-decline analysis for tight reservoirs",
+        "type curve matching Fetkovich method",
+        "EUR estimation and uncertainty quantification",
+        "multi-segment decline model fitting",
+        "decline curve analysis for horizontal multifrac wells"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Permian Basin Wolfcamp horizontal well has 24 months of production data: IP 1,200 BOPD, currently producing 250 BOPD. Fit the decline curve, determine b-factor, and estimate 30-year EUR with uncertainty bounds.",
+            "required_elements": ["b-factor determination and justification", "Arps hyperbolic fit parameters", "terminal decline rate selection", "EUR calculation with P10/P50/P90", "Duong model comparison for tight rock", "remaining reserves estimate"],
+            "failure_signals": ["no b-factor calculation", "single deterministic EUR only", "no terminal decline consideration", "generic decline description"]
+          },
+          {
+            "question": "Compare Arps, stretched exponential, and Duong decline models for a Haynesville shale gas well with 36 months of production history showing b-factor drift",
+            "required_elements": ["model parameter fits for each method", "b-factor evolution over time", "EUR range comparison between models", "statistical goodness of fit", "recommended model with justification", "forecast divergence analysis"],
+            "failure_signals": ["single model only", "no b-factor drift analysis", "missing statistical comparison", "no EUR uncertainty"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD02",
+      "name": "Nodal Analysis Engine",
+      "function": "Perform nodal analysis for production system optimization including inflow performance relationships, vertical lift performance, choke performance, and system sensitivity analysis using Vogel, Fetkovich, and multiphase flow correlations.",
+      "doctrine_topics": [
+        "Vogel IPR for solution gas drive reservoirs",
+        "Fetkovich IPR for reservoir deliverability",
+        "multiphase vertical lift performance correlations",
+        "Hagedorn-Brown and Beggs-Brill flow correlations",
+        "choke performance and critical flow analysis",
+        "wellbore friction and completion effects",
+        "nodal analysis sensitivity parameters",
+        "artificial lift impact on system performance",
+        "horizontal well IPR modifications",
+        "system optimization and operating point selection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Perform a nodal analysis for a well with reservoir pressure of 3,200 psi, bubble point of 2,800 psi, PI above bubble of 2.5 STB/d/psi, 9,000 ft TVD, 3.5-inch tubing, producing 200 BOPD with 500 BWPD and GOR of 800 scf/STB",
+            "required_elements": ["Vogel IPR curve construction", "VLP curve using appropriate correlation", "operating point determination", "tubing size sensitivity", "water cut impact on lift performance", "future performance prediction at lower reservoir pressure"],
+            "failure_signals": ["no IPR construction", "missing VLP correlation selection", "no operating point identified", "single-point calculation only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD03",
+      "name": "Well Testing Engine",
+      "function": "Analyze well test data including drawdown, buildup, falloff, and interference tests using pressure-transient analysis, derivative diagnostics, and type curve matching for reservoir characterization.",
+      "doctrine_topics": [
+        "pressure buildup analysis Horner method",
+        "log-log pressure derivative diagnostics",
+        "wellbore storage and skin identification",
+        "radial composite and dual porosity models",
+        "boundary detection from PTA",
+        "interference test analysis for connectivity",
+        "rate-transient analysis RTA fundamentals",
+        "multi-rate test analysis",
+        "horizontal well test interpretation",
+        "real-time well test design and monitoring"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Interpret a 72-hour pressure buildup test showing a unit-slope line for 2 hours, followed by derivative stabilization at 50 psi, then a late-time derivative uptrend. The well is in a carbonate reservoir with known fractures.",
+            "required_elements": ["wellbore storage duration identification", "permeability from derivative stabilization", "skin factor calculation", "boundary effect interpretation", "dual porosity model consideration", "distance to boundary estimate"],
+            "failure_signals": ["no derivative analysis", "missing wellbore storage identification", "no boundary interpretation", "generic buildup description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD04",
+      "name": "Reservoir Simulation Engine",
+      "function": "Analyze reservoir simulation models including black-oil, compositional, and dual-porosity formulations, history matching workflows, forecast scenarios, and uncertainty quantification for field development planning.",
+      "doctrine_topics": [
+        "black-oil simulation model setup",
+        "compositional simulation for volatile oil/gas condensate",
+        "dual-porosity dual-permeability modeling",
+        "history matching workflow and parameters",
+        "relative permeability and capillary pressure models",
+        "grid design and upscaling techniques",
+        "well modeling in simulators",
+        "forecast scenario design and sensitivity",
+        "uncertainty quantification and MCMC methods",
+        "enhanced oil recovery simulation EOR"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a history matching workflow for a 500-well Spraberry field model with 20 years of production history, variable completion types, and water injection, showing systematic pressure mismatch in the eastern sector",
+            "required_elements": ["history match parameters identification", "regional vs well-level calibration", "pressure match before rate match", "aquifer model or boundary condition assessment", "sensitivity analysis of key parameters", "uncertainty quantification approach"],
+            "failure_signals": ["no systematic workflow", "adjusting only one parameter", "no regional analysis of mismatch", "ignoring pressure match"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD05",
+      "name": "Production Optimization Engine",
+      "function": "Optimize well and field production through rate optimization, waterflood management, gas management, facility debottlenecking, and integrated asset modeling for maximum economic recovery.",
+      "doctrine_topics": [
+        "well rate optimization and allocation",
+        "waterflood pattern optimization and conformance",
+        "gas lift optimization and allocation",
+        "ESP optimization and frequency adjustment",
+        "produced water management strategies",
+        "facility debottlenecking analysis",
+        "integrated asset modeling reservoir to sales",
+        "production surveillance and exception monitoring",
+        "well intervention prioritization and economics",
+        "digital oilfield and real-time optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A mature waterflood with 200 producers and 80 injectors shows declining oil rate with increasing WOR. Injection water is being recycled. Design a production optimization program to arrest the decline.",
+            "required_elements": ["voidage replacement ratio analysis", "injection pattern balance review", "conformance improvement candidates", "infill drilling potential", "water shutoff candidate identification", "economic optimization metrics"],
+            "failure_signals": ["single solution without analysis", "no pattern review", "missing economics", "generic waterflood description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD06",
+      "name": "Sand Control Engine",
+      "function": "Analyze sand production prediction, sand control method selection, gravel pack design, screen selection, chemical consolidation, and frac-pack completions for unconsolidated formations.",
+      "doctrine_topics": [
+        "sand production prediction sanding onset",
+        "gravel pack design and sizing",
+        "screen selection standalone and prepacked",
+        "frac-pack completion design",
+        "chemical sand consolidation techniques",
+        "sand management vs sand exclusion strategies",
+        "particle size analysis and gravel sizing",
+        "gravel pack installation procedures",
+        "expandable sand screen applications",
+        "sand production monitoring and management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a sand control strategy for a high-rate Gulf of Mexico deepwater well producing 15,000 BOPD from a poorly consolidated sandstone with D50 of 120 microns, UCS of 500 psi, and bottomhole flowing pressure drawdown of 2,000 psi",
+            "required_elements": ["sanding onset analysis", "gravel size selection using Saucier criteria", "frac-pack vs standalone screen comparison", "screen slot size determination", "completion skin impact", "long-term sand monitoring plan"],
+            "failure_signals": ["no sanding prediction", "missing gravel sizing criteria", "no method comparison", "generic sand control recommendation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD07",
+      "name": "Scale Treatment Engine",
+      "function": "Analyze scale formation prediction, inhibitor selection, squeeze treatment design, continuous injection optimization, and scale monitoring for calcium carbonate, barium sulfate, and other mineral scales.",
+      "doctrine_topics": [
+        "scale prediction modeling saturation index",
+        "calcium carbonate scale formation conditions",
+        "barium sulfate scale risk in commingled production",
+        "scale inhibitor chemistry and selection",
+        "squeeze treatment design and placement",
+        "continuous scale inhibitor injection",
+        "scale monitoring and coupon analysis",
+        "produced water chemistry analysis for scaling",
+        "downhole and surface scale removal methods",
+        "scale management in waterflood operations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A waterflood producer is commingling Wolfcamp and Bone Spring zones. Produced water analysis shows 250 ppm Ba2+ from one zone and 1,800 ppm SO4 from the injection water. Design a scale management program.",
+            "required_elements": ["barium sulfate scaling potential calculation", "saturation index prediction", "inhibitor type selection for BaSO4", "squeeze treatment design", "inhibitor return concentration monitoring", "re-squeeze timing prediction"],
+            "failure_signals": ["no scaling potential calculation", "wrong scale type addressed", "missing squeeze design", "generic chemical treatment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD08",
+      "name": "Corrosion Management Engine",
+      "function": "Analyze production system corrosion mechanisms, inhibitor programs, material selection, cathodic protection, monitoring techniques, and integrity assessment per NACE standards for sweet and sour service.",
+      "doctrine_topics": [
+        "CO2 corrosion prediction de Waard-Milliams",
+        "H2S corrosion and sulfide stress cracking NACE MR0175",
+        "corrosion inhibitor selection and application",
+        "internal corrosion monitoring coupon and probe",
+        "cathodic protection design and monitoring",
+        "material selection for sour service",
+        "erosion-corrosion in multiphase flow API RP 14E",
+        "microbiologically influenced corrosion MIC",
+        "pipeline integrity assessment and ILI",
+        "corrosion management program design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a corrosion management program for a sour gas gathering system with 5% H2S, 8% CO2, produced water pH 4.5, chlorides of 120,000 ppm, and bottomhole temperature of 250F",
+            "required_elements": ["NACE MR0175 material requirements", "CO2 corrosion rate prediction", "H2S partial pressure assessment", "inhibitor type and dosage", "monitoring program design", "material upgrade recommendations"],
+            "failure_signals": ["no NACE reference", "missing CO2 corrosion prediction", "no H2S assessment", "generic corrosion program"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD09",
+      "name": "Artificial Lift Optimization Engine",
+      "function": "Optimize artificial lift system performance including rod pump dynamometer analysis, ESP surveillance, gas lift troubleshooting, plunger lift optimization, and lift method conversion evaluation.",
+      "doctrine_topics": [
+        "rod pump dynamometer card interpretation",
+        "ESP current and vibration analysis",
+        "gas lift optimization and troubleshooting",
+        "plunger lift velocity and arrival analysis",
+        "artificial lift surveillance programs",
+        "rod string failure analysis and prevention",
+        "ESP run life optimization",
+        "gas lift valve troubleshooting multipoint",
+        "artificial lift automation and control",
+        "lift method conversion economics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A rod pumped well shows a dynamometer card with fluid pound. The well has a pump setting depth of 8,500 ft, 1.75-inch plunger, 24 SPM, 100-inch stroke, and fluid level at 6,000 ft. Diagnose and recommend corrective action.",
+            "required_elements": ["fluid pound diagnosis from dynacard shape", "pump fillage calculation", "stroke length or SPM adjustment", "fluid level optimization target", "downhole pump displacement calculation", "economic impact analysis"],
+            "failure_signals": ["no dynacard interpretation", "missing pump fillage analysis", "no specific corrective action", "generic rod pump description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PROD10",
+      "name": "Facilities Design Engine",
+      "function": "Design and optimize surface production facilities including separation equipment, compression, dehydration, treating, measurement, and pipeline systems per API RP 14C safety analysis and design codes.",
+      "doctrine_topics": [
+        "production facility process flow design",
+        "separator sizing and vessel design",
+        "gas compression and dehydration",
+        "oil treating and emulsion breaking",
+        "produced water treatment and disposal",
+        "measurement systems LACT and gas metering",
+        "pipeline sizing and hydraulics",
+        "API RP 14C safety analysis and PSV sizing",
+        "electrical classification hazardous areas",
+        "facility capacity debottlenecking"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a central gathering facility for a 100-well Permian Basin development producing 20,000 BOPD total, 60 MMSCFD gas, 40,000 BWPD, 500 psig wellhead pressure, with pipeline delivery requirements of 300 psi oil and 1,000 psi gas",
+            "required_elements": ["process flow diagram components", "separator sizing and staging", "compression requirements", "water treatment and disposal capacity", "LACT unit specification", "API RP 14C safety system design"],
+            "failure_signals": ["no process flow design", "missing sizing calculations", "no safety system analysis", "generic facility description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

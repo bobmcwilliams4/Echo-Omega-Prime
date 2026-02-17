@@ -1,0 +1,29 @@
+name = "echo-doctrine-brain"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+MAX_BLOCKS_PER_QUERY = "20"
+DEFAULT_MODE = "FAST"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "echo-doctrine-core"
+database_id = "d99cf949-fcec-4a95-ae19-88e38a3ccc7c"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "echo-prime-doctrine"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "bdf9b36a2c704217bd2afe3dcc871604"
+
+[[vectorize]]
+binding = "VECTORS"
+index_name = "doctrine-embeddings"
+
+[ai]
+binding = "AI"

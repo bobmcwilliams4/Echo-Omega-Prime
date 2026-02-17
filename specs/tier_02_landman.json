@@ -1,0 +1,619 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "LM",
+  "tier_name": "Landman",
+  "domain_description": "Comprehensive oil and gas land management analysis covering title examination, lease negotiation, division order preparation, mineral rights evaluation, chain of title verification, right-of-way acquisition, regulatory filing, production accounting, surface rights, unitization, royalty calculations, GIS integration, water rights, easement analysis, pooling units, title opinions, curative actions, title insurance, probate title work, Indian land issues, federal/state land operations, and due diligence. Grounded in AAPL standards, Texas Property Code, RRC regulations, and federal land management statutes.",
+  "authority_sources": [
+    "AAPL Title Examination Standards",
+    "AAPL Form 610 Model Form Operating Agreement",
+    "Texas Property Code (Title 2, Title 5)",
+    "Texas Natural Resources Code",
+    "Railroad Commission of Texas (RRC) Statewide Rules",
+    "Bureau of Land Management (BLM) Federal Oil and Gas Leasing",
+    "Indian Mineral Leasing Act of 1938 (25 USC 396a-396g)",
+    "Mineral Leasing Act of 1920 (30 USC 181-287)",
+    "Texas Water Code",
+    "ALTA Title Insurance Standards"
+  ],
+  "engines": [
+    {
+      "engine_id": "LM01",
+      "name": "Title Examination Engine",
+      "function": "Examine and analyze real property title records to determine ownership of mineral and surface estates, identify encumbrances, evaluate marketability, and render title opinions in accordance with AAPL Title Examination Standards.",
+      "doctrine_topics": [
+        "mineral estate vs surface estate separation",
+        "deed interpretation and granting clause analysis",
+        "reservation and exception clause analysis",
+        "executive rights and their delegation",
+        "title curative requirements and defect classification",
+        "abstract of title review methodology",
+        "run sheet preparation and chain analysis",
+        "title opinion standards (preliminary, supplemental, division order)",
+        "after-acquired title (estoppel by deed) doctrine",
+        "wild deed and recording act application"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 1952 deed conveyed 'all of my right, title, and interest in the NW/4 of Section 12' but the grantor only owned a 1/2 mineral interest at the time. In 1960 the grantor inherited the remaining 1/2 mineral interest. Does the 1960 interest pass to the grantee under the after-acquired title doctrine?",
+            "required_elements": ["after-acquired title doctrine application", "quitclaim vs warranty deed distinction", "estoppel by deed analysis", "Texas vs other state approaches", "recording act implications"],
+            "failure_signals": ["no doctrine identification", "failure to distinguish deed types", "no state law reference"]
+          },
+          {
+            "question": "Prepare a run sheet for a tract where the mineral estate has been severed through 6 conveyances spanning 1935-2020, with two probate transfers and one tax sale.",
+            "required_elements": ["chronological chain analysis", "probate transfer validation", "tax sale impact on mineral title", "fractional interest tracking", "curative defect identification"],
+            "failure_signals": ["no fractional interest calculation", "failure to address probate chain", "no mention of tax sale mineral interest rules"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM02",
+      "name": "Lease Analysis Engine",
+      "function": "Analyze oil and gas lease terms, identify key provisions affecting lessor and lessee rights, evaluate habendum clauses, rental obligations, royalty provisions, pooling authority, and surface use restrictions.",
+      "doctrine_topics": [
+        "habendum clause (primary and secondary term) interpretation",
+        "delay rental and shut-in royalty provisions",
+        "Pugh clause (vertical and horizontal) analysis",
+        "pooling and unitization authority provisions",
+        "surface use and damage provisions",
+        "continuous development and drilling obligations",
+        "depth limitation and retained acreage provisions",
+        "royalty clause analysis (cost-free royalty, market value)",
+        "force majeure and cessation of production clauses",
+        "lease bonus and paid-up lease structures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil and gas lease has a 3-year primary term, a Pugh clause, and a continuous development clause requiring a new well every 180 days. The operator drilled one well in Year 1 on the NW/4 but has not drilled additional wells. Analyze which portions of the lease are still held and what actions are required to maintain the full lease.",
+            "required_elements": ["Pugh clause application to undrilled portions", "continuous development clause penalty", "habendum clause secondary term analysis", "production in paying quantities requirement", "retained acreage calculation"],
+            "failure_signals": ["no Pugh clause analysis", "failure to calculate retained acreage", "no continuous development timeline"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM03",
+      "name": "Division Order Engine",
+      "function": "Prepare and analyze division orders, calculate decimal interests for royalty and working interest owners, reconcile title ownership with production allocation, and resolve division order title disputes.",
+      "doctrine_topics": [
+        "decimal interest calculation methodology",
+        "net revenue interest vs working interest computation",
+        "division order title opinion reconciliation",
+        "overriding royalty interest allocation",
+        "pooled unit decimal interest proration",
+        "division order ratification and legal effect",
+        "suspense account management and escheat",
+        "carried interest and back-in calculations",
+        "proportionate reduction clause application",
+        "division order amendment procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Calculate the decimal interest for a royalty owner who owns 1/4 mineral interest in a 640-acre section, subject to a 3/16 royalty lease, where only 160 acres are pooled into a 640-acre spacing unit with 4 tracts. The owner's tract is 160 acres.",
+            "required_elements": ["mineral interest fraction", "royalty fraction calculation", "pooling proration", "decimal interest formula", "net revenue interest vs royalty interest distinction"],
+            "failure_signals": ["incorrect mathematical calculation", "failure to prorate for pooled unit", "no formula shown"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM04",
+      "name": "Mineral Rights Engine",
+      "function": "Analyze mineral rights ownership, valuation, and transfers including mineral deeds, royalty deeds, mineral servitudes, dormant mineral acts, and the distinction between mineral and royalty interests.",
+      "doctrine_topics": [
+        "mineral interest vs royalty interest distinction",
+        "executive rights analysis and delegation",
+        "mineral servitude creation and prescription",
+        "dormant mineral act application",
+        "non-participating royalty interest (NPRI) analysis",
+        "overriding royalty interest creation and assignment",
+        "mineral interest valuation methodologies",
+        "fractional mineral interest conveyancing",
+        "mineral classification of substances (hard minerals, hydrocarbons)",
+        "accommodation doctrine and surface use"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 1945 deed reserved 'an undivided 1/2 of all royalties' to the grantor. Does this create a 1/2 mineral interest or a 1/2 royalty interest? Analyze under both the 'estate misconception' theory and modern interpretation approaches.",
+            "required_elements": ["royalty interest vs mineral interest distinction", "estate misconception doctrine", "executive rights analysis", "fixed vs floating royalty", "four corners doctrine application"],
+            "failure_signals": ["no distinction between mineral and royalty interests", "failure to address executive rights", "no reference to interpretive approaches"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM05",
+      "name": "Chain of Title Engine",
+      "function": "Trace and verify the complete chain of title for mineral and surface estates from sovereignty through current ownership, identifying breaks, gaps, and curative requirements.",
+      "doctrine_topics": [
+        "sovereignty to present chain tracing",
+        "common source of title doctrine",
+        "gap identification and curative procedures",
+        "recording act priority (race, notice, race-notice)",
+        "intestate succession impact on mineral title",
+        "probate and heirship proceedings in chain",
+        "tax sale validity and mineral interest impact",
+        "corporate and entity chain tracking",
+        "name variation and indexing issues",
+        "senior vs junior conveyance priority"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "In tracing a chain of title, you discover that a 1978 deed from John Smith to ABC Corp was recorded in the wrong county. The property straddles two counties. A subsequent 1985 purchaser from John Smith (the same grantor) recorded in the correct county. Who has priority under a race-notice recording statute?",
+            "required_elements": ["recording statute type analysis", "notice requirement", "chain of title recording in correct county", "good faith purchaser for value", "wild deed doctrine"],
+            "failure_signals": ["no recording act analysis", "failure to address wrong county recording", "no BFP analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM06",
+      "name": "Right of Way Engine",
+      "function": "Analyze and negotiate right-of-way acquisitions for pipeline, road, and utility corridors including eminent domain considerations, surface damage calculations, and ROW agreement terms.",
+      "doctrine_topics": [
+        "right-of-way agreement negotiation terms",
+        "pipeline ROW width and depth requirements",
+        "surface damage assessment and compensation",
+        "eminent domain authority for common carriers",
+        "temporary vs permanent easement distinctions",
+        "ROW renewal and abandonment provisions",
+        "crop and timber damage calculations",
+        "regulatory permits for ROW construction",
+        "environmental compliance for ROW corridors",
+        "ROW conflicts with existing mineral operations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A pipeline company claims common carrier status and seeks a 50-foot permanent easement and 75-foot temporary construction easement across a producing oil and gas lease. The landowner/mineral owner wants to protect existing well locations and future drilling sites. Analyze the negotiation position and key protective provisions.",
+            "required_elements": ["common carrier eminent domain authority", "surface damage compensation factors", "well site setback requirements", "future operations protection clause", "temporary vs permanent easement terms"],
+            "failure_signals": ["no eminent domain analysis", "failure to address mineral operations conflict", "no damage compensation framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM07",
+      "name": "Regulatory Filing Engine",
+      "function": "Prepare and analyze regulatory filings with the Railroad Commission of Texas and other state agencies including drilling permits, completion reports, production reports, and compliance documentation.",
+      "doctrine_topics": [
+        "RRC drilling permit (Form W-1) requirements",
+        "completion report (Form W-2) preparation",
+        "production allocation and reporting (Form P-1/PR)",
+        "well spacing and density regulations (Rule 37/38)",
+        "RRC exception and variance procedures",
+        "plugging and abandonment requirements (Rule 14)",
+        "H-10 organization report and financial assurance",
+        "flaring permits and gas capture requirements",
+        "environmental compliance and spill reporting",
+        "regulatory hearing procedures and protest rights"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator wants to drill a horizontal well with a surface location 200 feet from an existing lease line, requiring a Rule 37 exception. The offset operator has not protested. Analyze the RRC exception process, required showing, and likelihood of approval.",
+            "required_elements": ["Rule 37 spacing requirements", "exception application requirements", "no-protest administrative approval path", "good cause factors", "off-lease drainage analysis"],
+            "failure_signals": ["no Rule 37 reference", "failure to address exception process", "no discussion of offset operator rights"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM08",
+      "name": "Production Accounting Engine",
+      "function": "Analyze oil and gas production accounting including revenue allocation, cost deductions, joint interest billing, severance tax calculations, and regulatory production reporting requirements.",
+      "doctrine_topics": [
+        "revenue distribution waterfall methodology",
+        "joint interest billing (JIB) analysis",
+        "severance and ad valorem tax calculations",
+        "gas balancing and take-or-pay provisions",
+        "post-production cost deduction authority",
+        "AFE (authorization for expenditure) review",
+        "production volume reconciliation",
+        "transportation and processing cost allocation",
+        "operator fiduciary duties in accounting",
+        "audit rights under JOA and lease terms"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A royalty owner receives a check showing gross production of $100,000 but net payment of $62,000 after deductions for gathering, processing, compression, and transportation. The lease states royalty is calculated on 'gross production at the wellhead.' Analyze whether the deductions are proper.",
+            "required_elements": ["cost-free royalty doctrine analysis", "at the wellhead vs at the point of sale", "gathering and processing deduction authority", "state-specific post-production cost rules", "lease language interpretation"],
+            "failure_signals": ["no lease language analysis", "failure to address cost-free royalty doctrine", "no state law reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM09",
+      "name": "Surface Rights Engine",
+      "function": "Analyze surface rights and obligations in the context of severed mineral estates, including accommodation doctrine, surface damage acts, surface use agreements, and conflicts between surface and mineral owners.",
+      "doctrine_topics": [
+        "dominant mineral estate doctrine",
+        "accommodation doctrine application",
+        "surface damage act requirements and compensation",
+        "surface use agreement negotiation",
+        "reasonable use of surface for mineral operations",
+        "water use rights for drilling and completion",
+        "pad site and road construction obligations",
+        "reclamation and restoration requirements",
+        "surface owner consent and notice requirements",
+        "nuisance claims and environmental damage"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A mineral lessee plans to construct a 5-acre well pad on agricultural land where the surface owner runs a cattle operation. The surface owner demands compensation under the Texas Surface Damage Act and invokes the accommodation doctrine, arguing the pad location will block access to a stock tank. Analyze the operator's obligations.",
+            "required_elements": ["dominant mineral estate rights", "accommodation doctrine requirements", "Texas Surface Damage Act provisions", "alternative surface location analysis", "compensation calculation methodology"],
+            "failure_signals": ["no accommodation doctrine analysis", "failure to reference Surface Damage Act", "no reasonable alternative use discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM10",
+      "name": "Unitization Engine",
+      "function": "Analyze voluntary and compulsory unitization of oil and gas properties, including tract participation factors, unit operating agreements, allocation formulas, and regulatory approval requirements.",
+      "doctrine_topics": [
+        "voluntary unitization agreement drafting",
+        "compulsory unitization statutes and procedures",
+        "tract participation factor calculation",
+        "unit operating agreement provisions",
+        "allocation formula methodologies (acreage, deliverability, PV)",
+        "unit expansion and contraction provisions",
+        "unitization vs pooling distinctions",
+        "working interest and royalty owner consent requirements",
+        "enhanced recovery unitization requirements",
+        "cross-unit well allocation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator seeks to form a secondary recovery unit for a waterflood project covering 2,560 acres with 12 different working interest owners and 45 royalty owners. Only 78% of the working interest owners consent. Analyze the compulsory unitization process and participation factor methodology.",
+            "required_elements": ["compulsory unitization threshold requirements", "tract participation factor calculation", "regulatory approval process", "dissenting interest owner protections", "allocation formula selection"],
+            "failure_signals": ["no threshold analysis", "failure to address dissenting owner rights", "no participation factor methodology"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM11",
+      "name": "Royalty Calculation Engine",
+      "function": "Calculate and verify oil and gas royalty payments including overriding royalty interests, cost-bearing royalties, minimum royalty provisions, shut-in royalties, and royalty valuation disputes.",
+      "doctrine_topics": [
+        "lessor royalty calculation methods (market value, proceeds, amount realized)",
+        "overriding royalty interest computation",
+        "cost-bearing vs cost-free royalty analysis",
+        "minimum royalty and annual rental provisions",
+        "shut-in royalty obligations and requirements",
+        "royalty on gas used off premises vs flared",
+        "take-or-pay settlement royalty obligations",
+        "royalty valuation at different points of sale",
+        "underpayment of royalty statute of limitations",
+        "royalty on NGL and condensate"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A gas lease provides for 1/4 royalty on 'the market value at the well.' The operator sells gas at the tailgate of a processing plant 30 miles from the wellhead for $3.00/Mcf. Gas at the wellhead would be valued at $2.20/Mcf after deducting gathering, compression, and processing costs. Calculate the proper royalty and analyze which valuation point controls.",
+            "required_elements": ["market value at the well definition", "work-back method calculation", "comparable sales analysis", "gathering and processing cost deduction", "royalty amount comparison at different valuation points"],
+            "failure_signals": ["no calculation shown", "failure to identify valuation point dispute", "no work-back methodology"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM12",
+      "name": "GIS Integration Engine",
+      "function": "Integrate Geographic Information System data with land records for spatial analysis of mineral rights, lease positions, well locations, pipeline routes, and geological features.",
+      "doctrine_topics": [
+        "GIS data layers for oil and gas operations",
+        "PLSS survey system coordinate mapping",
+        "lease boundary digitization and verification",
+        "well location plotting and spacing analysis",
+        "pipeline corridor spatial analysis",
+        "mineral ownership mapping techniques",
+        "geological feature overlay and interpretation",
+        "regulatory boundary compliance verification",
+        "spatial conflict detection (overlapping leases/units)",
+        "GIS-based acreage calculation and verification"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Create a GIS analysis plan for mapping all mineral ownership interests in a 10-section area of Reeves County, Texas, incorporating RRC well data, county clerk deed records, and geological survey boundaries. Identify data sources and integration challenges.",
+            "required_elements": ["data source identification (RRC, county clerk, surveys)", "coordinate system selection (NAD83/WGS84)", "PLSS to GIS conversion methodology", "mineral ownership polygon creation", "data quality validation steps"],
+            "failure_signals": ["no specific data sources identified", "failure to address coordinate systems", "no mention of survey system conversion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM13",
+      "name": "Water Rights Engine",
+      "function": "Analyze water rights ownership, permitting, and regulation as they relate to oil and gas operations including produced water management, freshwater sourcing, groundwater rights, and water disposal permitting.",
+      "doctrine_topics": [
+        "prior appropriation vs riparian water rights",
+        "groundwater ownership rule of capture in Texas",
+        "surface water appropriation permits",
+        "produced water disposal well permitting (UIC Class II)",
+        "freshwater sourcing for hydraulic fracturing",
+        "groundwater conservation district regulations",
+        "water recycling and reuse for completions",
+        "Edwards Aquifer Authority regulations",
+        "water transfer and marketing agreements",
+        "environmental impact of water use in oil and gas"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator in the Permian Basin needs 500,000 barrels of water per well for hydraulic fracturing and plans to drill 20 wells per year. Analyze the water sourcing options, permitting requirements, and produced water disposal alternatives under Texas water law.",
+            "required_elements": ["groundwater ownership rights in Texas", "GCD permitting requirements", "UIC Class II disposal well permits", "water recycling alternatives", "produced water volume management"],
+            "failure_signals": ["no Texas water law reference", "failure to address GCD regulations", "no produced water disposal analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM14",
+      "name": "Easement Analyzer Engine",
+      "function": "Analyze easement creation, scope, interpretation, and termination for oil and gas surface operations, pipeline corridors, utility access, and road infrastructure on mineral properties.",
+      "doctrine_topics": [
+        "easement creation methods (express, implied, prescriptive, necessity)",
+        "easement scope and use limitation analysis",
+        "pipeline easement terms and conditions",
+        "utility easement conflicts with mineral operations",
+        "road easement and access rights",
+        "easement abandonment and termination",
+        "dominant and servient estate rights",
+        "easement relocation and modification",
+        "conservation easement impact on mineral rights",
+        "blanket easement vs specific location easement"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 1960 pipeline easement grants the right to lay and maintain 'one line of pipe, not to exceed 8 inches in diameter.' The pipeline company wants to replace it with a 16-inch line and add a parallel 12-inch line. Analyze whether the proposed expansion exceeds the easement scope.",
+            "required_elements": ["easement scope interpretation", "express limitation analysis", "changed conditions doctrine", "overburdening the servient estate", "easement holder remedies and alternatives"],
+            "failure_signals": ["no scope limitation analysis", "failure to address express diameter restriction", "no overburdening discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM15",
+      "name": "Pooling Unit Engine",
+      "function": "Analyze voluntary and compulsory pooling of oil and gas interests, including pooling clause interpretation, force pooling procedures, pooled unit operations, and the effect of pooling on lease maintenance.",
+      "doctrine_topics": [
+        "pooling clause interpretation and authority",
+        "voluntary pooling agreement terms",
+        "compulsory (force) pooling procedures and statutes",
+        "pooling unit size and configuration",
+        "effect of pooling on lease maintenance",
+        "Pugh clause interaction with pooling",
+        "community lease pooling provisions",
+        "pooling order terms and royalty owner rights",
+        "cross-unit horizontal well allocation",
+        "anti-pooling and limitation provisions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator has leases from 4 different lessors covering a proposed 640-acre drilling unit. Three lessors have pooling clauses but one lease prohibits pooling beyond 40 acres. The operator seeks a compulsory pooling order. Analyze the process, the dissenting lessor's rights, and the effect on royalty payments.",
+            "required_elements": ["compulsory pooling statutory authority", "anti-pooling clause effect", "dissenting owner election options", "royalty calculation in force-pooled unit", "risk penalty for non-consenting owners"],
+            "failure_signals": ["no force pooling process description", "failure to address anti-pooling clause", "no discussion of non-consent penalties"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM16",
+      "name": "Title Opinion Engine",
+      "function": "Draft and review title opinions including preliminary, supplemental, and division order title opinions following AAPL standards, identifying requirements, objections, and curative matters.",
+      "doctrine_topics": [
+        "preliminary title opinion requirements and format",
+        "supplemental title opinion procedures",
+        "division order title opinion standards",
+        "title requirement vs objection distinction",
+        "curative matter prioritization",
+        "AAPL title examination standards compliance",
+        "title opinion liability and professional standards",
+        "outstanding mineral interest identification",
+        "gap and defect classification system",
+        "title opinion update and certification procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Draft a title requirement list for a preliminary title opinion where the abstract shows: (1) a 1965 deed with an ambiguous mineral reservation, (2) an unrecorded heirship affidavit for a 1980 deceased owner, and (3) a 2005 tax sale with no notice to the mineral interest owner. Prioritize the curative items.",
+            "required_elements": ["deed interpretation requirement", "heirship affidavit recording requirement", "tax sale notice deficiency analysis", "curative priority ranking", "AAPL standard compliance"],
+            "failure_signals": ["no prioritization of curative items", "failure to address tax sale mineral rights issue", "no AAPL standard reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM17",
+      "name": "Curative Action Engine",
+      "function": "Identify, prioritize, and resolve title defects through appropriate curative instruments including affidavits, ratifications, corrections, quit claim deeds, and judicial proceedings.",
+      "doctrine_topics": [
+        "curative instrument selection and drafting",
+        "affidavit of heirship preparation",
+        "ratification and confirmation of prior instruments",
+        "correction deed preparation",
+        "quiet title action requirements",
+        "missing heir and unknown owner procedures",
+        "defective acknowledgment correction",
+        "name discrepancy resolution",
+        "gap period coverage strategies",
+        "curative cost-benefit and prioritization analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A title examination reveals that a 1975 deed was signed by the grantor's attorney-in-fact but the power of attorney was never recorded, and the grantor died in 1990. The current owner claims through 3 subsequent conveyances. Identify the curative options and recommend the most efficient approach.",
+            "required_elements": ["unrecorded power of attorney effect", "death of principal impact on POA", "subsequent conveyance chain analysis", "ratification or confirmation options", "quiet title as last resort"],
+            "failure_signals": ["no POA recording analysis", "failure to address grantor death impact", "no curative instrument recommendation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM18",
+      "name": "Title Insurance Engine",
+      "function": "Analyze title insurance policies, coverage, exclusions, and claims for oil and gas property transactions including owner's and lender's policies, endorsements, and the relationship between title opinions and title insurance.",
+      "doctrine_topics": [
+        "owner's vs lender's policy coverage",
+        "standard exceptions and their elimination",
+        "mineral rights coverage in title policies",
+        "ALTA endorsement selection for oil and gas",
+        "title insurance claims process",
+        "title insurance vs title opinion comparison",
+        "insured closing letter requirements",
+        "survey exception and coverage",
+        "title insurance rate calculation",
+        "extended coverage and special endorsements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A buyer of mineral rights receives an owner's title policy that excludes coverage for 'minerals reserved or conveyed by prior instruments.' The buyer later discovers a recorded mineral reservation from 1948 that was missed in the title examination. Analyze whether the title insurance claim will be covered.",
+            "required_elements": ["standard mineral exception analysis", "recorded vs unrecorded defect distinction", "title search negligence vs policy coverage", "claims process and requirements", "policy vs endorsement coverage comparison"],
+            "failure_signals": ["no policy exclusion analysis", "failure to distinguish search error from coverage exclusion", "no claims process discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM19",
+      "name": "Probate Title Engine",
+      "function": "Analyze the impact of death, probate, and heirship on mineral title including intestate succession of mineral interests, will construction for mineral estates, and probate-related curative work.",
+      "doctrine_topics": [
+        "intestate succession of mineral interests by state",
+        "will construction for mineral and royalty interests",
+        "muniment of title proceedings",
+        "independent administration and dependent administration",
+        "heirship determination proceedings",
+        "community property and separate property in probate",
+        "per stirpes vs per capita distribution of mineral interests",
+        "non-probate transfer of mineral interests",
+        "disclaimer and renunciation of mineral inheritance",
+        "probate-related curative instruments"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Texas mineral owner dies intestate in 2020 survived by a spouse, 2 children from the marriage, and 1 child from a prior marriage. The minerals were acquired during the marriage as community property. Calculate each heir's share of the mineral interest.",
+            "required_elements": ["Texas intestate succession for community property", "surviving spouse share calculation", "children's share calculation", "distinction between community and separate property", "half-blood sibling treatment"],
+            "failure_signals": ["incorrect inheritance calculation", "failure to apply community property rules", "no Texas Estates Code reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM20",
+      "name": "Indian Land Engine",
+      "function": "Analyze oil and gas leasing and title issues on Indian lands including tribal trust lands, allotted lands, restricted fee lands, and the regulatory framework under BIA and federal Indian mineral leasing statutes.",
+      "doctrine_topics": [
+        "Indian mineral leasing statutes (25 USC 396a-g)",
+        "tribal trust land leasing procedures",
+        "allotted land fractionation and leasing",
+        "BIA approval requirements for mineral leases",
+        "Indian Mineral Development Act of 1982",
+        "HEARTH Act tribal energy resource agreements",
+        "federal trust responsibility doctrine",
+        "Indian land title and ownership patterns",
+        "royalty management on Indian lands (ONRR)",
+        "environmental review requirements for Indian leases"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator wants to lease mineral rights on an allotment that has 47 fractional interest owners (some deceased with no probate), several of whom are minors. The allotment is held in trust by the United States. Analyze the leasing process and BIA approval requirements.",
+            "required_elements": ["BIA lease approval process", "fractionated interest consent requirements", "minor owner guardian requirements", "deceased owner interest handling", "Indian Mineral Leasing Act procedures"],
+            "failure_signals": ["no BIA process description", "failure to address fractional interests", "no federal trust responsibility discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM21",
+      "name": "Federal State Lands Engine",
+      "function": "Analyze oil and gas leasing, permitting, and operations on federal and state lands including BLM lease sales, onshore orders, APD process, and state land office procedures.",
+      "doctrine_topics": [
+        "BLM competitive lease sale process",
+        "federal onshore oil and gas orders",
+        "Application for Permit to Drill (APD) process",
+        "federal royalty rates and valuation",
+        "National Environmental Policy Act compliance on federal lands",
+        "federal unit agreements and communitization",
+        "state land office lease procedures",
+        "federal lease reinstatement and extension",
+        "split estate issues on federal surface",
+        "Endangered Species Act consultation requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator holds a 10-year federal oil and gas lease that is about to expire. One well was drilled but never completed and no production has been established. Analyze the options for lease continuation, extension, or reinstatement.",
+            "required_elements": ["lease extension requirements", "drilling operations as lease continuation", "well completion timeline requirements", "lease reinstatement procedures after expiration", "BLM regulations on lease terms"],
+            "failure_signals": ["no federal lease regulation reference", "failure to analyze completion requirements", "no extension vs reinstatement distinction"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LM22",
+      "name": "Due Diligence Engine",
+      "function": "Conduct comprehensive due diligence analysis for oil and gas property acquisitions and divestitures including title review, environmental assessment, regulatory compliance, production analysis, and risk evaluation.",
+      "doctrine_topics": [
+        "acquisition due diligence checklist and methodology",
+        "title defect adjustment mechanisms (PSA)",
+        "environmental due diligence and liability allocation",
+        "regulatory compliance verification",
+        "production data analysis and decline curve review",
+        "reserve report evaluation (PDP, PDNP, PUD)",
+        "contract assignment and consent requirements",
+        "preferential purchase rights and area of mutual interest",
+        "representations and warranties in PSA",
+        "post-closing adjustment and indemnification provisions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An E&P company is acquiring a portfolio of 200 wells in the Permian Basin for $150 million. The purchase and sale agreement provides for title defect adjustments with a 5% individual well threshold and a 15% aggregate threshold. During due diligence, title defects totaling $18 million are identified. Analyze the defect adjustment mechanism and negotiation strategy.",
+            "required_elements": ["title defect threshold calculation", "individual well defect valuation", "aggregate defect threshold application", "defect notice and cure procedures", "purchase price adjustment mechanics"],
+            "failure_signals": ["no threshold calculation", "failure to address cure period", "no PSA adjustment mechanics"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "MED",
+  "tier_name": "Medical",
+  "domain_description": "Comprehensive medical knowledge spanning pharmacology, toxicology, radiology, pathology, emergency medicine, surgery, internal medicine, pediatrics, psychiatry, oncology, cardiology, neurology, orthopedics, dermatology, and medical devices. Based on FDA regulations, USP standards, WHO guidelines, HIPAA compliance, AMA CPT coding, and ICD-10 classification systems.",
+  "authority_sources": [
+    "FDA 21 CFR Parts 200-299 (Drug Regulations)",
+    "FDA 21 CFR Parts 800-898 (Medical Device Regulations)",
+    "USP-NF (United States Pharmacopeia - National Formulary)",
+    "WHO Model List of Essential Medicines",
+    "HIPAA 45 CFR Parts 160, 164 (Privacy and Security)",
+    "AMA CPT (Current Procedural Terminology)",
+    "ICD-10-CM/PCS (International Classification of Diseases)",
+    "Harrison's Principles of Internal Medicine",
+    "Goodman & Gilman's The Pharmacological Basis of Therapeutics",
+    "NCCN Clinical Practice Guidelines"
+  ],
+  "engines": [
+    {
+      "engine_id": "MED01",
+      "name": "Pharmacology Engine",
+      "function": "Analyze drug mechanisms of action, pharmacokinetics, pharmacodynamics, drug-drug interactions, dosing protocols, adverse effects, and therapeutic drug monitoring across all major drug classes per FDA labeling and USP standards.",
+      "doctrine_topics": [
+        "pharmacokinetics ADME principles",
+        "drug-drug interaction analysis and CYP450 metabolism",
+        "therapeutic drug monitoring protocols",
+        "dose-response relationships and ED50/LD50",
+        "receptor pharmacology and signal transduction",
+        "adverse drug reaction classification and reporting",
+        "antimicrobial stewardship and resistance mechanisms",
+        "controlled substance scheduling DEA requirements",
+        "pharmacogenomics and personalized dosing",
+        "pediatric and geriatric dosing adjustments"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the drug interaction risk between warfarin, amiodarone, and fluconazole in a 72-year-old patient with atrial fibrillation and candidemia",
+            "required_elements": ["CYP450 inhibition pathways", "INR monitoring frequency", "dose adjustment recommendations", "bleeding risk assessment", "alternative antifungal options", "pharmacokinetic interaction mechanism"],
+            "failure_signals": ["no CYP enzyme reference", "missing INR guidance", "no specific dose adjustment", "generic drug interaction warning"]
+          },
+          {
+            "question": "Design a vancomycin dosing protocol for a 120kg patient with an estimated CrCl of 45 mL/min and suspected MRSA bacteremia",
+            "required_elements": ["loading dose calculation", "maintenance dose", "trough level targets", "AUC/MIC optimization", "renal adjustment", "monitoring schedule"],
+            "failure_signals": ["no weight-based calculation", "no renal adjustment", "missing trough targets", "no AUC monitoring"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED02",
+      "name": "Toxicology Engine",
+      "function": "Analyze poisoning syndromes, toxidromes, antidote protocols, decontamination strategies, occupational exposures, environmental toxicants, and forensic toxicology per AAPCC and ACMT guidelines.",
+      "doctrine_topics": [
+        "toxidrome recognition and classification",
+        "antidote selection and dosing protocols",
+        "gastrointestinal decontamination methods",
+        "heavy metal poisoning and chelation therapy",
+        "organophosphate and carbamate toxicity",
+        "drug overdose management algorithms",
+        "occupational chemical exposure limits (PEL/TLV)",
+        "environmental toxicant biomonitoring",
+        "forensic toxicology specimen collection",
+        "envenomation management and antivenom dosing"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 35-year-old farmer presents with miosis, bradycardia, excessive salivation, and fasciculations after spraying crops. Outline the complete management protocol.",
+            "required_elements": ["organophosphate toxidrome recognition", "atropine dosing protocol", "pralidoxime administration", "decontamination procedures", "cholinesterase level monitoring", "ICU monitoring parameters"],
+            "failure_signals": ["no specific antidote doses", "missing decontamination", "no cholinesterase monitoring", "generic supportive care only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED03",
+      "name": "Radiology Engine",
+      "function": "Analyze medical imaging modalities, radiation physics, contrast protocols, imaging findings, differential diagnoses, and radiation safety per ACR Appropriateness Criteria and ICRP guidelines.",
+      "doctrine_topics": [
+        "CT imaging protocols and contrast timing",
+        "MRI sequences and clinical applications",
+        "radiographic anatomy and normal variants",
+        "ultrasound physics and Doppler principles",
+        "nuclear medicine radiopharmaceuticals",
+        "radiation dose optimization ALARA principle",
+        "ACR Appropriateness Criteria application",
+        "contrast reaction management protocols",
+        "interventional radiology procedures",
+        "PET-CT oncologic imaging interpretation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate the appropriate imaging workup for a 55-year-old with new-onset seizure, including contrast considerations given eGFR of 35 mL/min",
+            "required_elements": ["ACR Appropriateness Criteria", "MRI vs CT comparison", "contrast nephropathy risk", "gadolinium considerations with low eGFR", "imaging protocol recommendations", "NSF risk assessment"],
+            "failure_signals": ["no ACR reference", "ignoring renal function", "no contrast risk discussion", "single modality recommendation without justification"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED04",
+      "name": "Pathology Engine",
+      "function": "Analyze histopathological findings, cytology, molecular pathology markers, immunohistochemistry panels, staging systems, and laboratory diagnostics per CAP and ASCP guidelines.",
+      "doctrine_topics": [
+        "histopathological grading and staging systems",
+        "immunohistochemistry marker panels",
+        "molecular pathology and genetic testing",
+        "cytopathology and fine needle aspiration",
+        "hematopathology and flow cytometry",
+        "surgical margin assessment protocols",
+        "autopsy pathology procedures",
+        "clinical chemistry reference ranges",
+        "microbiology culture and sensitivity",
+        "quality assurance in anatomic pathology"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A breast biopsy shows invasive ductal carcinoma. Outline the complete pathology workup including molecular profiling, staging, and prognostic markers.",
+            "required_elements": ["ER/PR/HER2 status", "Ki-67 proliferation index", "Oncotype DX or MammaPrint", "TNM staging", "Nottingham grading", "sentinel lymph node assessment"],
+            "failure_signals": ["missing receptor status", "no molecular profiling", "no staging system", "incomplete grading"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED05",
+      "name": "Emergency Medicine Engine",
+      "function": "Analyze emergency presentations, triage protocols, resuscitation algorithms, trauma management, and critical care pathways per ACLS, ATLS, and PALS guidelines.",
+      "doctrine_topics": [
+        "ACLS cardiac arrest algorithms",
+        "ATLS primary and secondary survey",
+        "sepsis recognition and bundle compliance",
+        "stroke code activation and tPA criteria",
+        "STEMI recognition and door-to-balloon time",
+        "trauma resuscitation and massive transfusion",
+        "pediatric emergency assessment PALS",
+        "airway management and RSI protocols",
+        "emergency toxicology management",
+        "disaster triage START/SALT systems"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 60-year-old presents with sudden-onset worst headache of life, nuchal rigidity, and photophobia. CT head is negative. What is the next step and complete management pathway?",
+            "required_elements": ["subarachnoid hemorrhage suspicion", "lumbar puncture indication", "xanthochromia assessment", "CTA or conventional angiography", "Hunt and Hess grading", "nimodipine for vasospasm prevention"],
+            "failure_signals": ["no LP after negative CT", "missing aneurysm workup", "no grading scale", "incomplete vasospasm prevention"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED06",
+      "name": "Surgery Engine",
+      "function": "Analyze surgical procedures, operative planning, perioperative management, wound healing, surgical site infection prevention, and minimally invasive techniques per ACS and SAGES guidelines.",
+      "doctrine_topics": [
+        "preoperative risk assessment and optimization",
+        "surgical anatomy and operative approaches",
+        "laparoscopic and robotic surgical techniques",
+        "perioperative antibiotic prophylaxis protocols",
+        "surgical site infection prevention bundles",
+        "enhanced recovery after surgery ERAS protocols",
+        "wound classification and healing phases",
+        "surgical complications and management",
+        "bariatric surgery criteria and techniques",
+        "transplant surgery immunosuppression protocols"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 68-year-old with BMI 35, diabetes, and COPD requires elective right hemicolectomy for colon cancer. Outline the complete perioperative optimization and ERAS protocol.",
+            "required_elements": ["cardiac risk stratification RCRI", "glycemic optimization targets", "pulmonary function assessment", "ERAS protocol components", "VTE prophylaxis", "SSI prevention bundle"],
+            "failure_signals": ["no risk stratification", "missing ERAS specifics", "no comorbidity optimization", "generic surgical planning"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED07",
+      "name": "Internal Medicine Engine",
+      "function": "Analyze complex medical diagnoses, multi-system disease management, evidence-based treatment protocols, and clinical decision-making across all internal medicine subspecialties per Harrison's and UpToDate evidence.",
+      "doctrine_topics": [
+        "hypertension management JNC/ACC-AHA guidelines",
+        "diabetes mellitus comprehensive management",
+        "chronic kidney disease staging and treatment",
+        "COPD and asthma management GOLD/GINA",
+        "heart failure classification and treatment",
+        "liver cirrhosis complications management",
+        "autoimmune disease workup and treatment",
+        "infectious disease empiric therapy",
+        "electrolyte disorders diagnosis and correction",
+        "preventive medicine screening guidelines USPSTF"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 58-year-old with type 2 diabetes, eGFR 38, HbA1c 9.2%, and NYHA Class II heart failure. Design a comprehensive medication regimen addressing all conditions.",
+            "required_elements": ["SGLT2 inhibitor for cardio-renal benefit", "metformin dose adjustment for CKD", "RAAS blockade", "HF guideline-directed therapy", "glycemic targets in CKD", "medication interactions"],
+            "failure_signals": ["no CKD dose adjustments", "missing SGLT2 rationale", "sulfonylurea in heart failure", "no integrated approach"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED08",
+      "name": "Pediatrics Engine",
+      "function": "Analyze pediatric growth and development, childhood diseases, vaccination schedules, neonatal care, and age-specific dosing per AAP guidelines and CDC immunization schedules.",
+      "doctrine_topics": [
+        "neonatal resuscitation NRP protocols",
+        "pediatric growth and development milestones",
+        "CDC recommended immunization schedule",
+        "pediatric fluid and electrolyte management",
+        "childhood infectious disease management",
+        "pediatric asthma stepwise therapy",
+        "newborn metabolic screening panels",
+        "pediatric weight-based dosing calculations",
+        "adolescent medicine and screening",
+        "child abuse recognition and reporting"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 3-year-old, 15kg child presents with moderate dehydration from gastroenteritis. Calculate the complete fluid resuscitation and maintenance plan including electrolyte composition.",
+            "required_elements": ["deficit calculation by percentage", "Holliday-Segar maintenance formula", "replacement fluid composition", "bolus volume 20mL/kg", "potassium replacement timing", "reassessment criteria"],
+            "failure_signals": ["no weight-based calculation", "adult fluid rates", "missing electrolyte composition", "no reassessment plan"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED09",
+      "name": "Psychiatry Engine",
+      "function": "Analyze psychiatric diagnoses, psychopharmacology, psychotherapy modalities, risk assessments, and involuntary commitment criteria per DSM-5-TR and APA practice guidelines.",
+      "doctrine_topics": [
+        "DSM-5-TR diagnostic criteria application",
+        "antidepressant selection and titration",
+        "antipsychotic pharmacology and monitoring",
+        "mood stabilizer management lithium/valproate",
+        "suicide risk assessment and safety planning",
+        "substance use disorder treatment protocols",
+        "anxiety disorder evidence-based treatments",
+        "psychotherapy modality selection CBT/DBT/IPT",
+        "involuntary psychiatric commitment criteria",
+        "neuromodulation ECT/TMS/ketamine protocols"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 28-year-old with treatment-resistant depression has failed two adequate SSRI trials and one SNRI trial. Outline the evidence-based next-step treatment algorithm.",
+            "required_elements": ["treatment-resistant definition", "augmentation strategies lithium/thyroid/atypical", "ketamine/esketamine consideration", "ECT indications", "psychotherapy integration", "STAR*D trial evidence"],
+            "failure_signals": ["no definition of treatment resistance", "missing augmentation options", "no neuromodulation discussion", "another SSRI trial only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED10",
+      "name": "Oncology Engine",
+      "function": "Analyze cancer staging, chemotherapy regimens, immunotherapy protocols, radiation treatment planning, tumor board decision-making, and survivorship per NCCN guidelines and AJCC staging.",
+      "doctrine_topics": [
+        "AJCC TNM staging system application",
+        "NCCN guideline-based treatment selection",
+        "chemotherapy regimen dosing and scheduling",
+        "immune checkpoint inhibitor management",
+        "targeted therapy and molecular profiling",
+        "radiation therapy planning and fractionation",
+        "cancer screening guidelines USPSTF",
+        "oncologic emergency management",
+        "palliative care integration in oncology",
+        "cancer survivorship care planning"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 65-year-old is diagnosed with stage IIIA non-small cell lung cancer, adenocarcinoma, with EGFR exon 19 deletion and PD-L1 TPS 80%. Outline the treatment strategy.",
+            "required_elements": ["AJCC staging details", "EGFR-targeted therapy osimertinib", "PD-L1 immunotherapy consideration", "concurrent chemoradiation discussion", "molecular profiling panel", "treatment sequencing rationale"],
+            "failure_signals": ["no molecular-guided therapy", "ignoring EGFR mutation", "generic chemotherapy only", "no staging verification"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED11",
+      "name": "Cardiology Engine",
+      "function": "Analyze cardiovascular diseases, ECG interpretation, echocardiographic findings, catheterization data, heart failure management, and arrhythmia treatment per ACC/AHA guidelines.",
+      "doctrine_topics": [
+        "ECG interpretation and arrhythmia diagnosis",
+        "acute coronary syndrome management pathways",
+        "heart failure guideline-directed medical therapy",
+        "valvular heart disease assessment and intervention",
+        "cardiac catheterization data interpretation",
+        "echocardiographic measurements and grading",
+        "anticoagulation for atrial fibrillation CHA2DS2-VASc",
+        "hypertrophic cardiomyopathy management",
+        "cardiac device therapy ICD/CRT indications",
+        "preventive cardiology and lipid management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A patient presents with new-onset atrial fibrillation, CHA2DS2-VASc score of 4, HAS-BLED score of 3, eGFR 30 mL/min, and prior GI bleed 18 months ago. Recommend an anticoagulation strategy.",
+            "required_elements": ["CHA2DS2-VASc interpretation", "HAS-BLED risk assessment", "DOAC vs warfarin with CKD", "renal dose adjustment", "GI bleed history consideration", "left atrial appendage occlusion discussion"],
+            "failure_signals": ["no stroke risk quantification", "ignoring renal function for DOAC dosing", "no bleeding risk assessment", "generic anticoagulation recommendation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED12",
+      "name": "Neurology Engine",
+      "function": "Analyze neurological conditions, stroke syndromes, seizure management, neurodegenerative diseases, neuromuscular disorders, and neurodiagnostic studies per AAN practice guidelines.",
+      "doctrine_topics": [
+        "acute ischemic stroke tPA and thrombectomy criteria",
+        "epilepsy classification and AED selection",
+        "multiple sclerosis disease-modifying therapy",
+        "Parkinson disease management algorithms",
+        "headache classification and treatment ICHD-3",
+        "neuromuscular junction disorder workup",
+        "dementia differential diagnosis and workup",
+        "EEG interpretation and epilepsy monitoring",
+        "peripheral neuropathy evaluation EMG/NCS",
+        "neuro-oncology brain tumor management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 45-year-old presents with acute-onset right-sided weakness and aphasia, last known well 2 hours ago. NIHSS score is 14. CT head shows no hemorrhage. Outline the complete acute management pathway.",
+            "required_elements": ["IV alteplase eligibility window", "mechanical thrombectomy criteria", "NIHSS-based decision making", "CT angiography for LVO", "blood pressure parameters", "post-tPA monitoring protocol"],
+            "failure_signals": ["no time window assessment", "missing thrombectomy consideration", "no imaging protocol", "generic stroke treatment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED13",
+      "name": "Orthopedics Engine",
+      "function": "Analyze musculoskeletal injuries, fracture classification, joint replacement planning, sports medicine conditions, and rehabilitation protocols per AAOS guidelines and AO/OTA classification.",
+      "doctrine_topics": [
+        "fracture classification systems AO/OTA",
+        "joint replacement indications and prosthesis selection",
+        "sports medicine injury assessment and treatment",
+        "spine surgery indications and approaches",
+        "pediatric orthopedic conditions",
+        "hand and upper extremity surgery",
+        "arthroscopic surgical techniques",
+        "orthopedic trauma fixation principles",
+        "bone healing biology and complications",
+        "rehabilitation protocols and return-to-play criteria"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 75-year-old osteoporotic female sustains a displaced femoral neck fracture (Garden IV). Outline the surgical decision-making including prosthesis selection and perioperative management.",
+            "required_elements": ["Garden classification significance", "hemiarthroplasty vs total hip replacement", "cemented vs uncemented consideration", "VTE prophylaxis", "osteoporosis treatment initiation", "mobilization timeline"],
+            "failure_signals": ["no fracture classification", "ORIF recommendation for displaced elderly", "missing VTE prophylaxis", "no osteoporosis management"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED14",
+      "name": "Dermatology Engine",
+      "function": "Analyze dermatological conditions, skin cancer screening, dermatopathology, biologic therapies for inflammatory skin disease, and procedural dermatology per AAD guidelines.",
+      "doctrine_topics": [
+        "melanoma ABCDE criteria and Breslow staging",
+        "psoriasis severity assessment and biologic therapy",
+        "atopic dermatitis stepwise management",
+        "skin biopsy techniques and indications",
+        "acne vulgaris treatment algorithms",
+        "drug eruption recognition and management",
+        "dermoscopy pattern analysis",
+        "wound care and scar management",
+        "autoimmune blistering disease workup",
+        "Mohs micrographic surgery indications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A patient presents with a pigmented lesion showing asymmetry, irregular borders, and color variation, measuring 8mm. Dermoscopy shows blue-white structures and atypical network. Outline the complete management.",
+            "required_elements": ["excisional biopsy with margins", "Breslow thickness importance", "sentinel lymph node biopsy criteria", "AJCC melanoma staging", "dermoscopic high-risk features", "follow-up surveillance protocol"],
+            "failure_signals": ["shave biopsy recommendation", "no margin specification", "missing staging workup", "no surveillance plan"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MED15",
+      "name": "Medical Devices Engine",
+      "function": "Analyze medical device classification, FDA regulatory pathways, biocompatibility testing, quality management systems, and post-market surveillance per FDA 21 CFR and ISO 13485.",
+      "doctrine_topics": [
+        "FDA device classification Class I/II/III",
+        "510(k) premarket notification process",
+        "PMA premarket approval requirements",
+        "biocompatibility testing ISO 10993",
+        "quality management systems ISO 13485",
+        "design controls and verification/validation",
+        "clinical trial design for medical devices IDE",
+        "post-market surveillance MDR reporting",
+        "unique device identification UDI system",
+        "cybersecurity for connected medical devices"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A startup is developing an AI-powered cardiac monitoring wearable that detects arrhythmias and alerts physicians. Determine the FDA regulatory pathway and complete submission requirements.",
+            "required_elements": ["device classification rationale", "De Novo vs 510(k) vs PMA pathway", "predicate device analysis", "clinical evidence requirements", "software as medical device SaMD", "cybersecurity documentation"],
+            "failure_signals": ["wrong regulatory pathway", "no predicate device discussion", "missing SaMD classification", "no clinical evidence requirements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

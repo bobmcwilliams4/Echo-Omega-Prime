@@ -1,0 +1,160 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "BLD",
+  "tier_name": "Bloodline",
+  "domain_description": "Genealogy research, DNA analysis, historical records interpretation, property lineage tracing, and family trust analysis. Specialized in McWilliams dynasty research, Texas vital statistics, county deed records, and multigenerational estate planning using GEDCOM standards, genetic genealogy methods, and archival research techniques.",
+  "authority_sources": [
+    "GEDCOM 5.5.1 Standard (Genealogical Data Communication)",
+    "Texas Vital Statistics Unit (DSHS)",
+    "Social Security Death Index (SSDI)",
+    "RootsTech / FamilySearch Standards",
+    "National Archives and Records Administration (NARA)",
+    "Genetic Genealogy Standards Committee",
+    "Board for Certification of Genealogists (BCG Standards)",
+    "Texas Property Code (Titles 2-5)",
+    "Uniform Trust Code (UTC)",
+    "Texas Estates Code"
+  ],
+  "engines": [
+    {
+      "engine_id": "BLD01",
+      "name": "Genealogy Research Engine",
+      "function": "Conduct systematic genealogical research using primary and derivative sources, evaluate evidence quality, resolve conflicting records, construct family group sheets, and maintain research logs per BCG standards and the Genealogical Proof Standard.",
+      "doctrine_topics": [
+        "Genealogical Proof Standard five elements",
+        "primary vs derivative source classification",
+        "evidence analysis direct/indirect/negative",
+        "census record interpretation and extraction",
+        "vital records birth/marriage/death analysis",
+        "immigration and naturalization records",
+        "military service records research",
+        "church and parish record interpretation",
+        "GEDCOM file structure and data exchange",
+        "research log methodology and citation format"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Construct a research plan to identify the parents of a John McWilliams born circa 1850 in East Texas, with only a marriage record (1872, Smith County) and 1880 census entry as starting evidence.",
+            "required_elements": ["Genealogical Proof Standard application", "source citation for existing records", "research plan with prioritized record types", "county-level record availability assessment", "indirect evidence strategy", "conflicting record resolution methodology"],
+            "failure_signals": ["no GPS reference", "missing source citations", "no research plan structure", "single source reliance"]
+          },
+          {
+            "question": "Evaluate conflicting evidence: a death certificate lists the decedent's mother as Mary Jones, but a Bible record says Mary Johnson, and the 1900 census shows Mary J. Determine the most probable correct name using the Genealogical Proof Standard.",
+            "required_elements": ["evidence correlation table", "informant analysis for death certificate", "original vs derivative source classification", "information assessment primary/secondary", "reasonably exhaustive search criteria", "written proof argument structure"],
+            "failure_signals": ["accepting one source without analysis", "no informant evaluation", "missing proof argument", "no evidence classification"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "BLD02",
+      "name": "DNA Analysis Engine",
+      "function": "Analyze genetic genealogy results including autosomal DNA, Y-DNA, mtDNA, and X-DNA inheritance patterns, segment analysis, ethnicity estimates, and DNA match clustering for relationship prediction.",
+      "doctrine_topics": [
+        "autosomal DNA inheritance and recombination",
+        "shared cM to relationship prediction tables",
+        "Y-DNA haplogroup analysis and surname projects",
+        "mtDNA haplogroup tracing maternal lineage",
+        "X-DNA inheritance pattern and exclusion",
+        "DNA match clustering Leeds method and beyond",
+        "segment triangulation and chromosome mapping",
+        "endogamy and pedigree collapse detection",
+        "ethnicity estimate interpretation and limitations",
+        "DNA-confirmed genealogy integration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A DNA match shares 850 cM across 35 segments. Both individuals have deep Texas roots. Determine the most likely relationships, design a testing strategy to narrow possibilities, and address potential endogamy effects.",
+            "required_elements": ["shared cM probability table analysis", "relationship range half-sibling/grandparent/aunt-uncle", "additional testing recommendations", "endogamy impact on cM inflation", "segment analysis large vs small segments", "tree reconstruction strategy from DNA"],
+            "failure_signals": ["single relationship conclusion", "no probability range", "ignoring endogamy", "no additional testing strategy"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "BLD03",
+      "name": "Historical Records Engine",
+      "function": "Analyze historical documents including land grants, military records, probate files, census enumerations, tax rolls, and newspaper archives for genealogical and property lineage research with paleographic skills.",
+      "doctrine_topics": [
+        "Texas Republic and early statehood land grants",
+        "Confederate and Union military service records",
+        "probate and estate records interpretation",
+        "federal census schedules 1790-1950",
+        "Texas ad valorem tax rolls as evidence",
+        "newspaper archives obituaries and notices",
+        "court records civil and criminal",
+        "land patent and warrant systems",
+        "paleography reading old handwriting",
+        "historical context for record interpretation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Trace a Texas family through the 1850, 1860, 1870, and 1880 census records, identifying family members, property values, occupation changes, and migration patterns through the Civil War period. The family appears in Harrison County in 1850 and Midland County by 1880.",
+            "required_elements": ["census column interpretation per decade", "slave schedule analysis for 1850/1860", "post-war economic impact assessment", "migration route and timing analysis", "family composition changes", "cross-reference with county deed records"],
+            "failure_signals": ["no census-specific column analysis", "ignoring Civil War context", "missing migration analysis", "single census year only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "BLD04",
+      "name": "Property Lineage Engine",
+      "function": "Trace property ownership chains through deed records, mineral conveyances, partition actions, tax sales, and adverse possession claims, linking property transfers to family lineage events like death, marriage, and inheritance.",
+      "doctrine_topics": [
+        "deed record chain of title construction",
+        "mineral interest conveyance tracking",
+        "partition actions and heir identification",
+        "tax sale and redemption record analysis",
+        "adverse possession claim evaluation",
+        "property transfer at death intestate succession",
+        "community property division in Texas",
+        "oil and gas lease lineage tracing",
+        "surface vs mineral estate separation history",
+        "county clerk recording system navigation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 640-acre section in Reeves County was patented in 1905 by J.W. McWilliams. Construct the complete property lineage through present day, identifying all mineral interest conveyances, heir determinations, and current fractional ownership.",
+            "required_elements": ["patent to present chain construction", "intestate succession events identified", "mineral vs surface separation points", "fractional interest calculations after divisions", "missing heir gap identification", "county clerk record sources"],
+            "failure_signals": ["incomplete chain with gaps", "no mineral tracking", "missing fractional calculations", "no heir determination analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "BLD05",
+      "name": "Family Trust Analysis Engine",
+      "function": "Analyze family trust structures, dynasty trust provisions, generation-skipping transfer tax implications, trustee duties, beneficiary rights, and multigenerational wealth transfer strategies under Texas Estates Code and Internal Revenue Code.",
+      "doctrine_topics": [
+        "revocable vs irrevocable trust structures",
+        "dynasty trust perpetuities and Texas law",
+        "generation-skipping transfer tax IRC Chapter 13",
+        "trustee fiduciary duties and liability",
+        "beneficiary rights and trust modification",
+        "trust funding and asset titling",
+        "trust income taxation grantor vs non-grantor",
+        "special needs trust and supplemental needs trust",
+        "family limited partnership integration with trusts",
+        "trust decanting and modification under Texas law"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a multigenerational wealth transfer structure for a Texas family with $50M in oil and gas mineral interests, 3 children, and 8 grandchildren. Address estate tax, GST tax, mineral management, and dynasty trust options under Texas law.",
+            "required_elements": ["dynasty trust structure under Texas rule against perpetuities", "GST exemption allocation strategy", "mineral interest management provisions", "estate tax reduction through gift/trust planning", "trustee selection and succession", "income distribution provisions"],
+            "failure_signals": ["no Texas-specific law reference", "missing GST analysis", "no mineral management provisions", "generic trust description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

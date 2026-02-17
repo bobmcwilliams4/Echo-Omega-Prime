@@ -1,0 +1,425 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "AUTO",
+  "tier_name": "Automotive",
+  "domain_description": "Comprehensive automotive engineering and diagnostics covering engine systems, transmissions, brake systems, electrical architecture, suspension, HVAC, fuel systems, emissions, hybrid/EV technology, body structure, paint coatings, tire analysis, OBD diagnostics, fleet management, and accident reconstruction per SAE, EPA, FMVSS, and ISO standards.",
+  "authority_sources": [
+    "SAE J1939 (Vehicle Network Communications)",
+    "SAE J1979 (OBD-II Diagnostic Services)",
+    "SAE J2012 (Diagnostic Trouble Code Definitions)",
+    "EPA Tier 3 Vehicle Emission Standards",
+    "FMVSS (Federal Motor Vehicle Safety Standards)",
+    "ISO 26262 (Functional Safety for Road Vehicles)",
+    "ISO 15031 (Vehicle Diagnostic Communications)",
+    "NHTSA Crash Investigation Standards",
+    "SAE J2534 (Pass-Thru Vehicle Programming)",
+    "UN ECE Regulations (Global Technical Regulations)"
+  ],
+  "engines": [
+    {
+      "engine_id": "AUTO01",
+      "name": "Engine Diagnostics Engine",
+      "function": "Diagnose internal combustion engine faults using OBD-II data, sensor analysis, compression testing, and combustion analysis for gasoline and diesel powertrains.",
+      "doctrine_topics": [
+        "OBD-II diagnostic trouble code (DTC) interpretation",
+        "engine sensor data analysis (MAP, MAF, O2, CKP, CMP)",
+        "compression and leak-down test interpretation",
+        "fuel trim analysis (STFT, LTFT) for mixture diagnosis",
+        "ignition system diagnostics (coil, spark, timing)",
+        "diesel common rail injection system analysis",
+        "engine misfire diagnosis and cylinder contribution",
+        "variable valve timing system diagnostics",
+        "turbocharger and supercharger fault diagnosis",
+        "engine oil analysis and wear metal interpretation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 2020 Ford F-150 3.5L EcoBoost shows P0300 random misfire with LTFT Bank 1 at +18% and Bank 2 at +2%. Diagnose the root cause using OBD-II data and recommend the diagnostic pathway",
+            "required_elements": ["DTC interpretation", "fuel trim analysis", "bank-specific diagnosis", "vacuum leak consideration", "injector and ignition checks", "systematic diagnostic approach"],
+            "failure_signals": ["no fuel trim analysis", "no bank-specific reasoning", "generic misfire advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO02",
+      "name": "Transmission Analysis Engine",
+      "function": "Diagnose and analyze automatic, manual, CVT, and dual-clutch transmission systems including shift quality, torque converter performance, and clutch pack analysis.",
+      "doctrine_topics": [
+        "automatic transmission shift quality analysis",
+        "torque converter lockup and stall speed diagnostics",
+        "CVT belt/chain and pulley ratio analysis",
+        "dual-clutch transmission engagement diagnostics",
+        "transmission fluid analysis and condition assessment",
+        "solenoid and valve body diagnostics",
+        "gear ratio verification and speed sensor analysis",
+        "transmission adaptive learning and reset procedures",
+        "manual transmission synchronizer wear diagnosis",
+        "transfer case and AWD system diagnostics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 10-speed automatic transmission exhibits harsh 3-4 upshift and 4-3 downshift flare at operating temperature. Analyze possible causes using line pressure data, solenoid duty cycles, and clutch pack engagement timing",
+            "required_elements": ["shift timing analysis", "clutch pack engagement diagnosis", "line pressure evaluation", "solenoid function testing", "adaptive learning state", "fluid condition assessment"],
+            "failure_signals": ["no shift timing analysis", "no clutch pack discussion", "generic transmission advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO03",
+      "name": "Brake Systems Engine",
+      "function": "Analyze and diagnose hydraulic, electronic, and regenerative braking systems including ABS, ESC, brake-by-wire, and ADAS braking integration per FMVSS 135.",
+      "doctrine_topics": [
+        "hydraulic brake system analysis and troubleshooting",
+        "ABS system diagnostics and wheel speed sensor analysis",
+        "electronic stability control (ESC) system operation",
+        "brake pad and rotor wear analysis and specification",
+        "brake fluid condition and DOT specification",
+        "brake caliper and master cylinder diagnostics",
+        "regenerative braking system analysis for EVs/hybrids",
+        "brake-by-wire system architecture and safety",
+        "FMVSS 135 stopping distance requirements",
+        "brake thermal analysis and fade conditions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A vehicle with ESC shows intermittent activation during straight-line driving on dry pavement, with ABS module DTCs C0035 and C0040. Diagnose the system using wheel speed sensor data and yaw rate sensor comparison",
+            "required_elements": ["DTC interpretation", "wheel speed sensor analysis", "yaw rate sensor diagnosis", "ESC activation logic", "sensor comparison methodology", "FMVSS 126 reference"],
+            "failure_signals": ["no sensor data analysis", "no DTC-specific diagnosis", "generic ESC description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO04",
+      "name": "Electrical Systems Engine",
+      "function": "Diagnose and analyze automotive electrical systems including 12V/48V architecture, CAN bus networks, multiplexing, charging systems, and high-voltage EV power distribution.",
+      "doctrine_topics": [
+        "automotive CAN bus communication and diagnostics",
+        "12V and 48V mild-hybrid electrical architecture",
+        "battery testing and charging system analysis",
+        "parasitic draw diagnosis methodology",
+        "high-voltage EV power distribution systems",
+        "LIN bus and FlexRay network diagnostics",
+        "module communication network topology",
+        "starter motor and alternator diagnostics",
+        "wiring harness fault isolation techniques",
+        "automotive lighting system diagnostics (LED, adaptive)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A vehicle has a 350mA parasitic draw causing overnight battery drain. Describe the systematic diagnostic process using current clamp measurement, fuse pulling methodology, and module wake-up analysis on CAN bus",
+            "required_elements": ["current measurement technique", "fuse pulling methodology", "module sleep/wake analysis", "CAN bus monitoring", "acceptable draw threshold", "root cause isolation"],
+            "failure_signals": ["no systematic approach", "no acceptable draw threshold", "missing CAN bus analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO05",
+      "name": "Suspension Engine",
+      "function": "Analyze and diagnose suspension systems including MacPherson strut, double wishbone, multi-link, air suspension, and adaptive damping systems with alignment geometry analysis.",
+      "doctrine_topics": [
+        "suspension geometry analysis (caster, camber, toe, KPI)",
+        "MacPherson strut diagnosis and replacement considerations",
+        "double wishbone and multi-link kinematics",
+        "air suspension system diagnostics and ride height",
+        "adaptive and electronically controlled damper systems",
+        "wheel alignment procedures and specification interpretation",
+        "suspension bushing and ball joint wear diagnosis",
+        "spring rate and ride frequency analysis",
+        "anti-roll bar and sway bar function and diagnosis",
+        "steering system integration and geometry effects"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A vehicle with adaptive air suspension shows uneven ride height (15mm low on left rear) and DTC for left rear height sensor. Analyze the diagnostic pathway including sensor validation, air spring leak testing, and compressor performance verification",
+            "required_elements": ["height sensor diagnostics", "air spring leak test procedure", "compressor output testing", "ride height calibration", "DTC interpretation", "system pressure analysis"],
+            "failure_signals": ["no systematic diagnostic flow", "no leak testing method", "missing compressor evaluation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO06",
+      "name": "Automotive HVAC Engine",
+      "function": "Diagnose and analyze automotive climate control systems including refrigerant circuits, blower motors, blend doors, heat pump systems for EVs, and cabin air quality management.",
+      "doctrine_topics": [
+        "automotive A/C system pressure analysis and charging",
+        "refrigerant identification (R-134a, R-1234yf) and handling",
+        "compressor diagnosis (clutch, variable displacement, electric)",
+        "expansion valve and orifice tube diagnostics",
+        "blend door actuator and HVAC control module diagnosis",
+        "heat pump systems for electric vehicles",
+        "cabin air quality and filtration systems",
+        "evaporator and condenser performance analysis",
+        "A/C system leak detection methods",
+        "dual-zone and rear climate control diagnostics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An EV heat pump system provides inadequate heating below 20F ambient. Analyze the system using refrigerant pressures, compressor current draw, and supplemental PTC heater activation to diagnose the performance limitation",
+            "required_elements": ["heat pump COP analysis at low ambient", "refrigerant pressure evaluation", "compressor performance", "PTC heater supplementation", "system design limitations", "EV range impact"],
+            "failure_signals": ["no heat pump-specific analysis", "no low-temperature performance discussion", "generic A/C diagnosis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO07",
+      "name": "Fuel Systems Engine",
+      "function": "Diagnose and analyze fuel delivery systems including GDI, PFI, diesel common rail, and alternative fuel systems with fuel quality analysis and injector performance testing.",
+      "doctrine_topics": [
+        "gasoline direct injection (GDI) system diagnostics",
+        "port fuel injection (PFI) injector testing and flow",
+        "diesel common rail high-pressure fuel system analysis",
+        "fuel pump diagnosis (mechanical and electric)",
+        "fuel quality testing and contamination analysis",
+        "injector flow rate and spray pattern evaluation",
+        "fuel pressure regulation and returnless systems",
+        "flex-fuel and E85 system adaptation",
+        "fuel system evaporative emission (EVAP) diagnostics",
+        "diesel particulate filter (DPF) regeneration management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A GDI engine shows carbon buildup on intake valves at 60K miles causing rough idle and P0171/P0174 lean codes. Analyze the root cause, diagnostic approach using fuel trim data, and recommend preventive measures",
+            "required_elements": ["GDI carbon buildup mechanism", "fuel trim analysis", "intake valve inspection method", "cleaning procedures", "preventive measures (catch can, PFI supplement)", "DTC correlation"],
+            "failure_signals": ["no GDI-specific analysis", "no fuel trim data usage", "missing prevention strategies"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO08",
+      "name": "Emission Systems Engine",
+      "function": "Analyze and diagnose emission control systems including catalytic converters, SCR, DPF, EGR, and evaporative emission systems for EPA Tier 3 and Euro 6 compliance.",
+      "doctrine_topics": [
+        "three-way catalytic converter monitoring and diagnosis",
+        "selective catalytic reduction (SCR) and DEF system analysis",
+        "diesel particulate filter (DPF) loading and regeneration",
+        "exhaust gas recirculation (EGR) system diagnostics",
+        "evaporative emission system (EVAP) leak diagnosis",
+        "oxygen sensor and wideband AFR sensor testing",
+        "NOx sensor diagnostics and SCR efficiency monitoring",
+        "EPA Tier 3 emission threshold requirements",
+        "OBD-II readiness monitor completion",
+        "emission testing and I/M program requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A diesel truck shows P20EE (SCR NOx efficiency below threshold) with DEF consumption lower than expected. Diagnose using NOx sensor readings upstream and downstream, DEF injector function, and catalyst condition assessment",
+            "required_elements": ["NOx sensor comparison analysis", "DEF injector function test", "SCR efficiency calculation", "DEF quality testing", "catalyst contamination assessment", "EPA emission threshold reference"],
+            "failure_signals": ["no NOx sensor analysis", "no SCR efficiency calculation", "generic emission advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO09",
+      "name": "Hybrid EV Engine",
+      "function": "Analyze and diagnose hybrid and battery electric vehicle systems including HV battery management, electric drive motors, power electronics, charging systems, and thermal management per ISO 26262.",
+      "doctrine_topics": [
+        "HV battery pack architecture and cell chemistry (NMC, LFP, NCA)",
+        "battery management system (BMS) diagnostics and cell balancing",
+        "electric drive motor types and inverter diagnostics",
+        "regenerative braking calibration and energy recovery",
+        "DC fast charging system analysis (CCS, CHAdeMO)",
+        "HV battery thermal management and cooling systems",
+        "state of health (SOH) and state of charge (SOC) estimation",
+        "HV safety interlock and isolation monitoring",
+        "power electronics (inverter, converter, on-board charger)",
+        "ISO 26262 functional safety for EV systems"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An EV with 80,000 miles shows 18% range degradation. Analyze the battery SOH using cell voltage deviation, internal resistance measurements, and capacity fade models to determine if the pack needs replacement or rebalancing",
+            "required_elements": ["SOH assessment methodology", "cell voltage deviation analysis", "internal resistance testing", "capacity fade model", "replacement vs rebalancing criteria", "warranty threshold reference"],
+            "failure_signals": ["no quantitative SOH analysis", "no cell-level diagnosis", "generic battery advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO10",
+      "name": "Body Structure Engine",
+      "function": "Analyze vehicle body structure including crashworthiness, structural repair procedures, material identification, and advanced material joining for collision repair per I-CAR standards.",
+      "doctrine_topics": [
+        "vehicle body structure design and load paths",
+        "crashworthiness and energy absorption design",
+        "ultra-high-strength steel (UHSS) repair considerations",
+        "aluminum body panel repair and joining techniques",
+        "mixed-material body structure challenges",
+        "structural repair procedure development per OEM",
+        "body dimension measurement and frame alignment",
+        "corrosion protection during structural repair",
+        "adhesive bonding and rivet-bonding techniques",
+        "I-CAR structural repair qualification standards"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A unibody vehicle sustained moderate frontal impact damage to the upper and lower rails. Determine the repair vs replace decision for UHSS rail sections, specifying material identification, heat restriction zones, and OEM-approved joining methods",
+            "required_elements": ["material identification method", "heat-affected zone restrictions", "repair vs replace criteria", "OEM procedure reference", "joining method specification", "structural integrity verification"],
+            "failure_signals": ["no UHSS-specific considerations", "no heat restriction discussion", "generic body repair advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO11",
+      "name": "Paint Coating Engine",
+      "function": "Analyze automotive paint and coating systems including color matching, multi-stage application, defect diagnosis, and environmental compliance for refinish and OEM coating operations.",
+      "doctrine_topics": [
+        "automotive paint system layers (e-coat, primer, base, clear)",
+        "spectrophotometer color matching and formulation",
+        "paint defect diagnosis (orange peel, runs, fish-eye, mapping)",
+        "spray gun setup and application parameters",
+        "waterborne basecoat application techniques",
+        "clear coat scratch resistance and gloss retention",
+        "paint thickness measurement and standards",
+        "VOC compliance and environmental regulations",
+        "ceramic coating and paint protection film application",
+        "corrosion prevention and undercoating systems"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A tri-coat pearl white refinish shows visible mismatch to the OEM panel. Diagnose using spectrophotometer data showing L*a*b* deviation, and recommend correction strategy including ground coat adjustment and pearl coat orientation",
+            "required_elements": ["spectrophotometer data interpretation", "L*a*b* color space analysis", "tri-coat application technique", "pearl coat orientation effects", "blending strategy", "color matching methodology"],
+            "failure_signals": ["no spectrophotometer reference", "no tri-coat specific technique", "generic color matching"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO12",
+      "name": "Tire Analysis Engine",
+      "function": "Analyze tire performance, wear patterns, selection, and safety including load ratings, speed ratings, TPMS diagnostics, and tire forensics for failure investigation.",
+      "doctrine_topics": [
+        "tire sizing and specification interpretation",
+        "tire wear pattern diagnosis (center, edge, cupping, feathering)",
+        "tire load index and speed rating analysis",
+        "TPMS (tire pressure monitoring system) diagnostics",
+        "tire compound selection for performance and conditions",
+        "tire forensic analysis for failure investigation",
+        "rolling resistance and fuel economy impact",
+        "tire and wheel balance and runout analysis",
+        "winter and all-season tire performance comparison",
+        "tire aging and DOT date code significance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A tire shows rapid inside edge wear on the left front with 12mm remaining center tread and 2mm inside edge at 20K miles. Analyze the wear pattern, determine root cause, and specify alignment corrections needed",
+            "required_elements": ["wear pattern diagnosis", "alignment parameter analysis (camber)", "root cause determination", "alignment specification", "component inspection", "tire replacement recommendation"],
+            "failure_signals": ["no alignment correlation", "no specific measurement analysis", "generic tire wear advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO13",
+      "name": "OBD Diagnostics Engine",
+      "function": "Perform comprehensive OBD-II diagnostics including mode analysis, freeze frame interpretation, PID monitoring, enhanced manufacturer-specific diagnostics, and readiness monitor management per SAE J1979.",
+      "doctrine_topics": [
+        "OBD-II mode 1-10 services and applications",
+        "freeze frame data interpretation per SAE J1979",
+        "PID monitoring and live data analysis",
+        "readiness monitor status and drive cycle completion",
+        "enhanced manufacturer-specific diagnostic modes",
+        "J2534 pass-thru programming and reprogramming",
+        "diagnostic communication protocols (CAN, K-line, J1850)",
+        "DTC status byte interpretation and pending codes",
+        "scan tool data logging and trend analysis",
+        "OBD-II emission readiness for state inspection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Explain how to use OBD-II Mode 6 test results to predict catalyst degradation before the P0420 code sets, including the specific test IDs, threshold values, and monitoring conditions per SAE J1979",
+            "required_elements": ["Mode 6 test ID explanation", "catalyst monitor thresholds", "test result interpretation", "monitoring conditions", "SAE J1979 reference", "predictive diagnosis methodology"],
+            "failure_signals": ["no Mode 6 specifics", "no threshold values", "generic catalyst diagnosis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO14",
+      "name": "Fleet Management Engine",
+      "function": "Optimize fleet operations including vehicle lifecycle management, telematics analysis, maintenance scheduling, fuel management, and total cost of ownership analysis for commercial and government fleets.",
+      "doctrine_topics": [
+        "total cost of ownership (TCO) analysis and lifecycle costing",
+        "telematics data analysis for fleet optimization",
+        "preventive maintenance scheduling and compliance",
+        "fuel management and efficiency optimization",
+        "vehicle replacement cycle optimization",
+        "driver behavior analysis and coaching programs",
+        "fleet electrification planning and TCO comparison",
+        "DOT compliance and hours of service management",
+        "fleet safety management and accident reduction",
+        "fleet procurement and specification development"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the TCO for replacing 50 fleet diesel pickup trucks with electric alternatives over a 7-year lifecycle, including acquisition, fuel/energy, maintenance, downtime, and residual value, with charging infrastructure costs",
+            "required_elements": ["lifecycle cost comparison", "fuel vs energy cost analysis", "maintenance cost differential", "charging infrastructure cost", "residual value projection", "break-even analysis"],
+            "failure_signals": ["no quantitative TCO comparison", "missing charging infrastructure", "no lifecycle analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AUTO15",
+      "name": "Accident Reconstruction Engine",
+      "function": "Reconstruct vehicle accidents using physics-based analysis, EDR data, scene evidence, crush analysis, and trajectory modeling per NHTSA and SAE standards for forensic investigation.",
+      "doctrine_topics": [
+        "event data recorder (EDR) download and interpretation",
+        "crush energy analysis and delta-V calculation",
+        "momentum and energy conservation for collision analysis",
+        "tire mark analysis and speed estimation",
+        "vehicle dynamics simulation and trajectory modeling",
+        "pedestrian and bicycle collision reconstruction",
+        "rollover accident analysis and reconstruction",
+        "ADAS and autonomous vehicle accident investigation",
+        "photogrammetry and 3D scene documentation",
+        "expert witness report preparation and testimony"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Reconstruct a T-bone collision at an intersection where Vehicle A (3,800 lb) struck Vehicle B (4,200 lb) on the driver side. EDR shows Vehicle A pre-impact speed of 42 mph. Calculate delta-V for both vehicles and determine Vehicle B's speed using post-impact trajectory analysis",
+            "required_elements": ["momentum conservation calculation", "delta-V determination", "crush energy analysis", "post-impact trajectory analysis", "EDR data interpretation", "speed estimation methodology"],
+            "failure_signals": ["no physics calculations", "no EDR data usage", "generic accident description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

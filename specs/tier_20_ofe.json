@@ -1,0 +1,251 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "OFE",
+  "tier_name": "Oilfield Equipment",
+  "domain_description": "Analysis, diagnostics, and optimization of oilfield equipment systems including mud pumps, BOP stacks, fracturing pumps, separators, artificial lift, SCADA, wellhead equipment, coiled tubing, wireline, tank batteries, pipelines, electrical distribution, chemical injection, and safety instrumented systems. Based on API standards, SPE papers, IADC guidelines, and manufacturer specifications.",
+  "authority_sources": [
+    "API RP 11AR (Recommended Practice for Artificial Lift)",
+    "API Spec 6A (Wellhead and Tree Equipment)",
+    "API Spec 16A (Drill-Through Equipment)",
+    "API RP 500 (Hazardous Area Classification)",
+    "SPE Technical Papers (Production & Operations)",
+    "IADC Drilling Manual",
+    "NACE MR0175 (Sulfide Stress Cracking)",
+    "OSHA 29 CFR 1910.119 (Process Safety)",
+    "ISA S84 (Safety Instrumented Systems)",
+    "ASME B31.3 (Process Piping)"
+  ],
+  "engines": [
+    {
+      "engine_id": "OFE01",
+      "name": "Mud Pump Analysis Engine",
+      "function": "Analyze triplex and duplex mud pump performance, liner sizing, valve maintenance intervals, pulsation dampener design, hydraulic horsepower calculations, and failure mode analysis for drilling fluid circulation systems.",
+      "doctrine_topics": [
+        "triplex pump liner sizing and selection",
+        "duplex pump hydraulic calculations",
+        "mud pump valve maintenance intervals",
+        "pulsation dampener sizing and charging",
+        "pump efficiency and volumetric output",
+        "liner and piston failure mode analysis",
+        "hydraulic horsepower requirements",
+        "pump speed and stroke optimization",
+        "suction stabilizer design",
+        "mud pump module interchange"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Size a triplex mud pump for 12 ppg mud at 3000 psi, 400 gpm circulation rate",
+            "required_elements": ["liner diameter", "stroke length", "horsepower calculation", "pulsation dampener", "volumetric efficiency"],
+            "failure_signals": ["no API reference", "generic boilerplate", "missing calculations", "no specific dimensions"]
+          },
+          {
+            "question": "What is the recommended valve replacement interval for a Gardner Denver PZ-11 pump running 14 ppg weighted mud?",
+            "required_elements": ["valve type", "replacement interval", "mud weight impact", "inspection criteria"],
+            "failure_signals": ["no specific pump model reference", "vague time intervals", "no mention of mud properties"]
+          },
+          {
+            "question": "Analyze failure modes for mud pump liners in high-temperature geothermal drilling applications above 350F",
+            "required_elements": ["thermal expansion", "liner material selection", "cooling requirements", "failure modes", "ceramic vs chrome liners"],
+            "failure_signals": ["no temperature considerations", "generic failure analysis", "no material comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE02",
+      "name": "BOP Stack Analysis Engine",
+      "function": "Analyze blowout preventer stack configurations, pressure ratings, testing requirements, and emergency response procedures for well control equipment per API 16A and API RP 53.",
+      "doctrine_topics": [
+        "BOP stack configuration and selection",
+        "annular preventer sizing and operation",
+        "ram BOP types and applications",
+        "BOP pressure testing requirements per API RP 53",
+        "shear ram capabilities and limitations",
+        "BOP control system hydraulics",
+        "subsea BOP considerations",
+        "BOP stack-up for various well profiles",
+        "emergency disconnect systems",
+        "BOP inspection and maintenance intervals"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Specify a BOP stack configuration for a 15,000 psi HPHT well in the Gulf of Mexico with H2S risk",
+            "required_elements": ["stack configuration", "pressure rating", "shear ram", "H2S trim", "API 16A", "working pressure"],
+            "failure_signals": ["no pressure rating specified", "missing H2S considerations", "no API reference"]
+          },
+          {
+            "question": "What are the BOP pressure test requirements before drilling the 13-5/8 inch intermediate casing section?",
+            "required_elements": ["test pressure", "test duration", "API RP 53", "frequency", "acceptable leak rate"],
+            "failure_signals": ["no specific pressures", "no time duration", "no regulatory reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE03",
+      "name": "Frac Pump Diagnostics Engine",
+      "function": "Analyze high-pressure fracturing pump performance, power end and fluid end diagnostics, plunger and packing selection, and maintenance optimization for stimulation operations.",
+      "doctrine_topics": [
+        "frac pump power end diagnostics",
+        "fluid end failure analysis",
+        "plunger and packing selection",
+        "frac pump pressure limitations",
+        "pump rate and pressure scheduling",
+        "iron maintenance and inspection",
+        "high-pressure manifold systems",
+        "frac pump fleet optimization",
+        "treating iron pressure ratings",
+        "pump-down operations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Diagnose a fluid end failure on a Quintuplex 2500 HHP frac pump showing pressure fluctuations at 9000 psi treating pressure",
+            "required_elements": ["fluid end inspection", "valve seats", "plunger packing", "pressure fluctuation diagnosis", "replacement criteria"],
+            "failure_signals": ["no specific pump reference", "generic diagnosis", "no pressure analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE04",
+      "name": "Separator Optimization Engine",
+      "function": "Optimize production separator vessel design, sizing, and operating parameters for two-phase and three-phase separation of oil, gas, and water.",
+      "doctrine_topics": [
+        "two-phase separator sizing",
+        "three-phase separator design",
+        "retention time calculations",
+        "separator internals selection",
+        "gas capacity calculations (Souders-Brown)",
+        "liquid capacity and residence time",
+        "separator pressure and temperature effects",
+        "inlet device selection",
+        "mist extractor design",
+        "sand handling in separators"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Size a three-phase horizontal separator for 5000 BOPD, 15 MMSCFD gas, 2000 BWPD, operating at 500 psig and 120F with 35 API oil",
+            "required_elements": ["vessel dimensions", "retention time", "Souders-Brown", "gas capacity", "liquid levels", "oil-water interface"],
+            "failure_signals": ["no specific dimensions", "no flow calculations", "missing phase separation analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE05",
+      "name": "Artificial Lift Systems Engine",
+      "function": "Analyze and optimize artificial lift systems including rod pumps, ESPs, gas lift, plunger lift, PCP, and jet pumps per API RP 11AR guidelines.",
+      "doctrine_topics": [
+        "rod pump design and optimization",
+        "ESP selection and sizing",
+        "gas lift valve design",
+        "plunger lift optimization",
+        "PCP system selection",
+        "jet pump applications",
+        "artificial lift method selection criteria",
+        "rod string design and failure analysis",
+        "ESP motor and cable selection",
+        "gas lift mandrel spacing"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select the optimal artificial lift method for a well producing 200 BOPD with 95% water cut, 8000 ft TVD, 3.5 inch tubing, and 15 degree deviation",
+            "required_elements": ["lift method comparison", "ESP vs rod pump analysis", "production rate", "depth considerations", "API RP 11AR"],
+            "failure_signals": ["single method without comparison", "no well conditions analysis", "no API reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE06",
+      "name": "SCADA Monitoring Engine",
+      "function": "Design and optimize Supervisory Control and Data Acquisition systems for oilfield remote monitoring, alarm management, and production optimization.",
+      "doctrine_topics": [
+        "SCADA architecture for oilfield operations",
+        "RTU and PLC selection",
+        "communication protocols (Modbus, DNP3, OPC-UA)",
+        "alarm management best practices",
+        "cybersecurity for OT systems",
+        "historian data management",
+        "SCADA network design",
+        "HMI design standards",
+        "remote well monitoring",
+        "production optimization via SCADA"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a SCADA architecture for monitoring 200 remote well sites across a 50-mile area in the Permian Basin with cellular connectivity",
+            "required_elements": ["RTU selection", "communication", "polling intervals", "alarm strategy", "cybersecurity"],
+            "failure_signals": ["no specific architecture", "missing communication details", "no security considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE07",
+      "name": "Preventive Maintenance Engine",
+      "function": "Optimize preventive and predictive maintenance programs for oilfield equipment using reliability-centered maintenance, condition monitoring, and failure analysis.",
+      "doctrine_topics": [
+        "reliability-centered maintenance for oilfield equipment",
+        "vibration analysis for rotating equipment",
+        "oil analysis and tribology",
+        "thermographic inspection",
+        "MTBF and MTTR calculations",
+        "spare parts optimization",
+        "maintenance scheduling optimization",
+        "root cause failure analysis",
+        "condition-based maintenance triggers",
+        "maintenance cost optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop a predictive maintenance program for a fleet of 20 ESP wells using vibration analysis and current monitoring",
+            "required_elements": ["monitoring parameters", "alarm thresholds", "inspection intervals", "MTBF analysis", "cost-benefit"],
+            "failure_signals": ["no specific monitoring parameters", "generic maintenance advice", "no quantitative thresholds"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "OFE08",
+      "name": "Wellhead Equipment Engine",
+      "function": "Analyze wellhead and christmas tree equipment selection, pressure ratings, material specifications, and maintenance per API Spec 6A.",
+      "doctrine_topics": [
+        "wellhead system design per API 6A",
+        "casing head and tubing head selection",
+        "christmas tree configuration",
+        "wellhead pressure ratings and classes",
+        "material requirements for sour service (NACE MR0175)",
+        "wellhead fatigue analysis",
+        "surface safety valve systems",
+        "wellhead seal assemblies",
+        "multi-bowl wellhead systems",
+        "wellhead inspection and testing"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Specify wellhead equipment for a 10,000 psi sour gas well with H2S concentration of 15% and CO2 of 8%",
+            "required_elements": ["API 6A class", "material grade", "NACE MR0175", "pressure rating", "trim selection"],
+            "failure_signals": ["no sour service considerations", "missing material specs", "no API reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

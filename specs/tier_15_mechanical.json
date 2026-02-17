@@ -1,0 +1,560 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "MECH",
+  "tier_name": "Mechanical Engineering",
+  "domain_description": "Comprehensive mechanical engineering analysis covering stress analysis, vibration, thermodynamics, fluid mechanics, materials science, machine design, HVAC, piping, pressure vessels, heat exchangers, pumps, compressors, bearings, gears, welding, NDT, corrosion, fatigue, FEA, and reliability engineering per ASME, ASTM, AWS, and API standards.",
+  "authority_sources": [
+    "ASME Boiler and Pressure Vessel Code (BPVC) Section VIII",
+    "ASME B31.3 (Process Piping)",
+    "ASME B31.1 (Power Piping)",
+    "AWS D1.1 (Structural Welding Code - Steel)",
+    "ASTM International Standards",
+    "API 610 (Centrifugal Pumps for Petroleum)",
+    "API 617 (Axial and Centrifugal Compressors)",
+    "NACE MR0175/ISO 15156 (Materials for Sour Service)",
+    "TEMA (Tubular Exchanger Manufacturers Association)",
+    "ANSI/ABMA Standards (Bearings)"
+  ],
+  "engines": [
+    {
+      "engine_id": "MECH01",
+      "name": "Stress Analysis Engine",
+      "function": "Perform structural stress analysis including static, dynamic, and thermal stress calculations for mechanical components using analytical methods and FEA correlation per ASME codes.",
+      "doctrine_topics": [
+        "uniaxial and multiaxial stress analysis",
+        "von Mises and Tresca yield criteria",
+        "stress concentration factors and notch sensitivity",
+        "thermal stress analysis and thermal cycling",
+        "contact stress (Hertzian) calculations",
+        "residual stress evaluation and measurement",
+        "ASME BPVC allowable stress criteria",
+        "combined loading analysis (bending, torsion, axial)",
+        "buckling analysis for columns and shells",
+        "creep and stress rupture at elevated temperatures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze a pressure vessel nozzle-to-shell junction under combined internal pressure of 500 psi and external nozzle loads (axial force, bending moment, torsion) per ASME BPVC Section VIII Division 2",
+            "required_elements": ["local stress analysis", "stress classification (primary, secondary, peak)", "stress linearization", "ASME allowable limits", "fatigue screening", "WRC 107/537 method"],
+            "failure_signals": ["no stress classification", "no ASME reference", "missing combined loading analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH02",
+      "name": "Vibration Analysis Engine",
+      "function": "Analyze mechanical vibration in rotating and reciprocating equipment including natural frequency calculation, resonance avoidance, balancing, and vibration-based condition monitoring.",
+      "doctrine_topics": [
+        "natural frequency and mode shape calculation",
+        "forced vibration response and resonance identification",
+        "rotor dynamics and critical speed analysis",
+        "vibration measurement and spectrum analysis",
+        "balancing procedures (single-plane and multi-plane)",
+        "torsional vibration analysis for drivetrain systems",
+        "vibration isolation and damping design",
+        "modal analysis and experimental modal testing",
+        "vibration severity standards (ISO 10816, ISO 20816)",
+        "vibration-based predictive maintenance diagnostics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A centrifugal compressor running at 8,400 RPM shows a dominant 1X vibration of 4.2 mils pp at the outboard bearing with a subsynchronous component at 0.42X. Diagnose the vibration sources and recommend corrective actions per ISO 20816",
+            "required_elements": ["1X diagnosis (unbalance, misalignment, bent shaft)", "subsynchronous analysis (oil whirl/whip)", "ISO 20816 severity assessment", "spectrum analysis interpretation", "corrective action recommendations"],
+            "failure_signals": ["no frequency analysis", "no ISO severity reference", "generic vibration advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH03",
+      "name": "Thermodynamics Engine",
+      "function": "Analyze thermodynamic cycles, energy conversion systems, and heat transfer processes including Rankine, Brayton, refrigeration cycles, and combined heat and power systems.",
+      "doctrine_topics": [
+        "Rankine cycle analysis and optimization",
+        "Brayton cycle and gas turbine performance",
+        "refrigeration and heat pump cycle analysis",
+        "combined cycle and cogeneration systems",
+        "exergy analysis and irreversibility",
+        "steam table calculations and property determination",
+        "combustion analysis and fuel efficiency",
+        "psychrometrics and air conditioning processes",
+        "entropy generation minimization",
+        "waste heat recovery system design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze a combined cycle gas turbine plant with a GE 7HA.03 gas turbine and triple-pressure HRSG, calculating overall thermal efficiency, exergy destruction in each component, and identifying optimization opportunities",
+            "required_elements": ["cycle analysis with state points", "thermal efficiency calculation", "exergy analysis", "HRSG design parameters", "optimization recommendations", "specific work output"],
+            "failure_signals": ["no state point calculations", "no exergy analysis", "generic cycle description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH04",
+      "name": "Fluid Mechanics Engine",
+      "function": "Analyze fluid flow systems including pipe networks, open channel flow, compressible flow, multiphase flow, and CFD correlation for industrial fluid system design.",
+      "doctrine_topics": [
+        "pipe flow analysis (Darcy-Weisbach, Moody chart)",
+        "pipe network analysis and Hardy Cross method",
+        "open channel flow and Manning equation",
+        "compressible flow and choked flow conditions",
+        "multiphase flow correlations and flow regime maps",
+        "pump system curves and operating point determination",
+        "cavitation analysis and NPSH calculations",
+        "fluid transient analysis (water hammer)",
+        "boundary layer theory and drag analysis",
+        "non-Newtonian fluid flow characterization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a produced water injection system for 50,000 BWPD through a 6-inch pipeline over 5 miles with 200 ft elevation change, calculating pressure losses, pump sizing, and water hammer protection",
+            "required_elements": ["Darcy-Weisbach pressure loss", "pump head calculation", "pump selection", "water hammer analysis", "surge protection", "pipe friction factor"],
+            "failure_signals": ["no pressure loss calculations", "no pump sizing", "missing water hammer analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH05",
+      "name": "Materials Science Engine",
+      "function": "Select and evaluate engineering materials for mechanical applications based on strength, toughness, corrosion resistance, temperature limits, and cost using ASTM and ASME material specifications.",
+      "doctrine_topics": [
+        "material selection methodology for service conditions",
+        "steel metallurgy and heat treatment effects",
+        "stainless steel families and corrosion performance",
+        "nickel alloy selection for extreme environments",
+        "material testing methods (tensile, Charpy, hardness)",
+        "ASTM and ASME material specifications",
+        "hydrogen embrittlement and sulfide stress cracking",
+        "high-temperature material performance and creep",
+        "material compatibility and galvanic corrosion",
+        "polymer and composite material applications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select materials for a sour gas production system operating at 350F with 15% H2S and 8% CO2, specifying tubing, wellhead, and downstream piping materials per NACE MR0175",
+            "required_elements": ["material selection per NACE MR0175", "hardness requirements", "temperature derating", "corrosion rate estimation", "ASTM/ASME specifications", "cost comparison"],
+            "failure_signals": ["no NACE reference", "no specific material grades", "missing sour service considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH06",
+      "name": "Machine Design Engine",
+      "function": "Design mechanical components and assemblies including shafts, couplings, fasteners, springs, and power transmission systems using engineering design methodologies and fatigue analysis.",
+      "doctrine_topics": [
+        "shaft design for combined bending and torsion",
+        "coupling selection and alignment tolerance",
+        "fastener design and preload analysis",
+        "spring design (compression, extension, torsion)",
+        "belt and chain drive design",
+        "clutch and brake design calculations",
+        "tolerance analysis and GD&T application",
+        "design for manufacturing (DFM) principles",
+        "safety factor selection and reliability targeting",
+        "power transmission system optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a power transmission shaft for a 500 HP pump drive at 1,800 RPM with belt drive input and flexible coupling output, specifying diameter, material, keyway, and fatigue life per ASME standards",
+            "required_elements": ["torque and bending calculations", "shaft diameter determination", "fatigue analysis (Goodman/Soderberg)", "keyway stress", "material selection", "safety factor"],
+            "failure_signals": ["no fatigue analysis", "no specific shaft sizing calculations", "missing keyway design"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH07",
+      "name": "HVAC Systems Engine",
+      "function": "Design and analyze heating, ventilation, and air conditioning systems including load calculations, equipment selection, duct design, and energy efficiency optimization per ASHRAE standards.",
+      "doctrine_topics": [
+        "cooling and heating load calculations (ASHRAE methods)",
+        "psychrometric analysis and air conditioning processes",
+        "duct design and pressure drop calculations",
+        "equipment selection (chillers, boilers, AHUs, RTUs)",
+        "variable air volume (VAV) system design",
+        "refrigerant selection and system charging",
+        "indoor air quality and ventilation standards (ASHRAE 62.1)",
+        "energy efficiency and SEER/EER/COP optimization",
+        "building automation and controls integration",
+        "HVAC commissioning and testing procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an HVAC system for a 50,000 sq ft office building in Houston, TX with cooling load calculation, equipment selection, duct sizing, and energy efficiency targets per ASHRAE 90.1",
+            "required_elements": ["cooling load calculation", "equipment selection with capacity", "duct sizing method", "ASHRAE 90.1 compliance", "energy efficiency metrics", "ventilation per ASHRAE 62.1"],
+            "failure_signals": ["no load calculation", "no specific equipment", "missing ASHRAE references"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH08",
+      "name": "Piping Design Engine",
+      "function": "Design process piping systems per ASME B31.3 including pipe sizing, wall thickness, flexibility analysis, and support design for petrochemical and industrial applications.",
+      "doctrine_topics": [
+        "pipe sizing for velocity and pressure drop",
+        "wall thickness calculation per ASME B31.3",
+        "piping flexibility analysis and thermal expansion",
+        "pipe support design and spacing",
+        "flange rating selection per ASME B16.5",
+        "valve selection and specification",
+        "piping material selection for service conditions",
+        "piping isometric drawing interpretation",
+        "stress intensification factors at fittings",
+        "underground piping and buried pipe design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 6-inch process piping system for 600 psig steam at 750F over a 200 ft run with two direction changes, specifying wall thickness, material, expansion loops, and support spacing per ASME B31.3",
+            "required_elements": ["wall thickness per B31.3", "material selection for temperature", "thermal expansion calculation", "flexibility analysis", "support spacing", "flange rating"],
+            "failure_signals": ["no B31.3 calculations", "no thermal expansion analysis", "missing material specification"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH09",
+      "name": "Pressure Vessel Engine",
+      "function": "Design pressure vessels per ASME BPVC Section VIII including shell, head, nozzle, and support design with stress analysis, material selection, and fabrication requirements.",
+      "doctrine_topics": [
+        "ASME BPVC Section VIII Division 1 design rules",
+        "shell and head thickness calculations",
+        "nozzle reinforcement analysis",
+        "opening reinforcement area method",
+        "external pressure and vacuum design",
+        "saddle and skirt support design (Zick analysis)",
+        "pressure vessel material selection per ASME SA specifications",
+        "PWHT requirements and exemptions",
+        "hydrostatic test pressure determination",
+        "MDMT and impact test requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a horizontal pressure vessel for 300 psig at 450F, 6 ft diameter by 20 ft T/T, with two 12-inch nozzles and saddle supports, per ASME BPVC Section VIII Division 1",
+            "required_elements": ["shell thickness calculation", "head type and thickness", "nozzle reinforcement", "saddle design loads", "material selection (SA specification)", "MDMT determination"],
+            "failure_signals": ["no ASME calculations", "no nozzle reinforcement", "missing MDMT analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH10",
+      "name": "Heat Exchanger Engine",
+      "function": "Design and rate shell-and-tube, plate, and air-cooled heat exchangers per TEMA standards with thermal and hydraulic analysis, fouling considerations, and performance optimization.",
+      "doctrine_topics": [
+        "LMTD and effectiveness-NTU methods",
+        "shell-and-tube heat exchanger design per TEMA",
+        "tube layout and baffle configuration optimization",
+        "plate heat exchanger selection and sizing",
+        "air-cooled heat exchanger design (API 661)",
+        "fouling factor selection and cleaning schedules",
+        "heat exchanger thermal rating and performance",
+        "vibration analysis for tube bundles",
+        "heat exchanger material selection for corrosion",
+        "two-phase heat transfer and reboiler design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a shell-and-tube heat exchanger to cool 500 GPM of crude oil from 250F to 150F using cooling water at 85F, specifying TEMA class, tube and shell dimensions, baffle spacing, and overall heat transfer coefficient",
+            "required_elements": ["heat duty calculation", "LMTD with correction factor", "tube count and dimensions", "TEMA designation", "overall U value", "pressure drop both sides"],
+            "failure_signals": ["no thermal calculations", "no TEMA reference", "missing pressure drop analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH11",
+      "name": "Pump Selection Engine",
+      "function": "Select and size centrifugal and positive displacement pumps per API 610 including system curve analysis, NPSH evaluation, and pump performance optimization.",
+      "doctrine_topics": [
+        "centrifugal pump performance curves and selection",
+        "system head curve calculation and operating point",
+        "NPSH available vs NPSH required analysis",
+        "API 610 pump classification and requirements",
+        "positive displacement pump types and applications",
+        "pump efficiency and specific speed selection",
+        "variable speed drive application for pump control",
+        "parallel and series pump operation",
+        "pump cavitation diagnosis and prevention",
+        "pump seal selection (mechanical, packing, sealless)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select a centrifugal pump per API 610 for 2,000 GPM of produced water at 180F with 350 ft TDH, suction pressure of 15 psig, and 3% sand content, specifying pump type, materials, and seal arrangement",
+            "required_elements": ["pump type per API 610", "NPSH analysis", "material selection for sand service", "seal arrangement", "efficiency and power", "specific speed"],
+            "failure_signals": ["no NPSH analysis", "no API 610 reference", "missing sand/erosion considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH12",
+      "name": "Compressor Design Engine",
+      "function": "Design and select reciprocating, centrifugal, and screw compressors per API 617 and API 618 for gas compression applications with thermodynamic analysis and surge control.",
+      "doctrine_topics": [
+        "centrifugal compressor selection and performance per API 617",
+        "reciprocating compressor design per API 618",
+        "screw compressor applications and sizing",
+        "compressor surge analysis and control",
+        "polytropic and isentropic efficiency calculations",
+        "compressor driver selection (electric, gas turbine, engine)",
+        "intercooling and aftercooling design",
+        "compressor capacity control methods",
+        "gas molecular weight and composition effects",
+        "compressor installation and piping design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select a gas compressor for boosting wellhead gas from 50 psig to 800 psig, flow rate 10 MMSCFD, gas gravity 0.7, with inlet temperature 100F, specifying type, stages, and power requirement",
+            "required_elements": ["compression ratio analysis", "stage determination", "polytropic efficiency", "power calculation", "intercooling requirements", "API 617/618 reference"],
+            "failure_signals": ["no compression ratio analysis", "no staging calculation", "missing power determination"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH13",
+      "name": "Bearing Analysis Engine",
+      "function": "Select and analyze rolling element and journal bearings including load rating, life prediction, lubrication, and failure analysis per ABMA/ISO standards.",
+      "doctrine_topics": [
+        "rolling element bearing selection and life (L10) calculation",
+        "bearing load analysis (radial, axial, combined)",
+        "journal bearing design and Sommerfeld analysis",
+        "bearing lubrication selection and re-lubrication intervals",
+        "bearing failure mode analysis and root cause",
+        "bearing fit and clearance specifications",
+        "angular contact bearing preload design",
+        "bearing vibration analysis and defect frequencies",
+        "high-temperature bearing considerations",
+        "bearing seal and shield selection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select bearings for a centrifugal pump shaft with 2,500 lb radial load and 800 lb axial load at 3,600 RPM, requiring L10 life of 40,000 hours minimum, specifying bearing type, size, and lubrication",
+            "required_elements": ["L10 life calculation", "bearing type selection", "load rating evaluation", "lubrication method", "ABMA/ISO reference", "equivalent dynamic load"],
+            "failure_signals": ["no life calculation", "no specific bearing designation", "missing load analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH14",
+      "name": "Gear Design Engine",
+      "function": "Design and analyze gear systems including spur, helical, bevel, and worm gears with bending and surface stress analysis, lubrication, and noise optimization per AGMA standards.",
+      "doctrine_topics": [
+        "spur gear tooth bending stress (Lewis equation, AGMA)",
+        "gear surface durability and pitting resistance",
+        "helical gear design and helix angle optimization",
+        "bevel gear geometry and strength analysis",
+        "worm gear efficiency and thermal limitations",
+        "gear material selection and heat treatment",
+        "AGMA gear rating standards and service factors",
+        "gear noise and vibration reduction",
+        "gear lubrication and oil selection",
+        "planetary gear system design and analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a helical gear reducer for 200 HP at 1,800 RPM input with 4:1 ratio, specifying module, face width, helix angle, material, and AGMA safety factors for bending and pitting",
+            "required_elements": ["gear geometry parameters", "AGMA bending stress analysis", "AGMA pitting resistance analysis", "material selection", "safety factors", "face width determination"],
+            "failure_signals": ["no AGMA analysis", "no specific gear parameters", "missing safety factor calculation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH15",
+      "name": "Welding Engineering Engine",
+      "function": "Design welded connections and develop welding procedures per AWS D1.1, ASME Section IX, and API 1104 including joint design, filler metal selection, and weld quality assurance.",
+      "doctrine_topics": [
+        "weld joint design and preparation (groove, fillet, plug)",
+        "welding process selection (SMAW, GMAW, GTAW, FCAW, SAW)",
+        "filler metal selection per AWS A5 specifications",
+        "WPS/PQR development per ASME Section IX",
+        "preheat and interpass temperature requirements",
+        "PWHT requirements and procedures",
+        "weld defect classification and acceptance criteria",
+        "welding distortion control and residual stress",
+        "welder qualification per AWS D1.1",
+        "weld design for fatigue per AWS D1.1 Annex A"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop a WPS for welding 2-inch thick A516 Gr 70 pressure vessel shell to an SA-105 nozzle neck using GMAW, specifying preheat, interpass temperature, filler metal, and PWHT requirements per ASME Section IX",
+            "required_elements": ["WPS essential variables", "preheat calculation", "filler metal per AWS A5", "PWHT requirements", "ASME Section IX reference", "P-number grouping"],
+            "failure_signals": ["no preheat requirements", "no ASME Section IX reference", "missing essential variables"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH16",
+      "name": "NDT Analysis Engine",
+      "function": "Select and evaluate non-destructive testing methods including radiography, ultrasonic, magnetic particle, liquid penetrant, and eddy current testing per ASME Section V and ASTM standards.",
+      "doctrine_topics": [
+        "radiographic testing (RT) technique and interpretation",
+        "ultrasonic testing (UT) methods and flaw sizing",
+        "magnetic particle testing (MT) procedures",
+        "liquid penetrant testing (PT) procedures",
+        "eddy current testing for surface and subsurface defects",
+        "phased array ultrasonic testing (PAUT)",
+        "time-of-flight diffraction (TOFD)",
+        "NDT method selection criteria per defect type",
+        "ASME Section V examination requirements",
+        "NDT personnel qualification per ASNT SNT-TC-1A"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop an NDT examination plan for a newly fabricated ASME Section VIII Division 1 pressure vessel with full-penetration welds, nozzle attachments, and lifting lugs, specifying methods, extent, and acceptance criteria",
+            "required_elements": ["NDT method selection per joint type", "examination extent", "acceptance criteria per ASME", "ASNT qualification requirements", "technique description", "reporting requirements"],
+            "failure_signals": ["single NDT method only", "no ASME acceptance criteria", "missing examination extent"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH17",
+      "name": "Corrosion Engineering Engine",
+      "function": "Analyze corrosion mechanisms, predict corrosion rates, select mitigation strategies, and design cathodic protection systems per NACE standards for industrial equipment and infrastructure.",
+      "doctrine_topics": [
+        "corrosion mechanism identification (general, pitting, crevice, galvanic)",
+        "CO2 and H2S corrosion prediction models (de Waard, NORSOK M-506)",
+        "cathodic protection design (sacrificial and impressed current)",
+        "corrosion inhibitor selection and performance monitoring",
+        "material selection for corrosive environments per NACE MR0175",
+        "internal and external coating selection",
+        "corrosion monitoring methods (coupons, probes, ER, LPR)",
+        "microbiologically influenced corrosion (MIC)",
+        "stress corrosion cracking (SCC) assessment",
+        "remaining life assessment for corroded equipment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a corrosion management program for a produced water pipeline carrying 40,000 BWPD with 2% CO2, 500 ppm H2S, and 150F temperature, including material selection, inhibition, and monitoring",
+            "required_elements": ["corrosion rate prediction", "material selection per NACE", "inhibitor program design", "monitoring method selection", "CP design if applicable", "remaining life methodology"],
+            "failure_signals": ["no corrosion rate prediction", "no NACE reference", "missing monitoring program"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH18",
+      "name": "Fatigue Analysis Engine",
+      "function": "Perform fatigue life assessment for mechanical components under cyclic loading using S-N curves, strain-life methods, fracture mechanics, and damage accumulation models per ASME and BS 7608 standards.",
+      "doctrine_topics": [
+        "S-N curve application and mean stress correction (Goodman, Soderberg)",
+        "strain-life (epsilon-N) approach for low-cycle fatigue",
+        "linear elastic fracture mechanics (LEFM) crack growth",
+        "Miner's rule cumulative damage assessment",
+        "fatigue of welded joints per BS 7608 and IIW",
+        "multiaxial fatigue criteria",
+        "variable amplitude loading and rainflow counting",
+        "ASME BPVC fatigue design curves",
+        "threshold stress intensity and crack initiation",
+        "fitness-for-service fatigue assessment per API 579"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Perform a fatigue assessment of a pressure vessel nozzle subjected to 10,000 thermal cycles with a temperature differential of 200F, using ASME BPVC Division 2 fatigue design curves and Miner's cumulative damage rule",
+            "required_elements": ["stress range calculation", "ASME fatigue curve lookup", "cycle counting", "Miner's damage summation", "mean stress correction", "remaining fatigue life"],
+            "failure_signals": ["no ASME fatigue curves", "no cycle counting method", "missing damage accumulation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH19",
+      "name": "FEA Analysis Engine",
+      "function": "Guide finite element analysis including mesh design, boundary condition selection, element type selection, convergence studies, and result interpretation for structural and thermal simulations.",
+      "doctrine_topics": [
+        "finite element method fundamentals and element types",
+        "mesh density and convergence studies",
+        "boundary condition selection and constraint modeling",
+        "contact analysis and nonlinear behavior",
+        "thermal-structural coupled analysis",
+        "dynamic and modal FEA analysis",
+        "submodeling and local mesh refinement",
+        "FEA result validation and hand calculation correlation",
+        "stress linearization for ASME code compliance",
+        "FEA modeling best practices and common pitfalls"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Describe the FEA methodology for analyzing a pressure vessel saddle support with local stress concentration, including element selection, mesh refinement, boundary conditions, and ASME stress linearization for code compliance",
+            "required_elements": ["element type selection", "mesh convergence approach", "boundary conditions", "stress linearization methodology", "ASME code comparison", "submodeling recommendation"],
+            "failure_signals": ["no mesh convergence discussion", "no stress linearization", "missing boundary condition definition"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MECH20",
+      "name": "Reliability Engineering Engine",
+      "function": "Perform reliability analysis including FMEA, fault tree analysis, Weibull analysis, availability modeling, and reliability-centered maintenance for mechanical systems.",
+      "doctrine_topics": [
+        "failure mode and effects analysis (FMEA/FMECA)",
+        "fault tree analysis (FTA) construction and evaluation",
+        "Weibull distribution analysis and life data modeling",
+        "reliability block diagrams and system reliability",
+        "availability and maintainability modeling",
+        "reliability-centered maintenance (RCM) methodology",
+        "bathtub curve and failure rate characterization",
+        "spare parts optimization using reliability data",
+        "accelerated life testing design",
+        "RAM (Reliability, Availability, Maintainability) analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Perform a RAM analysis for a gas compression station with three 50% capacity compressors (2 running, 1 standby), specifying MTBF assumptions, availability targets, and spare parts stocking strategy",
+            "required_elements": ["reliability block diagram", "MTBF/MTTR assumptions", "availability calculation", "Weibull parameters", "spare parts analysis", "RCM program outline"],
+            "failure_signals": ["no availability calculation", "no reliability model", "missing quantitative analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

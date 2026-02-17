@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "GS",
+  "tier_name": "GS343",
+  "domain_description": "Automated error detection, root cause analysis, auto-healing, and error pattern learning for self-healing software systems. Covers error template matching, failure mode classification, remediation execution, and continuous learning from error resolution patterns aligned with ITIL and IEEE standards.",
+  "authority_sources": [
+    "ITIL v4 (IT Infrastructure Library - Problem Management)",
+    "IEEE 1044-2009 (Classification for Software Anomalies)",
+    "ISO/IEC 20000-1 (IT Service Management)",
+    "ISO/IEC 25010 (Software Quality Model)",
+    "NIST SP 800-184 (Guide for Cybersecurity Event Recovery)",
+    "Site Reliability Engineering (Google SRE Principles)",
+    "IEEE 829 (Software Test Documentation)",
+    "ISO 22301 (Business Continuity Management)"
+  ],
+  "engines": [
+    {
+      "engine_id": "GS01",
+      "name": "Error Template Matching Engine",
+      "function": "Match runtime errors, exceptions, and failure signatures against a library of 45,962+ error templates using fuzzy matching, regex patterns, stack trace analysis, and contextual similarity scoring for rapid error identification.",
+      "doctrine_topics": [
+        "error signature extraction and normalization",
+        "fuzzy string matching for error message comparison",
+        "stack trace parsing and frame analysis",
+        "error template schema design and indexing",
+        "contextual similarity scoring for ambiguous errors",
+        "multi-language error pattern support (Python, JS, Rust, Go)",
+        "error classification taxonomy per IEEE 1044",
+        "template confidence scoring and ranking",
+        "false positive reduction in template matching",
+        "template versioning and deprecation management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Given a Python stack trace showing 'ConnectionResetError: [Errno 104] Connection reset by peer' during an API call to a Cloudflare Worker, match it against the template library and provide the top 3 matching templates with confidence scores",
+            "required_elements": ["template matching methodology", "confidence scoring", "ranked results", "error classification per IEEE 1044", "context-specific matching", "resolution pointers"],
+            "failure_signals": ["no confidence scoring", "single template without alternatives", "no IEEE classification"]
+          },
+          {
+            "question": "How does the template matching engine handle novel errors that have no existing template match, and what is the escalation path?",
+            "required_elements": ["novelty detection", "partial match scoring", "escalation criteria", "template creation workflow", "ITIL problem management alignment"],
+            "failure_signals": ["no novel error handling", "no escalation path", "no partial matching"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GS02",
+      "name": "Root Cause Analysis Engine",
+      "function": "Perform automated root cause analysis using fault tree analysis, causal chain decomposition, 5-why methodology, and dependency graph traversal to identify the underlying cause of system failures.",
+      "doctrine_topics": [
+        "fault tree analysis (FTA) construction and evaluation",
+        "causal chain decomposition and event sequencing",
+        "5-why automated questioning methodology",
+        "dependency graph traversal for failure propagation",
+        "log correlation and timeline reconstruction",
+        "Ishikawa (fishbone) diagram generation",
+        "failure mode and effects analysis (FMEA)",
+        "change correlation analysis (recent deployments, config changes)",
+        "resource exhaustion detection (memory, CPU, disk, connections)",
+        "intermittent failure analysis and reproduction strategies"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A production FastAPI service starts returning 503 errors at 2:47 AM. Logs show memory usage climbing from 2GB to 7.8GB over 4 hours before the crash. Three new deployments occurred in the preceding 24 hours. Perform root cause analysis.",
+            "required_elements": ["memory leak identification", "deployment correlation", "timeline reconstruction", "fault tree analysis", "5-why chain", "resource exhaustion classification"],
+            "failure_signals": ["no timeline analysis", "no deployment correlation", "generic troubleshooting advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GS03",
+      "name": "Auto-Healing Engine",
+      "function": "Execute automated remediation actions for detected errors including service restarts, configuration rollbacks, resource scaling, circuit breaker activation, and dependency failover per predefined healing playbooks.",
+      "doctrine_topics": [
+        "healing playbook design and execution framework",
+        "service restart and graceful degradation protocols",
+        "configuration rollback and version management",
+        "circuit breaker pattern implementation",
+        "automatic resource scaling and rebalancing",
+        "dependency failover and fallback chain execution",
+        "healing action safety checks and blast radius limiting",
+        "rollback verification and success criteria",
+        "healing action audit trail and compliance logging",
+        "human-in-the-loop escalation for high-risk actions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an auto-healing playbook for a microservice that experiences cascading failures when its database connection pool is exhausted, including safety checks, blast radius limits, and rollback criteria",
+            "required_elements": ["healing action sequence", "safety pre-checks", "blast radius limiting", "rollback criteria", "circuit breaker activation", "audit logging", "escalation triggers"],
+            "failure_signals": ["no safety checks", "no rollback plan", "no blast radius consideration", "missing audit trail"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GS04",
+      "name": "Error Pattern Learning Engine",
+      "function": "Learn from resolved errors to improve future detection and remediation by extracting resolution patterns, updating template libraries, training classification models, and predicting emerging failure modes.",
+      "doctrine_topics": [
+        "error resolution pattern extraction and codification",
+        "template library auto-generation from resolved incidents",
+        "error classification model training and updating",
+        "failure mode prediction and early warning",
+        "resolution effectiveness scoring and feedback loops",
+        "error frequency trend analysis and alerting",
+        "cross-system error correlation and pattern transfer",
+        "seasonal and temporal error pattern detection",
+        "error budget tracking and SLO alignment",
+        "continuous improvement metrics (MTTR, MTTD, MTBF)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Given 6 months of incident data showing 1,200 resolved incidents across 45 microservices, describe how the learning engine would identify recurring patterns, generate new templates, and predict which services are most likely to fail next week",
+            "required_elements": ["pattern extraction methodology", "template generation criteria", "predictive model approach", "recurring pattern identification", "MTTR/MTBF analysis", "SRE metrics alignment"],
+            "failure_signals": ["no learning methodology", "no predictive capability", "no quantitative analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

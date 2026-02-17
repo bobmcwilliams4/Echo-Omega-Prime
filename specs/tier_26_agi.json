@@ -1,0 +1,239 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "AGI",
+  "tier_name": "AGI",
+  "domain_description": "Artificial General Intelligence layer providing central reasoning, knowledge discovery, goal setting, rapid response, cross-engine integration, engine factory automation, build orchestration, and quality monitoring. These engines form the autonomous cognitive core of ECHO OMEGA PRIME, enabling self-directed learning, meta-reasoning, and system-wide coordination based on TIE Gold Standard patterns and internal operational standards.",
+  "authority_sources": [
+    "TIE Gold Standard (20-Component Engine Architecture)",
+    "ECHO Build Orchestrator API Specification",
+    "ECHO Shared Brain Protocol",
+    "Omniscient Sync API",
+    "SPE/API Domain Knowledge Standards (inherited per engine domain)",
+    "NIST AI Risk Management Framework (AI RMF 1.0)",
+    "ISO/IEC 42001 (AI Management System)",
+    "IEEE 7000 (Ethical Design of Autonomous Systems)"
+  ],
+  "engines": [
+    {
+      "engine_id": "AGI01",
+      "name": "CORTEX Central Reasoning Engine",
+      "function": "Provide multi-hop reasoning, causal inference, analogical thinking, argument evaluation, and meta-cognitive monitoring across all engine domains. CORTEX is the central reasoning hub that synthesizes outputs from specialized engines into coherent, defensible conclusions.",
+      "doctrine_topics": [
+        "multi-hop reasoning chain construction",
+        "causal inference and counterfactual analysis",
+        "analogical reasoning across domains",
+        "argument strength evaluation and rebuttals",
+        "meta-cognitive monitoring confidence calibration",
+        "reasoning under uncertainty Bayesian updating",
+        "logical fallacy detection and correction",
+        "abductive reasoning best explanation selection",
+        "cross-domain knowledge transfer protocols",
+        "reasoning trace audit and reproducibility"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A landman discovers a 1952 mineral deed that conflicts with a 1978 lease assignment in Reeves County. The tax engine shows the minerals were assessed to Party A, but the legal engine shows a probate transfer to Party B. Synthesize the cross-engine analysis and recommend resolution.",
+            "required_elements": ["multi-engine query orchestration", "conflict identification across domains", "chain of title reasoning", "probate vs deed priority analysis", "confidence stratification of conclusion", "recommended investigation steps"],
+            "failure_signals": ["single-engine answer only", "no conflict identification", "missing reasoning chain", "no confidence assessment"]
+          },
+          {
+            "question": "Given contradictory expert opinions on fracture height growth containment, evaluate the strength of each argument, identify the key assumptions, and determine which conclusion is most defensible.",
+            "required_elements": ["argument decomposition for each position", "assumption identification and testing", "evidence quality assessment", "Bayesian weight assignment", "meta-reasoning about reasoning quality", "defensibility ranking with justification"],
+            "failure_signals": ["no argument decomposition", "accepting one opinion without evaluation", "missing assumption analysis", "no meta-cognitive assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI02",
+      "name": "CURIOSITY Knowledge Discovery Engine",
+      "function": "Autonomously identify knowledge gaps, generate research questions, discover new patterns in existing data, and orchestrate targeted knowledge acquisition campaigns across all domains to continuously expand the system's expertise.",
+      "doctrine_topics": [
+        "knowledge gap detection across engine domains",
+        "research question generation and prioritization",
+        "pattern discovery in structured and unstructured data",
+        "novelty detection and anomaly-driven exploration",
+        "cross-domain analogy discovery",
+        "information foraging and relevance scoring",
+        "knowledge graph expansion strategies",
+        "source credibility assessment and ranking",
+        "epistemic uncertainty quantification",
+        "autonomous literature review orchestration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the doctrine coverage map for the Tax Intelligence Engine and identify the top 5 knowledge gaps that would most improve response quality, with specific acquisition strategies for each gap.",
+            "required_elements": ["coverage map analysis methodology", "gap scoring by impact and frequency", "specific doctrine topics missing", "acquisition strategy per gap", "priority ranking rationale", "estimated coverage improvement"],
+            "failure_signals": ["no systematic gap analysis", "generic knowledge suggestions", "missing prioritization", "no acquisition strategy"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI03",
+      "name": "AMBITION Goal Setting Engine",
+      "function": "Decompose high-level objectives into executable task hierarchies, set measurable milestones, allocate resources, manage dependencies, and adaptively re-plan when conditions change or tasks fail.",
+      "doctrine_topics": [
+        "goal decomposition hierarchical task networks",
+        "SMART milestone definition and tracking",
+        "resource allocation and constraint satisfaction",
+        "dependency graph construction and critical path",
+        "adaptive re-planning on failure or change",
+        "multi-objective priority balancing",
+        "risk assessment for goal achievement",
+        "progress measurement and forecasting",
+        "goal conflict detection and resolution",
+        "strategic planning horizon management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "The Commander orders: 'Build 100 new engines across 10 domains in 48 hours.' Decompose this into a complete execution plan with milestones, resource allocation, parallel tracks, and contingency plans.",
+            "required_elements": ["task hierarchy decomposition", "parallel execution streams", "resource bottleneck identification", "milestone checkpoints every 4 hours", "contingency for build failures", "critical path analysis"],
+            "failure_signals": ["serial execution plan only", "no resource analysis", "missing contingency", "unrealistic timeline without justification"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI04",
+      "name": "REFLEX Rapid Response Engine",
+      "function": "Provide sub-second response for common queries using cached doctrine, pattern matching, and pre-computed answers. REFLEX handles the fast path while routing complex queries to deeper analysis engines.",
+      "doctrine_topics": [
+        "doctrine cache hit optimization",
+        "query classification fast vs deep routing",
+        "pattern matching for common question types",
+        "pre-computed answer template system",
+        "latency budgeting and SLA management",
+        "cache invalidation and freshness policies",
+        "fallback escalation to deep analysis",
+        "response quality monitoring at speed",
+        "hot-path optimization techniques",
+        "load shedding under high query volume"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A query stream includes: 'What is the IRC section for home mortgage interest deduction?', 'Analyze the tax implications of a complex multi-entity restructuring with international components', and 'What is the standard deduction for 2025?'. Classify each for fast vs deep routing and justify.",
+            "required_elements": ["query complexity classification criteria", "fast-path routing for simple lookups", "deep-path routing for complex analysis", "latency budget per route", "cache hit expectation per query type", "quality assurance for fast responses"],
+            "failure_signals": ["all queries treated equally", "no classification criteria", "missing latency targets", "no quality monitoring"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI05",
+      "name": "SYNAPSE Cross-Engine Integration Engine",
+      "function": "Orchestrate multi-engine queries, resolve conflicting outputs, merge partial results, manage inter-engine data flows, and provide unified responses from the distributed engine fleet.",
+      "doctrine_topics": [
+        "multi-engine query routing and fan-out",
+        "response merging and conflict resolution",
+        "inter-engine data format standardization",
+        "result confidence aggregation methods",
+        "engine capability registry and routing table",
+        "cross-domain concept mapping",
+        "partial result assembly and gap filling",
+        "engine health monitoring and failover",
+        "query decomposition for multi-domain questions",
+        "response synthesis and citation tracking"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A user asks: 'What are the legal, tax, and environmental implications of drilling a horizontal well on a pooled unit that crosses a river in Reeves County?' Route this to appropriate engines and synthesize a unified response.",
+            "required_elements": ["query decomposition into sub-queries", "engine routing legal/tax/environmental/drilling/landman", "response aggregation strategy", "conflict resolution between engine outputs", "citation tracking per engine source", "unified confidence score"],
+            "failure_signals": ["single engine response", "no decomposition", "missing conflict resolution", "no attribution to source engines"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI06",
+      "name": "FORGE-X Engine Factory Engine",
+      "function": "Autonomously generate new TIE-grade engines from specifications, including code generation, doctrine population, quality validation, and deployment. FORGE-X is the self-replicating core of the engine fleet.",
+      "doctrine_topics": [
+        "TIE-20 component architecture generation",
+        "doctrine block generation from domain knowledge",
+        "code quality validation ruff/mypy/pytest",
+        "engine specification parsing and planning",
+        "multi-pass code generation pipeline",
+        "support file generation doctrines/semantic/search/telemetry",
+        "build error diagnosis and auto-repair",
+        "engine registry and orchestrator reporting",
+        "parallel build scheduling and resource management",
+        "build quality metrics and TIE compliance scoring"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Given a new engine specification for 'Marine Engineering' with 15 engines, generate the build plan including file architecture, doctrine topic lists, estimated line counts, build order, and quality gates.",
+            "required_elements": ["6-file architecture per engine", "TIE-20 component checklist", "doctrine topic generation methodology", "build order considering dependencies", "quality gate definitions", "estimated completion time"],
+            "failure_signals": ["missing TIE components", "no quality gates", "single file per engine", "no build order logic"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI07",
+      "name": "ARCHITECT Build Orchestration Engine",
+      "function": "Coordinate the distributed build pipeline, manage worker assignments, track build progress, advance phases, handle failures, and maintain the global build state across all engine tiers.",
+      "doctrine_topics": [
+        "build pipeline state machine management",
+        "worker assignment and load balancing",
+        "build phase advancement criteria",
+        "failure handling retry/redesign/escalate",
+        "dependency graph resolution between engines",
+        "concurrent build slot management",
+        "quality gate enforcement and approval",
+        "build metrics collection and reporting",
+        "cross-tier priority management",
+        "build plan versioning and migration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "The build orchestrator shows 5 workers idle, 12 engines PLANNED, 3 engines FAILED (2x each), and max_concurrent_builds at 10 with 8 slots occupied. Determine the optimal dispatch strategy.",
+            "required_elements": ["slot availability calculation", "failed engine retry with modified spec", "worker assignment based on capability", "priority ordering of PLANNED engines", "concurrent build limit management", "escalation decision for 2x failures"],
+            "failure_signals": ["dispatching beyond slot limit", "ignoring failed engines", "no priority consideration", "no failure handling strategy"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "AGI08",
+      "name": "SENTINEL-X Quality Monitoring Engine",
+      "function": "Continuously monitor engine fleet health, response quality, doctrine drift, performance degradation, and security anomalies. SENTINEL-X is the immune system of the engine fleet.",
+      "doctrine_topics": [
+        "engine health check monitoring protocols",
+        "response quality scoring and trending",
+        "doctrine drift detection over time",
+        "performance degradation detection latency/throughput",
+        "security anomaly detection in engine operations",
+        "automated quality regression testing",
+        "fleet-wide metrics aggregation and dashboards",
+        "alert escalation and Commander notification",
+        "self-healing trigger conditions",
+        "compliance audit trail maintenance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "SENTINEL-X detects that the Tax Intelligence Engine's average response latency increased from 200ms to 1,800ms over 24 hours, and 3 doctrine blocks are returning lower confidence scores than baseline. Diagnose and recommend corrective action.",
+            "required_elements": ["latency regression root cause analysis", "doctrine drift detection methodology", "performance baseline comparison", "corrective action priority ranking", "self-healing trigger evaluation", "Commander escalation criteria"],
+            "failure_signals": ["no root cause analysis", "missing baseline comparison", "no corrective actions", "generic monitoring description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

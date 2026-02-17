@@ -1,0 +1,236 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "SYN",
+  "tier_name": "Synthesis",
+  "domain_description": "Cross-domain synthesis and integration analysis engines that combine insights from multiple practice areas (legal, tax, regulatory, landman, enterprise) to deliver holistic analysis for complex multi-jurisdictional matters, risk aggregation, due diligence coordination, dispute resolution, legislative tracking, and policy impact analysis. These engines operate at the intersection of all other tiers.",
+  "authority_sources": [
+    "Federal Register (daily rulemaking publications)",
+    "Congressional Research Service Reports",
+    "Government Accountability Office Reports",
+    "Uniform Law Commission Model Acts",
+    "American Law Institute Restatements",
+    "OECD Guidelines for Multinational Enterprises",
+    "World Trade Organization Agreements",
+    "Hague Conference on Private International Law Conventions",
+    "National Conference of State Legislatures (NCSL) Publications",
+    "Administrative Conference of the United States (ACUS) Recommendations"
+  ],
+  "engines": [
+    {
+      "engine_id": "SYN01",
+      "name": "Cross-Domain Synthesis Engine",
+      "function": "Synthesize analysis across multiple legal, tax, regulatory, and business domains to provide integrated recommendations for complex matters that span traditional practice area boundaries. Identifies domain interactions, conflicts, and synergies.",
+      "doctrine_topics": [
+        "multi-domain issue identification and mapping",
+        "domain interaction and conflict detection",
+        "integrated recommendation generation",
+        "cross-domain risk aggregation",
+        "interdisciplinary analysis frameworks",
+        "domain priority and sequencing analysis",
+        "conflicting authority resolution across domains",
+        "holistic client impact assessment",
+        "multi-stakeholder perspective synthesis",
+        "integrated timeline and dependency mapping"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A family-owned oil company wants to sell its Permian Basin assets ($50M), restructure the remaining business as a holding company, set up trusts for the next generation, and reinvest proceeds into a renewable energy JV with a foreign partner. Analyze the interconnected legal, tax, regulatory, and estate planning issues.",
+            "required_elements": ["M&A structuring impact on tax treatment", "estate planning integration with asset sale", "CFIUS analysis for foreign JV partner", "oil and gas regulatory transfer requirements", "integrated timeline showing domain dependencies"],
+            "failure_signals": ["siloed analysis without cross-domain integration", "failure to identify conflicting priorities between domains", "no dependency mapping"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN02",
+      "name": "Multi-Jurisdiction Analysis Engine",
+      "function": "Analyze legal and regulatory issues across multiple jurisdictions simultaneously, identifying conflicts of law, choice of law considerations, jurisdictional advantages, and compliance requirements across state and international boundaries.",
+      "doctrine_topics": [
+        "choice of law analysis (Restatement Second of Conflicts)",
+        "full faith and credit and comity principles",
+        "multi-state regulatory compliance mapping",
+        "international treaty and convention applicability",
+        "jurisdictional arbitrage and forum shopping analysis",
+        "uniform law adoption status across states",
+        "federal preemption and state law interaction",
+        "reciprocity and mutual recognition agreements",
+        "extraterritorial application of domestic law",
+        "conflict of laws in cross-border transactions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Delaware-incorporated company headquartered in Texas employs workers in 12 states, serves customers in all 50 states and 5 EU countries, and processes personal data globally. A data breach occurs. Analyze the multi-jurisdictional notification obligations, choice of law for potential litigation, and regulatory exposure across all relevant jurisdictions.",
+            "required_elements": ["state breach notification law comparison", "GDPR notification obligations and timeline", "choice of law analysis for contract and tort claims", "multi-state attorney general enforcement exposure", "jurisdictional priority sequence for response"],
+            "failure_signals": ["single-jurisdiction analysis only", "failure to address cross-border data privacy", "no jurisdiction comparison framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN03",
+      "name": "Regulatory Impact Engine",
+      "function": "Analyze the business and operational impact of new or proposed regulations, identifying compliance costs, competitive effects, operational changes, and strategic response options across affected business units.",
+      "doctrine_topics": [
+        "regulatory impact assessment methodology",
+        "compliance cost estimation and modeling",
+        "competitive impact analysis of new regulation",
+        "operational change requirement identification",
+        "strategic response option development",
+        "regulatory comment letter analysis and drafting",
+        "industry coalition and advocacy strategy",
+        "regulatory phase-in timeline and compliance planning",
+        "cost-benefit analysis of compliance alternatives",
+        "regulatory uncertainty and scenario planning"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "EPA proposes a new rule reducing permissible methane emissions from oil and gas operations by 80% over 5 years. An oil company operates 500 wells in the Permian Basin. Analyze the operational impact, compliance cost estimates, available technologies, and strategic response options including regulatory comments.",
+            "required_elements": ["current vs proposed emission standards comparison", "leak detection and repair (LDAR) cost estimation", "pneumatic controller replacement analysis", "compliance timeline and phase-in schedule", "regulatory comment strategy and technical objections"],
+            "failure_signals": ["no cost estimation framework", "failure to identify compliance technologies", "no strategic response options"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN04",
+      "name": "Risk Aggregation Engine",
+      "function": "Aggregate and analyze risks across multiple domains (legal, regulatory, financial, operational, reputational) to provide a unified enterprise risk profile with prioritized mitigation recommendations and scenario modeling.",
+      "doctrine_topics": [
+        "enterprise risk inventory and classification",
+        "risk correlation and cascade analysis",
+        "risk heat map and prioritization matrix",
+        "scenario modeling and stress testing",
+        "risk appetite and tolerance framework",
+        "key risk indicator (KRI) development",
+        "risk mitigation strategy cost-benefit analysis",
+        "residual risk assessment after mitigation",
+        "risk reporting and board communication",
+        "emerging risk identification and early warning"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An E&P company faces the following concurrent risks: (1) pending EPA enforcement action for Clean Water Act violations, (2) $20M in disputed royalty underpayment claims, (3) a sexual harassment lawsuit against the CEO, (4) declining oil prices threatening covenant compliance on $100M credit facility, and (5) a cybersecurity incident exposing employee data. Aggregate these risks and prioritize the response.",
+            "required_elements": ["risk correlation analysis (e.g., CEO lawsuit + stock price + covenant)", "financial quantification of each risk", "risk priority matrix (likelihood x impact)", "cascade risk identification", "integrated mitigation strategy"],
+            "failure_signals": ["risks treated in isolation", "no correlation or cascade analysis", "no prioritization framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN05",
+      "name": "Due Diligence Coordinator Engine",
+      "function": "Coordinate and synthesize multi-domain due diligence across legal, tax, regulatory, environmental, title, and financial workstreams for complex transactions, identifying cross-stream issues and integration requirements.",
+      "doctrine_topics": [
+        "due diligence workstream identification and scoping",
+        "cross-workstream issue identification",
+        "data room organization and management",
+        "due diligence request list development",
+        "materiality threshold calibration across workstreams",
+        "due diligence finding aggregation and prioritization",
+        "representation and warranty alignment with findings",
+        "indemnification structure based on due diligence risk",
+        "closing condition negotiation based on findings",
+        "post-closing integration planning from due diligence"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A PE firm is acquiring a portfolio of 300 producing oil wells and 50,000 gross acres from 3 different sellers in a simultaneous closing. Design the due diligence coordination plan across title, environmental, regulatory, tax, and financial workstreams, including staffing and timeline.",
+            "required_elements": ["workstream identification and scope definition", "cross-workstream dependencies", "staffing plan and resource allocation", "milestone timeline with critical path", "issue escalation and materiality framework"],
+            "failure_signals": ["no workstream structure proposed", "failure to identify cross-stream dependencies", "no timeline or staffing plan"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN06",
+      "name": "Dispute Resolution Engine",
+      "function": "Analyze dispute resolution options across litigation, arbitration, mediation, and negotiation, selecting optimal forums and strategies based on dispute characteristics, jurisdictional factors, and party dynamics.",
+      "doctrine_topics": [
+        "litigation vs arbitration vs mediation comparison",
+        "arbitration clause drafting and enforceability (FAA)",
+        "mediation process and mediator selection",
+        "forum selection strategy and analysis",
+        "multi-party dispute coordination",
+        "international dispute resolution (ICC, ICSID, LCIA)",
+        "early case assessment and resolution probability",
+        "cost-benefit analysis of dispute resolution options",
+        "settlement strategy and valuation",
+        "enforcement of judgments and arbitral awards"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A US oil company has a $25 million contract dispute with a Saudi Arabian joint venture partner. The JV agreement contains an ICC arbitration clause specifying Paris as the seat, but the US company believes a Texas court would be more favorable. Analyze the dispute resolution options, enforceability of the arbitration clause, and strategic considerations.",
+            "required_elements": ["FAA enforceability of international arbitration clause", "ICC arbitration procedure and timeline", "New York Convention enforcement of awards", "grounds to resist arbitration compulsion", "cost and duration comparison of forums"],
+            "failure_signals": ["no analysis of arbitration clause enforceability", "failure to address international enforcement", "no strategic comparison of forums"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN07",
+      "name": "Legislative Tracking Engine",
+      "function": "Track, analyze, and assess the impact of pending legislation at federal and state levels, providing early warning of regulatory changes and strategic response recommendations for affected industries.",
+      "doctrine_topics": [
+        "federal legislative process tracking and analysis",
+        "state legislative tracking across multiple jurisdictions",
+        "bill text analysis and amendment tracking",
+        "committee and floor vote probability assessment",
+        "industry impact assessment for pending legislation",
+        "lobbying and advocacy strategy development",
+        "coalition building for legislative response",
+        "regulatory rulemaking anticipation from new statutes",
+        "effective date and transition period planning",
+        "legislative history analysis for interpretation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Congress introduces a bill that would impose a federal methane fee of $1,500 per ton on oil and gas operations, effective in 18 months. The bill has passed the House committee and is scheduled for floor vote. Analyze the legislative trajectory, financial impact on a mid-size E&P company producing 50,000 BOE/day, and the strategic response options.",
+            "required_elements": ["legislative process timeline analysis", "financial impact quantification", "emission reduction cost vs fee comparison", "advocacy and comment strategy", "contingency planning for passage"],
+            "failure_signals": ["no financial impact calculation", "failure to assess passage probability", "no strategic response framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "SYN08",
+      "name": "Policy Analysis Engine",
+      "function": "Analyze public policy proposals and their implications for industry, evaluate policy alternatives, assess stakeholder impacts, and develop evidence-based policy recommendations integrating legal, economic, and operational perspectives.",
+      "doctrine_topics": [
+        "policy analysis framework and methodology",
+        "stakeholder identification and impact assessment",
+        "cost-benefit analysis of policy alternatives",
+        "distributional impact analysis (equity considerations)",
+        "policy implementation feasibility assessment",
+        "unintended consequences and second-order effects",
+        "comparative policy analysis across jurisdictions",
+        "evidence-based policy recommendation development",
+        "policy monitoring and evaluation metrics",
+        "regulatory sandbox and pilot program analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A state proposes banning hydraulic fracturing within 2,500 feet of residences, schools, and hospitals (current setback is 200 feet). Analyze the policy from legal, economic, operational, environmental, and property rights perspectives, including a comparison with other states' approaches.",
+            "required_elements": ["takings clause and property rights analysis", "economic impact on production and employment", "environmental and public health evidence review", "comparison with other state setback regulations", "alternative policy options and compromise positions"],
+            "failure_signals": ["single-perspective analysis only", "no economic impact assessment", "failure to compare with other jurisdictions"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

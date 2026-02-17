@@ -1,0 +1,217 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "INT",
+  "tier_name": "Intelligence",
+  "domain_description": "Threat assessment, open-source intelligence, competitive analysis, financial intelligence, cyber threat detection, due diligence investigation, and pattern recognition across structured and unstructured data sources. Covers OSINT tradecraft, indicator of compromise analysis, adversary profiling, and intelligence fusion for decision support.",
+  "authority_sources": [
+    "NIST SP 800-150 (Guide to Cyber Threat Information Sharing)",
+    "MITRE ATT&CK Framework v14",
+    "STIX/TAXII 2.1 (Structured Threat Information Expression)",
+    "DHS National Infrastructure Protection Plan (NIPP)",
+    "ODNI Intelligence Community Directive 203 (Analytic Standards)",
+    "NATO OSINT Handbook",
+    "NIST SP 800-61 Rev 2 (Computer Security Incident Handling)",
+    "ISO/IEC 27035 (Information Security Incident Management)"
+  ],
+  "engines": [
+    {
+      "engine_id": "INT01",
+      "name": "Threat Assessment Engine",
+      "function": "Assess and prioritize threats across physical, cyber, and operational domains using structured analytic techniques, threat actor profiling, and risk quantification models aligned with NIST and DHS frameworks.",
+      "doctrine_topics": [
+        "threat actor profiling and capability assessment",
+        "structured analytic techniques for threat evaluation",
+        "risk quantification models (FAIR, DREAD, STRIDE)",
+        "threat landscape mapping and prioritization",
+        "indicators and warnings methodology",
+        "attack surface analysis and exposure scoring",
+        "adversary intent and opportunity assessment",
+        "threat intelligence lifecycle management",
+        "red team and adversary emulation planning",
+        "threat briefing and communication protocols"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Assess the threat posture for a midstream oil and gas company operating SCADA systems across 150 remote sites in the Permian Basin, considering both nation-state and criminal threat actors",
+            "required_elements": ["threat actor categories", "attack surface analysis", "SCADA-specific vulnerabilities", "risk quantification", "NIST framework reference", "mitigation priorities"],
+            "failure_signals": ["no specific threat actors identified", "generic risk assessment", "missing SCADA/ICS considerations", "no quantified risk levels"]
+          },
+          {
+            "question": "How would you apply structured analytic techniques to evaluate conflicting intelligence reports about a potential insider threat at a defense contractor?",
+            "required_elements": ["Analysis of Competing Hypotheses", "key assumptions check", "indicator evaluation", "confidence levels", "ICD 203 standards"],
+            "failure_signals": ["no specific analytic technique named", "single-hypothesis analysis", "no confidence assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT02",
+      "name": "OSINT Analysis Engine",
+      "function": "Conduct open-source intelligence collection and analysis across public records, social media, dark web, corporate filings, and geospatial data sources using structured OSINT methodologies.",
+      "doctrine_topics": [
+        "OSINT collection planning and requirements",
+        "social media intelligence (SOCMINT) techniques",
+        "corporate registry and financial filing analysis",
+        "geospatial intelligence from open sources (GEOINT)",
+        "dark web and deep web monitoring",
+        "domain and IP infrastructure reconnaissance",
+        "people search and identity resolution",
+        "media monitoring and narrative tracking",
+        "OSINT tool chain selection and validation",
+        "source reliability and information credibility assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an OSINT collection plan to investigate a shell company network potentially used for sanctions evasion, starting only with a company name and registered agent",
+            "required_elements": ["collection requirements", "source prioritization", "corporate registry search", "beneficial ownership tracing", "sanctions list cross-reference", "link analysis methodology"],
+            "failure_signals": ["no structured collection plan", "single data source reliance", "no verification methodology"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT03",
+      "name": "Competitive Intelligence Engine",
+      "function": "Analyze competitive landscapes, market positioning, competitor strategies, patent landscapes, and industry trends using ethical competitive intelligence methods and strategic analysis frameworks.",
+      "doctrine_topics": [
+        "Porter's Five Forces competitive analysis",
+        "competitor capability profiling",
+        "patent landscape analysis and IP mapping",
+        "market share estimation and trend analysis",
+        "strategic early warning systems",
+        "win-loss analysis methodology",
+        "competitive benchmarking frameworks",
+        "supply chain intelligence and vulnerability",
+        "M&A target screening and assessment",
+        "technology scouting and innovation tracking"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Conduct a competitive intelligence assessment of the electric vehicle battery supply chain, identifying key players, strategic vulnerabilities, and emerging disruptors",
+            "required_elements": ["supply chain mapping", "key player identification", "Porter's analysis", "vulnerability assessment", "emerging technology threats", "strategic recommendations"],
+            "failure_signals": ["no specific companies or technologies", "surface-level analysis", "no supply chain depth"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT04",
+      "name": "Financial Intelligence Engine",
+      "function": "Detect financial crime patterns including money laundering, fraud, sanctions violations, and suspicious transaction activity using AML frameworks, Benford's law analysis, and network analysis of fund flows.",
+      "doctrine_topics": [
+        "anti-money laundering (AML) typologies and red flags",
+        "suspicious activity report (SAR) analysis",
+        "Benford's law application to financial fraud detection",
+        "sanctions screening and OFAC compliance",
+        "trade-based money laundering indicators",
+        "beneficial ownership and shell company detection",
+        "cryptocurrency transaction tracing",
+        "hawala and informal value transfer detection",
+        "politically exposed person (PEP) risk assessment",
+        "financial network analysis and fund flow mapping"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze a pattern of 47 wire transfers averaging $9,500 each from 12 different entities to a single beneficiary in a high-risk jurisdiction over 90 days",
+            "required_elements": ["structuring analysis", "BSA threshold awareness", "red flag identification", "SAR filing criteria", "network analysis approach", "jurisdiction risk assessment"],
+            "failure_signals": ["no mention of BSA/CTR thresholds", "missing structuring analysis", "no risk scoring"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT05",
+      "name": "Cyber Threat Intelligence Engine",
+      "function": "Collect, analyze, and disseminate cyber threat intelligence using MITRE ATT&CK, STIX/TAXII, and diamond model frameworks. Track threat actor TTPs, IOCs, and campaign attribution.",
+      "doctrine_topics": [
+        "MITRE ATT&CK technique mapping and detection",
+        "indicator of compromise (IOC) lifecycle management",
+        "STIX/TAXII intelligence sharing protocols",
+        "diamond model for intrusion analysis",
+        "kill chain analysis and disruption points",
+        "threat actor TTP profiling and attribution",
+        "malware family classification and analysis",
+        "campaign tracking and correlation",
+        "threat intelligence platform integration",
+        "vulnerability intelligence prioritization (CVSS, EPSS, KEV)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A SOC detected beaconing traffic to a C2 domain, PowerShell obfuscation, and credential dumping via LSASS. Map these activities to MITRE ATT&CK and assess the likely threat actor profile",
+            "required_elements": ["ATT&CK technique IDs", "tactic mapping", "kill chain phase", "threat actor correlation", "recommended detections", "STIX representation"],
+            "failure_signals": ["no specific ATT&CK IDs", "missing kill chain context", "no attribution analysis"]
+          },
+          {
+            "question": "How should an organization prioritize patching when facing 200 CVEs, given limited maintenance windows and active exploitation intelligence from CISA KEV?",
+            "required_elements": ["CVSS scoring", "EPSS probability", "KEV catalog cross-reference", "exploit availability", "asset criticality weighting"],
+            "failure_signals": ["CVSS-only prioritization", "no exploit intelligence", "no business context"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT06",
+      "name": "Due Diligence Investigation Engine",
+      "function": "Conduct comprehensive due diligence investigations for M&A, partnerships, and vendor onboarding, covering financial, legal, regulatory, reputational, and operational risk assessment.",
+      "doctrine_topics": [
+        "enhanced due diligence (EDD) investigation methodology",
+        "corporate structure and beneficial ownership analysis",
+        "litigation and regulatory action history review",
+        "financial statement anomaly detection",
+        "reputational risk assessment and media analysis",
+        "sanctions, PEP, and watchlist screening",
+        "environmental and ESG due diligence",
+        "intellectual property and technology diligence",
+        "management team background investigation",
+        "vendor and third-party risk assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a due diligence investigation plan for acquiring a $200M oil and gas operating company with assets in Texas and New Mexico, including environmental liability assessment",
+            "required_elements": ["investigation scope", "data room review plan", "environmental liability", "title and mineral rights verification", "regulatory compliance check", "financial analysis methodology"],
+            "failure_signals": ["no structured investigation plan", "missing environmental assessment", "no oil and gas specific considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "INT07",
+      "name": "Pattern Recognition Engine",
+      "function": "Identify and analyze patterns across large datasets using statistical analysis, anomaly detection, link analysis, and temporal pattern recognition for intelligence and investigative applications.",
+      "doctrine_topics": [
+        "temporal pattern analysis and event correlation",
+        "network and link analysis for entity relationships",
+        "anomaly detection in structured and unstructured data",
+        "geospatial pattern analysis and hotspot detection",
+        "behavioral pattern profiling",
+        "statistical pattern significance testing",
+        "communication pattern analysis (metadata)",
+        "financial transaction pattern clustering",
+        "social network analysis and community detection",
+        "predictive pattern modeling and forecasting"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Given 50,000 financial transactions over 18 months, describe a methodology to detect layering patterns consistent with money laundering, including the statistical tests and visualization approaches you would use",
+            "required_elements": ["layering detection methodology", "statistical tests", "network visualization", "temporal analysis", "threshold calibration", "false positive management"],
+            "failure_signals": ["no specific statistical methods", "no visualization approach", "generic pattern matching"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

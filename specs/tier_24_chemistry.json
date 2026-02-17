@@ -1,0 +1,560 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "CHEM",
+  "tier_name": "Chemistry",
+  "domain_description": "Comprehensive chemistry knowledge spanning organic, inorganic, physical, analytical, biochemistry, polymer, environmental, safety, process, catalysis, electrochemistry, nuclear, geochemistry, food, pharmaceutical, materials, chemical engineering, computational, green, and forensic chemistry. Based on IUPAC nomenclature, ACS guidelines, GHS hazard communication, EPA TSCA regulations, EU REACH, and ICH pharmaceutical guidelines.",
+  "authority_sources": [
+    "IUPAC Nomenclature and Recommendations",
+    "ACS Guidelines and Ethical Standards",
+    "GHS (Globally Harmonized System of Classification and Labelling)",
+    "EPA TSCA (Toxic Substances Control Act)",
+    "EU REACH (Registration, Evaluation, Authorisation and Restriction of Chemicals)",
+    "ICH Guidelines (International Council for Harmonisation)",
+    "NFPA 704 (Standard System for Identification of Hazards of Materials)",
+    "OSHA 29 CFR 1910.1200 (Hazard Communication Standard)",
+    "USP-NF (United States Pharmacopeia)",
+    "ASTM International Standards for Chemical Analysis"
+  ],
+  "engines": [
+    {
+      "engine_id": "CHEM01",
+      "name": "Organic Chemistry Engine",
+      "function": "Analyze organic reaction mechanisms, retrosynthetic analysis, stereochemistry, functional group transformations, named reactions, and total synthesis planning using IUPAC nomenclature and mechanistic frameworks.",
+      "doctrine_topics": [
+        "reaction mechanism classification SN1/SN2/E1/E2",
+        "retrosynthetic analysis and disconnection strategies",
+        "stereochemistry R/S and E/Z assignments",
+        "aromatic electrophilic and nucleophilic substitution",
+        "carbonyl chemistry aldol/Claisen/Grignard",
+        "named reactions and modern coupling reactions",
+        "protecting group strategy selection",
+        "pericyclic reactions Woodward-Hoffmann rules",
+        "radical reactions and polymerization",
+        "organometallic chemistry in synthesis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a retrosynthetic analysis for ibuprofen starting from commercially available materials, identifying key disconnections and evaluating at least two synthetic routes",
+            "required_elements": ["retrosynthetic disconnections", "Friedel-Crafts acylation pathway", "Grignard or organolithium alternative", "stereochemical considerations", "green chemistry comparison of routes", "step economy analysis"],
+            "failure_signals": ["no disconnection logic", "single route only", "missing stereochemistry", "no reagent specifications"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM02",
+      "name": "Inorganic Chemistry Engine",
+      "function": "Analyze inorganic compounds, coordination chemistry, crystal field theory, bioinorganic systems, solid-state materials, and main group chemistry using ligand field theory and group theory.",
+      "doctrine_topics": [
+        "coordination chemistry and IUPAC nomenclature",
+        "crystal field theory and ligand field splitting",
+        "group theory and molecular symmetry",
+        "main group element chemistry and periodicity",
+        "transition metal complex properties",
+        "bioinorganic chemistry metalloenzymes",
+        "solid-state structure and bonding",
+        "organometallic chemistry 18-electron rule",
+        "lanthanide and actinide chemistry",
+        "inorganic reaction mechanisms"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Predict the electronic structure, magnetic properties, and UV-Vis spectrum of [Cr(NH3)6]3+ using crystal field theory and compare with [Cr(H2O)6]3+",
+            "required_elements": ["d-electron configuration", "crystal field splitting energy", "spectrochemical series application", "magnetic moment calculation", "d-d transition assignment", "Tanabe-Sugano diagram reference"],
+            "failure_signals": ["no electron configuration", "missing spectrochemical series", "no magnetic prediction", "generic coordination chemistry"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM03",
+      "name": "Physical Chemistry Engine",
+      "function": "Analyze thermodynamics, chemical kinetics, quantum chemistry, statistical mechanics, and surface chemistry using fundamental physical chemistry principles and mathematical frameworks.",
+      "doctrine_topics": [
+        "chemical thermodynamics Gibbs energy and equilibrium",
+        "chemical kinetics rate laws and mechanisms",
+        "quantum chemistry particle-in-a-box to molecular orbitals",
+        "statistical mechanics partition functions",
+        "phase equilibria and phase diagrams",
+        "electrochemistry Nernst equation and cells",
+        "surface chemistry adsorption isotherms",
+        "spectroscopy theory UV-Vis/IR/NMR",
+        "transport phenomena diffusion and viscosity",
+        "chemical equilibrium and Le Chatelier principle"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "For the reaction N2O4(g) = 2NO2(g), calculate Kp at 25C and 100C given standard thermodynamic data, and predict the effect of pressure and temperature on equilibrium composition",
+            "required_elements": ["van't Hoff equation application", "delta-G calculation from delta-H and delta-S", "Kp to Kx conversion", "Le Chatelier predictions", "temperature dependence of equilibrium", "mole fraction at specified conditions"],
+            "failure_signals": ["no thermodynamic data used", "missing van't Hoff", "no pressure effect analysis", "qualitative only without calculation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM04",
+      "name": "Analytical Chemistry Engine",
+      "function": "Analyze quantitative and qualitative analytical methods including chromatography, spectroscopy, electroanalytical techniques, method validation, and quality assurance per ASTM and USP standards.",
+      "doctrine_topics": [
+        "HPLC method development and optimization",
+        "gas chromatography and GC-MS analysis",
+        "atomic absorption and ICP-OES/MS methods",
+        "UV-Vis spectrophotometry Beer-Lambert law",
+        "mass spectrometry ionization and fragmentation",
+        "method validation ICH Q2 requirements",
+        "sample preparation and extraction techniques",
+        "titrimetric and gravimetric analysis",
+        "quality assurance and control charts",
+        "electroanalytical methods voltammetry and potentiometry"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop an HPLC method for simultaneous determination of acetaminophen and caffeine in a tablet formulation, including column selection, mobile phase optimization, and ICH Q2 validation parameters",
+            "required_elements": ["column chemistry selection C18/C8", "mobile phase composition and gradient", "detection wavelength selection", "ICH Q2 validation parameters linearity/precision/accuracy", "system suitability criteria", "forced degradation study design"],
+            "failure_signals": ["no column specification", "missing validation parameters", "no system suitability", "generic HPLC description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM05",
+      "name": "Biochemistry Engine",
+      "function": "Analyze biomolecular structure, enzyme kinetics, metabolic pathways, protein folding, nucleic acid chemistry, and signal transduction using biochemical principles and molecular biology frameworks.",
+      "doctrine_topics": [
+        "enzyme kinetics Michaelis-Menten and inhibition",
+        "protein structure and folding principles",
+        "metabolic pathways glycolysis/TCA/oxidative phosphorylation",
+        "nucleic acid structure and replication",
+        "lipid biochemistry and membrane structure",
+        "signal transduction cascades",
+        "gene expression and regulation",
+        "carbohydrate biochemistry and glycobiology",
+        "bioenergetics and ATP synthesis",
+        "biotechnology techniques PCR/ELISA/Western blot"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An enzyme shows Km of 50 uM and Vmax of 200 nmol/min. In the presence of inhibitor X (10 uM), apparent Km increases to 150 uM while Vmax remains unchanged. Classify the inhibition and calculate Ki.",
+            "required_elements": ["competitive inhibition classification", "Ki calculation from apparent Km", "Lineweaver-Burk plot interpretation", "inhibitor binding site prediction", "effect on catalytic efficiency", "IC50 relationship to Ki"],
+            "failure_signals": ["wrong inhibition type", "no Ki calculation", "missing kinetic analysis", "qualitative description only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM06",
+      "name": "Polymer Chemistry Engine",
+      "function": "Analyze polymer synthesis, characterization, structure-property relationships, polymerization mechanisms, processing techniques, and degradation per ASTM polymer testing standards.",
+      "doctrine_topics": [
+        "step-growth vs chain-growth polymerization",
+        "free radical polymerization kinetics",
+        "controlled radical polymerization ATRP/RAFT/NMP",
+        "polymer molecular weight distribution GPC/SEC",
+        "polymer thermal analysis DSC/TGA/DMA",
+        "polymer crystallinity and morphology",
+        "copolymer composition and sequence distribution",
+        "polymer processing injection molding/extrusion",
+        "polymer degradation and stabilization",
+        "biopolymers and biodegradable materials"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an ATRP synthesis of a well-defined block copolymer of polystyrene-b-poly(methyl methacrylate) with target Mn of 50,000 g/mol and PDI less than 1.2",
+            "required_elements": ["initiator and catalyst selection", "monomer to initiator ratio calculation", "reaction conditions temperature/solvent", "block sequence strategy", "GPC characterization plan", "PDI control mechanisms"],
+            "failure_signals": ["no ATRP specifics", "missing ratio calculations", "no PDI control discussion", "generic polymerization description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM07",
+      "name": "Environmental Chemistry Engine",
+      "function": "Analyze environmental contaminant fate and transport, water and air quality chemistry, remediation technologies, environmental monitoring, and regulatory compliance per EPA methods and standards.",
+      "doctrine_topics": [
+        "aqueous chemistry pH/alkalinity/hardness",
+        "contaminant fate and transport mechanisms",
+        "water treatment chemistry coagulation/disinfection",
+        "air pollution chemistry ozone/NOx/SOx/PM",
+        "soil contamination and remediation technologies",
+        "biogeochemical cycling carbon/nitrogen/phosphorus",
+        "environmental analytical methods EPA series",
+        "groundwater contamination and plume modeling",
+        "persistent organic pollutants and bioaccumulation",
+        "climate chemistry greenhouse gases and radiative forcing"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A groundwater monitoring well shows benzene at 50 ppb, MTBE at 200 ppb, and dissolved oxygen at 0.5 mg/L. Characterize the contamination source, predict plume behavior, and recommend remediation approach.",
+            "required_elements": ["BTEX source characterization", "natural attenuation assessment", "redox conditions evaluation", "remediation technology comparison", "MCL regulatory standards", "plume migration prediction"],
+            "failure_signals": ["no regulatory standards", "missing redox analysis", "no source characterization", "single remediation without comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM08",
+      "name": "Chemical Safety Engine",
+      "function": "Analyze chemical hazards, safety data sheets, exposure limits, emergency response, laboratory safety, and process safety management per GHS, OSHA HCS, and NFPA standards.",
+      "doctrine_topics": [
+        "GHS hazard classification and labeling",
+        "safety data sheet SDS interpretation",
+        "occupational exposure limits PEL/TLV/STEL",
+        "chemical storage compatibility and segregation",
+        "personal protective equipment selection",
+        "emergency response HAZMAT procedures",
+        "laboratory safety practices and protocols",
+        "process safety management PSM elements",
+        "chemical spill response and decontamination",
+        "toxicological risk assessment dose-response"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A laboratory worker is found to have been exposed to hydrofluoric acid vapor above the TLV for 4 hours. The concentration measured was 5 ppm. Outline the complete response protocol and medical surveillance requirements.",
+            "required_elements": ["HF TLV-TWA reference 0.5 ppm", "calcium gluconate treatment protocol", "systemic fluoride toxicity risk", "medical surveillance requirements", "exposure documentation OSHA 300", "engineering controls to prevent recurrence"],
+            "failure_signals": ["wrong TLV value", "no systemic toxicity discussion", "missing calcium gluconate", "generic chemical exposure response"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM09",
+      "name": "Process Chemistry Engine",
+      "function": "Analyze chemical process scale-up, reaction optimization, process intensification, continuous flow chemistry, and manufacturing process development from lab to production scale.",
+      "doctrine_topics": [
+        "reaction scale-up principles and challenges",
+        "process optimization DOE methodology",
+        "continuous flow chemistry and microreactors",
+        "heat and mass transfer in chemical processes",
+        "crystallization process development",
+        "process analytical technology PAT",
+        "quality by design QbD in process development",
+        "solvent selection and sustainability",
+        "process safety thermal runaway assessment",
+        "manufacturing process validation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Scale up an exothermic Grignard reaction from 1L laboratory to 1000L pilot plant scale. The laboratory run shows an adiabatic temperature rise of 85C. Address safety, mixing, and heat transfer challenges.",
+            "required_elements": ["heat transfer scaling limitations", "MTSR and criticality class assessment", "dosing rate control strategy", "mixing Reynolds number analysis", "safety instrumented system design", "thermal runaway prevention measures"],
+            "failure_signals": ["no thermal safety analysis", "missing scaling calculations", "no MTSR consideration", "linear scale-up assumed"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM10",
+      "name": "Catalysis Engine",
+      "function": "Analyze homogeneous and heterogeneous catalysis, catalyst design, reaction mechanism elucidation, catalyst deactivation, and industrial catalytic processes using transition state theory and microkinetics.",
+      "doctrine_topics": [
+        "homogeneous catalysis organometallic mechanisms",
+        "heterogeneous catalysis surface reactions",
+        "catalyst characterization techniques BET/XRD/TEM",
+        "Langmuir-Hinshelwood and Eley-Rideal mechanisms",
+        "catalyst deactivation sintering/poisoning/coking",
+        "enzyme catalysis and biomimetic catalysts",
+        "asymmetric catalysis and chiral selectivity",
+        "industrial catalytic processes Haber/FT/HDS",
+        "photocatalysis and electrocatalysis",
+        "catalyst design and high-throughput screening"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A heterogeneous Pd/C catalyst for hydrogenation of nitrobenzene shows 50% activity loss after 100 hours. Diagnose potential deactivation mechanisms and propose regeneration or replacement strategies.",
+            "required_elements": ["deactivation mechanism classification", "Pd sintering assessment", "poisoning species identification", "BET surface area analysis", "regeneration protocol options", "fresh vs regenerated performance comparison"],
+            "failure_signals": ["single deactivation mechanism only", "no characterization approach", "missing regeneration options", "generic catalyst description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM11",
+      "name": "Electrochemistry Engine",
+      "function": "Analyze electrochemical systems including batteries, fuel cells, corrosion, electroplating, electrolysis, and electroanalytical methods using Nernst equation and Butler-Volmer kinetics.",
+      "doctrine_topics": [
+        "Nernst equation and electrode potentials",
+        "Butler-Volmer equation and overpotential",
+        "battery chemistry Li-ion/lead-acid/solid-state",
+        "fuel cell thermodynamics and kinetics",
+        "corrosion electrochemistry and Pourbaix diagrams",
+        "electroplating and electrodeposition",
+        "electrolysis and Faraday's laws",
+        "cyclic voltammetry and EIS interpretation",
+        "capacitors and supercapacitors",
+        "photoelectrochemistry and water splitting"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a lithium-ion battery cell for an EV application requiring 60 kWh capacity, analyzing cathode chemistry options (NMC 811 vs LFP vs NCA), including energy density, cycle life, and thermal stability tradeoffs",
+            "required_elements": ["cathode chemistry comparison table", "specific energy and energy density calculations", "cycle life at different C-rates", "thermal runaway onset temperatures", "cost per kWh comparison", "Ragone plot positioning"],
+            "failure_signals": ["single chemistry only", "no quantitative comparison", "missing thermal safety", "generic battery description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM12",
+      "name": "Nuclear Chemistry Engine",
+      "function": "Analyze radioactive decay kinetics, nuclear reactions, radiation detection, radiochemical separations, nuclear fuel cycle, and radiation safety per NRC regulations and ICRP recommendations.",
+      "doctrine_topics": [
+        "radioactive decay kinetics and half-life calculations",
+        "nuclear reaction types fission/fusion/transmutation",
+        "radiation detection and measurement",
+        "radiochemical separation techniques",
+        "nuclear fuel cycle enrichment to waste",
+        "radiation dosimetry and biological effects",
+        "NRC regulatory framework 10 CFR",
+        "nuclear medicine radiopharmaceuticals",
+        "environmental radioactivity monitoring",
+        "nuclear forensics and attribution"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Calculate the activity of a Cs-137 source (t1/2 = 30.17 years) that was 500 mCi on January 1, 2000. Determine the current activity, dose rate at 1 meter, and required shielding to reduce exposure below 2 mrem/hr.",
+            "required_elements": ["decay calculation with time elapsed", "activity in mCi and Bq", "dose rate using specific gamma constant", "half-value layer for shielding material", "shielding thickness calculation", "regulatory dose limit reference"],
+            "failure_signals": ["no decay calculation", "missing dose rate", "no shielding analysis", "wrong half-life used"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM13",
+      "name": "Geochemistry Engine",
+      "function": "Analyze geochemical processes including mineral equilibria, aqueous geochemistry, isotope geochemistry, petroleum geochemistry, and weathering reactions in natural systems.",
+      "doctrine_topics": [
+        "mineral stability and Eh-pH diagrams",
+        "aqueous speciation and complexation",
+        "stable isotope fractionation C/O/S/N",
+        "radiogenic isotope geochronology",
+        "petroleum geochemistry source rock analysis",
+        "sedimentary geochemistry diagenesis",
+        "hydrothermal fluid chemistry",
+        "weathering reactions and soil formation",
+        "trace element partitioning",
+        "geochemical modeling PHREEQC applications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Interpret a produced water analysis from a Permian Basin well showing Na 45,000 ppm, Ca 12,000 ppm, Cl 98,000 ppm, SO4 50 ppm, Ba 280 ppm, Sr 1,200 ppm, with delta-18O of +2 permil and delta-D of -15 permil. Determine water origin and scaling potential.",
+            "required_elements": ["formation water characterization", "isotope plot interpretation meteoric vs connate", "mineral saturation indices", "scaling risk assessment BaSO4/CaCO3", "water-rock interaction history", "comparison to regional brine data"],
+            "failure_signals": ["no isotope interpretation", "missing saturation calculations", "no water origin assessment", "generic water analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM14",
+      "name": "Food Chemistry Engine",
+      "function": "Analyze food composition, food additives, Maillard reactions, lipid oxidation, food preservation chemistry, and nutritional biochemistry per FDA 21 CFR and Codex Alimentarius standards.",
+      "doctrine_topics": [
+        "food macronutrient chemistry proteins/lipids/carbs",
+        "Maillard reaction and browning chemistry",
+        "lipid oxidation mechanisms and antioxidants",
+        "food preservative chemistry and mechanisms",
+        "food additive safety and GRAS determination",
+        "water activity and food stability",
+        "food flavor chemistry volatile compounds",
+        "food color chemistry natural and synthetic",
+        "nutritional analysis methods AOAC",
+        "food allergen chemistry and detection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A food manufacturer is experiencing rapid rancidity in a nut-based snack bar with 6 months target shelf life. The product contains 18% fat, iron-fortified, and stored at ambient temperature. Analyze the oxidation mechanisms and recommend stabilization strategies.",
+            "required_elements": ["lipid oxidation pathway autoxidation/photo", "prooxidant effect of iron", "antioxidant selection natural vs synthetic", "water activity impact on oxidation", "packaging atmosphere recommendations", "peroxide value monitoring protocol"],
+            "failure_signals": ["no iron-catalyzed oxidation discussion", "missing antioxidant specifics", "no shelf life testing protocol", "generic food preservation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM15",
+      "name": "Pharmaceutical Chemistry Engine",
+      "function": "Analyze drug design, SAR analysis, formulation development, stability testing, impurity profiling, and regulatory chemistry requirements per ICH guidelines and FDA regulations.",
+      "doctrine_topics": [
+        "structure-activity relationship SAR analysis",
+        "drug design and lead optimization",
+        "pharmaceutical formulation development",
+        "drug stability testing ICH Q1A",
+        "impurity identification and qualification ICH Q3",
+        "drug polymorphism and solid-state chemistry",
+        "bioavailability and BCS classification",
+        "pharmaceutical excipient compatibility",
+        "analytical method development for drug substances",
+        "regulatory chemistry CMC documentation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oral tablet formulation shows a new impurity at 0.15% after 6 months accelerated stability (40C/75% RH). The API has a daily dose of 200 mg. Determine the ICH qualification threshold and outline the impurity investigation strategy.",
+            "required_elements": ["ICH Q3B threshold calculation for 200 mg dose", "identification threshold 0.1%", "qualification threshold 0.15%", "forced degradation study design", "structural elucidation approach LC-MS/NMR", "toxicological qualification pathway"],
+            "failure_signals": ["wrong ICH threshold", "no dose-based calculation", "missing structural elucidation", "generic impurity discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM16",
+      "name": "Materials Chemistry Engine",
+      "function": "Analyze advanced materials including semiconductors, ceramics, composites, nanomaterials, thin films, and functional materials using solid-state chemistry and materials characterization techniques.",
+      "doctrine_topics": [
+        "semiconductor band theory and doping",
+        "ceramic materials processing and properties",
+        "composite materials design and mechanics",
+        "nanomaterial synthesis and characterization",
+        "thin film deposition CVD/PVD/ALD",
+        "crystal structure and X-ray diffraction",
+        "mechanical properties testing and analysis",
+        "magnetic and dielectric materials",
+        "biomaterials and biocompatibility",
+        "smart materials shape memory/piezoelectric"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a metal oxide semiconductor thin film for a transparent conducting electrode application. Compare ITO, AZO, and FTO options including deposition methods, conductivity, transparency, and cost.",
+            "required_elements": ["band gap and transparency comparison", "sheet resistance targets", "deposition method for each option", "indium scarcity and cost analysis", "figure of merit calculation", "substrate compatibility"],
+            "failure_signals": ["single material only", "no quantitative comparison", "missing deposition methods", "generic thin film description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM17",
+      "name": "Chemical Engineering Engine",
+      "function": "Analyze chemical process design, unit operations, reactor engineering, separation processes, heat transfer, and plant design per Perry's Chemical Engineers' Handbook and ASME standards.",
+      "doctrine_topics": [
+        "chemical reactor design CSTR/PFR/batch",
+        "distillation column design McCabe-Thiele",
+        "heat exchanger design and LMTD method",
+        "mass transfer and absorption/stripping",
+        "fluid mechanics and pump sizing",
+        "process simulation and flowsheet optimization",
+        "material and energy balances",
+        "process control and instrumentation",
+        "plant layout and piping design",
+        "process economics and capital estimation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a continuous distillation column to separate a binary mixture of methanol and water (feed 40 mol% methanol) producing 95 mol% distillate and 5 mol% bottoms at 1000 kmol/hr feed rate. Determine minimum reflux, actual stages, and column diameter.",
+            "required_elements": ["McCabe-Thiele diagram construction", "minimum reflux ratio calculation", "actual stage count with efficiency", "column diameter from flooding correlation", "reboiler and condenser duty", "feed tray location"],
+            "failure_signals": ["no McCabe-Thiele analysis", "missing reflux calculation", "no column sizing", "theoretical only without practical design"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM18",
+      "name": "Computational Chemistry Engine",
+      "function": "Analyze molecular modeling approaches including DFT, molecular dynamics, Monte Carlo methods, docking simulations, and QSAR modeling using established computational chemistry frameworks.",
+      "doctrine_topics": [
+        "density functional theory DFT methods and basis sets",
+        "molecular dynamics simulation setup and analysis",
+        "Monte Carlo methods in chemical systems",
+        "molecular docking and virtual screening",
+        "QSAR model development and validation",
+        "ab initio methods Hartree-Fock and post-HF",
+        "semiempirical methods PM7/AM1/MNDO",
+        "conformational analysis and energy minimization",
+        "transition state searching and IRC",
+        "molecular property prediction machine learning"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select the appropriate level of theory (method and basis set) to calculate the activation energy for a Diels-Alder reaction between cyclopentadiene and maleic anhydride, justifying the choice and estimating computational cost.",
+            "required_elements": ["DFT functional selection B3LYP/M06-2X", "basis set choice and justification", "transition state optimization method", "IRC calculation for verification", "comparison to experimental Ea", "computational cost scaling"],
+            "failure_signals": ["no method justification", "inappropriate basis set", "no transition state discussion", "missing experimental comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM19",
+      "name": "Green Chemistry Engine",
+      "function": "Analyze sustainable chemistry approaches including the 12 principles of green chemistry, atom economy, solvent substitution, waste minimization, renewable feedstocks, and life cycle assessment.",
+      "doctrine_topics": [
+        "twelve principles of green chemistry Anastas",
+        "atom economy and reaction mass efficiency",
+        "solvent selection guides CHEM21/GSK",
+        "catalysis as green chemistry strategy",
+        "renewable feedstocks and bio-based chemicals",
+        "waste minimization and E-factor analysis",
+        "energy efficiency in chemical processes",
+        "safer chemical design and toxicology",
+        "life cycle assessment LCA for chemicals",
+        "green metrics PMI/RME/atom economy calculation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Compare the green chemistry metrics (atom economy, E-factor, PMI) for two synthetic routes to adipic acid: traditional cyclohexane oxidation with nitric acid versus direct bioconversion from glucose using engineered E. coli",
+            "required_elements": ["atom economy calculation both routes", "E-factor comparison", "process mass intensity", "N2O emission from traditional route", "renewable feedstock advantage", "twelve principles scoring"],
+            "failure_signals": ["no quantitative metrics", "missing emissions comparison", "single route analysis", "no green chemistry principles reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "CHEM20",
+      "name": "Forensic Chemistry Engine",
+      "function": "Analyze forensic evidence chemistry including drug analysis, fire debris analysis, explosives residue, toxicology, trace evidence, and quality assurance per SWGDRUG and ASTM forensic standards.",
+      "doctrine_topics": [
+        "controlled substance identification SWGDRUG categories",
+        "fire debris analysis ASTM E1618",
+        "explosives residue detection and analysis",
+        "forensic toxicology specimen analysis",
+        "trace evidence fiber/paint/glass analysis",
+        "forensic DNA extraction and analysis",
+        "gunshot residue GSR detection SEM-EDX",
+        "questioned document analysis ink/paper",
+        "chain of custody and evidence handling",
+        "forensic quality assurance and accreditation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Fire debris samples collected from three locations in a warehouse show the presence of a medium petroleum distillate via GC-MS. Outline the complete analytical protocol per ASTM E1618, including sample preparation, data interpretation, and comparison to reference standards.",
+            "required_elements": ["ASTM E1618 classification system", "sample preparation passive headspace", "GC-MS total ion chromatogram interpretation", "extracted ion profile analysis", "ignitable liquid classification MPD", "comparison to ILRC reference collection"],
+            "failure_signals": ["no ASTM E1618 reference", "missing sample preparation", "no chromatographic interpretation", "generic fire investigation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

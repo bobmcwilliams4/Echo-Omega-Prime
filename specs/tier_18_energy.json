@@ -1,0 +1,425 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "ENRG",
+  "tier_name": "Energy",
+  "domain_description": "Power generation, transmission, distribution, renewable energy, nuclear power, natural gas systems, hydroelectric, energy storage, smart grid, energy trading, demand response, microgrid, hydrogen, and carbon capture systems per NERC, NRC, IEEE, FERC, and IEC standards.",
+  "authority_sources": [
+    "NERC Reliability Standards (CIP, TPL, FAC, MOD)",
+    "10 CFR Part 50/52 (NRC Nuclear Reactor Licensing)",
+    "IEEE 1547-2018 (Interconnection of Distributed Resources)",
+    "FERC Order 2222 (DER Aggregation in Markets)",
+    "FERC Order 888/889 (Open Access Transmission)",
+    "IEC 61850 (Communication Networks for Substations)",
+    "IEC 61400 (Wind Turbine Design Requirements)",
+    "IEEE C37 Series (Protective Relaying)",
+    "NFPA 855 (Energy Storage System Installation)",
+    "ASHRAE 90.1 (Energy Standard for Buildings)"
+  ],
+  "engines": [
+    {
+      "engine_id": "ENRG01",
+      "name": "Power Generation Engine",
+      "function": "Analyze thermal and renewable power generation systems including combined cycle, simple cycle, coal, nuclear, and distributed generation with heat rate optimization and dispatch economics.",
+      "doctrine_topics": [
+        "combined cycle gas turbine plant performance analysis",
+        "simple cycle peaker operation and start-up optimization",
+        "heat rate optimization and efficiency improvement",
+        "generation dispatch economics and merit order",
+        "plant capacity factor and availability analysis",
+        "emissions compliance (NOx, SO2, CO2, particulate)",
+        "cooling water system design and thermal discharge",
+        "plant auxiliary power consumption optimization",
+        "generation fleet planning and capacity expansion",
+        "distributed generation integration and sizing"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the economics of converting a 150 MW simple cycle gas turbine to combined cycle by adding an HRSG and steam turbine, calculating the incremental heat rate improvement, capital cost, and payback period at $3.50/MMBtu gas price",
+            "required_elements": ["heat rate comparison (SC vs CC)", "incremental capacity calculation", "capital cost estimation", "payback analysis", "capacity factor assumptions", "emissions reduction"],
+            "failure_signals": ["no heat rate calculations", "no economic analysis", "missing capacity comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG02",
+      "name": "Transmission Grid Engine",
+      "function": "Analyze high-voltage transmission systems including power flow, stability, protection, and reliability per NERC standards with contingency analysis and transfer capability assessment.",
+      "doctrine_topics": [
+        "power flow analysis and bus voltage regulation",
+        "transient stability analysis and critical clearing time",
+        "voltage stability assessment and PV/QV curves",
+        "transmission line impedance and thermal rating",
+        "N-1 and N-1-1 contingency analysis per NERC TPL",
+        "available transfer capability (ATC) calculation",
+        "NERC CIP compliance for bulk electric system",
+        "FACTS devices and reactive power compensation",
+        "transmission planning and expansion studies",
+        "high-voltage direct current (HVDC) transmission"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Perform a transmission planning study for a new 345 kV line connecting a 500 MW wind farm to the grid, including power flow analysis, N-1 contingency assessment, and NERC TPL compliance evaluation",
+            "required_elements": ["power flow analysis results", "N-1 contingency evaluation", "thermal loading assessment", "voltage analysis", "NERC TPL-001 compliance", "system impact study elements"],
+            "failure_signals": ["no contingency analysis", "no NERC reference", "missing power flow assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG03",
+      "name": "Distribution Engine",
+      "function": "Analyze medium and low-voltage distribution systems including load analysis, voltage regulation, protection coordination, and distributed energy resource integration per IEEE standards.",
+      "doctrine_topics": [
+        "distribution system load analysis and forecasting",
+        "voltage regulation (LTC, regulators, capacitor banks)",
+        "protection coordination and relay settings",
+        "distribution transformer sizing and loading",
+        "underground vs overhead distribution design",
+        "distribution automation and SCADA integration",
+        "power quality analysis (harmonics, sag, swell, flicker)",
+        "DER integration impact studies per IEEE 1547",
+        "arc flash hazard analysis per IEEE 1584",
+        "distribution system reliability metrics (SAIDI, SAIFI, CAIDI)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a protection coordination study for a 12.47 kV distribution feeder with 3 reclosers, 5 fused laterals, and a 2 MW solar DER interconnection, ensuring proper time-current coordination and DER anti-islanding per IEEE 1547",
+            "required_elements": ["time-current coordination", "recloser-fuse coordination", "DER anti-islanding requirements", "IEEE 1547 interconnection settings", "fault current analysis", "protection device settings"],
+            "failure_signals": ["no coordination curves", "no DER impact analysis", "missing IEEE 1547 requirements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG04",
+      "name": "Solar Energy Engine",
+      "function": "Design and analyze photovoltaic and concentrated solar power systems including resource assessment, system sizing, inverter selection, and financial analysis with degradation modeling.",
+      "doctrine_topics": [
+        "solar resource assessment and irradiance modeling (TMY, POA)",
+        "PV system sizing and module selection",
+        "inverter selection and DC/AC ratio optimization",
+        "string sizing and voltage window analysis",
+        "PV system loss analysis (soiling, shading, mismatch, wiring)",
+        "tracking system selection (fixed, single-axis, dual-axis)",
+        "battery-coupled solar system design",
+        "PV degradation modeling and performance warranty",
+        "solar project financial analysis (LCOE, IRR, NPV)",
+        "interconnection requirements and utility coordination"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 50 MW AC utility-scale solar PV plant in West Texas, specifying module selection, inverter configuration, DC/AC ratio, tracking type, and calculating year-1 energy production and 25-year LCOE",
+            "required_elements": ["module selection and quantity", "inverter configuration", "DC/AC ratio justification", "tracking selection", "energy production estimate", "LCOE calculation"],
+            "failure_signals": ["no system sizing", "no energy production calculation", "missing financial analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG05",
+      "name": "Wind Energy Engine",
+      "function": "Analyze wind energy systems including wind resource assessment, turbine selection, wind farm layout optimization, grid integration, and energy production estimation per IEC 61400.",
+      "doctrine_topics": [
+        "wind resource assessment and Weibull distribution analysis",
+        "wind turbine power curve and capacity factor estimation",
+        "wind farm layout optimization and wake effects",
+        "turbine selection criteria (rated power, rotor diameter, hub height)",
+        "IEC 61400 turbine classification and design requirements",
+        "grid integration and reactive power capability",
+        "wind energy production estimation (P50, P75, P90)",
+        "noise and visual impact assessment",
+        "wind farm SCADA and condition monitoring",
+        "offshore wind foundation and cable design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate a 200 MW wind farm site with mean wind speed of 8.2 m/s at 80m hub height, selecting appropriate turbine model, optimizing layout for minimum wake losses, and estimating P50 and P90 annual energy production",
+            "required_elements": ["Weibull distribution analysis", "turbine selection with specifications", "wake loss estimation", "layout optimization approach", "P50/P90 energy estimates", "capacity factor"],
+            "failure_signals": ["no Weibull analysis", "no wake loss consideration", "missing energy production estimates"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG06",
+      "name": "Nuclear Power Engine",
+      "function": "Analyze nuclear power plant systems including reactor physics, thermal hydraulics, radiation protection, safety systems, and licensing per NRC 10 CFR standards.",
+      "doctrine_topics": [
+        "reactor physics and neutronics (criticality, burnup, reactivity)",
+        "thermal hydraulic analysis and DNBR criteria",
+        "nuclear fuel cycle and refueling strategy",
+        "radiation protection and ALARA principle",
+        "emergency core cooling system (ECCS) analysis",
+        "probabilistic risk assessment (PRA/PSA) Level 1-3",
+        "NRC 10 CFR 50/52 licensing framework",
+        "defense-in-depth and safety system redundancy",
+        "containment design and source term analysis",
+        "small modular reactor (SMR) technology assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze the safety case for a small modular reactor using passive safety systems, including ECCS performance during a loss-of-coolant accident, defense-in-depth layers, and PRA evaluation per NRC 10 CFR 52",
+            "required_elements": ["passive safety system description", "LOCA analysis", "defense-in-depth barriers", "PRA methodology", "core damage frequency", "10 CFR 52 compliance"],
+            "failure_signals": ["no LOCA analysis", "no PRA/CDF discussion", "missing NRC regulatory framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG07",
+      "name": "Natural Gas Engine",
+      "function": "Analyze natural gas systems including pipeline design, gas processing, LNG, compression stations, and gas quality management for midstream and downstream operations.",
+      "doctrine_topics": [
+        "natural gas pipeline hydraulics and sizing",
+        "gas processing (dehydration, sweetening, NGL recovery)",
+        "LNG liquefaction and regasification process design",
+        "gas compression station design and optimization",
+        "gas measurement and quality specifications (tariff gas)",
+        "pipeline integrity management per 49 CFR 192",
+        "gas storage (depleted reservoir, salt cavern, LNG)",
+        "pipeline SCADA and leak detection systems",
+        "gas interchangeability and Wobbe Index",
+        "gas market structure and transportation tariffs"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 24-inch natural gas pipeline for 500 MMSCFD over 100 miles, calculating pressure drop using the Panhandle B equation, specifying compression requirements and determining optimal compressor station spacing",
+            "required_elements": ["Panhandle B calculation", "pressure drop analysis", "compressor station sizing", "station spacing optimization", "pipe wall thickness per 49 CFR 192", "design factor selection"],
+            "failure_signals": ["no pipeline hydraulic calculation", "no compression analysis", "missing regulatory reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG08",
+      "name": "Hydroelectric Engine",
+      "function": "Analyze hydroelectric power systems including dam design, turbine selection, hydrology, environmental impact, and pumped storage for baseload and peaking power applications.",
+      "doctrine_topics": [
+        "hydrological analysis and flow duration curves",
+        "hydraulic turbine selection (Pelton, Francis, Kaplan)",
+        "turbine performance curves and efficiency",
+        "dam design types and selection criteria",
+        "penstock sizing and head loss calculations",
+        "pumped storage hydroelectric design and economics",
+        "environmental impact assessment and fish passage",
+        "small and micro hydro system design",
+        "FERC licensing process for hydroelectric projects",
+        "reservoir operations and flood control integration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select the appropriate turbine type and size for a 50 MW run-of-river hydroelectric project with 60 meters of net head and design flow of 100 cubic meters per second, calculating annual energy production",
+            "required_elements": ["turbine type selection with justification", "specific speed calculation", "efficiency estimation", "annual energy production", "flow duration analysis", "capacity factor"],
+            "failure_signals": ["no turbine selection criteria", "no specific speed analysis", "missing energy production estimate"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG09",
+      "name": "Energy Storage Engine",
+      "function": "Design and analyze energy storage systems including lithium-ion batteries, flow batteries, compressed air, flywheel, and thermal storage for grid-scale and behind-the-meter applications per NFPA 855.",
+      "doctrine_topics": [
+        "battery energy storage system (BESS) sizing and selection",
+        "lithium-ion battery chemistry comparison (NMC, LFP, NCA)",
+        "flow battery technology assessment (vanadium, zinc-bromine)",
+        "compressed air energy storage (CAES) design",
+        "flywheel energy storage applications",
+        "thermal energy storage (molten salt, ice, phase change)",
+        "BESS degradation modeling and warranty optimization",
+        "fire safety and thermal runaway prevention per NFPA 855",
+        "energy storage dispatch optimization and revenue stacking",
+        "interconnection and grid service requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 100 MW / 400 MWh grid-scale BESS for a utility providing peak shaving, frequency regulation, and renewable integration, comparing LFP vs NMC chemistry on a 20-year lifecycle cost basis",
+            "required_elements": ["system sizing justification", "chemistry comparison (LFP vs NMC)", "lifecycle cost analysis", "degradation modeling", "revenue stream analysis", "NFPA 855 safety requirements"],
+            "failure_signals": ["no chemistry comparison", "no degradation analysis", "missing lifecycle economics"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG10",
+      "name": "Smart Grid Engine",
+      "function": "Design and analyze smart grid systems including advanced metering infrastructure, distribution automation, demand response, and grid modernization using IEC 61850 and IEEE 2030 standards.",
+      "doctrine_topics": [
+        "advanced metering infrastructure (AMI) architecture",
+        "distribution management system (DMS/ADMS) design",
+        "IEC 61850 communication protocol implementation",
+        "smart grid cybersecurity per NERC CIP",
+        "grid edge computing and IoT integration",
+        "volt-VAR optimization (VVO) and conservation voltage reduction",
+        "outage management system integration",
+        "grid resiliency and self-healing capabilities",
+        "smart grid data analytics and load forecasting",
+        "IEEE 2030 smart grid interoperability"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a smart grid architecture for a utility serving 500,000 customers, including AMI deployment, ADMS integration, VVO implementation, and cybersecurity framework per NERC CIP, with 5-year implementation roadmap",
+            "required_elements": ["AMI architecture and communication", "ADMS functional requirements", "VVO strategy", "NERC CIP cybersecurity", "implementation phases", "cost-benefit analysis"],
+            "failure_signals": ["no AMI architecture", "no cybersecurity framework", "missing implementation roadmap"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG11",
+      "name": "Energy Trading Engine",
+      "function": "Analyze wholesale electricity markets, power purchase agreements, financial hedging instruments, and energy trading strategies including day-ahead, real-time, and ancillary service markets.",
+      "doctrine_topics": [
+        "wholesale electricity market structure (LMP, nodal pricing)",
+        "day-ahead and real-time market participation",
+        "ancillary service markets (regulation, reserves, frequency)",
+        "power purchase agreement (PPA) structure and valuation",
+        "energy financial instruments (futures, options, swaps)",
+        "renewable energy certificate (REC) markets",
+        "capacity market mechanics and resource adequacy",
+        "congestion management and financial transmission rights",
+        "FERC market rules and compliance",
+        "energy portfolio risk management and hedging"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate a 15-year PPA for a 200 MW solar project at $25/MWh fixed, analyzing the buyer's market risk exposure, basis risk between the PPA delivery point and load zone, and optimal hedging strategy for the basis differential",
+            "required_elements": ["PPA valuation methodology", "basis risk analysis", "hedging instruments", "market price projection", "risk quantification", "FERC market reference"],
+            "failure_signals": ["no basis risk analysis", "no hedging strategy", "missing market price context"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG12",
+      "name": "Demand Response Engine",
+      "function": "Design and optimize demand response programs including load curtailment, load shifting, dynamic pricing, and DR aggregation for grid reliability and customer cost reduction per FERC Order 2222.",
+      "doctrine_topics": [
+        "demand response program design and customer segmentation",
+        "load curtailment strategies and baseline methodology",
+        "dynamic pricing (TOU, CPP, RTP) design and implementation",
+        "DR aggregation and virtual power plant concepts",
+        "FERC Order 2222 DER market participation",
+        "measurement and verification (M&V) for DR",
+        "automated demand response (OpenADR) standards",
+        "industrial and commercial DR program design",
+        "residential DR with smart thermostats and water heaters",
+        "DR as grid reliability resource and capacity value"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 100 MW demand response aggregation program participating in the ERCOT market, specifying customer segmentation, baseline methodology, notification protocols, and settlement process per FERC Order 2222",
+            "required_elements": ["customer segmentation strategy", "baseline calculation method", "notification process", "settlement methodology", "FERC Order 2222 compliance", "reliability commitment"],
+            "failure_signals": ["no baseline methodology", "no FERC reference", "missing settlement process"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG13",
+      "name": "Microgrid Engine",
+      "function": "Design and analyze microgrid systems including islanding capability, generation-load balancing, control architecture, and resilience assessment for critical infrastructure and remote communities.",
+      "doctrine_topics": [
+        "microgrid architecture and topology design",
+        "islanding detection and seamless transition",
+        "microgrid control hierarchy (primary, secondary, tertiary)",
+        "generation-load balancing and frequency control",
+        "microgrid protection scheme design",
+        "renewable energy integration in microgrids",
+        "energy storage sizing for microgrid applications",
+        "microgrid economic optimization and dispatch",
+        "military and critical infrastructure microgrid design",
+        "IEEE 2030.7 microgrid controller specification"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a microgrid for a military installation with 10 MW peak load, incorporating 5 MW solar, 3 MW diesel backup, and battery storage for 4 hours of islanded operation, specifying control architecture and islanding transition per IEEE 2030.7",
+            "required_elements": ["system architecture", "storage sizing calculation", "islanding transition design", "control hierarchy", "protection scheme", "IEEE 2030.7 compliance"],
+            "failure_signals": ["no storage sizing", "no islanding transition design", "missing control architecture"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG14",
+      "name": "Hydrogen Engine",
+      "function": "Analyze hydrogen production, storage, transportation, and utilization systems including electrolysis, steam methane reforming, fuel cells, and hydrogen infrastructure development.",
+      "doctrine_topics": [
+        "hydrogen production methods (green, blue, gray) comparison",
+        "PEM and alkaline electrolysis system design",
+        "steam methane reforming with carbon capture",
+        "hydrogen storage (compressed, liquid, metal hydride, LOHC)",
+        "hydrogen pipeline and transportation infrastructure",
+        "PEM and SOFC fuel cell system design",
+        "hydrogen safety and codes (NFPA 2, ASME B31.12)",
+        "hydrogen blending in natural gas networks",
+        "hydrogen hub and cluster development",
+        "hydrogen LCOH and economic viability analysis"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a green hydrogen production facility using 100 MW of dedicated wind power and PEM electrolysis, calculating hydrogen production rate, storage requirements, and levelized cost of hydrogen (LCOH) compared to gray hydrogen from SMR",
+            "required_elements": ["electrolyzer sizing", "hydrogen production rate", "storage system design", "LCOH calculation", "comparison with SMR", "capacity factor impact on economics"],
+            "failure_signals": ["no production rate calculation", "no LCOH analysis", "missing storage design"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENRG15",
+      "name": "Carbon Capture Engine",
+      "function": "Analyze carbon capture, utilization, and storage (CCUS) technologies including post-combustion, pre-combustion, direct air capture, and geological storage with economic assessment and 45Q tax credit analysis.",
+      "doctrine_topics": [
+        "post-combustion CO2 capture (amine scrubbing, membrane)",
+        "pre-combustion capture and IGCC integration",
+        "oxy-combustion capture technology",
+        "direct air capture (DAC) technology assessment",
+        "CO2 compression and pipeline transportation",
+        "geological storage site selection and characterization",
+        "enhanced oil recovery (EOR) with CO2 injection",
+        "monitoring, reporting, and verification (MRV) for storage",
+        "45Q tax credit and carbon credit economics",
+        "lifecycle carbon analysis and net-zero pathway"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate post-combustion CO2 capture retrofit for a 500 MW coal plant capturing 90% of emissions, analyzing capture technology selection, energy penalty, capital cost, and economic viability with 45Q tax credits at $85/tonne",
+            "required_elements": ["capture rate and CO2 volume", "technology selection", "energy penalty calculation", "capital cost estimation", "45Q credit analysis", "cost per tonne avoided"],
+            "failure_signals": ["no energy penalty analysis", "no economic assessment", "missing 45Q credit calculation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "GEO",
+  "tier_name": "Geospatial",
+  "domain_description": "Geospatial analysis for oil and gas land management covering land survey interpretation, GIS mapping and spatial analysis, plat reading and analysis, boundary dispute resolution, and mineral estate mapping. Integrates legal survey descriptions with modern GIS technology for accurate spatial representation of property rights, well locations, and infrastructure corridors. Grounded in PLSS standards, ALTA/NSPS survey standards, Texas Natural Resources Code, and state surveying regulations.",
+  "authority_sources": [
+    "Texas Natural Resources Code (Title 2, Chapters 21-22)",
+    "Public Land Survey System (PLSS) Manual of Instructions (BLM 2009)",
+    "ALTA/NSPS Land Title Survey Standards (2021)",
+    "Texas Administrative Code Title 22, Part 29 (Board of Professional Land Surveying)",
+    "Texas Property Code Chapter 5 (Conveyances)",
+    "Federal Geodetic Control Standards (FGCS)",
+    "National Standard for Spatial Data Accuracy (NSSDA)",
+    "Texas Society of Professional Surveyors Standards of Practice",
+    "BLM Cadastral Survey Manual",
+    "Railroad Commission of Texas GIS and Mapping Standards"
+  ],
+  "engines": [
+    {
+      "engine_id": "GEO01",
+      "name": "Land Survey Analysis Engine",
+      "function": "Interpret and analyze land survey descriptions including metes and bounds, PLSS aliquot part descriptions, lot and block references, and survey plats. Validate legal descriptions, identify ambiguities, and calculate acreage from survey data.",
+      "doctrine_topics": [
+        "metes and bounds description interpretation",
+        "PLSS aliquot part and section descriptions",
+        "Texas Abstract and survey system",
+        "lot and block subdivision descriptions",
+        "legal description ambiguity resolution rules",
+        "calls and monuments priority hierarchy",
+        "course and distance calculation and verification",
+        "acreage calculation from legal descriptions",
+        "survey overlap and gap identification",
+        "senior vs junior survey priority doctrine"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A deed describes property as 'the NE/4 of Section 12, Block C-23, PSL Survey, Reeves County, Texas, SAVE AND EXCEPT the East 20 acres thereof.' Calculate the excepted tract dimensions and remaining acreage, and identify any ambiguity in the exception language.",
+            "required_elements": ["NE/4 section acreage calculation (160 acres)", "East 20 acres tract dimension calculation", "ambiguity in 'East 20 acres' (shape not specified)", "survey monument and boundary identification", "remaining acreage after exception"],
+            "failure_signals": ["incorrect acreage calculation", "failure to identify description ambiguity", "no survey reference system understanding"]
+          },
+          {
+            "question": "A metes and bounds description in a 1938 deed calls for 'North 45 degrees East, 1320 varas to a rock mound on the East bank of Pecos River.' The river has shifted 200 feet west since 1938. What controls — the bearing and distance or the natural monument?",
+            "required_elements": ["monument over distance priority rule", "natural monument (river) vs artificial monument (rock mound)", "ambulatory boundary doctrine for rivers", "avulsion vs accretion analysis", "vara to feet conversion (1 vara = 33.33 inches)"],
+            "failure_signals": ["no priority of calls discussion", "failure to address ambulatory boundary", "no vara conversion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GEO02",
+      "name": "GIS Mapping Engine",
+      "function": "Create and analyze Geographic Information System datasets for oil and gas land management including spatial data integration, coordinate transformation, thematic mapping, and spatial analysis of mineral ownership, well locations, and infrastructure.",
+      "doctrine_topics": [
+        "coordinate reference systems (NAD83, WGS84, State Plane)",
+        "datum transformation and projection selection",
+        "spatial data layer creation and management",
+        "attribute table design for mineral ownership",
+        "topology rules for land parcel data",
+        "geocoding and address matching for well locations",
+        "spatial join and overlay analysis techniques",
+        "raster and vector data integration",
+        "web mapping service (WMS/WFS) integration",
+        "GIS data quality assurance and accuracy standards"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a GIS database schema for tracking mineral ownership across a 50-section study area in the Permian Basin. The database must support fractional mineral interests, multiple lessees per tract, well locations, pipeline corridors, and unit boundaries. Specify the coordinate system, layer structure, and attribute tables.",
+            "required_elements": ["Texas State Plane coordinate system selection", "mineral ownership polygon layer with fractional interest attributes", "well point layer with RRC API number linkage", "pipeline corridor linear features with easement width", "temporal versioning for ownership changes"],
+            "failure_signals": ["no coordinate system specification", "failure to handle fractional ownership", "no relational database design for interests"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GEO03",
+      "name": "Plat Analysis Engine",
+      "function": "Read, interpret, and analyze survey plats, subdivision plats, and unit plats for oil and gas operations. Extract legal descriptions, verify dimensions, identify easements and restrictions, and cross-reference with deed records.",
+      "doctrine_topics": [
+        "survey plat reading and interpretation",
+        "subdivision plat analysis and lot identification",
+        "RRC unit plat requirements and format",
+        "plat scale and dimension verification",
+        "easement and right-of-way identification on plats",
+        "plat filing and recording requirements",
+        "replat and plat amendment procedures",
+        "plat to deed description reconciliation",
+        "pipeline and utility location on plats",
+        "digital plat creation and CAD integration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An RRC spacing unit plat shows a 640-acre unit comprising 4 quarter sections from 2 different surveys. The plat indicates the proposed well location is 467 feet from the north line and 660 feet from the east line of the SE/4 of Section 5. Verify the well location meets Rule 37 spacing requirements and identify any potential issues with the multi-survey unit.",
+            "required_elements": ["Rule 37 minimum distance requirements (467/1200)", "multi-survey unit boundary verification", "well location coordinate calculation", "survey gap or overlap analysis at survey boundaries", "setback compliance from all lease lines"],
+            "failure_signals": ["no Rule 37 spacing analysis", "failure to address multi-survey boundary issues", "no well location verification methodology"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GEO04",
+      "name": "Boundary Dispute Engine",
+      "function": "Analyze real property boundary disputes including survey conflicts, adverse possession claims, boundary by acquiescence, and the resolution of overlapping property descriptions using legal principles and surveying evidence.",
+      "doctrine_topics": [
+        "boundary dispute resolution principles",
+        "adverse possession elements and proof (Texas 10-year statute)",
+        "boundary by acquiescence doctrine",
+        "agreed boundary doctrine",
+        "survey conflict resolution (senior vs junior surveys)",
+        "expert surveyor testimony and evidence standards",
+        "quiet title action for boundary disputes",
+        "fence line vs legal boundary analysis",
+        "riparian boundary ambulatory principles",
+        "mineral boundary disputes (horizontal vs vertical severance)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Two adjacent ranch owners have maintained a fence line for 40 years that a new survey reveals is 150 feet east of the actual property boundary, enclosing 12 acres of the eastern neighbor's land. The western neighbor has improved, grazed, and paid taxes on the disputed strip. Minerals have been severed and the western neighbor's lessee has a producing well in the disputed strip. Analyze the boundary dispute including both surface and mineral rights.",
+            "required_elements": ["adverse possession elements under Texas law", "boundary by acquiescence analysis", "mineral rights treatment in adverse possession", "color of title vs limitations title analysis", "impact on existing oil and gas lease and production"],
+            "failure_signals": ["no adverse possession analysis", "failure to address mineral rights separately", "no discussion of producing well impact"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GEO05",
+      "name": "Mineral Estate Mapping Engine",
+      "function": "Map and visualize mineral estate ownership patterns including severed mineral interests, fractional ownership, leasehold positions, and the spatial relationship between mineral estates, well locations, spacing units, and geological formations.",
+      "doctrine_topics": [
+        "mineral estate ownership polygon creation",
+        "fractional mineral interest spatial representation",
+        "vertical mineral estate mapping (depth severance)",
+        "horizontal well lateral path and formation mapping",
+        "spacing unit and pooled unit spatial analysis",
+        "lease expiration and HBP area mapping",
+        "geological formation mapping and cross-section",
+        "mineral ownership change tracking over time",
+        "net mineral acre calculation and mapping",
+        "unleased mineral acreage identification"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Create a mineral estate map for Section 15 where the minerals have been severed 6 times since 1940, with depth severances at 5,000 feet and 10,000 feet, 3 existing horizontal wells (2 in the Wolfcamp A, 1 in the Bone Spring), and 2 pooled units that overlap the section boundaries. Describe the mapping methodology and layers required.",
+            "required_elements": ["temporal ownership chain mapping methodology", "depth severance visualization (3D or stacked 2D)", "horizontal well lateral path mapping with formation", "pooled unit boundary overlay with section", "net mineral acre calculation per depth zone"],
+            "failure_signals": ["no depth severance visualization approach", "failure to integrate well data with ownership", "no pooled unit cross-boundary analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

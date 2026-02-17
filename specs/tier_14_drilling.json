@@ -1,0 +1,430 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "DRL",
+  "tier_name": "Drilling",
+  "domain_description": "Well planning, mud engineering, directional drilling, casing design, cementing, drill string design, bit selection, drilling hydraulics, well control, logging analysis, formation evaluation, stuck pipe prevention, torque and drag modeling, rig selection, and drilling optimization for upstream oil and gas operations. Based on API standards, IADC guidelines, and SPE technical literature.",
+  "authority_sources": [
+    "API RP 13B-1 (Water-Based Drilling Fluids Testing)",
+    "API RP 13B-2 (Oil-Based Drilling Fluids Testing)",
+    "API RP 65 Part 2 (Isolating Potential Flow Zones)",
+    "API Spec 5CT (Casing and Tubing)",
+    "API RP 53 (BOP Equipment Systems)",
+    "IADC Drilling Manual, 12th Edition",
+    "SPE Petroleum Engineering Handbook",
+    "NORSOK D-010 (Well Integrity in Drilling)",
+    "API RP 10B-2 (Well Cementing Testing)",
+    "API Bull 5C3 (Casing Design Formulas)"
+  ],
+  "engines": [
+    {
+      "engine_id": "DRL01",
+      "name": "Well Planning Engine",
+      "function": "Plan well trajectories, casing programs, mud programs, and drilling schedules for vertical, deviated, and horizontal wells considering formation pressures, geological hazards, and regulatory requirements.",
+      "doctrine_topics": [
+        "well trajectory design (vertical, S-curve, J-curve, horizontal)",
+        "casing program design and setting depth selection",
+        "pore pressure and fracture gradient prediction",
+        "well construction timeline and cost estimation",
+        "geological hazard identification and mitigation",
+        "regulatory permit requirements (state and federal)",
+        "anti-collision analysis for pad drilling",
+        "kick tolerance calculations",
+        "well control contingency planning",
+        "offset well analysis and lessons learned"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Plan a horizontal well in the Wolfcamp A formation at 8,500 ft TVD with a 10,000 ft lateral, designing the casing program, mud weights, and trajectory considering a 500 psi depleted zone at 7,200 ft",
+            "required_elements": ["trajectory design with KOP and landing point", "casing program with sizes and setting depths", "mud weight window", "depleted zone management", "kick tolerance", "API 5CT casing selection"],
+            "failure_signals": ["no specific depths or dimensions", "missing depleted zone strategy", "no casing program detail"]
+          },
+          {
+            "question": "How do you design a well plan for a 6-well pad in the Permian Basin with minimum slot spacing and anti-collision requirements?",
+            "required_elements": ["slot spacing calculations", "anti-collision methodology", "separation factor criteria", "survey program design", "wellbore proximity scanning"],
+            "failure_signals": ["no anti-collision analysis", "no specific spacing criteria", "generic pad design"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL02",
+      "name": "Mud Engineering Engine",
+      "function": "Design and optimize drilling fluid systems including water-based, oil-based, and synthetic-based muds with rheology management, solids control, and lost circulation prevention per API RP 13B standards.",
+      "doctrine_topics": [
+        "drilling fluid system selection (WBM, OBM, SBM)",
+        "rheology management (PV, YP, gel strengths, LSYP)",
+        "mud weight optimization and ECD management",
+        "solids control equipment sizing and efficiency",
+        "lost circulation prevention and treatment",
+        "shale inhibition and wellbore stability",
+        "API RP 13B testing procedures and specifications",
+        "filtration control and filter cake quality",
+        "thermal stability of drilling fluids",
+        "environmental compliance and fluid disposal"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an oil-based mud system for drilling through a reactive shale section at 12,000 ft with bottom hole temperature of 280F, specifying rheology targets, oil-water ratio, and emulsifier concentrations",
+            "required_elements": ["OBM formulation", "rheology targets at temperature", "oil-water ratio", "emulsifier selection", "shale inhibition mechanism", "API 13B-2 test requirements"],
+            "failure_signals": ["no specific formulation", "no temperature considerations", "missing API reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL03",
+      "name": "Directional Drilling Engine",
+      "function": "Plan and optimize directional and horizontal well trajectories using motor assemblies, rotary steerable systems, and MWD/LWD tools with real-time trajectory adjustments and geological steering.",
+      "doctrine_topics": [
+        "build-hold-drop trajectory planning",
+        "motor BHA design and bend angle selection",
+        "rotary steerable system selection and operation",
+        "MWD/LWD tool specifications and survey accuracy",
+        "geosteering in horizontal laterals",
+        "dogleg severity limits and fatigue considerations",
+        "toolface control and slide-rotate optimization",
+        "wellbore position uncertainty and ellipse of uncertainty",
+        "magnetic interference and correction methods",
+        "extended reach drilling challenges and limits"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a directional plan to land a horizontal well in a 15-ft thick target zone at 9,000 ft TVD with a build rate of 8 deg/100 ft, specifying BHA configuration and MWD survey requirements",
+            "required_elements": ["build section design", "BHA configuration", "motor specifications", "MWD survey intervals", "target box dimensions", "dogleg severity limits"],
+            "failure_signals": ["no specific BHA components", "no build rate justification", "missing survey requirements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL04",
+      "name": "Casing Design Engine",
+      "function": "Design casing strings for burst, collapse, and tension loads per API Bull 5C3 and API Spec 5CT, including connection selection, wear considerations, and casing-while-drilling applications.",
+      "doctrine_topics": [
+        "burst pressure design with design factors",
+        "collapse pressure design with biaxial corrections",
+        "tension load analysis and running loads",
+        "casing grade and weight selection per API 5CT",
+        "connection type selection (STC, LTC, BTC, premium)",
+        "casing wear analysis and burst derating",
+        "corrosion allowance and H2S/CO2 considerations",
+        "thermal effects on casing design",
+        "casing centralization for cement displacement",
+        "casing-while-drilling design modifications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 9-5/8 inch intermediate casing string for a 15,000 ft well with a pore pressure of 13.5 ppg, fracture gradient of 16.8 ppg, and H2S present at 5000 ppm, specifying grades, weights, and connections",
+            "required_elements": ["burst design calculation", "collapse design calculation", "tension analysis", "API 5CT grade selection", "NACE MR0175 compliance", "connection selection", "design factors"],
+            "failure_signals": ["no load calculations", "no H2S material considerations", "missing design factors"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL05",
+      "name": "Cementing Engine",
+      "function": "Design primary and remedial cement jobs including slurry design, displacement mechanics, centralization, and cement evaluation per API RP 10B-2 and API RP 65.",
+      "doctrine_topics": [
+        "cement slurry design for downhole conditions",
+        "displacement mechanics and flow regime optimization",
+        "centralization analysis and standoff requirements",
+        "cement additive selection (retarders, accelerators, fluid loss)",
+        "foam cement applications and design",
+        "cement bond evaluation (CBL, USIT, cement mapping)",
+        "remedial squeeze cementing techniques",
+        "primary cement job simulation and planning",
+        "cement sheath integrity and long-term durability",
+        "API RP 10B-2 testing requirements and procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a primary cement job for a 7-inch production casing in a 10,000 ft horizontal well with BHST of 250F, specifying lead and tail slurry compositions, centralization plan, and displacement schedule",
+            "required_elements": ["slurry compositions with densities", "additive selection", "centralization plan", "displacement rate and volume", "BHST considerations", "API RP 10B-2 testing"],
+            "failure_signals": ["no specific slurry design", "no centralization analysis", "missing temperature considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL06",
+      "name": "Drill String Design Engine",
+      "function": "Design drill string assemblies including drill pipe, heavyweight drill pipe, drill collars, and specialty tools with tension, torsion, and fatigue analysis for safe drilling operations.",
+      "doctrine_topics": [
+        "drill pipe grade and size selection",
+        "drill collar sizing for weight on bit",
+        "heavyweight drill pipe placement and function",
+        "drill string tension and margin of overpull",
+        "torsional analysis and makeup torque",
+        "fatigue life prediction and inspection criteria",
+        "slip crushing analysis",
+        "drill string vibration modes (lateral, axial, torsional)",
+        "BHA stabilizer placement and gauge protection",
+        "fishing tool specifications and contingency planning"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a drill string for a 12,000 ft measured depth well with 60-degree inclination, specifying pipe sizes, grades, and BHA components to deliver 35,000 lbs WOB with adequate safety margins",
+            "required_elements": ["drill pipe selection", "drill collar sizing", "weight on bit calculation", "tension analysis", "safety margin", "slip crushing check"],
+            "failure_signals": ["no specific pipe grades", "no load calculations", "missing safety margins"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL07",
+      "name": "Bit Selection Engine",
+      "function": "Select and optimize drill bits including PDC, roller cone, and hybrid bits based on formation characteristics, drilling parameters, and bit performance analysis using IADC dull grading.",
+      "doctrine_topics": [
+        "PDC bit design and cutter technology selection",
+        "roller cone bit selection for formation hardness",
+        "hybrid bit applications and design principles",
+        "IADC bit classification system",
+        "IADC dull grading methodology",
+        "bit hydraulics and junk slot area optimization",
+        "rate of penetration optimization per bit type",
+        "bit run analysis and performance comparison",
+        "formation-specific bit selection criteria",
+        "bit cost per foot optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select a PDC bit for drilling a 12-1/4 inch hole through interbedded limestone and shale from 5,000 to 8,500 ft with UCS ranging from 8,000 to 22,000 psi, justifying cutter size, blade count, and hydraulic design",
+            "required_elements": ["bit size and type", "cutter size selection", "blade count justification", "formation matching", "hydraulic design", "expected ROP range", "IADC classification"],
+            "failure_signals": ["no formation-specific selection", "no hydraulic design", "generic bit recommendation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL08",
+      "name": "Drilling Hydraulics Engine",
+      "function": "Calculate and optimize drilling hydraulics including standpipe pressure, annular velocities, equivalent circulating density, hole cleaning, and bit hydraulics for efficient drilling operations.",
+      "doctrine_topics": [
+        "standpipe pressure loss calculation (Bingham, Power Law, Herschel-Bulkley)",
+        "annular velocity and hole cleaning requirements",
+        "equivalent circulating density (ECD) management",
+        "bit hydraulics optimization (TFA, HSI, jet impact force)",
+        "surge and swab pressure prediction",
+        "cuttings transport ratio and minimum flow rates",
+        "hydraulic horsepower distribution across system",
+        "pressure loss in downhole tools and motors",
+        "high-angle and horizontal hole cleaning strategies",
+        "managed pressure drilling (MPD) hydraulics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Calculate the complete hydraulics for a 10,000 ft horizontal well with 12.5 ppg OBM, 5-inch drill pipe, 8-1/2 inch hole, and 3 TFA nozzles, determining optimal flow rate for hole cleaning in the lateral section",
+            "required_elements": ["pressure loss breakdown by component", "ECD at shoe and TD", "annular velocity", "cuttings transport ratio", "bit hydraulic optimization", "flow rate recommendation"],
+            "failure_signals": ["no pressure loss calculations", "no ECD analysis", "missing horizontal hole cleaning analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL09",
+      "name": "Well Control Engine",
+      "function": "Analyze well control scenarios including kick detection, kill sheet calculations, and kill procedures per API RP 53 and IADC well control guidelines for safe pressure management.",
+      "doctrine_topics": [
+        "kick detection methods and warning signs",
+        "kill sheet calculations and preparation",
+        "driller's method and wait-and-weight method comparison",
+        "volumetric well control technique",
+        "shut-in procedures and pressure monitoring",
+        "maximum allowable annular surface pressure (MAASP)",
+        "gas migration and trapped pressure management",
+        "well control during tripping operations",
+        "underground blowout detection and response",
+        "well control equipment testing per API RP 53"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A kick is detected at 14,000 ft TVD with shut-in drill pipe pressure of 850 psi, shut-in casing pressure of 1,100 psi, and 30 bbl pit gain. Calculate the kill mud weight and walk through the wait-and-weight kill procedure",
+            "required_elements": ["kill mud weight calculation", "ICP and FCP calculation", "pressure schedule", "kill procedure steps", "gas migration considerations", "MAASP calculation"],
+            "failure_signals": ["no specific calculations", "incorrect kill method description", "missing pressure schedule"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL10",
+      "name": "Logging Analysis Engine",
+      "function": "Interpret wireline and LWD logs including gamma ray, resistivity, density, neutron, sonic, and NMR for formation evaluation, lithology identification, and pay zone determination.",
+      "doctrine_topics": [
+        "gamma ray log interpretation and lithology identification",
+        "resistivity log analysis and Archie equation application",
+        "density-neutron crossplot for porosity and lithology",
+        "sonic log interpretation and porosity calculation",
+        "NMR log interpretation for pore size distribution",
+        "log quality control and environmental corrections",
+        "shaly sand analysis and clay volume determination",
+        "formation water resistivity (Rw) determination",
+        "pay zone identification and net pay cutoffs",
+        "log correlation across multiple wells"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Interpret a log suite (GR, deep/shallow resistivity, density, neutron, sonic) for a Wolfcamp interval from 8,000 to 9,000 ft, identifying productive zones, calculating porosity, and estimating water saturation using the Archie equation",
+            "required_elements": ["GR-based lithology", "Archie equation application", "porosity calculation", "Sw determination", "pay zone identification", "log quality assessment"],
+            "failure_signals": ["no specific calculations", "no Archie equation parameters", "generic log description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL11",
+      "name": "Formation Evaluation Engine",
+      "function": "Evaluate reservoir properties including porosity, permeability, saturation, and producibility from core data, logs, DST results, and PVT analysis for reserve estimation and completion optimization.",
+      "doctrine_topics": [
+        "core analysis and core-to-log calibration",
+        "permeability estimation from logs and correlations",
+        "formation damage assessment and skin factor",
+        "drill stem test (DST) interpretation",
+        "PVT analysis and fluid characterization",
+        "capillary pressure and relative permeability",
+        "reservoir pressure and temperature profiling",
+        "net-to-gross ratio determination",
+        "formation evaluation while drilling (FEWD)",
+        "special core analysis (SCAL) interpretation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate a tight oil reservoir with 8% porosity, 0.1 md permeability, and 45% water saturation from integrated core and log data, assessing producibility and recommending completion strategy",
+            "required_elements": ["porosity-permeability relationship", "producibility assessment", "cutoff criteria", "completion recommendation", "core-log integration", "reserve estimation approach"],
+            "failure_signals": ["no quantitative evaluation", "no producibility assessment", "missing tight rock considerations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL12",
+      "name": "Stuck Pipe Analysis Engine",
+      "function": "Diagnose stuck pipe mechanisms, predict sticking risk, and recommend prevention and freeing procedures based on drilling parameters, formation characteristics, and historical incident data.",
+      "doctrine_topics": [
+        "differential sticking mechanism and prevention",
+        "mechanical sticking from wellbore geometry",
+        "key seating diagnosis and remediation",
+        "pack-off and bridge formation analysis",
+        "stuck pipe freeing techniques (jarring, spotting fluids)",
+        "sticking risk prediction models",
+        "drilling parameter optimization to reduce sticking",
+        "wellbore stability and borehole collapse",
+        "hole cleaning inadequacy as stuck pipe precursor",
+        "stuck pipe cost analysis and NPT reduction"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Diagnose the sticking mechanism for a pipe stuck at 11,500 ft in a 12-1/4 inch hole with free pipe at 8,200 ft, circulating but unable to rotate or reciprocate, with 14 ppg OBM and 200 psi overbalance",
+            "required_elements": ["differential sticking diagnosis", "free point estimation", "freeing procedure", "spotting fluid recommendation", "prevention measures", "NPT analysis"],
+            "failure_signals": ["no mechanism diagnosis", "no free point analysis", "generic freeing advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL13",
+      "name": "Torque and Drag Engine",
+      "function": "Model torque and drag forces in directional and horizontal wells to predict hook loads, surface torque, and buckling limits for safe drill string and casing running operations.",
+      "doctrine_topics": [
+        "soft string torque and drag model fundamentals",
+        "stiff string model for improved accuracy",
+        "friction factor estimation and calibration",
+        "casing running loads and torque prediction",
+        "drill string buckling analysis (sinusoidal and helical)",
+        "weight on bit transfer in horizontal sections",
+        "torque reduction strategies (lubricants, rollers)",
+        "completion string installation torque and drag",
+        "extended reach drilling torque limits",
+        "real-time torque and drag monitoring"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Model the torque and drag for running 5-1/2 inch casing in a horizontal well with 90-degree inclination at 8,000 ft TVD and 18,000 ft MD, determining if the casing can be pushed to TD or if flotation is required",
+            "required_elements": ["hook load prediction", "drag force analysis", "friction factor assumptions", "buckling check", "flotation recommendation", "torque at surface"],
+            "failure_signals": ["no specific load calculations", "no friction factor discussion", "missing buckling analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL14",
+      "name": "Rig Selection Engine",
+      "function": "Select and evaluate drilling rigs based on well requirements including depth capacity, hook load, pump capacity, power systems, and mobilization logistics for optimal drilling performance.",
+      "doctrine_topics": [
+        "rig classification and depth rating systems",
+        "hook load and derrick capacity requirements",
+        "mud pump capacity and hydraulic requirements",
+        "power system selection (diesel, SCR, VFD, AC)",
+        "rig substructure and rotary table specifications",
+        "top drive vs kelly drive selection criteria",
+        "rig mobilization and demobilization logistics",
+        "rig rate analysis and contract negotiation",
+        "rig inspection and pre-spud checklist",
+        "walking rig and pad drilling efficiency"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select a rig for drilling six horizontal Wolfcamp wells from a single pad, each 20,000 ft MD and 10,000 ft TVD, specifying minimum hook load, pump capacity, top drive torque, and pad drilling requirements",
+            "required_elements": ["hook load calculation", "pump capacity for hydraulics", "top drive specifications", "pad drilling capability", "rig class selection", "mobilization considerations"],
+            "failure_signals": ["no specific rig specifications", "no load calculations", "missing pad drilling analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "DRL15",
+      "name": "Drilling Optimization Engine",
+      "function": "Optimize drilling performance using real-time data analysis, mechanical specific energy (MSE) monitoring, rate of penetration models, and drilling dysfunction detection to minimize well construction costs.",
+      "doctrine_topics": [
+        "mechanical specific energy (MSE) optimization",
+        "rate of penetration (ROP) modeling and prediction",
+        "drilling dysfunction detection (stick-slip, whirl, bounce)",
+        "weight on bit and RPM optimization",
+        "real-time drilling parameter advisory systems",
+        "drilling performance benchmarking and offset analysis",
+        "invisible lost time (ILT) identification and reduction",
+        "tripping speed optimization",
+        "connection time analysis and reduction",
+        "drilling cost per foot optimization methodology"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze drilling data showing 45 ft/hr ROP dropping to 12 ft/hr at 10,500 ft with increasing MSE from 15 to 65 ksi, and diagnose the performance degradation with recommended parameter adjustments",
+            "required_elements": ["MSE analysis", "ROP decline diagnosis", "drilling dysfunction identification", "parameter recommendations (WOB, RPM, flow)", "bit performance assessment", "cost impact analysis"],
+            "failure_signals": ["no MSE analysis", "no specific parameter recommendations", "generic optimization advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "RAIL",
+  "tier_name": "Railroad",
+  "domain_description": "Analysis of railroad engineering, locomotive systems, signal and communication systems, bridge and structure assessment, freight operations, safety management, regulatory compliance, and infrastructure planning. Based on FRA regulations, AREMA Manual for Railway Engineering, AAR standards, and PTC implementation requirements.",
+  "authority_sources": [
+    "FRA 49 CFR Parts 200-299 (Federal Railroad Administration Regulations)",
+    "AREMA Manual for Railway Engineering",
+    "AAR Standards and Recommended Practices",
+    "49 CFR Part 236 (Rules, Standards, and Instructions for Signal and Train Control)",
+    "49 CFR Part 213 (Track Safety Standards)",
+    "49 CFR Part 229 (Railroad Locomotive Safety Standards)",
+    "PTC Implementation Rules (49 CFR Part 236 Subpart I)",
+    "ASCE Manual of Practice for Railway Engineering",
+    "AAR Manual of Standards and Recommended Practices",
+    "GCOR (General Code of Operating Rules)"
+  ],
+  "engines": [
+    {
+      "engine_id": "RAIL01",
+      "name": "Track Engineering Engine",
+      "function": "Analyze railroad track design, rail profile selection, ballast specifications, crosstie spacing, curve and superelevation calculations, track geometry, and maintenance scheduling per FRA 49 CFR Part 213 and AREMA standards.",
+      "doctrine_topics": [
+        "FRA track class standards and speed limits",
+        "rail profile selection and wear analysis",
+        "ballast specification and gradation requirements",
+        "crosstie spacing and material selection",
+        "curve superelevation and spiral design",
+        "track geometry measurement and tolerances",
+        "rail defect classification and detection",
+        "continuous welded rail CWR stress management",
+        "turnout and crossover design",
+        "track maintenance scheduling and surfacing cycles"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design the track structure for a Class 4 main line carrying 40 MGT annually with 286,000 lb car loads, including rail weight, tie spacing, and ballast depth requirements",
+            "required_elements": ["FRA Class 4 speed limits", "rail weight selection 136 RE or heavier", "tie spacing calculation", "ballast depth and shoulder width", "subgrade preparation", "annual tonnage impact on maintenance cycle"],
+            "failure_signals": ["no FRA class reference", "missing tonnage-based design", "no rail weight specification", "generic track description"]
+          },
+          {
+            "question": "Calculate the superelevation and spiral length for a 3-degree curve on Class 4 track with 60 mph freight and 79 mph passenger traffic",
+            "required_elements": ["equilibrium elevation calculation", "actual superelevation selection", "unbalanced elevation limits", "spiral length formula", "AREMA recommended practices", "cant deficiency"],
+            "failure_signals": ["no degree of curve reference", "missing speed-based calculation", "no spiral transition", "ignoring mixed traffic"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL02",
+      "name": "Locomotive Systems Engine",
+      "function": "Analyze diesel-electric and electric locomotive systems including prime mover performance, traction motor characteristics, adhesion management, dynamic braking, and locomotive consist optimization per FRA Part 229 and AAR standards.",
+      "doctrine_topics": [
+        "diesel-electric locomotive power systems",
+        "traction motor characteristics and thermal limits",
+        "adhesion management and wheel slip control",
+        "dynamic braking performance and grid cooling",
+        "locomotive consist optimization and MU operation",
+        "locomotive air brake systems (26-L and CCB)",
+        "FRA Part 229 safety standards compliance",
+        "locomotive emissions Tier 4 requirements",
+        "distributed power DP operations",
+        "locomotive fuel efficiency optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Determine the locomotive consist required for a 15,000-ton coal train over a 1.5% ruling grade, 200-mile route with 4400 HP AC traction units",
+            "required_elements": ["tractive effort calculation", "grade resistance", "train resistance Davis formula", "horsepower per trailing ton", "distributed power configuration", "dynamic braking requirements on descent"],
+            "failure_signals": ["no resistance calculations", "missing grade analysis", "no DP consideration", "arbitrary locomotive count"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL03",
+      "name": "Signal Systems Engine",
+      "function": "Analyze railroad signal systems including wayside signaling, Positive Train Control PTC, communication-based train control, interlocking design, and signal maintenance per FRA 49 CFR Part 236.",
+      "doctrine_topics": [
+        "wayside signal aspects and indications",
+        "Positive Train Control PTC architecture",
+        "interlocking design and route locking",
+        "track circuit design and insulated joints",
+        "signal system vital logic requirements",
+        "communication-based train control CBTC",
+        "grade crossing warning systems",
+        "signal maintenance and testing requirements",
+        "dark territory operations and rules",
+        "centralized traffic control CTC systems"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a PTC overlay system for a 150-mile Class I railroad subdivision currently operating under CTC with wayside signals, handling both freight and Amtrak passenger service",
+            "required_elements": ["PTC system architecture components", "wayside interface units", "onboard locomotive equipment", "back office server requirements", "interoperability with host railroad", "FRA Part 236 Subpart I compliance"],
+            "failure_signals": ["no PTC architecture detail", "missing interoperability", "no FRA regulatory reference", "generic signal description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL04",
+      "name": "Bridge Analysis Engine",
+      "function": "Analyze railroad bridge structural capacity, load rating, inspection requirements, fatigue assessment, and rehabilitation planning per AREMA Chapter 15 and FRA bridge safety standards.",
+      "doctrine_topics": [
+        "AREMA Cooper E loading and equivalent loads",
+        "bridge load rating normal and maximum",
+        "steel bridge fatigue life assessment",
+        "concrete bridge deterioration analysis",
+        "timber bridge inspection and capacity",
+        "bridge inspection frequency and reporting FRA",
+        "seismic evaluation of railroad bridges",
+        "scour analysis at bridge foundations",
+        "bridge rehabilitation and strengthening methods",
+        "movable bridge mechanical and electrical systems"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Load rate a 100-year-old steel through-plate girder bridge with span of 60 feet for current 286,000 lb railcar loading, identifying critical members and remaining fatigue life",
+            "required_elements": ["Cooper E equivalent load", "member stress analysis", "section loss measurement", "fatigue category classification", "remaining fatigue life calculation", "load rating factor"],
+            "failure_signals": ["no Cooper loading reference", "missing section loss impact", "no fatigue analysis", "generic bridge assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL05",
+      "name": "Freight Operations Engine",
+      "function": "Analyze railroad freight operations including train planning, yard operations, car scheduling, intermodal logistics, and service reliability optimization per AAR standards and STB reporting.",
+      "doctrine_topics": [
+        "train plan optimization and blocking strategy",
+        "classification yard hump and flat switching",
+        "car scheduling and fleet management",
+        "intermodal terminal operations and drayage",
+        "train handling rules and air brake management",
+        "railroad capacity analysis and simulation",
+        "crew management and Hours of Service compliance",
+        "freight car loading and securement AAR rules",
+        "hazardous materials transportation 49 CFR 174",
+        "service metrics velocity and dwell time"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Optimize the blocking plan for a classification yard handling 2,500 cars per day with 45 blocks, considering connection reliability and car velocity targets",
+            "required_elements": ["block swap analysis", "connection reliability metrics", "car velocity calculation", "hump production rates", "trim and departure track utilization", "block-to-train assignment"],
+            "failure_signals": ["no quantitative metrics", "missing connection analysis", "no yard capacity consideration", "generic operations description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL06",
+      "name": "Safety Management Engine",
+      "function": "Analyze railroad safety management systems, accident investigation, risk assessment, hazard analysis, and FRA safety compliance per 49 CFR Part 270 and system safety principles.",
+      "doctrine_topics": [
+        "system safety program plan FRA Part 270",
+        "railroad accident investigation methodology",
+        "risk assessment matrix and hazard analysis",
+        "human factors in railroad operations",
+        "fatigue risk management systems",
+        "safety culture assessment and improvement",
+        "FRA reportable accident and incident criteria",
+        "grade crossing safety and diagnostic analysis",
+        "emergency response planning for railroads",
+        "safety data analysis and trending"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Develop a risk assessment for implementing remote-controlled locomotive operations in a flat switching yard with 50 daily moves adjacent to a public highway",
+            "required_elements": ["hazard identification methodology", "risk matrix scoring", "mitigation measures hierarchy", "FRA regulatory requirements for RCL", "public safety considerations", "human factors analysis"],
+            "failure_signals": ["no structured risk methodology", "missing public safety analysis", "no FRA RCL rules reference", "qualitative-only assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL07",
+      "name": "Regulatory Compliance Engine",
+      "function": "Analyze FRA regulatory compliance requirements, audit preparation, reporting obligations, waiver processes, and enforcement actions across all 49 CFR railroad safety regulations.",
+      "doctrine_topics": [
+        "FRA inspection and audit procedures",
+        "49 CFR Part 213 track compliance documentation",
+        "49 CFR Part 229 locomotive compliance",
+        "49 CFR Part 232 brake system regulations",
+        "hours of service law 49 CFR Part 228",
+        "railroad operating rules 49 CFR Part 217",
+        "FRA penalty assessment and civil penalty schedule",
+        "railroad safety waiver process",
+        "annual inspection and certification requirements",
+        "environmental compliance for railroad operations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A railroad receives an FRA Notice of Proposed Penalty for track safety violations including wide gauge, missing rail anchors, and defective ties on Class 3 track. Outline the response strategy and remediation plan.",
+            "required_elements": ["49 CFR Part 213 specific violation sections", "penalty mitigation factors", "remediation timeline requirements", "inspection documentation requirements", "good faith compliance defense", "FRA conference process"],
+            "failure_signals": ["no specific CFR citations", "missing penalty mitigation strategy", "no remediation documentation", "generic compliance advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "RAIL08",
+      "name": "Infrastructure Planning Engine",
+      "function": "Analyze railroad infrastructure investment planning, capacity modeling, network simulation, capital project prioritization, and long-range strategic planning per STB and ASCE methodologies.",
+      "doctrine_topics": [
+        "railroad capacity analysis and modeling",
+        "capital investment prioritization frameworks",
+        "network simulation and bottleneck identification",
+        "siding and passing track spacing optimization",
+        "terminal and yard capacity expansion planning",
+        "rail corridor acquisition and preservation",
+        "grade separation project justification",
+        "intermodal facility site selection criteria",
+        "rail traffic forecasting methodologies",
+        "public-private partnership structures for rail"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate the capacity of a 200-mile single-track railroad subdivision with 8 sidings averaging 8,000 feet, handling 18 trains per day, and recommend infrastructure investments to increase capacity to 28 trains per day",
+            "required_elements": ["theoretical vs practical capacity calculation", "siding spacing and length analysis", "CTC vs DTC signaling impact", "double-track segment prioritization", "capital cost estimation methodology", "train simulation modeling"],
+            "failure_signals": ["no capacity calculation methodology", "missing siding analysis", "no cost-benefit framework", "arbitrary infrastructure recommendations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "PRB",
+  "tier_name": "Probate",
+  "domain_description": "Comprehensive probate and estate administration analysis covering will contests, estate administration, trust administration, guardianship proceedings, heirship determination, probate litigation, estate planning, and fiduciary duty analysis. Grounded in the Uniform Probate Code, Texas Estates Code, Uniform Trust Code, Restatement of Trusts, and state-specific probate statutes.",
+  "authority_sources": [
+    "Uniform Probate Code (UPC)",
+    "Texas Estates Code (Chapters 22-456)",
+    "Uniform Trust Code (UTC)",
+    "Restatement (Third) of Trusts",
+    "Restatement (Third) of Property: Wills and Other Donative Transfers",
+    "Texas Property Code (Trust Code, Chapters 111-115)",
+    "Uniform Guardianship and Conservatorship Act",
+    "Internal Revenue Code Chapters 11-13 (Estate/Gift/GST Tax)",
+    "American College of Trust and Estate Counsel (ACTEC) Commentaries",
+    "Uniform Simultaneous Death Act"
+  ],
+  "engines": [
+    {
+      "engine_id": "PRB01",
+      "name": "Will Contest Engine",
+      "function": "Analyze will contest claims including testamentary capacity, undue influence, fraud, duress, improper execution, and standing requirements. Evaluate evidence for challenge and defense strategies under state probate codes.",
+      "doctrine_topics": [
+        "testamentary capacity requirements and burden of proof",
+        "undue influence elements and circumstantial evidence",
+        "fraud in the inducement vs fraud in the execution",
+        "duress and coercion in will execution",
+        "will execution formalities (attestation, witnesses, notarization)",
+        "standing to contest a will (interested persons)",
+        "statute of limitations for will contests",
+        "no-contest (in terrorem) clause enforceability",
+        "tortious interference with inheritance",
+        "burden shifting in undue influence cases"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 92-year-old testator executed a new will 3 weeks before death, disinheriting 4 children and leaving everything to a live-in caregiver who drove the testator to the attorney's office. The prior will divided the estate equally among the children. Two of the children want to contest. Analyze the undue influence and testamentary capacity claims.",
+            "required_elements": ["undue influence elements (susceptibility, opportunity, disposition, coveted result)", "testamentary capacity standard (know nature of property, natural objects of bounty, testamentary plan)", "presumption of undue influence factors", "confidential relationship analysis", "burden of proof allocation"],
+            "failure_signals": ["no undue influence elements analyzed", "failure to address capacity standard", "no discussion of confidential relationship presumption"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB02",
+      "name": "Estate Administration Engine",
+      "function": "Analyze estate administration procedures including probate of wills, appointment of personal representatives, creditor claims, asset marshaling, distribution, and accounting under dependent and independent administration.",
+      "doctrine_topics": [
+        "probate application and will admission procedures",
+        "independent vs dependent administration selection",
+        "personal representative appointment and qualification",
+        "creditor claims process and priority (secured, unsecured, priority)",
+        "estate asset inventory and appraisement",
+        "family allowance, homestead, and exempt property",
+        "abatement and ademption of devises",
+        "partial and final distribution procedures",
+        "estate accounting and reporting obligations",
+        "closing estate and discharge of personal representative"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A decedent dies in Texas with a will naming an independent executor. The estate includes a homestead, $500,000 in investments, $200,000 in debts (including a $150,000 mortgage), and a pending personal injury lawsuit valued at $300,000. The estate is insolvent if the lawsuit is excluded. Analyze the administration priorities and creditor claim handling.",
+            "required_elements": ["independent administration procedures under Texas Estates Code", "creditor claim classification and priority", "homestead protection from creditors", "family allowance and exempt property set-aside", "insolvent estate distribution rules"],
+            "failure_signals": ["no creditor priority analysis", "failure to address homestead exemption", "no insolvency administration discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB03",
+      "name": "Trust Administration Engine",
+      "function": "Analyze trust administration issues including trustee duties, investment standards, trust accounting, beneficiary rights, trust modification, and termination under the Uniform Trust Code and state trust law.",
+      "doctrine_topics": [
+        "trustee fiduciary duties (loyalty, impartiality, prudence)",
+        "prudent investor rule and investment standards (UPIA)",
+        "trust accounting and beneficiary reporting",
+        "principal and income allocation (Uniform Act)",
+        "trust modification and reformation (UTC 410-417)",
+        "decanting (trust-to-trust transfer) authority",
+        "beneficiary rights to information and accounting",
+        "trust termination and distribution procedures",
+        "directed trust and trust protector provisions",
+        "trustee removal and successor appointment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A trustee of a $10 million irrevocable trust invested 80% in a single stock (the family business) and 20% in cash. The trust instrument says 'the trustee may retain any asset received from the settlor.' The stock has declined 40% in value. The income beneficiary demands the trustee diversify. Analyze the trustee's duty to diversify vs the retention clause.",
+            "required_elements": ["prudent investor rule diversification requirement", "retention clause interpretation", "trustee's duty to review retained assets", "beneficiary standing to compel diversification", "trustee liability for failure to diversify"],
+            "failure_signals": ["no prudent investor rule analysis", "failure to address retention clause effect", "no beneficiary remedy discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB04",
+      "name": "Guardianship Engine",
+      "function": "Analyze guardianship and conservatorship proceedings for incapacitated persons and minors including determination of incapacity, guardian appointment, powers and duties, alternatives to guardianship, and guardianship termination.",
+      "doctrine_topics": [
+        "incapacity determination standards and evidence",
+        "guardian of the person vs guardian of the estate",
+        "guardian appointment priority and qualification",
+        "least restrictive alternative requirement",
+        "guardian powers, duties, and limitations",
+        "annual reporting and accounting requirements",
+        "supported decision-making as alternative",
+        "minor guardianship vs custody distinction",
+        "emergency and temporary guardianship",
+        "guardianship modification and termination"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An 80-year-old parent with early-stage dementia owns $2 million in assets and a home. Two adult children disagree about care and finances. One child seeks full guardianship while the other argues for a supported decision-making agreement. The parent can still express preferences but struggles with complex financial decisions. Analyze the appropriate level of intervention.",
+            "required_elements": ["incapacity standard and evidence requirements", "least restrictive alternative doctrine", "supported decision-making vs guardianship comparison", "limited guardianship option", "court investigation and attorney ad litem role"],
+            "failure_signals": ["no least restrictive alternative analysis", "failure to address supported decision-making", "no graduated intervention discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB05",
+      "name": "Heirship Determination Engine",
+      "function": "Analyze heirship determination proceedings for intestate decedents including intestate succession rules, affidavits of heirship, judicial declarations of heirship, and the effect of heirship determinations on property title.",
+      "doctrine_topics": [
+        "intestate succession statutory framework by state",
+        "per stirpes vs per capita distribution methods",
+        "community property vs separate property in intestacy",
+        "affidavit of heirship requirements and limitations",
+        "judicial declaration of heirship proceedings",
+        "unknown heir search and notice requirements",
+        "half-blood and adopted heir treatment",
+        "posthumous and nonmarital child heirship rights",
+        "ancestral property doctrines",
+        "heirship determination effect on real property title"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Texas mineral owner died intestate in 1975 with no surviving spouse. He had 3 children (one of whom predeceased him leaving 2 grandchildren), an adopted child, and a non-marital child who was never formally acknowledged. The minerals are community property acquired during a prior marriage. No probate was ever opened. Analyze the heirship and the procedure needed to clear title to the mineral interest.",
+            "required_elements": ["Texas intestate succession for community property", "per stirpes representation for predeceased child's share", "adopted child equal treatment", "non-marital child inheritance rights and proof", "judicial declaration of heirship procedure for clearing title"],
+            "failure_signals": ["incorrect inheritance shares", "failure to address non-marital child rights", "no procedure for title clearing"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB06",
+      "name": "Probate Litigation Engine",
+      "function": "Analyze probate-related litigation including fiduciary breach claims, beneficiary disputes, trust contests, accounting objections, and fee disputes in the probate court system.",
+      "doctrine_topics": [
+        "breach of fiduciary duty claims and remedies",
+        "beneficiary standing and intervention rights",
+        "trust contest grounds and procedures",
+        "accounting objections and surcharge proceedings",
+        "executor and trustee fee disputes",
+        "probate court jurisdiction and venue",
+        "discovery in probate proceedings",
+        "mediation and settlement in probate disputes",
+        "damages and disgorgement for fiduciary breach",
+        "statute of limitations for probate claims"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A trustee of a family trust made a $1 million loan to his own business at below-market interest rates without beneficiary consent. The loan was partially repaid but $400,000 remains outstanding and the business has filed bankruptcy. Analyze the breach of fiduciary duty, available remedies, and potential trustee liability.",
+            "required_elements": ["self-dealing prohibition and duty of loyalty", "no further inquiry rule for self-dealing", "surcharge calculation", "trustee removal grounds", "constructive trust and tracing remedies"],
+            "failure_signals": ["no self-dealing analysis", "failure to identify no further inquiry rule", "no remedy calculation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB07",
+      "name": "Estate Planning Engine",
+      "function": "Analyze estate planning strategies including will and trust drafting, tax minimization, asset protection, business succession planning, charitable giving, and incapacity planning using revocable trusts, irrevocable trusts, and advanced techniques.",
+      "doctrine_topics": [
+        "revocable living trust vs will-based estate plan",
+        "irrevocable life insurance trust (ILIT) design",
+        "grantor retained annuity trust (GRAT) strategies",
+        "family limited partnership and LLC planning",
+        "charitable remainder and charitable lead trusts",
+        "generation-skipping trust (dynasty trust) planning",
+        "power of attorney and healthcare directive drafting",
+        "spousal lifetime access trust (SLAT) design",
+        "asset protection trust planning (domestic and foreign)",
+        "business succession planning and buy-sell agreements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A married couple (both age 60) has a combined estate of $30 million including a $10 million family business, $5 million in real estate, and $15 million in investments. They want to minimize estate taxes, provide for their 3 children, and transition the business to 2 of the 3 children. Design an estate plan framework.",
+            "required_elements": ["credit shelter/bypass trust strategy", "GRAT or SLAT for wealth transfer", "business succession vehicle (ILIT, buy-sell, FLP)", "equalizing estate for non-business child", "generation-skipping planning for grandchildren"],
+            "failure_signals": ["no tax minimization strategy", "failure to address business succession", "no discussion of equalizing distributions"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "PRB08",
+      "name": "Fiduciary Duty Engine",
+      "function": "Analyze fiduciary duty obligations of executors, trustees, guardians, and agents under powers of attorney including duty of loyalty, prudence, impartiality, and the duty to account, with standards drawn from the Restatement of Trusts and state fiduciary codes.",
+      "doctrine_topics": [
+        "duty of loyalty and prohibition on self-dealing",
+        "duty of prudence and reasonable care standard",
+        "duty of impartiality among beneficiaries",
+        "duty to account and provide information",
+        "duty to invest prudently (UPIA standards)",
+        "duty to administer and not delegate improperly",
+        "co-fiduciary liability and joint responsibility",
+        "exculpation clause limitations",
+        "fiduciary compensation standards",
+        "fiduciary liability insurance and bonding"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A trust has an income beneficiary (surviving spouse, age 75) and remainder beneficiaries (3 adult children). The trustee invests the $5 million trust entirely in growth stocks with no dividend yield, generating zero income distributions for the spouse. The trust instrument is silent on the power to adjust. Analyze the trustee's breach of duty of impartiality and available remedies.",
+            "required_elements": ["duty of impartiality between income and remainder beneficiaries", "total return investing and unitrust conversion", "power to adjust under Uniform Principal and Income Act", "prudent investor rule application", "beneficiary remedies for breach of impartiality"],
+            "failure_signals": ["no impartiality analysis", "failure to discuss total return or unitrust approach", "no UPIA reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

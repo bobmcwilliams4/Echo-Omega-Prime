@@ -1,0 +1,295 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "MATH",
+  "tier_name": "Mathematics",
+  "domain_description": "Applied and theoretical mathematics spanning statistical analysis, linear algebra, calculus, probability theory, numerical methods, optimization, graph theory, cryptography, signal processing, and machine learning mathematics. Based on IEEE standards, NIST statistical guidelines, and established mathematical frameworks.",
+  "authority_sources": [
+    "IEEE Standards for Floating Point Arithmetic (IEEE 754)",
+    "NIST SP 800-57 (Recommendation for Key Management)",
+    "NIST SP 800-22 (Statistical Test Suite for Random Number Generators)",
+    "ISO 28640 (Random Variate Generation Methods)",
+    "NIST/SEMATECH e-Handbook of Statistical Methods",
+    "ISO 5725 (Accuracy of Measurement Methods)",
+    "FIPS 186-5 (Digital Signature Standard)",
+    "ISO 3534 (Statistics - Vocabulary and Symbols)",
+    "IEEE 1619 (Standard for Cryptographic Protection of Data on Block Storage)",
+    "NIST SP 800-185 (SHA-3 Derived Functions)"
+  ],
+  "engines": [
+    {
+      "engine_id": "MATH01",
+      "name": "Statistical Analysis Engine",
+      "function": "Perform comprehensive statistical analyses including hypothesis testing, regression modeling, ANOVA, Bayesian inference, time series analysis, and experimental design with proper assumptions checking and effect size reporting.",
+      "doctrine_topics": [
+        "hypothesis testing framework and p-value interpretation",
+        "multiple regression and model diagnostics",
+        "ANOVA and post-hoc comparison methods",
+        "Bayesian inference and posterior estimation",
+        "time series analysis ARIMA/GARCH models",
+        "experimental design DOE factorial and response surface",
+        "non-parametric methods Mann-Whitney/Kruskal-Wallis",
+        "survival analysis Kaplan-Meier and Cox regression",
+        "multivariate analysis PCA/factor analysis/clustering",
+        "statistical power and sample size determination"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A clinical trial with 200 patients per arm shows a treatment effect of 5% absolute risk reduction (15% vs 10% event rate) with p=0.08. Calculate the power of the study, determine the sample size needed for 80% power at alpha=0.05, and discuss the clinical vs statistical significance.",
+            "required_elements": ["power calculation from observed effect", "sample size formula for two proportions", "confidence interval for risk reduction", "NNT calculation", "clinical significance assessment", "type II error interpretation"],
+            "failure_signals": ["no power calculation", "missing sample size formula", "no NNT", "conflating statistical and clinical significance"]
+          },
+          {
+            "question": "Fit a multiple regression model to predict house prices using square footage, bedrooms, age, and neighborhood. The residual plot shows heteroscedasticity and the VIF for bedrooms and square footage exceed 5. Address these issues.",
+            "required_elements": ["heteroscedasticity remediation WLS or transformation", "multicollinearity diagnosis VIF interpretation", "variable selection or regularization approach", "model diagnostic plots", "robust standard errors consideration", "cross-validation for prediction accuracy"],
+            "failure_signals": ["ignoring heteroscedasticity", "no VIF remediation", "no model diagnostics", "reporting R-squared only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH02",
+      "name": "Linear Algebra Engine",
+      "function": "Analyze linear systems, matrix decompositions, eigenvalue problems, vector spaces, linear transformations, and applications in data science, physics, and engineering using rigorous algebraic frameworks.",
+      "doctrine_topics": [
+        "matrix decompositions LU/QR/SVD/Cholesky",
+        "eigenvalue problems and spectral theory",
+        "vector spaces and linear transformations",
+        "systems of linear equations and solution methods",
+        "least squares and pseudoinverse",
+        "positive definite matrices and Cholesky factorization",
+        "sparse matrix methods and iterative solvers",
+        "tensor algebra and multilinear maps",
+        "numerical stability and condition numbers",
+        "applications in PCA and dimensionality reduction"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 10000x500 data matrix has condition number 10^8. Explain the numerical implications for least-squares solution, compare SVD vs QR approaches, and propose regularization strategies.",
+            "required_elements": ["condition number interpretation for ill-conditioning", "SVD-based pseudoinverse with truncation", "QR factorization comparison", "Tikhonov regularization ridge regression", "numerical precision loss analysis", "cross-validation for regularization parameter"],
+            "failure_signals": ["no condition number discussion", "missing regularization", "single method without comparison", "ignoring numerical stability"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH03",
+      "name": "Calculus Engine",
+      "function": "Analyze differential and integral calculus problems including multivariable calculus, differential equations, vector calculus, complex analysis, and applications in physics and engineering.",
+      "doctrine_topics": [
+        "multivariable calculus gradients and Hessians",
+        "ordinary differential equations analytical methods",
+        "partial differential equations classification and methods",
+        "vector calculus div/grad/curl and integral theorems",
+        "complex analysis Cauchy integral and residues",
+        "Fourier and Laplace transform applications",
+        "calculus of variations Euler-Lagrange",
+        "series solutions and special functions",
+        "numerical integration quadrature methods",
+        "asymptotic analysis and perturbation methods"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Solve the heat equation u_t = k*u_xx on a rod of length L with boundary conditions u(0,t)=0, u(L,t)=0 and initial condition u(x,0) = sin(3*pi*x/L). Derive the solution using separation of variables and discuss convergence.",
+            "required_elements": ["separation of variables setup", "Sturm-Liouville eigenvalue problem", "Fourier coefficient calculation", "analytical solution expression", "convergence rate of series", "physical interpretation of decay"],
+            "failure_signals": ["no separation of variables", "wrong boundary conditions applied", "missing eigenvalue problem", "numerical solution only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH04",
+      "name": "Probability Theory Engine",
+      "function": "Analyze probability distributions, stochastic processes, Markov chains, Bayesian networks, random variables, and limit theorems with rigorous measure-theoretic foundations where appropriate.",
+      "doctrine_topics": [
+        "probability distributions discrete and continuous",
+        "multivariate distributions joint/marginal/conditional",
+        "Markov chains transition matrices and steady state",
+        "Poisson processes and renewal theory",
+        "Bayesian inference prior/posterior/conjugate",
+        "central limit theorem and convergence",
+        "Monte Carlo simulation and MCMC methods",
+        "order statistics and extreme value distributions",
+        "martingales and stopping times",
+        "copulas and dependence modeling"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A call center receives calls at an average rate of 30 per hour. Model the number of calls in a 10-minute window, the time between calls, and the probability that the system (with 3 operators, each handling one call for an exponential mean of 5 minutes) has all operators busy.",
+            "required_elements": ["Poisson distribution for call count", "exponential inter-arrival times", "M/M/c queueing model Erlang C formula", "probability all servers busy", "expected wait time in queue", "utilization factor calculation"],
+            "failure_signals": ["no queueing model", "wrong distribution selection", "missing Erlang formula", "deterministic analysis only"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH05",
+      "name": "Numerical Methods Engine",
+      "function": "Analyze numerical algorithms for root finding, interpolation, numerical integration, ODE/PDE solvers, and error analysis with convergence guarantees and stability assessment.",
+      "doctrine_topics": [
+        "root finding Newton-Raphson/bisection/secant",
+        "interpolation polynomial/spline/Lagrange",
+        "numerical integration Simpson/Gauss quadrature",
+        "ODE solvers Runge-Kutta/multistep/stiff systems",
+        "PDE discretization finite difference/element/volume",
+        "error analysis truncation and roundoff",
+        "convergence order and stability regions",
+        "iterative methods for linear systems GMRES/CG",
+        "numerical differentiation and Richardson extrapolation",
+        "floating point arithmetic IEEE 754 considerations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Compare RK4 and implicit BDF-2 methods for solving a stiff ODE system with eigenvalues spanning from -1 to -10^6. Analyze stability regions, step size requirements, and computational cost per step.",
+            "required_elements": ["stability region plots for both methods", "stiffness ratio definition", "step size constraint for RK4", "A-stability of BDF-2", "computational cost comparison", "error order analysis"],
+            "failure_signals": ["no stability analysis", "ignoring stiffness", "missing step size constraints", "single method recommendation without comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH06",
+      "name": "Optimization Engine",
+      "function": "Analyze optimization problems including linear programming, convex optimization, integer programming, nonlinear optimization, metaheuristics, and multi-objective optimization using duality theory and KKT conditions.",
+      "doctrine_topics": [
+        "linear programming simplex and interior point methods",
+        "convex optimization and Boyd framework",
+        "integer programming branch and bound/cutting planes",
+        "KKT conditions and duality theory",
+        "gradient descent variants SGD/Adam/L-BFGS",
+        "constrained optimization Lagrange multipliers",
+        "metaheuristics genetic algorithms/simulated annealing",
+        "multi-objective optimization Pareto front",
+        "dynamic programming Bellman equation",
+        "combinatorial optimization and approximation algorithms"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A logistics company needs to minimize delivery cost across 50 warehouses, 200 customers, and 20 vehicles with capacity constraints, time windows, and mixed integer variables. Formulate the VRPTW and recommend solution approaches.",
+            "required_elements": ["MILP formulation with decision variables", "capacity and time window constraints", "objective function specification", "exact vs heuristic method comparison", "column generation or branch-and-price", "solution quality bounds"],
+            "failure_signals": ["no mathematical formulation", "missing constraints", "no solution method discussion", "trivial assignment problem reduction"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH07",
+      "name": "Graph Theory Engine",
+      "function": "Analyze graph structures, network algorithms, connectivity, flow problems, coloring, matching, and applications in social networks, transportation, and computer science.",
+      "doctrine_topics": [
+        "graph traversal BFS/DFS and applications",
+        "shortest path Dijkstra/Bellman-Ford/Floyd-Warshall",
+        "network flow max-flow min-cut Ford-Fulkerson",
+        "minimum spanning trees Kruskal/Prim",
+        "graph coloring and chromatic number",
+        "matching bipartite and general Edmonds",
+        "planarity testing and Kuratowski theorem",
+        "spectral graph theory Laplacian eigenvalues",
+        "random graphs Erdos-Renyi model",
+        "network centrality measures betweenness/PageRank"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A social network has 10,000 nodes and 500,000 edges. Identify the most influential nodes using at least three centrality measures, detect community structure, and analyze small-world properties.",
+            "required_elements": ["degree centrality calculation", "betweenness centrality algorithm", "PageRank computation", "community detection Louvain/modularity", "clustering coefficient", "average path length vs random graph"],
+            "failure_signals": ["single centrality measure", "no community detection", "missing small-world analysis", "no algorithmic complexity discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH08",
+      "name": "Cryptography Engine",
+      "function": "Analyze cryptographic algorithms, security protocols, key management, hash functions, digital signatures, and post-quantum cryptography per NIST SP 800-57 and FIPS standards.",
+      "doctrine_topics": [
+        "symmetric encryption AES/ChaCha20 analysis",
+        "asymmetric cryptography RSA/ECC key generation",
+        "hash functions SHA-256/SHA-3 properties",
+        "digital signatures ECDSA/EdDSA/RSA-PSS",
+        "key exchange Diffie-Hellman/ECDH protocols",
+        "post-quantum cryptography lattice-based/hash-based",
+        "TLS 1.3 protocol analysis",
+        "key management lifecycle NIST SP 800-57",
+        "zero-knowledge proofs and MPC",
+        "cryptographic random number generation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Compare the security levels, key sizes, and performance of RSA-3072, ECDSA P-256, and ML-DSA-65 (Dilithium) for a digital signature scheme that must remain secure for 20 years. Consider quantum threat timeline.",
+            "required_elements": ["security level comparison in bits", "key and signature size comparison", "performance benchmarks sign/verify", "quantum threat Shor's algorithm impact", "NIST PQC standardization status", "migration strategy recommendation"],
+            "failure_signals": ["no quantum threat analysis", "missing size comparisons", "single algorithm recommendation", "no NIST reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH09",
+      "name": "Signal Processing Engine",
+      "function": "Analyze signal processing techniques including Fourier analysis, digital filtering, spectral estimation, wavelets, adaptive filtering, and compressed sensing for time series and spatial data.",
+      "doctrine_topics": [
+        "Fourier transform DFT/FFT theory and applications",
+        "digital filter design FIR/IIR",
+        "spectral estimation periodogram/Welch/AR methods",
+        "wavelet transform multiresolution analysis",
+        "sampling theorem Nyquist and aliasing",
+        "adaptive filtering LMS/RLS algorithms",
+        "compressed sensing and sparse recovery",
+        "time-frequency analysis STFT/Wigner-Ville",
+        "noise reduction and SNR optimization",
+        "array signal processing beamforming/DOA"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a digital bandpass filter for extracting a 1 kHz signal (bandwidth 100 Hz) from a noisy recording sampled at 44.1 kHz. Compare FIR (Parks-McClellan) and IIR (Butterworth) designs for filter order, latency, and passband ripple.",
+            "required_elements": ["filter specification passband/stopband/ripple", "FIR Parks-McClellan design parameters", "IIR Butterworth design and bilinear transform", "filter order comparison", "group delay and latency analysis", "frequency response plots description"],
+            "failure_signals": ["no filter specifications", "single design method only", "missing latency analysis", "no sampling rate consideration"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "MATH10",
+      "name": "Machine Learning Math Engine",
+      "function": "Analyze the mathematical foundations of machine learning including loss functions, regularization theory, kernel methods, information theory, PAC learning, and deep learning optimization landscapes.",
+      "doctrine_topics": [
+        "loss function design and properties convexity",
+        "regularization theory L1/L2/elastic net",
+        "kernel methods and reproducing kernel Hilbert spaces",
+        "information theory entropy/KL-divergence/mutual information",
+        "PAC learning and VC dimension",
+        "gradient optimization convergence theory",
+        "bias-variance tradeoff and model selection",
+        "neural network universal approximation theorem",
+        "backpropagation and automatic differentiation",
+        "generalization bounds and Rademacher complexity"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A neural network with 10 million parameters is trained on 50,000 samples and achieves near-zero training loss but 30% test error. Analyze through the lens of bias-variance tradeoff, VC dimension, and propose mathematically grounded regularization strategies.",
+            "required_elements": ["overfitting diagnosis from train-test gap", "VC dimension analysis for overparameterized model", "bias-variance decomposition", "regularization approaches with mathematical justification", "double descent phenomenon discussion", "generalization bound estimation"],
+            "failure_signals": ["no VC dimension reference", "missing mathematical justification for regularization", "generic overfitting advice", "no generalization theory"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

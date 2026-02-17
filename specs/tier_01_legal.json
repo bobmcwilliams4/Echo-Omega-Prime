@@ -1,0 +1,511 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "LG",
+  "tier_name": "Legal",
+  "domain_description": "Comprehensive legal analysis across 18 practice areas including contract law, litigation, regulatory compliance, intellectual property, employment, real estate, criminal defense, family law, immigration, bankruptcy, environmental, securities, antitrust, tax litigation, international law, and healthcare law. Engines provide doctrine-level reasoning grounded in federal and state statutes, case law precedent, and professional standards.",
+  "authority_sources": [
+    "Uniform Commercial Code (UCC Articles 1-9)",
+    "Federal Rules of Civil Procedure (FRCP)",
+    "Federal Rules of Evidence (FRE)",
+    "Restatement (Second) of Contracts",
+    "Restatement (Third) of Torts",
+    "United States Code (USC) — Titles 11, 15, 17, 18, 26, 28, 29, 33, 35, 42",
+    "Code of Federal Regulations (CFR)",
+    "ABA Model Rules of Professional Conduct",
+    "Federal Rules of Appellate Procedure",
+    "State Civil Practice and Remedies Codes"
+  ],
+  "engines": [
+    {
+      "engine_id": "LG01",
+      "name": "Contract Analysis Engine",
+      "function": "Analyze commercial and consumer contracts for enforceability, risk allocation, ambiguity, boilerplate effectiveness, breach exposure, and remedies under UCC and common law. Identifies problematic clauses, unconscionability risks, and drafting deficiencies.",
+      "doctrine_topics": [
+        "offer, acceptance, and consideration analysis",
+        "statute of frauds and writing requirements",
+        "parol evidence rule application",
+        "conditions precedent and subsequent",
+        "material breach vs minor breach distinction",
+        "liquidated damages vs penalty analysis",
+        "indemnification and hold harmless provisions",
+        "force majeure and impossibility doctrines",
+        "warranty disclaimers under UCC 2-316",
+        "choice of law and forum selection enforceability"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Analyze a service agreement that contains a unilateral modification clause, a one-year non-compete, and a limitation of liability capped at fees paid in the prior 12 months. Identify enforceability risks.",
+            "required_elements": ["unilateral modification enforceability under consideration doctrine", "non-compete reasonableness test (scope, geography, duration)", "limitation of liability validity under UCC and common law", "unconscionability analysis", "severability clause impact"],
+            "failure_signals": ["no reference to consideration for modifications", "generic contract advice without clause-specific analysis", "no jurisdiction-specific enforceability discussion"]
+          },
+          {
+            "question": "Does a verbal agreement to sell 500 custom-manufactured widgets for $8,000 fall under the statute of frauds?",
+            "required_elements": ["UCC 2-201 threshold ($500+)", "specially manufactured goods exception", "merchant confirmation exception", "part performance doctrine", "statute of frauds writing requirements"],
+            "failure_signals": ["no UCC reference", "incorrect dollar threshold", "failure to analyze exceptions"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG02",
+      "name": "Case Law Research Engine",
+      "function": "Research and analyze judicial opinions, identify controlling precedent, distinguish holdings from dicta, trace doctrinal evolution across circuits, and assess precedential weight for litigation strategy.",
+      "doctrine_topics": [
+        "stare decisis and precedent hierarchy",
+        "holding vs dicta distinction",
+        "circuit split analysis and resolution",
+        "case law synthesis and rule extraction",
+        "overruling and distinguishing precedent",
+        "persuasive vs binding authority",
+        "en banc and Supreme Court certiorari analysis",
+        "Shepardizing and citation validation",
+        "doctrinal evolution tracking",
+        "analogical reasoning and case comparison"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Trace the evolution of the qualified immunity doctrine from Harlow v. Fitzgerald (1982) through recent circuit applications. Identify the current circuit split.",
+            "required_elements": ["Harlow v. Fitzgerald clearly established law standard", "Ashcroft v. al-Kidd", "circuit split identification", "clearly established right analysis", "sequencing of constitutional violation and qualified immunity analysis"],
+            "failure_signals": ["no specific case citations", "conflating holding with dicta", "failure to identify circuit disagreements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG03",
+      "name": "Regulatory Compliance Engine",
+      "function": "Analyze regulatory frameworks, assess compliance obligations, identify regulatory risk exposure, and develop compliance program architectures across federal and state regulatory schemes.",
+      "doctrine_topics": [
+        "Chevron deference and agency interpretation",
+        "notice-and-comment rulemaking under APA",
+        "enforcement discretion and agency priorities",
+        "compliance program design and effectiveness",
+        "regulatory reporting obligations",
+        "whistleblower protections and qui tam actions",
+        "consent decree and settlement structures",
+        "multi-agency jurisdictional overlap",
+        "state vs federal regulatory preemption",
+        "regulatory change monitoring and impact assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A mid-size company discovers it has been inadvertently violating an EPA discharge reporting requirement for 18 months. Analyze the voluntary self-disclosure options and potential penalty exposure.",
+            "required_elements": ["EPA Audit Policy (Incentives for Self-Policing)", "penalty mitigation factors under 40 CFR", "voluntary disclosure requirements", "statute of limitations for environmental violations", "criminal vs civil liability threshold"],
+            "failure_signals": ["no specific EPA policy reference", "failure to distinguish civil from criminal exposure", "no penalty calculation framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG04",
+      "name": "Legal Document Draft Engine",
+      "function": "Draft and analyze legal documents including pleadings, motions, briefs, contracts, corporate resolutions, and settlement agreements with proper legal formatting, citation standards, and jurisdiction-specific requirements.",
+      "doctrine_topics": [
+        "pleading standards under Twombly and Iqbal",
+        "motion practice and procedural requirements",
+        "appellate brief structure and standards of review",
+        "contract drafting best practices",
+        "discovery request and response drafting",
+        "settlement agreement essential terms",
+        "corporate resolution drafting",
+        "legal citation format (Bluebook)",
+        "affidavit and declaration requirements",
+        "notice and demand letter standards"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Draft a motion to dismiss under FRCP 12(b)(6) for a breach of contract claim where the plaintiff failed to allege performance of conditions precedent. Include the standard of review.",
+            "required_elements": ["FRCP 12(b)(6) standard", "Twombly/Iqbal plausibility standard", "conditions precedent pleading requirement", "factual insufficiency analysis", "prayer for relief with alternative requests"],
+            "failure_signals": ["incorrect legal standard", "no case law support for arguments", "missing procedural requirements"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG05",
+      "name": "Litigation Risk Engine",
+      "function": "Assess litigation exposure, evaluate claim viability, estimate damages ranges, analyze settlement postures, and provide risk-adjusted litigation strategy recommendations including cost-benefit analysis.",
+      "doctrine_topics": [
+        "claim viability and merit assessment",
+        "damages calculation methodologies",
+        "litigation cost-benefit analysis",
+        "settlement valuation and negotiation strategy",
+        "statute of limitations and repose analysis",
+        "class action certification risk",
+        "summary judgment probability assessment",
+        "jury verdict prediction modeling",
+        "insurance coverage analysis for claims",
+        "alternative dispute resolution evaluation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Assess the litigation risk for a company facing a products liability claim where a consumer was injured by a defective component supplied by a third-party manufacturer. The company assembled the final product. Statute of limitations is 2 years; injury occurred 20 months ago.",
+            "required_elements": ["strict liability vs negligence analysis", "component manufacturer vs assembler liability", "indemnification and contribution rights", "statute of limitations timeline", "damages exposure estimate"],
+            "failure_signals": ["no distinction between strict liability theories", "failure to address third-party contribution", "no timeline analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG06",
+      "name": "IP Analysis Engine",
+      "function": "Analyze intellectual property issues including patent validity, trademark likelihood of confusion, copyright fair use, trade secret misappropriation, and IP portfolio strategy under federal IP statutes.",
+      "doctrine_topics": [
+        "patent claim construction and validity (35 USC)",
+        "trademark likelihood of confusion factors (Lanham Act)",
+        "copyright fair use four-factor test (17 USC 107)",
+        "trade secret misappropriation under DTSA and UTSA",
+        "patent infringement analysis (literal and DOE)",
+        "trademark dilution and tarnishment",
+        "copyright registration and statutory damages",
+        "IP licensing and royalty structures",
+        "prior art search and invalidity contentions",
+        "IP portfolio valuation and strategy"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A software company discovers a competitor is using a nearly identical logo and brand name in the same market. Analyze the trademark infringement claim under the Lanham Act using the likelihood of confusion test.",
+            "required_elements": ["Polaroid/Sleekcraft factors", "strength of the mark analysis", "similarity of marks", "proximity of goods/services", "evidence of actual confusion", "intent of alleged infringer"],
+            "failure_signals": ["no specific likelihood of confusion factors", "failure to apply multi-factor test", "no reference to Lanham Act 15 USC 1125"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG07",
+      "name": "Employment Law Engine",
+      "function": "Analyze employment law issues including discrimination claims, wage and hour compliance, FMLA administration, workplace safety, employee classification, and non-compete enforceability under federal and state labor laws.",
+      "doctrine_topics": [
+        "Title VII discrimination and disparate impact analysis",
+        "FLSA wage and hour classification (exempt vs non-exempt)",
+        "FMLA eligibility and leave administration",
+        "ADA reasonable accommodation and undue hardship",
+        "ADEA age discrimination analysis",
+        "employee vs independent contractor classification",
+        "non-compete and restrictive covenant enforceability",
+        "workplace harassment and hostile work environment",
+        "WARN Act plant closing obligations",
+        "retaliation and whistleblower protections"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An employer classifies all its field service technicians as independent contractors. They work 40+ hours per week, use company vehicles, follow company scheduling, but provide their own tools. Analyze the misclassification risk under the FLSA economic reality test and the IRS 20-factor test.",
+            "required_elements": ["economic reality test factors", "degree of control analysis", "opportunity for profit or loss", "investment in equipment", "permanence of relationship", "IRS common law factors"],
+            "failure_signals": ["no specific test framework applied", "failure to analyze control factors", "no FLSA reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG08",
+      "name": "Real Estate Law Engine",
+      "function": "Analyze real property transactions, title issues, zoning compliance, landlord-tenant disputes, easements, liens, and closing procedures under state property law and federal fair housing requirements.",
+      "doctrine_topics": [
+        "deed types and conveyance requirements",
+        "title examination and encumbrance analysis",
+        "zoning and land use regulation",
+        "landlord-tenant rights and obligations",
+        "easement creation and termination",
+        "mortgage and lien priority",
+        "real estate closing procedures",
+        "Fair Housing Act compliance (42 USC 3601)",
+        "eminent domain and just compensation",
+        "real estate contract contingencies and remedies"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A buyer discovers an unrecorded easement across the property after closing. The title company issued a standard owner's policy. Analyze the buyer's remedies against the seller, the title company, and options regarding the easement holder.",
+            "required_elements": ["title insurance coverage for unrecorded easements", "seller warranty deed covenants", "after-acquired title doctrine", "easement validity without recording", "quiet title action analysis"],
+            "failure_signals": ["no title insurance policy analysis", "failure to distinguish recorded vs unrecorded interests", "no discussion of warranty deed covenants"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG09",
+      "name": "Criminal Law Engine",
+      "function": "Analyze criminal law issues including elements of offenses, constitutional protections, sentencing guidelines, defense strategies, and post-conviction remedies under federal and state criminal codes.",
+      "doctrine_topics": [
+        "elements of crimes and mens rea requirements",
+        "Fourth Amendment search and seizure analysis",
+        "Fifth Amendment self-incrimination and Miranda",
+        "Sixth Amendment right to counsel and confrontation",
+        "federal sentencing guidelines calculations",
+        "affirmative defenses (self-defense, duress, necessity)",
+        "plea bargaining strategy and withdrawal",
+        "double jeopardy and lesser included offenses",
+        "habeas corpus and post-conviction relief",
+        "Brady disclosure and prosecutorial obligations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Police conducted a traffic stop and, after detecting an odor of marijuana in a state where marijuana is legal, searched the vehicle without consent or a warrant. Analyze the constitutionality of the search under the Fourth Amendment automobile exception.",
+            "required_elements": ["automobile exception to warrant requirement", "probable cause analysis", "odor of marijuana in legal state", "Carroll v. United States doctrine", "state law vs federal law conflict impact on probable cause"],
+            "failure_signals": ["no Fourth Amendment framework", "failure to address legalization impact on probable cause", "no case law citations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG10",
+      "name": "Family Law Engine",
+      "function": "Analyze family law matters including divorce proceedings, child custody determinations, child support calculations, property division, adoption, and prenuptial agreement enforceability under state domestic relations law.",
+      "doctrine_topics": [
+        "community property vs equitable distribution",
+        "best interest of the child standard",
+        "child support guideline calculations",
+        "spousal support (alimony) factors and duration",
+        "prenuptial agreement enforceability requirements",
+        "child custody modification standards",
+        "parental relocation restrictions",
+        "adoption procedures and termination of rights",
+        "domestic violence protective orders",
+        "UCCJEA jurisdictional analysis for custody"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "In a contested divorce in Texas, the wife seeks to set aside a prenuptial agreement signed 3 days before the wedding, claiming she did not have time to consult an attorney and the husband did not disclose a significant real estate portfolio. Analyze enforceability.",
+            "required_elements": ["voluntary execution analysis", "adequate financial disclosure requirement", "unconscionability at time of enforcement", "independent counsel consideration", "Texas Family Code prenup requirements"],
+            "failure_signals": ["no state-specific prenup statute reference", "failure to analyze disclosure requirements", "no discussion of voluntariness factors"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG11",
+      "name": "Immigration Law Engine",
+      "function": "Analyze immigration law issues including visa classification, adjustment of status, removal proceedings, asylum claims, employment-based immigration, and nationality law under the INA and related regulations.",
+      "doctrine_topics": [
+        "visa classification and eligibility (H-1B, L-1, O-1, EB categories)",
+        "adjustment of status requirements under INA 245",
+        "removal proceedings and cancellation of removal",
+        "asylum eligibility and credible fear analysis",
+        "employment-based green card processing (PERM, I-140, I-485)",
+        "naturalization requirements under INA 316",
+        "unlawful presence bars and waivers (INA 212(a)(9))",
+        "consular processing and visa refusal grounds",
+        "DACA and TPS eligibility",
+        "immigration consequences of criminal convictions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An H-1B visa holder with an approved I-140 is laid off. Analyze the 60-day grace period options, portability under AC21, and the impact on pending adjustment of status if one has been filed for more than 180 days.",
+            "required_elements": ["60-day grace period under 8 CFR 214.1(l)(2)", "AC21 portability after 180 days pending", "I-140 validity after termination", "H-1B transfer options", "impact on priority date retention"],
+            "failure_signals": ["no specific INA/CFR references", "failure to address AC21 portability", "incorrect grace period analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG12",
+      "name": "Bankruptcy Engine",
+      "function": "Analyze bankruptcy proceedings under Chapters 7, 11, and 13 including eligibility, means testing, plan confirmation, preference actions, automatic stay, and discharge scope under 11 USC.",
+      "doctrine_topics": [
+        "Chapter 7 eligibility and means test (11 USC 707(b))",
+        "Chapter 11 plan confirmation requirements",
+        "Chapter 13 disposable income and plan feasibility",
+        "automatic stay scope and relief from stay motions",
+        "preferential transfer avoidance (11 USC 547)",
+        "fraudulent conveyance analysis (11 USC 548)",
+        "discharge exceptions under 11 USC 523",
+        "proof of claim filing and objections",
+        "adequate protection and cash collateral",
+        "cramdown and absolute priority rule"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A debtor made a $75,000 payment to a longtime vendor 85 days before filing Chapter 11. The vendor argues it was a contemporaneous exchange for new value. Analyze the preference avoidance action and available defenses.",
+            "required_elements": ["11 USC 547(b) preference elements", "90-day lookback period", "ordinary course of business defense 547(c)(2)", "contemporaneous exchange defense 547(c)(1)", "new value defense 547(c)(4)"],
+            "failure_signals": ["no specific statutory references", "failure to analyze defenses", "incorrect lookback period"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG13",
+      "name": "Environmental Law Engine",
+      "function": "Analyze environmental law issues including CERCLA liability, Clean Air Act compliance, Clean Water Act permitting, NEPA review, hazardous waste management under RCRA, and state environmental regulatory programs.",
+      "doctrine_topics": [
+        "CERCLA strict joint and several liability",
+        "Clean Air Act permitting (Title V, NSR, PSD)",
+        "Clean Water Act NPDES permitting (33 USC 1342)",
+        "NEPA environmental impact statement requirements",
+        "RCRA hazardous waste management (40 CFR 260-270)",
+        "Brownfield redevelopment and innocent landowner defense",
+        "environmental insurance and risk transfer",
+        "state environmental enforcement and delegation",
+        "citizen suit provisions under environmental statutes",
+        "environmental due diligence and Phase I/II ESA"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A company purchases a former gas station property and later discovers underground storage tank contamination. Analyze potential CERCLA liability as a current owner and the innocent landowner defense under CERCLA 107(r) and 101(40).",
+            "required_elements": ["CERCLA 107(a) current owner liability", "innocent landowner defense elements", "all appropriate inquiries requirement", "bona fide prospective purchaser defense", "Phase I ESA ASTM E1527 standard"],
+            "failure_signals": ["no CERCLA section references", "failure to distinguish defense categories", "no mention of all appropriate inquiries"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG14",
+      "name": "Securities Law Engine",
+      "function": "Analyze securities regulation including registration requirements, exemptions, insider trading, proxy rules, SEC enforcement, and corporate disclosure obligations under the Securities Act of 1933 and Exchange Act of 1934.",
+      "doctrine_topics": [
+        "securities registration under Securities Act Section 5",
+        "Regulation D private placement exemptions (Rules 504, 506(b), 506(c))",
+        "insider trading under Section 10(b) and Rule 10b-5",
+        "proxy solicitation and shareholder proposals (Rule 14a-8)",
+        "periodic reporting obligations (10-K, 10-Q, 8-K)",
+        "Regulation A+ and crowdfunding (Regulation CF)",
+        "Howey test for investment contract analysis",
+        "SEC enforcement actions and disgorgement",
+        "SOX Section 302/906 certification requirements",
+        "blue sky laws and state securities registration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A startup wants to raise $5 million from 50 accredited investors and 10 non-accredited investors without SEC registration. Analyze the available exemptions under Regulation D and the implications of including non-accredited investors.",
+            "required_elements": ["Rule 506(b) vs 506(c) comparison", "accredited investor definition", "information requirements for non-accredited investors", "general solicitation prohibition under 506(b)", "Form D filing requirement"],
+            "failure_signals": ["no Regulation D rule references", "failure to address non-accredited investor disclosure requirements", "confusion between 506(b) and 506(c)"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG15",
+      "name": "Antitrust Law Engine",
+      "function": "Analyze antitrust and competition law issues including horizontal agreements, vertical restraints, merger review, monopolization, and price discrimination under the Sherman Act, Clayton Act, and FTC Act.",
+      "doctrine_topics": [
+        "Sherman Act Section 1 per se vs rule of reason analysis",
+        "horizontal price fixing and market allocation",
+        "vertical restraints and resale price maintenance",
+        "Clayton Act Section 7 merger analysis and HHI",
+        "Sherman Act Section 2 monopolization",
+        "Robinson-Patman Act price discrimination",
+        "Hart-Scott-Rodino premerger notification",
+        "tying arrangements and bundling",
+        "group boycotts and refusals to deal",
+        "antitrust injury and standing requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Two competing oil service companies in the Permian Basin are considering a merger that would give the combined entity 45% market share in pressure pumping services. Analyze the antitrust review process and likely agency response.",
+            "required_elements": ["HSR notification thresholds", "HHI calculation and concentration levels", "relevant market definition", "competitive effects analysis", "potential remedies (divestiture, behavioral)"],
+            "failure_signals": ["no HHI analysis", "failure to define relevant market", "no reference to DOJ/FTC merger guidelines"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG16",
+      "name": "Tax Litigation Engine",
+      "function": "Analyze tax controversy and litigation including IRS examination, administrative appeals, Tax Court proceedings, refund litigation, penalty abatement, and collection due process under IRC and Treasury Regulations.",
+      "doctrine_topics": [
+        "IRS examination process and audit selection",
+        "administrative appeals procedures and protest letters",
+        "Tax Court petition and trial procedures",
+        "refund litigation in district court and Court of Federal Claims",
+        "penalty abatement and reasonable cause defense",
+        "collection due process hearing rights (IRC 6320/6330)",
+        "offer in compromise evaluation (IRC 7122)",
+        "innocent spouse relief (IRC 6015)",
+        "statute of limitations on assessment and collection",
+        "IRS summons enforcement and privilege issues"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An individual receives a notice of deficiency (90-day letter) for $250,000 in additional tax. The assessment is based on unreported income from an offshore account. Analyze the procedural options and penalty exposure including FBAR penalties.",
+            "required_elements": ["90-day letter response timeline", "Tax Court petition requirements", "FBAR penalty structure (willful vs non-willful)", "offshore voluntary disclosure programs", "burden of proof in Tax Court"],
+            "failure_signals": ["no timeline for Tax Court petition", "failure to distinguish willful vs non-willful FBAR penalties", "no IRC section references"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG17",
+      "name": "International Law Engine",
+      "function": "Analyze international legal issues including treaty interpretation, cross-border transactions, international arbitration, foreign sovereign immunity, sanctions compliance, and anti-corruption laws (FCPA/UK Bribery Act).",
+      "doctrine_topics": [
+        "treaty interpretation under Vienna Convention",
+        "Foreign Corrupt Practices Act (FCPA) anti-bribery provisions",
+        "international commercial arbitration (New York Convention)",
+        "OFAC sanctions compliance and licensing",
+        "Foreign Sovereign Immunities Act (FSIA)",
+        "Hague Convention service of process",
+        "international trade law and WTO disputes",
+        "cross-border insolvency (UNCITRAL Model Law)",
+        "extraterritorial application of US law",
+        "bilateral investment treaties and investor-state arbitration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A US oil company's foreign subsidiary paid $50,000 to a government official in Country X to expedite a drilling permit. Analyze whether this violates the FCPA, considering the facilitating payments exception and the jurisdictional reach of the statute.",
+            "required_elements": ["FCPA anti-bribery provisions 15 USC 78dd", "facilitating payments exception scope", "foreign official definition", "jurisdictional basis (issuer, domestic concern, territorial)", "penalties and enforcement trends"],
+            "failure_signals": ["no FCPA statutory reference", "failure to analyze facilitating payment exception", "no discussion of jurisdictional nexus"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "LG18",
+      "name": "Healthcare Law Engine",
+      "function": "Analyze healthcare regulatory issues including HIPAA privacy and security, Stark Law physician self-referral, Anti-Kickback Statute, Medicare/Medicaid compliance, FDA regulation, and healthcare transaction structuring.",
+      "doctrine_topics": [
+        "HIPAA Privacy Rule and minimum necessary standard",
+        "HIPAA Security Rule administrative and technical safeguards",
+        "Stark Law physician self-referral prohibitions (42 USC 1395nn)",
+        "Anti-Kickback Statute and safe harbors (42 USC 1320a-7b)",
+        "False Claims Act and healthcare fraud (31 USC 3729)",
+        "Medicare conditions of participation",
+        "FDA drug and device approval pathways",
+        "EMTALA emergency treatment obligations",
+        "healthcare entity mergers and CON requirements",
+        "telemedicine regulatory compliance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A hospital system wants to offer free office space and billing services to a physician group in exchange for referrals. Analyze the arrangement under the Stark Law and Anti-Kickback Statute, identifying applicable exceptions and safe harbors.",
+            "required_elements": ["Stark Law designated health services", "fair market value requirement", "Anti-Kickback Statute one purpose test", "office space rental safe harbor requirements", "personal services safe harbor analysis"],
+            "failure_signals": ["no distinction between Stark and AKS", "failure to identify specific safe harbors", "no 42 USC references"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

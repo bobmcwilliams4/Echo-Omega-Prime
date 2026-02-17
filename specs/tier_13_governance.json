@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "GOV",
+  "tier_name": "Governance",
+  "domain_description": "Policy enforcement, compliance auditing, quality gate management, and access control for enterprise AI systems. Covers regulatory compliance tracking, automated audit generation, role-based access control, and quality assurance across the engine build pipeline aligned with ISO 27001, NIST CSF, SOX, and COBIT frameworks.",
+  "authority_sources": [
+    "ISO/IEC 27001:2022 (Information Security Management)",
+    "NIST Cybersecurity Framework (CSF) v2.0",
+    "Sarbanes-Oxley Act (SOX) Section 404",
+    "COBIT 2019 (Control Objectives for Information Technologies)",
+    "ISO 9001:2015 (Quality Management Systems)",
+    "NIST SP 800-53 Rev 5 (Security and Privacy Controls)",
+    "ISO/IEC 27701 (Privacy Information Management)",
+    "GDPR (General Data Protection Regulation)"
+  ],
+  "engines": [
+    {
+      "engine_id": "GOV01",
+      "name": "Policy Enforcement Engine",
+      "function": "Define, deploy, and enforce organizational policies across AI systems, code repositories, and operational processes using policy-as-code, automated compliance checking, and violation alerting.",
+      "doctrine_topics": [
+        "policy-as-code frameworks (OPA, Rego, Sentinel)",
+        "policy lifecycle management (draft, review, approve, enforce, retire)",
+        "automated policy violation detection and alerting",
+        "policy inheritance and override hierarchies",
+        "exception management and waiver workflows",
+        "policy impact analysis before enforcement",
+        "cross-system policy consistency validation",
+        "real-time policy evaluation at decision points",
+        "policy versioning and change management",
+        "regulatory mapping to internal policy controls"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a policy enforcement system that prevents deployment of any engine code that contains hardcoded credentials, lacks type hints, or has fewer than 3 test cases, with exception workflows for emergency deployments",
+            "required_elements": ["policy-as-code implementation", "pre-deployment gate", "violation detection rules", "exception workflow", "audit trail", "NIST 800-53 control mapping"],
+            "failure_signals": ["no automated enforcement mechanism", "no exception handling", "no audit trail"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GOV02",
+      "name": "Compliance Audit Engine",
+      "function": "Conduct automated compliance audits against regulatory frameworks (SOX, GDPR, ISO 27001), generate audit reports, track findings, and manage remediation workflows.",
+      "doctrine_topics": [
+        "automated audit evidence collection and preservation",
+        "SOX Section 404 internal control testing",
+        "ISO 27001 Annex A control assessment",
+        "GDPR data protection impact assessment (DPIA)",
+        "audit finding classification and risk scoring",
+        "remediation tracking and deadline management",
+        "continuous compliance monitoring vs periodic audit",
+        "audit report generation and executive summarization",
+        "cross-framework compliance mapping (NIST to ISO to SOX)",
+        "third-party and supply chain compliance assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Generate an automated compliance audit report for an AI system processing personal data across US and EU jurisdictions, mapping controls to both SOX 404 and GDPR requirements",
+            "required_elements": ["dual-framework mapping", "control evidence collection", "finding classification", "risk scoring methodology", "remediation recommendations", "executive summary format"],
+            "failure_signals": ["single framework only", "no evidence collection approach", "no risk scoring"]
+          },
+          {
+            "question": "How should continuous compliance monitoring differ from annual SOX audits, and what automated controls can reduce audit burden by 60%?",
+            "required_elements": ["continuous vs periodic comparison", "automated control examples", "efficiency metrics", "SOX-specific automation opportunities", "tool recommendations"],
+            "failure_signals": ["no quantitative analysis", "no SOX-specific guidance", "generic compliance advice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GOV03",
+      "name": "Quality Gate Management Engine",
+      "function": "Define, evaluate, and enforce quality gates across the engine build pipeline including code quality, test coverage, documentation completeness, security scanning, and performance benchmarks.",
+      "doctrine_topics": [
+        "quality gate definition and threshold configuration",
+        "multi-dimensional quality scoring (code, test, docs, security, perf)",
+        "automated gate evaluation pipeline design",
+        "gate pass/fail criteria and scoring rubrics",
+        "gate override and force-approve workflows",
+        "quality trend tracking and regression detection",
+        "build pipeline integration (CI/CD gate insertion)",
+        "quality metrics dashboard and reporting",
+        "gate failure root cause analysis",
+        "continuous quality improvement feedback loops"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a 9-gate quality system for the TIE engine build pipeline where each engine must pass code quality, test coverage, documentation, security scan, performance benchmark, doctrine coverage, API consistency, error handling, and deployment readiness checks",
+            "required_elements": ["gate definitions with thresholds", "scoring rubric", "pass/fail criteria", "override workflow", "pipeline integration points", "quality dashboard metrics"],
+            "failure_signals": ["fewer than 9 gates defined", "no quantitative thresholds", "no override mechanism"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "GOV04",
+      "name": "Access Control Engine",
+      "function": "Manage role-based and attribute-based access control across AI systems, API endpoints, data stores, and administrative functions with audit logging, privilege escalation detection, and zero-trust verification.",
+      "doctrine_topics": [
+        "role-based access control (RBAC) design and implementation",
+        "attribute-based access control (ABAC) policy evaluation",
+        "principle of least privilege enforcement",
+        "privilege escalation detection and prevention",
+        "API endpoint authorization and rate limiting",
+        "zero-trust architecture and continuous verification",
+        "access review and recertification workflows",
+        "service account and machine identity management",
+        "multi-factor authentication integration",
+        "access audit logging and anomaly detection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an access control system for a fleet of 400+ AI engines where different user roles (Commander, Operator, Viewer, API Consumer) have different permissions across query, configuration, deployment, and administrative functions",
+            "required_elements": ["role hierarchy definition", "permission matrix", "RBAC implementation", "API authorization", "audit logging", "zero-trust verification", "privilege escalation detection"],
+            "failure_signals": ["no role hierarchy", "no permission granularity", "missing audit logging", "no privilege escalation detection"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

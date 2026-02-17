@@ -1,0 +1,187 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "W",
+  "tier_name": "Water/Environment",
+  "domain_description": "Comprehensive water rights and environmental analysis covering surface water and groundwater rights, permitting, water quality regulation, produced water management, and injection well operations. Focused on oil and gas industry water issues in Texas and the Permian Basin, grounded in the Clean Water Act, Safe Drinking Water Act, Texas Water Code, EPA regulations, and Railroad Commission of Texas rules.",
+  "authority_sources": [
+    "Clean Water Act (33 USC 1251-1387)",
+    "Safe Drinking Water Act (42 USC 300f-300j-27)",
+    "Texas Water Code (Chapters 5, 11, 27, 36)",
+    "EPA Underground Injection Control Regulations (40 CFR 144-148)",
+    "Railroad Commission of Texas Statewide Rules (16 TAC Chapter 3)",
+    "Texas Commission on Environmental Quality (TCEQ) Rules (30 TAC)",
+    "Texas Groundwater Conservation District Act (TWC Chapter 36)",
+    "EPA Clean Water Act Section 402 NPDES Regulations (40 CFR 122-125)",
+    "Texas Natural Resources Conservation Commission Guidance",
+    "Edwards Aquifer Authority Act (Texas Special District Local Laws Code Chapter 8801)"
+  ],
+  "engines": [
+    {
+      "engine_id": "W01",
+      "name": "Water Rights Engine",
+      "function": "Analyze water rights ownership, allocation, and priority systems including prior appropriation doctrine, riparian rights, groundwater ownership, and the interaction of water rights with oil and gas mineral operations in Texas and western states.",
+      "doctrine_topics": [
+        "prior appropriation doctrine and priority system",
+        "riparian rights and reasonable use doctrine",
+        "groundwater rule of capture in Texas",
+        "correlative rights doctrine for groundwater",
+        "water right appropriation permit applications (TCEQ)",
+        "water right transfers, amendments, and cancellation",
+        "interstate water compacts and obligations",
+        "water right valuation and market transactions",
+        "conjunctive use of surface and groundwater",
+        "water rights and mineral estate interaction"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil company in the Permian Basin wants to secure 2 million barrels of freshwater per month for hydraulic fracturing operations. The nearest surface water source is a tributary of the Pecos River (fully appropriated), and the local groundwater conservation district has begun rationing permits. Analyze the water rights options and legal framework.",
+            "required_elements": ["Texas groundwater rule of capture application", "GCD permitting authority under TWC Chapter 36", "surface water appropriation limitations", "produced water recycling as alternative", "water purchase and transfer agreement options"],
+            "failure_signals": ["no distinction between surface and groundwater rights", "failure to address GCD authority", "no alternative sourcing analysis"]
+          },
+          {
+            "question": "A landowner in the Edwards Aquifer region discovers that a neighboring oil company is drilling a water well to supply fracking operations. The landowner's existing well has experienced declining water levels. Analyze the landowner's rights and remedies under Texas groundwater law.",
+            "required_elements": ["rule of capture limitations and exceptions", "Edwards Aquifer Authority permit requirements", "malicious or wasteful use exception", "subsidence liability analysis", "GCD spacing and production limits"],
+            "failure_signals": ["no Edwards Aquifer Authority discussion", "failure to address rule of capture", "no remedy analysis for declining water levels"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "W02",
+      "name": "Groundwater Analysis Engine",
+      "function": "Analyze groundwater resources, aquifer characteristics, well performance, groundwater contamination, and groundwater conservation district regulation as they relate to oil and gas operations and water supply.",
+      "doctrine_topics": [
+        "aquifer characterization and hydrogeology fundamentals",
+        "groundwater well design, construction, and completion",
+        "aquifer testing and sustainable yield analysis",
+        "groundwater quality monitoring and standards",
+        "groundwater contamination source identification",
+        "groundwater conservation district desired future conditions",
+        "managed available groundwater (MAG) calculations",
+        "wellhead protection area delineation",
+        "aquifer storage and recovery (ASR) feasibility",
+        "groundwater modeling for resource assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Groundwater monitoring wells near a saltwater disposal facility show increasing chloride concentrations from 50 mg/L to 2,500 mg/L over 18 months. The Ogallala Aquifer underlies the area, and domestic water wells are within 1 mile. Analyze the contamination pathway, regulatory response, and operator liability.",
+            "required_elements": ["contamination pathway analysis (casing failure, migration)", "background vs impact well comparison", "MCL exceedance analysis for chloride", "RRC and TCEQ regulatory jurisdiction", "operator remediation obligations"],
+            "failure_signals": ["no contamination pathway analysis", "failure to reference water quality standards", "no regulatory response framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "W03",
+      "name": "Surface Water Permits Engine",
+      "function": "Analyze surface water appropriation permits, discharge permits, stormwater permits, and water quality certifications required for oil and gas operations, construction activities, and industrial facilities.",
+      "doctrine_topics": [
+        "surface water appropriation permit requirements (TWC Chapter 11)",
+        "TPDES/NPDES discharge permit application and compliance",
+        "stormwater construction general permit (CGP/TXR150000)",
+        "multi-sector general permit for industrial facilities",
+        "Section 401 water quality certification",
+        "Section 404 wetlands fill permit coordination",
+        "total maximum daily load (TMDL) compliance",
+        "effluent limitation guidelines for oil and gas",
+        "zero discharge requirements for E&P operations",
+        "water quality standards and designated use protection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil company is constructing a 200-acre well pad and tank battery facility adjacent to a creek that feeds a public water supply reservoir. The project requires land clearing, road construction, and installation of a stormwater drainage system. Identify all required water-related permits and analyze the zero-discharge requirements for produced water.",
+            "required_elements": ["stormwater CGP (TXR150000) for construction", "SWPPP preparation requirements", "zero discharge for oil and gas produced water (40 CFR 435)", "public water supply proximity protections", "Section 402 permit exemptions for E&P"],
+            "failure_signals": ["failure to identify stormwater permit", "no zero-discharge analysis", "missing public water supply protection discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "W04",
+      "name": "Water Quality Engine",
+      "function": "Analyze water quality monitoring, standards, and compliance for both surface water and groundwater in the context of oil and gas operations including baseline testing, impact monitoring, and contamination response.",
+      "doctrine_topics": [
+        "water quality standards and designated uses",
+        "baseline water quality testing protocols",
+        "impact monitoring well network design",
+        "drinking water maximum contaminant levels (MCLs)",
+        "oil and gas specific contaminant analysis (BTEX, TDS, chloride)",
+        "water quality data interpretation and trend analysis",
+        "stray gas migration detection and attribution",
+        "water quality complaint investigation protocols",
+        "remediation standard selection (risk-based vs background)",
+        "water quality reporting and notification requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A homeowner near a horizontal drilling operation reports that their well water has turned brown and has a petroleum odor. Pre-drill baseline water testing was conducted 6 months ago and showed no contamination. Analyze the investigation protocol, attribution methodology, and the operator's legal exposure.",
+            "required_elements": ["baseline comparison analysis methodology", "fingerprinting analysis (isotopic, chemical)", "stray gas vs produced water contamination distinction", "RRC complaint investigation process", "operator liability framework under Texas law"],
+            "failure_signals": ["no baseline comparison methodology", "failure to address attribution analysis", "no regulatory investigation process"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "W05",
+      "name": "Produced Water Engine",
+      "function": "Analyze produced water management including treatment, recycling, disposal, and beneficial reuse options for oil and gas operations. Evaluate regulatory requirements, economics, and emerging technologies for produced water handling.",
+      "doctrine_topics": [
+        "produced water characterization and composition",
+        "produced water treatment technologies (membrane, evaporation, electrocoagulation)",
+        "produced water recycling for hydraulic fracturing",
+        "beneficial reuse regulations and opportunities",
+        "produced water disposal economics and logistics",
+        "produced water volume forecasting and management",
+        "seismicity concerns from produced water disposal",
+        "produced water transportation and transfer regulations",
+        "produced water handling facility permitting",
+        "produced water spill prevention and response"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator in the Delaware Basin produces 50,000 barrels of water per day across 200 wells. Current disposal costs are $0.75/bbl via SWD wells. The nearest available SWD capacity is 30 miles away, and the RRC has paused new SWD permits in the area due to seismicity concerns. Analyze the produced water management alternatives and economics.",
+            "required_elements": ["recycling for frac reuse feasibility and cost", "treatment technology comparison for TDS levels", "seismicity-driven disposal restrictions", "beneficial reuse regulatory pathway", "economic comparison of alternatives ($/bbl)"],
+            "failure_signals": ["no economic comparison", "failure to address seismicity restrictions", "no treatment technology analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "W06",
+      "name": "Injection Well Engine",
+      "function": "Analyze underground injection well permitting, operation, and compliance for saltwater disposal wells, enhanced recovery injection, and waste disposal wells under EPA UIC and Railroad Commission of Texas regulations.",
+      "doctrine_topics": [
+        "UIC Class II well permit application (disposal and enhanced recovery)",
+        "RRC saltwater disposal well permitting (Rule 9)",
+        "injection well mechanical integrity testing (MIT)",
+        "area of review (AOR) analysis and corrective action",
+        "injection pressure and volume limitations",
+        "induced seismicity monitoring and response protocols",
+        "injection well monitoring and reporting requirements",
+        "well construction standards for injection wells",
+        "plugging and abandonment of injection wells",
+        "injection well financial assurance requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An operator wants to convert a depleted producing well to a saltwater disposal well in an area where 3 earthquakes above magnitude 3.0 have been recorded in the past year within 10 miles. The target injection zone is the Ellenburger formation at 12,000 feet. Analyze the permitting requirements, seismicity protocol compliance, and operational restrictions.",
+            "required_elements": ["RRC disposal well permit requirements (Form W-14)", "seismic review trigger zones and restrictions", "Ellenburger injection considerations", "mechanical integrity test requirements", "disposal volume and pressure limitations in seismic areas"],
+            "failure_signals": ["no seismicity protocol analysis", "failure to address Ellenburger-specific concerns", "no RRC permit process discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

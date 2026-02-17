@@ -1,0 +1,398 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "TX",
+  "tier_name": "Tax",
+  "domain_description": "Comprehensive federal and state tax analysis across 14 practice areas including individual, corporate, partnership, trust, estate, international, state/local, controversy, exempt organizations, retirement plans, nonprofit, oil and gas, real estate, and cryptocurrency taxation. Engines provide doctrine-level reasoning grounded in the Internal Revenue Code, Treasury Regulations, judicial precedent, and IRS guidance.",
+  "authority_sources": [
+    "Internal Revenue Code (IRC) Sections 1-9999 (26 USC)",
+    "Treasury Regulations (26 CFR)",
+    "IRS Revenue Rulings and Revenue Procedures",
+    "Private Letter Rulings (PLR) and Technical Advice Memoranda (TAM)",
+    "Tax Court, Circuit Court, and Supreme Court Opinions",
+    "AICPA Statements on Standards for Tax Services",
+    "Joint Committee on Taxation Reports (JCT Blue Books)",
+    "IRS Chief Counsel Advice and Field Service Advice",
+    "State Tax Codes and Regulations",
+    "OECD Model Tax Convention and Commentary"
+  ],
+  "engines": [
+    {
+      "engine_id": "TX01",
+      "name": "Individual Tax Engine",
+      "function": "Analyze individual income tax issues including filing status, income recognition, deductions (above and below the line), credits, AMT, capital gains, self-employment tax, and estimated tax payment obligations under IRC and Treasury Regulations.",
+      "doctrine_topics": [
+        "filing status determination and optimization",
+        "gross income recognition under IRC 61",
+        "above-the-line deductions (IRC 62)",
+        "itemized deduction vs standard deduction analysis",
+        "capital gains and losses (IRC 1001, 1211, 1212)",
+        "alternative minimum tax (AMT) computation under IRC 55-59",
+        "self-employment tax calculation (IRC 1401-1403)",
+        "tax credit eligibility and optimization",
+        "estimated tax payment safe harbors (IRC 6654)",
+        "passive activity loss limitation rules (IRC 469)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A married couple has $350,000 W-2 income, $80,000 net rental loss from 3 rental properties (they actively participate), $45,000 in long-term capital gains, and $12,000 in charitable contributions. They live in Texas (no state income tax). Calculate the deductible rental loss and analyze the passive activity limitation.",
+            "required_elements": ["IRC 469 passive activity loss rules", "$25,000 active participation allowance", "MAGI phase-out ($100K-$150K)", "suspended loss carryforward", "capital gain rate brackets"],
+            "failure_signals": ["no IRC 469 reference", "incorrect phase-out calculation", "failure to address active participation exception"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX02",
+      "name": "Corporate Tax Engine",
+      "function": "Analyze C corporation tax issues including income computation, deductions, accumulated earnings tax, personal holding company tax, corporate reorganizations, and intercompany transaction rules under Subchapter C.",
+      "doctrine_topics": [
+        "corporate taxable income computation",
+        "dividends received deduction (IRC 243)",
+        "accumulated earnings tax (IRC 531-537)",
+        "personal holding company tax (IRC 541-547)",
+        "corporate reorganization types (IRC 368)",
+        "Section 351 tax-free incorporation",
+        "corporate distributions and redemptions (IRC 301-318)",
+        "corporate liquidation (IRC 331-346)",
+        "consolidated return regulations",
+        "corporate alternative minimum tax (CAMT under IRA)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A C corporation with $5 million in accumulated earnings and $800,000 current year earnings wants to distribute $2 million to its sole shareholder. The corporation has $1.5 million E&P. Analyze the tax treatment to the shareholder and evaluate accumulated earnings tax exposure.",
+            "required_elements": ["IRC 301 distribution ordering rules", "E&P computation and impact", "dividend vs return of capital vs capital gain", "accumulated earnings tax reasonable needs analysis (IRC 537)", "shareholder basis adjustment"],
+            "failure_signals": ["no E&P analysis", "failure to apply distribution ordering rules", "no accumulated earnings tax discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX03",
+      "name": "Partnership Tax Engine",
+      "function": "Analyze partnership and LLC taxation including formation, operations, distributions, transfers, allocations, and anti-abuse rules under Subchapter K of the IRC.",
+      "doctrine_topics": [
+        "partnership formation and IRC 721 nonrecognition",
+        "partnership allocation rules (IRC 704(b) substantial economic effect)",
+        "guaranteed payments (IRC 707(c))",
+        "partnership distributions (current and liquidating under IRC 731-736)",
+        "partner's outside basis computation (IRC 705)",
+        "partnership inside basis and IRC 754 election",
+        "transfer of partnership interests (IRC 741, 751)",
+        "hot asset rules and ordinary income recharacterization (IRC 751)",
+        "disguised sale rules (IRC 707(a)(2)(B))",
+        "partnership anti-abuse regulations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Partner A contributes land worth $500,000 (basis $100,000) and Partner B contributes $500,000 cash to form an equal partnership. The partnership sells the land 2 years later for $600,000. Analyze the tax consequences to each partner, including the IRC 704(c) allocation.",
+            "required_elements": ["IRC 704(c) built-in gain allocation", "precontribution gain to contributing partner", "$100,000 post-contribution gain allocation", "traditional method vs remedial method", "partner basis adjustments"],
+            "failure_signals": ["no IRC 704(c) analysis", "incorrect gain allocation between partners", "failure to identify built-in gain"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX04",
+      "name": "Trust Tax Engine",
+      "function": "Analyze trust and estate income taxation including fiduciary income tax computation, distributable net income, trust accounting income, grantor trust rules, and the taxation of trust distributions under Subchapter J.",
+      "doctrine_topics": [
+        "fiduciary income tax computation (IRC 641-692)",
+        "distributable net income (DNI) calculation (IRC 643)",
+        "trust distribution deduction (IRC 651, 661)",
+        "grantor trust rules (IRC 671-679)",
+        "simple trust vs complex trust distinction",
+        "trust accounting income vs taxable income",
+        "65-day election for trust distributions (IRC 663(b))",
+        "charitable remainder trust taxation (IRC 664)",
+        "trust compressed tax brackets and planning",
+        "qualified subchapter S trust (QSST) and ESBT rules"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A complex trust has $200,000 in dividend income, $50,000 in tax-exempt interest, $30,000 in capital gains (allocated to corpus), and $25,000 in trustee fees. The trust distributes $150,000 to the sole beneficiary. Calculate the trust's taxable income and the beneficiary's taxable distribution.",
+            "required_elements": ["DNI calculation including tax-exempt allocation", "distribution deduction computation", "capital gains allocation to corpus treatment", "trustee fee allocation between taxable and tax-exempt", "tier system for distributions"],
+            "failure_signals": ["no DNI calculation", "failure to allocate trustee fees", "incorrect capital gains treatment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX05",
+      "name": "Estate Tax Engine",
+      "function": "Analyze federal estate and gift tax issues including gross estate composition, deductions, credits, valuation, generation-skipping transfer tax, and lifetime gifting strategies under IRC Chapters 11-13.",
+      "doctrine_topics": [
+        "gross estate inclusion rules (IRC 2031-2044)",
+        "estate tax deductions (marital, charitable, debts)",
+        "unified credit and applicable exclusion amount",
+        "gift tax annual exclusion and lifetime exemption (IRC 2503, 2505)",
+        "generation-skipping transfer tax (IRC 2601-2663)",
+        "valuation discounts (minority, marketability, DLOM)",
+        "IRC 2032A special use valuation for farm/business property",
+        "IRC 6166 installment payment of estate tax",
+        "life insurance in the estate (IRC 2042)",
+        "QTIP trust and marital deduction planning (IRC 2056)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A decedent dies in 2025 with a gross estate of $20 million, including $5 million in a family ranch (qualifying for 2032A valuation at $3 million), $3 million life insurance payable to the estate, and a $4 million QTIP trust for the surviving spouse. The decedent made $2 million in lifetime taxable gifts. Calculate the estate tax liability.",
+            "required_elements": ["gross estate calculation", "IRC 2032A special use valuation reduction", "marital deduction for QTIP", "life insurance inclusion under IRC 2042", "unified credit and applicable exclusion amount"],
+            "failure_signals": ["no 2032A valuation analysis", "failure to include life insurance in gross estate", "incorrect unified credit calculation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX06",
+      "name": "International Tax Engine",
+      "function": "Analyze international tax issues including controlled foreign corporations, GILTI, Subpart F, foreign tax credits, transfer pricing, tax treaties, PFIC rules, and outbound/inbound transaction structuring.",
+      "doctrine_topics": [
+        "controlled foreign corporation (CFC) rules (IRC 951-965)",
+        "GILTI inclusion and high-tax exclusion (IRC 951A)",
+        "Subpart F income categories (IRC 952-954)",
+        "foreign tax credit computation and limitations (IRC 901-909)",
+        "transfer pricing and arm's length standard (IRC 482)",
+        "passive foreign investment company (PFIC) rules (IRC 1291-1298)",
+        "treaty-based positions and disclosure (IRC 6114)",
+        "BEAT and base erosion provisions (IRC 59A)",
+        "FDII deduction (IRC 250)",
+        "outbound transfer rules (IRC 367)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A US parent corporation owns 100% of a CFC in Ireland that earns $10 million in manufacturing income (not Subpart F) and $2 million in passive investment income. The CFC pays 12.5% Irish tax. Analyze the GILTI inclusion, foreign tax credit, and high-tax exclusion eligibility.",
+            "required_elements": ["GILTI computation (tested income less DTIR)", "QBAI and 10% deemed tangible return", "foreign tax credit limitation for GILTI basket", "high-tax exclusion election analysis", "Subpart F passive income treatment"],
+            "failure_signals": ["no GILTI formula applied", "failure to distinguish Subpart F from GILTI", "no foreign tax credit basket analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX07",
+      "name": "State Local Tax Engine",
+      "function": "Analyze state and local tax issues including nexus determination, income apportionment, sales and use tax, property tax, state-specific credits, and multistate compliance under the Commerce Clause and state tax codes.",
+      "doctrine_topics": [
+        "physical presence and economic nexus (South Dakota v. Wayfair)",
+        "income tax apportionment formulas (3-factor, single sales factor)",
+        "sales and use tax nexus and exemptions",
+        "property tax assessment and valuation challenges",
+        "Public Law 86-272 protection for solicitation activities",
+        "Multistate Tax Compact and UDITPA",
+        "state pass-through entity tax elections",
+        "state tax credits and incentive programs",
+        "transfer pricing adjustments at state level",
+        "state tax controversy and administrative procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Delaware-incorporated company with its headquarters in Texas has employees in 5 states and sells products online to customers in all 50 states. It has economic nexus in 35 states. Analyze the state income tax filing obligations, apportionment methodology, and whether P.L. 86-272 provides any protection.",
+            "required_elements": ["economic nexus standards by state", "P.L. 86-272 solicitation protection scope", "single sales factor vs three-factor apportionment", "throwback and throwout rule impact", "market-based vs cost-of-performance sourcing"],
+            "failure_signals": ["no nexus analysis", "failure to address P.L. 86-272", "no apportionment methodology discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX08",
+      "name": "Tax Controversy Engine",
+      "function": "Analyze tax controversy procedures including IRS audit defense, administrative appeals, Tax Court litigation, refund claims, penalty abatement, and collection alternatives under IRC procedural provisions.",
+      "doctrine_topics": [
+        "IRS examination process and taxpayer rights",
+        "IRS Appeals Office procedures and settlement authority",
+        "Tax Court petition and trial procedures",
+        "burden of proof in tax cases (IRC 7491)",
+        "penalty abatement for reasonable cause (IRC 6664)",
+        "statute of limitations on assessment (IRC 6501) and collection (IRC 6502)",
+        "offer in compromise (IRC 7122) evaluation",
+        "installment agreement and currently not collectible status",
+        "collection due process hearing rights (IRC 6320/6330)",
+        "Circular 230 practitioner obligations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "The IRS assesses a $500,000 deficiency based on disallowed business deductions and asserts a 20% substantial understatement penalty. The statute of limitations for the tax year closes in 90 days. Analyze the procedural options, penalty defense strategies, and whether the taxpayer should agree to extend the statute.",
+            "required_elements": ["statute extension Form 872/872-A analysis", "substantial understatement penalty threshold (IRC 6662)", "reasonable cause and good faith defense", "adequate disclosure defense", "administrative appeal vs Tax Court litigation strategy"],
+            "failure_signals": ["no penalty defense analysis", "failure to address statute extension decision", "no IRC 6662 reference"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX09",
+      "name": "Tax Exempt Orgs Engine",
+      "function": "Analyze tax-exempt organization issues including qualification, application, unrelated business income, private foundation rules, public charity status, and jeopardizing activities under IRC 501-530.",
+      "doctrine_topics": [
+        "IRC 501(c)(3) qualification requirements",
+        "Form 1023/1023-EZ application process",
+        "unrelated business taxable income (UBTI) under IRC 511-514",
+        "private foundation vs public charity classification (IRC 509)",
+        "private foundation excise taxes (IRC 4940-4948)",
+        "intermediate sanctions for excess benefit transactions (IRC 4958)",
+        "political campaign and lobbying restrictions",
+        "donor advised fund rules (IRC 4966-4967)",
+        "supporting organization rules (IRC 509(a)(3))",
+        "Form 990 reporting requirements and public disclosure"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 501(c)(3) educational organization receives $2 million in annual donations and earns $500,000 from selling branded merchandise online. The CEO receives $450,000 in total compensation. Analyze the UBTI exposure from merchandise sales and whether the CEO compensation triggers intermediate sanctions.",
+            "required_elements": ["UBTI analysis for merchandise (regularly carried on, not related)", "IRC 513 exceptions analysis", "IRC 4958 excess benefit transaction test", "rebuttable presumption of reasonableness procedure", "comparability data requirements"],
+            "failure_signals": ["no UBTI analysis", "failure to apply intermediate sanctions test", "no comparability analysis for compensation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX10",
+      "name": "Retirement Plans Engine",
+      "function": "Analyze retirement plan design, compliance, and taxation including 401(k), defined benefit, IRA, SEP, SIMPLE, and nonqualified deferred compensation plans under ERISA and IRC provisions.",
+      "doctrine_topics": [
+        "401(k) plan design and nondiscrimination testing (ADP/ACP)",
+        "defined benefit plan funding and PBGC requirements",
+        "IRA contribution limits, deductibility, and Roth conversions",
+        "required minimum distribution rules (IRC 401(a)(9))",
+        "early distribution penalties and exceptions (IRC 72(t))",
+        "SEP and SIMPLE IRA employer plan rules",
+        "nonqualified deferred compensation (IRC 409A)",
+        "prohibited transactions (IRC 4975)",
+        "plan correction programs (EPCRS)",
+        "SECURE Act and SECURE 2.0 provisions"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A small business owner (age 55, self-employed, $400,000 net SE income) wants to maximize retirement contributions for the current year. Compare the contribution limits for a solo 401(k) with employer and employee contributions, a SEP IRA, and a defined benefit plan. Include catch-up contributions.",
+            "required_elements": ["solo 401(k) employee deferral limit plus catch-up", "employer contribution limit (25% of compensation)", "SEP IRA contribution calculation", "defined benefit plan actuarial limit (IRC 415(b))", "total combined contribution comparison"],
+            "failure_signals": ["incorrect contribution limits", "failure to include catch-up contributions", "no comparative analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX11",
+      "name": "Nonprofit Tax Engine",
+      "function": "Analyze nonprofit organization tax compliance including state tax exemptions, sales tax exemptions, property tax exemptions, charitable solicitation registration, and governance requirements.",
+      "doctrine_topics": [
+        "state income tax exemption application procedures",
+        "sales and use tax exemption certificates",
+        "property tax exemption for charitable organizations",
+        "charitable solicitation registration requirements",
+        "nonprofit governance and fiduciary duties",
+        "nonprofit merger and dissolution tax consequences",
+        "state-specific nonprofit compliance requirements",
+        "gaming and fundraising event taxation",
+        "nonprofit employee vs volunteer classification",
+        "fiscal sponsorship arrangements and tax implications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A newly formed 501(c)(3) charity wants to operate in 15 states, conduct online fundraising nationally, and host an annual gala with a silent auction. Analyze the state-by-state charitable solicitation registration requirements and the tax treatment of the gala revenue.",
+            "required_elements": ["charitable solicitation registration states", "unified registration statement availability", "quid pro quo contribution rules for gala", "silent auction tax treatment", "state exemption application requirements"],
+            "failure_signals": ["no state registration analysis", "failure to address quid pro quo rules", "no distinction between contribution and payment for goods"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX12",
+      "name": "Oil Gas Tax Engine",
+      "function": "Analyze oil and gas taxation including depletion, intangible drilling costs, working interest and royalty owner taxation, Section 199A deduction, and petroleum-specific provisions under the IRC.",
+      "doctrine_topics": [
+        "percentage depletion vs cost depletion (IRC 611-613A)",
+        "intangible drilling cost deduction and election (IRC 263(c))",
+        "working interest owner vs royalty owner taxation",
+        "Section 199A qualified business income deduction for oil and gas",
+        "IRC 1031 like-kind exchange for mineral interests",
+        "abandonment loss recognition (IRC 165)",
+        "lease bonus and delay rental taxation",
+        "geological and geophysical cost amortization (IRC 167(h))",
+        "enhanced oil recovery credit (IRC 43)",
+        "marginal well production credit (IRC 45I)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An independent producer drills a well for $3 million ($2.1M intangible, $900K tangible). First-year gross income is $1.5 million from the well. The producer has $8 million total oil and gas gross income and $5 million taxable income before depletion. Calculate the maximum depletion deduction and IDC deduction for the year.",
+            "required_elements": ["percentage depletion rate (15%) and gross income limitation", "65% of taxable income limitation", "cost depletion alternative comparison", "IDC deduction vs capitalization election", "MACRS depreciation on tangible costs"],
+            "failure_signals": ["no depletion limitation analysis", "failure to compare percentage vs cost depletion", "incorrect IDC treatment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX13",
+      "name": "Real Estate Tax Engine",
+      "function": "Analyze real estate tax issues including depreciation, like-kind exchanges, passive activity rules, opportunity zones, REIT taxation, and real estate professional status under the IRC.",
+      "doctrine_topics": [
+        "MACRS depreciation for residential and commercial property",
+        "IRC 1031 like-kind exchange requirements and timing",
+        "qualified opportunity zone fund investments (IRC 1400Z)",
+        "real estate professional status (IRC 469(c)(7))",
+        "installment sale reporting (IRC 453)",
+        "IRC 121 principal residence exclusion",
+        "cost segregation studies and accelerated depreciation",
+        "REIT qualification and taxation (IRC 856-860)",
+        "low-income housing tax credit (IRC 42)",
+        "IRC 1250 depreciation recapture and unrecaptured gain"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A real estate investor sells a $5 million commercial property (adjusted basis $3.2 million after $1.8 million depreciation) and wants to defer gain through a 1031 exchange. The investor identifies 3 replacement properties on Day 30. Analyze the gain calculation, identification rules, and the treatment of the $1.8 million unrecaptured Section 1250 gain.",
+            "required_elements": ["1031 exchange timeline (45-day identification, 180-day close)", "three-property rule or 200% rule", "unrecaptured IRC 1250 gain (25% rate)", "boot recognition rules", "qualified intermediary requirements"],
+            "failure_signals": ["no timeline requirements specified", "failure to address 1250 recapture", "no identification rule analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "TX14",
+      "name": "Crypto Tax Engine",
+      "function": "Analyze cryptocurrency and digital asset taxation including recognition events, basis tracking, staking and mining income, DeFi transactions, NFTs, and information reporting under evolving IRS guidance.",
+      "doctrine_topics": [
+        "cryptocurrency as property (IRS Notice 2014-21)",
+        "taxable recognition events (sale, exchange, payment)",
+        "cost basis methods (FIFO, specific identification, HIFO)",
+        "cryptocurrency mining income recognition",
+        "staking rewards taxation and timing",
+        "DeFi lending, liquidity pools, and yield farming taxation",
+        "NFT creation, sale, and royalty taxation",
+        "cryptocurrency forks and airdrops",
+        "wash sale rule applicability to crypto",
+        "Form 8949 and Schedule D reporting requirements"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A taxpayer bought 10 ETH at $1,500 each in January, provided 5 ETH to a DeFi liquidity pool in March receiving LP tokens, earned 0.8 ETH in staking rewards in June (market value $2,000/ETH at time of receipt), and sold 3 ETH for $2,500 each in October. Analyze all taxable events and calculate the gain/loss on each.",
+            "required_elements": ["LP token receipt as potential taxable event", "staking reward ordinary income recognition at FMV", "capital gain calculation on ETH sale", "basis tracking across transactions", "holding period determination"],
+            "failure_signals": ["failure to identify all taxable events", "no basis tracking methodology", "missing staking income treatment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

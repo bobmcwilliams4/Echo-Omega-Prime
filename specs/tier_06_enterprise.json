@@ -1,0 +1,344 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "ENT",
+  "tier_name": "Enterprise",
+  "domain_description": "Comprehensive enterprise and business law analysis covering business formation, corporate governance, mergers and acquisitions, business valuation, joint ventures, franchise law, business succession, commercial contracts, supply chain management, risk management, compliance programs, and crisis management. Grounded in the DGCL, Model Business Corporation Act, UCC, Hart-Scott-Rodino Act, and federal/state business statutes.",
+  "authority_sources": [
+    "Delaware General Corporation Law (DGCL Title 8)",
+    "Model Business Corporation Act (MBCA)",
+    "Uniform Commercial Code (UCC Articles 1-9)",
+    "Hart-Scott-Rodino Antitrust Improvements Act (15 USC 18a)",
+    "Revised Uniform Limited Liability Company Act (RULLCA)",
+    "Revised Uniform Partnership Act (RUPA)",
+    "Federal Trade Commission Act (15 USC 41-58)",
+    "Sarbanes-Oxley Act of 2002",
+    "Foreign Corrupt Practices Act (15 USC 78dd)",
+    "Restatement (Third) of Agency"
+  ],
+  "engines": [
+    {
+      "engine_id": "ENT01",
+      "name": "Business Formation Engine",
+      "function": "Analyze entity selection and formation options including corporations, LLCs, partnerships, sole proprietorships, and benefit corporations. Evaluate liability protection, tax treatment, governance flexibility, and operational requirements by jurisdiction.",
+      "doctrine_topics": [
+        "entity type comparison (C Corp, S Corp, LLC, LP, GP)",
+        "LLC operating agreement essential provisions",
+        "corporate charter and bylaws drafting",
+        "state of formation selection factors (Delaware, Nevada, Wyoming, home state)",
+        "S corporation eligibility and election (IRC 1361-1379)",
+        "registered agent and compliance requirements",
+        "professional entity requirements by state",
+        "benefit corporation and social enterprise structures",
+        "foreign qualification and multi-state registration",
+        "piercing the corporate veil factors and prevention"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Three co-founders are starting a SaaS company. They want to raise venture capital, issue stock options to employees, and eventually pursue an IPO. One founder will contribute IP, one will contribute cash, and one will contribute services. Analyze the optimal entity structure and formation strategy.",
+            "required_elements": ["Delaware C corporation advantages for VC funding", "83(b) election for founders receiving restricted stock", "IP assignment and contribution mechanics", "authorized share structure for option pool", "vesting schedule and cliff provisions"],
+            "failure_signals": ["no entity type comparison", "failure to address IP contribution tax issues", "no stock option discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT02",
+      "name": "Corporate Governance Engine",
+      "function": "Analyze corporate governance structures, board of directors duties, shareholder rights, executive compensation, proxy contests, and governance best practices under state corporate law and federal securities requirements.",
+      "doctrine_topics": [
+        "board of directors fiduciary duties (care, loyalty, good faith)",
+        "business judgment rule and its limitations",
+        "Revlon duties in sale of control transactions",
+        "Unocal enhanced scrutiny for defensive measures",
+        "executive compensation committee independence",
+        "shareholder derivative action requirements",
+        "proxy access and shareholder proposals",
+        "board committee structure and charters",
+        "corporate governance guidelines and codes",
+        "officer and director indemnification and D&O insurance"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A board of directors receives an unsolicited acquisition offer at a 40% premium. The board rejects the offer without consulting financial advisors and adopts a poison pill. Three activist shareholders demand a special meeting to remove the board. Analyze the board's fiduciary duties and the validity of the defensive measures under Unocal and Revlon.",
+            "required_elements": ["Unocal enhanced scrutiny test (reasonableness and proportionality)", "Revlon duty trigger analysis", "poison pill validity and scope", "board's duty to inform itself before rejecting", "shareholder rights to call special meeting"],
+            "failure_signals": ["no Unocal/Revlon framework applied", "failure to analyze poison pill proportionality", "no fiduciary duty analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT03",
+      "name": "Mergers Acquisitions Engine",
+      "function": "Analyze M&A transaction structures including asset purchases, stock purchases, mergers, tender offers, and leveraged buyouts. Evaluate due diligence, deal protection mechanisms, regulatory approvals, and integration planning.",
+      "doctrine_topics": [
+        "asset purchase vs stock purchase vs merger structure comparison",
+        "letter of intent and exclusivity provisions",
+        "due diligence scope and material adverse change clauses",
+        "representations and warranties insurance (RWI)",
+        "HSR antitrust notification requirements",
+        "deal protection mechanisms (break-up fees, no-shop, go-shop)",
+        "closing conditions and material adverse effect definition",
+        "post-closing purchase price adjustments (working capital, earnout)",
+        "tender offer rules (Williams Act)",
+        "CFIUS national security review"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A private equity firm wants to acquire a $200 million manufacturing company through a leveraged buyout using 60% debt financing. The target has operations in the US and Germany, 800 employees, and a pending environmental remediation obligation. Analyze the optimal deal structure, key due diligence areas, and regulatory approval requirements.",
+            "required_elements": ["LBO structure and debt financing considerations", "HSR filing threshold and timing analysis", "CFIUS considerations for German operations", "environmental liability allocation", "employee notification requirements (WARN Act)"],
+            "failure_signals": ["no deal structure analysis", "failure to address cross-border regulatory issues", "no environmental liability discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT04",
+      "name": "Business Valuation Engine",
+      "function": "Analyze business valuation methodologies including income approach, market approach, and asset approach. Evaluate valuation discounts, premium calculations, and valuation for specific purposes (litigation, tax, M&A, divorce).",
+      "doctrine_topics": [
+        "discounted cash flow (DCF) methodology",
+        "comparable company and comparable transaction analysis",
+        "adjusted net asset value method",
+        "discount rate determination (WACC, build-up)",
+        "minority interest and marketability discounts (DLOM, DLOC)",
+        "control premium analysis",
+        "valuation for estate and gift tax purposes (IRC 2031)",
+        "valuation for divorce and marital dissolution",
+        "fair value vs fair market value distinction",
+        "goodwill identification and valuation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Value a privately held oil service company with $15 million EBITDA, $5 million capex, $8 million net debt, 15% annual revenue growth, and no comparable public companies. The valuation is for a minority interest gift to family members. Analyze the appropriate methodology and applicable discounts.",
+            "required_elements": ["DCF valuation with projections and terminal value", "WACC or build-up discount rate", "minority interest discount (DLOC) analysis", "lack of marketability discount (DLOM) analysis", "comparability to guideline transactions"],
+            "failure_signals": ["no valuation methodology applied", "failure to address minority and marketability discounts", "no discount rate analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT05",
+      "name": "Joint Ventures Engine",
+      "function": "Analyze joint venture structures including corporate JVs, LLC JVs, contractual JVs, and consortium arrangements. Evaluate governance, capital contribution, profit sharing, deadlock resolution, and exit mechanisms.",
+      "doctrine_topics": [
+        "joint venture entity selection (LLC vs Corp vs contractual)",
+        "governance and management committee structure",
+        "capital contribution obligations and funding mechanisms",
+        "profit and loss allocation arrangements",
+        "deadlock resolution mechanisms (swing vote, mediation, buy-sell)",
+        "non-compete and exclusivity provisions",
+        "intellectual property licensing and ownership",
+        "exit mechanisms (put/call, tag-along, drag-along)",
+        "antitrust considerations for competitor JVs",
+        "fiduciary duties among JV partners"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Two competing oil companies want to form a joint venture to develop a new shale play. Company A will contribute acreage (60%) and Company B will contribute capital and operations expertise (40%). They disagree on governance — both want operational control. Design the JV structure and governance framework.",
+            "required_elements": ["LLC vs corporate JV comparison for oil and gas", "management committee with supermajority protections", "operator designation and performance standards", "antitrust analysis for competitor JV", "deadlock resolution mechanism"],
+            "failure_signals": ["no governance framework proposed", "failure to address antitrust risk", "no operator designation discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT06",
+      "name": "Franchise Law Engine",
+      "function": "Analyze franchise law compliance including FTC Franchise Rule, state registration requirements, franchise disclosure document preparation, franchise agreement analysis, and franchisee/franchisor dispute resolution.",
+      "doctrine_topics": [
+        "FTC Franchise Rule (16 CFR 436) disclosure requirements",
+        "franchise definition and coverage analysis",
+        "Franchise Disclosure Document (FDD) 23 items",
+        "state franchise registration and filing requirements",
+        "franchise agreement key provisions analysis",
+        "franchisee termination and non-renewal protections",
+        "franchise relationship laws by state",
+        "encroachment and exclusive territory issues",
+        "franchise financial performance representations (Item 19)",
+        "vicarious liability and joint employer issues in franchising"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A restaurant chain with 50 company-owned locations wants to begin franchising. They have no FDD and no franchise registration. They have already signed 3 'license agreements' with friends who are operating under the brand. Analyze the compliance violations and remediation steps required.",
+            "required_elements": ["FTC Franchise Rule applicability analysis", "definition of franchise (trademark, fee, control)", "pre-sale disclosure violation exposure", "state registration requirements in registration states", "remediation and rescission obligations"],
+            "failure_signals": ["no FTC Rule analysis", "failure to identify existing agreements as franchise sales", "no state registration discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT07",
+      "name": "Business Succession Engine",
+      "function": "Analyze business succession planning strategies including buy-sell agreements, management transition, ownership transfer mechanisms, key person planning, and family business governance structures.",
+      "doctrine_topics": [
+        "buy-sell agreement structures (cross-purchase, entity redemption, hybrid)",
+        "buy-sell funding mechanisms (life insurance, installment, sinking fund)",
+        "buy-sell valuation provisions and trigger events",
+        "management succession planning and transition",
+        "family business governance (family council, board)",
+        "key person life and disability insurance",
+        "employee stock ownership plan (ESOP) as succession tool",
+        "generational wealth transfer and estate planning integration",
+        "non-family management transition",
+        "business continuity planning for ownership events"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 65-year-old owner of a $20 million oil service company wants to transition ownership to 2 of 3 children who work in the business, while treating the third child fairly. The owner wants to remain involved for 5 years. Analyze the succession structure options including buy-sell, gifting, GRAT, ESOP, and installment sale to an IDGT.",
+            "required_elements": ["buy-sell agreement with installment payments", "gift/GRAT strategy for tax-efficient transfer", "ESOP analysis for liquidity and tax benefits", "equalization plan for non-participating child", "management transition timeline"],
+            "failure_signals": ["no comparison of transfer mechanisms", "failure to address non-participating child equity", "no tax planning discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT08",
+      "name": "Commercial Contracts Engine",
+      "function": "Analyze commercial contract structures including supply agreements, distribution agreements, licensing arrangements, service contracts, and master service agreements under UCC and common law principles.",
+      "doctrine_topics": [
+        "master service agreement (MSA) framework and SOW structure",
+        "supply agreement quantity and delivery terms (UCC 2-306, 2-307)",
+        "distribution and dealer agreement provisions",
+        "software licensing and SaaS agreement terms",
+        "service level agreements (SLA) and performance metrics",
+        "limitation of liability and consequential damage waivers",
+        "intellectual property indemnification provisions",
+        "confidentiality and non-disclosure agreement terms",
+        "termination provisions and wind-down obligations",
+        "dispute resolution (arbitration, mediation, jurisdiction)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A company wants to enter into a 5-year exclusive supply agreement for a critical raw material. The supplier demands a minimum purchase obligation of $10 million per year, while the buyer wants flexibility for demand fluctuations. Analyze the key contract provisions needed to balance both parties' interests.",
+            "required_elements": ["requirements contract vs minimum purchase obligation (UCC 2-306)", "output and requirements contract analysis", "price adjustment mechanism", "force majeure and supply disruption provisions", "exclusivity scope and exceptions"],
+            "failure_signals": ["no UCC requirements contract analysis", "failure to address price adjustment", "no force majeure discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT09",
+      "name": "Supply Chain Engine",
+      "function": "Analyze supply chain legal and compliance issues including procurement contracts, logistics agreements, trade compliance, product liability allocation, and supply chain risk management.",
+      "doctrine_topics": [
+        "procurement contract terms and conditions",
+        "Incoterms and international shipping obligations",
+        "supply chain due diligence and compliance (Dodd-Frank conflict minerals)",
+        "product liability allocation in supply chain",
+        "warehouse and logistics agreement terms",
+        "supplier quality requirements and audit rights",
+        "supply chain disruption force majeure analysis",
+        "customs and trade compliance in supply chain",
+        "sustainability and ESG requirements for suppliers",
+        "supply chain cybersecurity and data protection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A US manufacturer sources components from 3 countries (China, Mexico, Germany), assembles in Texas, and ships finished products to customers in 15 countries. A key Chinese supplier's factory was shut down by government order for 90 days. Analyze the supply chain legal issues including force majeure, alternative sourcing, and customer liability.",
+            "required_elements": ["force majeure clause interpretation for government shutdown", "supply agreement remedies and cure periods", "customer notification and contract obligations", "alternative sourcing rights and restrictions", "tariff and trade compliance for alternative suppliers"],
+            "failure_signals": ["no force majeure analysis", "failure to address downstream customer obligations", "no alternative sourcing discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT10",
+      "name": "Risk Management Engine",
+      "function": "Analyze enterprise risk management frameworks, insurance program design, contractual risk transfer, business continuity planning, and emerging risk identification for commercial and industrial operations.",
+      "doctrine_topics": [
+        "enterprise risk management (ERM) framework (COSO, ISO 31000)",
+        "insurance program structure and coverage analysis",
+        "contractual risk transfer (indemnification, insurance requirements)",
+        "business continuity and disaster recovery planning",
+        "workers compensation and employer liability",
+        "product liability risk assessment and mitigation",
+        "environmental liability risk management",
+        "cyber risk assessment and insurance",
+        "directors and officers liability",
+        "captive insurance company formation and management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oilfield services company with 500 employees, $100 million revenue, and operations in 5 states wants to design a comprehensive insurance program. Current losses include 3 auto accidents, 2 workers comp claims over $100K, and one environmental cleanup. Analyze the optimal insurance program structure and risk retention strategy.",
+            "required_elements": ["general liability and umbrella coverage analysis", "workers compensation experience modification factor", "auto liability and fleet coverage", "pollution legal liability coverage", "deductible and self-insured retention optimization"],
+            "failure_signals": ["no loss history analysis", "failure to address environmental coverage", "no retention strategy discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT11",
+      "name": "Compliance Programs Engine",
+      "function": "Design and evaluate corporate compliance programs including program structure, risk assessment, policies and procedures, training, monitoring, investigation, and effectiveness metrics per DOJ guidance.",
+      "doctrine_topics": [
+        "DOJ evaluation of corporate compliance programs framework",
+        "compliance program risk assessment methodology",
+        "compliance policies and procedures development",
+        "compliance training and communication programs",
+        "internal reporting and whistleblower hotline",
+        "compliance monitoring and testing",
+        "investigation procedures and documentation",
+        "third-party due diligence and management",
+        "compliance program metrics and effectiveness measurement",
+        "board oversight and compliance committee reporting"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A company received a DOJ subpoena related to potential FCPA violations by a foreign subsidiary. The company has a written compliance policy but no dedicated compliance officer, no training program, no third-party due diligence, and no hotline. Analyze the compliance program deficiencies under the DOJ Evaluation of Corporate Compliance Programs framework.",
+            "required_elements": ["DOJ three-part framework (well-designed, adequately resourced, works in practice)", "compliance program elements gap analysis", "voluntary self-disclosure considerations", "cooperation credit factors", "remediation priorities"],
+            "failure_signals": ["no DOJ framework reference", "failure to identify specific program gaps", "no remediation priority discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ENT12",
+      "name": "Crisis Management Engine",
+      "function": "Analyze crisis management and response strategies including incident response planning, regulatory crisis management, litigation crisis, reputational crisis, and business continuity during crisis events.",
+      "doctrine_topics": [
+        "crisis response team structure and activation",
+        "regulatory crisis notification and response timeline",
+        "litigation hold and document preservation obligations",
+        "media and public communications during crisis",
+        "employee communication and workforce management",
+        "business continuity activation during crisis",
+        "insurance claim initiation and documentation",
+        "government investigation response procedures",
+        "board notification and oversight during crisis",
+        "post-crisis review and lessons learned"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil company experiences a major pipeline rupture that releases 10,000 barrels of crude oil into a river, killing fish and threatening a municipal water supply. Media is on scene, regulators are calling, and the stock price is dropping. Analyze the immediate crisis response obligations across legal, regulatory, environmental, and communications domains.",
+            "required_elements": ["NRC notification requirement (40 CFR 110)", "state environmental agency notification", "Clean Water Act liability exposure (OPA 90)", "litigation hold implementation", "media response and crisis communication strategy"],
+            "failure_signals": ["no regulatory notification timeline", "failure to address OPA 90 liability", "no immediate response priority sequence"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

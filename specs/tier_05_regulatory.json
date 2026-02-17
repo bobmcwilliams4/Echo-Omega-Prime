@@ -1,0 +1,346 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "REG",
+  "tier_name": "Regulatory",
+  "domain_description": "Comprehensive regulatory compliance analysis across 12 federal and state regulatory domains including SEC, EPA, OSHA, FERC, FDA, FCC, banking, insurance, energy, environmental permitting, import/export controls, and data privacy. Engines provide doctrine-level guidance grounded in federal statutes, CFR provisions, agency guidance, and enforcement precedent.",
+  "authority_sources": [
+    "Securities Exchange Act of 1934 (15 USC 78a et seq.)",
+    "Clean Air Act (42 USC 7401-7671q)",
+    "Clean Water Act (33 USC 1251-1387)",
+    "Occupational Safety and Health Act (29 USC 651-678)",
+    "Federal Power Act / Natural Gas Act (16 USC 791-828c / 15 USC 717)",
+    "Federal Food, Drug, and Cosmetic Act (21 USC 301-399i)",
+    "Communications Act of 1934 (47 USC 151-615b)",
+    "Dodd-Frank Wall Street Reform Act (12 USC 5301 et seq.)",
+    "General Data Protection Regulation (EU GDPR)",
+    "California Consumer Privacy Act (CCPA/CPRA) (Cal. Civ. Code 1798.100-1798.199)",
+    "Export Administration Regulations (15 CFR 730-774)",
+    "International Traffic in Arms Regulations (22 CFR 120-130)"
+  ],
+  "engines": [
+    {
+      "engine_id": "REG01",
+      "name": "SEC Compliance Engine",
+      "function": "Analyze Securities and Exchange Commission compliance requirements including registration, reporting, disclosure obligations, insider trading prevention, broker-dealer regulation, and investment adviser compliance under federal securities laws.",
+      "doctrine_topics": [
+        "periodic reporting obligations (Forms 10-K, 10-Q, 8-K)",
+        "Regulation FD fair disclosure requirements",
+        "insider trading compliance programs (Section 16)",
+        "beneficial ownership reporting (Schedules 13D/13G)",
+        "broker-dealer registration and compliance (15 USC 78o)",
+        "investment adviser fiduciary duty and Form ADV",
+        "proxy solicitation rules (Regulation 14A)",
+        "Regulation S-K disclosure requirements",
+        "SOX internal controls (Section 404)",
+        "SEC examination and enforcement procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A public company CFO learns that next quarter's earnings will miss analyst estimates by 30%. She tells her brother at a family dinner who then sells his shares. Analyze the insider trading liability for both the CFO and the brother under Section 10(b), Rule 10b-5, and tipper-tippee liability.",
+            "required_elements": ["material nonpublic information definition", "tipper-tippee liability under Dirks v. SEC", "personal benefit test for tipper", "tippee knowledge requirement", "Section 10(b) and Rule 10b-5 elements"],
+            "failure_signals": ["no Dirks personal benefit test", "failure to analyze both tipper and tippee liability", "no MNPI analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG02",
+      "name": "EPA Compliance Engine",
+      "function": "Analyze Environmental Protection Agency regulatory compliance including air quality permits, water discharge permits, hazardous waste management, Superfund liability, toxic substance controls, and environmental reporting obligations.",
+      "doctrine_topics": [
+        "Clean Air Act Title V operating permit requirements",
+        "New Source Review and Prevention of Significant Deterioration",
+        "NPDES permit application and compliance (CWA Section 402)",
+        "RCRA hazardous waste generator requirements (40 CFR 262)",
+        "CERCLA response and cost recovery actions",
+        "TSCA chemical reporting and PMN requirements",
+        "EPCRA Tier II and TRI reporting",
+        "spill prevention and countermeasure (SPCC) plans",
+        "greenhouse gas reporting (40 CFR 98)",
+        "EPA enforcement response policy and penalty calculation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil and gas production facility emits 120 tons per year of VOCs and 85 tons per year of NOx. The facility has never obtained an air quality permit. Analyze the permitting requirements, potential violations, and the enforcement exposure under the Clean Air Act.",
+            "required_elements": ["major source threshold analysis (100/250 tpy)", "Title V operating permit requirement", "NSR applicability for unpermitted source", "state implementation plan requirements", "penalty calculation methodology under CAA Section 113"],
+            "failure_signals": ["no major source threshold analysis", "failure to address unpermitted operation violation", "no penalty framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG03",
+      "name": "OSHA Compliance Engine",
+      "function": "Analyze Occupational Safety and Health Administration compliance requirements including general duty clause obligations, specific standards, recordkeeping, workplace inspections, citation defense, and multi-employer worksite liability.",
+      "doctrine_topics": [
+        "general duty clause (Section 5(a)(1)) enforcement",
+        "specific standards applicability (29 CFR 1910, 1926)",
+        "OSHA recordkeeping and Form 300 requirements",
+        "workplace inspection procedures and warrants",
+        "citation classification (serious, willful, repeat, other)",
+        "multi-employer worksite citation policy",
+        "hazard communication standard (29 CFR 1910.1200)",
+        "process safety management (29 CFR 1910.119)",
+        "personal protective equipment requirements",
+        "OSHA penalty calculation and abatement"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An employee falls 18 feet from an unguarded platform at a construction site and suffers serious injuries. OSHA inspects and discovers no fall protection training, no guardrails, and no personal fall arrest systems. The general contractor hired a subcontractor whose employees were working on the platform. Analyze the citations likely issued and the multi-employer defense.",
+            "required_elements": ["fall protection standard 29 CFR 1926.501", "multi-employer worksite doctrine (creating, exposing, correcting, controlling)", "willful vs serious classification analysis", "general contractor vs subcontractor liability", "penalty factors and gravity assessment"],
+            "failure_signals": ["no fall protection standard cited", "failure to apply multi-employer doctrine", "no citation classification analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG04",
+      "name": "FERC Compliance Engine",
+      "function": "Analyze Federal Energy Regulatory Commission compliance requirements for natural gas pipelines, electric utilities, hydroelectric projects, and wholesale energy markets including tariff compliance, market manipulation, and reliability standards.",
+      "doctrine_topics": [
+        "Natural Gas Act certificate and rate regulation",
+        "FERC gas pipeline tariff compliance",
+        "electric utility rate regulation and cost recovery",
+        "wholesale electric market rules and ISO/RTO compliance",
+        "FERC anti-manipulation rule (18 CFR 1c)",
+        "hydroelectric licensing and relicensing",
+        "NERC reliability standards compliance (CIP, O&P)",
+        "FERC Form 1 and financial reporting",
+        "interstate pipeline construction and eminent domain",
+        "FERC enforcement and civil penalty authority"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A natural gas marketing company is accused of manipulating gas index prices by reporting false trade data to price index publishers. Analyze the FERC anti-manipulation authority, potential penalties, and how this differs from CFTC jurisdiction over the same conduct.",
+            "required_elements": ["FERC anti-manipulation rule 18 CFR 1c.1", "Energy Policy Act of 2005 penalty authority", "price index manipulation (Amaranth-type)", "FERC vs CFTC jurisdictional overlap", "penalty calculation (up to $1M per day per violation)"],
+            "failure_signals": ["no FERC anti-manipulation rule reference", "failure to address dual jurisdiction", "no penalty framework"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG05",
+      "name": "FDA Compliance Engine",
+      "function": "Analyze Food and Drug Administration regulatory compliance including drug and device approval pathways, GMP requirements, labeling requirements, clinical trial regulations, and FDA enforcement actions under the FDCA.",
+      "doctrine_topics": [
+        "drug approval pathways (NDA, ANDA, 505(b)(2))",
+        "medical device classification and 510(k)/PMA",
+        "current Good Manufacturing Practice (cGMP) requirements",
+        "clinical trial regulations (IND, IRB, informed consent)",
+        "food safety and FSMA compliance",
+        "FDA labeling requirements and advertising restrictions",
+        "post-market surveillance and adverse event reporting",
+        "FDA inspection and warning letter response",
+        "dietary supplement DSHEA compliance",
+        "FDA enforcement actions (seizure, injunction, consent decree)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A company develops a software application that uses AI to analyze medical images and provide diagnostic recommendations. Analyze whether this constitutes a medical device requiring FDA clearance, the appropriate regulatory pathway (510(k) vs De Novo vs PMA), and the Software as a Medical Device (SaMD) framework.",
+            "required_elements": ["SaMD classification framework", "clinical decision support software exclusion analysis", "510(k) vs De Novo pathway comparison", "FDA Digital Health guidance applicability", "predicate device analysis for 510(k)"],
+            "failure_signals": ["no SaMD framework analysis", "failure to address CDS exclusion", "no regulatory pathway comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG06",
+      "name": "FCC Compliance Engine",
+      "function": "Analyze Federal Communications Commission regulatory compliance including spectrum licensing, broadcasting rules, telecommunications regulation, equipment authorization, and emerging wireless technology requirements.",
+      "doctrine_topics": [
+        "spectrum licensing and allocation procedures",
+        "broadcast license renewal and compliance",
+        "telecommunications common carrier obligations",
+        "equipment authorization (certification, SDoC)",
+        "RF exposure limits and compliance (47 CFR 1.1307)",
+        "universal service fund contribution requirements",
+        "TCPA robocall and telemarketing rules",
+        "net neutrality and broadband regulation",
+        "tower siting and environmental review (NEPA/NHPA)",
+        "FCC enforcement and forfeiture proceedings"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A company wants to deploy a private 5G network using CBRS spectrum (3.5 GHz band) for industrial IoT applications at an oilfield. Analyze the spectrum access requirements, SAS registration, equipment certification needs, and RF exposure compliance obligations.",
+            "required_elements": ["CBRS three-tier spectrum access framework", "SAS (Spectrum Access System) registration", "GAA vs PAL access categories", "equipment certification under Part 96", "RF exposure limits for occupational environments"],
+            "failure_signals": ["no CBRS framework analysis", "failure to address SAS requirements", "no equipment certification discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG07",
+      "name": "Banking Regulations Engine",
+      "function": "Analyze banking regulatory compliance including capital requirements, consumer protection, BSA/AML obligations, fair lending, and prudential supervision under federal banking statutes and OCC/FDIC/Federal Reserve regulations.",
+      "doctrine_topics": [
+        "Basel III capital adequacy requirements",
+        "Bank Secrecy Act and anti-money laundering (BSA/AML)",
+        "Community Reinvestment Act (CRA) compliance",
+        "fair lending and ECOA/HMDA requirements",
+        "Dodd-Frank consumer protection provisions (CFPB)",
+        "FDIC deposit insurance and resolution",
+        "bank examination and supervisory process",
+        "Volcker Rule proprietary trading restrictions",
+        "cybersecurity and operational resilience requirements",
+        "fintech and bank charter considerations"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A regional bank discovers that its BSA/AML monitoring system failed to flag 200 suspicious transactions over 6 months involving shell companies with no apparent business purpose. The transactions total $15 million. Analyze the bank's obligations, potential enforcement exposure, and remediation requirements.",
+            "required_elements": ["SAR filing obligations and deadlines", "BSA/AML program adequacy assessment", "OCC enforcement action types (CMP, consent order)", "FinCEN penalty authority", "program remediation requirements"],
+            "failure_signals": ["no SAR filing obligation analysis", "failure to address program adequacy", "no enforcement exposure assessment"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG08",
+      "name": "Insurance Regulations Engine",
+      "function": "Analyze insurance regulatory compliance including state licensing, rate filing, solvency requirements, market conduct, claims handling, and producer regulation under state insurance codes and NAIC model laws.",
+      "doctrine_topics": [
+        "McCarran-Ferguson Act and state regulation primacy",
+        "insurer licensing and state admission requirements",
+        "rate filing and prior approval requirements",
+        "risk-based capital and solvency monitoring",
+        "market conduct examination and compliance",
+        "unfair claims settlement practices acts",
+        "producer licensing and appointment requirements",
+        "surplus lines and non-admitted insurance",
+        "insurance holding company regulation",
+        "NAIC model law adoption and uniformity"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An insurance company licensed in 3 states wants to offer a new commercial property product in 20 additional states. The product includes a parametric earthquake coverage trigger based on USGS data rather than traditional claims adjustment. Analyze the regulatory pathway for multi-state expansion and product approval.",
+            "required_elements": ["state-by-state licensing requirements", "rate and form filing procedures", "parametric insurance regulatory treatment", "surplus lines alternative if admitted filing is difficult", "NAIC Interstate Compact for product approval"],
+            "failure_signals": ["no multi-state licensing analysis", "failure to address parametric product novelty", "no rate/form filing discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG09",
+      "name": "Energy Regulations Engine",
+      "function": "Analyze energy industry regulatory compliance including utility rate regulation, renewable energy mandates, energy efficiency standards, pipeline safety, and grid reliability requirements under federal and state energy statutes.",
+      "doctrine_topics": [
+        "state public utility commission rate regulation",
+        "renewable portfolio standard (RPS) compliance",
+        "PURPA qualifying facility requirements",
+        "pipeline safety regulations (49 CFR 190-199)",
+        "energy efficiency resource standards (EERS)",
+        "electric transmission planning and cost allocation",
+        "natural gas distribution safety compliance",
+        "distributed energy resource interconnection rules",
+        "energy storage regulatory treatment",
+        "carbon capture and storage regulatory framework"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A utility company wants to build a 500 MW solar farm with 200 MWh battery storage in Texas. ERCOT is the grid operator. Analyze the regulatory requirements for interconnection, permitting, and renewable energy credit qualification.",
+            "required_elements": ["ERCOT interconnection study process", "transmission service request procedures", "REC qualification and registration", "state and local permitting requirements", "battery storage regulatory classification"],
+            "failure_signals": ["no ERCOT process analysis", "failure to address battery storage regulation", "no permitting discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG10",
+      "name": "Environmental Permits Engine",
+      "function": "Analyze environmental permitting requirements for industrial and energy projects including air permits, water permits, wetlands permits, waste permits, and endangered species consultations under federal and state environmental statutes.",
+      "doctrine_topics": [
+        "air quality permit types (PSD, NSR, minor source, Title V)",
+        "NPDES water discharge permit application",
+        "Section 404 wetlands fill permit (CWA/USACE)",
+        "RCRA TSD facility permit requirements",
+        "underground injection control (UIC) permits",
+        "ESA Section 7 consultation and Section 10 HCP",
+        "state environmental quality permit programs",
+        "NEPA categorical exclusion vs EA vs EIS",
+        "stormwater construction general permit (CGP)",
+        "permit modification and renewal procedures"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "An oil company wants to construct a produced water disposal facility in the Permian Basin that will include 3 saltwater disposal wells, a 10-acre evaporation pit, and a truck unloading facility. Identify all federal and state environmental permits required and the timeline for each.",
+            "required_elements": ["UIC Class II disposal well permit (EPA/RRC)", "TCEQ air quality permit for VOC emissions", "stormwater permit for construction and operation", "RRC permit for disposal facility", "estimated timeline for each permit"],
+            "failure_signals": ["failure to identify UIC permit", "no air quality permit analysis", "no timeline estimates"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG11",
+      "name": "Import Export Controls Engine",
+      "function": "Analyze trade compliance including export controls (EAR and ITAR), import regulations, economic sanctions (OFAC), customs classification, and free trade agreement compliance under US trade statutes and regulations.",
+      "doctrine_topics": [
+        "Export Administration Regulations (EAR) classification (ECCN)",
+        "International Traffic in Arms Regulations (ITAR) USML",
+        "OFAC sanctions programs and Specially Designated Nationals",
+        "customs classification (HTS) and tariff determination",
+        "deemed export rules for foreign nationals",
+        "export license application and exceptions",
+        "free trade agreement qualification (USMCA, etc.)",
+        "anti-boycott compliance requirements",
+        "Foreign Trade Zone benefits and procedures",
+        "voluntary self-disclosure to BIS and DDTC"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A US technology company wants to sell encryption software to a customer in the UAE. The software uses 256-bit AES encryption. A sub-component was developed by a French subsidiary. Analyze the export control classification, license requirements, and any applicable exceptions under the EAR.",
+            "required_elements": ["ECCN 5D002 encryption classification", "EAR 740.17 License Exception ENC", "mass market encryption analysis", "re-export considerations for French-origin component", "UAE end-use and end-user screening"],
+            "failure_signals": ["no ECCN classification", "failure to analyze encryption exception", "no end-user screening discussion"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "REG12",
+      "name": "Data Privacy Engine",
+      "function": "Analyze data privacy and protection regulatory compliance including GDPR, CCPA/CPRA, HIPAA, COPPA, state privacy laws, data breach notification, and cross-border data transfer requirements.",
+      "doctrine_topics": [
+        "GDPR principles and lawful bases for processing",
+        "CCPA/CPRA consumer rights and business obligations",
+        "HIPAA Privacy and Security Rule requirements",
+        "COPPA children's online privacy requirements",
+        "state data breach notification laws",
+        "cross-border data transfer mechanisms (SCCs, BCRs)",
+        "data protection impact assessments (DPIA)",
+        "privacy by design and default principles",
+        "cookie consent and tracking technology requirements",
+        "data subject rights (access, deletion, portability)"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A SaaS company based in Texas serves customers in the US and EU. It processes personal data of 500,000 EU residents and 2 million California residents. It suffers a data breach exposing names, emails, and encrypted passwords. Analyze the notification obligations under GDPR, CCPA, and applicable state breach notification laws, including timelines.",
+            "required_elements": ["GDPR 72-hour supervisory authority notification", "GDPR Article 34 data subject notification threshold", "CCPA breach notification requirements", "state breach notification law analysis", "risk assessment for encrypted data exposure"],
+            "failure_signals": ["no GDPR timeline specified", "failure to address encryption impact on notification", "no multi-jurisdiction analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

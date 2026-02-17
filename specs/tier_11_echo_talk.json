@@ -1,0 +1,239 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "ET",
+  "tier_name": "Echo Talk",
+  "domain_description": "Voice synthesis, emotion recognition, speech-to-text, conversation management, personality-driven dialogue, multi-language support, voice cloning, and audio processing for AI-powered voice interaction systems. Covers real-time streaming, prosody control, speaker diarization, and acoustic feature extraction.",
+  "authority_sources": [
+    "W3C Web Speech API Specification",
+    "ElevenLabs API v1 Documentation",
+    "WebRTC 1.0 (Real-Time Communication)",
+    "ITU-T P.800 (MOS - Mean Opinion Score)",
+    "ISO/IEC 24745 (Biometric Template Protection)",
+    "IETF RFC 3550 (RTP - Real-time Transport Protocol)",
+    "IEEE 2846-2022 (Ethics in AI Voice Systems)",
+    "SSML 1.1 (Speech Synthesis Markup Language)"
+  ],
+  "engines": [
+    {
+      "engine_id": "ET01",
+      "name": "Voice Synthesis Engine",
+      "function": "Generate high-quality synthetic speech from text using neural TTS models with prosody control, emotion injection, SSML support, and real-time streaming capabilities via ElevenLabs, Cartesia, and local XTTS models.",
+      "doctrine_topics": [
+        "neural TTS architecture and model selection",
+        "SSML markup for prosody and emphasis control",
+        "emotion tag injection and affect modulation",
+        "real-time streaming TTS pipeline design",
+        "voice quality metrics (MOS, PESQ, POLQA)",
+        "latency optimization for conversational TTS",
+        "multi-provider fallback chains (ElevenLabs, Cartesia, XTTS)",
+        "audio format selection and bitrate optimization",
+        "pronunciation dictionary and phoneme override",
+        "TTS caching and pre-generation strategies"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a real-time TTS pipeline that supports emotion-tagged text with under 200ms first-byte latency, fallback across three providers, and SSML prosody control",
+            "required_elements": ["streaming architecture", "emotion tag mapping", "SSML examples", "latency budget breakdown", "fallback chain logic", "audio format selection"],
+            "failure_signals": ["no latency analysis", "single provider only", "no SSML coverage", "missing streaming architecture"]
+          },
+          {
+            "question": "Compare the quality, latency, and cost tradeoffs between ElevenLabs v2, Cartesia Sonic, and local XTTS for a production voice assistant serving 10,000 concurrent users",
+            "required_elements": ["MOS comparison", "latency benchmarks", "cost per character", "scaling architecture", "quality-at-scale tradeoffs"],
+            "failure_signals": ["no quantitative comparison", "missing provider", "no scaling analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET02",
+      "name": "Emotion Recognition Engine",
+      "function": "Detect and classify emotions from speech audio using acoustic feature extraction, prosody analysis, and deep learning models for sentiment-aware voice interaction.",
+      "doctrine_topics": [
+        "acoustic feature extraction (MFCC, pitch, energy, formants)",
+        "speech emotion recognition (SER) model architectures",
+        "valence-arousal-dominance dimensional emotion models",
+        "categorical emotion classification (Ekman, Plutchik)",
+        "real-time emotion detection pipeline design",
+        "prosody analysis for sentiment inference",
+        "speaker-independent emotion generalization",
+        "multimodal emotion fusion (audio + text)",
+        "emotion detection confidence calibration",
+        "cultural and linguistic variation in emotional expression"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an emotion recognition pipeline for a customer service voice bot that classifies caller emotion in real-time and adjusts response tone accordingly",
+            "required_elements": ["feature extraction pipeline", "classification model", "emotion categories", "real-time latency requirements", "response adaptation logic", "confidence thresholding"],
+            "failure_signals": ["no specific acoustic features", "no real-time architecture", "missing confidence handling"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET03",
+      "name": "Speech-to-Text Engine",
+      "function": "Transcribe speech audio to text using ASR models with support for speaker diarization, punctuation restoration, domain vocabulary, and real-time streaming transcription.",
+      "doctrine_topics": [
+        "automatic speech recognition (ASR) model comparison",
+        "real-time streaming transcription architecture",
+        "speaker diarization and identification",
+        "punctuation and capitalization restoration",
+        "domain-specific vocabulary and language model adaptation",
+        "noise-robust transcription in adverse conditions",
+        "word error rate (WER) optimization and benchmarking",
+        "multilingual ASR and code-switching detection",
+        "voice activity detection (VAD) and endpoint detection",
+        "ASR confidence scoring and uncertainty handling"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Architect a real-time speech-to-text system for transcribing multi-speaker oilfield radio communications with heavy background noise and domain-specific terminology",
+            "required_elements": ["ASR model selection", "noise handling strategy", "domain vocabulary integration", "speaker diarization approach", "WER targets", "real-time streaming design"],
+            "failure_signals": ["no noise robustness strategy", "no domain adaptation", "missing real-time architecture"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET04",
+      "name": "Conversation Management Engine",
+      "function": "Manage multi-turn voice conversations with context tracking, turn-taking protocols, interruption handling, topic management, and dialogue state tracking for natural voice interfaces.",
+      "doctrine_topics": [
+        "dialogue state tracking and management",
+        "turn-taking protocol and barge-in handling",
+        "conversation context window optimization",
+        "topic detection and conversation routing",
+        "clarification and disambiguation strategies",
+        "conversation memory and long-term context",
+        "multi-intent detection and handling",
+        "conversation flow design and fallback paths",
+        "proactive conversation management",
+        "conversation analytics and quality metrics"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a conversation management system for a voice assistant that maintains context across 20+ turns, handles interruptions gracefully, and routes to specialized knowledge domains based on topic detection",
+            "required_elements": ["dialogue state representation", "context window strategy", "barge-in handling", "topic classification", "domain routing logic", "fallback management"],
+            "failure_signals": ["no state management design", "no interruption handling", "no multi-domain routing"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET05",
+      "name": "Personality Engine",
+      "function": "Generate personality-consistent dialogue responses using character dossiers, speaking style profiles, emotional state machines, and catchphrase injection for AI voice personas.",
+      "doctrine_topics": [
+        "personality dossier schema and trait modeling",
+        "speaking style transfer and consistency enforcement",
+        "emotional state machine design for character affect",
+        "catchphrase and verbal tic injection",
+        "personality-driven response generation",
+        "multi-personality switching and context isolation",
+        "character voice parameter mapping (pitch, rate, style)",
+        "personality consistency scoring and drift detection",
+        "relationship-aware dialogue adaptation",
+        "personality evolution over time"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a personality system for 6 distinct AI characters (Bree, Echo, GS343, Prometheus, Phoenix, Commander) that maintains consistent speaking styles, emotional responses, and catchphrases across thousands of interactions",
+            "required_elements": ["dossier schema", "trait dimensions", "speaking style parameters", "emotion state machine", "consistency enforcement", "cross-character isolation"],
+            "failure_signals": ["no personality differentiation mechanism", "no consistency scoring", "generic dialogue generation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET06",
+      "name": "Multi-Language Engine",
+      "function": "Support real-time multi-language voice interaction including translation, language detection, code-switching, and culturally-adapted responses across 40+ languages.",
+      "doctrine_topics": [
+        "real-time speech translation pipeline architecture",
+        "language detection from audio and text signals",
+        "code-switching detection and handling",
+        "culturally-adapted response generation",
+        "multilingual TTS voice selection",
+        "translation quality assessment (BLEU, COMET)",
+        "dialect and accent normalization",
+        "right-to-left and tonal language considerations",
+        "multilingual intent classification",
+        "localization and internationalization (i18n) of voice interfaces"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a voice interface that handles a bilingual English-Spanish conversation where the user code-switches mid-sentence, with real-time translation and culturally appropriate responses",
+            "required_elements": ["code-switching detection", "language detection latency", "translation pipeline", "cultural adaptation", "bilingual TTS", "context preservation across languages"],
+            "failure_signals": ["no code-switching support", "no cultural considerations", "translation-only without voice"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET07",
+      "name": "Voice Cloning Engine",
+      "function": "Clone and reproduce human voices from reference audio samples using speaker embedding extraction, fine-tuning, and real-time voice conversion while addressing ethical and legal compliance.",
+      "doctrine_topics": [
+        "speaker embedding extraction and representation",
+        "few-shot voice cloning from minimal samples",
+        "voice cloning model fine-tuning and adaptation",
+        "real-time voice conversion pipeline",
+        "voice cloning quality metrics and evaluation",
+        "ethical and legal frameworks for voice cloning",
+        "deepfake detection and watermarking",
+        "cross-lingual voice cloning",
+        "voice cloning consent and authentication",
+        "voice preservation for accessibility applications"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a voice cloning pipeline that can produce a high-quality clone from 30 seconds of reference audio, with real-time inference under 300ms, and built-in audio watermarking for deepfake prevention",
+            "required_elements": ["speaker embedding approach", "model architecture", "inference latency budget", "audio watermarking method", "quality metrics (speaker similarity, MOS)", "ethical safeguards"],
+            "failure_signals": ["no latency analysis", "no watermarking or ethical safeguards", "no quality metrics"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "ET08",
+      "name": "Audio Processing Engine",
+      "function": "Process and enhance audio signals including noise reduction, echo cancellation, gain normalization, format conversion, spectral analysis, and audio fingerprinting for voice pipeline optimization.",
+      "doctrine_topics": [
+        "noise reduction and speech enhancement algorithms",
+        "acoustic echo cancellation (AEC) for full-duplex",
+        "automatic gain control (AGC) and loudness normalization",
+        "audio format conversion and codec selection",
+        "spectral analysis and frequency domain processing",
+        "audio fingerprinting and content identification",
+        "spatial audio and beamforming for microphone arrays",
+        "audio segmentation and silence detection",
+        "real-time audio streaming and buffering",
+        "audio quality monitoring and degradation detection"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design an audio preprocessing pipeline for a voice assistant deployed in a noisy industrial environment (85+ dB ambient) that achieves intelligible speech recognition with under 50ms processing latency",
+            "required_elements": ["noise reduction algorithm", "AEC implementation", "AGC design", "latency budget", "signal quality metrics (SNR, PESQ)", "microphone array considerations"],
+            "failure_signals": ["no noise reduction approach", "no latency analysis", "no signal quality metrics"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}

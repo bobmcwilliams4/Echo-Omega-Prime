@@ -1,0 +1,295 @@
+{
+  "spec_version": "1.0.0",
+  "tier_prefix": "FRAC",
+  "tier_name": "Fracturing",
+  "domain_description": "Hydraulic fracturing design, execution, and analysis including frac design modeling, proppant selection and transport, fluid chemistry, pressure diagnostics, microseismic monitoring, refrac candidate selection, coiled tubing operations, stage optimization, flowback analysis, and well interference evaluation. Based on SPE technical papers, API recommended practices, and industry-standard fracture mechanics models.",
+  "authority_sources": [
+    "SPE Technical Papers (Hydraulic Fracturing)",
+    "API RP 100 (Hydraulic Fracturing — Well Integrity and Fracture Containment)",
+    "API RP 19C (Recommended Practice for Measurement of Proppants)",
+    "DFIT Analysis (Diagnostic Fracture Injection Test)",
+    "Nolte-Smith Pressure Analysis",
+    "PKN and KGD Fracture Geometry Models",
+    "SPE Monograph Vol. 12 (Recent Advances in Hydraulic Fracturing)",
+    "Economides & Nolte: Reservoir Stimulation",
+    "API RP 19D (Proppant Conductivity Testing)",
+    "ISO 13503 (Petroleum and Natural Gas Industries — Completion Fluids)"
+  ],
+  "engines": [
+    {
+      "engine_id": "FRAC01",
+      "name": "Frac Design Engine",
+      "function": "Design hydraulic fracture treatments including fracture geometry modeling, pump schedule optimization, fluid volume calculations, and treatment pressure prediction using PKN, KGD, and pseudo-3D models with real formation data.",
+      "doctrine_topics": [
+        "PKN and KGD fracture geometry models",
+        "pseudo-3D and planar-3D fracture modeling",
+        "pump schedule design and optimization",
+        "fracture height growth and containment",
+        "closure stress profiling and min horizontal stress",
+        "net pressure analysis during treatment",
+        "pad volume and fluid efficiency calculations",
+        "fracture conductivity requirements (FCD)",
+        "multi-stage completion design horizontal wells",
+        "formation mechanical properties for frac design"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a hydraulic fracture treatment for a Wolfcamp A bench horizontal well with 10,000 ft lateral, 40 stages, given closure stress of 8,500 psi, Young's modulus 4.5 MMpsi, and permeability of 200 nanodarcy",
+            "required_elements": ["proppant loading per stage", "fluid volume per stage", "pump rate recommendation", "fracture half-length target", "dimensionless fracture conductivity FCD", "stage spacing rationale"],
+            "failure_signals": ["no formation properties used", "missing FCD calculation", "generic treatment design", "no stage spacing analysis"]
+          },
+          {
+            "question": "Interpret a Nolte-Smith log-log pressure plot showing Mode I behavior transitioning to Mode III during a Bone Spring treatment",
+            "required_elements": ["Mode I confined height growth", "Mode III unconfined height growth", "net pressure interpretation", "treatment modification recommendation", "fracture geometry implications", "closure stress barriers"],
+            "failure_signals": ["no Nolte-Smith mode definitions", "missing pressure trend interpretation", "no treatment adjustment", "generic pressure analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC02",
+      "name": "Proppant Selection Engine",
+      "function": "Analyze proppant types, conductivity performance, crush resistance, transport mechanics, embedment effects, and selection optimization for specific reservoir and closure stress conditions per API RP 19C and 19D.",
+      "doctrine_topics": [
+        "proppant type comparison sand/ceramic/RCS",
+        "crush resistance testing per API RP 19C",
+        "long-term conductivity under closure stress",
+        "proppant transport and settling mechanics",
+        "proppant embedment in soft formations",
+        "proppant flowback prevention methods",
+        "mesh size selection and distribution",
+        "lightweight proppant applications",
+        "proppant concentration ramp design",
+        "conductivity damage mechanisms and mitigation"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Select the optimal proppant for a Delaware Basin Wolfcamp well with closure stress of 9,200 psi, bottomhole temperature of 220F, and soft clay-rich formation. Compare white sand, RCS, and ceramic options.",
+            "required_elements": ["crush resistance at closure stress", "long-term conductivity comparison", "embedment analysis in soft formation", "cost-benefit analysis", "API RP 19C testing criteria", "mesh size recommendation"],
+            "failure_signals": ["no closure stress consideration", "missing conductivity data", "no embedment analysis", "single proppant recommendation without comparison"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC03",
+      "name": "Fluid Chemistry Engine",
+      "function": "Analyze fracturing fluid systems including slickwater, crosslinked gels, hybrid systems, viscoelastic surfactants, and acid fracturing chemistry including breaker design, friction reduction, and formation compatibility.",
+      "doctrine_topics": [
+        "slickwater fluid design and friction reduction",
+        "crosslinked gel systems borate and zirconate",
+        "hybrid fluid system design and scheduling",
+        "breaker design and delayed activation",
+        "acid fracturing fluid systems and etching",
+        "clay stabilization and formation compatibility",
+        "friction reducer selection and performance",
+        "temperature stability of fluid systems",
+        "fluid loss additives and mechanisms",
+        "environmental compliance and green chemistry alternatives"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Design a hybrid fluid system for a high-temperature (280F) carbonate reservoir with 12% clay content, specifying base fluid, crosslinker, breaker schedule, and clay stabilizer",
+            "required_elements": ["crosslinker type for temperature range", "breaker type and schedule", "clay stabilization protocol", "viscosity profile vs temperature", "fluid loss control", "formation compatibility testing"],
+            "failure_signals": ["no temperature consideration", "missing clay compatibility", "generic fluid recipe", "no breaker design"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC04",
+      "name": "Pressure Analysis Engine",
+      "function": "Analyze fracture treatment pressure data including ISIP, closure pressure, net pressure, DFIT interpretation, step rate tests, and real-time pressure matching for fracture geometry estimation.",
+      "doctrine_topics": [
+        "DFIT analysis and closure pressure determination",
+        "ISIP interpretation and near-wellbore effects",
+        "net pressure history matching",
+        "step rate test analysis for fracture extension pressure",
+        "G-function analysis for closure identification",
+        "before-closure and after-closure analysis",
+        "pressure-dependent leakoff identification",
+        "tortuosity and near-wellbore friction",
+        "real-time treatment monitoring and diagnostics",
+        "minifrac analysis and calibration"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Interpret a DFIT dataset showing ISIP of 7,800 psi, with G-function plot exhibiting a hump signature and square-root time plot showing concave-up behavior before closure",
+            "required_elements": ["closure pressure identification method", "G-function hump interpretation as pressure-dependent leakoff", "before-closure analysis", "after-closure permeability estimation", "natural fracture network inference", "pore pressure estimation"],
+            "failure_signals": ["no G-function interpretation", "missing closure identification", "no PDL recognition", "generic pressure decline analysis"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC05",
+      "name": "Microseismic Engine",
+      "function": "Analyze microseismic monitoring data for fracture mapping, stimulated reservoir volume estimation, event classification, magnitude analysis, and treatment optimization feedback.",
+      "doctrine_topics": [
+        "microseismic event location and uncertainty",
+        "stimulated reservoir volume SRV estimation",
+        "moment magnitude and b-value analysis",
+        "downhole vs surface microseismic arrays",
+        "event classification natural vs induced",
+        "fracture network complexity from microseismic",
+        "real-time microseismic treatment feedback",
+        "microseismic-to-production correlation",
+        "velocity model calibration and accuracy",
+        "induced seismicity risk assessment"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A 40-stage Wolfcamp horizontal well microseismic survey shows events extending 800 ft in height, 1,200 ft in half-length, with a dominant cloud trending N30E. Interpret the fracture geometry and recommend treatment modifications for remaining stages.",
+            "required_elements": ["SRV calculation from event cloud", "fracture azimuth interpretation vs SHmax", "height growth containment assessment", "stage spacing adequacy", "treatment modification rationale", "event density and magnitude analysis"],
+            "failure_signals": ["no SRV calculation", "ignoring fracture azimuth", "no height growth concern", "generic microseismic description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC06",
+      "name": "Refrac Design Engine",
+      "function": "Analyze refracturing candidate selection, diversion technology, restimulation design, depletion modeling, stress reorientation assessment, and economic justification for refracturing campaigns.",
+      "doctrine_topics": [
+        "refrac candidate selection criteria",
+        "stress shadow and reorientation analysis",
+        "diversion technology mechanical and chemical",
+        "depletion analysis and remaining reserves",
+        "refrac vs infill well economics",
+        "production decline analysis for refrac timing",
+        "extreme limited entry for diversion",
+        "ball-activated sleeve systems for refrac",
+        "historical treatment analysis for refrac design",
+        "refrac case histories and lessons learned"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Evaluate a 2015-vintage Bone Spring horizontal well producing 30 BOPD (down from 800 BOPD IP) with original 20-stage plug-and-perf completion using 800 lb/ft sand loading as a refrac candidate",
+            "required_elements": ["decline curve analysis", "original vs current completion comparison", "stress reorientation assessment", "diversion strategy selection", "economic analysis EUR uplift", "proppant loading improvement"],
+            "failure_signals": ["no decline analysis", "missing original completion comparison", "no economic justification", "generic refrac recommendation"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC07",
+      "name": "Coiled Tubing Engine",
+      "function": "Analyze coiled tubing operations for fracturing applications including CT-conveyed plug-and-perf, CT-activated tools, fatigue life management, buckling analysis, and operational limits.",
+      "doctrine_topics": [
+        "coiled tubing fatigue life tracking",
+        "CT buckling analysis helical and sinusoidal",
+        "CT-conveyed plug and perf operations",
+        "CT milling operations for composite plugs",
+        "CT size selection for horizontal applications",
+        "CT real-time monitoring and data acquisition",
+        "CT nitrogen-assisted operations",
+        "CT pressure and tensile limits",
+        "CT wellbore cleanout procedures",
+        "CT string design and taper management"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "Determine the maximum reach of 2-inch CT in a horizontal well with 10,000 ft measured depth, 8,000 ft lateral, 7-inch casing, with wellbore fluid of 8.6 ppg brine for plug milling operations",
+            "required_elements": ["friction force calculation", "buckling onset depth", "available weight on bit", "CT fatigue considerations", "nitrogen assist requirements", "operational speed limits"],
+            "failure_signals": ["no buckling analysis", "missing friction calculations", "no depth limitation assessment", "generic CT operations"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC08",
+      "name": "Stage Optimization Engine",
+      "function": "Optimize hydraulic fracturing stage design including cluster spacing, perforation strategy, limited entry design, stage length optimization, and completion efficiency analysis for horizontal wells.",
+      "doctrine_topics": [
+        "cluster spacing optimization methods",
+        "limited entry perforation design",
+        "perforation friction and diversion",
+        "stage length optimization via stress analysis",
+        "geometric vs engineered completion design",
+        "fiber optic DAS/DTS for cluster efficiency",
+        "production log analysis for stage contribution",
+        "cemented vs uncemented liner completion",
+        "plug-and-perf vs sliding sleeve systems",
+        "stage count economic optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "DAS/DTS data from offset wells shows only 40% of perforation clusters are taking fluid in a 200-ft stage length with 5 clusters per stage. Redesign the completion to improve cluster efficiency.",
+            "required_elements": ["cluster spacing reduction rationale", "limited entry design parameters", "perforation diameter and count per cluster", "stress shadow analysis", "diversion strategy", "expected cluster efficiency improvement"],
+            "failure_signals": ["no cluster efficiency analysis", "missing limited entry design", "no DAS/DTS data interpretation", "same stage design repeated"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC09",
+      "name": "Flowback Analysis Engine",
+      "function": "Analyze post-fracture flowback data including fluid recovery, proppant flowback, pressure trends, rate-transient analysis, and early-time production diagnostics for fracture effectiveness evaluation.",
+      "doctrine_topics": [
+        "flowback rate management and choke strategy",
+        "fluid recovery percentage and implications",
+        "proppant flowback causes and prevention",
+        "early-time rate-transient analysis",
+        "flowing material balance during flowback",
+        "gas-water ratio trends during cleanup",
+        "fracture closure during flowback",
+        "load recovery modeling",
+        "surface facility requirements during flowback",
+        "environmental management of flowback fluids"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A Wolfcamp well is flowing back at 2,000 BWPD with 200 MCFGPD after 72 hours, with declining water rate and increasing gas-water ratio. Flowback fluid salinity is 180,000 ppm TDS. Interpret the flowback behavior and recommend choke management.",
+            "required_elements": ["load recovery calculation", "formation water vs frac water identification", "gas breakthrough interpretation", "choke management protocol", "fracture closure timing", "production forecast from flowback data"],
+            "failure_signals": ["no salinity interpretation", "missing load recovery analysis", "no choke management", "generic flowback description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    },
+    {
+      "engine_id": "FRAC10",
+      "name": "Well Interference Engine",
+      "function": "Analyze frac-driven interactions between wells including pressure communication, frac hits, production interference, protective measures, and spacing optimization using field data and geomechanical modeling.",
+      "doctrine_topics": [
+        "frac hit identification and classification",
+        "pressure communication monitoring methods",
+        "parent-child well interaction modeling",
+        "well spacing optimization from interference data",
+        "protective measures for offset wells",
+        "stress shadow effects on infill wells",
+        "depletion effects on infill fracture geometry",
+        "interference testing and analysis methods",
+        "production impact quantification from frac hits",
+        "field development spacing optimization"
+      ],
+      "eval_pack": {
+        "golden_queries": [
+          {
+            "question": "A parent well 660 ft away experienced a 2,000 psi pressure spike and began producing frac fluid during completion of a child well. Analyze the interference event and recommend mitigation for remaining stages.",
+            "required_elements": ["frac hit mechanism analysis", "pressure communication pathway", "parent well protection strategy", "stage modification for child well", "spacing adequacy assessment", "long-term production impact estimation"],
+            "failure_signals": ["no mechanism identification", "missing parent well protection", "no spacing discussion", "generic interference description"]
+          }
+        ],
+        "min_pass_rate": 0.7
+      }
+    }
+  ]
+}
