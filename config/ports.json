@@ -1,0 +1,32 @@
+{
+  "services": {
+    "tie_engine": 8391,
+    "pie_engine": 8392,
+    "arcs_engine": 8393,
+    "forge_x": 8875,
+    "gs343": 5003,
+    "phoenix": 8046,
+    "ai_orchestrator": 3032,
+    "fs_bridge": 3031,
+    "codex_bridge": 8787,
+    "claudfare_terminal": 8451,
+    "chat_memory": 8385
+  },
+  "engine_port_range": {
+    "start": 8400,
+    "end": 8899
+  },
+  "workers": {
+    "build_orchestrator": "https://echo-build-orchestrator.bmcii1976.workers.dev",
+    "omniscient_sync": "https://omniscient-sync.bmcii1976.workers.dev",
+    "shared_brain": "https://echo-shared-brain.bmcii1976.workers.dev",
+    "memory_prime": "https://echo-memory-prime.bmcii1976.workers.dev",
+    "shadowglass_v8": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "swarm_brain": "https://echo-swarm-brain.bmcii1976.workers.dev",
+    "bree_chat": "https://bree-chat.bmcii1976.workers.dev",
+    "sentinel_memory": "https://echo-sentinel-memory.bmcii1976.workers.dev",
+    "knowledge_forge": "https://echo-knowledge-forge.bmcii1976.workers.dev",
+    "encore_scraper": "https://encore-cloud-scraper.bmcii1976.workers.dev",
+    "forge_x_cloud": "https://forge-x-cloud.bmcii1976.workers.dev"
+  }
+}

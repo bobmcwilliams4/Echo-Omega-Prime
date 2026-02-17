@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "gates": [
+    {
+      "gate_id": "EVAL_PACK",
+      "name": "Eval Pack Golden Queries",
+      "weight": 50,
+      "criteria": "70%+ golden queries pass (required_elements present, failure_signals absent)",
+      "required": true
+    },
+    {
+      "gate_id": "DOCTRINE_COUNT",
+      "name": "Doctrine Block Count",
+      "weight": 20,
+      "criteria": ">= 30 DoctrineBlock instances in engine.py",
+      "required": true
+    },
+    {
+      "gate_id": "CITATION_DENSITY",
+      "name": "Citation Density",
+      "weight": 15,
+      "criteria": ">= 2 real citations per doctrine block on average",
+      "required": false
+    },
+    {
+      "gate_id": "SYNTAX",
+      "name": "Python Syntax Check",
+      "weight": 10,
+      "criteria": "py_compile passes on all .py files",
+      "required": true
+    },
+    {
+      "gate_id": "NO_PLACEHOLDERS",
+      "name": "No Placeholder Code",
+      "weight": 5,
+      "criteria": "Zero occurrences of TODO, pass (standalone), NotImplementedError, ...",
+      "required": true
+    }
+  ],
+  "pass_threshold": 70,
+  "auto_merge_threshold": 90
+}

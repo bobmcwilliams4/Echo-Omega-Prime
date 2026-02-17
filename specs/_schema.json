@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECHO Engine Tier Spec",
+  "description": "Defines engines in a tier with eval packs for quality gating",
+  "type": "object",
+  "required": ["spec_version", "tier_prefix", "tier_name", "domain_description", "authority_sources", "engines"],
+  "properties": {
+    "spec_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "tier_prefix": { "type": "string", "minLength": 2, "maxLength": 10 },
+    "tier_name": { "type": "string" },
+    "domain_description": { "type": "string", "minLength": 20 },
+    "authority_sources": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "engines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["engine_id", "name", "function", "doctrine_topics", "eval_pack"],
+        "properties": {
+          "engine_id": { "type": "string", "pattern": "^[A-Z]+\\d{2}$" },
+          "name": { "type": "string" },
+          "function": { "type": "string", "minLength": 30 },
+          "doctrine_topics": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 2
+          },
+          "example_doctrine_block": { "type": "object" },
+          "eval_pack": {
+            "type": "object",
+            "required": ["golden_queries", "min_pass_rate"],
+            "properties": {
+              "golden_queries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["question", "required_elements", "failure_signals"],
+                  "properties": {
+                    "question": { "type": "string" },
+                    "required_elements": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "minItems": 2
+                    },
+                    "failure_signals": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                },
+                "minItems": 1
+              },
+              "min_pass_rate": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

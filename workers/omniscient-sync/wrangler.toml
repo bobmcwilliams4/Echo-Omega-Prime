@@ -1,0 +1,45 @@
+name = "omniscient-sync"
+main = "omniscient-sync-v4.js"
+compatibility_date = "2024-01-01"
+account_id = "b9af3a4bf161132bb7e5d3d365fb8bb0"
+
+[[kv_namespaces]]
+binding = "OMNISCIENT_DATA"
+id = "03b27e2da8d14773b094ab42293d104e"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "omniscient-db"
+database_id = "6fb01050-470d-493b-8eda-755e97ace566"
+
+# === R2 BUCKETS — 3 isolated storage zones ===
+
+[[r2_buckets]]
+binding = "R2_SWARM"
+bucket_name = "echo-swarm-brain"
+
+[[r2_buckets]]
+binding = "R2_MEMORY"
+bucket_name = "echo-prime-memory"
+
+[[r2_buckets]]
+binding = "R2_VAULT"
+bucket_name = "echo-prime-vault"  # consolidated: master-vault merged into vault
+
+# === KNOWLEDGE — All consolidated into echo-prime-knowledge ===
+
+[[r2_buckets]]
+binding = "R2_LAW"
+bucket_name = "echo-prime-knowledge"  # consolidated: law-corpus merged into knowledge
+
+[[r2_buckets]]
+binding = "R2_TAX"
+bucket_name = "echo-prime-knowledge"  # consolidated: tax-knowledge merged into knowledge
+
+[[r2_buckets]]
+binding = "R2_KNOWLEDGE"
+bucket_name = "echo-prime-knowledge"
+
+[vars]
+ENVIRONMENT = "production"
+OMNISCIENT_VERSION = "4.4.0"

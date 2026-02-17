@@ -1,0 +1,19 @@
+name = "echo-build-orchestrator"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "BUILD_DB"
+database_name = "echo-build-orchestrator"
+database_id = "19ed6232-576e-4b6e-9e85-a7e9c290f6df"
+
+[[r2_buckets]]
+binding = "BUILD_PLANS"
+bucket_name = "echo-prime-infra"  # consolidated: build-plans merged into infra
+
+[vars]
+ORCHESTRATOR_URL = "https://echo-build-orchestrator.bmcii1976.workers.dev"
+COMMANDER_PHONE = "+14322090741"

@@ -1,0 +1,38 @@
+name = "echo-shared-brain"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+VERSION = "2.0.0"
+MAX_CONTEXT_TOKENS = "150000"
+MAX_RECENT_MESSAGES = "50"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "echo-shared-brain"
+database_id = "c4586f8d-e941-47e3-8017-e9fd386b9dba"
+
+[[r2_buckets]]
+binding = "ARCHIVE"
+bucket_name = "echo-prime-memory"
+
+[[kv_namespaces]]
+binding = "HOT"
+id = "3f72a9b80a9d43318b4bda873e21767b"
+
+[[vectorize]]
+binding = "VECTORS"
+index_name = "shared-brain-embeddings"
+
+[ai]
+binding = "AI"
+
+# Service Bindings — proxy to other Workers without error 1042
+[[services]]
+binding = "MEMORY_PRIME"
+service = "echo-memory-prime"
+
+[[services]]
+binding = "BUILD_ORCHESTRATOR"
+service = "echo-build-orchestrator"

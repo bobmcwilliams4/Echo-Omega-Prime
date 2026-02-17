@@ -1,0 +1,78 @@
+name: Engine Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'engines/**'
+      - 'backbone/**'
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pydantic loguru fastapi
+
+      - name: Syntax check all Python files
+        run: |
+          echo "=== SYNTAX CHECK ==="
+          failed=0
+          for f in $(git diff --name-only --diff-filter=ACMR origin/main -- 'engines/**/*.py' 'backbone/**/*.py'); do
+            if [ -f "$f" ]; then
+              python -m py_compile "$f" 2>&1 || { echo "FAIL: $f"; failed=$((failed+1)); }
+            fi
+          done
+          echo "Syntax failures: $failed"
+          [ $failed -eq 0 ] || exit 1
+
+      - name: Check for placeholders
+        run: |
+          echo "=== PLACEHOLDER CHECK ==="
+          failed=0
+          for f in $(git diff --name-only --diff-filter=ACMR origin/main -- 'engines/**/*.py'); do
+            if [ -f "$f" ]; then
+              # Check for standalone 'pass' (not in except/class), TODO, NotImplementedError
+              if grep -nP '^\s+pass\s*$' "$f" | grep -v 'except' | grep -v 'class.*:' | head -3; then
+                echo "PLACEHOLDER: $f has standalone pass statements"
+                failed=$((failed+1))
+              fi
+              if grep -n 'NotImplementedError\|# TODO\|# FIXME' "$f" | head -3; then
+                echo "PLACEHOLDER: $f has TODO/FIXME/NotImplementedError"
+                failed=$((failed+1))
+              fi
+            fi
+          done
+          echo "Placeholder failures: $failed"
+          [ $failed -eq 0 ] || exit 1
+
+      - name: Doctrine block count
+        run: |
+          echo "=== DOCTRINE COUNT ==="
+          for f in $(git diff --name-only --diff-filter=ACMR origin/main -- 'engines/**/engine.py'); do
+            if [ -f "$f" ]; then
+              count=$(grep -c 'DoctrineBlock(' "$f" 2>/dev/null || echo 0)
+              echo "$f: $count DoctrineBlock instances"
+              if [ "$count" -lt 10 ]; then
+                echo "WARNING: $f has fewer than 10 DoctrineBlock instances"
+              fi
+            fi
+          done
+
+      - name: Run eval pack (if validate_engine.py exists)
+        if: hashFiles('tools/validate_engine.py') != ''
+        run: |
+          echo "=== EVAL PACK ==="
+          for f in $(git diff --name-only --diff-filter=ACMR origin/main -- 'engines/**/engine.py'); do
+            if [ -f "$f" ]; then
+              engine_dir=$(dirname "$f")
+              python tools/validate_engine.py "$engine_dir" || echo "EVAL FAILED: $engine_dir"
+            fi
+          done
