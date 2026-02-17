@@ -1,0 +1,74 @@
+{
+  "engine_id": "P02_will_parser",
+  "engine_name": "Will Parser Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8652,
+  "mode": "hybrid",
+  "description": "Parse will provisions - devises, bequests, conditions, trusts, powers of appointment, residuary clauses. Texas Estates Code authority.",
+  "authority_domains": [
+    "Texas Estates Code Chapter 22 - Intestate Succession",
+    "Texas Estates Code Chapter 251 - Will Execution Requirements",
+    "Texas Estates Code Chapter 253 - Will Revocation",
+    "Texas Estates Code Chapter 255 - Devise Construction",
+    "Texas Estates Code Chapter 256 - Will Contests",
+    "Texas Estates Code Chapter 240 - Disclaimers",
+    "Restatement (Third) of Property: Wills and Other Donative Transfers",
+    "Texas case law on testamentary capacity, undue influence, will interpretation"
+  ],
+  "doctrine_count": 52,
+  "response_modes": ["fast", "defense", "memo"],
+  "confidence_levels": ["DEFENSIBLE", "AGGRESSIVE", "DISCLOSURE", "HIGH_RISK"],
+  "position_zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "definitely",
+      "guaranteed",
+      "certainly valid",
+      "no risk",
+      "will win in court",
+      "court will rule",
+      "testator intended",
+      "clearly meant"
+    ],
+    "require_disclosure": [
+      "will contest",
+      "undue influence",
+      "testamentary capacity",
+      "fraud",
+      "mistake",
+      "ambiguity",
+      "conflicting provisions",
+      "missing witnesses",
+      "self-proving affidavit defect"
+    ]
+  },
+  "telemetry": {
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P02_will_parser/logs",
+    "audit_trail": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P02_will_parser/logs/audit_trail.jsonl",
+    "rotation": "50 MB",
+    "retention": "30 days"
+  },
+  "vector_search": {
+    "enabled": true,
+    "fallback_on_cache_miss": true,
+    "cloud_retriever_path": "../_shared/cloud_retriever.py"
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "include_metrics": true,
+    "include_drift_status": true,
+    "include_coverage_map": true
+  },
+  "dependencies": {
+    "fastapi": ">=0.104.0",
+    "pydantic": ">=2.0.0",
+    "loguru": ">=0.7.0",
+    "python": ">=3.11"
+  },
+  "contact": {
+    "authority": "11.0 SOVEREIGN",
+    "commander": "Bobby Don McWilliams II",
+    "created": "2026-02-12",
+    "system": "ECHO OMEGA PRIME"
+  }
+}

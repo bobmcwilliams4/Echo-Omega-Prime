@@ -1,0 +1,119 @@
+{
+  "engine_id": "R04_violation_detector",
+  "version": "1.0.0",
+  "port": 8704,
+  "domain": "regulatory_compliance",
+  "mode": "hybrid",
+  "description": "Regulatory violation detection and classification — pattern matching against RRC/TCEQ/EPA rules with penalty assessment",
+  "capabilities": [
+    "violation_pattern_detection",
+    "regulatory_authority_classification",
+    "penalty_calculation",
+    "compliance_history_analysis",
+    "enforcement_action_prediction",
+    "corrective_action_planning",
+    "repeat_offender_scoring",
+    "environmental_impact_assessment",
+    "reporting_compliance_audit",
+    "financial_assurance_verification"
+  ],
+  "regulatory_authorities": [
+    "RRC",
+    "TCEQ",
+    "EPA",
+    "OSHA",
+    "DOT",
+    "PHMSA"
+  ],
+  "violation_categories": {
+    "operational": ["spacing", "production_limits", "injection", "flaring", "well_control"],
+    "environmental": ["unauthorized_discharge", "pit_violations", "tank_leaks", "spills", "air_emissions"],
+    "safety": ["h2s_equipment", "blowout_prevention", "pressure_testing", "emergency_shutdown"],
+    "reporting": ["late_p4", "missing_w2", "incomplete_g1", "delayed_notification"],
+    "financial": ["lapsed_bond", "insufficient_coverage", "unpaid_fees", "delinquent_taxes"],
+    "administrative": ["unauthorized_activity", "permit_violations", "inspection_obstruction"]
+  },
+  "penalty_tiers": {
+    "minor": {"min": 100, "max": 1000, "description": "Administrative oversights, late filings"},
+    "moderate": {"min": 1000, "max": 10000, "description": "Operational violations without environmental harm"},
+    "serious": {"min": 10000, "max": 50000, "description": "Environmental damage, safety hazards"},
+    "severe": {"min": 50000, "max": 250000, "description": "Repeat offenses, major environmental harm"},
+    "catastrophic": {"min": 250000, "max": 1000000, "description": "Blowouts, major spills, willful violations"}
+  },
+  "enforcement_actions": [
+    "Notice_of_Violation",
+    "Compliance_Order",
+    "Administrative_Penalty",
+    "Cease_and_Desist",
+    "Permit_Suspension",
+    "Permit_Revocation",
+    "Criminal_Referral",
+    "Plugging_Order",
+    "Financial_Assurance_Call"
+  ],
+  "doctrine_cache_size": 62,
+  "authority_hierarchy": {
+    "16_TAC_Chapter_3": 10,
+    "30_TAC_Environmental": 9,
+    "40_CFR_EPA": 9,
+    "RRC_Field_Rules": 8,
+    "TCEQ_Orders": 8,
+    "Case_Law_Precedent": 7,
+    "Industry_Standards": 5,
+    "Technical_Guidance": 4
+  },
+  "confidence_thresholds": {
+    "DEFENSIBLE": 0.90,
+    "AGGRESSIVE": 0.70,
+    "DISCLOSURE": 0.50,
+    "HIGH_RISK": 0.30
+  },
+  "telemetry": {
+    "enable_logging": true,
+    "enable_metrics": true,
+    "enable_audit_trail": true,
+    "enable_drift_detection": true,
+    "log_rotation": "10 MB",
+    "metric_aggregation_interval": 60
+  },
+  "response_modes": {
+    "FAST": {
+      "max_tokens": 400,
+      "doctrine_limit": 3,
+      "skip_deep_analysis": true
+    },
+    "DEFENSE": {
+      "max_tokens": 2000,
+      "include_citations": true,
+      "include_adverse_arguments": true,
+      "audit_ready": true
+    },
+    "MEMO": {
+      "max_tokens": 4000,
+      "full_documentation": true,
+      "include_resolution_strategy": true,
+      "include_precedent_analysis": true
+    }
+  },
+  "cloud_integration": {
+    "enable_cloud_retrieval": true,
+    "ekm_url": "https://ekm-query-engine.bmcii1976.workers.dev",
+    "graph_url": "https://graph-query-engine.bmcii1976.workers.dev",
+    "crystal_url": "https://crystal-memory-engine.bmcii1976.workers.dev",
+    "timeout_seconds": 10,
+    "cache_ttl_seconds": 30
+  },
+  "epistemic_guardrails": {
+    "enable": true,
+    "banned_phrases": [
+      "definitely",
+      "certainly will",
+      "guaranteed",
+      "no chance of",
+      "impossible to",
+      "always results in"
+    ],
+    "require_disclosure_for_novel_issues": true,
+    "flag_high_fragility_facts": true
+  }
+}

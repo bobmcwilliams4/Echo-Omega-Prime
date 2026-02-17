@@ -1,0 +1,86 @@
+{
+  "engine_id": "LM19",
+  "engine_name": "Probate Title Engine",
+  "version": "1.0.0",
+  "port": 8519,
+  "domain": "probate_title_examination",
+  "description": "Probate and estate title examination for mineral and surface interests — Texas intestate/testate succession, independent/dependent administration, muniment of title, affidavit of heirship, community property, mineral interest inheritance tracing, fractional interest calculation, trust administration, guardianship, multi-state ancillary probate, escheat, and heir reunification strategies.",
+  "tie_standard": "TIE-20 GOLD",
+  "backbone_engines": ["TIE", "PIE", "ARCS"],
+  "issue_categories": [
+    "INTESTATE_SUCCESSION",
+    "TESTATE_SUCCESSION",
+    "INDEPENDENT_ADMINISTRATION",
+    "DEPENDENT_ADMINISTRATION",
+    "MUNIMENT_OF_TITLE",
+    "SMALL_ESTATE_AFFIDAVIT",
+    "AFFIDAVIT_OF_HEIRSHIP",
+    "DETERMINATION_OF_HEIRSHIP",
+    "COMMUNITY_PROPERTY",
+    "HOMESTEAD_RIGHTS",
+    "LIFE_ESTATE_REMAINDER",
+    "TRUST_ADMINISTRATION",
+    "GUARDIANSHIP_CONSERVATORSHIP",
+    "ANCILLARY_PROBATE",
+    "MINERAL_INHERITANCE_TRACING",
+    "FRACTIONAL_INTEREST_CALCULATION",
+    "HEIR_TRACKING",
+    "ESCHEAT_UNCLAIMED",
+    "MINERAL_REUNIFICATION",
+    "SIMULTANEOUS_DEATH",
+    "PRETERMITTED_HEIR"
+  ],
+  "confidence_levels": {
+    "DEFENSIBLE": "Position supported by controlling statute/precedent with broad professional consensus",
+    "AGGRESSIVE": "Position supportable but requires strong factual showing or novel argument",
+    "DISCLOSURE": "Position requires disclosure of risk factors; outcome uncertain",
+    "HIGH_RISK": "Position likely challenged; proceed only with full client awareness"
+  },
+  "position_zones": {
+    "PLANNING": "Prospective analysis — what should the client do",
+    "REPORTING": "Retrospective analysis — what happened and what it means",
+    "AUDIT": "Defensive analysis — responding to challenge or litigation"
+  },
+  "authority_hierarchy": [
+    {"level": 1, "source": "TX Estates Code (Chapters 22-455)", "weight": 1.0},
+    {"level": 2, "source": "TX Property Code", "weight": 0.95},
+    {"level": 3, "source": "TX Family Code (community property)", "weight": 0.92},
+    {"level": 4, "source": "TX Supreme Court decisions", "weight": 0.90},
+    {"level": 5, "source": "TX Courts of Appeals decisions", "weight": 0.80},
+    {"level": 6, "source": "TX Attorney General opinions", "weight": 0.70},
+    {"level": 7, "source": "Restatement of Property", "weight": 0.60},
+    {"level": 8, "source": "Title standards (TLTA/State Bar)", "weight": 0.55},
+    {"level": 9, "source": "Secondary treatises (Johanson, Averill)", "weight": 0.45},
+    {"level": 10, "source": "Industry practice and custom", "weight": 0.30}
+  ],
+  "telemetry": {
+    "enabled": true,
+    "log_rotation": "10 MB",
+    "log_retention": 5,
+    "metrics_interval_seconds": 60,
+    "audit_trail": true
+  },
+  "vector_search": {
+    "enabled": true,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "similarity_threshold": 0.72,
+    "max_results": 10
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "include_doctrine_count": true,
+    "include_uptime": true,
+    "include_query_stats": true
+  },
+  "cors": {
+    "allow_origins": ["*"],
+    "allow_methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["*"]
+  },
+  "deployment": {
+    "host": "0.0.0.0",
+    "workers": 2,
+    "reload": false,
+    "log_level": "info"
+  }
+}

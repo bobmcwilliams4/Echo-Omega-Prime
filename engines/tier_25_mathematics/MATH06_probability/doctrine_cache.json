@@ -1,0 +1,182 @@
+[
+  {
+    "topic": "Kolmogorov Axioms",
+    "keywords": ["axiom", "kolmogorov", "probability space", "sigma-algebra", "sample space", "event", "measure"],
+    "conclusion_template": "Probability is a measure function P on a sigma-algebra of events satisfying: (1) P(A) >= 0 for all A, (2) P(Omega) = 1, (3) countable additivity for disjoint events. All probability theory derives from these three axioms.",
+    "reasoning_framework": "Kolmogorov's 1933 axiomatization defines probability on a triple (Omega, F, P) where Omega is the sample space, F is a sigma-algebra of subsets of Omega, and P: F -> [0,1] is a countably additive measure with P(Omega)=1. From these axioms we derive: P(empty)=0, P(A^c)=1-P(A), monotonicity P(A)<=P(B) if A subset B, sub-additivity, and continuity of probability. The sigma-algebra requirement ensures closure under countable unions and complements, which is essential for defining limits and conditioning.",
+    "key_factors": ["non-negativity", "normalization", "countable additivity", "sigma-algebra closure", "measure theory foundation"],
+    "primary_authority": ["Kolmogorov, Foundations of the Theory of Probability (1933)", "Billingsley, Probability and Measure", "Durrett, Probability: Theory and Examples"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Bayes' Theorem",
+    "keywords": ["bayes", "bayesian", "posterior", "prior", "likelihood", "conditional", "update"],
+    "conclusion_template": "Bayes' theorem states P(H|E) = P(E|H)*P(H)/P(E). It provides the mechanism for updating beliefs (prior to posterior) given new evidence. The denominator P(E) is computed via the law of total probability.",
+    "reasoning_framework": "Bayes' theorem follows directly from the definition of conditional probability: P(A|B) = P(A∩B)/P(B). Writing P(H∩E) two ways: P(E|H)*P(H) = P(H|E)*P(E), solving for P(H|E) yields the theorem. The denominator P(E) = sum_i P(E|H_i)*P(H_i) normalizes the posterior. Bayesian inference treats parameters as random variables with prior distributions, updates via likelihood, and produces posterior distributions that combine prior knowledge with observed data. Sequential updating is natural: today's posterior becomes tomorrow's prior.",
+    "key_factors": ["prior probability", "likelihood function", "evidence normalization", "posterior distribution", "sequential updating", "conjugate priors"],
+    "primary_authority": ["Bayes, An Essay towards solving a Problem in the Doctrine of Chances (1763)", "Jaynes, Probability Theory: The Logic of Science", "Gelman et al., Bayesian Data Analysis"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Binomial Distribution",
+    "keywords": ["binomial", "bernoulli", "trials", "success", "failure", "pmf", "n choose k"],
+    "conclusion_template": "The binomial distribution Bin(n,p) models the number of successes in n independent Bernoulli(p) trials. PMF: P(X=k) = C(n,k)*p^k*(1-p)^(n-k). E[X]=np, Var(X)=np(1-p). MGF: (q+pe^t)^n.",
+    "reasoning_framework": "Each trial is independent with constant success probability p. The number of ways to arrange k successes in n trials is C(n,k). Each arrangement has probability p^k*(1-p)^(n-k). The sum of independent Bernoulli(p) variables is Binomial(n,p). For large n, the normal approximation N(np, np(1-p)) applies when np>=5 and n(1-p)>=5. The Poisson approximation applies when n is large and p is small with np=lambda moderate.",
+    "key_factors": ["fixed number of trials", "constant probability", "independence", "normal approximation", "Poisson approximation", "reproductive property"],
+    "primary_authority": ["Bernoulli, Ars Conjectandi (1713)", "Feller, An Introduction to Probability Theory", "Ross, A First Course in Probability"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Poisson Distribution",
+    "keywords": ["poisson", "rare events", "lambda", "count", "rate", "arrivals", "pmf"],
+    "conclusion_template": "The Poisson distribution Pois(lambda) models the count of events in a fixed interval when events occur independently at constant rate lambda. PMF: P(X=k) = e^(-lambda)*lambda^k/k!. E[X]=Var(X)=lambda.",
+    "reasoning_framework": "The Poisson distribution arises as the limit of Bin(n,p) as n->infinity and p->0 with np=lambda. It models rare events: arrivals in a queue, photon counts, typos per page, radioactive decays. The inter-arrival times are exponential. Key properties: sum of independent Poisson variables is Poisson (reproductive), memorylessness of the underlying Poisson process. The Poisson process is the only simple counting process with independent and stationary increments.",
+    "key_factors": ["rare events approximation", "binomial limit", "independent increments", "stationary rate", "reproductive property", "connection to exponential"],
+    "primary_authority": ["Poisson, Recherches sur la probabilite des jugements (1837)", "Kingman, Poisson Processes", "Ross, Stochastic Processes"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Normal Distribution",
+    "keywords": ["normal", "gaussian", "bell curve", "standard normal", "z-score", "pdf", "cdf", "erf"],
+    "conclusion_template": "The normal distribution N(mu, sigma^2) is the ubiquitous continuous distribution with PDF f(x) = exp(-(x-mu)^2/(2*sigma^2)) / (sigma*sqrt(2*pi)). E[X]=mu, Var(X)=sigma^2. The standard normal Z = (X-mu)/sigma has the CDF Phi(z) = (1+erf(z/sqrt(2)))/2.",
+    "reasoning_framework": "The normal distribution emerges from the Central Limit Theorem: the sum of many independent random variables (with finite variance) converges in distribution to normal regardless of their individual distributions. The PDF is symmetric about mu, with inflection points at mu +/- sigma. The 68-95-99.7 rule: 68% within 1 sigma, 95% within 2, 99.7% within 3. Linear combinations of independent normals are normal. The MGF is exp(mu*t + sigma^2*t^2/2). Maximum entropy distribution for given mean and variance.",
+    "key_factors": ["central limit theorem", "symmetry", "68-95-99.7 rule", "maximum entropy", "stability under addition", "erf-based CDF"],
+    "primary_authority": ["De Moivre, The Doctrine of Chances (1738)", "Gauss, Theoria Motus (1809)", "Feller, An Introduction to Probability Theory"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Conditional Probability",
+    "keywords": ["conditional", "given", "intersection", "dependent", "independent", "chain rule"],
+    "conclusion_template": "Conditional probability P(A|B) = P(A∩B)/P(B) quantifies the probability of A given that B has occurred. The chain rule extends this: P(A∩B∩C) = P(A)*P(B|A)*P(C|A∩B). Independence means P(A|B) = P(A).",
+    "reasoning_framework": "Conditioning restricts the sample space to event B and rescales probabilities to sum to 1 within B. The multiplication rule P(A∩B) = P(A|B)*P(B) is the operational form. The chain rule generalizes to n events. Two events are independent iff P(A∩B) = P(A)*P(B), equivalently P(A|B) = P(A). Conditional independence given C means P(A∩B|C) = P(A|C)*P(B|C). Simpson's paradox shows that conditional relationships can reverse when conditioning variable is introduced or removed.",
+    "key_factors": ["sample space restriction", "multiplication rule", "chain rule", "independence", "conditional independence", "Simpson's paradox"],
+    "primary_authority": ["Kolmogorov, Foundations of Probability", "Ross, A First Course in Probability", "Pearl, Causality"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Combinatorics Foundations",
+    "keywords": ["permutation", "combination", "factorial", "multinomial", "counting", "stars and bars"],
+    "conclusion_template": "Combinatorics provides counting tools for probability: permutations P(n,k) = n!/(n-k)! for ordered selections, combinations C(n,k) = n!/(k!(n-k)!) for unordered, multinomial coefficients n!/(k1!*k2!*...*km!) for partitions, and stars-and-bars C(n+k-1,k-1) for distributing identical objects.",
+    "reasoning_framework": "The multiplication principle: if task A has m outcomes and task B has n outcomes, the sequence (A,B) has m*n outcomes. Permutations count ordered arrangements; combinations count unordered subsets. The binomial theorem (x+y)^n = sum C(n,k)*x^k*y^(n-k) connects combinatorics to algebra. Stirling's approximation n! ~ sqrt(2*pi*n)*(n/e)^n enables asymptotic analysis. Stars-and-bars counts non-negative integer solutions to x1+...+xk = n. The principle of inclusion-exclusion counts unions via alternating sums of intersections.",
+    "key_factors": ["multiplication principle", "permutations vs combinations", "binomial theorem", "Stirling approximation", "stars and bars", "overcounting correction"],
+    "primary_authority": ["Brualdi, Introductory Combinatorics", "Stanley, Enumerative Combinatorics", "Graham, Knuth, Patashnik, Concrete Mathematics"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Geometric Distribution",
+    "keywords": ["geometric", "first success", "memoryless", "waiting time", "trials until"],
+    "conclusion_template": "The geometric distribution Geom(p) models the number of trials until the first success. PMF: P(X=k) = p*(1-p)^(k-1) for k>=1. E[X] = 1/p, Var(X) = (1-p)/p^2. It is the only discrete memoryless distribution.",
+    "reasoning_framework": "The geometric distribution is the discrete analogue of the exponential. Memorylessness: P(X > s+t | X > s) = P(X > t). This means the probability of waiting t more trials is independent of how long you have already waited. The CDF is P(X <= k) = 1-(1-p)^k. The geometric is a special case of the negative binomial with r=1. The maximum likelihood estimator of p is 1/x_bar.",
+    "key_factors": ["memoryless property", "waiting time", "negative binomial special case", "MLE estimation", "discrete exponential analogue"],
+    "primary_authority": ["Feller, An Introduction to Probability Theory", "Ross, A First Course in Probability"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Hypergeometric Distribution",
+    "keywords": ["hypergeometric", "sampling without replacement", "population", "success states", "draws"],
+    "conclusion_template": "The hypergeometric distribution models sampling without replacement: drawing n items from a population of N containing K successes. PMF: P(X=k) = C(K,k)*C(N-K,n-k)/C(N,n). E[X] = nK/N.",
+    "reasoning_framework": "Unlike the binomial (sampling with replacement), the hypergeometric captures the changing composition of the population as items are drawn. As N->infinity with K/N->p, it converges to Binomial(n,p). Var(X) = n*K*(N-K)*(N-n)/(N^2*(N-1)), which includes the finite population correction factor (N-n)/(N-1). Applications: quality control (defective items in batch), card games (specific cards in a hand), ecological capture-recapture estimation.",
+    "key_factors": ["without replacement", "finite population correction", "binomial approximation for large N", "quality control", "capture-recapture"],
+    "primary_authority": ["Feller, An Introduction to Probability Theory", "Johnson, Kotz, Kemp, Univariate Discrete Distributions"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Exponential Distribution",
+    "keywords": ["exponential", "memoryless", "waiting time", "rate", "continuous", "poisson process"],
+    "conclusion_template": "The exponential distribution Exp(lambda) models waiting time between Poisson process events. PDF: f(x) = lambda*exp(-lambda*x) for x>=0. E[X]=1/lambda, Var(X)=1/lambda^2. It is the only continuous memoryless distribution.",
+    "reasoning_framework": "The exponential arises naturally as the inter-arrival time in a Poisson process with rate lambda. Memorylessness: P(X > s+t | X > s) = P(X > t), meaning the remaining wait time has the same distribution regardless of elapsed time. The CDF is 1-exp(-lambda*x). The minimum of independent exponentials is exponential with rate equal to the sum of rates. The exponential is a special case of the Gamma distribution with alpha=1. Hazard rate is constant: h(x) = lambda.",
+    "key_factors": ["Poisson process connection", "memoryless property", "constant hazard rate", "minimum property", "gamma special case", "MLE: lambda_hat = 1/x_bar"],
+    "primary_authority": ["Ross, Stochastic Processes", "Feller, An Introduction to Probability Theory"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Gamma Distribution",
+    "keywords": ["gamma", "shape", "rate", "sum of exponentials", "chi-squared", "waiting time"],
+    "conclusion_template": "The Gamma distribution Gamma(alpha, beta) generalizes the exponential. PDF involves x^(alpha-1)*exp(-beta*x). E[X]=alpha/beta, Var(X)=alpha/beta^2. The sum of n iid Exp(lambda) variables is Gamma(n, lambda). Chi-squared(k) = Gamma(k/2, 1/2).",
+    "reasoning_framework": "The gamma distribution with shape alpha and rate beta has PDF: f(x) = beta^alpha * x^(alpha-1) * exp(-beta*x) / Gamma(alpha). It models the waiting time for the alpha-th event in a Poisson process. The gamma function Gamma(alpha) = integral_0^inf t^(alpha-1)*e^(-t) dt generalizes factorial: Gamma(n) = (n-1)!. Key properties: sum of independent Gamma(alpha_i, beta) is Gamma(sum(alpha_i), beta). The chi-squared distribution with k degrees of freedom is Gamma(k/2, 1/2). The MGF is (beta/(beta-t))^alpha for t < beta.",
+    "key_factors": ["shape-rate parameterization", "sum of exponentials", "chi-squared connection", "gamma function", "reproductive property", "Bayesian conjugate prior for Poisson"],
+    "primary_authority": ["Johnson, Kotz, Balakrishnan, Continuous Univariate Distributions", "Casella & Berger, Statistical Inference"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Beta Distribution",
+    "keywords": ["beta", "proportion", "prior", "conjugate", "bayesian", "shape parameters"],
+    "conclusion_template": "The Beta distribution Beta(alpha, beta) is defined on [0,1], making it ideal for modeling proportions and probabilities. PDF: f(x) = x^(a-1)*(1-x)^(b-1)/B(a,b). E[X]=a/(a+b). It is the conjugate prior for the Bernoulli/Binomial likelihood in Bayesian analysis.",
+    "reasoning_framework": "The beta function B(a,b) = Gamma(a)*Gamma(b)/Gamma(a+b) normalizes the PDF. Special cases: Beta(1,1) = Uniform(0,1), Beta(1/2,1/2) = arcsine distribution. As a conjugate prior for Binomial(n,p): if prior is Beta(a,b) and we observe k successes in n trials, the posterior is Beta(a+k, b+n-k). This makes sequential Bayesian updating elegant. The mode is (a-1)/(a+b-2) for a,b>1. Var(X) = ab/((a+b)^2*(a+b+1)).",
+    "key_factors": ["conjugate prior", "proportion modeling", "beta function normalization", "Bayesian updating", "order statistics connection", "flexible shape"],
+    "primary_authority": ["Gelman et al., Bayesian Data Analysis", "Johnson, Kotz, Balakrishnan, Continuous Univariate Distributions"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Law of Large Numbers",
+    "keywords": ["law of large numbers", "convergence", "sample mean", "weak law", "strong law", "lln"],
+    "conclusion_template": "The Law of Large Numbers states that the sample mean converges to the expected value as sample size grows. Weak LLN: convergence in probability. Strong LLN: almost sure convergence. Requires finite expectation (strong form: finite variance not always needed).",
+    "reasoning_framework": "The Weak LLN (Khintchine): if X_1,...,X_n are iid with E[X]=mu, then P(|X_bar_n - mu| > epsilon) -> 0 for all epsilon > 0. Proof via Chebyshev inequality requires finite variance. The Strong LLN (Kolmogorov): X_bar_n -> mu almost surely, requiring only E[|X|] < infinity. The LLN justifies frequentist probability interpretation: relative frequency converges to true probability. It underpins Monte Carlo methods, insurance pooling, and statistical estimation. Rate of convergence is O(1/sqrt(n)) by CLT.",
+    "key_factors": ["weak vs strong convergence", "Chebyshev inequality proof", "finite expectation requirement", "frequentist justification", "Monte Carlo foundation", "rate of convergence"],
+    "primary_authority": ["Kolmogorov, Strong Law (1930)", "Khintchine, Weak Law (1929)", "Durrett, Probability: Theory and Examples"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Markov Chains",
+    "keywords": ["markov", "chain", "transition matrix", "steady state", "stationary", "ergodic", "absorbing"],
+    "conclusion_template": "A Markov chain is a stochastic process where the future state depends only on the present state (memoryless/Markov property). Defined by transition matrix P where P_ij = P(X_{n+1}=j | X_n=i). An ergodic chain has a unique steady-state distribution pi satisfying pi*P = pi.",
+    "reasoning_framework": "The Markov property: P(X_{n+1}=j | X_n=i, X_{n-1},...,X_0) = P(X_{n+1}=j | X_n=i). Classification of states: transient (eventually leaves forever) vs recurrent (returns infinitely often). Recurrent states are positive recurrent (finite expected return time) or null recurrent. A chain is irreducible if every state is reachable from every other. Periodicity: state i has period d if returns are only possible at multiples of d. An irreducible aperiodic chain with positive recurrent states is ergodic and has a unique stationary distribution. Steady-state found by solving pi*P = pi with sum(pi) = 1, or by power iteration.",
+    "key_factors": ["Markov property", "transition matrix", "irreducibility", "aperiodicity", "ergodicity", "stationary distribution", "power iteration"],
+    "primary_authority": ["Markov, Extension of LLN to dependent variables (1906)", "Norris, Markov Chains", "Levin, Peres, Wilmer, Markov Chains and Mixing Times"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Moment Generating Functions",
+    "keywords": ["mgf", "moment generating function", "moments", "characteristic function", "uniqueness"],
+    "conclusion_template": "The MGF M_X(t) = E[e^{tX}] encodes all moments of X: E[X^n] = M_X^{(n)}(0). If MGFs exist in a neighborhood of 0 and are equal, the distributions are identical. MGFs facilitate computing sums of independent variables: M_{X+Y}(t) = M_X(t)*M_Y(t).",
+    "reasoning_framework": "The n-th moment is obtained by differentiating the MGF n times and evaluating at t=0. The MGF uniquely determines the distribution when it exists in an open interval containing 0. For sums of independent variables, MGFs multiply, making them powerful for proving reproductive properties (sum of normals is normal, sum of Poissons is Poisson). The cumulant generating function K(t) = ln(M(t)) has cumulants as coefficients: K_1 = mean, K_2 = variance. When MGF does not exist, the characteristic function phi(t) = E[e^{itX}] always exists and serves the same uniqueness role.",
+    "key_factors": ["moment extraction", "uniqueness theorem", "product rule for independent sums", "cumulant generating function", "characteristic function fallback", "reproductive properties"],
+    "primary_authority": ["Casella & Berger, Statistical Inference", "Billingsley, Probability and Measure", "Feller, An Introduction to Probability Theory"],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Inclusion-Exclusion Principle",
+    "keywords": ["inclusion", "exclusion", "union", "intersection", "sieve", "overcounting"],
+    "conclusion_template": "The inclusion-exclusion principle computes P(A1 ∪ ... ∪ An) by alternating sums: add individual probabilities, subtract pairwise intersections, add triple intersections, and so on. For n events: P(union) = sum P(Ai) - sum P(Ai∩Aj) + sum P(Ai∩Aj∩Ak) - ... + (-1)^{n+1} P(A1∩...∩An).",
+    "reasoning_framework": "Direct counting of a union over-counts elements in multiple sets. Inclusion-exclusion corrects by systematically adding and subtracting intersection terms. For two events: P(A∪B) = P(A) + P(B) - P(A∩B). The Bonferroni inequalities provide upper and lower bounds by truncating the alternating sum. Applications: derangements (P(no fixed point)), birthday problem extensions, sieve of Eratosthenes generalization, chromatic polynomials in graph theory. Computational complexity grows as 2^n terms, so approximation via Bonferroni bounds is common for large n.",
+    "key_factors": ["alternating sum", "overcounting correction", "Bonferroni inequalities", "derangements", "computational complexity", "two-event base case"],
+    "primary_authority": ["Feller, An Introduction to Probability Theory", "Stanley, Enumerative Combinatorics", "Aigner, Combinatorial Theory"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Negative Binomial Distribution",
+    "keywords": ["negative binomial", "failures", "r-th success", "overdispersion", "waiting"],
+    "conclusion_template": "The negative binomial NegBin(r, p) models the number of failures before the r-th success. PMF: P(X=k) = C(k+r-1, k)*p^r*(1-p)^k. E[X]=r(1-p)/p, Var(X)=r(1-p)/p^2. Generalizes the geometric (r=1).",
+    "reasoning_framework": "The negative binomial counts failures before achieving r successes in independent Bernoulli trials. Equivalently, the total number of trials is X+r where X ~ NegBin(r,p). It is the sum of r independent geometric(p) variables. In practice, it models overdispersed count data where variance exceeds the mean (unlike Poisson where they are equal). The negative binomial arises as a Poisson-Gamma mixture: if X|Lambda ~ Poisson(Lambda) and Lambda ~ Gamma(r, beta), then X ~ NegBin. This mixture interpretation makes it useful for modeling heterogeneous rates.",
+    "key_factors": ["sum of geometrics", "overdispersion modeling", "Poisson-Gamma mixture", "waiting for r-th success", "generalizes geometric", "variance > mean"],
+    "primary_authority": ["Johnson, Kotz, Kemp, Univariate Discrete Distributions", "Hilbe, Negative Binomial Regression"],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Joint and Marginal Distributions",
+    "keywords": ["joint", "marginal", "conditional distribution", "covariance", "correlation", "independence"],
+    "conclusion_template": "Joint distributions describe the simultaneous behavior of multiple random variables. The joint PMF/PDF satisfies non-negativity and sums/integrates to 1. Marginals are obtained by summing/integrating out the other variables. X and Y are independent iff f(x,y) = f_X(x)*f_Y(y).",
+    "reasoning_framework": "For discrete (X,Y): joint PMF p(x,y) = P(X=x, Y=y). Marginal: p_X(x) = sum_y p(x,y). Conditional: p(y|x) = p(x,y)/p_X(x). For continuous: joint PDF f(x,y), marginal f_X(x) = integral f(x,y) dy. Covariance Cov(X,Y) = E[XY] - E[X]*E[Y] measures linear dependence. Correlation rho = Cov(X,Y)/(sigma_X*sigma_Y) normalizes to [-1,1]. Independence implies zero covariance but not conversely. The bivariate normal is fully characterized by (mu_X, mu_Y, sigma_X, sigma_Y, rho).",
+    "key_factors": ["marginalization", "conditioning", "covariance and correlation", "independence vs uncorrelated", "bivariate normal", "joint CDF"],
+    "primary_authority": ["Casella & Berger, Statistical Inference", "Ross, A First Course in Probability", "Hogg, McKean, Craig, Introduction to Mathematical Statistics"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  }
+]

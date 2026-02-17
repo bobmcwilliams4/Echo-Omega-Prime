@@ -1,0 +1,20 @@
+{
+  "engine_id": "R08_spacing_rules",
+  "engine_name": "ECHO R08 Spacing Rules Engine",
+  "version": "1.0.0",
+  "domain": "oil_gas_spacing_density",
+  "port": 8708,
+  "mode": "no_llm",
+  "description": "Well spacing and density intelligence for oil & gas operations. Covers Rule 37, Rule 38, pooling, horizontal spacing, urban drilling.",
+  "capabilities": ["Rule 37 spacing requirements", "Rule 38 density and proration units", "Voluntary and forced pooling", "Horizontal well spacing", "Urban drilling spacing", "Special field rules", "Spacing exceptions"],
+  "jurisdictions": ["Texas (Railroad Commission)", "Municipal (city ordinances)"],
+  "doctrine_cache": {"total_doctrines": 5, "categories": ["rule_37_spacing", "rule_38_density", "pooling", "horizontal_spacing", "urban_drilling"]},
+  "spacing_standards": {
+    "oil_vertical": "467 ft from lease lines, 1,200 ft between wells",
+    "gas_vertical": "330 ft from lease lines, 660 ft between wells",
+    "horizontal": "330-660 ft from lease lines, 660-1,320 ft between laterals (field-specific)",
+    "urban": "600-1,500 ft from protected uses (city-specific)"
+  },
+  "deployment": {"host": "0.0.0.0", "port": 8708, "workers": 4},
+  "metadata": {"created": "2026-02-12", "authority": "11.0 SOVEREIGN", "tie_compliant": true}
+}

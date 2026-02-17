@@ -1,0 +1,95 @@
+{
+  "engine_id": "TX11",
+  "engine_name": "Nonprofit Tax Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8461,
+  "mode": "DET",
+  "domain": "nonprofit_tax",
+  "description": "Comprehensive nonprofit and tax-exempt organization intelligence engine covering IRC 501(c)(3)-(c)(27), UBIT (IRC 511-514), private foundation rules (IRC 4940-4948), public charity classification (IRC 509(a)), intermediate sanctions (IRC 4958), charitable contributions (IRC 170), tax-exempt bond financing (IRC 103, 141-150), Form 990 series filing, lobbying/political activity restrictions, and state registration requirements.",
+  "authority_level": 11.0,
+  "tie_version": "TIE-20",
+  "determinism": true,
+  "hash_algorithm": "SHA-256",
+  "response_modes": ["FAST", "DEFENSE", "MEMO"],
+  "confidence_levels": ["DEFENSIBLE", "AGGRESSIVE", "DISCLOSURE", "HIGH_RISK"],
+  "position_zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "doctrine_count": 55,
+  "issue_categories": [
+    "EXEMPT_STATUS_QUALIFICATION",
+    "UNRELATED_BUSINESS_INCOME",
+    "PRIVATE_FOUNDATION_RULES",
+    "PUBLIC_CHARITY_CLASSIFICATION",
+    "LOBBYING_POLITICAL_ACTIVITY",
+    "INTERMEDIATE_SANCTIONS",
+    "CHARITABLE_CONTRIBUTIONS",
+    "TAX_EXEMPT_BONDS",
+    "FORM_990_COMPLIANCE",
+    "GOVERNANCE_DISSOLUTION",
+    "DONOR_ADVISED_FUNDS",
+    "FISCAL_SPONSORSHIP"
+  ],
+  "primary_authorities": [
+    "IRC 501(c)(3)",
+    "IRC 501(c)(4)-(c)(27)",
+    "IRC 509(a)",
+    "IRC 511-514",
+    "IRC 4940-4948",
+    "IRC 4958",
+    "IRC 170",
+    "IRC 103, 141-150",
+    "IRC 4911",
+    "IRC 501(h)",
+    "Treas. Reg. 1.501(c)(3)-1",
+    "Treas. Reg. 1.509(a)-1 through -4",
+    "Treas. Reg. 1.511-1 through 1.514-1",
+    "Rev. Proc. 2023-5 (determination letters)",
+    "Form 990 Instructions"
+  ],
+  "endpoints": {
+    "query": "/query",
+    "health": "/health",
+    "analyze": "/analyze",
+    "doctrines": "/doctrines",
+    "metrics": "/metrics",
+    "coverage": "/coverage"
+  },
+  "telemetry": {
+    "enabled": true,
+    "audit_trail": true,
+    "metrics_collection": true,
+    "drift_detection": true,
+    "log_rotation": "10 MB",
+    "log_retention": 30
+  },
+  "semantic_normalization": {
+    "enabled": true,
+    "dictionary_size": 180,
+    "synonym_groups": 45
+  },
+  "vector_search": {
+    "enabled": true,
+    "similarity_threshold": 0.72,
+    "max_results": 10,
+    "embedding_dim": 384
+  },
+  "performance": {
+    "doctrine_cache_ttl_seconds": 3600,
+    "max_concurrent_queries": 50,
+    "response_timeout_seconds": 30,
+    "deep_analysis_timeout_seconds": 120
+  },
+  "dependencies": {
+    "python": ">=3.11",
+    "fastapi": ">=0.104.0",
+    "pydantic": ">=2.0",
+    "loguru": ">=0.7.0",
+    "uvicorn": ">=0.24.0"
+  },
+  "build_metadata": {
+    "builder": "ECHO_OMEGA_PRIME_W006",
+    "build_date": "2026-02-11",
+    "tie_standard": "TIE-20_GOLD",
+    "lines_target": 3000,
+    "total_files": 6
+  }
+}

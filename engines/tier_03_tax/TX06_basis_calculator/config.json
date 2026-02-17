@@ -1,0 +1,88 @@
+{
+  "engine_id": "TX06_basis_calculator",
+  "version": "1.0.0",
+  "port": 8606,
+  "name": "Basis Calculator Intelligence Engine",
+  "domain": "tax_basis_calculation",
+  "description": "Calculate adjusted basis for tax purposes including cost basis, inherited property, gifts, exchanges, contributions, distributions, and wash sales",
+  "capabilities": [
+    "cost_basis_calculation",
+    "stepped_up_basis_inherited_property",
+    "gift_basis_carryover",
+    "like_kind_exchange_basis",
+    "involuntary_conversion_basis",
+    "corporate_contribution_basis",
+    "partnership_contribution_basis",
+    "partnership_distribution_basis",
+    "optional_basis_adjustment_754",
+    "divorce_transfer_basis",
+    "wash_sale_adjustment",
+    "community_property_basis",
+    "asset_acquisition_basis",
+    "inside_outside_basis_tracking"
+  ],
+  "primary_authorities": [
+    "IRC §1011 (adjusted basis definition)",
+    "IRC §1012 (cost basis)",
+    "IRC §1014 (inherited property basis)",
+    "IRC §1015 (gift basis)",
+    "IRC §1016 (basis adjustments)",
+    "IRC §1031 (like-kind exchanges)",
+    "IRC §1033 (involuntary conversions)",
+    "IRC §351 (corporate contributions)",
+    "IRC §721 (partnership contributions)",
+    "IRC §1041 (divorce transfers)",
+    "IRC §362 (corporate transferee basis)",
+    "IRC §723 (partnership transferee basis)",
+    "IRC §754 (partnership optional basis)",
+    "IRC §743(b) (transfer basis adjustment)",
+    "IRC §734(b) (distribution basis adjustment)",
+    "IRC §732 (partnership distribution basis)",
+    "IRC §1060 (applicable asset acquisitions)",
+    "IRC §1091 (wash sale)"
+  ],
+  "doctrine_cache_size": 54,
+  "issue_categories": [
+    "INITIAL_BASIS",
+    "INHERITED_BASIS",
+    "GIFT_BASIS",
+    "EXCHANGE_BASIS",
+    "CONTRIBUTION_BASIS",
+    "DISTRIBUTION_BASIS",
+    "ADJUSTMENT_BASIS",
+    "PARTNERSHIP_SPECIAL",
+    "CORPORATE_SPECIAL",
+    "WASH_SALE",
+    "COMMUNITY_PROPERTY",
+    "DIVORCE_TRANSFER"
+  ],
+  "confidence_levels": {
+    "DEFENSIBLE": "Clear statutory rule, minimal judgment",
+    "AGGRESSIVE": "Favorable interpretation, some case support",
+    "DISCLOSURE": "Reportable position, weak authority",
+    "HIGH_RISK": "Contrary to majority view, audit certain"
+  },
+  "response_modes": {
+    "FAST": "Concise basis calculation with primary authority",
+    "DEFENSE": "Audit-ready documentation with full calculation steps",
+    "MEMO": "Comprehensive analysis with alternative positions"
+  },
+  "telemetry": {
+    "audit_trail": true,
+    "determinism_hash": true,
+    "drift_detection": true,
+    "coverage_tracking": true,
+    "performance_metrics": true
+  },
+  "fastapi_config": {
+    "cors_enabled": true,
+    "max_request_size": 10485760,
+    "timeout_seconds": 30
+  },
+  "logging": {
+    "level": "INFO",
+    "rotation": "500 MB",
+    "retention": "30 days",
+    "format": "structured_json"
+  }
+}

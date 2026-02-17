@@ -1,0 +1,281 @@
+{
+  "engine_id": "LM03",
+  "engine_name": "Division Order Engine",
+  "version": "2.0.0",
+  "category": "LANDMAN",
+  "subcategory": "DIVISION_ORDER",
+  "mode": "DET",
+  "port": 8411,
+  "host": "0.0.0.0",
+  "authority": 5.0,
+  "tier": "LANDMAN",
+  "description": "Production-grade division order engine for oil and gas landman operations. Computes decimal interest ownership (WI, RI, ORRI, NRI, CBI), constructs pay decks, traces interests through chain of title, handles suspense/escheat, generates division order title opinions per Tex. Nat. Res. Code Ch. 91, and manages revenue distribution with full audit trail.",
+  "author": "ECHO OMEGA PRIME Build System",
+  "commander": "Bobby Don McWilliams II",
+
+  "tie_components": [
+    "doctrine_cache",
+    "semantic_dictionary",
+    "search_index",
+    "telemetry_module",
+    "deterministic_hash",
+    "epistemic_guardrails",
+    "audit_trail",
+    "health_monitor",
+    "drift_watcher",
+    "coverage_map",
+    "interest_calculator",
+    "decimal_converter",
+    "chain_tracer",
+    "suspense_analyzer",
+    "revenue_distributor",
+    "pay_deck_builder",
+    "ratification_tracker",
+    "pooling_unit_handler",
+    "joa_parser",
+    "duhig_rule_engine"
+  ],
+
+  "response_modes": {
+    "fast": {
+      "description": "Quick interest lookup or decimal conversion",
+      "max_tokens": 2000,
+      "include_citations": false,
+      "include_calculations": true,
+      "layers": ["doctrine_cache"]
+    },
+    "analysis": {
+      "description": "Full division order analysis with interest tracing",
+      "max_tokens": 8000,
+      "include_citations": true,
+      "include_calculations": true,
+      "layers": ["doctrine_cache", "search_index", "interest_calculator"]
+    },
+    "memo": {
+      "description": "Division order memorandum with full citations and analysis",
+      "max_tokens": 16000,
+      "include_citations": true,
+      "include_calculations": true,
+      "include_case_law": true,
+      "layers": ["doctrine_cache", "search_index", "interest_calculator", "semantic_dictionary"]
+    },
+    "title_opinion": {
+      "description": "Division order title opinion per AAPL standards",
+      "max_tokens": 24000,
+      "include_citations": true,
+      "include_calculations": true,
+      "include_case_law": true,
+      "include_pay_deck": true,
+      "layers": ["doctrine_cache", "search_index", "interest_calculator", "semantic_dictionary"]
+    },
+    "interest_calculation": {
+      "description": "Pure decimal interest calculation with full tracing",
+      "max_tokens": 12000,
+      "include_citations": false,
+      "include_calculations": true,
+      "show_work": true,
+      "decimal_precision": 8,
+      "layers": ["interest_calculator", "decimal_converter", "chain_tracer"]
+    }
+  },
+
+  "layers": {
+    "layer_1_doctrine_cache": {
+      "description": "Pre-computed division order doctrine blocks",
+      "block_count_target": 55,
+      "refresh_interval_hours": 168,
+      "hash_verification": true
+    },
+    "layer_2_search_index": {
+      "description": "TF-IDF search across doctrine blocks and case law",
+      "index_type": "inverted",
+      "scoring": "tf_idf",
+      "max_results": 50
+    },
+    "layer_3_interest_calculator": {
+      "description": "Deterministic interest calculation with decimal precision",
+      "decimal_places": 8,
+      "rounding_mode": "ROUND_HALF_UP",
+      "cross_check_enabled": true,
+      "fraction_to_decimal": true
+    },
+    "layer_4_semantic_dictionary": {
+      "description": "Oil and gas / division order terminology normalization",
+      "term_count_target": 120,
+      "synonym_resolution": true,
+      "abbreviation_expansion": true
+    }
+  },
+
+  "jurisdiction": {
+    "primary_state": "TX",
+    "supported_states": ["TX", "NM", "OK", "LA", "CO", "ND", "WY", "MT", "PA", "WV", "OH"],
+    "default_county": "REEVES",
+    "division_order_statute": "Tex. Nat. Res. Code Ch. 91",
+    "suspense_statute": "Tex. Nat. Res. Code Sec. 91.402",
+    "escheat_statute": "Tex. Property Code Ch. 72",
+    "royalty_payment_deadline_days": 120,
+    "interest_on_late_payment": true,
+    "statutory_interest_rate": 0.12
+  },
+
+  "interest_types": {
+    "working_interest": "WI",
+    "royalty_interest": "RI",
+    "overriding_royalty_interest": "ORRI",
+    "net_revenue_interest": "NRI",
+    "cost_bearing_interest": "CBI",
+    "net_profits_interest": "NPI",
+    "carried_interest": "CI",
+    "back_in_interest": "BII",
+    "reversionary_interest": "REVI",
+    "production_payment": "PP",
+    "mineral_interest": "MI",
+    "non_participating_royalty": "NPRI",
+    "executive_right": "ER",
+    "bonus_interest": "BI",
+    "delay_rental_interest": "DRI"
+  },
+
+  "decimal_config": {
+    "precision": 8,
+    "rounding_mode": "ROUND_HALF_UP",
+    "minimum_reportable_interest": "0.00000100",
+    "maximum_total_interest": "1.00000000",
+    "tolerance_variance": "0.00001000",
+    "fraction_formats_supported": [
+      "simple_fraction",
+      "mixed_number",
+      "decimal",
+      "percentage",
+      "net_mineral_acres",
+      "undivided_fraction"
+    ]
+  },
+
+  "division_order_config": {
+    "title_opinion_types": ["PRELIMINARY", "SUPPLEMENTAL", "FINAL"],
+    "ratification_deadline_days": 60,
+    "suspense_threshold_months": 6,
+    "escheat_threshold_years": 3,
+    "pay_deck_format": "STANDARD_OPERATOR",
+    "interest_verification_required": true,
+    "operator_certification_required": true,
+    "include_pooling_clause": true,
+    "include_indemnity_clause": true,
+    "include_warranty_clause": true,
+    "amendment_tracking": true,
+    "dual_signature_required": false
+  },
+
+  "suspense_management": {
+    "suspense_codes": {
+      "NO_DIVISION_ORDER": "S01",
+      "TITLE_DEFECT": "S02",
+      "ADDRESS_UNKNOWN": "S03",
+      "DECEASED_OWNER": "S04",
+      "PENDING_PROBATE": "S05",
+      "DISPUTE_IN_PROGRESS": "S06",
+      "MISSING_W9_TIN": "S07",
+      "LIEN_ON_INTEREST": "S08",
+      "MINOR_OWNER": "S09",
+      "INCOMPETENT_OWNER": "S10",
+      "BANKRUPTCY_STAY": "S11",
+      "IRS_LEVY": "S12",
+      "STATE_GARNISHMENT": "S13",
+      "CHANGE_OF_OWNERSHIP_PENDING": "S14",
+      "POOLING_DISPUTE": "S15",
+      "UNIT_ALLOCATION_PENDING": "S16",
+      "UNCLAIMED_PROPERTY_HOLD": "S17",
+      "FEDERAL_TAX_LIEN": "S18",
+      "COURT_ORDER_HOLD": "S19",
+      "OPERATOR_REVIEW_PENDING": "S20"
+    },
+    "auto_escheat_enabled": true,
+    "max_suspense_before_escheat_months": 36,
+    "suspense_monthly_review": true
+  },
+
+  "pooling_and_unitization": {
+    "allocation_methods": [
+      "SURFACE_ACREAGE",
+      "PRODUCTIVE_ACREAGE",
+      "DELIVERABILITY",
+      "TRACT_PARTICIPATION",
+      "AGREED_ALLOCATION",
+      "RRC_ORDER_ALLOCATION",
+      "PERFORATED_LATERAL_LENGTH"
+    ],
+    "default_allocation_method": "SURFACE_ACREAGE",
+    "maximum_pooling_acres_oil_texas": 40,
+    "maximum_pooling_acres_gas_texas": 640,
+    "force_pooling_enabled_texas": true
+  },
+
+  "payment_thresholds": {
+    "minimum_check_amount_usd": 25.00,
+    "minimum_eft_amount_usd": 10.00,
+    "de_minimis_interest_decimal": "0.00000100",
+    "w9_required_threshold_usd": 600.00,
+    "backup_withholding_rate": 0.24,
+    "texas_severance_tax_oil_rate": 0.046,
+    "texas_severance_tax_gas_rate": 0.075,
+    "interest_on_late_payment_rate_annual": 0.12,
+    "escheat_dormancy_years_texas": 3
+  },
+
+  "search_config": {
+    "default_page_size": 50,
+    "max_page_size": 500,
+    "fuzzy_threshold": 0.80,
+    "relevance_minimum": 0.30,
+    "index_fields": [
+      "owner_name",
+      "interest_type",
+      "legal_description",
+      "well_name",
+      "operator_name",
+      "tract_description",
+      "lease_name"
+    ]
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "metrics_interval_seconds": 60,
+    "audit_trail_enabled": true,
+    "performance_tracking": true,
+    "query_logging": true,
+    "error_tracking": true,
+    "deterministic_hash": true,
+    "hash_algorithm": "sha256",
+    "drift_detection_enabled": true,
+    "drift_threshold": 0.05
+  },
+
+  "integration": {
+    "lm01_title_examination_url": "http://localhost:8401",
+    "lm02_lease_analysis_url": "http://localhost:8402",
+    "lm05_chain_of_title_url": "http://localhost:8405",
+    "lm15_pooling_unit_url": "http://localhost:8415",
+    "shadowglass_url": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "cognition_cloud_ekm_url": "https://ekm-query.bmcii1976.workers.dev",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": "echo-build-orchestrator",
+    "swarm_brain_url": "https://echo-swarm-brain.bmcii1976.workers.dev"
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "interval_seconds": 30,
+    "timeout_seconds": 5,
+    "required_components": [
+      "doctrine_cache",
+      "semantic_dictionary",
+      "search_index",
+      "telemetry",
+      "interest_calculator",
+      "decimal_converter"
+    ]
+  }
+}

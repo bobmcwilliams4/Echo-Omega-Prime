@@ -1,0 +1,156 @@
+{
+  "engine_id": "TX02_deduction_analyzer",
+  "version": "1.0.0",
+  "port": 8602,
+  "domain": "tax_deductions",
+  "description": "Comprehensive IRC deduction analysis engine covering business, personal, investment, and specialty deductions with TCJA impact analysis",
+
+  "authority_hierarchy": {
+    "IRC": 10,
+    "Treasury_Regulation": 9,
+    "Revenue_Ruling": 8,
+    "Private_Letter_Ruling": 7,
+    "Court_Precedent": 8,
+    "IRS_Publication": 6,
+    "Tax_Court": 8,
+    "Circuit_Court": 9,
+    "Supreme_Court": 10
+  },
+
+  "confidence_thresholds": {
+    "DEFENSIBLE": 0.85,
+    "AGGRESSIVE": 0.65,
+    "DISCLOSURE": 0.50,
+    "HIGH_RISK": 0.35
+  },
+
+  "response_modes": {
+    "FAST": {
+      "max_doctrines": 3,
+      "target_latency_ms": 200,
+      "fallback_to_cache": true,
+      "skip_deep_analysis": true
+    },
+    "DEFENSE": {
+      "max_doctrines": 8,
+      "target_latency_ms": 2000,
+      "include_citations": true,
+      "audit_ready": true,
+      "adversarial_review": true
+    },
+    "MEMO": {
+      "max_doctrines": 15,
+      "target_latency_ms": 5000,
+      "full_documentation": true,
+      "multi_jurisdiction": true,
+      "position_stratification": true
+    }
+  },
+
+  "deduction_categories": [
+    "BUSINESS_ORDINARY_NECESSARY",
+    "ABOVE_THE_LINE",
+    "ITEMIZED_BELOW_LINE",
+    "INVESTMENT_EXPENSE",
+    "DEPRECIATION_AMORTIZATION",
+    "INTEREST_DEDUCTION",
+    "TAX_DEDUCTION_SALT",
+    "CHARITABLE_CONTRIBUTION",
+    "CASUALTY_LOSS",
+    "HOME_OFFICE",
+    "MEDICAL_EXPENSE",
+    "EMPLOYEE_BUSINESS_EXPENSE",
+    "STARTUP_COSTS",
+    "QBI_DEDUCTION",
+    "PASSIVE_ACTIVITY_LOSS",
+    "SPECIALIZED_INDUSTRY"
+  ],
+
+  "tcja_impacts": {
+    "suspended_2018_2025": [
+      "§212_investment_expenses",
+      "§217_moving_expenses_nonmilitary",
+      "§67_2pct_floor_misc_itemized"
+    ],
+    "new_limitations": [
+      "§163j_business_interest_30pct_ATI",
+      "§461l_excess_business_loss_limitation",
+      "§199A_QBI_deduction_phase_out"
+    ],
+    "increased_caps": [
+      "§179_expensing_1M",
+      "§168k_bonus_depreciation_100pct"
+    ],
+    "reduced_caps": [
+      "§164_SALT_cap_10K"
+    ]
+  },
+
+  "issue_categories": [
+    "DEDUCTIBILITY_THRESHOLD",
+    "ORDINARY_NECESSARY_TEST",
+    "PERSONAL_VS_BUSINESS",
+    "CAPITALIZATION_VS_EXPENSE",
+    "TIMING_ACCRUAL_VS_CASH",
+    "LIMITATION_PHASE_OUT",
+    "RELATED_PARTY_DENIAL",
+    "SUBSTANTIATION_REQUIREMENT",
+    "AT_RISK_PASSIVE_LOSS",
+    "ALTERNATIVE_MIN_TAX",
+    "TCJA_SUSPENSION_IMPACT",
+    "ITEMIZED_VS_STANDARD"
+  ],
+
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "guaranteed deduction",
+      "IRS will never challenge",
+      "completely risk-free",
+      "no documentation needed",
+      "audit-proof position"
+    ],
+    "required_disclosures": [
+      "position_confidence_level",
+      "material_uncertainties",
+      "audit_risk_factors",
+      "alternative_treatments"
+    ],
+    "disclosure_triggers": {
+      "confidence_below": 0.70,
+      "aggressive_position": true,
+      "novel_interpretation": true,
+      "conflicting_authority": true
+    }
+  },
+
+  "telemetry": {
+    "track_query_types": true,
+    "track_doctrine_hits": true,
+    "track_confidence_distribution": true,
+    "track_position_zones": true,
+    "track_tcja_impact_queries": true,
+    "log_audit_trail": true,
+    "enable_drift_detection": true
+  },
+
+  "vector_search": {
+    "enabled": true,
+    "fallback_threshold": 0.75,
+    "semantic_model": "text-embedding-3-small",
+    "cache_embeddings": true
+  },
+
+  "cloud_integration": {
+    "cognition_cloud_enabled": true,
+    "ekm_category": "tax_deductions",
+    "graph_node_type": "deduction_analysis",
+    "crystal_authority_min": 3
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "include_doctrine_count": true,
+    "include_cache_stats": true,
+    "include_telemetry_summary": true
+  }
+}

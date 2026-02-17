@@ -1,0 +1,162 @@
+[
+  {
+    "topic": "rank_nullity_theorem",
+    "keywords": ["rank", "nullity", "dimension", "theorem", "fundamental"],
+    "conclusion_template": "For an m x n matrix A, rank(A) + nullity(A) = n. The rank equals the dimension of the column space (image), and the nullity equals the dimension of the null space (kernel). This is a consequence of the dimension theorem for linear maps.",
+    "reasoning_framework": "The rank-nullity theorem is the fundamental dimension-counting identity in linear algebra. Given a linear map T: V -> W represented by matrix A, the domain V decomposes as a direct sum of ker(T) and a complement isomorphic to im(T). Thus dim(V) = dim(ker(T)) + dim(im(T)), which translates to n = nullity(A) + rank(A). This holds for all matrices regardless of whether they are square. Computational verification: compute RREF, count pivot columns (= rank), count free columns (= nullity), confirm they sum to n.",
+    "key_factors": ["matrix dimensions", "pivot columns in RREF", "free variables", "column space dimension", "null space dimension"],
+    "primary_authority": ["Axelrod & Hausmann, Linear Algebra Done Right", "Strang, Introduction to Linear Algebra", "Friedberg, Insel & Spence, Linear Algebra"],
+    "confidence": 1.0,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "eigenvalue_properties",
+    "keywords": ["eigenvalue", "eigenvector", "spectrum", "characteristic", "polynomial"],
+    "conclusion_template": "Eigenvalues lambda satisfy det(A - lambda*I) = 0. For an n x n matrix, there are at most n eigenvalues (counting multiplicity). The sum of eigenvalues equals the trace; the product equals the determinant. Real symmetric matrices have all real eigenvalues and orthogonal eigenvectors.",
+    "reasoning_framework": "The characteristic polynomial p(lambda) = det(A - lambda*I) is a degree-n polynomial whose roots are the eigenvalues. By Vieta's formulas, the sum of roots = -coefficient of lambda^(n-1) = trace(A), and the product of roots = (-1)^n * constant term = det(A). The Spectral Theorem guarantees that real symmetric matrices are orthogonally diagonalizable: A = Q*D*Q^T where Q is orthogonal and D is diagonal with real eigenvalues. For non-symmetric matrices, eigenvalues may be complex. Algebraic multiplicity >= geometric multiplicity for each eigenvalue.",
+    "key_factors": ["characteristic polynomial", "trace-eigenvalue relation", "determinant-eigenvalue relation", "spectral theorem", "algebraic vs geometric multiplicity"],
+    "primary_authority": ["Horn & Johnson, Matrix Analysis", "Strang, Linear Algebra and Its Applications", "Halmos, Finite-Dimensional Vector Spaces"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "lu_decomposition",
+    "keywords": ["LU", "decomposition", "factorization", "Doolittle", "pivoting", "triangular"],
+    "conclusion_template": "LU decomposition factors A = LU (or PA = LU with pivoting) where L is lower triangular with ones on the diagonal and U is upper triangular. It enables efficient solving of multiple systems Ax = b by forward/back substitution in O(n^2) per solve after an O(n^3) factorization.",
+    "reasoning_framework": "Gaussian elimination without row swaps directly produces L and U: the multipliers used to zero entries below pivots form L, and the resulting upper-triangular matrix is U. Partial pivoting (PA = LU) swaps rows to use the largest available pivot, improving numerical stability. Doolittle's method computes L with unit diagonal; Crout's method puts the diagonal in L instead. Solving Ax = b becomes: solve Ly = Pb by forward substitution, then Ux = y by back substitution. Each substitution is O(n^2), making LU efficient for repeated solves with different b vectors. LU exists for all nonsingular matrices (with pivoting).",
+    "key_factors": ["forward substitution", "back substitution", "partial pivoting", "numerical stability", "O(n^3) factorization cost"],
+    "primary_authority": ["Golub & Van Loan, Matrix Computations", "Trefethen & Bau, Numerical Linear Algebra"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "qr_decomposition",
+    "keywords": ["QR", "decomposition", "orthogonal", "Gram-Schmidt", "Householder", "factorization"],
+    "conclusion_template": "QR decomposition factors A = QR where Q has orthonormal columns and R is upper triangular. It is computed via Gram-Schmidt orthogonalization, Householder reflections, or Givens rotations. QR is the basis of the QR algorithm for eigenvalue computation and is numerically superior to normal equations for least squares.",
+    "reasoning_framework": "Classical Gram-Schmidt applies orthogonal projection to each column of A, subtracting components along previously computed orthonormal vectors. Modified Gram-Schmidt recomputes projections against partially orthogonalized vectors for better numerical stability. Householder QR uses reflections to zero below-diagonal entries column by column, achieving backward stability. For least squares Ax ~ b, the QR approach solves Rx = Q^T*b, avoiding the condition-number-squaring problem of normal equations (A^T*A). The QR algorithm for eigenvalues repeatedly factors A_k = Q_k*R_k and forms A_{k+1} = R_k*Q_k, converging to Schur form.",
+    "key_factors": ["orthonormality of Q", "upper triangular R", "numerical stability", "least squares application", "eigenvalue iteration"],
+    "primary_authority": ["Trefethen & Bau, Numerical Linear Algebra", "Golub & Van Loan, Matrix Computations"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "svd_decomposition",
+    "keywords": ["SVD", "singular", "value", "decomposition", "pseudoinverse", "low-rank"],
+    "conclusion_template": "The SVD factors any m x n matrix A = U * Sigma * V^T where U (m x m) and V (n x n) are orthogonal, and Sigma is diagonal with non-negative singular values. SVD reveals the rank (number of nonzero singular values), provides the best low-rank approximation (Eckart-Young theorem), and defines the pseudoinverse.",
+    "reasoning_framework": "Singular values are square roots of eigenvalues of A^T*A (or A*A^T). The columns of V are eigenvectors of A^T*A; columns of U are eigenvectors of A*A^T. The condition number cond(A) = sigma_max / sigma_min. The pseudoinverse A^+ = V * Sigma^+ * U^T where Sigma^+ inverts nonzero singular values. For least squares, x = A^+ * b is the minimum-norm least squares solution. The best rank-k approximation keeps only the k largest singular values (Eckart-Young-Mirsky theorem). SVD is the most informative decomposition but costs O(mn * min(m,n)).",
+    "key_factors": ["singular values", "orthogonal factors", "rank revelation", "pseudoinverse", "low-rank approximation", "condition number"],
+    "primary_authority": ["Strang, Linear Algebra and Its Applications", "Golub & Van Loan, Matrix Computations", "Trefethen & Bau, Numerical Linear Algebra"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "cholesky_decomposition",
+    "keywords": ["Cholesky", "positive", "definite", "symmetric", "triangular", "factorization"],
+    "conclusion_template": "For a symmetric positive-definite matrix A, the Cholesky decomposition A = LL^T exists uniquely, where L is lower triangular with positive diagonal entries. It costs half the operations of LU and is numerically very stable without pivoting.",
+    "reasoning_framework": "Positive definiteness means x^T*A*x > 0 for all nonzero x, which ensures all eigenvalues are positive and all leading principal minors are positive. The algorithm computes L column by column: l_jj = sqrt(a_jj - sum(l_jk^2, k<j)), and l_ij = (a_ij - sum(l_ik*l_jk, k<j)) / l_jj for i > j. The operation count is n^3/6, half that of LU (n^3/3). Cholesky is the method of choice for solving normal equations A^T*A*x = A^T*b since A^T*A is always positive semidefinite (positive definite when A has full column rank). It also tests positive definiteness: if Cholesky fails, the matrix is not positive definite.",
+    "key_factors": ["symmetric positive definite requirement", "half the cost of LU", "no pivoting needed", "positive diagonal in L", "normal equations"],
+    "primary_authority": ["Golub & Van Loan, Matrix Computations", "Higham, Accuracy and Stability of Numerical Algorithms"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "determinant_properties",
+    "keywords": ["determinant", "cofactor", "expansion", "multiplicative", "row operations"],
+    "conclusion_template": "The determinant det(A) is multiplicative: det(AB) = det(A)*det(B). Row swaps flip the sign; scaling a row by c multiplies det by c; adding a multiple of one row to another leaves det unchanged. det(A) = 0 iff A is singular. For triangular matrices, det is the product of diagonal entries.",
+    "reasoning_framework": "The determinant encodes the signed volume scaling of the linear map represented by A. Cofactor expansion along row i: det(A) = sum_j (-1)^(i+j) * a_ij * M_ij where M_ij is the (i,j) minor. This recursive formula costs O(n!) for an n x n matrix but is exact. For practical computation, row reduction to triangular form gives det in O(n^3): track sign changes from row swaps and multiply the diagonal. Key identities: det(A^T) = det(A), det(cA) = c^n * det(A), det(A^{-1}) = 1/det(A). Cramer's rule uses determinants to express solutions but is computationally impractical for large systems.",
+    "key_factors": ["multiplicative property", "effect of row operations", "singularity test", "cofactor expansion", "triangular shortcut", "Cramer's rule"],
+    "primary_authority": ["Artin, Algebra", "Axler, Linear Algebra Done Right", "Lang, Linear Algebra"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "least_squares_method",
+    "keywords": ["least", "squares", "regression", "normal", "equations", "overdetermined", "fit"],
+    "conclusion_template": "The least squares solution to Ax ~ b minimizes ||Ax - b||^2 and satisfies the normal equations A^T*A*x = A^T*b. When A has full column rank, the unique solution is x = (A^T*A)^{-1} * A^T*b. For numerical stability, QR or SVD methods are preferred over forming the normal equations directly.",
+    "reasoning_framework": "Geometrically, the least squares solution projects b onto the column space of A. The residual r = b - Ax is orthogonal to col(A), giving A^T*r = 0, hence A^T*(b - Ax) = 0, which yields the normal equations. Forming A^T*A squares the condition number (cond(A^T*A) = cond(A)^2), which can cause numerical issues. The QR approach: factor A = QR, then x = R^{-1}*Q^T*b, preserving the original condition number. SVD gives the minimum-norm solution via the pseudoinverse. Applications include polynomial fitting (Vandermonde matrix), linear regression, curve fitting, and signal processing.",
+    "key_factors": ["normal equations", "projection interpretation", "condition number doubling", "QR preferred", "pseudoinverse via SVD"],
+    "primary_authority": ["Strang, Introduction to Linear Algebra", "Bjorck, Numerical Methods for Least Squares Problems"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "gram_schmidt_orthogonalization",
+    "keywords": ["Gram-Schmidt", "orthogonal", "orthonormal", "basis", "projection", "QR"],
+    "conclusion_template": "Gram-Schmidt takes a linearly independent set {v1,...,vk} and produces an orthogonal (or orthonormal) set {u1,...,uk} spanning the same subspace. Classical Gram-Schmidt can lose orthogonality due to floating-point errors; modified Gram-Schmidt is more stable.",
+    "reasoning_framework": "The algorithm iteratively removes the component of each new vector along previously computed orthogonal vectors: u_k = v_k - sum(proj_{u_j}(v_k), j<k). Normalizing each u_k gives an orthonormal basis. In exact arithmetic, classical and modified GS produce identical results. In floating-point, classical GS can catastrophically lose orthogonality when vectors are nearly dependent, while modified GS recomputes projections against partially orthogonalized vectors. Twice-iterated classical GS matches modified GS in stability. Gram-Schmidt directly produces the QR factorization: Q columns are the orthonormal vectors, R entries are the projection coefficients and norms.",
+    "key_factors": ["projection subtraction", "classical vs modified stability", "orthonormal output", "QR connection", "subspace preservation"],
+    "primary_authority": ["Trefethen & Bau, Numerical Linear Algebra", "Golub & Van Loan, Matrix Computations"],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "matrix_inverse_gauss_jordan",
+    "keywords": ["inverse", "Gauss-Jordan", "elimination", "augmented", "identity", "nonsingular"],
+    "conclusion_template": "The inverse of a nonsingular n x n matrix A is computed by augmenting [A | I] and reducing to [I | A^{-1}] via Gauss-Jordan elimination. A is invertible iff det(A) != 0 iff rank(A) = n iff its columns are linearly independent.",
+    "reasoning_framework": "Gauss-Jordan elimination applies row operations to transform the left half of [A | I] to I; the same operations transform the right half from I to A^{-1}. Partial pivoting ensures numerical stability. The computation costs O(n^3) operations. Equivalent characterizations of invertibility: (1) det(A) != 0, (2) rank = n, (3) null space is trivial, (4) A has n pivots, (5) eigenvalues are all nonzero, (6) 0 is not a singular value. For solving Ax = b, computing A^{-1} explicitly is less efficient and less stable than LU factorization; use inverse only when needed for multiple right-hand sides or analytic expressions.",
+    "key_factors": ["augmented matrix method", "O(n^3) cost", "partial pivoting", "invertibility criteria", "prefer LU for solving"],
+    "primary_authority": ["Strang, Introduction to Linear Algebra", "Meyer, Matrix Analysis and Applied Linear Algebra"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "vector_spaces_basis_dimension",
+    "keywords": ["vector", "space", "basis", "dimension", "span", "linear", "independence", "subspace"],
+    "conclusion_template": "A basis for a vector space V is a linearly independent set that spans V. All bases have the same cardinality, which defines dim(V). For R^n, the standard basis has n vectors. Key subspaces of a matrix: column space (rank), row space (rank), null space (nullity), left null space.",
+    "reasoning_framework": "A set {v1,...,vk} is linearly independent iff the only solution to c1*v1 + ... + ck*vk = 0 is c1 = ... = ck = 0. It spans V iff every vector in V is a linear combination of the set. A basis satisfies both conditions; it is a minimal spanning set and a maximal independent set. The Steinitz exchange lemma proves all bases have equal size. For an m x n matrix A, four fundamental subspaces: col(A) in R^m (dim = r), null(A) in R^n (dim = n-r), row(A) in R^n (dim = r), left null(A) in R^m (dim = m-r), where r = rank(A). These subspaces satisfy: col(A) perp left_null(A) and row(A) perp null(A).",
+    "key_factors": ["linear independence", "spanning property", "basis uniqueness of size", "four fundamental subspaces", "orthogonal complement relationships"],
+    "primary_authority": ["Axler, Linear Algebra Done Right", "Strang, Introduction to Linear Algebra", "Hoffman & Kunze, Linear Algebra"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "linear_transformations",
+    "keywords": ["linear", "transformation", "map", "kernel", "image", "injective", "surjective", "matrix representation"],
+    "conclusion_template": "Every linear transformation T: R^n -> R^m is represented by a unique m x n matrix A such that T(x) = Ax. T is injective iff ker(T) = {0} iff nullity = 0; surjective iff im(T) = R^m iff rank = m; bijective iff both (requires m = n and det != 0). Composition corresponds to matrix multiplication.",
+    "reasoning_framework": "A function T is linear iff T(au + bv) = aT(u) + bT(v) for all scalars a,b and vectors u,v. The matrix representation A has columns A*e_j = T(e_j). The kernel (null space) ker(T) = {x : T(x) = 0} is a subspace of the domain; the image (range) im(T) = {T(x) : x in domain} is a subspace of the codomain. Rank-nullity: dim(ker) + dim(im) = dim(domain). Change of basis: if B and C are bases for domain and codomain, then [T]_{B,C} = C^{-1} * A * B. Similar matrices represent the same transformation in different bases: B = P^{-1}*A*P.",
+    "key_factors": ["matrix representation", "kernel and image", "injectivity/surjectivity criteria", "composition = multiplication", "change of basis", "similar matrices"],
+    "primary_authority": ["Axler, Linear Algebra Done Right", "Friedberg, Insel & Spence, Linear Algebra"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "matrix_norms_condition_number",
+    "keywords": ["norm", "condition", "number", "Frobenius", "spectral", "stability", "ill-conditioned"],
+    "conclusion_template": "Matrix norms measure matrix 'size': Frobenius norm = sqrt(sum of squares), spectral norm = largest singular value, 1-norm = max column sum, infinity-norm = max row sum. The condition number cond(A) = ||A|| * ||A^{-1}|| measures sensitivity of Ax = b to perturbations. cond >> 1 indicates ill-conditioning.",
+    "reasoning_framework": "A matrix norm || || is submultiplicative: ||AB|| <= ||A||*||B||. Induced norms satisfy ||Ax|| <= ||A||*||x||. The condition number bounds relative output error: ||delta_x|| / ||x|| <= cond(A) * ||delta_b|| / ||b||. For the spectral norm, cond_2(A) = sigma_max / sigma_min. Rule of thumb: if cond ~ 10^k, you lose about k digits of accuracy in solving Ax = b. Ill-conditioning arises from near-linear-dependence of columns (near-singular matrix). Preconditioning transforms the system to reduce condition number before solving.",
+    "key_factors": ["submultiplicativity", "induced vs entry-wise norms", "error amplification bound", "singular value ratio", "digit loss rule", "preconditioning"],
+    "primary_authority": ["Trefethen & Bau, Numerical Linear Algebra", "Higham, Accuracy and Stability of Numerical Algorithms"],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "gaussian_elimination_pivoting",
+    "keywords": ["Gaussian", "elimination", "pivot", "row", "echelon", "RREF", "partial", "pivoting"],
+    "conclusion_template": "Gaussian elimination reduces a matrix to row echelon form (REF) or reduced row echelon form (RREF) via three row operations: swap, scale, add multiple. Partial pivoting selects the largest-magnitude entry in each column as pivot, ensuring numerical stability. RREF is unique for any matrix.",
+    "reasoning_framework": "Forward elimination zeros entries below each pivot to produce REF (upper triangular for square matrices). Back substitution or continued elimination to RREF makes each pivot = 1 and zeros entries above pivots. Without pivoting, small pivots amplify rounding errors. Partial pivoting (swap rows to maximize |pivot|) bounds the growth factor, ensuring stability in practice. Complete pivoting (swap both rows and columns) gives even better stability but is rarely needed. The RREF of a matrix is unique and reveals: rank (number of pivots), pivot variables vs free variables, null space basis, and solution set structure for Ax = b.",
+    "key_factors": ["three elementary row operations", "REF vs RREF", "partial pivoting for stability", "uniqueness of RREF", "growth factor", "computational cost O(n^3)"],
+    "primary_authority": ["Strang, Introduction to Linear Algebra", "Golub & Van Loan, Matrix Computations"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "spectral_theorem_diagonalization",
+    "keywords": ["spectral", "theorem", "diagonalization", "orthogonal", "symmetric", "eigendecomposition"],
+    "conclusion_template": "A real symmetric matrix A is orthogonally diagonalizable: A = Q*D*Q^T where Q is orthogonal (Q^T = Q^{-1}) and D = diag(lambda_1,...,lambda_n). A general matrix is diagonalizable iff it has n linearly independent eigenvectors, equivalently iff geometric multiplicity = algebraic multiplicity for every eigenvalue.",
+    "reasoning_framework": "The Spectral Theorem guarantees that real symmetric matrices have (1) all real eigenvalues and (2) a complete set of orthonormal eigenvectors. This makes A = Q*D*Q^T with Q orthogonal. For non-symmetric matrices, diagonalizability is not guaranteed. A is diagonalizable iff its minimal polynomial has no repeated roots. Defective matrices (geometric < algebraic multiplicity for some eigenvalue) require Jordan normal form instead. Applications of diagonalization: computing matrix powers (A^k = Q*D^k*Q^T), matrix exponentials, solving linear ODEs, and principal component analysis.",
+    "key_factors": ["real eigenvalues for symmetric", "orthogonal eigenvectors", "diagonalizability criterion", "Jordan form for defective matrices", "applications to powers and exponentials"],
+    "primary_authority": ["Horn & Johnson, Matrix Analysis", "Axler, Linear Algebra Done Right", "Strang, Linear Algebra and Its Applications"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "matrix_multiplication_properties",
+    "keywords": ["multiply", "product", "associative", "distributive", "non-commutative", "block"],
+    "conclusion_template": "Matrix multiplication is associative ((AB)C = A(BC)), distributive over addition (A(B+C) = AB+AC), but generally NOT commutative (AB != BA). The product of m x n and n x p matrices yields m x p. Multiplication cost is O(mnp) for naive algorithm.",
+    "reasoning_framework": "Entry (i,j) of AB = sum_k a_{ik} * b_{kj}, which is the dot product of row i of A with column j of B. Non-commutativity means AB and BA may differ in value or even in dimensions. Special cases where AB = BA: A and B are diagonal, or A and B are polynomials in the same matrix, or one is a scalar multiple of I. Block multiplication partitions matrices into submatrices and multiplies as if blocks were scalars (when dimensions are compatible). Strassen's algorithm achieves O(n^{2.807}) for square matrices; theoretically optimal exponent is unknown but < 2.372.",
+    "key_factors": ["inner dimension must match", "non-commutativity", "associativity", "block multiplication", "Strassen's algorithm", "O(n^3) naive cost"],
+    "primary_authority": ["Strang, Introduction to Linear Algebra", "Cormen et al., Introduction to Algorithms"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE"
+  }
+]

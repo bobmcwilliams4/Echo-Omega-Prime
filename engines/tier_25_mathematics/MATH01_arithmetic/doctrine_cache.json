@@ -1,0 +1,483 @@
+[
+  {
+    "topic": "expression_parsing_and_evaluation",
+    "keywords": ["expression", "parse", "evaluate", "calculate", "compute", "formula", "equation"],
+    "conclusion_template": "The expression '{expression}' evaluates to {result} under standard mathematical precedence rules. Parsing followed the shunting-yard algorithm with operator precedence: parentheses first, then exponentiation (right-associative), then multiplication/division (left-to-right), then addition/subtraction (left-to-right).",
+    "reasoning_framework": [
+      "1. Tokenize the input string into numbers, operators, parentheses, and function calls.",
+      "2. Apply the shunting-yard algorithm (Dijkstra, 1961) to convert infix notation to postfix (RPN).",
+      "3. Operator precedence levels: () = highest, ** = 4 (right-assoc), unary +/- = 3, * / // % = 2, + - = 1.",
+      "4. Evaluate the postfix expression using a stack-based evaluator.",
+      "5. All arithmetic is performed in arbitrary precision using Python's Decimal module with configurable precision.",
+      "6. Division by zero and overflow conditions are caught and reported as domain errors.",
+      "7. Implicit multiplication (e.g., '2(3)') is detected during tokenization and an explicit '*' is inserted.",
+      "8. Nested parentheses are handled by the shunting-yard algorithm's natural stack behavior.",
+      "9. The result is formatted to remove trailing zeros unless significant figures tracking is active.",
+      "10. Determinism is guaranteed: identical expressions always produce identical results and SHA-256 hashes."
+    ],
+    "key_factors": [
+      "Operator precedence (PEMDAS/BODMAS)",
+      "Associativity (left vs right for exponentiation)",
+      "Implicit multiplication detection",
+      "Arbitrary precision via Decimal",
+      "Parenthesis balancing validation",
+      "Unary minus/plus handling"
+    ],
+    "primary_authority": [
+      "Dijkstra, E.W. (1961). Shunting-yard algorithm.",
+      "IEEE 754-2019. Floating-point arithmetic standard.",
+      "Python documentation: decimal module — arbitrary precision."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "arithmetic_expression"
+  },
+  {
+    "topic": "number_base_conversion",
+    "keywords": ["binary", "octal", "hexadecimal", "decimal", "base", "convert", "radix"],
+    "conclusion_template": "The value {input_value} in base {from_base} converts to {result} in base {to_base}. Conversion was performed by first reducing to base-10 via positional expansion, then repeatedly dividing by the target base and collecting remainders.",
+    "reasoning_framework": [
+      "1. Validate that all digits in the input are valid for the source base (e.g., binary only allows 0-1).",
+      "2. Convert the source number to an internal base-10 integer representation.",
+      "3. For bases 2, 8, 16: use Python's built-in int(value, base) for the source-to-decimal step.",
+      "4. For arbitrary bases (2-36): perform manual positional expansion sum(d_i * base^i).",
+      "5. Convert from base-10 to the target base by repeated division, collecting remainders.",
+      "6. For fractional parts: multiply by target base, take integer part as digit, repeat on fractional remainder.",
+      "7. Fractional conversions may not terminate; limit to a configurable number of digits (default 20).",
+      "8. Prefix conventions: '0b' for binary, '0o' for octal, '0x' for hexadecimal.",
+      "9. Hexadecimal digits above 9 use uppercase A-F by default, lowercase a-f as option.",
+      "10. Negative numbers: convert magnitude, prepend minus sign."
+    ],
+    "key_factors": [
+      "Valid digit range per base",
+      "Positional notation expansion",
+      "Repeated division algorithm",
+      "Fractional base conversion limits",
+      "Standard prefix conventions",
+      "Two's complement for signed binary (optional)"
+    ],
+    "primary_authority": [
+      "Knuth, D.E. (1997). The Art of Computer Programming, Vol 2: Seminumerical Algorithms, Section 4.1.",
+      "IEEE 754-2019 for binary representation of floating-point.",
+      "ISO/IEC 9899 (C standard) for base prefix conventions."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "number_systems"
+  },
+  {
+    "topic": "prime_factorization",
+    "keywords": ["prime", "factor", "factorize", "factorization", "decompose", "divisor", "composite"],
+    "conclusion_template": "The prime factorization of {n} is {factorization}. Factorization was performed using trial division up to sqrt(n) for small factors, with Pollard's rho algorithm applied for larger composite cofactors.",
+    "reasoning_framework": [
+      "1. Check if n < 2; if so, there is no prime factorization (return empty or error).",
+      "2. Extract all factors of 2 first (repeated division while even).",
+      "3. Trial division by odd numbers from 3 up to floor(sqrt(remaining)).",
+      "4. If the remaining cofactor after trial division exceeds 10^6 and is composite, apply Pollard's rho.",
+      "5. Pollard's rho uses f(x) = x^2 + c (mod n) with Floyd's cycle detection to find a non-trivial factor.",
+      "6. If rho fails (returns n), retry with a different constant c; after 50 attempts, fall back to trial division.",
+      "7. Recursively factorize each found factor until all are prime (verified by Miller-Rabin primality test).",
+      "8. Collect factors into a sorted list of (prime, exponent) pairs.",
+      "9. For very large inputs (>10^18), warn that factorization may be computationally expensive.",
+      "10. Determinism: the factorization of any given n always produces the same sorted prime-power representation."
+    ],
+    "key_factors": [
+      "Trial division efficiency (only odd divisors after 2)",
+      "Pollard's rho for large factors",
+      "Miller-Rabin primality verification",
+      "Worst case: product of two large primes (semiprime)",
+      "Unique factorization guaranteed by Fundamental Theorem of Arithmetic",
+      "Factor collection as sorted (prime, exponent) pairs"
+    ],
+    "primary_authority": [
+      "Hardy, G.H. & Wright, E.M. (2008). An Introduction to the Theory of Numbers, 6th ed.",
+      "Pollard, J.M. (1975). A Monte Carlo method for factorization. BIT Numerical Mathematics.",
+      "Miller, G.L. (1976). Riemann's hypothesis and tests for primality. JCSS.",
+      "Rabin, M.O. (1980). Probabilistic algorithm for testing primality. JNT."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "number_theory"
+  },
+  {
+    "topic": "gcd_lcm_computation",
+    "keywords": ["gcd", "lcm", "greatest common divisor", "least common multiple", "euclidean", "coprime"],
+    "conclusion_template": "GCD({a}, {b}) = {gcd_result} and LCM({a}, {b}) = {lcm_result}. Computed via the Euclidean algorithm for GCD, with LCM derived as |a*b| / GCD(a,b).",
+    "reasoning_framework": [
+      "1. The Euclidean algorithm computes GCD(a, b) by repeated application of GCD(a, b) = GCD(b, a mod b).",
+      "2. Base case: GCD(a, 0) = |a|. Both inputs are taken as absolute values.",
+      "3. Time complexity: O(log(min(a,b))) — at most 5 times the number of digits in the smaller number.",
+      "4. Extended Euclidean algorithm also finds integers x, y such that ax + by = GCD(a, b) (Bezout's identity).",
+      "5. LCM(a, b) = |a * b| / GCD(a, b). This avoids overflow by computing a // GCD(a, b) * b.",
+      "6. For multiple values: GCD(a, b, c) = GCD(GCD(a, b), c); same chaining for LCM.",
+      "7. Special cases: GCD(0, 0) = 0 by convention; LCM(a, 0) = 0.",
+      "8. Two numbers are coprime (relatively prime) if and only if GCD(a, b) = 1.",
+      "9. Python's math.gcd handles arbitrary precision integers natively.",
+      "10. The Euclidean algorithm is one of the oldest known algorithms, dating to Euclid's Elements (~300 BC)."
+    ],
+    "key_factors": [
+      "Euclidean algorithm efficiency",
+      "LCM via GCD relationship",
+      "Extended Euclidean for Bezout coefficients",
+      "Multi-value chaining",
+      "Coprimality testing",
+      "Overflow prevention in LCM"
+    ],
+    "primary_authority": [
+      "Euclid. Elements, Book VII, Propositions 1-2 (~300 BC).",
+      "Knuth, D.E. (1997). TAOCP Vol 2, Section 4.5.2: The Greatest Common Divisor.",
+      "Cormen et al. (2022). Introduction to Algorithms, 4th ed., Chapter 31."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "number_theory"
+  },
+  {
+    "topic": "fraction_arithmetic",
+    "keywords": ["fraction", "rational", "numerator", "denominator", "simplify", "reduce", "mixed number"],
+    "conclusion_template": "The fraction operation yields {result_fraction} (= {decimal_approx}). All intermediate and final fractions are reduced to lowest terms using GCD-based simplification.",
+    "reasoning_framework": [
+      "1. Represent fractions as (numerator, denominator) pairs with denominator always positive.",
+      "2. Simplification: divide both numerator and denominator by their GCD.",
+      "3. Addition: a/b + c/d = (a*d + c*b) / (b*d), then simplify.",
+      "4. Subtraction: a/b - c/d = (a*d - c*b) / (b*d), then simplify.",
+      "5. Multiplication: a/b * c/d = (a*c) / (b*d), then simplify.",
+      "6. Division: a/b / c/d = (a*d) / (b*c), then simplify; error if c = 0.",
+      "7. Mixed number conversion: n + a/b where n = numerator // denominator, a = numerator % denominator.",
+      "8. Decimal to fraction: use Python's Fraction class with limit_denominator for approximate conversions.",
+      "9. Comparison: a/b < c/d iff a*d < c*b (when denominators are positive).",
+      "10. Python's fractions.Fraction provides arbitrary precision rational arithmetic natively."
+    ],
+    "key_factors": [
+      "GCD-based simplification after every operation",
+      "Sign normalization (denominator always positive)",
+      "Cross-multiplication for addition/subtraction",
+      "Division as multiplication by reciprocal",
+      "Mixed number representation",
+      "Decimal approximation"
+    ],
+    "primary_authority": [
+      "Knuth, D.E. (1997). TAOCP Vol 2, Section 4.5: Rational Arithmetic.",
+      "Python documentation: fractions.Fraction.",
+      "Stewart, J. (2015). Calculus: Early Transcendentals, Appendix A."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "rational_arithmetic"
+  },
+  {
+    "topic": "modular_arithmetic",
+    "keywords": ["modular", "modulo", "mod", "remainder", "congruence", "clock arithmetic"],
+    "conclusion_template": "{a} mod {m} = {result}. Modular arithmetic operates within the ring Z/{m}Z, where all values are reduced to the range [0, m-1].",
+    "reasoning_framework": [
+      "1. a mod m returns the remainder when a is divided by m, with the result in [0, m-1] for positive m.",
+      "2. Modular addition: (a + b) mod m = ((a mod m) + (b mod m)) mod m.",
+      "3. Modular multiplication: (a * b) mod m = ((a mod m) * (b mod m)) mod m.",
+      "4. Modular exponentiation: a^b mod m computed via binary exponentiation (square-and-multiply), O(log b).",
+      "5. Modular inverse: a^(-1) mod m exists iff GCD(a, m) = 1; found via extended Euclidean algorithm.",
+      "6. Python's built-in pow(a, b, m) performs efficient modular exponentiation.",
+      "7. Applications: cryptography (RSA), hash functions, random number generators, check digits.",
+      "8. Negative operands: Python's a % m always returns non-negative for positive m.",
+      "9. Chinese Remainder Theorem: system of congruences with coprime moduli has a unique solution mod product.",
+      "10. Fermat's little theorem: a^(p-1) = 1 (mod p) for prime p and GCD(a, p) = 1."
+    ],
+    "key_factors": [
+      "Remainder definition and sign convention",
+      "Homomorphism properties (add, multiply distribute over mod)",
+      "Modular exponentiation efficiency",
+      "Modular inverse existence condition",
+      "Chinese Remainder Theorem",
+      "Applications in cryptography"
+    ],
+    "primary_authority": [
+      "Gauss, C.F. (1801). Disquisitiones Arithmeticae.",
+      "Cormen et al. (2022). Introduction to Algorithms, 4th ed., Chapter 31.",
+      "Rosen, K.H. (2018). Elementary Number Theory, 6th ed."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "modular_arithmetic"
+  },
+  {
+    "topic": "significant_figures",
+    "keywords": ["significant figures", "sig figs", "precision", "rounding", "significant digits", "accuracy"],
+    "conclusion_template": "The value {value} has {count} significant figures. When performing {operation}, the result is reported as {result} with {result_sf} significant figures per standard significant figures propagation rules.",
+    "reasoning_framework": [
+      "1. Counting significant figures: all non-zero digits are significant; zeros between non-zero digits are significant.",
+      "2. Leading zeros are never significant (e.g., 0.0045 has 2 sig figs).",
+      "3. Trailing zeros after a decimal point are significant (e.g., 2.500 has 4 sig figs).",
+      "4. Trailing zeros in a whole number without a decimal point are ambiguous; scientific notation resolves this.",
+      "5. Addition/subtraction rule: result has the same number of decimal places as the least precise operand.",
+      "6. Multiplication/division rule: result has the same number of significant figures as the operand with fewest.",
+      "7. Exact numbers (counts, defined constants) have infinite significant figures.",
+      "8. Intermediate calculations should carry extra digits; only round the final result.",
+      "9. Rounding: if the digit to be dropped is exactly 5, round to the nearest even digit (banker's rounding).",
+      "10. Scientific notation (e.g., 4.50 x 10^3) unambiguously indicates significant figures."
+    ],
+    "key_factors": [
+      "Rules for counting sig figs",
+      "Propagation rules differ for add/sub vs mul/div",
+      "Leading vs trailing zero significance",
+      "Ambiguity in trailing zeros without decimal",
+      "Banker's rounding for tiebreaking",
+      "Exact numbers bypass sig fig rules"
+    ],
+    "primary_authority": [
+      "Taylor, J.R. (1997). An Introduction to Error Analysis, 2nd ed.",
+      "NIST Special Publication 811: Guide for the Use of the International System of Units.",
+      "ISO 80000-1:2022 — Quantities and units, Part 1: General."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "measurement_precision"
+  },
+  {
+    "topic": "unit_conversion_length",
+    "keywords": ["convert", "length", "meter", "foot", "inch", "mile", "kilometer", "yard", "centimeter"],
+    "conclusion_template": "{value} {from_unit} = {result} {to_unit}. Conversion factor: 1 {from_unit} = {factor} {to_unit}.",
+    "reasoning_framework": [
+      "1. All length conversions go through a canonical base unit: meters (SI).",
+      "2. Conversion factor chain: source_unit -> meters -> target_unit.",
+      "3. Exact definitions: 1 inch = 0.0254 m (exact), 1 foot = 0.3048 m, 1 yard = 0.9144 m.",
+      "4. 1 mile = 1609.344 m (exact), 1 nautical mile = 1852 m (exact).",
+      "5. SI prefixes: kilo = 10^3, centi = 10^-2, milli = 10^-3, micro = 10^-6, nano = 10^-9.",
+      "6. Astronomical: 1 AU = 149,597,870,700 m (exact), 1 light-year = 9.4607 x 10^15 m.",
+      "7. Result precision matches the input precision (significant figures propagation).",
+      "8. Temperature is NOT a length unit; reject cross-dimension conversions.",
+      "9. Compound units (e.g., km/h) are handled by converting numerator and denominator independently.",
+      "10. All conversion factors are stored as Decimal for arbitrary precision."
+    ],
+    "key_factors": [
+      "Canonical base unit (meters)",
+      "Exact vs approximate conversion factors",
+      "SI prefix system",
+      "Cross-dimension rejection",
+      "Precision preservation",
+      "Compound unit handling"
+    ],
+    "primary_authority": [
+      "BIPM (2019). The International System of Units (SI), 9th edition.",
+      "NIST SP 330 (2019). The International System of Units.",
+      "NIST SP 811: Guide for the Use of the SI."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "unit_conversion"
+  },
+  {
+    "topic": "unit_conversion_mass",
+    "keywords": ["convert", "mass", "weight", "kilogram", "pound", "ounce", "gram", "ton", "stone"],
+    "conclusion_template": "{value} {from_unit} = {result} {to_unit}. All mass conversions use kilograms as the SI base unit.",
+    "reasoning_framework": [
+      "1. SI base unit for mass: kilogram (kg).",
+      "2. 1 pound (lb) = 0.45359237 kg (exact, by international agreement since 1959).",
+      "3. 1 ounce (oz) = 1/16 lb = 0.028349523125 kg.",
+      "4. 1 stone = 14 lb = 6.35029318 kg.",
+      "5. 1 metric ton (tonne) = 1000 kg; 1 short ton = 2000 lb; 1 long ton = 2240 lb.",
+      "6. Troy ounce (ozt) = 31.1035 g (used for precious metals).",
+      "7. SI prefixes apply: milligram, microgram, etc.",
+      "8. Mass vs weight: mass is invariant; weight = mass * g (gravitational acceleration).",
+      "9. This engine converts mass units only; force (Newtons) is a different dimension.",
+      "10. All factors stored as Decimal for precision."
+    ],
+    "key_factors": [
+      "Kilogram as base unit",
+      "Exact avoirdupois pound definition",
+      "Troy vs avoirdupois ounce distinction",
+      "Short ton vs long ton vs metric ton",
+      "Mass vs weight distinction",
+      "SI prefix application"
+    ],
+    "primary_authority": [
+      "BIPM (2019). The International System of Units (SI), 9th edition.",
+      "NIST Handbook 44 (2023). Specifications for Weighing and Measuring Devices.",
+      "International yard and pound agreement (1959)."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "unit_conversion"
+  },
+  {
+    "topic": "unit_conversion_temperature",
+    "keywords": ["convert", "temperature", "celsius", "fahrenheit", "kelvin", "rankine", "degrees"],
+    "conclusion_template": "{value} {from_unit} = {result} {to_unit}. Temperature conversion uses affine transformations, not simple scaling.",
+    "reasoning_framework": [
+      "1. Temperature conversions are affine (offset + scale), unlike most unit conversions which are purely multiplicative.",
+      "2. Celsius to Fahrenheit: F = C * 9/5 + 32.",
+      "3. Fahrenheit to Celsius: C = (F - 32) * 5/9.",
+      "4. Celsius to Kelvin: K = C + 273.15.",
+      "5. Kelvin to Celsius: C = K - 273.15.",
+      "6. Fahrenheit to Kelvin: K = (F - 32) * 5/9 + 273.15.",
+      "7. Rankine to Kelvin: K = R * 5/9; Kelvin to Rankine: R = K * 9/5.",
+      "8. Absolute zero: 0 K = -273.15 C = -459.67 F = 0 R. Temperatures below absolute zero are rejected.",
+      "9. Delta (difference) conversions differ from point conversions: delta_F = delta_C * 9/5 (no offset).",
+      "10. All conversions use Decimal arithmetic for precision."
+    ],
+    "key_factors": [
+      "Affine vs multiplicative conversion",
+      "Offset constants (32 for F, 273.15 for K)",
+      "Absolute zero validation",
+      "Point vs delta temperature distinction",
+      "Rankine scale inclusion",
+      "Precision via Decimal"
+    ],
+    "primary_authority": [
+      "BIPM (2019). The International System of Units (SI), 9th edition.",
+      "Preston-Thomas, H. (1990). The International Temperature Scale of 1990 (ITS-90).",
+      "NIST monograph 175: Temperature measurement."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "unit_conversion"
+  },
+  {
+    "topic": "unit_conversion_volume",
+    "keywords": ["convert", "volume", "liter", "gallon", "cup", "quart", "pint", "milliliter", "fluid ounce"],
+    "conclusion_template": "{value} {from_unit} = {result} {to_unit}. Volume conversions use liters as the bridge unit.",
+    "reasoning_framework": [
+      "1. Bridge unit: liters (L). 1 L = 0.001 cubic meters (exact).",
+      "2. US liquid gallon = 3.785411784 L (exact). Imperial gallon = 4.54609 L (exact).",
+      "3. US quart = gallon/4; US pint = gallon/8; US cup = gallon/16; US fluid ounce = gallon/128.",
+      "4. US tablespoon = 1/2 US fl oz = 14.7868 mL; US teaspoon = 1/3 US tbsp = 4.92892 mL.",
+      "5. Imperial fluid ounce = 28.4131 mL (different from US fl oz = 29.5735 mL).",
+      "6. Cubic conversions: 1 cubic inch = 16.387064 mL; 1 cubic foot = 28.316846592 L.",
+      "7. SI prefixes: milliliter = 10^-3 L, microliter = 10^-6 L.",
+      "8. Always specify US vs Imperial when ambiguous (gallon, pint, fluid ounce differ).",
+      "9. Dry volume measures (bushel, peck) are separate from liquid measures.",
+      "10. All factors stored as Decimal for precision."
+    ],
+    "key_factors": [
+      "US vs Imperial distinction",
+      "Liter as bridge unit",
+      "Cubic-to-volume conversions",
+      "SI prefix application",
+      "Dry vs liquid measure distinction",
+      "Exact definition factors"
+    ],
+    "primary_authority": [
+      "NIST Handbook 44 (2023). Specifications for Weighing and Measuring Devices.",
+      "BIPM (2019). The International System of Units (SI), 9th edition.",
+      "NIST SP 811: Guide for the Use of the SI."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "unit_conversion"
+  },
+  {
+    "topic": "operator_precedence_rules",
+    "keywords": ["precedence", "order of operations", "PEMDAS", "BODMAS", "BEDMAS", "priority", "associativity"],
+    "conclusion_template": "The expression follows standard mathematical operator precedence: Parentheses > Exponents > Multiplication/Division > Addition/Subtraction (PEMDAS). Same-level operators evaluate left-to-right except exponentiation which is right-associative.",
+    "reasoning_framework": [
+      "1. Parentheses (and brackets) override all other precedence; innermost first.",
+      "2. Exponentiation (^, **) has highest precedence among binary operators; RIGHT-associative: 2^3^2 = 2^(3^2) = 512.",
+      "3. Unary plus and minus have higher precedence than binary operators but lower than exponentiation.",
+      "4. Multiplication (*), division (/), integer division (//), and modulo (%) share the same precedence level.",
+      "5. Addition (+) and subtraction (-) share the lowest binary precedence level.",
+      "6. Left-to-right evaluation for same-precedence operators (except exponentiation).",
+      "7. Implicit multiplication (e.g., 2x or 3(4)) has the same precedence as explicit multiplication.",
+      "8. Function calls (sqrt, abs, etc.) evaluate their arguments first, then apply the function.",
+      "9. Common misconception: multiplication does NOT have higher precedence than division; they are equal.",
+      "10. The mnemonic PEMDAS can mislead students into thinking M > D and A > S; they are pairwise equal."
+    ],
+    "key_factors": [
+      "Parentheses override everything",
+      "Right-associativity of exponentiation",
+      "Equal precedence of * and /",
+      "Equal precedence of + and -",
+      "Left-to-right default associativity",
+      "Common PEMDAS misconceptions"
+    ],
+    "primary_authority": [
+      "Bronstein, I.N. et al. (2015). Handbook of Mathematics, 6th ed.",
+      "ISO 80000-2:2019 — Mathematical signs and symbols.",
+      "Knuth, D.E. (1997). TAOCP Vol 1, Section 1.2.3."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "arithmetic_expression"
+  },
+  {
+    "topic": "arbitrary_precision_arithmetic",
+    "keywords": ["precision", "arbitrary", "decimal", "big number", "exact", "rounding", "truncation"],
+    "conclusion_template": "Computation was performed with {precision} digits of precision using Python's Decimal module. The result {result} is exact to the requested precision with rounding mode {rounding_mode}.",
+    "reasoning_framework": [
+      "1. Python's decimal.Decimal provides arbitrary precision decimal floating-point arithmetic.",
+      "2. Default precision: 50 significant digits (configurable via decimal.getcontext().prec).",
+      "3. Rounding modes: ROUND_HALF_EVEN (banker's, default), ROUND_HALF_UP, ROUND_DOWN, ROUND_CEILING, ROUND_FLOOR.",
+      "4. Decimal avoids binary floating-point representation errors (e.g., 0.1 + 0.2 = 0.3 exactly).",
+      "5. For integer arithmetic, Python's built-in int is already arbitrary precision.",
+      "6. Division produces exact results up to the precision setting; periodic decimals are truncated.",
+      "7. Square root, logarithm, and transcendental functions use iterative algorithms to the set precision.",
+      "8. Performance: operations on N-digit numbers are O(N^2) for multiplication (or O(N log N) with FFT).",
+      "9. Context management: each computation thread can have its own precision context.",
+      "10. Comparison: Decimal('0.1') + Decimal('0.2') == Decimal('0.3') evaluates True (unlike float)."
+    ],
+    "key_factors": [
+      "Decimal module avoids binary representation errors",
+      "Configurable precision (default 50 digits)",
+      "Multiple rounding modes available",
+      "Python int is already arbitrary precision for integers",
+      "Performance scaling with digit count",
+      "Thread-safe context management"
+    ],
+    "primary_authority": [
+      "IBM (2009). General Decimal Arithmetic Specification.",
+      "IEEE 754-2019. Floating-point arithmetic standard.",
+      "Python documentation: decimal — Decimal fixed point and floating point arithmetic."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "precision_arithmetic"
+  },
+  {
+    "topic": "primality_testing",
+    "keywords": ["prime", "primality", "composite", "test", "Miller-Rabin", "Fermat", "is prime"],
+    "conclusion_template": "{n} is {result} (determined by Miller-Rabin primality test with {rounds} rounds, false positive probability < 4^(-{rounds})).",
+    "reasoning_framework": [
+      "1. A prime number is a natural number > 1 with no positive divisors other than 1 and itself.",
+      "2. Trial division up to sqrt(n) is deterministic but O(sqrt(n)) — impractical for large n.",
+      "3. Miller-Rabin test: probabilistic, O(k * log^2(n)) for k rounds. Each round reduces error by 4x.",
+      "4. With 20 rounds, false positive probability < 4^(-20) ~ 10^(-12).",
+      "5. For n < 3.3 x 10^24, testing witnesses {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37} is deterministic.",
+      "6. Small primes (< 1000) are checked against a precomputed sieve for instant lookup.",
+      "7. Even numbers > 2 are immediately composite. Numbers divisible by small primes are quickly rejected.",
+      "8. Mersenne primes: 2^p - 1; Lucas-Lehmer test is used for these specifically.",
+      "9. The largest known prime (as of 2024) is 2^136,279,841 - 1 (Mersenne prime, 41+ million digits).",
+      "10. Deterministic variants: AKS primality test runs in polynomial time but is slower in practice than Miller-Rabin."
+    ],
+    "key_factors": [
+      "Miller-Rabin probabilistic test",
+      "Deterministic witnesses for bounded ranges",
+      "Small prime sieve for fast rejection",
+      "Even number shortcut",
+      "Error probability control via round count",
+      "Trade-off: speed vs certainty"
+    ],
+    "primary_authority": [
+      "Miller, G.L. (1976). Riemann's hypothesis and tests for primality.",
+      "Rabin, M.O. (1980). Probabilistic algorithm for testing primality.",
+      "Agrawal, Kayal, Saxena (2004). PRIMES is in P. Annals of Mathematics."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "number_theory"
+  },
+  {
+    "topic": "integer_division_and_remainders",
+    "keywords": ["divide", "division", "remainder", "quotient", "floor division", "ceiling division", "divmod"],
+    "conclusion_template": "{a} divided by {b} gives quotient {quotient} and remainder {remainder}. The relationship a = b * quotient + remainder holds.",
+    "reasoning_framework": [
+      "1. Integer division (floor division): a // b = floor(a / b). In Python, this always rounds toward negative infinity.",
+      "2. Remainder (modulo): a % b = a - b * (a // b). In Python, result has the same sign as b.",
+      "3. divmod(a, b) returns (quotient, remainder) efficiently in a single operation.",
+      "4. The division algorithm theorem: for integers a, b (b != 0), unique q, r exist such that a = b*q + r and 0 <= r < |b|.",
+      "5. Ceiling division: ceil(a / b) = -(-a // b) for positive b, or (a + b - 1) // b for positive a, b.",
+      "6. Truncated division (C-style): quotient rounds toward zero. Python's // is floored, not truncated.",
+      "7. Division by zero is undefined and raises an error.",
+      "8. Long division algorithm: repeated subtract-and-shift for multi-digit numbers.",
+      "9. For exact division checking: a % b == 0 means b divides a evenly.",
+      "10. Euclidean division always produces a non-negative remainder, which is used in the Euclidean algorithm."
+    ],
+    "key_factors": [
+      "Floor vs truncated vs Euclidean division",
+      "Remainder sign convention",
+      "Division algorithm theorem uniqueness",
+      "Ceiling division computation",
+      "Division by zero handling",
+      "divmod efficiency"
+    ],
+    "primary_authority": [
+      "Knuth, D.E. (1997). TAOCP Vol 1, Section 1.2.4.",
+      "Python Language Reference: Binary arithmetic operations.",
+      "Boute, R.T. (1992). The Euclidean definition of the functions div and mod. ACM TOPLAS."
+    ],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "arithmetic_operations"
+  }
+]

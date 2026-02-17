@@ -1,0 +1,71 @@
+{
+  "engine_id": "MATH03",
+  "engine_name": "Calculus Intelligence Engine",
+  "version": "1.0.0",
+  "total_doctrines": 20,
+  "coverage_zones": {
+    "differentiation": {
+      "doctrines": ["power_rule_differentiation", "product_rule_differentiation", "quotient_rule_differentiation", "chain_rule_differentiation", "trigonometric_derivatives", "exponential_logarithmic_derivatives", "partial_derivatives"],
+      "coverage_score": 0.95,
+      "known_gaps": ["implicit differentiation as standalone", "logarithmic differentiation edge cases", "higher-order derivative patterns"]
+    },
+    "integration": {
+      "doctrines": ["trapezoidal_rule_integration", "simpson_rule_integration", "gaussian_quadrature", "fundamental_theorem_of_calculus"],
+      "coverage_score": 0.88,
+      "known_gaps": ["symbolic integration techniques (substitution, parts)", "improper integral convergence tests", "multi-dimensional integration"]
+    },
+    "series": {
+      "doctrines": ["taylor_series_expansion"],
+      "coverage_score": 0.80,
+      "known_gaps": ["Fourier series", "Laurent series", "convergence tests (ratio, root, comparison)", "power series operations"]
+    },
+    "limits": {
+      "doctrines": ["limits_and_continuity", "lhopital_rule"],
+      "coverage_score": 0.85,
+      "known_gaps": ["epsilon-delta proof construction", "multivariable limits", "limits at infinity for complex expressions"]
+    },
+    "differential_equations": {
+      "doctrines": ["separable_ode", "first_order_linear_ode", "euler_method_ode", "runge_kutta_method"],
+      "coverage_score": 0.82,
+      "known_gaps": ["second-order ODE", "systems of ODEs", "Laplace transform method", "exact equations"]
+    },
+    "multivariable": {
+      "doctrines": ["partial_derivatives", "jacobian_matrix"],
+      "coverage_score": 0.75,
+      "known_gaps": ["Lagrange multipliers", "divergence and curl", "line integrals", "surface integrals", "Green/Stokes/Gauss theorems"]
+    },
+    "computation": {
+      "doctrines": ["expression_simplification"],
+      "coverage_score": 0.78,
+      "known_gaps": ["symbolic integration algorithms", "polynomial factoring", "complex number calculus"]
+    }
+  },
+  "epistemic_gaps": [
+    {
+      "area": "Symbolic integration",
+      "severity": "MEDIUM",
+      "description": "Engine performs numerical integration but symbolic antiderivative finding is limited to pattern matching"
+    },
+    {
+      "area": "Higher-order ODE",
+      "severity": "LOW",
+      "description": "Only first-order ODEs handled; second-order and systems require future extension"
+    },
+    {
+      "area": "Complex analysis",
+      "severity": "LOW",
+      "description": "No support for complex-valued calculus, contour integrals, residue theorem"
+    },
+    {
+      "area": "Measure theory",
+      "severity": "LOW",
+      "description": "Riemann integral only; Lebesgue integration not covered"
+    }
+  ],
+  "trigger_tracking": {
+    "total_queries": 0,
+    "doctrine_hits": {},
+    "doctrine_misses": [],
+    "gap_encounters": []
+  }
+}

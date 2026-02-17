@@ -1,0 +1,101 @@
+words):
+                hits.append(did)
+                blocks.append(block)
+    return hits, blocks
+
+# FastAPI App
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import Optional
+
+app = FastAPI(
+    title="TX04 Depreciation Doctrine Engine",
+    description="Legal doctrine engine for depreciation and cost recovery analysis.",
+    version="1.0.0"
+)
+
+class QueryRequest(BaseModel):
+    scenario: str
+
+class AnalyzeRequest(BaseModel):
+    scenario: str
+    detail: Optional[bool] = False
+
+class DoctrineResponse(BaseModel):
+    doctrine_id: str
+    topic: str
+    conclusion: str
+    confidence: float
+    controlling_precedent: list
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/query")
+def query(request: QueryRequest):
+    scenario = request.scenario
+    # Three-layer search
+    hits, blocks = doctrine_cache_lookup(scenario)
+    if not hits:
+        hits, blocks = semantic_search(scenario)
+    if not hits:
+        hits, blocks = deep_analysis(scenario)
+    if not hits:
+        raise HTTPException(status_code=404, detail="No doctrine found for scenario.")
+    results = []
+    for block in blocks:
+        results.append({
+            "doctrine_id": block.doctrine_id,
+            "topic": block.topic,
+            "conclusion": apply_epistemic_guardrails(
+                normalize_terms(block.conclusion_template)
+            ),
+            "confidence": block.confidence,
+            "controlling_precedent": block.controlling_precedent
+        })
+    return {"results": results}
+
+@app.post("/analyze")
+def analyze(request: AnalyzeRequest):
+    scenario = request.scenario
+    detail = request.detail
+    # Three-layer search
+    hits, blocks = doctrine_cache_lookup(scenario)
+    if not hits:
+        hits, blocks = semantic_search(scenario)
+    if not hits:
+        hits, blocks = deep_analysis(scenario)
+    if not hits:
+        raise HTTPException(status_code=404, detail="No doctrine found for scenario.")
+    analyses = []
+    for block in blocks:
+        conclusion = apply_epistemic_guardrails(normalize_terms(block.conclusion_template))
+        fragility = score_fact_fragility(conclusion)
+        analysis = {
+            "doctrine_id": block.doctrine_id,
+            "topic": block.topic,
+            "conclusion": conclusion,
+            "confidence": block.confidence,
+            "confidence_zone": block.confidence_zone.value,
+            "controlling_precedent": block.controlling_precedent,
+            "fact_fragility_score": fragility
+        }
+        if detail:
+            analysis.update({
+                "reasoning_framework": block.reasoning_framework,
+                "key_factors": block.key_factors,
+                "primary_authority": resolve_authority_conflicts(block.primary_authority),
+                "burden_holder": block.burden_holder,
+                "adversary_position": block.adversary_position,
+                "counter_arguments": block.counter_arguments,
+                "resolution_strategy": block.resolution_strategy,
+                "entity_scope": block.entity_scope
+            })
+        analyses.append(analysis)
+    return {"analyses": analyses}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("engine:app", host="0.0.0.0", port=8000, reload=True)

@@ -1,0 +1,128 @@
+{
+  "engine_id": "SYN01",
+  "engine_name": "Cross-Domain Synthesizer",
+  "version": "1.0.0",
+  "port": 9161,
+  "description": "Synthesizes analysis across multiple domain engines, aggregates findings from tax, legal, landman, regulatory engines into unified reports, identifies cross-domain conflicts, generates holistic risk assessments, produces executive summaries, and routes sub-queries to specialized engines.",
+  "capabilities": [
+    "Multi-domain conflict resolution",
+    "Weighted confidence aggregation",
+    "Cross-reference validation",
+    "Hierarchical summarization",
+    "Executive report generation",
+    "Risk matrix construction",
+    "Temporal analysis across domains",
+    "Jurisdiction conflict detection",
+    "Authority hierarchy resolution",
+    "Materiality thresholds",
+    "Stakeholder-specific formatting",
+    "Sub-query routing to specialized engines",
+    "Cross-domain risk aggregation",
+    "Conflict of interest detection",
+    "Regulatory deadline tracking",
+    "Natural language query understanding",
+    "Audit trail and provenance tracking",
+    "Error propagation and uncertainty quantification",
+    "Multi-scenario analysis",
+    "Continuous synthesis monitoring",
+    "Federated data integration",
+    "Regulatory change impact analysis",
+    "Explainability and interpretability"
+  ],
+  "domains": [
+    "TAX",
+    "LEGAL",
+    "LANDMAN",
+    "REGULATORY",
+    "PROBATE",
+    "ENTERPRISE",
+    "GEOSPATIAL",
+    "INTELLIGENCE"
+  ],
+  "response_modes": [
+    "FAST",
+    "DEFENSE",
+    "MEMO"
+  ],
+  "confidence_levels": [
+    "DEFENSIBLE",
+    "AGGRESSIVE",
+    "DISCLOSURE",
+    "HIGH_RISK"
+  ],
+  "analysis_zones": [
+    "PLANNING",
+    "REPORTING",
+    "AUDIT"
+  ],
+  "default_engine_ports": {
+    "TAX": 8391,
+    "LEGAL": 8400,
+    "LANDMAN": 8450,
+    "REGULATORY": 8500,
+    "PROBATE": 8550,
+    "ENTERPRISE": 8600
+  },
+  "risk_thresholds": {
+    "low": 25,
+    "medium": 50,
+    "high": 75,
+    "critical": 90
+  },
+  "materiality_thresholds": {
+    "financial_percent_revenue": 5.0,
+    "financial_percent_assets": 2.0,
+    "tax_exposure_usd": 100000,
+    "legal_liability_usd": 500000
+  },
+  "query_timeout_seconds": 30,
+  "max_concurrent_engine_queries": 10,
+  "confidence_aggregation_weights": {
+    "TAX": 0.25,
+    "LEGAL": 0.25,
+    "LANDMAN": 0.15,
+    "REGULATORY": 0.20,
+    "PROBATE": 0.05,
+    "ENTERPRISE": 0.10
+  },
+  "monitoring": {
+    "enabled": true,
+    "alert_thresholds": {
+      "risk_score": 80,
+      "confidence_drop": 0.3,
+      "engine_timeout_count": 3,
+      "conflict_count": 5
+    },
+    "cadence_minutes": {
+      "critical": 1,
+      "important": 60,
+      "routine": 1440
+    }
+  },
+  "audit_trail": {
+    "enabled": true,
+    "retention_days": 2555,
+    "format": "jsonl",
+    "include_full_responses": true
+  },
+  "dependencies": [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "loguru",
+    "httpx"
+  ],
+  "endpoints": [
+    "/health",
+    "/query",
+    "/metrics",
+    "/doctrines"
+  ],
+  "deployment": {
+    "type": "fastapi",
+    "host": "0.0.0.0",
+    "port": 9161,
+    "workers": 1,
+    "cors_enabled": true
+  }
+}

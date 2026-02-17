@@ -1,0 +1,21 @@
+{
+  "engine_id": "R07_safety_requirements",
+  "engine_name": "ECHO R07 Safety Requirements Engine",
+  "version": "1.0.0",
+  "domain": "oil_gas_safety_compliance",
+  "port": 8707,
+  "mode": "no_llm",
+  "description": "Safety compliance intelligence for oil & gas operations. Covers OSHA, H2S, BOP, PSM, RMP, well control, confined space, fall protection.",
+  "capabilities": ["OSHA Hazard Communication", "H2S safety (ANSI Z390.1)", "BOP requirements and testing", "Process Safety Management (PSM)", "Confined space entry", "Fall protection", "Respiratory protection", "Emergency action plans"],
+  "jurisdictions": ["Federal (OSHA, BSEE)", "Texas (Railroad Commission)"],
+  "doctrine_cache": {"total_doctrines": 6, "categories": ["hazard_communication", "h2s_safety", "well_control", "process_safety", "confined_spaces", "fall_protection"]},
+  "penalty_framework": {
+    "osha_serious": "$15,653 per violation",
+    "osha_willful": "$156,529 per violation",
+    "bsee_violation": "$46,000/day",
+    "psm_violation": "$15,000-50,000 per element",
+    "fatality": "Willful $156,529 + criminal investigation"
+  },
+  "deployment": {"host": "0.0.0.0", "port": 8707, "workers": 4},
+  "metadata": {"created": "2026-02-12", "authority": "11.0 SOVEREIGN", "tie_compliant": true}
+}

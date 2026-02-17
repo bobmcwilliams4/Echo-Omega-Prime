@@ -1,0 +1,165 @@
+{
+  "engine_id": "BLD04",
+  "engine_name": "Emergency Override",
+  "version": "1.0.0",
+  "normalization_rules": {
+    "kill_switch": {
+      "canonical": "kill_switch",
+      "aliases": ["killswitch", "kill-switch", "emergency stop", "e-stop", "hard stop", "panic button", "big red button", "system halt", "full stop", "emergency halt", "dead stop"],
+      "definition": "Mechanism to immediately halt one or more engine processes"
+    },
+    "lockdown": {
+      "canonical": "lockdown",
+      "aliases": ["lock down", "lock-down", "security lockdown", "system lockdown", "defense mode", "fortress mode", "bunker mode", "shelter mode"],
+      "definition": "Restricted operational state with reduced engine availability based on severity level"
+    },
+    "lockdown_normal": {
+      "canonical": "NORMAL",
+      "aliases": ["normal mode", "standard mode", "green status", "all clear", "nominal", "baseline", "peacetime"],
+      "definition": "All systems operational, standard logging, no restrictions"
+    },
+    "lockdown_elevated": {
+      "canonical": "ELEVATED",
+      "aliases": ["elevated mode", "yellow status", "heightened alert", "enhanced monitoring", "watch mode", "guarded"],
+      "definition": "Enhanced logging and monitoring, increased heartbeat frequency"
+    },
+    "lockdown_high": {
+      "canonical": "HIGH",
+      "aliases": ["high alert", "orange status", "high security", "restricted mode", "high threat"],
+      "definition": "Non-essential engines paused, data protection pre-staged"
+    },
+    "lockdown_critical": {
+      "canonical": "CRITICAL",
+      "aliases": ["critical mode", "red status", "emergency mode", "critical alert", "severe threat", "critical threat"],
+      "definition": "Essential engines only, data encrypted at rest, emergency communication active"
+    },
+    "lockdown_full": {
+      "canonical": "LOCKDOWN",
+      "aliases": ["full lockdown", "total lockdown", "maximum security", "black status", "fortress", "sealed"],
+      "definition": "GOV+BLD tiers only, full network isolation, all data encrypted"
+    },
+    "severity_1": {
+      "canonical": "SEV1",
+      "aliases": ["sev 1", "severity 1", "catastrophic", "critical incident", "p1", "priority 1", "system down"],
+      "definition": "Catastrophic incident: system-wide compromise, confirmed data breach, SOVEREIGN credential compromise"
+    },
+    "severity_2": {
+      "canonical": "SEV2",
+      "aliases": ["sev 2", "severity 2", "major", "major incident", "p2", "priority 2", "multi-tier failure"],
+      "definition": "Major incident: multiple tiers affected, active external attack, significant data at risk"
+    },
+    "severity_3": {
+      "canonical": "SEV3",
+      "aliases": ["sev 3", "severity 3", "moderate", "moderate incident", "p3", "priority 3", "single tier"],
+      "definition": "Moderate incident: single tier or critical engine affected, suspicious activity confirmed"
+    },
+    "severity_4": {
+      "canonical": "SEV4",
+      "aliases": ["sev 4", "severity 4", "minor", "minor incident", "p4", "priority 4", "single engine"],
+      "definition": "Minor incident: single non-critical engine anomaly, resource exhaustion"
+    },
+    "severity_5": {
+      "canonical": "SEV5",
+      "aliases": ["sev 5", "severity 5", "informational", "info", "p5", "priority 5", "anomaly"],
+      "definition": "Informational: anomaly detected but not confirmed, monitoring only"
+    },
+    "authority_elevation": {
+      "canonical": "authority_elevation",
+      "aliases": ["privilege escalation", "auth elevation", "temp privileges", "emergency access", "privilege boost", "authority boost", "temp auth"],
+      "definition": "Temporary grant of higher authority level for emergency response"
+    },
+    "data_protection": {
+      "canonical": "data_protection_mode",
+      "aliases": ["data protect", "vault seal", "encrypt mode", "data safe", "data lockdown", "archive mode", "backup mode"],
+      "definition": "Emergency mode that snapshots, encrypts, and archives critical data to R2 cold storage"
+    },
+    "snapshot": {
+      "canonical": "state_snapshot",
+      "aliases": ["system snapshot", "state capture", "system state", "point in time", "checkpoint", "save state", "freeze frame"],
+      "definition": "Complete capture of all engine statuses, sessions, tasks, and system resources at a point in time"
+    },
+    "recovery": {
+      "canonical": "recovery_procedure",
+      "aliases": ["restore", "recovery", "bring back", "restart", "resume", "come back online", "restoration", "rebuild"],
+      "definition": "Staged process to return system to full operational status after emergency"
+    },
+    "incident": {
+      "canonical": "incident",
+      "aliases": ["security event", "breach", "compromise", "attack", "intrusion", "security incident", "event", "alert"],
+      "definition": "Any event that threatens system integrity, availability, or confidentiality"
+    },
+    "blast": {
+      "canonical": "communication_blast",
+      "aliases": ["emergency alert", "mass notification", "broadcast alert", "all-call", "emergency broadcast", "alert blast", "siren"],
+      "definition": "Simultaneous notification through all available communication channels"
+    },
+    "rto": {
+      "canonical": "recovery_time_objective",
+      "aliases": ["RTO", "recovery time", "time to recover", "max downtime", "downtime limit"],
+      "definition": "Maximum acceptable time from incident declaration to verified operational status"
+    },
+    "rpo": {
+      "canonical": "recovery_point_objective",
+      "aliases": ["RPO", "recovery point", "data loss tolerance", "max data loss", "acceptable loss"],
+      "definition": "Maximum acceptable amount of data loss measured in time"
+    },
+    "failsafe": {
+      "canonical": "fail_safe",
+      "aliases": ["fail-safe", "fail safe", "safe mode", "safe state", "default safe", "safety default"],
+      "definition": "System defaults to safe/restricted state when component fails"
+    },
+    "escalation": {
+      "canonical": "escalation",
+      "aliases": ["escalate", "raise severity", "increase alert", "bump up", "elevate threat", "upgrade severity"],
+      "definition": "Increase in lockdown level or incident severity based on new information"
+    },
+    "de_escalation": {
+      "canonical": "de_escalation",
+      "aliases": ["de-escalate", "deescalate", "lower severity", "stand down", "reduce alert", "downgrade", "return to normal"],
+      "definition": "Decrease in lockdown level after threat is contained or eliminated"
+    },
+    "containment": {
+      "canonical": "containment",
+      "aliases": ["contain", "isolate", "quarantine", "wall off", "segment", "ring fence", "sandbox"],
+      "definition": "Actions to prevent incident from spreading to unaffected systems"
+    },
+    "playbook": {
+      "canonical": "response_playbook",
+      "aliases": ["runbook", "play book", "response plan", "action plan", "SOP", "standard procedure", "protocol"],
+      "definition": "Pre-defined sequence of automated and manual actions for a specific incident type"
+    },
+    "sovereign": {
+      "canonical": "SOVEREIGN",
+      "aliases": ["supreme authority", "commander authority", "level 11", "auth 11.0", "absolute authority", "highest authority", "god mode"],
+      "definition": "Authority level 11.0, held exclusively by Commander, cannot be delegated"
+    },
+    "dead_man_switch": {
+      "canonical": "dead_man_switch",
+      "aliases": ["dead man's switch", "deadman", "heartbeat timeout", "watchdog", "liveness check", "keep alive"],
+      "definition": "Safety mechanism that triggers if BLD04 itself becomes unresponsive"
+    },
+    "tier": {
+      "canonical": "engine_tier",
+      "aliases": ["engine class", "engine category", "tier level", "classification"],
+      "definition": "Engine classification: GOV (governance), BLD (bloodline), OPS (operations), INT (intelligence), AUX (auxiliary)"
+    }
+  },
+  "compound_terms": {
+    "full_system_kill": {
+      "components": ["kill_switch", "lockdown_full"],
+      "meaning": "Activation of kill switch at LOCKDOWN level, stopping all engines"
+    },
+    "data_protection_lockdown": {
+      "components": ["data_protection", "lockdown_critical"],
+      "meaning": "Automatic data protection triggered by CRITICAL or LOCKDOWN escalation"
+    },
+    "authority_elevation_emergency": {
+      "components": ["authority_elevation", "incident"],
+      "meaning": "Temporary privilege grant tied to an active incident"
+    },
+    "staged_recovery": {
+      "components": ["recovery", "de_escalation"],
+      "meaning": "Recovery process with step-by-step lockdown de-escalation"
+    }
+  }
+}

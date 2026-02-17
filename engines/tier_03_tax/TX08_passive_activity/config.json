@@ -1,0 +1,113 @@
+{
+  "engine_id": "TX08_passive_activity",
+  "version": "1.0.0",
+  "port": 8608,
+  "name": "Passive Activity Loss Engine",
+  "description": "IRC §469 passive activity loss analysis - material participation, rental activities, grouping elections, disposition rules",
+  "domain": "tax_passive_activity",
+  "mode": "hybrid",
+  "primary_authorities": [
+    "IRC §469 - Passive Activity Losses and Credits",
+    "IRC §469(c) - Passive Activity Defined",
+    "IRC §469(g) - Disposition of Entire Interest",
+    "IRC §469(h) - Material Participation",
+    "IRC §469(i) - $25,000 Exception for Active Participation in Rental Real Estate",
+    "IRC §469(j) - Passive Activity Loss and Credit",
+    "IRC §1411 - Net Investment Income Tax Interaction",
+    "Temp. Reg. §1.469-5T - Material Participation Tests (7 tests)",
+    "Reg. §1.469-4 - Grouping of Activities",
+    "Reg. §1.469-2 - Passive Activity Loss",
+    "Reg. §1.469-9 - Self-Rental Rules",
+    "Prop. Reg. §1.469-11 - Applicability of Passive Loss Rules to Certain PTP",
+    "Rev. Proc. 2010-13 - Grouping and Regrouping"
+  ],
+  "doctrine_topics": [
+    "material_participation_7_tests",
+    "rental_activity_per_se_passive",
+    "real_estate_professional_exception",
+    "$25k_rental_loss_allowance",
+    "active_participation_vs_material",
+    "grouping_of_activities_election",
+    "regrouping_material_change",
+    "significant_participation_activities",
+    "limited_partner_material_participation",
+    "self_rental_recharacterization",
+    "publicly_traded_partnership_pal",
+    "disposition_entire_interest_469g",
+    "installment_sale_suspended_pal",
+    "suspended_losses_at_death",
+    "estates_trusts_material_participation",
+    "working_interest_oil_gas_exception",
+    "portfolio_income_recharacterization",
+    "activity_definition_undertaking",
+    "partial_dispositions_469g",
+    "niit_1411_interaction",
+    "trade_or_business_activity",
+    "rental_real_estate_vs_personal_property",
+    "average_period_rental_exception",
+    "extraordinary_personal_services_rental",
+    "non_deductible_rental_exception",
+    "prior_year_participation_aggregation",
+    "participation_by_spouse",
+    "participation_hours_substantiation",
+    "closely_held_c_corp_pal",
+    "psc_passive_loss_limitation"
+  ],
+  "epistemic_guardrails": {
+    "disclosure_triggers": [
+      "grouping elections without contemporaneous documentation",
+      "self-rental recharacterization",
+      "real estate professional hours substantiation gaps",
+      "limited partner material participation claims",
+      "activity definition ambiguity"
+    ],
+    "banned_phrases": [
+      "guaranteed to qualify",
+      "IRS never challenges",
+      "safe from audit",
+      "automatic exception"
+    ],
+    "high_risk_positions": [
+      "aggressive grouping elections",
+      "thin material participation evidence",
+      "real estate professional without adequate records",
+      "self-rental without arm's length terms"
+    ]
+  },
+  "confidence_stratification": {
+    "DEFENSIBLE": "Clear material participation under test 1 (500+ hours), documented contemporaneous grouping election, per se passive rental with no exceptions",
+    "AGGRESSIVE": "Material participation test 4-6 reliance, prior year participation aggregation, significant participation activity aggregation",
+    "DISCLOSURE": "Regrouping without material change justification, self-rental recharacterization, limited partner material participation claim",
+    "HIGH_RISK": "Undocumented grouping elections, real estate professional hours without logs, working interest misclassification"
+  },
+  "issue_categories": [
+    "MATERIAL_PARTICIPATION",
+    "RENTAL_ACTIVITY_CLASSIFICATION",
+    "GROUPING_ELECTIONS",
+    "DISPOSITION_RULES",
+    "NIIT_INTERACTION",
+    "RECHARACTERIZATION",
+    "SUBSTANTIATION"
+  ],
+  "response_modes": {
+    "FAST": "Concise passive activity analysis with primary authority",
+    "DEFENSE": "Audit-ready passive activity position with substantiation requirements",
+    "MEMO": "Full IRC §469 analysis with multi-doctrine decomposition and fact fragility scoring"
+  },
+  "logging": {
+    "level": "INFO",
+    "rotation": "100 MB",
+    "retention": "90 days",
+    "format": "json"
+  },
+  "telemetry": {
+    "enabled": true,
+    "track_latency": true,
+    "track_coverage": true,
+    "track_drift": true
+  },
+  "cache_ttl_seconds": 3600,
+  "max_tokens_deep_analysis": 4000,
+  "vector_fallback_enabled": true,
+  "audit_trail_enabled": true
+}

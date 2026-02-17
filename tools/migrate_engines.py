@@ -206,8 +206,15 @@ def migrate(source: Path, dest: Path, dry_run: bool = False) -> dict:
         if not dry_run:
             target.parent.mkdir(parents=True, exist_ok=True)
             if not target.exists():
-                shutil.copytree(w.path, target, dirs_exist_ok=True)
-                copied += 1
+                def _ignore_special(directory, files):
+                    """Skip Windows special device names and temp files."""
+                    return [f for f in files if f.upper() in ("NUL", "CON", "PRN", "AUX", "COM1", "LPT1") or f.startswith("_temp_")]
+                try:
+                    shutil.copytree(w.path, target, dirs_exist_ok=True, ignore=_ignore_special)
+                    copied += 1
+                except (shutil.Error, OSError) as e:
+                    print(f"  WARNING: Failed to copy {w.engine_id}: {e}")
+                    continue
 
     # Copy _shared dir
     shared_src = source / "_shared"

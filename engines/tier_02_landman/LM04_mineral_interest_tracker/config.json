@@ -1,0 +1,217 @@
+{
+  "engine_id": "LM04",
+  "engine_name": "Mineral Interest Tracker",
+  "version": "1.0.0",
+  "port": 8435,
+  "host": "0.0.0.0",
+  "description": "Tracks mineral interest ownership through time, conveyances, probate, and other transfers",
+  "tier": "T2_LANDMAN",
+  "category": "mineral_interest_tracking",
+  "status": "ACTIVE",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "Commander Bobby Don McWilliams II",
+  "dependencies": {
+    "engines": [
+      "LM01_title_examination",
+      "LM02_lease_analysis",
+      "LM03_due_diligence"
+    ],
+    "python": ">=3.11",
+    "packages": [
+      "fastapi>=0.104.0",
+      "uvicorn>=0.24.0",
+      "pydantic>=2.5.0",
+      "loguru>=0.7.0",
+      "httpx>=0.25.0",
+      "sqlite3"
+    ]
+  },
+  "interest_types": {
+    "WI": {
+      "code": "WI",
+      "name": "Working Interest",
+      "description": "Right to explore, develop, and operate for oil and gas",
+      "bears_costs": true,
+      "receives_revenue": true,
+      "has_executive_rights": true,
+      "lease_dependent": true
+    },
+    "RI": {
+      "code": "RI",
+      "name": "Royalty Interest",
+      "description": "Right to receive a share of production free of costs",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": false,
+      "lease_dependent": true
+    },
+    "ORRI": {
+      "code": "ORRI",
+      "name": "Overriding Royalty Interest",
+      "description": "Non-operating interest carved from working interest, terminates with lease",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": false,
+      "lease_dependent": true,
+      "terminates_with_lease": true
+    },
+    "NPRI": {
+      "code": "NPRI",
+      "name": "Non-Participating Royalty Interest",
+      "description": "Royalty interest without executive rights, does not participate in bonus or delay rentals",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": false,
+      "lease_dependent": false,
+      "participates_in_bonus": false,
+      "participates_in_delay_rental": false
+    },
+    "MI": {
+      "code": "MI",
+      "name": "Mineral Interest",
+      "description": "Full mineral estate ownership including executive rights",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": true,
+      "lease_dependent": false,
+      "includes": ["executive_rights", "bonus_rights", "delay_rental_rights", "royalty_rights", "development_rights"]
+    },
+    "TERM_MI": {
+      "code": "TERM_MI",
+      "name": "Term Mineral Interest",
+      "description": "Mineral interest limited to a specific duration",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": true,
+      "lease_dependent": false,
+      "time_limited": true
+    },
+    "LIFE_ESTATE_MI": {
+      "code": "LIFE_ESTATE_MI",
+      "name": "Life Estate Mineral Interest",
+      "description": "Mineral interest limited to the lifetime of the grantee",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": true,
+      "lease_dependent": false,
+      "duration": "life_of_grantee"
+    },
+    "FSD": {
+      "code": "FSD",
+      "name": "Fee Simple Determinable Minerals",
+      "description": "Mineral estate that automatically reverts on occurrence of stated event",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": true,
+      "lease_dependent": false,
+      "subject_to_reverter": true
+    },
+    "EXEC_RIGHT": {
+      "code": "EXEC_RIGHT",
+      "name": "Executive Right",
+      "description": "Right to execute oil and gas leases on mineral estate",
+      "bears_costs": false,
+      "receives_revenue": false,
+      "has_executive_rights": true,
+      "lease_dependent": false,
+      "separable": true
+    },
+    "NMI": {
+      "code": "NMI",
+      "name": "Non-Executive Mineral Interest",
+      "description": "Mineral interest without executive rights",
+      "bears_costs": false,
+      "receives_revenue": true,
+      "has_executive_rights": false,
+      "lease_dependent": false
+    }
+  },
+  "conveyance_types": [
+    "mineral_deed",
+    "royalty_deed",
+    "assignment",
+    "probate_order",
+    "heirship_affidavit",
+    "partition_deed",
+    "quitclaim_deed",
+    "warranty_deed",
+    "special_warranty_deed",
+    "gift_deed",
+    "trust_transfer",
+    "court_order",
+    "tax_sale",
+    "foreclosure",
+    "merger",
+    "correction_deed",
+    "reservation"
+  ],
+  "fractional_precision": {
+    "decimal_places": 10,
+    "nma_decimal_places": 8,
+    "percentage_decimal_places": 6,
+    "tolerance_threshold": 0.000001,
+    "summation_tolerance": 0.001
+  },
+  "conflict_detection": {
+    "enabled": true,
+    "interest_sum_threshold": 1.0001,
+    "interest_sum_minimum": 0.9999,
+    "overlap_detection": true,
+    "gap_detection": true,
+    "temporal_conflict_check": true,
+    "duplicate_conveyance_check": true,
+    "circular_chain_detection": true
+  },
+  "texas_specific": {
+    "dormant_mineral_act_years": 5,
+    "adverse_possession_years": 10,
+    "mineral_lien_priority": "first_in_time",
+    "community_property_state": true,
+    "homestead_exemption_applies": false,
+    "surface_damage_act": true,
+    "accommodation_doctrine": true
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_level": "DEBUG",
+    "metrics_interval_seconds": 60,
+    "max_log_size_mb": 100,
+    "rotation": "10 MB",
+    "retention": "30 days",
+    "track_queries": true,
+    "track_computations": true,
+    "track_conflicts": true
+  },
+  "search": {
+    "max_results_default": 100,
+    "max_results_limit": 5000,
+    "fuzzy_name_threshold": 0.75,
+    "date_range_default_years": 50,
+    "enable_fts": true,
+    "cache_ttl_seconds": 300
+  },
+  "integration": {
+    "lm01_endpoint": "http://localhost:8431",
+    "lm02_endpoint": "http://localhost:8432",
+    "lm03_endpoint": "http://localhost:8433",
+    "shadowglass_endpoint": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "encore_endpoint": "https://encore-cloud-scraper.bmcii1976.workers.dev",
+    "timeout_seconds": 30,
+    "retry_count": 3,
+    "retry_delay_seconds": 2
+  },
+  "database": {
+    "path": "lm04_mineral_interests.db",
+    "wal_mode": true,
+    "cache_size_mb": 64,
+    "busy_timeout_ms": 5000,
+    "journal_mode": "WAL",
+    "synchronous": "NORMAL"
+  },
+  "export": {
+    "formats": ["json", "csv", "xlsx", "pdf"],
+    "include_chain_history": true,
+    "include_conflict_report": true,
+    "include_timeline_data": true
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "engine_id": "R05_reporting_requirements",
+  "engine_name": "ECHO R05 Reporting Requirements Engine",
+  "version": "1.0.0",
+  "domain": "oil_gas_regulatory_reporting",
+  "port": 8705,
+  "mode": "no_llm",
+
+  "description": "Professional regulatory reporting intelligence for oil & gas operations. Maps reporting requirements for production, environmental, safety, and tax compliance.",
+
+  "capabilities": [
+    "Monthly production report requirements (Form P-4)",
+    "Well completion report requirements (Form W-2)",
+    "Plugging report requirements (Form H-10)",
+    "Organization report requirements (Form P-5)",
+    "Gas flaring reporting requirements",
+    "Severance tax reporting (Texas Comptroller)",
+    "Royalty payment reporting",
+    "Federal reporting (ONRR)",
+    "State land reporting (GLO)",
+    "Environmental reporting (TCEQ Tier II)",
+    "Annual well inventory requirements",
+    "Mechanical integrity test reporting",
+    "Filing deadline analysis",
+    "Penalty assessment for late filing",
+    "Responsible party identification"
+  ],
+
+  "jurisdictions": [
+    "Texas",
+    "Federal (ONRR)",
+    "Texas General Land Office",
+    "TCEQ",
+    "EPA"
+  ],
+
+  "report_types_covered": {
+    "production": ["Form P-4 monthly production reports"],
+    "completion": ["Form W-2 well completion reports"],
+    "plugging": ["Form H-10 plugging reports"],
+    "organization": ["Form P-5 organization reports", "Change of operator"],
+    "gas_flaring": ["Form P-18 gas flaring exceptions"],
+    "severance_tax": ["Texas Comptroller monthly tax reports"],
+    "royalty": ["Royalty owner payment statements", "Division orders"],
+    "federal": ["ONRR PAAS reports", "Federal lease reporting"],
+    "state_land": ["GLO OGIS reports", "State lease reporting"],
+    "environmental": ["TCEQ Tier II chemical inventory", "EPCRA reports"],
+    "well_inventory": ["Form P-4S annual well inventory"],
+    "mechanical_integrity": ["MIT test reports for injection/disposal wells"]
+  },
+
+  "doctrine_cache": {
+    "total_doctrines": 52,
+    "categories": [
+      "production_reporting",
+      "well_operations",
+      "plugging_and_abandonment",
+      "organizational",
+      "gas_management",
+      "tax_reporting",
+      "royalty_reporting",
+      "federal_reporting",
+      "state_land_reporting",
+      "environmental_reporting",
+      "well_inventory",
+      "mechanical_integrity"
+    ],
+    "confidence_threshold": 0.7,
+    "update_frequency": "quarterly_or_as_regulations_change"
+  },
+
+  "response_modes": {
+    "fast": {
+      "description": "Doctrine-driven, minimal citations, sub-2 second response",
+      "use_case": "Quick compliance checks, filing deadline lookups"
+    },
+    "defense": {
+      "description": "Structured reasoning, audit-ready, compliance analysis",
+      "use_case": "Compliance audits, penalty assessments, enforcement actions"
+    },
+    "memo": {
+      "description": "Long-form, citation-heavy, compliance documentation",
+      "use_case": "Compliance manuals, operator training, regulatory guidance documents"
+    }
+  },
+
+  "three_layer_architecture": {
+    "layer_1_doctrine_cache": {
+      "target_latency_ms": "0-200",
+      "coverage": "52 common reporting requirements",
+      "hit_rate_target": 0.85
+    },
+    "layer_2_semantic_retrieval": {
+      "target_latency_ms": "200-700",
+      "fallback_for": "cache_misses",
+      "knowledge_base": "regulatory_documentation_corpus"
+    },
+    "layer_3_deep_analysis": {
+      "target_latency_ms": "700-2000",
+      "fallback_for": "retrieval_misses",
+      "strategy": "comprehensive_regulatory_research"
+    }
+  },
+
+  "authority_hierarchy": {
+    "statute": {
+      "weight": 100,
+      "examples": ["Texas Natural Resources Code", "Texas Tax Code", "Federal statutes"]
+    },
+    "regulation": {
+      "weight": 80,
+      "examples": ["16 TAC (Railroad Commission)", "30 TAC (TCEQ)", "CFR (Federal)"]
+    },
+    "case_law": {
+      "weight": 60,
+      "examples": ["Court decisions interpreting reporting requirements"]
+    },
+    "guidance": {
+      "weight": 40,
+      "examples": ["RRC guidance documents", "Comptroller bulletins", "ONRR instructions"]
+    },
+    "best_practice": {
+      "weight": 20,
+      "examples": ["Industry standards", "Professional recommendations"]
+    }
+  },
+
+  "confidence_stratification": {
+    "mandatory": "Clear statutory or regulatory requirement with specific deadline",
+    "clearly_required": "Strong regulatory basis with established enforcement",
+    "best_practice": "Recommended but not explicitly required by regulation",
+    "uncertain": "Unclear regulatory requirement, requires agency consultation"
+  },
+
+  "penalty_framework": {
+    "late_filing_p4": "$200 per day per lease",
+    "late_filing_w2": "$200 per day",
+    "late_filing_h10": "Bond release delayed, potential enforcement action",
+    "severance_tax_late": "5-10% plus 12% annual interest",
+    "federal_onrr_late": "Interest and penalties, potential $25,000/day civil penalties",
+    "tceq_tier_ii_late": "Up to $25,000/day",
+    "enforcement_escalation": "Warnings → Penalties → Shut-in orders → Plugging orders"
+  },
+
+  "filing_deadlines": {
+    "form_p4_monthly": "Last day of month following production",
+    "form_w2_completion": "90 days from rig release",
+    "form_h10_plugging": "30 days from plugging completion",
+    "form_p5_organization": "Before first permit, or within 30 days of change",
+    "form_p4s_annual_inventory": "February 15 each year",
+    "severance_tax": "20th of month following production",
+    "onrr_federal": "Last day of month following production",
+    "glo_state_land": "Last day of month following production",
+    "tceq_tier_ii": "March 1 each year (prior calendar year)",
+    "mit_injection_disposal": "Within 30 days of test completion, repeat every 5 years"
+  },
+
+  "integrations": {
+    "telemetry": {
+      "enabled": true,
+      "trace_all_queries": true,
+      "log_rotation": "50 MB",
+      "log_retention": "30 days"
+    },
+    "audit_trail": {
+      "enabled": true,
+      "format": "jsonl",
+      "fields": [
+        "trace_id",
+        "timestamp",
+        "question",
+        "mode",
+        "jurisdiction",
+        "operator_type",
+        "report_type",
+        "doctrine_match",
+        "response_layer",
+        "confidence_tier",
+        "latency_ms"
+      ]
+    },
+    "metrics": {
+      "enabled": true,
+      "track_latency": true,
+      "track_doctrine_hit_rate": true,
+      "track_error_rate": true,
+      "queries_per_hour": true
+    }
+  },
+
+  "deployment": {
+    "host": "0.0.0.0",
+    "port": 8705,
+    "workers": 4,
+    "reload": false,
+    "log_level": "info"
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "metrics_included": [
+      "status",
+      "uptime",
+      "latency_stats",
+      "doctrine_cache_status",
+      "vector_db_status",
+      "active_queries",
+      "queries_last_hour",
+      "error_rate"
+    ]
+  },
+
+  "metadata": {
+    "created": "2026-02-12",
+    "authority": "11.0 SOVEREIGN",
+    "author": "ECHO OMEGA PRIME",
+    "tie_compliant": true,
+    "tie_version": "1.0",
+    "regulatory_domains": [
+      "Railroad Commission of Texas",
+      "Texas Comptroller",
+      "Texas General Land Office",
+      "TCEQ",
+      "ONRR",
+      "EPA"
+    ]
+  }
+}

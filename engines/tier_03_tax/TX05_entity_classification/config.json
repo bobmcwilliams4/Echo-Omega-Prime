@@ -1,0 +1,124 @@
+{
+  "engine_id": "TX05_entity_classification",
+  "name": "Entity Classification Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8605,
+  "domain": "entity_classification",
+  "description": "Tax entity classification analysis - check-the-box, partnerships, S-corps, disregarded entities",
+  "mode": "hybrid",
+  "tie_version": "1.4.0",
+  "components": [
+    "three_layer_response",
+    "response_modes",
+    "doctrine_cache",
+    "authority_hardening",
+    "confidence_stratification",
+    "semantic_normalization",
+    "vector_search",
+    "telemetry",
+    "drift_watcher",
+    "coverage_map",
+    "metrics_collector",
+    "health_endpoint",
+    "zoned_analysis",
+    "fact_fragility_scoring",
+    "audit_trail_jsonl",
+    "determinism_hash_sha256",
+    "fastapi_server",
+    "loguru_logging",
+    "multi_doctrine_decomposition",
+    "deep_analysis_mode"
+  ],
+  "doctrine_topics": 53,
+  "authority_levels": {
+    "IRC": 1.0,
+    "TREASURY_REGULATIONS": 0.95,
+    "REVENUE_RULINGS": 0.85,
+    "REVENUE_PROCEDURES": 0.80,
+    "PRIVATE_LETTER_RULINGS": 0.70,
+    "TAX_COURT": 0.90,
+    "CIRCUIT_COURT": 0.92,
+    "SUPREME_COURT": 1.0,
+    "NOTICES": 0.75,
+    "PROPOSED_REGULATIONS": 0.60
+  },
+  "response_modes": {
+    "FAST": {
+      "max_tokens": 500,
+      "use_cache_only": true,
+      "detail_level": "concise"
+    },
+    "DEFENSE": {
+      "max_tokens": 2000,
+      "include_citations": true,
+      "detail_level": "audit_ready"
+    },
+    "MEMO": {
+      "max_tokens": 4000,
+      "include_reasoning": true,
+      "detail_level": "comprehensive"
+    }
+  },
+  "confidence_levels": {
+    "DEFENSIBLE": 0.85,
+    "AGGRESSIVE": 0.65,
+    "DISCLOSURE": 0.50,
+    "HIGH_RISK": 0.30
+  },
+  "telemetry": {
+    "track_latency": true,
+    "track_cache_hits": true,
+    "track_doctrine_coverage": true,
+    "audit_trail": true,
+    "drift_monitoring": true
+  },
+  "logging": {
+    "level": "INFO",
+    "rotation": "500 MB",
+    "retention": "30 days",
+    "format": "json"
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "include_metrics": true,
+    "include_doctrine_stats": true
+  },
+  "issue_categories": [
+    "ENTITY_FORMATION",
+    "ENTITY_ELECTIONS",
+    "DEFAULT_CLASSIFICATION",
+    "CHECK_THE_BOX",
+    "S_CORPORATION",
+    "PARTNERSHIP",
+    "DISREGARDED_ENTITY",
+    "CONVERSION_CONSEQUENCES",
+    "ELECTION_RELIEF",
+    "FOREIGN_ENTITIES",
+    "PER_SE_CORPORATIONS",
+    "QSUB_ELECTIONS"
+  ],
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "guaranteed",
+      "always works",
+      "IRS will never",
+      "completely safe",
+      "zero risk",
+      "bulletproof"
+    ],
+    "require_disclosure_below_confidence": 0.70,
+    "flag_novel_issues": true,
+    "multi_authority_conflicts": "escalate"
+  },
+  "cache_config": {
+    "max_blocks": 100,
+    "preload_common": true,
+    "hit_threshold_ms": 200
+  },
+  "vector_db": {
+    "enabled": true,
+    "fallback_on_cache_miss": true,
+    "embedding_model": "text-embedding-3-small",
+    "top_k": 5
+  }
+}

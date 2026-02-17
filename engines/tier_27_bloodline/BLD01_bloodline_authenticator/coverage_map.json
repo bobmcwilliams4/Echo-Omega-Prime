@@ -1,0 +1,249 @@
+{
+  "engine_id": "BLD01",
+  "engine_name": "Bloodline Authenticator",
+  "version": "1.0.0",
+  "generated": "2026-02-12T00:00:00Z",
+  "topics": {
+    "sovereign_identity_verification": {
+      "category": "identity_verification",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "Verification of SOVEREIGN (Level 11.0) identity through full ceremony protocol",
+      "related_endpoints": ["/authenticate", "/ceremony/initiate", "/ceremony/advance"],
+      "coverage_status": "FULL"
+    },
+    "multi_factor_authentication_principles": {
+      "category": "identity_verification",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "Multi-factor authentication architecture: knowledge, behavioral, device",
+      "related_endpoints": ["/authenticate", "/verify-bloodline"],
+      "coverage_status": "FULL"
+    },
+    "authority_delegation_framework": {
+      "category": "authority_delegation",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Delegation of authority from Commander to trusted parties",
+      "related_endpoints": ["/delegate"],
+      "coverage_status": "FULL"
+    },
+    "succession_planning_protocol": {
+      "category": "succession_planning",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "Dead man's switch and heir activation for dynasty continuity",
+      "related_endpoints": ["/dead-man-switch/heartbeat", "/dead-man-switch/status"],
+      "coverage_status": "FULL"
+    },
+    "emergency_lockout_protocol": {
+      "category": "emergency_protocol",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "Atomic revocation of all sessions, delegations, and ceremonies",
+      "related_endpoints": ["/lockout", "/lockout/lift"],
+      "coverage_status": "FULL"
+    },
+    "session_management_lifecycle": {
+      "category": "session_management",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Session creation, validation, revocation, and expiration",
+      "related_endpoints": ["/authenticate", "/authenticate/validate", "/authenticate/revoke"],
+      "coverage_status": "FULL"
+    },
+    "behavioral_pattern_authentication": {
+      "category": "behavioral_analysis",
+      "priority": "MEDIUM",
+      "doctrine_count": 1,
+      "description": "Behavioral biometrics as an authentication factor",
+      "related_endpoints": ["/authenticate", "/verify-bloodline"],
+      "coverage_status": "FULL"
+    },
+    "device_trust_fingerprinting": {
+      "category": "device_trust",
+      "priority": "MEDIUM",
+      "doctrine_count": 1,
+      "description": "Device fingerprint registration and verification",
+      "related_endpoints": ["/authenticate"],
+      "coverage_status": "FULL"
+    },
+    "authentication_ceremony_protocol": {
+      "category": "ceremony_protocol",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "Multi-step sequential verification for SOVEREIGN operations",
+      "related_endpoints": ["/ceremony/initiate", "/ceremony/advance"],
+      "coverage_status": "FULL"
+    },
+    "failed_attempt_lockout_policy": {
+      "category": "threat_assessment",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Brute-force prevention through failed attempt tracking and lockout",
+      "related_endpoints": ["/authenticate", "/verify-bloodline", "/ceremony/advance"],
+      "coverage_status": "FULL"
+    },
+    "confidence_stratification_framework": {
+      "category": "identity_verification",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Five-level confidence classification for auth decisions",
+      "related_endpoints": ["/authenticate", "/fragility"],
+      "coverage_status": "FULL"
+    },
+    "bloodline_chain_integrity": {
+      "category": "succession_planning",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "McWilliams Dynasty authority lineage and chain integrity",
+      "related_endpoints": ["/verify-bloodline", "/identity/register", "/identity/list"],
+      "coverage_status": "FULL"
+    },
+    "audit_trail_integrity": {
+      "category": "system",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Append-only JSONL audit trail with SHA-256 integrity hashes",
+      "related_endpoints": ["/audit"],
+      "coverage_status": "FULL"
+    },
+    "cryptographic_secret_handling": {
+      "category": "system",
+      "priority": "CRITICAL",
+      "doctrine_count": 1,
+      "description": "HMAC-SHA256 secret hashing with pepper and constant-time comparison",
+      "related_endpoints": ["internal"],
+      "coverage_status": "FULL"
+    },
+    "threat_model_assessment": {
+      "category": "threat_assessment",
+      "priority": "HIGH",
+      "doctrine_count": 1,
+      "description": "Five primary attack vectors and their countermeasures",
+      "related_endpoints": ["/analyze", "/drift"],
+      "coverage_status": "FULL"
+    },
+    "determinism_and_reproducibility": {
+      "category": "system",
+      "priority": "MEDIUM",
+      "doctrine_count": 1,
+      "description": "SHA-256 determinism hash for audit-verifiable reproducibility",
+      "related_endpoints": ["/authenticate", "/query", "/analyze"],
+      "coverage_status": "FULL"
+    }
+  },
+  "category_summary": {
+    "identity_verification": {
+      "topic_count": 3,
+      "doctrine_count": 3,
+      "coverage": "FULL",
+      "priority": "CRITICAL"
+    },
+    "session_management": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "HIGH"
+    },
+    "authority_delegation": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "HIGH"
+    },
+    "succession_planning": {
+      "topic_count": 2,
+      "doctrine_count": 2,
+      "coverage": "FULL",
+      "priority": "CRITICAL"
+    },
+    "emergency_protocol": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "CRITICAL"
+    },
+    "ceremony_protocol": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "CRITICAL"
+    },
+    "behavioral_analysis": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "MEDIUM"
+    },
+    "device_trust": {
+      "topic_count": 1,
+      "doctrine_count": 1,
+      "coverage": "FULL",
+      "priority": "MEDIUM"
+    },
+    "threat_assessment": {
+      "topic_count": 2,
+      "doctrine_count": 2,
+      "coverage": "FULL",
+      "priority": "HIGH"
+    },
+    "system": {
+      "topic_count": 3,
+      "doctrine_count": 3,
+      "coverage": "FULL",
+      "priority": "HIGH"
+    }
+  },
+  "tie_20_component_map": {
+    "three_layer_response": {"implemented": true, "class": "ThreeLayerResponse"},
+    "response_modes": {"implemented": true, "class": "ResponseFormatter", "modes": ["FAST", "DEFENSE", "MEMO"]},
+    "doctrine_cache": {"implemented": true, "entries": 16, "file": "doctrine_cache.json"},
+    "authority_hardening": {"implemented": true, "class": "AuthorityHardening", "levels": 11},
+    "confidence_stratification": {"implemented": true, "class": "ConfidenceStratifier", "levels": 5},
+    "semantic_normalization": {"implemented": true, "class": "SemanticNormalizer", "file": "semantic_dict.json"},
+    "vector_search": {"implemented": true, "class": "VectorSearchEngine"},
+    "telemetry": {"implemented": true, "class": "TelemetryCollector"},
+    "drift_watcher": {"implemented": true, "class": "DriftWatcher"},
+    "coverage_map": {"implemented": true, "class": "CoverageMap", "file": "coverage_map.json"},
+    "metrics_collector": {"implemented": true, "class": "MetricsCollector"},
+    "health_endpoint": {"implemented": true, "endpoint": "/health"},
+    "zoned_analysis": {"implemented": true, "class": "ZonedAnalyzer", "zones": ["PLANNING", "REPORTING", "AUDIT"]},
+    "fact_fragility_scoring": {"implemented": true, "class": "FactFragilityScorer"},
+    "audit_trail_jsonl": {"implemented": true, "class": "AuditTrail", "file": "audit_trail.jsonl"},
+    "determinism_hash_sha256": {"implemented": true, "function": "compute_determinism_hash"},
+    "fastapi_server": {"implemented": true, "port": 8893, "cors": true},
+    "loguru_logging": {"implemented": true, "file": "bld01.log", "rotation": "50 MB"},
+    "multi_doctrine_decomposition": {"implemented": true, "class": "MultiDoctrineDecomposer", "categories": 10, "edges": 10},
+    "deep_analysis_mode": {"implemented": true, "class": "DeepAnalyzer"}
+  },
+  "endpoint_coverage": {
+    "/health": "TIE-12 health endpoint",
+    "/authenticate": "Core multi-factor authentication",
+    "/authenticate/validate": "Session validation",
+    "/authenticate/revoke": "Session revocation",
+    "/delegate": "Authority delegation",
+    "/verify-bloodline": "Bloodline membership verification",
+    "/ceremony/initiate": "Authentication ceremony start",
+    "/ceremony/advance": "Authentication ceremony step advancement",
+    "/lockout": "Emergency lockout activation",
+    "/lockout/lift": "Emergency lockout recovery",
+    "/dead-man-switch/heartbeat": "Commander heartbeat for dead man's switch",
+    "/dead-man-switch/status": "Dead man's switch status check",
+    "/identity/register": "New identity registration",
+    "/identity/list": "Identity registry listing",
+    "/query": "Three-layer doctrine query",
+    "/analyze": "Deep multi-source analysis",
+    "/search": "Vector search over doctrines",
+    "/drift": "Doctrine drift detection",
+    "/coverage": "Doctrine coverage statistics",
+    "/metrics": "Comprehensive metrics",
+    "/telemetry": "Telemetry data",
+    "/audit": "Audit trail query",
+    "/authority": "Authority level information",
+    "/fragility": "Factor fragility scoring",
+    "/zones/history": "Zone transition history",
+    "/normalize": "Semantic text normalization",
+    "/": "Engine identification"
+  }
+}

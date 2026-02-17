@@ -1,0 +1,736 @@
+{
+  "engine_id": "LG12",
+  "engine_name": "Bankruptcy Law Engine",
+  "engine_version": "2.0.0",
+  "engine_authority": 5.0,
+  "engine_tier": "LEGAL",
+  "engine_mode": "DET",
+  "port": 8442,
+  "host": "0.0.0.0",
+  "description": "Production-grade bankruptcy law analysis engine providing Chapter 7 liquidation, Chapter 11 reorganization, Chapter 13 wage earner plan, Chapter 12 family farmer, Chapter 15 cross-border insolvency, means test calculation, automatic stay analysis, discharge/dischargeability determination, exemption planning (federal vs state/TX homestead), preference action analysis, fraudulent transfer avoidance, proof of claim review, plan confirmation requirements, adversary proceedings, reaffirmation agreements, student loan discharge (Brunner test), tax debt discharge, lien stripping/cramdown, trustee powers, US Trustee oversight, BAPCPA compliance, Bankruptcy Code (Title 11 USC), FRBP procedure, and Texas-specific exemption analysis.",
+  "architecture": {
+    "layers": [
+      {
+        "name": "Doctrine Cache",
+        "order": 1,
+        "latency_target_ms": 200,
+        "description": "Pre-compiled bankruptcy doctrine for instant retrieval on common chapter selection, means test, exemption, and discharge queries"
+      },
+      {
+        "name": "Semantic Search",
+        "order": 2,
+        "latency_target_ms": 700,
+        "description": "TF-IDF inverted index search over bankruptcy doctrine blocks and statutory references"
+      },
+      {
+        "name": "Bankruptcy Analysis",
+        "order": 3,
+        "latency_target_ms": 1500,
+        "description": "Structured bankruptcy analysis including means test, exemption planning, and dischargeability determination"
+      },
+      {
+        "name": "Deep Analysis",
+        "order": 4,
+        "latency_target_ms": 3000,
+        "description": "Multi-doctrine synthesis for complex adversary proceedings, cross-border insolvency, and multi-debtor reorganization"
+      }
+    ],
+    "normalization": "semantic.py",
+    "telemetry": "telemetry.py",
+    "search": "search.py",
+    "doctrines": "doctrines.py",
+    "engine": "engine.py"
+  },
+  "response_modes": {
+    "fast": {
+      "description": "Quick doctrine-driven bankruptcy guidance with key statutory citations",
+      "max_latency_ms": 2000,
+      "min_citations": 1
+    },
+    "analysis": {
+      "description": "Structured bankruptcy analysis with means test and exemption framework",
+      "max_latency_ms": 5000,
+      "min_citations": 3
+    },
+    "memo": {
+      "description": "Full bankruptcy memorandum with comprehensive citation and risk assessment",
+      "max_latency_ms": 10000,
+      "min_citations": 5
+    },
+    "means_test": {
+      "description": "Detailed means test calculation with income/expense breakdown and median comparison",
+      "max_latency_ms": 12000,
+      "min_citations": 8
+    },
+    "plan_review": {
+      "description": "Full reorganization or repayment plan review with feasibility and confirmation analysis",
+      "max_latency_ms": 15000,
+      "min_citations": 10
+    }
+  },
+  "bankruptcy_categories": {
+    "chapter_7_liquidation": {
+      "code_sections": [
+        "11 USC 701-784"
+      ],
+      "key_concepts": [
+        "liquidation",
+        "trustee_appointment",
+        "asset_distribution",
+        "means_test",
+        "no_asset_case",
+        "asset_case",
+        "priority_claims"
+      ],
+      "eligibility": [
+        "individual",
+        "partnership",
+        "corporation",
+        "llc"
+      ],
+      "exclusions": [
+        "railroad",
+        "insurance_company",
+        "bank",
+        "savings_institution",
+        "credit_union"
+      ],
+      "timeline": "3-6 months typical",
+      "key_issues": [
+        "means_test_abuse",
+        "substantial_abuse",
+        "totality_of_circumstances",
+        "exemption_planning",
+        "reaffirmation"
+      ]
+    },
+    "chapter_11_reorganization": {
+      "code_sections": [
+        "11 USC 1101-1195"
+      ],
+      "key_concepts": [
+        "reorganization",
+        "debtor_in_possession",
+        "plan_of_reorganization",
+        "disclosure_statement",
+        "cramdown",
+        "absolute_priority_rule",
+        "new_value_exception"
+      ],
+      "subchapter_v": {
+        "threshold": 7500000,
+        "description": "Small business debtor reorganization under Subchapter V (SBRA)"
+      },
+      "key_issues": [
+        "adequate_protection",
+        "exclusivity_period",
+        "classification_of_claims",
+        "feasibility",
+        "best_interests_test",
+        "good_faith"
+      ]
+    },
+    "chapter_13_wage_earner": {
+      "code_sections": [
+        "11 USC 1301-1330"
+      ],
+      "key_concepts": [
+        "repayment_plan",
+        "disposable_income",
+        "commitment_period",
+        "best_effort_test",
+        "applicable_commitment_period",
+        "projected_disposable_income"
+      ],
+      "eligibility": {
+        "secured_debt_limit": 2750000,
+        "unsecured_debt_limit": 2750000,
+        "regular_income_required": true
+      },
+      "plan_duration": {
+        "below_median": "36 months",
+        "above_median": "60 months"
+      },
+      "key_issues": [
+        "mortgage_modification",
+        "lien_stripping",
+        "surrender",
+        "100_percent_plan",
+        "good_faith"
+      ]
+    },
+    "chapter_12_family_farmer": {
+      "code_sections": [
+        "11 USC 1201-1231"
+      ],
+      "key_concepts": [
+        "family_farmer",
+        "family_fisherman",
+        "annual_income_test",
+        "debt_limit",
+        "farm_operation"
+      ],
+      "eligibility": {
+        "debt_limit_farmer": 11097350,
+        "farm_income_ratio": 0.5,
+        "debt_limit_fisherman": 2268550
+      },
+      "key_issues": [
+        "seasonality",
+        "crop_lien",
+        "farm_equipment",
+        "land_valuation",
+        "confirmation_standards"
+      ]
+    },
+    "chapter_15_cross_border": {
+      "code_sections": [
+        "11 USC 1501-1532"
+      ],
+      "key_concepts": [
+        "foreign_main_proceeding",
+        "foreign_nonmain_proceeding",
+        "recognition",
+        "center_of_main_interests",
+        "comity",
+        "cooperation"
+      ],
+      "model_law": "UNCITRAL Model Law on Cross-Border Insolvency",
+      "key_issues": [
+        "comi_determination",
+        "adequate_protection_for_foreign_creditors",
+        "concurrent_proceedings",
+        "relief_availability"
+      ]
+    },
+    "means_test": {
+      "code_sections": [
+        "11 USC 707(b)(2)"
+      ],
+      "forms": [
+        "Form 122A-1 (Chapter 7)",
+        "Form 122A-2 (Chapter 7 Means Test)",
+        "Form 122C-1 (Chapter 13)"
+      ],
+      "steps": [
+        "current_monthly_income",
+        "annualize",
+        "compare_to_state_median",
+        "allowable_deductions",
+        "disposable_income_calculation"
+      ],
+      "safe_harbors": [
+        "below_median_income",
+        "disabled_veteran",
+        "reservist_national_guard",
+        "non_consumer_debts_majority"
+      ],
+      "key_issues": [
+        "income_inclusion",
+        "social_security_exclusion",
+        "marital_adjustment",
+        "means_test_rebuttal",
+        "special_circumstances"
+      ]
+    },
+    "automatic_stay": {
+      "code_sections": [
+        "11 USC 362"
+      ],
+      "scope": [
+        "collection_actions",
+        "foreclosure",
+        "repossession",
+        "wage_garnishment",
+        "utility_disconnection",
+        "lawsuits",
+        "setoff"
+      ],
+      "exceptions": [
+        "criminal_proceedings",
+        "paternity_establishment",
+        "domestic_support_obligations",
+        "tax_audit",
+        "eviction_with_judgment",
+        "serial_filer_limitation"
+      ],
+      "relief_grounds": [
+        "lack_of_adequate_protection",
+        "no_equity_and_not_necessary",
+        "bad_faith_filing",
+        "single_asset_real_estate"
+      ],
+      "duration_rules": {
+        "first_filing": "until_case_closed",
+        "second_filing_in_year": "30_days_unless_extended",
+        "third_filing_in_year": "no_stay_unless_imposed"
+      },
+      "key_issues": [
+        "stay_violations",
+        "willful_violation_damages",
+        "codebtor_stay_ch13",
+        "ipso_facto_clauses"
+      ]
+    },
+    "discharge": {
+      "code_sections": [
+        "11 USC 523",
+        "11 USC 524",
+        "11 USC 727"
+      ],
+      "nondischargeable_debts": [
+        "tax_debt_certain",
+        "student_loans",
+        "domestic_support_obligations",
+        "fraud_debts",
+        "willful_injury",
+        "government_fines",
+        "dui_liability",
+        "restitution"
+      ],
+      "denial_grounds_727": [
+        "fraud_in_connection_with_case",
+        "concealment_of_property",
+        "destruction_of_records",
+        "perjury",
+        "prior_discharge_within_8_years",
+        "failure_to_complete_financial_course"
+      ],
+      "student_loan_test": {
+        "test_name": "Brunner Test",
+        "elements": [
+          "undue_hardship",
+          "good_faith_repayment_effort",
+          "additional_circumstances",
+          "minimal_standard_of_living"
+        ]
+      },
+      "tax_discharge": {
+        "conditions": [
+          "3_year_rule",
+          "2_year_rule",
+          "240_day_rule",
+          "no_fraud",
+          "filed_return"
+        ]
+      },
+      "key_issues": [
+        "discharge_injunction",
+        "reaffirmation_hearing",
+        "ride_through",
+        "chapter_20"
+      ]
+    },
+    "exemptions": {
+      "code_sections": [
+        "11 USC 522"
+      ],
+      "federal_exemptions": {
+        "homestead": 27900,
+        "motor_vehicle": 4450,
+        "household_goods": 14875,
+        "jewelry": 1875,
+        "wildcard": 1475,
+        "tools_of_trade": 2800,
+        "life_insurance": 14875,
+        "personal_injury": 27900,
+        "public_benefits": "unlimited",
+        "retirement_accounts": "unlimited_erisa"
+      },
+      "texas_exemptions": {
+        "homestead_urban": {
+          "acres": 10,
+          "value": "unlimited",
+          "type": "urban"
+        },
+        "homestead_rural_single": {
+          "acres": 100,
+          "value": "unlimited"
+        },
+        "homestead_rural_family": {
+          "acres": 200,
+          "value": "unlimited"
+        },
+        "personal_property": {
+          "limit": 100000,
+          "single_limit": 50000
+        },
+        "current_wages": "unlimited",
+        "retirement_accounts": "unlimited",
+        "life_insurance": "unlimited",
+        "tools_of_trade": "included_in_personal_property",
+        "motor_vehicle": "one_per_licensed_family_member",
+        "burial_plots": "unlimited"
+      },
+      "opt_out_states": [
+        "texas_opts_out_of_federal"
+      ],
+      "domicile_requirement": {
+        "days": 730,
+        "description": "2 year domicile requirement for state exemptions under BAPCPA"
+      },
+      "key_issues": [
+        "exemption_planning_limits",
+        "bad_faith_conversion",
+        "homestead_cap_730_days",
+        "inherited_ira_not_exempt"
+      ]
+    },
+    "avoidance_actions": {
+      "preferences": {
+        "code_section": "11 USC 547",
+        "elements": [
+          "transfer_of_property",
+          "to_or_for_benefit_of_creditor",
+          "on_account_of_antecedent_debt",
+          "while_insolvent",
+          "within_90_days_or_1_year_insider",
+          "enables_greater_recovery"
+        ],
+        "defenses": [
+          "ordinary_course_of_business",
+          "contemporaneous_exchange",
+          "subsequent_new_value",
+          "purchase_money_security",
+          "small_preference_threshold"
+        ]
+      },
+      "fraudulent_transfers": {
+        "code_sections": [
+          "11 USC 548",
+          "State UFTA/UVTA"
+        ],
+        "actual_fraud": "actual_intent_to_hinder_delay_defraud",
+        "constructive_fraud": {
+          "elements": [
+            "less_than_reasonably_equivalent_value",
+            "insolvency_or_undercapitalization"
+          ]
+        },
+        "badges_of_fraud": [
+          "insider_transfer",
+          "concealment",
+          "pending_litigation",
+          "absconding",
+          "removal_of_assets",
+          "inadequate_consideration",
+          "insolvent_at_time"
+        ],
+        "reach_back": {
+          "federal": "2_years",
+          "state_ufta": "4_years_actual_1_year_constructive"
+        }
+      },
+      "strong_arm_power": {
+        "code_section": "11 USC 544(a)",
+        "powers": [
+          "hypothetical_lien_creditor",
+          "hypothetical_bfp_of_real_property",
+          "unsecured_creditor_with_judicial_lien"
+        ],
+        "key_issues": [
+          "unperfected_security_interests",
+          "unrecorded_deeds",
+          "equitable_interests"
+        ]
+      }
+    },
+    "plan_confirmation": {
+      "chapter_11": {
+        "code_section": "11 USC 1129",
+        "requirements": [
+          "good_faith",
+          "feasibility",
+          "best_interests_test",
+          "acceptance_by_impaired_classes",
+          "payment_of_administrative_claims"
+        ],
+        "cramdown": {
+          "code_section": "11 USC 1129(b)",
+          "requirements": [
+            "fair_and_equitable",
+            "no_unfair_discrimination",
+            "absolute_priority_rule"
+          ]
+        },
+        "classification": {
+          "rules": [
+            "substantially_similar_claims",
+            "gerrymandering_prohibition",
+            "artificial_impairment"
+          ]
+        }
+      },
+      "chapter_13": {
+        "code_section": "11 USC 1325",
+        "requirements": [
+          "good_faith",
+          "best_interests_test",
+          "disposable_income_commitment",
+          "domestic_support_current",
+          "tax_returns_filed"
+        ],
+        "modification": {
+          "code_section": "11 USC 1329",
+          "when": "before_completion_of_payments"
+        },
+        "hardship_discharge": {
+          "code_section": "11 USC 1328(b)",
+          "requirements": [
+            "circumstances_beyond_control",
+            "best_interests_test",
+            "modification_not_practicable"
+          ]
+        }
+      }
+    },
+    "adversary_proceedings": {
+      "frbp_rule": "FRBP 7001",
+      "types": [
+        "dischargeability_determination",
+        "objection_to_discharge",
+        "avoidance_actions",
+        "subordination_of_claims",
+        "lien_validity",
+        "turnover_of_property",
+        "equitable_subordination",
+        "recharacterization"
+      ],
+      "key_issues": [
+        "complaint_requirements",
+        "discovery",
+        "summary_judgment",
+        "trial",
+        "appeal"
+      ]
+    },
+    "trustee_powers": {
+      "chapter_7_trustee": {
+        "code_sections": [
+          "11 USC 704"
+        ],
+        "duties": [
+          "collect_estate_property",
+          "liquidate_assets",
+          "examine_proofs_of_claim",
+          "oppose_discharge_if_warranted",
+          "investigate_financial_affairs",
+          "file_tax_returns"
+        ]
+      },
+      "us_trustee": {
+        "code_sections": [
+          "28 USC 586"
+        ],
+        "duties": [
+          "monitor_means_test_compliance",
+          "move_to_dismiss_abuse",
+          "monitor_ch11_plans",
+          "appoint_creditors_committees",
+          "oversee_trustees"
+        ]
+      },
+      "debtor_in_possession": {
+        "code_sections": [
+          "11 USC 1107"
+        ],
+        "powers": [
+          "operate_business",
+          "use_cash_collateral",
+          "obtain_dip_financing",
+          "assume_reject_executory_contracts"
+        ],
+        "fiduciary_duties": [
+          "duty_of_care",
+          "duty_of_loyalty",
+          "duty_of_impartiality"
+        ]
+      }
+    },
+    "bapcpa": {
+      "effective_date": "2005-10-17",
+      "key_changes": [
+        "means_test_requirement",
+        "credit_counseling_requirement",
+        "financial_management_course",
+        "increased_documentation",
+        "attorney_liability",
+        "homestead_cap",
+        "luxury_goods_presumption",
+        "domestic_support_priority",
+        "automatic_stay_limitations"
+      ],
+      "forms": [
+        "Form 122A-1",
+        "Form 122A-2",
+        "Form 122C-1",
+        "Form 122C-2"
+      ]
+    },
+    "reaffirmation": {
+      "code_section": "11 USC 524(c)",
+      "requirements": [
+        "voluntary",
+        "informed_consent",
+        "no_undue_hardship",
+        "court_approval_if_no_attorney",
+        "rescission_period_60_days"
+      ],
+      "judicial_oversight": [
+        "ability_to_pay_review",
+        "best_interest_of_debtor",
+        "hearing_if_pro_se"
+      ]
+    },
+    "lien_stripping_cramdown": {
+      "chapter_13_lien_strip": {
+        "code_section": "11 USC 506(a)",
+        "scope": "junior_liens_on_principal_residence_wholly_unsecured",
+        "key_case": "Bank of America v. Caulkett (2015)",
+        "limitation": "cannot_strip_partially_secured_lien"
+      },
+      "cramdown_secured_claims": {
+        "code_section": "11 USC 506(a)",
+        "valuation": "replacement_value",
+        "interest_rate": "Till v. SCS Credit Corp formula_rate",
+        "hanging_paragraph": "910_day_vehicle_1_year_other_purchase_money"
+      }
+    }
+  },
+  "authority_weights": {
+    "us_supreme_court": 100,
+    "federal_circuit_court": 85,
+    "bankruptcy_appellate_panel": 78,
+    "federal_district_court": 70,
+    "bankruptcy_court": 68,
+    "state_supreme_court": 65,
+    "state_appellate_court": 55,
+    "federal_statute_title_11": 98,
+    "federal_statute_title_28": 92,
+    "frbp": 90,
+    "local_bankruptcy_rules": 60,
+    "cfr_regulation": 75,
+    "us_trustee_guideline": 65,
+    "executive_office_ust": 60,
+    "restatement": 45,
+    "treatise_collier": 50,
+    "treatise_norton": 48,
+    "law_review": 30,
+    "abi_journal": 35,
+    "census_median_data": 55
+  },
+  "confidence_bands": {
+    "DEFENSIBLE": {
+      "min_score": 0.85,
+      "label": "Position is well-supported by established bankruptcy law and precedent",
+      "requires_caveat": false
+    },
+    "SUPPORTABLE": {
+      "min_score": 0.65,
+      "label": "Position has reasonable support but some uncertainty in application",
+      "requires_caveat": true
+    },
+    "DISCLOSURE": {
+      "min_score": 0.5,
+      "label": "Position requires disclosure of contrary authority or circuit split",
+      "requires_caveat": true
+    },
+    "HIGH_RISK": {
+      "min_score": 0.0,
+      "label": "Position faces significant adverse authority or untested theory",
+      "requires_caveat": true
+    }
+  },
+  "drift_watcher": {
+    "enabled": true,
+    "check_interval_hours": 24,
+    "staleness_threshold_days": 90,
+    "confidence_reduction_percent": 10,
+    "registry_path": "doctrine_drift_registry.json",
+    "signal_types": [
+      "new_bankruptcy_case",
+      "scotus_cert_grant",
+      "circuit_split_development",
+      "legislative_change",
+      "frbp_amendment",
+      "us_trustee_guideline_update",
+      "median_income_update",
+      "exemption_amount_update",
+      "bapcpa_amendment",
+      "local_rule_change"
+    ]
+  },
+  "telemetry": {
+    "enabled": true,
+    "ring_buffer_size": 10000,
+    "flush_batch_size": 50,
+    "flush_interval_seconds": 5.0,
+    "log_dir": "logs",
+    "retention_days": 30
+  },
+  "search": {
+    "default_top_k": 5,
+    "score_threshold": 0.3,
+    "max_token_length": 50,
+    "min_token_length": 2
+  },
+  "audit": {
+    "enabled": true,
+    "log_format": "jsonl",
+    "hash_algorithm": "sha256",
+    "retention_days": 365
+  },
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "Your debts will definitely be discharged",
+      "You are guaranteed to pass the means test",
+      "The automatic stay cannot be lifted",
+      "This transfer is absolutely safe from avoidance",
+      "No creditor can challenge this exemption",
+      "Your student loans will be discharged",
+      "The court will certainly confirm this plan",
+      "This asset is completely exempt",
+      "You will not lose any property",
+      "The trustee cannot touch this",
+      "Filing bankruptcy is always the best option",
+      "There is no risk of dismissal",
+      "Your case will definitely convert successfully",
+      "The preference claim has no merit"
+    ],
+    "required_disclaimers": {
+      "not_legal_advice": "This analysis is for informational purposes only and does not constitute legal advice. Consult a licensed bankruptcy attorney for specific legal guidance.",
+      "jurisdiction_specific": "Bankruptcy law varies by circuit and district. Local rules and standing orders may affect outcomes. This analysis may not apply in all jurisdictions.",
+      "fact_dependent": "Bankruptcy outcomes depend heavily on specific financial facts, income, assets, debts, and prior filing history. This analysis is based on the information provided.",
+      "exemption_caveat": "Exemption amounts are adjusted periodically. State exemptions vary dramatically. Texas exemptions referenced herein are subject to the domicile requirement and homestead cap under BAPCPA."
+    }
+  },
+  "cors": {
+    "allow_origins": [
+      "*"
+    ],
+    "allow_methods": [
+      "GET",
+      "POST",
+      "OPTIONS"
+    ],
+    "allow_headers": [
+      "*"
+    ]
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+    "rotation": "50 MB",
+    "retention": "30 days"
+  },
+  "metadata": {
+    "author": "ECHO OMEGA PRIME",
+    "authority": "11.0 SOVEREIGN",
+    "build_date": "2026-02-10",
+    "domain": "Bankruptcy Law",
+    "classification": "LEGAL",
+    "tier_id": 1,
+    "engine_index": 12,
+    "total_target_lines": 10500
+  }
+}

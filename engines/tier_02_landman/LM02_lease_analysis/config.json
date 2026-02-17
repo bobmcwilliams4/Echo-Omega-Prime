@@ -1,0 +1,253 @@
+{
+  "engine_id": "LM02",
+  "engine_name": "Lease Analysis Engine",
+  "engine_version": "1.0.0",
+  "tier": "T2_LANDMAN",
+  "mode": "DET",
+  "port": 8402,
+  "description": "Oil and gas lease analysis engine for the Permian Basin",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "11.0 SOVEREIGN",
+
+  "response_modes": {
+    "FAST": {
+      "description": "Doctrine-driven, minimal citations, sub-2 second response",
+      "max_latency_ms": 2000,
+      "citation_depth": "minimal",
+      "analysis_depth": "surface"
+    },
+    "STANDARD": {
+      "description": "Balanced analysis with key citations and clause references",
+      "max_latency_ms": 5000,
+      "citation_depth": "moderate",
+      "analysis_depth": "moderate"
+    },
+    "DEEP": {
+      "description": "Full lease audit with all clauses, comparisons, and risk flags",
+      "max_latency_ms": 15000,
+      "citation_depth": "exhaustive",
+      "analysis_depth": "full"
+    }
+  },
+
+  "lease_term_categories": {
+    "habendum": {
+      "primary_term_range_years": [1, 10],
+      "common_primary_terms": [3, 5],
+      "secondary_term_trigger": "production_or_operations",
+      "description": "Defines the duration of the lease grant"
+    },
+    "drilling_clause": {
+      "types": ["commence_operations", "spud_well", "complete_well"],
+      "grace_period_days": [30, 60, 90, 120, 180],
+      "description": "Obligations regarding commencement of drilling"
+    },
+    "delay_rental": {
+      "payment_schedule": "annual",
+      "typical_rate_per_acre": [5.0, 50.0],
+      "or_clause_vs_unless_clause": "unless",
+      "description": "Payments to maintain lease during primary term without drilling"
+    },
+    "royalty": {
+      "default_fraction": "1/8",
+      "common_fractions": ["1/8", "3/16", "1/5", "1/4"],
+      "decimal_equivalents": {
+        "1/8": 0.125,
+        "3/16": 0.1875,
+        "1/5": 0.20,
+        "1/4": 0.25
+      },
+      "cost_bearing": false,
+      "market_value_vs_proceeds": "market_value",
+      "description": "Lessor share of production revenue"
+    },
+    "overriding_royalty": {
+      "typical_range": [0.01, 0.05],
+      "carved_from": "working_interest",
+      "survives_assignment": true,
+      "description": "Non-cost-bearing interest carved from working interest"
+    },
+    "pooling_unitization": {
+      "pooling_authority": ["voluntary", "forced", "Pugh_clause_limited"],
+      "unit_size_limits_acres": {
+        "oil": [40, 160],
+        "gas": [320, 640],
+        "horizontal": [640, 1280]
+      },
+      "description": "Combining acreage into drilling or production units"
+    },
+    "shut_in_royalty": {
+      "typical_payment_per_acre": [1.0, 25.0],
+      "max_shut_in_period_months": [12, 24, 36],
+      "description": "Payment to maintain lease when well capable but not producing"
+    },
+    "force_majeure": {
+      "covered_events": [
+        "act_of_god", "war", "government_regulation", "labor_dispute",
+        "equipment_failure", "pandemic", "environmental_order",
+        "pipeline_capacity", "market_conditions"
+      ],
+      "notice_requirement_days": 30,
+      "max_suspension_months": 24,
+      "description": "Excuses lease obligations during qualifying events"
+    },
+    "continuous_development": {
+      "operations_gap_days": [90, 120, 150, 180],
+      "minimum_expenditure_per_period": null,
+      "description": "Requirement for ongoing drilling to hold acreage"
+    },
+    "pugh_clause": {
+      "types": ["vertical_pugh", "horizontal_pugh", "depth_pugh"],
+      "release_timing": "end_of_primary_term",
+      "description": "Releases unpooled or non-producing acreage at end of primary term"
+    },
+    "surface_use": {
+      "accommodation_doctrine": true,
+      "surface_damage_payment": true,
+      "location_restrictions": true,
+      "restoration_obligation": true,
+      "water_rights": "separate_grant",
+      "description": "Rights and restrictions for surface use by lessee"
+    },
+    "depth_limitation": {
+      "common_depths_feet": [5000, 8000, 10000, 12000, 15000],
+      "reference_formations": [
+        "Spraberry", "Wolfcamp", "Bone_Spring", "Delaware",
+        "Avalon", "Cline", "Strawn", "Atoka", "Ellenburger"
+      ],
+      "description": "Restricts lease to specific depth intervals"
+    },
+    "retained_acreage": {
+      "retention_basis": ["production", "pooled_unit", "drilling_unit"],
+      "release_mechanism": "automatic_at_term_end",
+      "description": "Acreage held after primary term expiration"
+    },
+    "top_lease": {
+      "effective_trigger": "expiration_of_bottom_lease",
+      "bonus_consideration": true,
+      "recording_requirement": true,
+      "description": "Lease taking effect upon expiration of existing lease"
+    },
+    "preferential_right": {
+      "trigger": "proposed_assignment",
+      "response_period_days": [15, 30, 60],
+      "description": "Right of first refusal on lease assignment"
+    },
+    "assignment_sublease": {
+      "consent_required": false,
+      "partial_assignment_allowed": true,
+      "overriding_royalty_reservation": true,
+      "description": "Transfer of lease rights to third party"
+    },
+    "mother_hubbard": {
+      "coverage": "contiguous_or_adjacent_strips",
+      "typical_limit_acres": 10,
+      "description": "Covers small tracts or strips adjacent to described lands"
+    },
+    "surrender_clause": {
+      "notice_requirement_days": 30,
+      "partial_surrender_allowed": true,
+      "rental_obligation_on_surrender": "pro_rata_refund",
+      "description": "Lessee right to release all or part of leased premises"
+    }
+  },
+
+  "permian_basin_formations": {
+    "delaware_basin": {
+      "formations": [
+        {"name": "Bone Spring", "depth_range_ft": [6000, 10000], "target": "oil_gas"},
+        {"name": "Wolfcamp", "depth_range_ft": [8000, 14000], "target": "oil_gas"},
+        {"name": "Delaware", "depth_range_ft": [3000, 6000], "target": "oil"},
+        {"name": "Avalon", "depth_range_ft": [5500, 8000], "target": "oil_gas"},
+        {"name": "Brushy Canyon", "depth_range_ft": [6500, 9500], "target": "gas"}
+      ]
+    },
+    "midland_basin": {
+      "formations": [
+        {"name": "Spraberry", "depth_range_ft": [6000, 10000], "target": "oil"},
+        {"name": "Wolfcamp", "depth_range_ft": [7000, 12000], "target": "oil_gas"},
+        {"name": "Cline", "depth_range_ft": [9000, 11000], "target": "oil"},
+        {"name": "Strawn", "depth_range_ft": [10000, 12000], "target": "gas"},
+        {"name": "Atoka", "depth_range_ft": [11000, 13000], "target": "gas"},
+        {"name": "Ellenburger", "depth_range_ft": [12000, 16000], "target": "gas"}
+      ]
+    },
+    "central_basin_platform": {
+      "formations": [
+        {"name": "San Andres", "depth_range_ft": [3000, 6000], "target": "oil"},
+        {"name": "Clear Fork", "depth_range_ft": [4000, 7000], "target": "oil"},
+        {"name": "Glorieta", "depth_range_ft": [3500, 5000], "target": "oil"},
+        {"name": "Yeso", "depth_range_ft": [2000, 4500], "target": "oil"}
+      ]
+    }
+  },
+
+  "texas_regulatory": {
+    "rrc_districts": {
+      "7C": "San Angelo / Permian NW",
+      "8": "Midland / Permian Core",
+      "8A": "Lubbock / Permian NE"
+    },
+    "spacing_rules": {
+      "standard_oil_40acre": {"min_lease_line_ft": 467, "min_well_spacing_ft": 933},
+      "standard_gas_640acre": {"min_lease_line_ft": 467, "min_well_spacing_ft": 1200},
+      "horizontal_permit": {"min_from_lease_line_ft": 330, "lateral_length_ft_typical": [5000, 10000]}
+    },
+    "forced_pooling": false,
+    "mineral_interest_statute": "Texas Natural Resources Code Ch. 91-92",
+    "recording_statute": "Texas Property Code Ch. 13"
+  },
+
+  "nri_calculation": {
+    "default_mineral_interest": 1.0,
+    "default_royalty_rate": 0.25,
+    "default_working_interest": 0.75,
+    "default_overriding_royalty": 0.0,
+    "cost_deduction_types": [
+      "severance_tax", "ad_valorem_tax", "gathering", "compression",
+      "transportation", "processing", "treating", "marketing"
+    ],
+    "texas_severance_tax": {
+      "oil_rate": 0.046,
+      "gas_rate": 0.075
+    }
+  },
+
+  "alert_thresholds": {
+    "lease_expiration_warning_days": [30, 60, 90, 180, 365],
+    "delay_rental_due_warning_days": [14, 30, 60],
+    "shut_in_limit_warning_months": [3, 6],
+    "continuous_development_gap_warning_days": [30, 60],
+    "preferential_right_deadline_days": [7, 14]
+  },
+
+  "search_defaults": {
+    "max_results": 50,
+    "default_page_size": 20,
+    "fuzzy_match_threshold": 0.75,
+    "date_format": "YYYY-MM-DD",
+    "supported_counties": [
+      "Midland", "Ector", "Martin", "Reeves", "Ward", "Crane",
+      "Upton", "Andrews", "Loving", "Winkler", "Pecos", "Howard",
+      "Glasscock", "Reagan", "Irion", "Crockett", "Terrell", "Culberson"
+    ]
+  },
+
+  "integration": {
+    "encore_scraper_url": "https://encore-cloud-scraper.bmcii1976.workers.dev",
+    "shadowglass_url": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "cognition_cloud_ekm": "https://ekm-query.bmcii1976.workers.dev",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": "echo-build-orchestrator",
+    "lm01_title_engine_port": 8401,
+    "tie_engine_port": 8391
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "log_rotation_mb": 50,
+    "log_retention_days": 30,
+    "metrics_flush_interval_seconds": 300,
+    "trace_sample_rate": 1.0
+  }
+}

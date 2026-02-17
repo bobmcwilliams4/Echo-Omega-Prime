@@ -1,0 +1,149 @@
+{
+  "engine_id": "MATH09",
+  "engine_name": "Number Theory Intelligence Engine",
+  "version": "1.0.0",
+  "coverage_domains": {
+    "PRIMALITY": {
+      "topics": [
+        "Miller-Rabin primality test (deterministic for n < 3.317e24)",
+        "Sieve of Eratosthenes (primes up to N)",
+        "Fermat primality test",
+        "Strong probable primes",
+        "Carmichael numbers",
+        "AKS primality (referenced, not implemented)"
+      ],
+      "algorithms_implemented": ["is_prime_miller_rabin", "sieve_of_eratosthenes", "nth_prime", "prime_counting"],
+      "status": "FULL"
+    },
+    "FACTORIZATION": {
+      "topics": [
+        "Fundamental Theorem of Arithmetic",
+        "Trial division",
+        "Pollard's rho algorithm",
+        "Prime factorization",
+        "Factor verification"
+      ],
+      "algorithms_implemented": ["factorise", "_pollard_rho"],
+      "status": "FULL"
+    },
+    "MODULAR_ARITHMETIC": {
+      "topics": [
+        "Modular exponentiation (square-and-multiply)",
+        "Modular inverse (extended GCD)",
+        "Chinese Remainder Theorem",
+        "Euler's theorem",
+        "Fermat's little theorem"
+      ],
+      "algorithms_implemented": ["mod_pow", "mod_inverse", "chinese_remainder_theorem", "extended_gcd"],
+      "status": "FULL"
+    },
+    "DIOPHANTINE": {
+      "topics": [
+        "Linear Diophantine equations ax + by = c",
+        "Bezout's identity",
+        "Extended Euclidean algorithm",
+        "General solution parametrization"
+      ],
+      "algorithms_implemented": ["solve_diophantine", "extended_gcd"],
+      "status": "FULL"
+    },
+    "CONTINUED_FRACTIONS": {
+      "topics": [
+        "Continued fraction expansion of rationals",
+        "Convergents computation",
+        "Best rational approximation property"
+      ],
+      "algorithms_implemented": ["continued_fraction", "convergents"],
+      "status": "FULL"
+    },
+    "QUADRATIC_RESIDUES": {
+      "topics": [
+        "Legendre symbol (a/p)",
+        "Jacobi symbol (a/n)",
+        "Euler's criterion",
+        "Quadratic reciprocity",
+        "Tonelli-Shanks square root mod p",
+        "Quadratic residue enumeration"
+      ],
+      "algorithms_implemented": ["legendre_symbol", "jacobi_symbol", "is_quadratic_residue", "all_quadratic_residues", "sqrt_mod"],
+      "status": "FULL"
+    },
+    "SEQUENCES": {
+      "topics": [
+        "Fibonacci (matrix exponentiation O(log n))",
+        "Catalan numbers",
+        "Partition function (pentagonal theorem)",
+        "Bell numbers",
+        "Stirling numbers of the second kind"
+      ],
+      "algorithms_implemented": ["fibonacci", "catalan", "partition", "bell", "stirling_second"],
+      "status": "FULL"
+    },
+    "NUMBER_THEORETIC_FUNCTIONS": {
+      "topics": [
+        "Euler's totient phi(n)",
+        "Mobius function mu(n)",
+        "Divisor count d(n) / tau(n)",
+        "Divisor sum sigma(n)",
+        "Carmichael lambda(n)",
+        "Perfect number detection"
+      ],
+      "algorithms_implemented": ["euler_totient", "mobius", "divisor_count", "divisor_sum", "list_divisors", "carmichael_lambda", "is_perfect"],
+      "status": "FULL"
+    },
+    "PRIMITIVE_ROOTS_AND_ORDERS": {
+      "topics": [
+        "Primitive root modulo p",
+        "Multiplicative order of a mod n",
+        "Discrete logarithm (baby-step giant-step)"
+      ],
+      "algorithms_implemented": ["primitive_root", "multiplicative_order", "discrete_log"],
+      "status": "FULL"
+    },
+    "REPRESENTATIONS": {
+      "topics": [
+        "Sum of two squares",
+        "Goldbach decomposition"
+      ],
+      "algorithms_implemented": ["sum_of_two_squares", "goldbach"],
+      "status": "FULL"
+    },
+    "UTILITY": {
+      "topics": [
+        "GCD / LCM",
+        "Integer square root",
+        "Perfect square test",
+        "Digit sum and digital root"
+      ],
+      "algorithms_implemented": ["gcd", "lcm", "isqrt", "is_perfect_square", "digit_sum", "digital_root"],
+      "status": "FULL"
+    }
+  },
+  "triggered": {},
+  "missed_topics": [],
+  "doctrine_count": 15,
+  "algorithm_count": 40,
+  "endpoint_count": 26,
+  "tie_components": {
+    "1_three_layer_response": true,
+    "2_response_modes": true,
+    "3_doctrine_cache": true,
+    "4_authority_hardening": true,
+    "5_confidence_stratification": true,
+    "6_semantic_normalisation": true,
+    "7_vector_search": true,
+    "8_telemetry": true,
+    "9_drift_watcher": true,
+    "10_coverage_map": true,
+    "11_metrics_collector": true,
+    "12_health_endpoint": true,
+    "13_zoned_analysis": true,
+    "14_fact_fragility_scoring": true,
+    "15_audit_trail_jsonl": true,
+    "16_determinism_hash_sha256": true,
+    "17_fastapi_server": true,
+    "18_loguru_logging": true,
+    "19_multi_doctrine_decomposition": true,
+    "20_deep_analysis_mode": true
+  }
+}

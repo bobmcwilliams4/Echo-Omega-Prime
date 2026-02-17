@@ -1,0 +1,136 @@
+{
+  "engine_id": "TX10_state_nexus",
+  "engine_name": "State Tax Nexus Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8610,
+  "domain": "state_and_local_tax",
+  "specialty": "nexus_determination_economic_physical_salt",
+  "mode": "hybrid",
+
+  "description": "Comprehensive state tax nexus analysis covering physical presence, economic nexus post-Wayfair, P.L. 86-272 protections, factor presence, affiliate/agency nexus, marketplace facilitator rules, SALT apportionment, and multistate tax planning",
+
+  "core_capabilities": [
+    "physical_presence_nexus_analysis",
+    "economic_nexus_threshold_determination",
+    "wayfair_implications_state_by_state",
+    "pl_86_272_protection_scope",
+    "factor_presence_nexus_evaluation",
+    "agency_affiliate_nexus_attribution",
+    "click_through_nexus_statutes",
+    "marketplace_facilitator_obligations",
+    "uditpa_apportionment_rules",
+    "combined_reporting_requirements",
+    "throwback_throwout_rules",
+    "texas_franchise_tax_margin",
+    "salt_deduction_cap_workarounds",
+    "multistate_tax_compact_application",
+    "single_sales_factor_apportionment",
+    "market_based_sourcing_rules",
+    "dormant_commerce_clause_challenges",
+    "unitary_business_principle",
+    "pass_through_entity_salt_elections",
+    "mtc_guidance_service_nexus"
+  ],
+
+  "key_authorities": [
+    "Complete Auto Transit, Inc. v. Brady, 430 U.S. 274 (1977)",
+    "South Dakota v. Wayfair, Inc., 138 S. Ct. 2080 (2018)",
+    "Quill Corp. v. North Dakota, 504 U.S. 298 (1992) [overruled by Wayfair]",
+    "National Bellas Hess, Inc. v. Department of Revenue, 386 U.S. 753 (1967)",
+    "Wisconsin Dept. of Revenue v. William Wrigley, Jr., Co., 505 U.S. 214 (1992)",
+    "Geoffrey, Inc. v. South Carolina Tax Comm'n, 437 S.E.2d 13 (S.C. 1993)",
+    "MeadWestvaco Corp. v. Illinois Dept. of Revenue, 553 U.S. 16 (2008)",
+    "Comptroller of Treasury v. Wynne, 575 U.S. 542 (2015)",
+    "P.L. 86-272, 15 U.S.C. §§ 381-384",
+    "Uniform Division of Income for Tax Purposes Act (UDITPA)",
+    "MTC Model General Allocation and Apportionment Regulations",
+    "IRC § 164(b)(6) - SALT deduction cap",
+    "Texas Tax Code Chapter 171 - Franchise Tax",
+    "MTC Statement of Information Concerning Practices of Multistate Tax Commission"
+  ],
+
+  "doctrine_categories": [
+    "constitutional_nexus_standards",
+    "statutory_nexus_bright_lines",
+    "economic_nexus_thresholds",
+    "pl_86_272_safe_harbor",
+    "attribution_agency_theories",
+    "apportionment_methodologies",
+    "sourcing_rules_services_tangibles",
+    "combined_reporting_unitary_business",
+    "marketplace_facilitator_statutes",
+    "texas_specific_nexus_rules",
+    "salt_cap_mitigation_strategies",
+    "dormant_commerce_clause_limits"
+  ],
+
+  "confidence_levels": {
+    "DEFENSIBLE": "Clear constitutional/statutory authority, MTC consensus, established case law",
+    "AGGRESSIVE": "Reasonable interpretation, some authority support, defensible position but audit risk",
+    "DISCLOSURE": "Novel position, limited authority, reportable transaction potential",
+    "HIGH_RISK": "Contrary to published guidance, likely challenge, penalty exposure"
+  },
+
+  "state_coverage": {
+    "all_states": true,
+    "focus_jurisdictions": [
+      "Texas", "California", "New York", "Illinois", "Pennsylvania",
+      "Ohio", "Michigan", "New Jersey", "Florida", "Washington",
+      "Massachusetts", "Tennessee", "North Carolina", "Georgia", "Colorado"
+    ],
+    "economic_nexus_count": 45,
+    "marketplace_facilitator_count": 44,
+    "combined_reporting_states": 28,
+    "single_sales_factor_states": 19
+  },
+
+  "response_modes": {
+    "FAST": {
+      "description": "Quick nexus determination with threshold analysis",
+      "max_tokens": 800,
+      "latency_target_ms": 200
+    },
+    "DEFENSE": {
+      "description": "Audit-ready nexus analysis with full authority citations",
+      "max_tokens": 3000,
+      "latency_target_ms": 2000
+    },
+    "MEMO": {
+      "description": "Comprehensive multistate nexus memorandum with apportionment recommendations",
+      "max_tokens": 8000,
+      "latency_target_ms": 5000
+    }
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "metrics_retention_days": 90,
+    "trace_sampling_rate": 1.0,
+    "log_level": "INFO",
+    "audit_trail": true
+  },
+
+  "vector_search": {
+    "enabled": true,
+    "fallback_mode": "semantic_retrieval",
+    "embedding_model": "text-embedding-3-small",
+    "similarity_threshold": 0.75
+  },
+
+  "drift_detection": {
+    "enabled": true,
+    "check_interval_hours": 168,
+    "alert_threshold": 0.15
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "timeout_seconds": 5
+  },
+
+  "api_configuration": {
+    "cors_enabled": true,
+    "rate_limit_per_minute": 100,
+    "max_request_size_mb": 10
+  }
+}

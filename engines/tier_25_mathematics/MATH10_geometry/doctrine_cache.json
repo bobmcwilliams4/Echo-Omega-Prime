@@ -1,0 +1,172 @@
+[
+  {
+    "topic": "Pythagorean Theorem",
+    "keywords": ["pythagorean", "hypotenuse", "right triangle", "a^2+b^2", "legs"],
+    "conclusion_template": "In a right triangle with legs a and b and hypotenuse c, the relationship a^2 + b^2 = c^2 holds. This is the foundational theorem of Euclidean geometry relating the sides of a right triangle. The converse also holds: if a^2 + b^2 = c^2 for a triangle with sides a, b, c, then the triangle is right-angled.",
+    "reasoning_framework": "Given any right triangle, identify the two legs (sides adjacent to the right angle) and the hypotenuse (side opposite the right angle). Apply a^2 + b^2 = c^2 to find the unknown side. Verify the triangle inequality is satisfied. For the converse, compute a^2 + b^2 and compare to c^2 (where c is the longest side). Equality within tolerance confirms a right triangle. Common Pythagorean triples: (3,4,5), (5,12,13), (8,15,17), (7,24,25). Any scalar multiple of a triple is also a triple.",
+    "key_factors": ["Right angle present", "Hypotenuse identification", "Triangle inequality", "Integer triples", "Converse application"],
+    "primary_authority": ["Euclid, Elements, Book I, Proposition 47", "Euclid, Elements, Book I, Proposition 48 (converse)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Heron's Formula",
+    "keywords": ["heron", "area", "three sides", "semi-perimeter", "triangle area sides"],
+    "conclusion_template": "Given a triangle with sides a, b, c, the semi-perimeter is s = (a+b+c)/2 and the area is A = sqrt(s(s-a)(s-b)(s-c)). This formula requires only the three side lengths and no height measurement. It is numerically stable for well-conditioned triangles but can lose precision for very thin (near-degenerate) triangles.",
+    "reasoning_framework": "Step 1: Verify triangle inequality (a+b>c, a+c>b, b+c>a). Step 2: Compute semi-perimeter s = (a+b+c)/2. Step 3: Compute product s(s-a)(s-b)(s-c). Step 4: Take square root. For numerical stability with thin triangles, use Kahan's formula: sort sides so a >= b >= c, then A = 0.25*sqrt((a+(b+c))*(c-(a-b))*(c+(a-b))*(a+(b-c))).",
+    "key_factors": ["Triangle inequality check", "Semi-perimeter computation", "Numerical stability", "Kahan variant for thin triangles", "No height needed"],
+    "primary_authority": ["Heron of Alexandria, Metrica (c. 60 AD)", "Archimedes (earlier attribution)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Law of Cosines",
+    "keywords": ["law of cosines", "cosine rule", "cos", "SAS", "SSS", "find angle", "find side"],
+    "conclusion_template": "The Law of Cosines states c^2 = a^2 + b^2 - 2ab*cos(C), where C is the angle opposite side c. It generalizes the Pythagorean theorem (when C=90 degrees, cos(C)=0). Used to solve triangles in SAS (find third side) and SSS (find angles) configurations.",
+    "reasoning_framework": "To find side c given a, b, C: compute c = sqrt(a^2+b^2-2ab*cos(C)). To find angle C given a, b, c: compute cos(C) = (a^2+b^2-c^2)/(2ab), then C = arccos(result). Verify |cos(C)| <= 1; values outside this range indicate an impossible triangle. The law applies to ALL triangles (not just right triangles).",
+    "key_factors": ["Generalization of Pythagorean theorem", "SAS application", "SSS application", "Domain check for arccos", "Obtuse angle detection"],
+    "primary_authority": ["Euclid, Elements, Book II, Propositions 12-13", "Al-Kashi (15th century, explicit trigonometric form)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Law of Sines",
+    "keywords": ["law of sines", "sine rule", "sin", "ASA", "AAS", "SSA", "ambiguous case"],
+    "conclusion_template": "The Law of Sines states a/sin(A) = b/sin(B) = c/sin(C) = 2R, where R is the circumradius. It is used to solve triangles in ASA, AAS, and SSA configurations. The SSA case (two sides and a non-included angle) is the ambiguous case and may yield 0, 1, or 2 solutions.",
+    "reasoning_framework": "Compute the ratio k = a/sin(A) from any known side-angle pair. For unknown sides: side = k*sin(known_angle). For unknown angles: sin(angle) = side/k. In SSA, compute sin(B) = b*sin(A)/a. If sin(B) > 1: no solution. If sin(B) = 1: one solution (right triangle). If sin(B) < 1: check both B and 180-B as potential solutions; reject if angle sum exceeds 180.",
+    "key_factors": ["Circumradius relationship", "ASA/AAS direct solution", "SSA ambiguous case", "Zero/one/two solution analysis", "Angle sum constraint"],
+    "primary_authority": ["Nasir al-Din al-Tusi, Treatise on the Quadrilateral (1260)", "Euclid, Elements (implicit)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Trigonometric Identities",
+    "keywords": ["identity", "trig identity", "pythagorean identity", "double angle", "sum formula", "half angle"],
+    "conclusion_template": "Fundamental trig identities: (1) Pythagorean: sin^2+cos^2=1, 1+tan^2=sec^2, 1+cot^2=csc^2. (2) Double angle: sin(2x)=2sin(x)cos(x), cos(2x)=cos^2(x)-sin^2(x). (3) Sum: sin(a+b)=sin(a)cos(b)+cos(a)sin(b). (4) Half angle: sin(x/2)=+-sqrt((1-cos(x))/2). These identities are exact, holding for all values in their domains.",
+    "reasoning_framework": "Identity verification can be performed algebraically (symbolic manipulation) or numerically (evaluation at multiple angles). For algebraic proofs, reduce both sides to the same expression using fundamental identities. For numerical verification, test at 7+ angles spanning [0, 2*pi], checking that the difference is within machine epsilon (~1e-15 for float64).",
+    "key_factors": ["Pythagorean family", "Double angle formulas", "Sum and difference formulas", "Half angle formulas", "Product-to-sum conversions"],
+    "primary_authority": ["Euler, Introductio in analysin infinitorum (1748)", "Standard analysis textbooks"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Coordinate Distance and Midpoint",
+    "keywords": ["distance", "midpoint", "coordinate", "euclidean distance", "between points"],
+    "conclusion_template": "The distance between points (x1,y1) and (x2,y2) is d = sqrt((x2-x1)^2+(y2-y1)^2). The midpoint is M = ((x1+x2)/2, (y1+y2)/2). These formulas extend to 3D by adding the z-component under the radical. Distance is always non-negative and equals zero only when the points coincide.",
+    "reasoning_framework": "For distance: compute differences in each coordinate, square them, sum, take square root. For midpoint: average each coordinate independently. The distance formula derives directly from the Pythagorean theorem applied to the right triangle formed by the horizontal and vertical displacements. For 3D: d = sqrt((x2-x1)^2+(y2-y1)^2+(z2-z1)^2).",
+    "key_factors": ["Pythagorean derivation", "Non-negativity", "Metric space properties", "3D extension", "Midpoint as centroid of two points"],
+    "primary_authority": ["Descartes, La Geometrie (1637)", "Euclid, Elements, adapted to coordinates"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Line Equations",
+    "keywords": ["line equation", "slope-intercept", "point-slope", "general form", "standard form", "linear"],
+    "conclusion_template": "A line in the plane can be expressed as: slope-intercept y=mx+b, point-slope y-y1=m(x-x1), or general form Ax+By+C=0. The slope m = (y2-y1)/(x2-x1) measures the rate of change. Vertical lines have undefined slope and are expressed as x=k. Parallel lines share the same slope; perpendicular lines have slopes that are negative reciprocals (m1*m2=-1).",
+    "reasoning_framework": "To find a line: (1) from two points, compute slope then use point-slope form. (2) From point and slope, directly apply point-slope form. (3) Convert between forms as needed. For parallel/perpendicular: parallel slope = m, perpendicular slope = -1/m. Angle between two lines: tan(theta) = |m1-m2|/|1+m1*m2|.",
+    "key_factors": ["Slope computation", "Three standard forms", "Vertical line special case", "Parallel and perpendicular conditions", "Angle between lines"],
+    "primary_authority": ["Descartes, La Geometrie (1637)", "Standard analytic geometry"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Circle Equations and Properties",
+    "keywords": ["circle equation", "center radius", "tangent", "arc", "sector", "chord"],
+    "conclusion_template": "A circle with center (h,k) and radius r has standard equation (x-h)^2+(y-k)^2=r^2 and general form x^2+y^2+Dx+Ey+F=0 where D=-2h, E=-2k, F=h^2+k^2-r^2. Arc length = r*theta (radians). Sector area = (1/2)*r^2*theta. A tangent line at point P on the circle is perpendicular to the radius at P.",
+    "reasoning_framework": "To find circle equation: identify center and radius, substitute into standard form, expand for general form. For tangent at point P: compute slope of radius (center to P), tangent slope is negative reciprocal. For circle-line intersection: substitute line equation into circle equation, solve resulting quadratic. Discriminant > 0: two intersections. Discriminant = 0: tangent. Discriminant < 0: no intersection.",
+    "key_factors": ["Standard vs general form", "Completing the square conversion", "Tangent perpendicularity", "Arc and sector formulas", "Circle-line intersection discriminant"],
+    "primary_authority": ["Apollonius of Perga, Conics (c. 200 BC)", "Descartes, La Geometrie"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Convex Hull Algorithm",
+    "keywords": ["convex hull", "graham scan", "andrew", "monotone chain", "gift wrapping"],
+    "conclusion_template": "The convex hull of a point set is the smallest convex polygon containing all points. Andrew's monotone chain algorithm runs in O(n log n) time: sort points by x-coordinate, build lower hull by processing left-to-right and upper hull right-to-left, maintaining the invariant that consecutive edges make left turns only.",
+    "reasoning_framework": "Step 1: Sort all points lexicographically by (x, y). Step 2: Build lower hull: iterate left to right, for each point remove the last hull point if it makes a clockwise turn (cross product <= 0). Step 3: Build upper hull: iterate right to left with the same logic. Step 4: Concatenate lower[:-1] + upper[:-1] to avoid duplicating endpoints. Cross product of vectors OA, OB: (A.x-O.x)*(B.y-O.y) - (A.y-O.y)*(B.x-O.x). Positive = left turn, negative = right turn, zero = collinear.",
+    "key_factors": ["O(n log n) complexity", "Cross product orientation test", "Lower and upper hull construction", "Collinear point handling", "Degenerate cases (all collinear)"],
+    "primary_authority": ["Graham, Information Processing Letters (1972)", "Andrew, monotone chain variant (1979)", "de Berg et al., Computational Geometry (2008)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Point-in-Polygon Test",
+    "keywords": ["point in polygon", "ray casting", "winding number", "inside polygon", "containment"],
+    "conclusion_template": "The ray casting algorithm determines if a point is inside a simple polygon by casting a horizontal ray from the point and counting edge crossings. An odd count means inside; even means outside. The algorithm runs in O(n) time for n-vertex polygons and handles concave polygons correctly.",
+    "reasoning_framework": "For each edge of the polygon, determine if a horizontal ray from the test point crosses it. An edge from (xi,yi) to (xj,yj) is crossed if the point's y-coordinate is between yi and yj AND the point's x-coordinate is less than the x-coordinate of the intersection of the ray with the edge. Toggle the inside flag for each crossing. Edge cases: point on edge, point on vertex — typically handled by consistent boundary rules.",
+    "key_factors": ["O(n) time complexity", "Odd/even crossing rule", "Horizontal ray convention", "Boundary case handling", "Simple polygon requirement"],
+    "primary_authority": ["Shimrat, Communications of the ACM (1962)", "Haines, Graphics Gems IV (1994)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Shoelace Formula for Polygon Area",
+    "keywords": ["shoelace", "polygon area", "surveyor", "gauss area", "cross product area"],
+    "conclusion_template": "The shoelace formula computes the signed area of a simple polygon with vertices (x1,y1),...,(xn,yn) as A = (1/2)|sum_{i=1}^{n}(xi*y_{i+1} - x_{i+1}*yi)| where indices wrap around. The absolute value gives the area regardless of vertex ordering (CW vs CCW). Positive signed area indicates CCW ordering.",
+    "reasoning_framework": "List vertices in order (CW or CCW). For each consecutive pair of vertices (including last-to-first), compute xi*y_{i+1} - x_{i+1}*yi. Sum all terms. Take absolute value and divide by 2. The formula is equivalent to summing the cross products of position vectors of consecutive vertices. It works for any simple (non-self-intersecting) polygon.",
+    "key_factors": ["O(n) computation", "Works for any simple polygon", "Signed area indicates orientation", "Vertex order matters for sign", "Equivalent to trapezoidal decomposition"],
+    "primary_authority": ["Gauss, survey methods", "Meister, Shoelace formula (1769)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "2D Transformations and Matrices",
+    "keywords": ["rotation", "reflection", "translation", "scaling", "transform", "matrix", "affine"],
+    "conclusion_template": "2D linear transformations are represented by 2x2 matrices: Rotation by theta: [[cos,-sin],[sin,cos]]. Reflection across x-axis: [[1,0],[0,-1]]. Scaling by (sx,sy): [[sx,0],[0,sy]]. Translation requires affine (3x3 homogeneous) coordinates. Composition of transforms = matrix multiplication in reverse order.",
+    "reasoning_framework": "For rotation about origin by angle theta: x'=x*cos(theta)-y*sin(theta), y'=x*sin(theta)+y*cos(theta). For rotation about arbitrary center (cx,cy): translate center to origin, rotate, translate back. For reflection across arbitrary line y=mx+b: translate line to pass through origin, rotate to align with x-axis, reflect across x-axis, reverse rotation, reverse translation. Composition: apply transforms right to left in matrix notation.",
+    "key_factors": ["2x2 matrix for linear transforms", "3x3 homogeneous for affine", "Composition order matters", "Rotation about arbitrary center", "Determinant = 1 for rotations, -1 for reflections"],
+    "primary_authority": ["Coxeter, Introduction to Geometry (1961)", "Standard linear algebra"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Sphere, Cylinder, Cone Volumes",
+    "keywords": ["sphere volume", "cylinder volume", "cone volume", "surface area", "3d solid"],
+    "conclusion_template": "Sphere: V=(4/3)*pi*r^3, SA=4*pi*r^2. Cylinder: V=pi*r^2*h, SA=2*pi*r*(r+h). Cone: V=(1/3)*pi*r^2*h, SA=pi*r*(r+l) where l=sqrt(r^2+h^2) is slant height. These formulas are derived via integration (Cavalieri's principle or calculus of revolution).",
+    "reasoning_framework": "For sphere: integrate circular cross-sections of radius sqrt(r^2-x^2) from -r to r. For cylinder: base area times height. For cone: (1/3) base area times height — the 1/3 factor comes from the linear taper of cross-sections. Surface area of cone: unroll lateral surface into a sector of radius l=slant height. Torus: V=2*pi^2*R*r^2, SA=4*pi^2*R*r (Pappus' theorem).",
+    "key_factors": ["Cavalieri's principle", "Integration derivation", "Cone 1/3 factor", "Slant height for lateral area", "Pappus' theorem for torus"],
+    "primary_authority": ["Archimedes, On the Sphere and Cylinder (c. 225 BC)", "Cavalieri, Geometria indivisibilibus (1635)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Ellipse Properties",
+    "keywords": ["ellipse", "semi-major", "semi-minor", "eccentricity", "foci", "ellipse area"],
+    "conclusion_template": "An ellipse with semi-major axis a and semi-minor axis b has area A=pi*a*b, eccentricity e=sqrt(1-b^2/a^2), and foci at distance c=sqrt(a^2-b^2) from center. The perimeter has no closed-form; Ramanujan's approximation is pi*(a+b)*(1+3h/(10+sqrt(4-3h))) where h=((a-b)/(a+b))^2.",
+    "reasoning_framework": "Standard form: x^2/a^2+y^2/b^2=1 (a>b). Eccentricity measures deviation from circularity (e=0 is circle, e->1 is degenerate). Foci are on the major axis at (+-c, 0) where c=ae. Any point on the ellipse satisfies: distance to focus 1 + distance to focus 2 = 2a. Perimeter requires elliptic integrals; Ramanujan's formula is accurate to ~5e-5 relative error.",
+    "key_factors": ["Area = pi*a*b", "Eccentricity range [0,1)", "Focus distance c=sqrt(a^2-b^2)", "Perimeter approximation", "String construction property"],
+    "primary_authority": ["Apollonius of Perga, Conics", "Ramanujan, perimeter approximation (1914)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Regular Polygon Properties",
+    "keywords": ["regular polygon", "n-gon", "apothem", "interior angle", "pentagon", "hexagon", "octagon"],
+    "conclusion_template": "A regular n-gon with side length s has: perimeter P=n*s, apothem a=s/(2*tan(pi/n)), area A=(1/2)*P*a, interior angle = (n-2)*180/n degrees, exterior angle = 360/n degrees. The number of diagonals is n*(n-3)/2.",
+    "reasoning_framework": "The regular polygon can be decomposed into n isosceles triangles from the center. Each triangle has base s and height equal to the apothem. Interior angle sum = (n-2)*180; each interior angle = sum/n. The circumradius R = s/(2*sin(pi/n)). As n increases, the polygon approaches a circle with circumference n*s and area approaching pi*R^2.",
+    "key_factors": ["Apothem formula", "Interior and exterior angles", "Area via decomposition", "Circumradius relationship", "Limit approaches circle"],
+    "primary_authority": ["Euclid, Elements, Book IV", "Standard geometry textbooks"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Line Segment Intersection",
+    "keywords": ["segment intersection", "line intersection", "cross product", "parametric", "intersect"],
+    "conclusion_template": "Two line segments P1-P2 and P3-P4 intersect if and only if the parametric parameters t and u both lie in [0,1], where t = ((P1-P3) x (P3-P4)) / ((P1-P2) x (P3-P4)) and u = -((P1-P2) x (P1-P3)) / ((P1-P2) x (P3-P4)). The intersection point is P1 + t*(P2-P1). If the denominator is zero, the segments are parallel.",
+    "reasoning_framework": "Express each segment parametrically: S1(t) = P1 + t*(P2-P1), S2(u) = P3 + u*(P4-P3). Set equal and solve the 2x2 system using cross products. The denominator (P1-P2) x (P3-P4) is zero when segments are parallel. When t and u are both in [0,1], the segments intersect. When only the line parameters (unbounded t,u) satisfy the equation, the lines intersect but not the segments.",
+    "key_factors": ["Parametric representation", "Cross product solution", "Parallel segment detection", "Segment vs line intersection", "Collinear overlap detection"],
+    "primary_authority": ["de Berg et al., Computational Geometry (2008)", "O'Rourke, Computational Geometry in C (1998)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  },
+  {
+    "topic": "Euclidean Axioms and Postulates",
+    "keywords": ["axiom", "postulate", "euclid", "parallel postulate", "fifth postulate", "foundations"],
+    "conclusion_template": "Euclid's five postulates: (1) A straight line can be drawn from any point to any other point. (2) A finite straight line can be extended continuously. (3) A circle can be drawn with any center and radius. (4) All right angles are equal. (5) If a line crossing two others makes interior angles on one side less than two right angles, those two lines meet on that side (parallel postulate). The fifth postulate is equivalent to: exactly one line through a point parallel to a given line.",
+    "reasoning_framework": "The first four postulates are considered self-evident. The fifth (parallel) postulate generated centuries of attempts to prove it from the others, ultimately leading to the discovery of non-Euclidean geometries (hyperbolic by Lobachevsky/Bolyai, elliptic by Riemann). In hyperbolic geometry, infinitely many parallels exist; in elliptic geometry, none. All computations in this engine assume Euclidean (flat) geometry where the parallel postulate holds.",
+    "key_factors": ["Five postulates", "Parallel postulate independence", "Non-Euclidean alternatives", "Common notions", "Axiomatic method"],
+    "primary_authority": ["Euclid, Elements, Book I (c. 300 BC)", "Hilbert, Foundations of Geometry (1899)"],
+    "confidence": "DEFENSIBLE",
+    "entity_scope": "ALL"
+  }
+]

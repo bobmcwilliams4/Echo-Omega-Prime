@@ -1,0 +1,93 @@
+{
+  "engine_id": "LM12",
+  "engine_name": "GIS Integration Engine",
+  "version": "1.0.0",
+  "port": 8512,
+  "domain": "gis_landman_intelligence",
+  "description": "GIS/mapping intelligence for oil & gas land operations — legal description parsing, coordinate conversion, well plotting, lease boundary mapping, spacing analysis, and regulatory compliance mapping.",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "11.0 SOVEREIGN",
+  "build_standard": "TIE-20 Gold",
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8512,
+    "workers": 2,
+    "cors_origins": ["*"],
+    "log_level": "info",
+    "request_timeout_seconds": 120
+  },
+
+  "response_modes": {
+    "FAST": {
+      "description": "Quick GIS lookups, coordinate conversions, basic legal description parsing",
+      "target_latency_ms": 200,
+      "max_tokens": 2000
+    },
+    "SURVEY": {
+      "description": "Full survey analysis with plat generation data, spacing compliance, boundary delineation",
+      "target_latency_ms": 1500,
+      "max_tokens": 8000
+    },
+    "REPORT": {
+      "description": "Complete GIS report with maps, overlays, regulatory compliance, production allocation",
+      "target_latency_ms": 5000,
+      "max_tokens": 16000
+    }
+  },
+
+  "coordinate_systems": {
+    "primary": "NAD83",
+    "supported": ["NAD27", "NAD83", "WGS84", "SPCS_TX_CENTRAL", "SPCS_TX_NORTH", "SPCS_TX_SOUTH"],
+    "default_datum": "NAD83",
+    "default_projection": "UTM_14N"
+  },
+
+  "texas_abstract_system": {
+    "survey_types": ["original_grantee", "railroad", "school_land", "university_land", "vacancy", "pre_emption"],
+    "glo_data_source": "https://gis.glo.texas.gov/",
+    "rrc_gis_source": "https://www.rrc.texas.gov/resource-center/research/gis-viewer/"
+  },
+
+  "data_sources": {
+    "tx_rrc": "https://www.rrc.texas.gov/",
+    "enverus": "https://www.enverus.com/",
+    "state_geo_surveys": ["USGS", "BEG_UT", "NMOCD"],
+    "county_appraisal": "CAD_GIS_layers",
+    "usgs_topo": "https://apps.nationalmap.gov/",
+    "fema_flood": "https://msc.fema.gov/portal/home",
+    "usfws_wetland": "https://www.fws.gov/wetlands/"
+  },
+
+  "spacing_rules": {
+    "rule_37_default_ft": 467,
+    "rule_38_default_ft": 330,
+    "default_proration_acres": 40,
+    "density_rule_variants": ["statewide", "field_specific", "special_permit"]
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "log_rotation_mb": 50,
+    "log_retention_days": 30,
+    "audit_trail": true,
+    "metrics_window_hours": 24
+  },
+
+  "doctrine_cache": {
+    "preload": true,
+    "max_blocks": 200,
+    "ttl_hours": 168,
+    "drift_check_interval_minutes": 60
+  },
+
+  "quality_gates": {
+    "min_engine_lines": 2500,
+    "min_doctrine_blocks": 40,
+    "min_doctrine_lines": 1000,
+    "min_semantic_lines": 400,
+    "min_search_lines": 300,
+    "min_telemetry_lines": 400,
+    "min_config_lines": 80
+  }
+}

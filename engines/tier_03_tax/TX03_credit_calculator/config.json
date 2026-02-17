@@ -1,0 +1,112 @@
+{
+  "engine_id": "TX03_credit_calculator",
+  "engine_name": "Tax Credit Calculator Engine",
+  "version": "1.0.0",
+  "port": 8603,
+  "description": "Calculate available tax credits — refundable, nonrefundable, business, individual. No-LLM mode.",
+  "domain": "tax_credits",
+  "authority_hierarchy": {
+    "IRC": 1.0,
+    "Treasury_Regulations": 0.95,
+    "IRS_Publications": 0.85,
+    "Revenue_Rulings": 0.90,
+    "Revenue_Procedures": 0.88,
+    "Notice": 0.82,
+    "Private_Letter_Rulings": 0.70,
+    "Court_Cases": 0.92,
+    "Tax_Court_Memo": 0.80
+  },
+  "response_modes": {
+    "FAST": {
+      "max_length": 500,
+      "detail_level": "concise",
+      "include_citations": false
+    },
+    "DEFENSE": {
+      "max_length": 3000,
+      "detail_level": "comprehensive",
+      "include_citations": true,
+      "audit_ready": true
+    },
+    "MEMO": {
+      "max_length": 5000,
+      "detail_level": "exhaustive",
+      "include_citations": true,
+      "full_analysis": true
+    }
+  },
+  "confidence_levels": {
+    "DEFENSIBLE": 0.90,
+    "AGGRESSIVE": 0.70,
+    "DISCLOSURE": 0.50,
+    "HIGH_RISK": 0.30
+  },
+  "issue_categories": [
+    "INDIVIDUAL_CREDITS",
+    "BUSINESS_CREDITS",
+    "REFUNDABLE_CREDITS",
+    "NONREFUNDABLE_CREDITS",
+    "ENERGY_CREDITS",
+    "EDUCATION_CREDITS",
+    "EMPLOYMENT_CREDITS",
+    "INVESTMENT_CREDITS",
+    "CREDIT_CARRYOVERS",
+    "CREDIT_ORDERING",
+    "CREDIT_LIMITATIONS",
+    "CREDIT_RECAPTURE"
+  ],
+  "telemetry": {
+    "enable_query_logging": true,
+    "enable_latency_tracking": true,
+    "enable_error_tracking": true,
+    "enable_drift_detection": true,
+    "audit_trail_path": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/TX03_credit_calculator/audit_trail.jsonl",
+    "metrics_retention_days": 90
+  },
+  "vector_search": {
+    "enable_fallback": true,
+    "min_similarity": 0.75,
+    "max_results": 10
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "include_metrics": true,
+    "include_cache_stats": true
+  },
+  "doctrine_cache_size": 24,
+  "semantic_normalization": {
+    "credit_types": {
+      "refundable": ["refundable_credit", "refund_credit", "EITC", "ACTC", "AOTC_refundable"],
+      "nonrefundable": ["nonrefundable_credit", "non_refundable", "limited_credit"],
+      "business": ["general_business_credit", "GBC", "business_credit"],
+      "individual": ["personal_credit", "individual_credit", "family_credit"]
+    },
+    "credit_names": {
+      "child_tax_credit": ["CTC", "child_credit", "IRC_24"],
+      "earned_income_credit": ["EITC", "EIC", "IRC_32"],
+      "american_opportunity_credit": ["AOTC", "hope_credit_successor", "IRC_25A_i"],
+      "lifetime_learning_credit": ["LLC", "education_credit", "IRC_25A_ii"],
+      "research_credit": ["R&D_credit", "research_development_credit", "IRC_41"],
+      "low_income_housing_credit": ["LIHTC", "housing_credit", "IRC_42"],
+      "clean_vehicle_credit": ["EV_credit", "electric_vehicle_credit", "IRC_30D"]
+    }
+  },
+  "epistemic_guardrails": {
+    "enable": true,
+    "banned_phrases": [
+      "guaranteed",
+      "always allowed",
+      "never disallowed",
+      "IRS will not challenge",
+      "completely safe",
+      "zero audit risk"
+    ],
+    "disclosure_triggers": [
+      "aggressive position",
+      "novel interpretation",
+      "limited authority",
+      "factual uncertainty",
+      "valuation dependent"
+    ]
+  }
+}

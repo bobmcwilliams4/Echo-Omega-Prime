@@ -1,0 +1,142 @@
+{
+  "engine_id": "P07_fiduciary_duty",
+  "engine_name": "Fiduciary Duty Intelligence Engine",
+  "version": "1.0.0",
+  "domain": "fiduciary_law",
+  "jurisdiction": "Texas",
+  "port": 8657,
+  "mode": "rule_based",
+  "primary_authorities": [
+    "TX Estates Code Chapter 351 (Executor Duties)",
+    "TX Estates Code Chapter 404 (Removal/Bond)",
+    "TX Estates Code Chapter 1151 (Guardian Duties)",
+    "TX Property Code Chapter 114 (Trustee Duties)",
+    "TX Property Code Chapter 117 (Uniform Prudent Investor Act)",
+    "Restatement (Third) of Trusts",
+    "Restatement (Second) of Trusts §170 (Loyalty)",
+    "Uniform Trust Code (UTC) provisions"
+  ],
+  "doctrine_topics": [
+    "executor_duties_foundational",
+    "duty_of_loyalty_absolute",
+    "duty_of_care_prudent_person",
+    "duty_to_account_estate",
+    "duty_to_invest_prudently",
+    "duty_to_diversify_portfolio",
+    "duty_of_impartiality_beneficiaries",
+    "duty_to_inform_report",
+    "self_dealing_prohibition_strict",
+    "conflict_of_interest_disclosure",
+    "trustee_compensation_reasonable",
+    "co_trustee_joint_liability",
+    "delegation_prudent_standards",
+    "breach_elements_analysis",
+    "surcharge_remedy_calculation",
+    "removal_of_fiduciary_grounds",
+    "bond_requirements_protection",
+    "inventory_appraisement_duty",
+    "annual_accounting_mandatory",
+    "guardian_person_vs_estate",
+    "duty_preserve_property_waste",
+    "investment_standards_prudent_investor",
+    "duty_file_returns_timely",
+    "independent_executor_powers",
+    "successor_fiduciary_selection",
+    "corporate_trustee_standards_higher",
+    "exculpatory_clauses_limits",
+    "duty_of_undivided_loyalty",
+    "duty_avoid_conflicts",
+    "duty_not_profit_position",
+    "duty_preserve_trust_property",
+    "duty_enforce_claims",
+    "duty_defend_actions",
+    "duty_segregate_trust_property",
+    "duty_earmark_trust_assets",
+    "duty_not_delegate_discretion",
+    "duty_use_special_skills",
+    "duty_take_control_property",
+    "duty_pay_income_beneficiaries",
+    "duty_incur_only_reasonable_costs",
+    "prohibited_transactions_categories",
+    "interested_trustee_transactions",
+    "family_member_transaction_scrutiny",
+    "purchase_from_trust_voidable",
+    "sale_to_trust_voidable",
+    "loans_to_trustee_prohibited",
+    "trustee_voting_own_stock",
+    "commingling_funds_breach",
+    "standard_of_care_objective",
+    "causation_breach_damages"
+  ],
+  "response_modes": {
+    "FAST": {
+      "description": "Concise fiduciary duty analysis",
+      "target_tokens": 150,
+      "layer": "doctrine_cache_only"
+    },
+    "DEFENSE": {
+      "description": "Audit-ready breach analysis with statutory citations",
+      "target_tokens": 800,
+      "layer": "semantic_retrieval"
+    },
+    "MEMO": {
+      "description": "Full fiduciary duty memo with case law and surcharge analysis",
+      "target_tokens": 2000,
+      "layer": "deep_analysis"
+    }
+  },
+  "confidence_levels": {
+    "DEFENSIBLE": "Clear statutory duty with established case law",
+    "AGGRESSIVE": "Duty recognized but application requires factual development",
+    "DISCLOSURE": "Duty exists but exceptions or exculpatory clauses may apply",
+    "HIGH_RISK": "Novel duty theory or conflicting precedent"
+  },
+  "issue_categories": [
+    "EXECUTOR_DUTIES",
+    "TRUSTEE_DUTIES",
+    "GUARDIAN_DUTIES",
+    "BREACH_ANALYSIS",
+    "SURCHARGE_LIABILITY",
+    "REMOVAL_GROUNDS",
+    "SELF_DEALING",
+    "CONFLICT_INTEREST",
+    "INVESTMENT_PRUDENCE",
+    "ACCOUNTING_DISCLOSURE",
+    "CORPORATE_FIDUCIARY",
+    "EXCULPATORY_CLAUSES"
+  ],
+  "authority_hierarchy": [
+    {"source": "TX Estates Code", "weight": 1.0, "binding": true},
+    {"source": "TX Property Code", "weight": 1.0, "binding": true},
+    {"source": "TX Supreme Court", "weight": 0.95, "binding": true},
+    {"source": "TX Court of Appeals", "weight": 0.85, "binding": true},
+    {"source": "Restatement (Third) of Trusts", "weight": 0.75, "binding": false},
+    {"source": "Uniform Trust Code", "weight": 0.70, "binding": false},
+    {"source": "Secondary Authority", "weight": 0.50, "binding": false}
+  ],
+  "position_zones": {
+    "PLANNING": "Design fiduciary structures to minimize breach risk",
+    "REPORTING": "Analyze fiduciary compliance for accounting purposes",
+    "AUDIT": "Evaluate breach claims and surcharge exposure"
+  },
+  "telemetry": {
+    "latency_thresholds_ms": {
+      "doctrine_cache": 200,
+      "semantic_retrieval": 2000,
+      "deep_analysis": 8000
+    },
+    "log_rotation": "100 MB",
+    "metrics_retention_days": 90
+  },
+  "epistemic_guardrails": {
+    "require_statutory_citation": true,
+    "flag_novel_duty_theories": true,
+    "disclose_exculpatory_clause_impact": true,
+    "warn_corporate_trustee_higher_standard": true
+  },
+  "api_settings": {
+    "cors_origins": ["*"],
+    "max_query_length": 4000,
+    "rate_limit_per_minute": 60
+  }
+}

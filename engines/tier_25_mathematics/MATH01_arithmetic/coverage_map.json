@@ -1,0 +1,145 @@
+{
+  "engine_id": "MATH01",
+  "engine_name": "Arithmetic",
+  "tier": 13,
+  "tier_name": "Mathematics",
+  "version": "1.0.0",
+  "port": 8563,
+  "mode": "DET",
+  "authority_level": 5.0,
+  "covered_domains": {
+    "expression_evaluation": {
+      "description": "Parsing and evaluating mathematical expressions with proper operator precedence",
+      "capabilities": [
+        "Infix expression parsing via shunting-yard algorithm",
+        "Operator precedence (PEMDAS/BODMAS)",
+        "Parenthesized sub-expressions (nested)",
+        "Unary plus and minus operators",
+        "Binary operators: +, -, *, /, //, %, **",
+        "Implicit multiplication detection (e.g., 2(3))",
+        "Arbitrary precision via Decimal module",
+        "Built-in functions: abs, sqrt, floor, ceil, factorial"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "number_base_conversion": {
+      "description": "Converting numbers between different positional numeral systems",
+      "capabilities": [
+        "Binary (base 2) conversion",
+        "Octal (base 8) conversion",
+        "Decimal (base 10) conversion",
+        "Hexadecimal (base 16) conversion",
+        "Arbitrary base (2-36) conversion",
+        "Fractional part conversion (with precision limit)",
+        "Standard prefix output (0b, 0o, 0x)",
+        "Negative number handling"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "prime_factorization": {
+      "description": "Decomposing integers into prime factors",
+      "capabilities": [
+        "Trial division for small factors",
+        "Pollard's rho algorithm for large composite cofactors",
+        "Miller-Rabin primality verification of factors",
+        "Sorted (prime, exponent) pair output",
+        "Handles numbers up to 10^18 efficiently",
+        "Primality testing as standalone operation"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "gcd_lcm": {
+      "description": "Greatest common divisor and least common multiple computation",
+      "capabilities": [
+        "Euclidean algorithm for GCD",
+        "Extended Euclidean algorithm (Bezout coefficients)",
+        "LCM via GCD relationship",
+        "Multi-value GCD and LCM (chaining)",
+        "Coprimality testing",
+        "Arbitrary precision integer support"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "fraction_arithmetic": {
+      "description": "Operations on rational numbers (fractions)",
+      "capabilities": [
+        "Addition, subtraction, multiplication, division of fractions",
+        "Automatic simplification to lowest terms",
+        "Mixed number conversion (improper <-> mixed)",
+        "Decimal to fraction conversion",
+        "Fraction comparison",
+        "Arbitrary precision via Python Fraction class"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "modular_arithmetic": {
+      "description": "Arithmetic in modular (congruence) systems",
+      "capabilities": [
+        "Basic modular reduction (a mod m)",
+        "Modular addition, multiplication",
+        "Modular exponentiation (square-and-multiply)",
+        "Modular inverse via extended Euclidean",
+        "Congruence testing"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "significant_figures": {
+      "description": "Tracking and propagating measurement precision",
+      "capabilities": [
+        "Counting significant figures in a value",
+        "Propagation through addition/subtraction (decimal places rule)",
+        "Propagation through multiplication/division (sig figs rule)",
+        "Banker's rounding (round-half-to-even)",
+        "Scientific notation formatting"
+      ],
+      "confidence": "DEFENSIBLE"
+    },
+    "unit_conversion": {
+      "description": "Converting between measurement units",
+      "capabilities": [
+        "Length units (metric and imperial)",
+        "Mass/weight units (metric and imperial)",
+        "Volume units (metric, US, imperial)",
+        "Temperature units (Celsius, Fahrenheit, Kelvin, Rankine)",
+        "Cross-dimension rejection",
+        "Precision preservation",
+        "Exact conversion factors via Decimal"
+      ],
+      "confidence": "DEFENSIBLE"
+    }
+  },
+  "not_covered": [
+    "Symbolic algebra (equation solving, variable manipulation)",
+    "Calculus (derivatives, integrals, limits)",
+    "Linear algebra (matrices, vectors, eigenvalues)",
+    "Statistics and probability",
+    "Trigonometric functions",
+    "Logarithmic and exponential functions (beyond integer exponents)",
+    "Complex number arithmetic",
+    "Polynomial operations",
+    "Differential equations",
+    "Graph theory",
+    "Combinatorics (beyond basic factorial)",
+    "Geometry (areas, volumes, angles)",
+    "Set theory",
+    "Abstract algebra (groups, rings, fields)"
+  ],
+  "doctrine_topics_count": 15,
+  "doctrine_topics": [
+    "expression_parsing_and_evaluation",
+    "number_base_conversion",
+    "prime_factorization",
+    "gcd_lcm_computation",
+    "fraction_arithmetic",
+    "modular_arithmetic",
+    "significant_figures",
+    "unit_conversion_length",
+    "unit_conversion_mass",
+    "unit_conversion_temperature",
+    "unit_conversion_volume",
+    "operator_precedence_rules",
+    "arbitrary_precision_arithmetic",
+    "primality_testing",
+    "integer_division_and_remainders"
+  ]
+}

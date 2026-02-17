@@ -1,0 +1,681 @@
+{
+  "engine": "MATH15",
+  "version": "1.0.0",
+  "description": "Financial Mathematics Doctrine Cache — Pre-compiled expert reasoning blocks",
+  "doctrines": [
+    {
+      "topic": "Time Value of Money — Present Value",
+      "keywords": ["present value", "pv", "discount", "discounting", "time value", "lump sum pv"],
+      "conclusion_template": "The present value of a future cash flow is computed by discounting at the appropriate periodic rate: PV = FV / (1+r)^n. This reflects the fundamental principle that a dollar today is worth more than a dollar in the future due to the opportunity cost of capital.",
+      "reasoning_framework": "Step 1: Identify the future cash flow amount (FV). Step 2: Determine the appropriate discount rate per period (r). This rate should reflect the risk profile of the cash flow — risk-free rate for government obligations, WACC for corporate projects, or required return for equity. Step 3: Count the number of compounding periods (n). Ensure the rate and period frequency match (monthly rate with monthly periods, etc.). Step 4: Apply the formula PV = FV / (1+r)^n. Step 5: Validate by computing FV from PV: FV = PV * (1+r)^n should recover the original amount. Step 6: Consider whether continuous compounding is more appropriate: PV = FV * e^(-r*t).",
+      "key_factors": [
+        "Discount rate must match period frequency",
+        "Higher discount rates produce lower present values",
+        "PV is inversely related to both rate and time",
+        "Nominal vs real rates produce different PVs",
+        "Opportunity cost is the economic basis for discounting"
+      ],
+      "primary_authority": [
+        "Mathematical identity: PV = FV * (1+r)^(-n)",
+        "Brealey, Myers & Allen — Principles of Corporate Finance, Ch. 2",
+        "CFA Institute — Quantitative Methods: TVM"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "The discount rate chosen may not accurately reflect the risk of the cash flow, leading to mispricing.",
+      "counter_arguments": [
+        "Discount rate selection is subjective for non-traded cash flows",
+        "Flat rate assumption ignores term structure of interest rates",
+        "Inflation expectations may shift the real rate",
+        "Credit risk adjustments may be imprecise",
+        "Liquidity premium is difficult to quantify"
+      ],
+      "resolution_strategy": "Use market-observable rates where available (Treasury yields for risk-free, corporate bond yields for credit risk). For non-traded assets, build up from risk-free rate + credit spread + liquidity premium.",
+      "entity_scope": "general",
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Fundamental theorem of asset pricing — PV of future cash flows at appropriate discount rate"
+    },
+    {
+      "topic": "Time Value of Money — Future Value",
+      "keywords": ["future value", "fv", "compound", "compounding", "growth", "accumulation"],
+      "conclusion_template": "Future value represents the accumulated worth of a present amount after compounding at a given rate: FV = PV * (1+r)^n. Compounding frequency materially affects the result — more frequent compounding yields higher FV for the same nominal rate.",
+      "reasoning_framework": "Step 1: Identify initial investment (PV). Step 2: Determine periodic rate and compounding frequency. Step 3: Compute total periods. Step 4: Apply FV = PV * (1+r)^n. Step 5: For continuous compounding: FV = PV * e^(r*t). Step 6: Compare discrete vs continuous to quantify compounding effect. The difference between annual and continuous compounding on $1,000 at 10% for 10 years: annual = $2,593.74, continuous = $2,718.28 — a $124.54 difference.",
+      "key_factors": [
+        "Compounding frequency amplifies growth",
+        "Rule of 72: years to double approximately equals 72/rate%",
+        "Exponential growth is non-linear — small rate changes compound",
+        "Real vs nominal FV depends on inflation treatment",
+        "Tax-deferred compounding increases effective FV"
+      ],
+      "primary_authority": [
+        "Mathematical identity: FV = PV * (1+r)^n",
+        "Brealey, Myers & Allen — Principles of Corporate Finance",
+        "Fabozzi — Fixed Income Mathematics, 4th Ed."
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Assuming a constant rate over long horizons is unrealistic; rates fluctuate.",
+      "counter_arguments": [
+        "Constant rate assumption rarely holds over long periods",
+        "Reinvestment risk means coupons/dividends may earn different rates",
+        "Inflation erosion reduces real purchasing power of FV",
+        "Tax events during compounding period reduce effective rate",
+        "Default risk means promised FV may not materialize"
+      ],
+      "resolution_strategy": "For projections beyond 5 years, use scenario analysis with low/mid/high rate assumptions. Disclose sensitivity to rate changes.",
+      "entity_scope": "general",
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Compound interest formula — universally accepted mathematical relationship"
+    },
+    {
+      "topic": "Payment Calculation — PMT",
+      "keywords": ["payment", "pmt", "installment", "loan payment", "mortgage payment", "level payment"],
+      "conclusion_template": "The periodic payment for an amortizing loan or annuity is derived from the TVM equation: PMT = PV * r / [1 - (1+r)^(-n)] for an ordinary annuity with zero future value. This ensures the loan is fully repaid over the stated term with level payments.",
+      "reasoning_framework": "Step 1: Confirm the loan type (ordinary annuity vs annuity due). Step 2: Convert annual rate to periodic rate (monthly rate = APR/12). Step 3: Determine total periods (months = years * 12). Step 4: Apply PMT formula. Step 5: Verify by building an amortization schedule — final balance should be zero (or within rounding tolerance). Step 6: For annuity due, multiply ordinary PMT by 1/(1+r). This yields a lower payment because payments are made at the beginning of each period, earning an extra period of discount.",
+      "key_factors": [
+        "Ordinary annuity: payments at end of period",
+        "Annuity due: payments at beginning — lower PMT",
+        "PMT is highly sensitive to interest rate changes",
+        "Doubling the term does not halve the payment due to interest accumulation",
+        "Extra payments reduce total interest significantly"
+      ],
+      "primary_authority": [
+        "Standard TVM payment formula",
+        "Truth in Lending Act (TILA) — Regulation Z, Appendix J",
+        "CFA Institute — Quantitative Methods"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Level-payment assumption ignores variable rate loans and payment shock risk.",
+      "counter_arguments": [
+        "Variable rate loans have different PMT each period",
+        "Negative amortization can occur if PMT < interest",
+        "Fees and points affect the true cost vs stated PMT",
+        "Payment shock on ARM reset can cause default",
+        "Biweekly vs monthly payment structures change total interest"
+      ],
+      "resolution_strategy": "Always disclose whether rate is fixed or variable. For variable rates, compute PMT scenarios at cap, floor, and expected rates.",
+      "entity_scope": "general",
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "TVM annuity payment equation — algebraic rearrangement of PV annuity formula"
+    },
+    {
+      "topic": "Number of Periods — NPER",
+      "keywords": ["nper", "number of periods", "payoff time", "loan term", "how long", "periods to pay"],
+      "conclusion_template": "NPER solves for the number of compounding periods required to reach a target value: n = ln[(FV*r + PMT) / (PV*r + PMT)] / ln(1+r). This is the logarithmic inverse of the compound interest equation.",
+      "reasoning_framework": "Step 1: Verify all other TVM variables are known (PV, FV, PMT, r). Step 2: Check signs — by convention, outflows are negative. Step 3: Apply the logarithmic formula. Step 4: Result may be non-integer — round up for practical purposes (you cannot make a fractional payment). Step 5: Validate by plugging NPER back into FV or PV equation.",
+      "key_factors": [
+        "Logarithmic relationship — NPER changes slowly with rate changes",
+        "Fractional NPER means final period is a partial payment",
+        "Zero-rate special case: NPER = -(PV+FV)/PMT",
+        "Negative NPER is mathematically possible but economically meaningless",
+        "NPER is undefined if PMT is insufficient to cover interest"
+      ],
+      "primary_authority": [
+        "Algebraic derivation from PV annuity equation",
+        "Brealey, Myers & Allen — Principles of Corporate Finance"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "If PMT barely covers interest, NPER approaches infinity — the loan never pays off.",
+      "counter_arguments": [
+        "PMT must exceed periodic interest for NPER to be finite",
+        "Rounding NPER up creates a slightly smaller final payment",
+        "Variable rates make NPER unpredictable for ARMs",
+        "Prepayment changes effective NPER",
+        "Balloon payments alter the standard NPER calculation"
+      ],
+      "resolution_strategy": "Always check that PMT > PV * r to ensure finite NPER. Disclose if fractional, and compute the adjusted final payment.",
+      "entity_scope": "general",
+      "confidence": 0.95,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Logarithmic inversion of compound interest equation"
+    },
+    {
+      "topic": "Interest Rate Solving — RATE",
+      "keywords": ["rate", "interest rate", "solve for rate", "implied rate", "yield", "return rate"],
+      "conclusion_template": "Solving for the interest rate in a TVM equation requires iterative numerical methods (Newton-Raphson) because the rate appears both as a base of exponentiation and in the denominator. There is no closed-form algebraic solution for rate when PMT is nonzero.",
+      "reasoning_framework": "Step 1: Set up the TVM equation: PV*(1+r)^n + PMT*[(1+r)^n - 1]/r + FV = 0. Step 2: This is transcendental in r — no algebraic solution exists. Step 3: Apply Newton-Raphson: r_{k+1} = r_k - f(r_k)/f'(r_k). Step 4: Compute the derivative analytically for speed. Step 5: Iterate until |r_{k+1} - r_k| < tolerance (1e-10). Step 6: Verify convergence — non-convergence indicates no real solution or multiple roots. Step 7: Check reasonableness (rate should typically be between -100% and 100%).",
+      "key_factors": [
+        "Newton-Raphson converges quadratically near the solution",
+        "Initial guess matters — poor guesses can diverge",
+        "Multiple real roots possible for non-standard cashflow patterns",
+        "Rate is undefined if PV=0, PMT=0, FV=0 simultaneously",
+        "Convergence tolerance of 1e-10 gives 8+ decimal place accuracy"
+      ],
+      "primary_authority": [
+        "Numerical analysis: Newton-Raphson method",
+        "Press et al. — Numerical Recipes, Ch. 9",
+        "CFA Institute — Quantitative Methods"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Newton-Raphson may converge to a local minimum rather than the economically meaningful root.",
+      "counter_arguments": [
+        "Multiple roots exist for sign-changing cashflow streams",
+        "Convergence depends on initial guess quality",
+        "Negative rates are mathematically valid but economically unusual",
+        "Machine precision limits accuracy beyond ~15 significant digits",
+        "Non-convergence indicates the problem may have no real solution"
+      ],
+      "resolution_strategy": "Start with a reasonable initial guess (5-10% for most financial problems). If non-convergent, try multiple starting points. Verify the solution by substituting back into the original equation.",
+      "entity_scope": "general",
+      "confidence": 0.90,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Newton-Raphson method — standard numerical approach for implicit rate solving"
+    },
+    {
+      "topic": "Black-Scholes Option Pricing Model",
+      "keywords": ["black-scholes", "black scholes", "option pricing", "call price", "put price", "bs model", "option valuation"],
+      "conclusion_template": "The Black-Scholes model prices European options under assumptions of log-normal returns, constant volatility, and continuous trading: C = S*N(d1) - K*e^(-rT)*N(d2). While foundational, the model's assumptions (constant vol, no jumps, continuous trading) rarely hold exactly in practice.",
+      "reasoning_framework": "Step 1: Verify all inputs: S (spot), K (strike), T (time), r (risk-free rate), sigma (volatility), q (dividend yield). Step 2: Compute d1 = [ln(S/K) + (r-q+sigma^2/2)*T] / (sigma*sqrt(T)). Step 3: Compute d2 = d1 - sigma*sqrt(T). Step 4: For calls: C = S*e^(-qT)*N(d1) - K*e^(-rT)*N(d2). For puts: P = K*e^(-rT)*N(-d2) - S*e^(-qT)*N(-d1). Step 5: Compute Greeks for risk management. Step 6: Validate via put-call parity: C - P = S*e^(-qT) - K*e^(-rT). Step 7: Assess model limitations — the volatility smile/skew in real markets shows the constant-vol assumption fails.",
+      "key_factors": [
+        "N(x) = standard normal CDF, computed via math.erf",
+        "Put-call parity provides a cross-check",
+        "Greeks measure sensitivity to each input parameter",
+        "Implied volatility is the vol that equates model price to market price",
+        "Model breaks down for deep ITM/OTM, near expiration, during jumps"
+      ],
+      "primary_authority": [
+        "Black, F. & Scholes, M. (1973) — Journal of Political Economy",
+        "Merton, R.C. (1973) — Bell Journal of Economics",
+        "Hull, J. — Options, Futures, and Other Derivatives, 11th Ed."
+      ],
+      "burden_holder": "model user",
+      "adversary_position": "Constant volatility assumption is violated in practice — volatility smile/skew proves the model misprices options systematically.",
+      "counter_arguments": [
+        "Volatility is not constant — GARCH, stochastic vol models are more realistic",
+        "Returns exhibit fat tails and skewness, not pure log-normality",
+        "Transaction costs and discrete trading violate continuous hedging assumption",
+        "American-style options cannot be priced exactly with Black-Scholes",
+        "Dividends are not truly continuous for individual stocks",
+        "Jump-diffusion models (Merton 1976) better capture crash risk"
+      ],
+      "resolution_strategy": "Use Black-Scholes as a baseline framework and benchmark. Adjust for known deficiencies: use implied vol (not historical), apply vol surface interpolation for strikes/maturities, and use binomial trees for American options.",
+      "entity_scope": "general",
+      "confidence": 0.85,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Black-Scholes-Merton formula — Nobel Prize 1997, universally taught and used as benchmark"
+    },
+    {
+      "topic": "Option Greeks — Delta, Gamma, Theta, Vega, Rho",
+      "keywords": ["greeks", "delta", "gamma", "theta", "vega", "rho", "option sensitivity", "hedge ratio"],
+      "conclusion_template": "The Greeks quantify option price sensitivity to underlying parameters: Delta (price), Gamma (delta's delta), Theta (time decay), Vega (volatility), Rho (interest rate). They are essential for risk management, hedging, and portfolio construction.",
+      "reasoning_framework": "Delta = dC/dS = e^(-qT)*N(d1) for calls. Measures how much the option price changes for a $1 move in the underlying. Gamma = d^2C/dS^2 = e^(-qT)*n(d1)/(S*sigma*sqrt(T)). Measures convexity — how fast delta changes. Theta = dC/dT = time decay per day (negative for long options). Vega = dC/dsigma = S*e^(-qT)*n(d1)*sqrt(T). Measures sensitivity to volatility changes. Rho = dC/dr = K*T*e^(-rT)*N(d2) for calls. Measures interest rate sensitivity.",
+      "key_factors": [
+        "Delta ranges from 0 to 1 for calls, -1 to 0 for puts",
+        "Gamma is highest for ATM options near expiration",
+        "Theta accelerates as expiration approaches (time decay curve is convex)",
+        "Vega is highest for ATM options with long time to expiration",
+        "Rho is generally the least significant Greek for short-dated options"
+      ],
+      "primary_authority": [
+        "Hull, J. — Options, Futures, and Other Derivatives",
+        "Natenberg, S. — Option Volatility and Pricing",
+        "Taleb, N.N. — Dynamic Hedging"
+      ],
+      "burden_holder": "risk manager",
+      "adversary_position": "Greeks are point estimates assuming all else constant — in reality, parameters move simultaneously.",
+      "counter_arguments": [
+        "Cross-Greeks (vanna, charm, volga) capture multi-parameter sensitivity",
+        "Discrete hedging introduces tracking error vs continuous model",
+        "Gamma risk is acute near expiration for ATM options",
+        "Vega assumes parallel shift in vol surface — real vol changes are not uniform",
+        "Model Greeks may differ from market Greeks under stochastic vol"
+      ],
+      "resolution_strategy": "Use Greeks as first-order risk measures. For precision, compute second-order Greeks (gamma, vanna, volga). Stress test with scenario analysis rather than relying solely on Greek sensitivities.",
+      "entity_scope": "general",
+      "confidence": 0.90,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Partial derivatives of Black-Scholes formula — standard risk management practice"
+    },
+    {
+      "topic": "Monte Carlo Simulation — Geometric Brownian Motion",
+      "keywords": ["monte carlo", "simulation", "gbm", "brownian motion", "stochastic", "random walk", "price simulation"],
+      "conclusion_template": "Monte Carlo simulation using GBM generates thousands of price paths via S_t = S_0 * exp((mu-sigma^2/2)*dt + sigma*sqrt(dt)*Z), where Z ~ N(0,1). With a fixed seed, results are deterministic and reproducible. The method converges at rate O(1/sqrt(N)) in simulation count.",
+      "reasoning_framework": "Step 1: Set model parameters (S_0, mu, sigma, T, dt). Step 2: Fix random seed for reproducibility. Step 3: For each path, generate N(0,1) random variates via Box-Muller transform. Step 4: Evolve price: S_{t+dt} = S_t * exp(drift_adj + sigma*sqrt(dt)*Z). Step 5: Collect terminal prices from all paths. Step 6: Compute statistics (mean, median, percentiles, std dev). Step 7: Convergence check — standard error of mean = std_dev / sqrt(num_sims). For 10,000 sims, SE is ~1% of std dev.",
+      "key_factors": [
+        "Fixed seed ensures deterministic reproducibility",
+        "Box-Muller transform generates normal variates from uniform",
+        "Convergence rate is O(1/sqrt(N)) — need 4x sims for 2x accuracy",
+        "Variance reduction techniques (antithetic, control variates) improve efficiency",
+        "dt must be small enough to avoid discretization bias"
+      ],
+      "primary_authority": [
+        "Glasserman, P. — Monte Carlo Methods in Financial Engineering",
+        "Hull, J. — Options, Futures, and Other Derivatives, Ch. 21",
+        "Joshi, M. — The Concepts and Practice of Mathematical Finance"
+      ],
+      "burden_holder": "model user",
+      "adversary_position": "GBM assumes constant drift and volatility — real markets exhibit regime changes, mean reversion, and stochastic volatility.",
+      "counter_arguments": [
+        "Log-normal returns underestimate tail risk (fat tails)",
+        "Constant volatility is unrealistic — use Heston or SABR for stochastic vol",
+        "Drift estimation is imprecise and sensitive to sample period",
+        "Independent increments assumption ignores autocorrelation",
+        "10,000 simulations may be insufficient for complex path-dependent payoffs",
+        "Discretization error compounds over many time steps"
+      ],
+      "resolution_strategy": "Use GBM as the baseline. For production risk models, consider jump-diffusion or stochastic volatility. Always report confidence intervals and standard error. Use variance reduction to improve efficiency.",
+      "entity_scope": "general",
+      "confidence": 0.78,
+      "confidence_stratification": "AGGRESSIVE",
+      "controlling_precedent": "Monte Carlo simulation — standard numerical method since Metropolis & Ulam (1949)"
+    },
+    {
+      "topic": "Amortization Schedule",
+      "keywords": ["amortization", "loan schedule", "mortgage schedule", "payment breakdown", "principal interest split"],
+      "conclusion_template": "An amortization schedule decomposes each level payment into principal and interest components. Interest = Balance * periodic_rate; Principal = PMT - Interest; New Balance = Old Balance - Principal. Early payments are interest-heavy; later payments are principal-heavy.",
+      "reasoning_framework": "Step 1: Compute the level payment PMT = PV * r / (1 - (1+r)^(-n)). Step 2: For each period: Interest = Beginning_Balance * periodic_rate. Step 3: Principal = PMT - Interest. Step 4: Ending_Balance = Beginning_Balance - Principal. Step 5: Final period: adjust PMT to zero out remaining balance exactly. Step 6: Validate: sum of all principal payments = original loan amount. Sum of all interest = total interest cost.",
+      "key_factors": [
+        "Interest portion decreases over time; principal portion increases",
+        "Total interest paid over loan life can exceed principal for high-rate/long-term loans",
+        "Extra principal payments dramatically reduce total interest and term",
+        "Rounding to cents creates small discrepancies — adjust in final payment",
+        "Negative amortization occurs if PMT < interest — balance grows"
+      ],
+      "primary_authority": [
+        "Standard amortization mathematics",
+        "Truth in Lending Act — Reg Z disclosure requirements",
+        "FASB ASC 310 — Receivables"
+      ],
+      "burden_holder": "lender/analyst",
+      "adversary_position": "Level-payment amortization front-loads interest, benefiting lenders at borrowers' expense.",
+      "counter_arguments": [
+        "Interest-only and graduated payment mortgages exist as alternatives",
+        "Prepayment penalties may offset early payoff savings",
+        "Variable rate loans produce non-level amortization",
+        "Capitalized fees and points affect the true amortization",
+        "Biweekly payment plans alter the standard schedule"
+      ],
+      "resolution_strategy": "Present amortization schedule with full transparency. Show total interest cost. Compare scenarios with extra payments to demonstrate impact.",
+      "entity_scope": "general",
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Standard level-payment amortization — used by virtually all fixed-rate lending products"
+    },
+    {
+      "topic": "Bond Pricing — Present Value of Cash Flows",
+      "keywords": ["bond pricing", "bond price", "coupon", "par value", "bond valuation", "fixed income pricing"],
+      "conclusion_template": "A bond's price equals the present value of its future cash flows: P = sum(C/(1+y)^t) + F/(1+y)^n, where C is the periodic coupon, F is face value, y is yield per period, and n is total periods. Price and yield move inversely.",
+      "reasoning_framework": "Step 1: Identify face value (F), coupon rate, payment frequency, and periods remaining. Step 2: Compute periodic coupon C = F * annual_coupon_rate / frequency. Step 3: Determine the yield per period y. Step 4: PV of coupons = C * [1 - (1+y)^(-n)] / y (annuity formula). Step 5: PV of par = F / (1+y)^n. Step 6: Price = PV_coupons + PV_par. Step 7: Premium (price > par) when coupon rate > yield. Discount (price < par) when coupon rate < yield. Par when equal.",
+      "key_factors": [
+        "Price-yield relationship is convex (not linear)",
+        "Duration measures first-order price sensitivity to yield",
+        "Convexity measures second-order effect — helps for large yield changes",
+        "Accrued interest must be added for dirty price between coupon dates",
+        "Clean price = Dirty price - Accrued interest"
+      ],
+      "primary_authority": [
+        "Fabozzi, F. — Fixed Income Analysis, 3rd Ed.",
+        "CFA Institute — Fixed Income Readings",
+        "Tuckman, B. — Fixed Income Securities"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Flat yield curve assumption — real term structure may be upward-sloping, inverted, or humped.",
+      "counter_arguments": [
+        "Single yield assumption ignores term structure — should use spot rates for each CF",
+        "Credit spread changes affect pricing beyond risk-free yield changes",
+        "Embedded options (call, put, conversion) require option-adjusted spread",
+        "Liquidity premium varies by issue and market conditions",
+        "Day count convention affects accrued interest calculation"
+      ],
+      "resolution_strategy": "For precise pricing, discount each cash flow at the appropriate spot rate from the zero-coupon yield curve. Use OAS for callable/putable bonds.",
+      "entity_scope": "general",
+      "confidence": 0.95,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Present value of cash flows — fundamental bond pricing identity"
+    },
+    {
+      "topic": "Yield to Maturity — YTM",
+      "keywords": ["yield to maturity", "ytm", "bond yield", "internal rate", "bond return"],
+      "conclusion_template": "YTM is the internal rate of return that equates a bond's market price to the PV of its remaining cash flows. It assumes all coupons are reinvested at the YTM rate — an assumption that rarely holds exactly. Solving for YTM requires Newton-Raphson iteration as no closed-form solution exists.",
+      "reasoning_framework": "Step 1: Set up bond pricing equation: P = sum(C/(1+y)^t) + F/(1+y)^n. Step 2: P is known (market price). Solve for y. Step 3: Newton-Raphson: y_{k+1} = y_k - f(y_k)/f'(y_k) where f(y) = Price(y) - Market_Price. Step 4: Compute the derivative analytically for fast convergence. Step 5: Iterate until |y_{k+1} - y_k| < 1e-10. Step 6: Annualize: YTM_annual = y * frequency.",
+      "key_factors": [
+        "YTM assumes reinvestment of all coupons at YTM rate",
+        "YTM equals coupon rate only when bond trades at par",
+        "Higher coupon bonds have more reinvestment risk",
+        "Zero-coupon bonds have YTM with zero reinvestment risk",
+        "YTM is quoted on a bond-equivalent (semi-annual) basis in the US"
+      ],
+      "primary_authority": [
+        "Fabozzi, F. — Fixed Income Analysis",
+        "CFA Institute — Fixed Income Level I/II",
+        "Tuckman, B. — Fixed Income Securities"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Reinvestment assumption makes YTM a poor predictor of realized return if rates change.",
+      "counter_arguments": [
+        "Realized return rarely equals YTM due to reinvestment rate uncertainty",
+        "Horizon analysis provides more realistic return expectations",
+        "YTM assumes holding to maturity — selling early changes the realized yield",
+        "Credit events (downgrade, default) invalidate YTM calculations",
+        "Tax effects on coupon income reduce after-tax realized yield"
+      ],
+      "resolution_strategy": "Report YTM as a benchmark measure. For realistic return projections, use total return analysis with explicit reinvestment rate assumptions.",
+      "entity_scope": "general",
+      "confidence": 0.93,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "YTM = IRR of bond cash flows — industry standard yield measure"
+    },
+    {
+      "topic": "Net Present Value — NPV",
+      "keywords": ["npv", "net present value", "project valuation", "capital budgeting npv", "investment analysis"],
+      "conclusion_template": "NPV = sum(CF_t / (1+r)^t) for t=0,1,...,n. A positive NPV indicates the project creates value above the required return. NPV is theoretically superior to IRR for ranking mutually exclusive projects because it directly measures dollar value creation.",
+      "reasoning_framework": "Step 1: Identify all project cash flows (investment at t=0, operating CFs at t=1..n, terminal value at t=n). Step 2: Determine the appropriate discount rate (WACC for the firm, project-specific rate if risk differs). Step 3: Discount each CF: PV_t = CF_t / (1+r)^t. Step 4: Sum all PVs including the initial investment (typically negative). Step 5: Decision rule: NPV > 0 means accept; NPV < 0 means reject; NPV = 0 means indifferent. Step 6: For mutually exclusive projects, choose the highest NPV.",
+      "key_factors": [
+        "NPV is additive — total firm value = sum of all project NPVs",
+        "NPV assumes reinvestment at the discount rate (more conservative than IRR)",
+        "Discount rate selection critically affects NPV",
+        "Sensitivity analysis: test NPV under varying discount rates and CF scenarios",
+        "Real options may add value not captured by static NPV"
+      ],
+      "primary_authority": [
+        "Brealey, Myers & Allen — Principles of Corporate Finance, Ch. 5-6",
+        "CFA Institute — Corporate Finance: Capital Budgeting",
+        "Fisher, I. — The Theory of Interest"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "NPV requires an accurate discount rate, which is itself uncertain for most projects.",
+      "counter_arguments": [
+        "WACC estimation involves subjective choices (equity risk premium, beta, debt cost)",
+        "Terminal value often dominates NPV and is the most uncertain component",
+        "NPV ignores strategic flexibility (real options value)",
+        "Cash flow forecasts are inherently uncertain",
+        "NPV does not account for capital rationing constraints"
+      ],
+      "resolution_strategy": "Compute NPV profile (NPV vs discount rate) rather than a single point. Use scenario analysis for cash flows. Consider real options analysis for strategic flexibility.",
+      "entity_scope": "general",
+      "confidence": 0.94,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "NPV rule — the gold standard of capital budgeting since Fisher (1930)"
+    },
+    {
+      "topic": "Internal Rate of Return — IRR",
+      "keywords": ["irr", "internal rate of return", "project return", "hurdle rate", "breakeven rate"],
+      "conclusion_template": "IRR is the discount rate that makes NPV = 0: solve for r in sum(CF_t/(1+r)^t) = 0. Accept if IRR > hurdle rate. IRR has known flaws: multiple roots for non-conventional CFs, reinvestment assumption at IRR rate, and scale-blindness for mutually exclusive projects.",
+      "reasoning_framework": "Step 1: Set up NPV equation = 0 with r as the unknown. Step 2: Apply Newton-Raphson iteration. Step 3: Check for multiple sign changes in CFs — each sign change can produce an additional real root (Descartes' rule). Step 4: If multiple roots exist, IRR is ambiguous — prefer NPV analysis. Step 5: Decision rule: IRR > required return means accept (for conventional CFs only). Step 6: For mutually exclusive projects, IRR ranking may conflict with NPV — always prefer NPV.",
+      "key_factors": [
+        "Conventional CF pattern: one sign change (negative then positive) guarantees unique IRR",
+        "Non-conventional CFs may produce 0, 1, or multiple IRRs",
+        "IRR assumes reinvestment at IRR rate — unrealistic if IRR is very high",
+        "IRR ignores project scale — a 100% return on $1 is not better than 50% on $1M",
+        "MIRR corrects reinvestment assumption by using explicit finance/reinvest rates"
+      ],
+      "primary_authority": [
+        "Brealey, Myers & Allen — Principles of Corporate Finance",
+        "CFA Institute — Corporate Finance",
+        "Lorie, J.H. & Savage, L.J. (1955) — Three Problems in Rationing Capital"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "IRR can give misleading signals for non-conventional cash flows and mutually exclusive projects.",
+      "counter_arguments": [
+        "Multiple IRRs exist for projects with alternating sign cash flows",
+        "No IRR exists for some cash flow patterns (all positive or all negative)",
+        "Reinvestment at IRR rate is unrealistic for high-IRR projects",
+        "IRR ignores scale — must be supplemented with NPV for ranking",
+        "IRR cannot handle different discount rates across periods (term structure)"
+      ],
+      "resolution_strategy": "Use IRR as a supplement to NPV, not a replacement. For non-conventional CFs, use MIRR or NPV profile. Always check for multiple roots.",
+      "entity_scope": "general",
+      "confidence": 0.90,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "IRR = root of NPV equation — widely used despite known limitations"
+    },
+    {
+      "topic": "Modified Internal Rate of Return — MIRR",
+      "keywords": ["mirr", "modified irr", "modified internal rate", "reinvestment rate", "finance rate"],
+      "conclusion_template": "MIRR = (FV_positive / PV_negative)^(1/n) - 1, where FV_positive compounds positive CFs at the reinvestment rate and PV_negative discounts negative CFs at the finance rate. MIRR corrects IRR's reinvestment assumption and always produces a unique solution.",
+      "reasoning_framework": "Step 1: Separate cash flows into positive (inflows) and negative (outflows). Step 2: Compound all positive CFs to the terminal period at the reinvestment rate: FV = sum(CF+ * (1+r_reinvest)^(n-t)). Step 3: Discount all negative CFs to time 0 at the finance rate: PV = sum(|CF-| / (1+r_finance)^t). Step 4: MIRR = (FV/PV)^(1/n) - 1. Step 5: MIRR always exists and is unique. Step 6: Compare MIRR to cost of capital for accept/reject.",
+      "key_factors": [
+        "MIRR always has a unique solution — eliminates multiple IRR problem",
+        "Uses explicit reinvestment rate — more realistic than IRR",
+        "Finance rate should reflect the firm's borrowing cost",
+        "Reinvestment rate should reflect realistic opportunity cost",
+        "MIRR is typically lower than IRR when IRR > reinvestment rate"
+      ],
+      "primary_authority": [
+        "Brealey, Myers & Allen — Principles of Corporate Finance",
+        "CFA Institute — Corporate Finance",
+        "Lin, S.A.Y. (1976) — The Modified Internal Rate of Return"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "MIRR requires two additional assumptions (finance rate and reinvest rate) that are themselves uncertain.",
+      "counter_arguments": [
+        "Finance rate and reinvestment rate are subjective inputs",
+        "Different analysts may use different rates, producing different MIRRs",
+        "MIRR still does not resolve scale differences between projects",
+        "If finance rate = reinvestment rate = WACC, MIRR converges toward WACC",
+        "MIRR is less intuitive to management than simple IRR"
+      ],
+      "resolution_strategy": "Use WACC as both finance and reinvestment rate for a conservative baseline. Report MIRR alongside NPV for complete capital budgeting analysis.",
+      "entity_scope": "general",
+      "confidence": 0.92,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "MIRR — explicit reinvestment correction to IRR, resolves multiple-root problem"
+    },
+    {
+      "topic": "Interest Rate Conversion — Nominal, Effective, Continuous",
+      "keywords": ["nominal rate", "effective rate", "continuous compounding", "ear", "apr", "apy", "rate conversion", "compounding frequency"],
+      "conclusion_template": "Conversion between nominal (APR), effective (EAR/APY), and continuous rates: EAR = (1 + r_nom/m)^m - 1; r_continuous = m * ln(1 + r_nom/m); EAR = e^(r_c) - 1. These are exact mathematical identities — no approximation involved.",
+      "reasoning_framework": "Nominal to Effective: EAR = (1 + APR/m)^m - 1, where m = compounding periods per year. Effective to Nominal: APR = m * ((1 + EAR)^(1/m) - 1). Nominal to Continuous: r_c = m * ln(1 + APR/m). Continuous to Effective: EAR = e^(r_c) - 1. Effective to Continuous: r_c = ln(1 + EAR). Continuous to Nominal: APR = m * (e^(r_c/m) - 1). Key insight: as m approaches infinity, nominal compounding converges to continuous compounding.",
+      "key_factors": [
+        "More frequent compounding increases effective rate for same nominal rate",
+        "Continuous rate = ln(1 + EAR) is the limiting case",
+        "APR (nominal) understates true cost if compounding > annual",
+        "TILA requires APR disclosure; deposit products show APY (EAR)",
+        "For daily compounding (m=365), EAR and continuous rate are nearly identical"
+      ],
+      "primary_authority": [
+        "Mathematical identity — exact algebraic relationships",
+        "Truth in Lending Act (TILA) — APR requirements",
+        "Truth in Savings Act — APY requirements",
+        "CFA Institute — Quantitative Methods"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Confusion between APR and EAR leads to consumer misunderstanding of true borrowing/saving costs.",
+      "counter_arguments": [
+        "APR excludes fees — true cost may exceed stated APR",
+        "Continuous compounding is theoretical — no product compounds continuously",
+        "Regulatory definitions of APR vary by jurisdiction",
+        "Day count conventions affect how rates are applied in practice",
+        "Introductory rates and rate changes complicate effective rate comparison"
+      ],
+      "resolution_strategy": "Always convert to common basis (effective annual rate) when comparing products. Disclose compounding frequency and any fees not captured in the stated rate.",
+      "entity_scope": "general",
+      "confidence": 1.0,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Exact mathematical identities — universally accepted rate conversion formulas"
+    },
+    {
+      "topic": "Day Count Conventions — 30/360, ACT/365, ACT/ACT",
+      "keywords": ["day count", "30/360", "act/365", "act/act", "actual/actual", "day convention", "accrued interest"],
+      "conclusion_template": "Day count conventions determine how time fractions are computed for interest accrual: 30/360 assumes 30-day months and 360-day year (US municipal/corporate bonds); ACT/365 uses actual days over 365 (UK money market); ACT/ACT uses actual days in actual year (US Treasuries).",
+      "reasoning_framework": "30/360 US: Days = 360*(Y2-Y1) + 30*(M2-M1) + (D2-D1) with adjustments: if D1=31, set D1=30; if D2=31 and D1>=30, set D2=30. ACT/365: Days = actual calendar days, denominator = 365. ACT/ACT ISDA: Days = actual calendar days, denominator = actual days in year (365 or 366). Convention choice affects: accrued interest calculation, coupon amounts in stub periods, yield comparisons across instruments.",
+      "key_factors": [
+        "Convention is specified in the bond indenture or market practice",
+        "Different conventions can produce different accrued interest amounts",
+        "30/360 simplifies calculation but introduces small errors",
+        "ACT/ACT is most precise but varies by leap year",
+        "Stub periods (first/last coupon shorter than standard) require careful handling"
+      ],
+      "primary_authority": [
+        "ISDA — Day Count Fraction definitions (2006)",
+        "SIFMA — US Bond Market conventions",
+        "ICMA — International fixed income conventions"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Different conventions for the same date range produce different results — lack of standardization creates confusion.",
+      "counter_arguments": [
+        "30/360 can give incorrect accrued interest near month boundaries",
+        "February is particularly problematic for 30/360 (28 or 29 days)",
+        "Cross-market comparison requires normalization to common convention",
+        "Some instruments use non-standard variations (30E/360, ACT/360)",
+        "System implementation errors in day count logic are a known audit finding"
+      ],
+      "resolution_strategy": "Always identify the contractual day count convention. Do not assume one convention when the document specifies another. For cross-market analysis, convert to a common basis.",
+      "entity_scope": "general",
+      "confidence": 1.0,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "ISDA day count fraction definitions — contractual standard for derivatives and fixed income"
+    },
+    {
+      "topic": "Ordinary Annuity vs Annuity Due",
+      "keywords": ["ordinary annuity", "annuity due", "annuity", "end of period", "beginning of period", "annuity pv", "annuity fv"],
+      "conclusion_template": "An ordinary annuity has payments at the end of each period; an annuity due has payments at the beginning. PV_due = PV_ordinary * (1+r); FV_due = FV_ordinary * (1+r). The annuity due always has a higher PV and FV because each payment earns/discounts one extra period of interest.",
+      "reasoning_framework": "Ordinary annuity PV = PMT * [1 - (1+r)^(-n)] / r. Annuity due PV = ordinary PV * (1+r). The multiplier (1+r) represents the fact that each payment in an annuity due occurs one period earlier, so its PV is (1+r) times higher. Similarly for FV. Practical examples: rent (due), loan payments (ordinary), lease payments (usually due), salary (ordinary).",
+      "key_factors": [
+        "Timing of payment is the only difference",
+        "Annuity due always has higher PV and FV than ordinary",
+        "Mortgage and car loans are ordinary annuities (end of month)",
+        "Rent and lease payments are typically annuities due (beginning of month)",
+        "The (1+r) adjustment factor converts between the two types"
+      ],
+      "primary_authority": [
+        "Standard annuity mathematics",
+        "Brealey, Myers & Allen — Principles of Corporate Finance",
+        "CFA Institute — Quantitative Methods: Annuities"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Misclassifying ordinary vs due can lead to material valuation errors.",
+      "counter_arguments": [
+        "In practice, timing may be mid-period rather than exactly start or end",
+        "Continuous payment streams (e.g., daily) blur the distinction",
+        "For low rates and short periods, the difference is immaterial",
+        "Some instruments have uneven payment timing that fits neither category",
+        "Deferred annuities require additional discounting for the deferral period"
+      ],
+      "resolution_strategy": "Always clarify whether payments are at the beginning or end of the period. When in doubt, examine the contract terms. Default to ordinary annuity for financial calculations unless specified otherwise.",
+      "entity_scope": "general",
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Annuity valuation formulas — standard financial mathematics"
+    },
+    {
+      "topic": "Growing Annuity and Growing Perpetuity",
+      "keywords": ["growing annuity", "growing perpetuity", "gordon growth", "dividend growth", "constant growth", "increasing payments"],
+      "conclusion_template": "A growing annuity has payments that increase at a constant rate g: PV = PMT / (r-g) * [1 - ((1+g)/(1+r))^n]. A growing perpetuity extends to infinity: PV = PMT / (r-g), valid only when r > g. The Gordon Growth Model for stock valuation is a growing perpetuity application.",
+      "reasoning_framework": "Step 1: Identify PMT (first payment), r (discount rate per period), g (growth rate per period), n (number of periods). Step 2: Check r > g for convergence of infinite series. Step 3: For growing annuity: PV = PMT / (r-g) * [1 - ((1+g)/(1+r))^n]. Step 4: For growing perpetuity: PV = PMT / (r-g) — the limit as n approaches infinity. Step 5: Special case when r = g: PV = PMT * n / (1+r). Step 6: Applications: dividend discount model, pension obligations, inflation-adjusted cash flows.",
+      "key_factors": [
+        "Requires r > g for growing perpetuity to converge",
+        "Gordon Growth Model: P = D1 / (ke - g) where D1 is next year's dividend",
+        "Growth rate assumption is the most sensitive input",
+        "Small changes in (r - g) spread cause large PV changes",
+        "Real growth rates should be used with real discount rates"
+      ],
+      "primary_authority": [
+        "Gordon, M. & Shapiro, E. (1956) — Capital Equipment Analysis",
+        "Williams, J.B. — Theory of Investment Value (1938)",
+        "Brealey, Myers & Allen — Principles of Corporate Finance"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Constant growth forever is unrealistic — no company grows faster than GDP indefinitely.",
+      "counter_arguments": [
+        "Growth rates mean-revert over long horizons",
+        "Two-stage and three-stage models are more realistic",
+        "Terminal growth rate above GDP growth implies the firm eventually becomes the economy",
+        "Sensitivity to (r-g) spread makes valuation highly uncertain",
+        "Negative growth (g < 0) is valid for declining businesses"
+      ],
+      "resolution_strategy": "Use growing perpetuity only for mature, stable cash flows. Cap terminal growth at long-term nominal GDP growth (2-4%). For high-growth companies, use multi-stage models.",
+      "entity_scope": "general",
+      "confidence": 0.93,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Gordon Growth Model — foundational equity valuation framework"
+    },
+    {
+      "topic": "NPV vs IRR Conflict — Mutually Exclusive Projects",
+      "keywords": ["npv vs irr", "conflicting", "mutually exclusive", "crossover rate", "ranking conflict", "project ranking"],
+      "conclusion_template": "NPV and IRR can give conflicting rankings for mutually exclusive projects due to differences in scale, timing, and reinvestment assumptions. The crossover rate is the discount rate where both projects have equal NPV. NPV is the correct decision criterion because it directly measures value creation in dollars.",
+      "reasoning_framework": "Step 1: Compute NPV and IRR for both projects. Step 2: If rankings conflict, compute the crossover rate: find r where NPV(A) = NPV(B), equivalently where NPV(A-B) = 0. Step 3: Below the crossover rate, one project dominates; above it, the other does. Step 4: At the firm's actual WACC, the project with higher NPV is preferred. Step 5: IRR conflicts arise from: (a) scale difference — larger project may have lower IRR but higher NPV; (b) timing difference — front-loaded CFs favor IRR, back-loaded favor NPV at low rates; (c) reinvestment assumption — IRR assumes reinvestment at IRR rate.",
+      "key_factors": [
+        "NPV is additive and measures absolute value creation",
+        "IRR measures percentage return but ignores scale",
+        "Crossover rate identifies the discount rate where rankings switch",
+        "Incremental IRR analysis examines the IRR of the difference in CFs",
+        "Always prefer NPV for mutually exclusive project selection"
+      ],
+      "primary_authority": [
+        "Brealey, Myers & Allen — Principles of Corporate Finance, Ch. 5",
+        "CFA Institute — Corporate Finance: NPV vs IRR",
+        "Fisher, I. — The Theory of Interest (1930)"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "Management often prefers IRR because it is expressed as a percentage — easier to compare and communicate.",
+      "counter_arguments": [
+        "IRR is more intuitive for non-finance stakeholders",
+        "Percentage returns allow comparison across differently scaled divisions",
+        "Capital rationing makes IRR per dollar of investment relevant",
+        "NPV requires a discount rate — itself uncertain",
+        "In practice, many firms use both metrics"
+      ],
+      "resolution_strategy": "Report both NPV and IRR. When they conflict for mutually exclusive projects, explain why and recommend the NPV-preferred project. Use incremental analysis to demonstrate the crossover rate.",
+      "entity_scope": "general",
+      "confidence": 0.94,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "NPV superiority for mutually exclusive projects — established in corporate finance theory since Fisher (1930)"
+    },
+    {
+      "topic": "Bond Yield to Call — YTC",
+      "keywords": ["yield to call", "ytc", "callable bond", "call provision", "call price", "call date"],
+      "conclusion_template": "Yield to Call (YTC) is the yield assuming the bond is called at the first call date at the call price. Computed identically to YTM but substituting call price for face value and periods-to-call for periods-to-maturity. The yield-to-worst is min(YTM, YTC) — the conservative measure.",
+      "reasoning_framework": "Step 1: Identify call date, call price, and coupon schedule to the call date. Step 2: Set up pricing equation: Market_Price = sum(C/(1+y)^t) + Call_Price/(1+y)^n_call. Step 3: Solve for y via Newton-Raphson, same as YTM. Step 4: Annualize. Step 5: Compute yield-to-worst = min(YTM, YTC). Step 6: Callable bonds tend to trade closer to call price when rates fall significantly.",
+      "key_factors": [
+        "Issuers call bonds when rates fall below coupon rate",
+        "Call protection period limits early redemption",
+        "Make-whole call provision uses Treasury + spread as call price",
+        "YTC < YTM when bond trades at premium (likely to be called)",
+        "Yield-to-worst is the most conservative yield measure"
+      ],
+      "primary_authority": [
+        "Fabozzi, F. — Fixed Income Analysis",
+        "CFA Institute — Fixed Income: Callable Bonds",
+        "Tuckman, B. — Fixed Income Securities"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "YTC assumes the issuer will call at the first opportunity — they may not if rates don't fall enough.",
+      "counter_arguments": [
+        "Issuer may not call even if rates decline (regulatory capital, liquidity)",
+        "Multiple call dates mean multiple YTCs to compute",
+        "Make-whole call provisions change the calculus",
+        "Call timing is uncertain — neither YTM nor YTC may be realized",
+        "Negative convexity near the call price limits price appreciation"
+      ],
+      "resolution_strategy": "Compute both YTM and YTC (for all call dates). Report yield-to-worst as the conservative measure. Assess call probability based on current rates vs coupon rate.",
+      "entity_scope": "general",
+      "confidence": 0.92,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "YTC calculation — standard callable bond yield measure in fixed income practice"
+    },
+    {
+      "topic": "Perpetuity Valuation",
+      "keywords": ["perpetuity", "infinite", "forever", "perpetual", "consol", "endowment"],
+      "conclusion_template": "A perpetuity pays a constant amount forever: PV = PMT / r. This is the simplest present value formula and the limiting case of an ordinary annuity as n approaches infinity. Perpetuities approximate long-lived cash flows like preferred stock dividends and endowment payout.",
+      "reasoning_framework": "Step 1: Identify the constant periodic payment (PMT) and discount rate (r). Step 2: PV = PMT / r. Step 3: Verify r > 0 (otherwise PV is infinite). Step 4: For practical purposes, the PV of a very long annuity (n > 100) closely approximates a perpetuity. Step 5: Delayed perpetuity: if first payment is at time t+1, discount by additional t periods: PV = (PMT/r) / (1+r)^t.",
+      "key_factors": [
+        "PV = PMT / r is the limit of PV_annuity as n approaches infinity",
+        "British consols are a historical example of true perpetuities",
+        "Preferred stock dividends approximate a perpetuity",
+        "Endowment spending rules use perpetuity math",
+        "Small rate changes cause large PV changes (PV is proportional to 1/r)"
+      ],
+      "primary_authority": [
+        "Mathematical limit of annuity formula",
+        "Brealey, Myers & Allen — Principles of Corporate Finance",
+        "CFA Institute — Quantitative Methods"
+      ],
+      "burden_holder": "analyst",
+      "adversary_position": "No cash flow truly lasts forever — using a perpetuity overstates value for finite-lived streams.",
+      "counter_arguments": [
+        "Firms have finite lives — perpetuity assumption may overvalue",
+        "Infinite discounting means distant CFs contribute negligibly",
+        "Rate uncertainty over infinite horizons is inherently high",
+        "Inflation erodes real value of fixed perpetuity payments",
+        "Regulatory or contractual changes can terminate 'perpetual' payments"
+      ],
+      "resolution_strategy": "Use perpetuity for truly long-lived, stable cash flows (>50 years). For finite streams, use annuity formulas. For growing cash flows, use growing perpetuity with growth rate capped at GDP growth.",
+      "entity_scope": "general",
+      "confidence": 0.96,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "Perpetuity formula PV = C/r — foundational result in financial mathematics"
+    }
+  ]
+}

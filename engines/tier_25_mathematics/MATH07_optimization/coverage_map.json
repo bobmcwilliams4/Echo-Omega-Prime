@@ -1,0 +1,64 @@
+{
+  "engine": "MATH07_optimization",
+  "version": "1.0.0",
+  "coverage_domains": {
+    "linear_programming": {
+      "doctrines": ["linear_programming_duality", "simplex_method", "sensitivity_analysis_lp"],
+      "methods": ["simplex_solve", "two_phase_simplex", "sensitivity_report"],
+      "coverage_score": 0.95,
+      "gaps": ["interior point method not implemented", "network simplex not implemented"]
+    },
+    "unconstrained_optimization": {
+      "doctrines": ["gradient_descent", "newton_method_optimization", "conjugate_gradient_optimization", "golden_section_search"],
+      "methods": ["gradient_descent_solve", "newton_optimize", "conjugate_gradient_solve", "golden_section_minimize"],
+      "coverage_score": 0.90,
+      "gaps": ["L-BFGS not implemented", "trust region not implemented"]
+    },
+    "constrained_optimization": {
+      "doctrines": ["lagrange_multipliers", "kkt_conditions"],
+      "methods": ["lagrange_solve", "kkt_check"],
+      "coverage_score": 0.85,
+      "gaps": ["interior point for NLP not implemented", "penalty methods not implemented"]
+    },
+    "integer_programming": {
+      "doctrines": ["integer_programming_branch_and_bound"],
+      "methods": ["branch_and_bound_solve"],
+      "coverage_score": 0.75,
+      "gaps": ["cutting planes not implemented", "branch and cut not implemented"]
+    },
+    "convex_optimization": {
+      "doctrines": ["convexity_and_convex_optimization", "convex_relaxation_and_bounds"],
+      "methods": ["check_convexity", "convex_quadratic_solve"],
+      "coverage_score": 0.80,
+      "gaps": ["SDP solver not implemented", "conic programming not implemented"]
+    },
+    "portfolio_optimization": {
+      "doctrines": ["markowitz_portfolio_optimization"],
+      "methods": ["minimum_variance_portfolio", "efficient_frontier_trace", "max_sharpe_portfolio"],
+      "coverage_score": 0.90,
+      "gaps": ["Black-Litterman not implemented", "transaction costs not modeled"]
+    },
+    "multi_objective": {
+      "doctrines": ["multi_objective_optimization_pareto"],
+      "methods": ["weighted_sum_solve", "epsilon_constraint_solve", "pareto_front_approximate"],
+      "coverage_score": 0.80,
+      "gaps": ["NSGA-II not implemented", "goal programming not implemented"]
+    },
+    "numerical_methods": {
+      "doctrines": ["numerical_stability_optimization"],
+      "methods": ["matrix_operations", "eigenvalue_computation", "condition_number_check"],
+      "coverage_score": 0.85,
+      "gaps": ["sparse matrix support limited", "iterative refinement not implemented"]
+    }
+  },
+  "total_doctrines": 15,
+  "total_methods": 25,
+  "overall_coverage": 0.85,
+  "epistemic_gaps": [
+    "Interior point methods (Mehrotra predictor-corrector) not implemented",
+    "Stochastic optimization / robust optimization not covered",
+    "Large-scale sparse LP not optimized",
+    "SDP and conic programming out of scope",
+    "Evolutionary / metaheuristic methods not included (deterministic focus)"
+  ]
+}

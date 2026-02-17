@@ -1,0 +1,225 @@
+{
+  "engine_id": "BLD04",
+  "engine_name": "Emergency Override",
+  "version": "1.0.0",
+  "coverage_summary": {
+    "total_doctrines": 18,
+    "triggered_count": 0,
+    "missed_count": 0,
+    "coverage_ratio": 0.0,
+    "last_updated": "2026-02-12T00:00:00Z",
+    "note": "Fresh deployment - no queries processed yet"
+  },
+  "doctrine_coverage": [
+    {
+      "topic": "full_system_kill_switch",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown"],
+      "severity_levels": ["SEV1"],
+      "lockdown_levels": ["LOCKDOWN"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "tier_level_shutdown",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown"],
+      "severity_levels": ["SEV2", "SEV3"],
+      "lockdown_levels": ["CRITICAL", "HIGH"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "single_engine_shutdown",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override"],
+      "severity_levels": ["SEV3", "SEV4"],
+      "lockdown_levels": ["HIGH", "ELEVATED"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "network_access_lockdown",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown"],
+      "severity_levels": ["SEV1", "SEV2"],
+      "lockdown_levels": ["LOCKDOWN", "CRITICAL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "lockdown_mode_escalation",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/lockdown", "/status"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "emergency_authority_elevation",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/elevate"],
+      "severity_levels": ["SEV1", "SEV2", "SEV3"],
+      "lockdown_levels": ["CRITICAL", "HIGH", "ELEVATED"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "data_protection_emergency",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown"],
+      "severity_levels": ["SEV1", "SEV2"],
+      "lockdown_levels": ["LOCKDOWN", "CRITICAL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "incident_classification_severity",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/incident", "/status"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "automated_incident_response",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/incident", "/override"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "recovery_procedures",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/recover"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "emergency_communication_blast",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/blast", "/incident"],
+      "severity_levels": ["SEV1", "SEV2", "SEV3"],
+      "lockdown_levels": ["LOCKDOWN", "CRITICAL", "HIGH"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "system_state_snapshot",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/snapshot", "/override", "/lockdown"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "business_continuity_planning",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/status", "/recover"],
+      "severity_levels": ["SEV1", "SEV2"],
+      "lockdown_levels": ["LOCKDOWN", "CRITICAL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "disaster_recovery_objectives",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/recover", "/status"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "kill_switch_design_principles",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown"],
+      "severity_levels": ["SEV1"],
+      "lockdown_levels": ["LOCKDOWN"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "emergency_contact_escalation",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/blast", "/incident"],
+      "severity_levels": ["SEV1", "SEV2", "SEV3"],
+      "lockdown_levels": ["LOCKDOWN", "CRITICAL", "HIGH"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "post_incident_review",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/incident/review", "/status"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    },
+    {
+      "topic": "sovereign_override_authority",
+      "triggered_count": 0,
+      "last_triggered": null,
+      "avg_confidence": null,
+      "endpoints_using": ["/override", "/lockdown", "/elevate"],
+      "severity_levels": ["ALL"],
+      "lockdown_levels": ["ALL"],
+      "gap_status": "COVERED"
+    }
+  ],
+  "epistemic_gaps": [
+    {
+      "gap_id": "GAP_001",
+      "description": "Physical infrastructure failure scenarios (power outage, hardware failure) not covered by emergency override",
+      "severity": "MEDIUM",
+      "recommendation": "Add physical infrastructure monitoring integration in future version"
+    },
+    {
+      "gap_id": "GAP_002",
+      "description": "Multi-site disaster recovery not applicable (single-site deployment)",
+      "severity": "LOW",
+      "recommendation": "Consider if Cloudflare multi-region adds DR capability"
+    },
+    {
+      "gap_id": "GAP_003",
+      "description": "Insider threat specific playbooks beyond authority revocation",
+      "severity": "MEDIUM",
+      "recommendation": "Develop insider threat detection and response playbook"
+    }
+  ],
+  "endpoint_doctrine_map": {
+    "/override": ["full_system_kill_switch", "tier_level_shutdown", "single_engine_shutdown", "network_access_lockdown", "emergency_authority_elevation", "data_protection_emergency", "automated_incident_response", "system_state_snapshot", "kill_switch_design_principles", "sovereign_override_authority"],
+    "/lockdown": ["full_system_kill_switch", "tier_level_shutdown", "network_access_lockdown", "lockdown_mode_escalation", "data_protection_emergency", "system_state_snapshot", "kill_switch_design_principles", "sovereign_override_authority"],
+    "/recover": ["recovery_procedures", "disaster_recovery_objectives", "business_continuity_planning"],
+    "/status": ["lockdown_mode_escalation", "incident_classification_severity", "disaster_recovery_objectives", "business_continuity_planning", "post_incident_review"],
+    "/incident": ["incident_classification_severity", "automated_incident_response", "emergency_communication_blast", "emergency_contact_escalation", "post_incident_review"],
+    "/blast": ["emergency_communication_blast", "emergency_contact_escalation"],
+    "/snapshot": ["system_state_snapshot"],
+    "/elevate": ["emergency_authority_elevation", "sovereign_override_authority"]
+  }
+}

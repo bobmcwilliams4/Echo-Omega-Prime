@@ -1,0 +1,208 @@
+{
+  "engine_id": "MATH03",
+  "engine_name": "Calculus Intelligence Engine",
+  "version": "1.0.0",
+  "doctrine_count": 20,
+  "doctrines": [
+    {
+      "topic": "power_rule_differentiation",
+      "keywords": ["power rule", "derivative", "exponent", "polynomial", "d/dx x^n"],
+      "conclusion_template": "The power rule states d/dx[x^n] = n*x^(n-1) for any real n. This is the foundational differentiation identity from which polynomial derivatives follow directly. For negative and fractional exponents the rule holds identically, extending to rational powers via implicit differentiation.",
+      "reasoning_framework": "1. Identify the term as x raised to a constant power n.\n2. Multiply the coefficient by the exponent n.\n3. Reduce the exponent by one to get n-1.\n4. If the expression is a sum, apply the power rule term-by-term (linearity).\n5. For negative exponents, rewrite 1/x^n as x^(-n) first.\n6. For fractional exponents, rewrite sqrt(x) as x^(1/2) etc.\n7. Combine like terms after differentiation.\n8. Verify by substituting a test value into both the original limit-definition derivative and the power-rule result.",
+      "key_factors": ["exponent value", "coefficient", "variable identity", "domain restrictions for fractional powers", "chain rule composition"],
+      "primary_authority": ["Leibniz notation", "Newton's fluxions", "Stewart Calculus Ch.3", "Spivak Calculus Ch.10"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "product_rule_differentiation",
+      "keywords": ["product rule", "Leibniz rule", "d/dx fg", "multiply", "two functions"],
+      "conclusion_template": "The product rule states d/dx[f(x)g(x)] = f'(x)g(x) + f(x)g'(x). This extends to n factors via the generalized Leibniz rule. When one factor is a constant, the rule simplifies to constant-multiple rule.",
+      "reasoning_framework": "1. Identify the expression as a product of two differentiable functions f and g.\n2. Compute f'(x) independently.\n3. Compute g'(x) independently.\n4. Form the sum f'(x)*g(x) + f(x)*g'(x).\n5. Simplify by combining like terms and factoring where possible.\n6. For triple products: d/dx[fgh] = f'gh + fg'h + fgh'.\n7. Verify dimensionally and numerically at a test point.",
+      "key_factors": ["identification of factors", "individual derivatives", "simplification opportunity", "chain rule within factors"],
+      "primary_authority": ["Leibniz 1684", "Stewart Calculus Ch.3.2", "Apostol Mathematical Analysis"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "quotient_rule_differentiation",
+      "keywords": ["quotient rule", "division", "d/dx f/g", "fraction", "rational function"],
+      "conclusion_template": "The quotient rule states d/dx[f/g] = (f'g - fg') / g^2 for g(x) != 0. It is derivable from the product rule applied to f * g^(-1). Domain excludes zeros of the denominator.",
+      "reasoning_framework": "1. Identify numerator f(x) and denominator g(x).\n2. Compute f'(x) and g'(x) separately.\n3. Apply formula: (f'g - fg') / g^2.\n4. Simplify the numerator by expanding and combining.\n5. Factor if possible to identify cancellations.\n6. State domain restriction: g(x) != 0.\n7. Alternative: rewrite as f * g^(-1) and use product + chain rules.",
+      "key_factors": ["numerator derivative", "denominator derivative", "domain exclusion", "simplification"],
+      "primary_authority": ["Stewart Calculus Ch.3.2", "Thomas Calculus Ch.3"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "chain_rule_differentiation",
+      "keywords": ["chain rule", "composition", "nested", "d/dx f(g(x))", "outer inner"],
+      "conclusion_template": "The chain rule states d/dx[f(g(x))] = f'(g(x)) * g'(x). It is the fundamental tool for differentiating compositions and extends recursively for multi-level nesting. Leibniz notation: dy/dx = (dy/du)(du/dx).",
+      "reasoning_framework": "1. Identify the outer function f and the inner function g.\n2. Differentiate the outer function f with respect to its argument, evaluated at g(x).\n3. Differentiate the inner function g with respect to x.\n4. Multiply the two derivatives together.\n5. For triple composition f(g(h(x))): f'(g(h(x))) * g'(h(x)) * h'(x).\n6. Simplify the resulting expression.\n7. Verify by numerical approximation at a test point.",
+      "key_factors": ["outer function identification", "inner function identification", "recursive nesting depth", "implicit differentiation as chain rule application"],
+      "primary_authority": ["Cauchy proof", "Stewart Calculus Ch.3.4", "Rudin Principles of Mathematical Analysis"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "trigonometric_derivatives",
+      "keywords": ["sin", "cos", "tan", "sec", "csc", "cot", "trig derivative"],
+      "conclusion_template": "The six trigonometric derivatives form a closed system: d/dx[sin x]=cos x, d/dx[cos x]=-sin x, d/dx[tan x]=sec^2 x, d/dx[sec x]=sec x tan x, d/dx[csc x]=-csc x cot x, d/dx[cot x]=-csc^2 x. All derivable from sin/cos via quotient rule.",
+      "reasoning_framework": "1. sin and cos derivatives established from limit definition using lim(sin h/h)=1.\n2. tan = sin/cos, apply quotient rule to get sec^2.\n3. sec = 1/cos, apply chain rule to get sec*tan.\n4. csc = 1/sin, apply chain rule to get -csc*cot.\n5. cot = cos/sin, apply quotient rule to get -csc^2.\n6. For inverse trig: use implicit differentiation on y=arcsin(x) => sin(y)=x.\n7. Chain rule combines with these for composite trig functions.",
+      "key_factors": ["function identity", "domain restrictions", "chain rule composition", "inverse trig extensions"],
+      "primary_authority": ["Euler's formula connection", "Stewart Calculus Ch.3.3", "Spivak Calculus"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "exponential_logarithmic_derivatives",
+      "keywords": ["exp", "e^x", "ln", "log", "natural logarithm", "exponential"],
+      "conclusion_template": "d/dx[e^x] = e^x (the unique function equal to its own derivative). d/dx[ln x] = 1/x for x>0. For general base: d/dx[a^x] = a^x ln(a), d/dx[log_a(x)] = 1/(x ln a). Logarithmic differentiation handles f(x)^g(x) forms.",
+      "reasoning_framework": "1. e^x derivative from limit definition: lim(e^h-1)/h = 1.\n2. ln(x) derivative via inverse function theorem: if y=ln(x), then x=e^y, dx/dy=e^y, so dy/dx=1/e^y=1/x.\n3. General exponential a^x = e^(x ln a), chain rule gives a^x ln a.\n4. General log: log_a(x) = ln(x)/ln(a), so derivative is 1/(x ln a).\n5. For f(x)^g(x): take ln of both sides, differentiate implicitly.\n6. This yields f^g * [g' ln f + g f'/f].",
+      "key_factors": ["base identification", "natural vs general base", "domain x>0 for log", "logarithmic differentiation for variable exponents"],
+      "primary_authority": ["Euler's number definition", "Stewart Calculus Ch.3.6", "Apostol Calculus Vol.1"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "trapezoidal_rule_integration",
+      "keywords": ["trapezoidal", "trapezoid", "numerical integration", "quadrature", "approximation"],
+      "conclusion_template": "The trapezoidal rule approximates the integral of f over [a,b] by summing areas of trapezoids: T_n = h/2 * [f(a) + 2*sum(f(x_i)) + f(b)] where h=(b-a)/n. Error is O(h^2), exact for linear functions. Richardson extrapolation improves accuracy.",
+      "reasoning_framework": "1. Divide [a,b] into n equal subintervals of width h=(b-a)/n.\n2. At each subinterval, approximate the curve by a straight line.\n3. Area of each trapezoid: h/2 * (f(x_i) + f(x_{i+1})).\n4. Sum all n trapezoids.\n5. Simplify to composite formula: h/2[f(a) + 2f(x_1) + ... + 2f(x_{n-1}) + f(b)].\n6. Error bound: |E_T| <= (b-a)^3/(12n^2) * max|f''(x)|.\n7. Double n to halve the error (quadratic convergence).",
+      "key_factors": ["interval count n", "step size h", "endpoint values", "second derivative bound", "convergence rate O(h^2)"],
+      "primary_authority": ["Euler-Maclaurin formula", "Atkinson Numerical Analysis", "Burden & Faires Ch.4"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "simpson_rule_integration",
+      "keywords": ["Simpson", "parabolic", "numerical integration", "quadrature", "1/3 rule", "3/8 rule"],
+      "conclusion_template": "Simpson's 1/3 rule uses parabolic interpolation: S_n = h/3 * [f(a) + 4*sum_odd + 2*sum_even + f(b)] with n even. Error is O(h^4), exact for cubics. Simpson's 3/8 uses cubic interpolation with n divisible by 3. Both are Newton-Cotes formulas.",
+      "reasoning_framework": "1. Require n to be even (1/3 rule) or divisible by 3 (3/8 rule).\n2. For 1/3: fit a parabola through each triple of consecutive points.\n3. Integrate the parabola exactly over [x_i, x_{i+2}].\n4. Composite formula: h/3[f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + ... + f(x_n)].\n5. Error: |E_S| <= (b-a)^5/(180n^4) * max|f^(4)(x)|.\n6. Extremely accurate for smooth functions.\n7. For 3/8: h*3/8[f(x_0) + 3f(x_1) + 3f(x_2) + f(x_3)] per group of 3.",
+      "key_factors": ["even n requirement", "alternating 4-2 coefficients", "fourth derivative bound", "convergence rate O(h^4)"],
+      "primary_authority": ["Thomas Simpson 1743", "Atkinson Numerical Analysis", "Stewart Calculus Ch.7.7"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "gaussian_quadrature",
+      "keywords": ["Gauss", "quadrature", "Legendre", "nodes", "weights", "optimal"],
+      "conclusion_template": "Gaussian quadrature achieves optimal accuracy by choosing both nodes and weights to maximize polynomial exactness. An n-point rule is exact for polynomials of degree 2n-1. Gauss-Legendre uses roots of Legendre polynomials on [-1,1] with change of variable for [a,b].",
+      "reasoning_framework": "1. Transform integral from [a,b] to [-1,1] via x = (b-a)/2 * t + (a+b)/2.\n2. Select n quadrature points as roots of the nth Legendre polynomial.\n3. Compute weights w_i = 2/((1-t_i^2)[P_n'(t_i)]^2).\n4. Approximate integral as (b-a)/2 * sum(w_i * f(x(t_i))).\n5. Error decreases exponentially for analytic functions.\n6. Standard tables: n=2 nodes +/-1/sqrt(3), weights 1,1.\n7. n=3 nodes 0, +/-sqrt(3/5), weights 8/9, 5/9, 5/9.",
+      "key_factors": ["number of nodes", "Legendre polynomial roots", "weight computation", "interval transformation", "exponential convergence"],
+      "primary_authority": ["Gauss 1814", "Golub-Welsch algorithm", "Atkinson Numerical Analysis Ch.5"],
+      "confidence": 0.96,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "taylor_series_expansion",
+      "keywords": ["Taylor", "Maclaurin", "series", "polynomial", "expansion", "remainder"],
+      "conclusion_template": "The Taylor series of f about a is sum_{n=0}^inf f^(n)(a)/n! * (x-a)^n. Maclaurin is the special case a=0. Convergence depends on the radius determined by nearest singularity. The Lagrange remainder R_n bounds truncation error.",
+      "reasoning_framework": "1. Compute successive derivatives f(a), f'(a), f''(a), ... f^(n)(a).\n2. Form partial sum T_n(x) = sum_{k=0}^n f^(k)(a)/k! * (x-a)^k.\n3. Lagrange remainder: R_n = f^(n+1)(c)/(n+1)! * (x-a)^(n+1) for some c between a and x.\n4. Ratio test for convergence radius: R = 1/limsup|a_n|^(1/n).\n5. Common series: e^x = sum x^n/n!, sin x = sum (-1)^n x^(2n+1)/(2n+1)!, cos x = sum (-1)^n x^(2n)/(2n)!.\n6. Composition: substitute g(x) into known series.\n7. Multiplication: Cauchy product of two series.",
+      "key_factors": ["center point a", "number of terms", "convergence radius", "remainder bound", "known series substitution"],
+      "primary_authority": ["Brook Taylor 1715", "Colin Maclaurin 1742", "Rudin Principles Ch.8"],
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "limits_and_continuity",
+      "keywords": ["limit", "continuity", "epsilon-delta", "approaching", "indeterminate"],
+      "conclusion_template": "The limit lim_{x->a} f(x) = L means for every epsilon>0 there exists delta>0 such that 0<|x-a|<delta implies |f(x)-L|<epsilon. Continuity at a requires the limit to equal f(a). Indeterminate forms 0/0, inf/inf require algebraic manipulation or L'Hopital's rule.",
+      "reasoning_framework": "1. Attempt direct substitution first.\n2. If defined, the limit equals f(a) (continuous case).\n3. If 0/0: factor and cancel, rationalize, or apply L'Hopital.\n4. If inf/inf: divide by dominant term or apply L'Hopital.\n5. If 0*inf: rewrite as 0/(1/inf) or inf/(1/0) to get standard form.\n6. If 1^inf, 0^0, inf^0: take ln, evaluate limit, exponentiate.\n7. Squeeze theorem: if g(x)<=f(x)<=h(x) and lim g = lim h = L, then lim f = L.\n8. One-sided limits: check lim from left and right separately.",
+      "key_factors": ["substitution result", "indeterminate form type", "algebraic simplification", "L'Hopital applicability", "one-sided agreement"],
+      "primary_authority": ["Cauchy definition", "Weierstrass epsilon-delta", "Stewart Calculus Ch.2"],
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "lhopital_rule",
+      "keywords": ["L'Hopital", "L'Hospital", "indeterminate", "0/0", "inf/inf"],
+      "conclusion_template": "L'Hopital's rule: if lim f(x)/g(x) is 0/0 or inf/inf, then lim f/g = lim f'/g' provided the latter limit exists (or is +/-inf). The rule may be applied repeatedly. It requires f and g differentiable near a with g'!=0.",
+      "reasoning_framework": "1. Verify the limit produces an indeterminate form 0/0 or inf/inf.\n2. Differentiate numerator and denominator SEPARATELY (not quotient rule).\n3. Evaluate lim f'(x)/g'(x).\n4. If still indeterminate, apply L'Hopital again.\n5. If the new limit exists or is +/-inf, that equals the original limit.\n6. WARNING: if lim f'/g' does not exist (oscillates), L'Hopital gives no conclusion.\n7. Other indeterminate forms (0*inf, 1^inf, etc.) must first be converted to 0/0 or inf/inf.",
+      "key_factors": ["indeterminate form verification", "separate differentiation", "repeated application", "existence of derivative limit", "form conversion"],
+      "primary_authority": ["Johann Bernoulli (original proof)", "Guillaume de L'Hopital 1696", "Stewart Calculus Ch.4.4"],
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "separable_ode",
+      "keywords": ["separable", "ODE", "dy/dx", "separation of variables", "first order"],
+      "conclusion_template": "A separable ODE has the form dy/dx = f(x)g(y). Solve by separating: dy/g(y) = f(x)dx, then integrate both sides. Solutions may be implicit. Singular solutions occur where g(y)=0. Initial conditions determine the constant of integration.",
+      "reasoning_framework": "1. Verify the ODE can be written as dy/dx = f(x)*g(y).\n2. Separate: (1/g(y))dy = f(x)dx.\n3. Integrate both sides: integral(1/g(y))dy = integral(f(x))dx + C.\n4. Solve for y explicitly if possible.\n5. Apply initial condition y(x_0) = y_0 to find C.\n6. Check for singular solutions where g(y_0) = 0 (equilibrium solutions).\n7. Verify the solution by substituting back into the original ODE.",
+      "key_factors": ["separability check", "integration of both sides", "implicit vs explicit solution", "singular solutions", "initial conditions"],
+      "primary_authority": ["Leibniz method", "Boyce & DiPrima Ch.2.2", "Stewart Calculus Ch.9.3"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "first_order_linear_ode",
+      "keywords": ["linear ODE", "integrating factor", "dy/dx + P(x)y = Q(x)", "first order"],
+      "conclusion_template": "A first-order linear ODE has standard form dy/dx + P(x)y = Q(x). The integrating factor mu(x) = e^(integral P(x)dx) transforms it to d/dx[mu*y] = mu*Q. Solution: y = (1/mu)*integral(mu*Q dx) + C/mu. Always check the domain of P and Q.",
+      "reasoning_framework": "1. Put in standard form: dy/dx + P(x)y = Q(x).\n2. Compute integrating factor mu(x) = exp(integral P(x) dx).\n3. Multiply both sides by mu: mu*y' + mu*P*y = mu*Q.\n4. Recognize left side as d/dx[mu*y].\n5. Integrate: mu*y = integral(mu*Q dx) + C.\n6. Solve for y: y = (1/mu) * [integral(mu*Q dx) + C].\n7. Apply initial condition to find C.\n8. Verify by substitution.",
+      "key_factors": ["standard form identification", "integrating factor computation", "domain of P and Q", "initial condition", "verification"],
+      "primary_authority": ["Euler integrating factor method", "Boyce & DiPrima Ch.2.1", "Tenenbaum & Pollard Ch.2"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "partial_derivatives",
+      "keywords": ["partial", "multivariable", "gradient", "nabla", "partial f/partial x"],
+      "conclusion_template": "Partial derivatives measure the rate of change of a multivariable function with respect to one variable while holding others constant. The gradient nabla f = (df/dx, df/dy, ...) points in the direction of steepest ascent. Mixed partials are equal under Clairaut's theorem (continuous second partials).",
+      "reasoning_framework": "1. To compute df/dx: treat all variables except x as constants.\n2. Apply single-variable differentiation rules.\n3. Gradient: vector of all first partials, nabla f = (f_x, f_y, ...).\n4. Clairaut's theorem: f_xy = f_yx if both are continuous.\n5. Hessian matrix: matrix of all second partials, used for optimization.\n6. Chain rule for multivariable: df/dt = (df/dx)(dx/dt) + (df/dy)(dy/dt).\n7. Directional derivative: D_u f = nabla f dot u.",
+      "key_factors": ["variable held constant", "gradient direction", "Clairaut continuity condition", "Hessian for optimization", "directional derivatives"],
+      "primary_authority": ["Cauchy", "Stewart Multivariable Calculus Ch.14", "Marsden & Tromba Vector Calculus"],
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "jacobian_matrix",
+      "keywords": ["Jacobian", "matrix", "transformation", "mapping", "determinant", "change of variables"],
+      "conclusion_template": "The Jacobian matrix J of a vector-valued function F:R^n->R^m has entries J_ij = df_i/dx_j. The Jacobian determinant |J| gives the local volume scaling factor. In change of variables for integration: dx dy = |det J| du dv. The inverse function theorem requires det J != 0.",
+      "reasoning_framework": "1. For F = (f_1, ..., f_m) and variables (x_1, ..., x_n), form m x n matrix.\n2. Entry (i,j) = partial f_i / partial x_j.\n3. For square systems (m=n), compute determinant.\n4. det J != 0 implies local invertibility (inverse function theorem).\n5. Change of variables: integral f(x,y) dx dy = integral f(x(u,v),y(u,v)) |det J| du dv.\n6. Polar coordinates: x=r cos theta, y=r sin theta, |J|=r.\n7. Spherical: |J| = rho^2 sin phi.",
+      "key_factors": ["matrix dimensions", "determinant computation", "invertibility condition", "coordinate transformation", "volume element scaling"],
+      "primary_authority": ["Jacobi 1841", "Stewart Multivariable Calculus Ch.15.9", "Arfken Mathematical Methods"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "euler_method_ode",
+      "keywords": ["Euler", "numerical ODE", "step", "approximation", "first order method"],
+      "conclusion_template": "Euler's method approximates ODE solutions via y_{n+1} = y_n + h*f(x_n, y_n). It is first-order accurate O(h). Simple but accumulates error. Use small step sizes or prefer RK4 for better accuracy. Stability requires h < 2/|lambda| for y'=lambda*y.",
+      "reasoning_framework": "1. Given dy/dx = f(x,y), y(x_0)=y_0, choose step size h.\n2. Iterate: x_{n+1} = x_n + h, y_{n+1} = y_n + h*f(x_n, y_n).\n3. Local truncation error: O(h^2) per step.\n4. Global error: O(h) after N = (b-a)/h steps.\n5. Halving h halves the global error but doubles computation.\n6. Stability: for y'=lambda*y, need |1+h*lambda|<1.\n7. Improved Euler (Heun): average slopes at start and predicted end.",
+      "key_factors": ["step size h", "stability constraint", "local vs global error", "function evaluations per step", "comparison to higher-order methods"],
+      "primary_authority": ["Euler 1768", "Burden & Faires Numerical Analysis Ch.5", "Atkinson Numerical Analysis"],
+      "confidence": 0.96,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "runge_kutta_method",
+      "keywords": ["Runge-Kutta", "RK4", "fourth order", "numerical ODE", "classical"],
+      "conclusion_template": "The classical RK4 method: k1=hf(x,y), k2=hf(x+h/2,y+k1/2), k3=hf(x+h/2,y+k2/2), k4=hf(x+h,y+k3), y_{n+1}=y_n+(k1+2k2+2k3+k4)/6. Fourth-order accurate O(h^4). The workhorse of numerical ODE solving, balancing accuracy and computational cost.",
+      "reasoning_framework": "1. Compute k1 = h*f(x_n, y_n) — slope at start.\n2. Compute k2 = h*f(x_n+h/2, y_n+k1/2) — slope at midpoint using k1.\n3. Compute k3 = h*f(x_n+h/2, y_n+k2/2) — slope at midpoint using k2.\n4. Compute k4 = h*f(x_n+h, y_n+k3) — slope at end using k3.\n5. Update: y_{n+1} = y_n + (k1+2k2+2k3+k4)/6.\n6. Local error O(h^5), global error O(h^4).\n7. Adaptive step: compare RK4 and RK5 to estimate error, adjust h.\n8. 4 function evaluations per step (vs 1 for Euler).",
+      "key_factors": ["four stage computation", "midpoint slopes", "weighted average", "adaptive step size", "error estimation"],
+      "primary_authority": ["Runge 1895", "Kutta 1901", "Burden & Faires Ch.5.4", "Hairer Solving ODEs Vol.1"],
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "expression_simplification",
+      "keywords": ["simplify", "algebra", "canonical form", "reduce", "expression tree"],
+      "conclusion_template": "Expression simplification transforms mathematical expressions to canonical forms by applying algebraic identities: combining like terms, reducing fractions, applying trigonometric identities, and eliminating redundant operations (x+0=x, x*1=x, x*0=0, x^1=x, x^0=1). AST-based simplifiers apply rewrite rules recursively.",
+      "reasoning_framework": "1. Parse expression into abstract syntax tree (AST).\n2. Apply identity rules bottom-up: x+0->x, x*1->x, x*0->0, x^1->x, x^0->1.\n3. Combine like terms: ax+bx -> (a+b)x.\n4. Constant folding: evaluate pure-constant subexpressions.\n5. Commutativity normalization: sort operands for canonical comparison.\n6. Double negation: -(-x) -> x.\n7. Fraction simplification: reduce by GCD.\n8. Repeat until no more rules apply (fixed-point).",
+      "key_factors": ["AST representation", "rewrite rule set", "convergence guarantee", "canonical ordering", "numeric evaluation"],
+      "primary_authority": ["Church-Rosser property", "Knuth-Bendix completion", "Cohen Computer Algebra"],
+      "confidence": 0.95,
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "fundamental_theorem_of_calculus",
+      "keywords": ["FTC", "fundamental theorem", "antiderivative", "integral", "derivative connection"],
+      "conclusion_template": "FTC Part 1: If F(x) = integral_a^x f(t)dt and f is continuous, then F'(x)=f(x). FTC Part 2: integral_a^b f(x)dx = F(b)-F(a) where F is any antiderivative of f. This bridges differentiation and integration as inverse operations.",
+      "reasoning_framework": "1. FTC Part 1 establishes that integration followed by differentiation recovers the original function.\n2. Continuity of f on [a,b] is required for Part 1.\n3. FTC Part 2 converts definite integral computation to antiderivative evaluation.\n4. Any antiderivative works (they differ by a constant which cancels).\n5. Combined: differentiation and integration are inverse operations.\n6. Proof sketch: Mean Value Theorem for integrals.\n7. Extension: Leibniz integral rule for variable limits.",
+      "key_factors": ["continuity requirement", "antiderivative existence", "evaluation at endpoints", "variable upper limit", "Leibniz extension"],
+      "primary_authority": ["Newton", "Leibniz", "Stewart Calculus Ch.5.3", "Apostol Calculus Vol.1 Ch.5"],
+      "confidence": 0.99,
+      "confidence_stratification": "DEFENSIBLE"
+    }
+  ]
+}

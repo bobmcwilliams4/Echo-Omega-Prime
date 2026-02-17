@@ -1,0 +1,132 @@
+{
+  "engine_id": "BLD01",
+  "engine_name": "Bloodline Authenticator",
+  "version": "1.0.0",
+  "normalizations": {
+    "mfa": "multi-factor authentication",
+    "2fa": "two-factor authentication",
+    "auth": "authentication",
+    "authn": "authentication",
+    "authz": "authorization",
+    "cred": "credential",
+    "creds": "credentials",
+    "passwd": "password",
+    "pwd": "password",
+    "pw": "password",
+    "sess": "session",
+    "tok": "token",
+    "cert": "certificate",
+    "fp": "fingerprint",
+    "dms": "dead man's switch",
+    "sov": "sovereign",
+    "cmdr": "commander",
+    "cmd": "commander",
+    "deleg": "delegation",
+    "revok": "revoke",
+    "lockdown": "lockout",
+    "panic mode": "emergency lockout",
+    "kill switch": "dead man's switch",
+    "heir apparent": "first in line",
+    "next in line": "first in line",
+    "successor": "heir",
+    "biometric": "behavioral pattern",
+    "typing pattern": "behavioral pattern",
+    "keystroke": "behavioral pattern",
+    "hw fingerprint": "device fingerprint",
+    "machine id": "device fingerprint",
+    "security question": "knowledge challenge",
+    "challenge-response": "knowledge challenge",
+    "multi-step auth": "authentication ceremony",
+    "step-up auth": "authentication ceremony",
+    "elevated auth": "authentication ceremony",
+    "supreme auth": "sovereign authentication",
+    "highest auth": "sovereign authentication",
+    "level 11": "sovereign level",
+    "authority 11.0": "sovereign level"
+  },
+  "synonyms": {
+    "authenticate": ["verify", "identify", "prove identity", "log in", "sign in", "validate"],
+    "session": ["login session", "auth session", "active session", "token", "bearer token"],
+    "sovereign": ["supreme", "commander", "patriarch", "highest authority", "level 11"],
+    "delegation": ["authority grant", "permission grant", "access grant", "temporary authority"],
+    "bloodline": ["dynasty", "lineage", "succession chain", "authority chain", "family chain"],
+    "ceremony": ["multi-step verification", "elevated authentication", "ritual", "sovereign verification"],
+    "lockout": ["emergency lockout", "panic", "freeze", "shutdown", "kill all sessions"],
+    "dead man's switch": ["heartbeat monitor", "succession trigger", "continuity switch", "timeout switch"],
+    "confidence": ["trust level", "assurance level", "verification strength", "auth strength"],
+    "behavioral": ["biometric", "typing pattern", "keystroke dynamics", "interaction pattern"],
+    "device": ["hardware", "machine", "endpoint", "client device", "trusted device"],
+    "knowledge": ["security question", "challenge response", "secret answer", "passphrase"],
+    "revoke": ["invalidate", "cancel", "terminate", "end", "destroy"],
+    "heir": ["successor", "next in line", "designated successor", "bloodline heir"],
+    "audit": ["log", "trail", "record", "forensic record", "compliance log"],
+    "fragility": ["weakness", "vulnerability", "risk score", "attack surface"],
+    "drift": ["pattern shift", "baseline deviation", "behavioral change", "anomaly"],
+    "coverage": ["completeness", "doctrine coverage", "topic coverage", "gap analysis"],
+    "determinism": ["reproducibility", "consistency", "verifiability", "repeatability"]
+  },
+  "abbreviations": {
+    "MFA": "Multi-Factor Authentication",
+    "2FA": "Two-Factor Authentication",
+    "SSO": "Single Sign-On",
+    "RBAC": "Role-Based Access Control",
+    "ABAC": "Attribute-Based Access Control",
+    "HMAC": "Hash-Based Message Authentication Code",
+    "SHA": "Secure Hash Algorithm",
+    "JWT": "JSON Web Token",
+    "TOTP": "Time-Based One-Time Password",
+    "FIDO": "Fast Identity Online",
+    "U2F": "Universal 2nd Factor",
+    "PKI": "Public Key Infrastructure",
+    "TLS": "Transport Layer Security",
+    "CORS": "Cross-Origin Resource Sharing",
+    "CSRF": "Cross-Site Request Forgery",
+    "XSS": "Cross-Site Scripting",
+    "DMS": "Dead Man's Switch",
+    "TTL": "Time To Live",
+    "DoS": "Denial of Service",
+    "DDoS": "Distributed Denial of Service",
+    "SOC": "Security Operations Center",
+    "IAM": "Identity and Access Management",
+    "PAM": "Privileged Access Management",
+    "NIST": "National Institute of Standards and Technology",
+    "OWASP": "Open Web Application Security Project",
+    "BLD": "Bloodline",
+    "SOV": "Sovereign",
+    "CMDR": "Commander"
+  },
+  "domain_terms": {
+    "sovereign_level": {
+      "definition": "Authority level 11.0, exclusive to the Commander (Bobby Don McWilliams II). Grants unrestricted access to all system capabilities.",
+      "related": ["commander", "patriarch", "supreme authority"]
+    },
+    "bloodline_position": {
+      "definition": "A member's rank in the McWilliams Dynasty succession chain. Determines maximum authority level and succession order.",
+      "related": ["patriarch", "first_in_line", "heir"]
+    },
+    "authentication_ceremony": {
+      "definition": "A multi-step sequential verification process required for SOVEREIGN operations. Includes identity confirmation, knowledge verification, bloodline position verification, and sovereign action authorization.",
+      "related": ["multi-step", "elevated auth", "sovereign verification"]
+    },
+    "dead_mans_switch": {
+      "definition": "An automated monitoring system that triggers succession protocol if the Commander fails to send heartbeats within a configurable timeout period (default 72 hours).",
+      "related": ["heartbeat", "succession", "continuity"]
+    },
+    "emergency_lockout": {
+      "definition": "An atomic operation that revokes all active sessions, delegations, and ceremonies. Only triggerable by SOVEREIGN authority. One emergency recovery session may be preserved.",
+      "related": ["panic", "freeze", "kill switch"]
+    },
+    "confidence_stratification": {
+      "definition": "A five-level classification of authentication confidence: DEFENSIBLE (>=0.90), AGGRESSIVE (>=0.75), DISCLOSURE (>=0.55), HIGH_RISK (>=0.30), CEREMONY_REQUIRED (<0.30).",
+      "related": ["trust level", "assurance", "auth strength"]
+    },
+    "delegation_token": {
+      "definition": "A time-bounded, scope-limited authority grant from a higher-authority identity to a lower-authority identity. Maximum delegate level is 8.0.",
+      "related": ["temporary access", "permission grant", "scoped authority"]
+    },
+    "fact_fragility": {
+      "definition": "A measure of how easily an authentication factor could be forged, recharacterized, or dependent on unverifiable testimony. Lower fragility means stronger authentication.",
+      "related": ["vulnerability", "attack surface", "factor strength"]
+    }
+  }
+}

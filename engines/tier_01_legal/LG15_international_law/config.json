@@ -1,0 +1,476 @@
+{
+  "engine_id": "LG15",
+  "engine_name": "International Law Engine",
+  "version": "2.0.0",
+  "domain": "international_law",
+  "port": 8445,
+  "host": "0.0.0.0",
+  "tier": "LEGAL",
+  "tier_name": "Legal",
+  "authority": 5.0,
+  "mode": "EF",
+  "description": "Comprehensive international law analysis engine covering public international law (UN Charter, ICJ Statute, Vienna Convention on Treaties), international trade law (WTO/GATT, TRIPS, ICSID), international humanitarian law (Geneva Conventions, Hague Conventions), international human rights (ICCPR, ICESCR, ECHR), foreign sovereign immunity (FSIA), international arbitration (UNCITRAL, ICC, ICSID), cross-border transactions (CISG, Incoterms, UCP 600), sanctions and export controls (OFAC, EAR, ITAR), extraterritorial jurisdiction, treaty interpretation, diplomatic and consular law, international criminal law (ICC Rome Statute), law of the sea (UNCLOS), international environmental law (Paris Agreement, Montreal Protocol), bilateral investment treaties, conflict of laws and choice of law, foreign judgments recognition and enforcement, anti-corruption (FCPA, UK Bribery Act), and international tax treaties (OECD Model Convention).",
+  "tie_version": "20.0",
+  "response_modes": [
+    "FAST",
+    "ANALYSIS",
+    "MEMO",
+    "TREATY_INTERPRETATION",
+    "TRADE_COMPLIANCE"
+  ],
+  "analysis_layers": [
+    "QUICK",
+    "STANDARD",
+    "DEEP",
+    "EXPERT"
+  ],
+  "default_response_mode": "ANALYSIS",
+  "default_analysis_layer": "STANDARD",
+  "confidence_thresholds": {
+    "high": 0.85,
+    "medium": 0.65,
+    "low": 0.4,
+    "uncertain": 0.2
+  },
+  "jurisdictions": {
+    "primary": "INTERNATIONAL",
+    "supported": [
+      "INTERNATIONAL",
+      "UN",
+      "ICJ",
+      "ICC",
+      "WTO",
+      "EU",
+      "ECHR",
+      "NAFTA_USMCA",
+      "MERCOSUR",
+      "ASEAN",
+      "AU",
+      "OAS",
+      "COMESA",
+      "SADC",
+      "ECOWAS",
+      "US",
+      "UK",
+      "FR",
+      "DE",
+      "JP",
+      "CN",
+      "IN",
+      "BR",
+      "AU_COUNTRY",
+      "CA",
+      "CH",
+      "NL",
+      "SG",
+      "HK",
+      "AE",
+      "SA",
+      "MX",
+      "KR",
+      "ZA",
+      "NG",
+      "RU",
+      "TR",
+      "ID",
+      "TH",
+      "VN",
+      "PH",
+      "MY",
+      "CL",
+      "CO",
+      "PE"
+    ],
+    "treaty_bodies": [
+      "un_general_assembly",
+      "un_security_council",
+      "icj",
+      "icc",
+      "wto_dispute_settlement_body",
+      "wto_appellate_body",
+      "icsid",
+      "pca",
+      "itlos",
+      "echr",
+      "iachr",
+      "achpr",
+      "un_human_rights_committee",
+      "un_treaty_bodies"
+    ],
+    "arbitration_institutions": [
+      "icsid",
+      "icc_international_court_of_arbitration",
+      "lcia",
+      "siac",
+      "hkiac",
+      "scc",
+      "diac",
+      "cietac",
+      "pca",
+      "uncitral_ad_hoc",
+      "aaa_icdr",
+      "wipo_arbitration"
+    ]
+  },
+  "international_instruments": {
+    "un_charter": {
+      "year": 1945,
+      "articles": 111,
+      "parties": 193,
+      "depositary": "un_secretary_general"
+    },
+    "icj_statute": {
+      "year": 1945,
+      "articles": 70,
+      "source": "annexed_to_un_charter"
+    },
+    "vclt": {
+      "year": 1969,
+      "articles": 85,
+      "parties": 116,
+      "citation": "1155 UNTS 331"
+    },
+    "vcdr": {
+      "year": 1961,
+      "articles": 53,
+      "parties": 193,
+      "citation": "500 UNTS 95"
+    },
+    "vccr": {
+      "year": 1963,
+      "articles": 79,
+      "parties": 182,
+      "citation": "596 UNTS 261"
+    },
+    "geneva_i": {
+      "year": 1949,
+      "articles": 64,
+      "parties": 196,
+      "topic": "wounded_sick_armed_forces_field"
+    },
+    "geneva_ii": {
+      "year": 1949,
+      "articles": 63,
+      "parties": 196,
+      "topic": "wounded_sick_shipwrecked_armed_forces_sea"
+    },
+    "geneva_iii": {
+      "year": 1949,
+      "articles": 143,
+      "parties": 196,
+      "topic": "prisoners_of_war"
+    },
+    "geneva_iv": {
+      "year": 1949,
+      "articles": 159,
+      "parties": 196,
+      "topic": "protection_of_civilians"
+    },
+    "additional_protocol_i": {
+      "year": 1977,
+      "articles": 102,
+      "parties": 174,
+      "topic": "international_armed_conflict"
+    },
+    "additional_protocol_ii": {
+      "year": 1977,
+      "articles": 28,
+      "parties": 169,
+      "topic": "non_international_armed_conflict"
+    },
+    "rome_statute": {
+      "year": 1998,
+      "articles": 128,
+      "parties": 124,
+      "court": "icc"
+    },
+    "unclos": {
+      "year": 1982,
+      "articles": 320,
+      "parties": 168,
+      "citation": "1833 UNTS 3"
+    },
+    "cisg": {
+      "year": 1980,
+      "articles": 101,
+      "parties": 97,
+      "citation": "1489 UNTS 3"
+    },
+    "ny_convention": {
+      "year": 1958,
+      "articles": 16,
+      "parties": 172,
+      "topic": "recognition_enforcement_arbitral_awards"
+    },
+    "iccpr": {
+      "year": 1966,
+      "articles": 53,
+      "parties": 173,
+      "citation": "999 UNTS 171"
+    },
+    "icescr": {
+      "year": 1966,
+      "articles": 31,
+      "parties": 171,
+      "citation": "993 UNTS 3"
+    },
+    "echr": {
+      "year": 1950,
+      "articles": 59,
+      "parties": 46,
+      "court": "ecthr"
+    },
+    "gatt_1994": {
+      "year": 1994,
+      "articles": 38,
+      "parties": 164,
+      "organization": "wto"
+    },
+    "trips": {
+      "year": 1994,
+      "articles": 73,
+      "parties": 164,
+      "organization": "wto"
+    },
+    "icsid_convention": {
+      "year": 1965,
+      "articles": 75,
+      "parties": 163,
+      "citation": "575 UNTS 159"
+    },
+    "paris_agreement": {
+      "year": 2015,
+      "articles": 29,
+      "parties": 195,
+      "topic": "climate_change"
+    },
+    "montreal_protocol": {
+      "year": 1987,
+      "articles": 20,
+      "parties": 198,
+      "topic": "ozone_depletion"
+    }
+  },
+  "us_international_statutes": {
+    "fsia": {
+      "usc_title": 28,
+      "usc_sections": "1330, 1602-1611",
+      "year": 1976
+    },
+    "fcpa": {
+      "usc_title": 15,
+      "usc_sections": "78dd-1 to 78dd-3, 78m(b), 78ff",
+      "year": 1977,
+      "amended": [
+        1988,
+        1998
+      ]
+    },
+    "ieepa": {
+      "usc_title": 50,
+      "usc_sections": "1701-1707",
+      "year": 1977
+    },
+    "ear": {
+      "cfr": "15 CFR 730-774",
+      "agency": "BIS",
+      "topic": "export_administration_regulations"
+    },
+    "itar": {
+      "cfr": "22 CFR 120-130",
+      "agency": "DDTC",
+      "topic": "international_traffic_in_arms"
+    },
+    "ofac": {
+      "cfr": "31 CFR 500-599",
+      "agency": "OFAC",
+      "topic": "sanctions_programs"
+    },
+    "hague_service_convention": {
+      "year": 1965,
+      "parties": 82,
+      "usc_reference": "28 USC 1696"
+    },
+    "hague_evidence_convention": {
+      "year": 1970,
+      "parties": 65,
+      "usc_reference": "28 USC 1781-1782"
+    },
+    "aia_iaa": {
+      "usc_title": 22,
+      "usc_sections": "6901-6925",
+      "year": 2000,
+      "topic": "international_antitrust_enforcement"
+    }
+  },
+  "doctrine_domains": [
+    "un_charter_principles",
+    "icj_jurisdiction",
+    "icj_advisory_opinions",
+    "treaty_interpretation_vclt",
+    "treaty_reservations",
+    "treaty_termination",
+    "customary_international_law",
+    "jus_cogens",
+    "state_responsibility",
+    "state_sovereignty",
+    "self_determination",
+    "use_of_force",
+    "self_defense",
+    "un_peacekeeping",
+    "diplomatic_immunity",
+    "consular_relations",
+    "wto_mfn",
+    "wto_national_treatment",
+    "wto_dispute_settlement",
+    "gatt_exceptions",
+    "trips_ip_protection",
+    "trade_remedies_antidumping",
+    "trade_remedies_countervailing",
+    "trade_remedies_safeguards",
+    "fsia_sovereign_immunity",
+    "fsia_commercial_activity",
+    "fsia_expropriation",
+    "international_arbitration_uncitral",
+    "international_arbitration_icsid",
+    "international_arbitration_icc",
+    "investor_state_dispute_settlement",
+    "bilateral_investment_treaties",
+    "cisg_formation",
+    "cisg_remedies",
+    "cisg_risk_of_loss",
+    "incoterms_2020",
+    "letters_of_credit_ucp600",
+    "ofac_sanctions",
+    "ear_export_controls",
+    "itar_defense_articles",
+    "extraterritorial_jurisdiction",
+    "geneva_conventions_ihl",
+    "hague_conventions_law_of_war",
+    "icc_rome_statute",
+    "war_crimes",
+    "crimes_against_humanity",
+    "genocide_convention",
+    "iccpr_civil_political_rights",
+    "icescr_economic_social_rights",
+    "echr_human_rights",
+    "law_of_the_sea_unclos",
+    "territorial_sea",
+    "exclusive_economic_zone",
+    "continental_shelf",
+    "high_seas_freedom",
+    "deep_seabed_mining",
+    "paris_agreement_climate",
+    "montreal_protocol_ozone",
+    "cbd_biodiversity",
+    "conflict_of_laws",
+    "choice_of_law",
+    "foreign_judgments_recognition",
+    "hague_service_convention",
+    "hague_evidence_convention",
+    "fcpa_anti_corruption",
+    "uk_bribery_act",
+    "oecd_anti_bribery",
+    "oecd_model_tax_convention",
+    "transfer_pricing",
+    "tax_treaty_interpretation",
+    "ny_convention_arbitral_awards",
+    "international_organizations_immunity"
+  ],
+  "sanctions_programs": {
+    "comprehensive": [
+      "iran",
+      "cuba",
+      "north_korea",
+      "syria",
+      "crimea_region"
+    ],
+    "targeted": [
+      "russia",
+      "belarus",
+      "myanmar",
+      "venezuela",
+      "yemen_houthis",
+      "ethiopia",
+      "mali",
+      "nicaragua",
+      "somalia",
+      "south_sudan",
+      "zimbabwe"
+    ],
+    "lists": [
+      "sdn_list",
+      "entity_list",
+      "military_end_user_list",
+      "unverified_list",
+      "denied_persons_list",
+      "debarred_list"
+    ]
+  },
+  "arbitration_rules": {
+    "uncitral_2021": {
+      "year": 2021,
+      "articles": 43,
+      "default_appointing": "pca"
+    },
+    "icsid_convention": {
+      "year": 1965,
+      "articles": 75,
+      "amended": 2022
+    },
+    "icsid_arbitration_rules_2022": {
+      "year": 2022,
+      "rules": 56
+    },
+    "icc_rules_2021": {
+      "year": 2021,
+      "articles": 38
+    },
+    "lcia_rules_2020": {
+      "year": 2020,
+      "articles": 32
+    },
+    "siac_rules_2016": {
+      "year": 2016,
+      "articles": 39
+    }
+  },
+  "chromadb": {
+    "collection_name": "lg15_international_law",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "persist_directory": "./chroma_db",
+    "distance_metric": "cosine",
+    "max_results": 20,
+    "relevance_threshold": 0.35
+  },
+  "telemetry": {
+    "enabled": true,
+    "metrics_retention_hours": 168,
+    "audit_log_path": "./audit_trail.jsonl",
+    "performance_log_path": "./performance.jsonl",
+    "max_audit_size_mb": 500,
+    "rotation_policy": "daily"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {name}:{function}:{line} | {message}",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "compression": "gz"
+  },
+  "api": {
+    "cors_origins": [
+      "*"
+    ],
+    "rate_limit_per_minute": 120,
+    "max_query_length": 10000,
+    "timeout_seconds": 60,
+    "enable_docs": true
+  },
+  "determinism": {
+    "hash_algorithm": "sha256",
+    "include_timestamp": false,
+    "include_version": true,
+    "salt": "LG15_INTERNATIONAL_LAW_v2"
+  }
+}

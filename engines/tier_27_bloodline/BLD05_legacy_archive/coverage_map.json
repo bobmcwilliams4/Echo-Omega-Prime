@@ -1,0 +1,108 @@
+{
+  "engine_id": "BLD05",
+  "engine_name": "Legacy Archive",
+  "version": "1.0.0",
+  "generated_at": "2026-02-12T00:00:00Z",
+  "total_doctrines": 18,
+  "triggered_doctrines": [],
+  "missed_doctrines": [],
+  "coverage_percentage": 0.0,
+  "epistemic_gaps": [],
+  "domain_coverage": {
+    "archival_integrity": {
+      "doctrines": ["archival_integrity_principle", "audit_trail_immutability"],
+      "coverage": "FULL",
+      "notes": "Hash chain verification and append-only audit trail fully covered"
+    },
+    "provenance": {
+      "doctrines": ["provenance_tracking_doctrine"],
+      "coverage": "FULL",
+      "notes": "Five-dimension provenance model implemented"
+    },
+    "time_capsules": {
+      "doctrines": ["digital_time_capsule_protocol"],
+      "coverage": "FULL",
+      "notes": "Sealed entries with embargo date enforcement"
+    },
+    "historical_reconstruction": {
+      "doctrines": ["historical_state_reconstruction", "system_evolution_tracking"],
+      "coverage": "FULL",
+      "notes": "Point-in-time queries and system evolution timeline"
+    },
+    "document_management": {
+      "doctrines": ["document_versioning_chain", "format_migration_strategy"],
+      "coverage": "FULL",
+      "notes": "Full version history with hash chains and format-agnostic storage"
+    },
+    "family_heritage": {
+      "doctrines": ["family_history_documentation"],
+      "coverage": "FULL",
+      "notes": "First-class family events with genealogical graph"
+    },
+    "classification": {
+      "doctrines": ["milestone_classification_taxonomy", "access_control_classification"],
+      "coverage": "FULL",
+      "notes": "Dual-axis classification and four-tier access control"
+    },
+    "reporting": {
+      "doctrines": ["legacy_report_generation"],
+      "coverage": "FULL",
+      "notes": "Structured narrative reports for any time range"
+    },
+    "knowledge_preservation": {
+      "doctrines": ["knowledge_preservation_mandate", "continuity_of_operations"],
+      "coverage": "FULL",
+      "notes": "Format-agnostic storage with multi-layer redundancy"
+    },
+    "decision_management": {
+      "doctrines": ["decision_recording_protocol"],
+      "coverage": "FULL",
+      "notes": "Full decision context with alternative documentation"
+    },
+    "search_and_discovery": {
+      "doctrines": ["full_text_search_architecture", "cross_reference_linking"],
+      "coverage": "FULL",
+      "notes": "Inverted index with TF-IDF scoring and knowledge graph traversal"
+    },
+    "temporal_modeling": {
+      "doctrines": ["importance_decay_model"],
+      "coverage": "FULL",
+      "notes": "Inverse decay with age bonus for high-importance events"
+    }
+  },
+  "issue_categories": [
+    "ARCHIVE_INGESTION",
+    "TIMELINE_QUERY",
+    "TIME_CAPSULE_MANAGEMENT",
+    "DOCUMENT_VERSIONING",
+    "PROVENANCE_TRACKING",
+    "HISTORICAL_RECONSTRUCTION",
+    "LEGACY_REPORTING",
+    "SEARCH_AND_DISCOVERY",
+    "FAMILY_HISTORY",
+    "DECISION_RECORDING",
+    "ACCESS_CONTROL",
+    "INTEGRITY_VERIFICATION"
+  ],
+  "interaction_edges": [
+    {"from": "ARCHIVE_INGESTION", "to": "PROVENANCE_TRACKING", "type": "requires"},
+    {"from": "ARCHIVE_INGESTION", "to": "INTEGRITY_VERIFICATION", "type": "triggers"},
+    {"from": "TIMELINE_QUERY", "to": "HISTORICAL_RECONSTRUCTION", "type": "enables"},
+    {"from": "TIME_CAPSULE_MANAGEMENT", "to": "ACCESS_CONTROL", "type": "requires"},
+    {"from": "DOCUMENT_VERSIONING", "to": "INTEGRITY_VERIFICATION", "type": "requires"},
+    {"from": "LEGACY_REPORTING", "to": "TIMELINE_QUERY", "type": "depends_on"},
+    {"from": "LEGACY_REPORTING", "to": "SEARCH_AND_DISCOVERY", "type": "uses"},
+    {"from": "SEARCH_AND_DISCOVERY", "to": "ARCHIVE_INGESTION", "type": "indexes"},
+    {"from": "FAMILY_HISTORY", "to": "TIMELINE_QUERY", "type": "integrates_with"},
+    {"from": "DECISION_RECORDING", "to": "PROVENANCE_TRACKING", "type": "requires"},
+    {"from": "DECISION_RECORDING", "to": "ARCHIVE_INGESTION", "type": "triggers"},
+    {"from": "HISTORICAL_RECONSTRUCTION", "to": "SEARCH_AND_DISCOVERY", "type": "uses"},
+    {"from": "ACCESS_CONTROL", "to": "INTEGRITY_VERIFICATION", "type": "enforced_by"}
+  ],
+  "query_tracking": {
+    "total_queries": 0,
+    "doctrine_hits": {},
+    "doctrine_misses": {},
+    "gap_detections": []
+  }
+}

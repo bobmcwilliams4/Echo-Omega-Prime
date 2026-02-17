@@ -1,0 +1,863 @@
+{
+  "engine_id": "LG11",
+  "domain": "immigration_law",
+  "version": "1.0.0",
+  "total_blocks": 55,
+  "doctrines": [
+    {
+      "topic_key": "family_based_immediate_relative",
+      "topic": "Immediate Relative Petitions (IR Category)",
+      "keywords": ["immediate relative", "IR-1", "IR-2", "IR-5", "CR-1", "spouse petition", "parent petition", "child petition", "USC spouse"],
+      "conclusion_template": "Immediate relatives of U.S. citizens (spouses, unmarried children under 21, and parents of citizens 21+) are exempt from numerical visa limitations under INA §201(b)(2)(A)(i). No visa bulletin wait. Petition via Form I-130 with proof of qualifying relationship and petitioner's citizenship.",
+      "reasoning_framework": "1. RELATIONSHIP VERIFICATION: Confirm qualifying relationship (spouse/child/parent) per INA §201(b)(2)(A)(i).\n2. PETITIONER ELIGIBILITY: USC status confirmed via birth certificate, naturalization cert, or passport.\n3. BONA FIDE RELATIONSHIP: Marriage must be bona fide, not entered to evade immigration laws per INA §204(c).\n4. AGE-OUT PROTECTION: CSPA applies to child aging out during processing per INA §203(h).\n5. PROCESSING PATH: AOS (I-485) if in US with lawful entry, or consular processing (DS-260) if abroad.",
+      "key_factors": ["Proof of USC petitioner status", "Bona fide relationship evidence", "No visa number wait required", "Marriage fraud bars per INA §204(c)", "Conditional residence if married <2 years"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §201(b)(2)(A)(i), 8 USC §1151(b)(2)(A)(i)", "relevance": "Defines immediate relative categories"},
+        {"authority": "INA", "reference": "INA §204(a)(1)(A)(i), 8 USC §1154", "relevance": "I-130 petition filing authority"},
+        {"authority": "CFR", "reference": "8 CFR §204.2(a)", "relevance": "Petition requirements for spouse"}
+      ],
+      "counter_arguments": ["Marriage fraud finding under INA §204(c) is a permanent bar", "Sham marriage evidence: short marriage, no cohabitation, immigration benefit timing", "Prior marriage fraud finding bars ALL future immediate relative petitions"],
+      "applicability_test": "Query involves USC petitioning for spouse, child under 21, or parent; or mentions IR visa category, I-130 petition for immediate family.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "LOW"
+    },
+    {
+      "topic_key": "family_preference_categories",
+      "topic": "Family Preference Categories (F1-F4)",
+      "keywords": ["family preference", "F1 visa", "F2A", "F2B", "F3", "F4", "preference category", "visa bulletin", "priority date", "family-based backlog"],
+      "conclusion_template": "Family preference categories are numerically limited under INA §203(a). F1: unmarried sons/daughters of USCs. F2A: spouses/children of LPRs. F2B: unmarried sons/daughters (21+) of LPRs. F3: married sons/daughters of USCs. F4: siblings of USCs (21+). Each has annual numerical limits and per-country caps, creating multi-year backlogs particularly for Mexico, Philippines, India, and China.",
+      "reasoning_framework": "1. CATEGORY DETERMINATION: Identify beneficiary relationship and petitioner status.\n2. PRIORITY DATE: Established on I-130 receipt date per INA §203(c).\n3. VISA AVAILABILITY: Check monthly Visa Bulletin for category and country of chargeability.\n4. AGING OUT: Apply CSPA calculation per INA §203(h) — subtract pending I-130 days from bio age.\n5. CONVERSION: Category may change if petitioner naturalizes (F2A→IR, F2B→F1, etc.).",
+      "key_factors": ["Annual numerical limits per category", "Per-country caps at 7% of total", "Priority date from I-130 filing", "CSPA age-out protection", "Category conversion on naturalization"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §203(a), 8 USC §1153(a)", "relevance": "Defines preference categories and allocations"},
+        {"authority": "INA", "reference": "INA §203(h), 8 USC §1153(h)", "relevance": "Child Status Protection Act"},
+        {"authority": "INA", "reference": "INA §202(a), 8 USC §1152(a)", "relevance": "Per-country numerical limits"}
+      ],
+      "counter_arguments": ["CSPA calculation is mechanical — subtract days I-130 was pending from age at visa availability", "Automatic conversion risk: petitioner naturalizing can move F2A to F1 (longer wait)", "Cross-chargeability may provide earlier priority date"],
+      "applicability_test": "Query involves family-based preference categories F1-F4, visa bulletin wait times, priority dates, or LPR petitioning for family.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "LOW"
+    },
+    {
+      "topic_key": "employment_based_eb1",
+      "topic": "EB-1 Priority Workers",
+      "keywords": ["EB-1", "EB1", "extraordinary ability", "outstanding professor", "outstanding researcher", "multinational manager", "multinational executive", "EB-1A", "EB-1B", "EB-1C", "priority worker"],
+      "conclusion_template": "EB-1 comprises three subcategories: EB-1A (extraordinary ability per INA §203(b)(1)(A)), EB-1B (outstanding professors/researchers per INA §203(b)(1)(B)), and EB-1C (multinational managers/executives per INA §203(b)(1)(C)). EB-1A is self-petitionable; EB-1B/C require employer sponsorship. All enjoy first preference priority with generally current visa dates except India/China.",
+      "reasoning_framework": "1. EB-1A EXTRAORDINARY ABILITY: Meet 3 of 10 criteria OR one-time major achievement (Nobel, Oscar). Criteria include awards, membership, published material, judging, original contributions, scholarly articles, exhibitions, leading roles, high salary, commercial success.\n2. EB-1B OUTSTANDING PROFESSOR/RESEARCHER: 3+ years experience, international recognition, permanent job offer (tenure-track or comparable).\n3. EB-1C MULTINATIONAL MANAGER/EXECUTIVE: 1 year in last 3 with related entity abroad in managerial/executive capacity; US employer must have been doing business 1+ year.\n4. EVIDENCE STANDARD: Totality of evidence if criteria met per Kazarian v. USCIS, 596 F.3d 1115 (9th Cir. 2010) — two-step analysis.",
+      "key_factors": ["Three distinct subcategories with different requirements", "EB-1A self-petition advantage", "Kazarian two-step evidentiary framework", "No labor certification (PERM) required for any EB-1", "Sustained national/international acclaim standard"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §203(b)(1), 8 USC §1153(b)(1)", "relevance": "Priority worker definition"},
+        {"authority": "CFR", "reference": "8 CFR §204.5(h)", "relevance": "EB-1A regulatory criteria"},
+        {"authority": "Case", "reference": "Kazarian v. USCIS, 596 F.3d 1115 (9th Cir. 2010)", "relevance": "Two-step extraordinary ability analysis"}
+      ],
+      "counter_arguments": ["Meeting minimum criteria does not guarantee approval — totality of evidence under Kazarian step two", "USCIS may argue achievements are not nationally/internationally recognized", "Comparable evidence under 8 CFR §204.5(h)(4) is difficult to establish"],
+      "applicability_test": "Query involves EB-1 category, extraordinary ability, outstanding professor/researcher, multinational manager/executive, or self-petition for employment-based first preference.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "employment_based_eb2_niw",
+      "topic": "EB-2 National Interest Waiver (NIW)",
+      "keywords": ["NIW", "national interest waiver", "EB-2", "advanced degree", "exceptional ability", "Matter of Dhanasar", "self-petition EB-2", "PERM waiver"],
+      "conclusion_template": "The National Interest Waiver under INA §203(b)(2)(B) allows EB-2 eligible aliens to self-petition without employer sponsorship or labor certification. Under Matter of Dhanasar, 26 I&N Dec. 884 (AAO 2016), petitioner must show: (1) proposed endeavor has substantial merit and national importance; (2) well positioned to advance the endeavor; (3) on balance, beneficial to waive job offer and labor certification requirement.",
+      "reasoning_framework": "1. EB-2 ELIGIBILITY: Advanced degree (Master's+) or exceptional ability (3 of 6 criteria).\n2. DHANASAR PRONG 1 — SUBSTANTIAL MERIT AND NATIONAL IMPORTANCE: Endeavor need not have national scope but must extend beyond petitioner's personal interest. STEM, healthcare, education, economic impact qualify.\n3. DHANASAR PRONG 2 — WELL POSITIONED: Education, skills, knowledge, record of success, progress toward advancing endeavor, interest from relevant parties.\n4. DHANASAR PRONG 3 — BALANCE: Even if qualified US workers exist, national benefit of waiving requirements outweighs. Consider: urgency, breadth of impact, national security, economic benefit.\n5. EVIDENCE: Business plans, patents, publications, contracts, letters from experts, government interest.",
+      "key_factors": ["Three-prong Dhanasar framework replaced NYSDOT", "Self-petition without employer or PERM", "National importance not limited to national scope", "Entrepreneurial endeavors now viable post-Dhanasar", "STEM fields receive particular weight"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §203(b)(2)(B), 8 USC §1153(b)(2)(B)", "relevance": "NIW statutory authority"},
+        {"authority": "BIA", "reference": "Matter of Dhanasar, 26 I&N Dec. 884 (AAO 2016)", "relevance": "Current three-prong NIW framework"},
+        {"authority": "BIA", "reference": "Matter of New York State DOT, 22 I&N Dec. 215 (Acting Assoc. Comm. 1998)", "relevance": "Prior NIW framework (superseded)"}
+      ],
+      "counter_arguments": ["USCIS may argue endeavor lacks national importance if purely local scope", "Record of success may be insufficient if no tangible results yet", "Business plans without execution evidence may fail prong 2"],
+      "applicability_test": "Query involves national interest waiver, EB-2 self-petition, waiving PERM/labor certification, Matter of Dhanasar, or advanced degree professional seeking green card without employer.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "labor_certification_perm",
+      "topic": "PERM Labor Certification",
+      "keywords": ["PERM", "labor certification", "ETA 9089", "prevailing wage", "recruitment", "labor market test", "DOL", "supervised recruitment"],
+      "conclusion_template": "PERM labor certification under INA §212(a)(5)(A) requires employer to demonstrate that no qualified, willing, and able U.S. workers are available for the position and that hiring the foreign worker will not adversely affect wages and working conditions. Process: prevailing wage determination → recruitment → ETA Form 9089 filing → DOL adjudication. Audit rate ~30%.",
+      "reasoning_framework": "1. PREVAILING WAGE: Request PWD from NPWC per 20 CFR §656.40. Wage must meet or exceed prevailing wage for SOC code in area of intended employment.\n2. RECRUITMENT: Mandatory steps per 20 CFR §656.17(e): 2 Sunday newspaper ads (or professional journal for §656.17(e)(1)(i)(B)), 30-day SWA job order, 3 additional recruitment steps from 10 options, 30-day posting at worksite.\n3. FILING: ETA 9089 filed electronically. Must accurately reflect actual job requirements per Kellogg's.\n4. AUDIT: 30% audit rate. Must produce complete recruitment documentation within 30 days.\n5. TIMING: PWD valid 1 year from determination. Must begin recruitment within validity period.",
+      "key_factors": ["Prevailing wage must be met at time of filing and at time of admission", "Recruitment must be bona fide — cannot be tailored to exclude US workers", "Job requirements must reflect actual minimum requirements per employer business necessity", "Audit documentation retention: 5 years from filing or recruitment, whichever later", "Priority date established on ETA 9089 receipt"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(5)(A), 8 USC §1182(a)(5)(A)", "relevance": "Labor certification requirement"},
+        {"authority": "CFR", "reference": "20 CFR §656", "relevance": "PERM regulations"},
+        {"authority": "CFR", "reference": "20 CFR §656.17(e)", "relevance": "Recruitment requirements"}
+      ],
+      "counter_arguments": ["Requirements exceeding SVP for SOC code require documented business necessity", "Any US worker who meets minimum requirements must be considered — cannot reject for being overqualified", "Foreign language requirement must be justified by business necessity per 20 CFR §656.17(h)"],
+      "applicability_test": "Query involves PERM, labor certification, prevailing wage, recruitment process, ETA 9089, or DOL approval for employment-based immigration.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "adjustment_of_status",
+      "topic": "Adjustment of Status (INA §245)",
+      "keywords": ["adjustment of status", "I-485", "AOS", "green card application", "section 245", "concurrent filing", "245i", "physical presence"],
+      "conclusion_template": "Adjustment of status under INA §245(a) allows eligible aliens physically present in the US to adjust to LPR status without departing for consular processing. Requirements: (1) inspected and admitted or paroled (I&A/P); (2) eligible for immigrant visa and visa immediately available; (3) admissible to the US. Key exceptions: INA §245(i) grandfathering for certain pre-4/30/2001 beneficiaries; INA §245(k) for EB applicants with <180 days unauthorized employment.",
+      "reasoning_framework": "1. ELIGIBILITY: Inspected and admitted/paroled per INA §245(a). EWI generally bars AOS.\n2. VISA AVAILABILITY: Immediate relatives always current; preference categories check visa bulletin.\n3. ADMISSIBILITY: Full INA §212(a) inadmissibility grounds apply. Waivers may be available.\n4. BARS TO AOS: Unauthorized employment (unless §245(k) EB exception), failure to maintain status (unless IR/SI), out of status >180 days (unless IR/SI).\n5. INA §245(i): Grandfathered beneficiaries of petitions/applications filed before 4/30/2001 can adjust despite EWI/bars with $1,000 penalty.\n6. CONCURRENT FILING: I-485 may be filed simultaneously with I-140 when visa number available.",
+      "key_factors": ["Inspected and admitted or paroled requirement", "Visa number must be immediately available at filing AND approval", "INA §245(i) grandfather clause for pre-4/30/2001 beneficiaries", "INA §245(k) 180-day unauthorized employment exception for EB", "Concurrent filing eligibility when visa current"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §245(a), 8 USC §1255(a)", "relevance": "Adjustment of status authority"},
+        {"authority": "INA", "reference": "INA §245(i), 8 USC §1255(i)", "relevance": "Grandfathered adjustment"},
+        {"authority": "CFR", "reference": "8 CFR §245.1", "relevance": "Eligibility for adjustment"}
+      ],
+      "counter_arguments": ["EWI without §245(i) eligibility is an absolute bar to adjustment", "Status violations may bar adjustment unless immediate relative or special immigrant", "Unauthorized employment >180 days bars adjustment unless §245(k) EB exception applies"],
+      "applicability_test": "Query involves adjustment of status, I-485, green card while in US, or eligibility to adjust without leaving the country.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "inadmissibility_grounds",
+      "topic": "Grounds of Inadmissibility (INA §212(a))",
+      "keywords": ["inadmissibility", "inadmissible", "section 212", "grounds of inadmissibility", "public charge", "criminal grounds", "fraud misrepresentation", "health grounds", "security grounds"],
+      "conclusion_template": "INA §212(a) enumerates grounds rendering an alien inadmissible to the US, organized into categories: health-related (§212(a)(1)), criminal (§212(a)(2)), security (§212(a)(3)), public charge (§212(a)(4)), labor certification (§212(a)(5)), illegal entrants (§212(a)(6)), documentation (§212(a)(7)), ineligible for citizenship (§212(a)(8)), previously removed (§212(a)(9)), and miscellaneous (§212(a)(10)). Inadmissibility applies at admission, AOS, and visa issuance.",
+      "reasoning_framework": "1. IDENTIFY APPLICABLE GROUNDS: Review each §212(a) category against alien's history.\n2. CRIMINAL GROUNDS (§212(a)(2)): CIMT, controlled substance, multiple convictions (aggregate 5+ years), trafficking, money laundering.\n3. FRAUD/MISREP (§212(a)(6)(C)): Material misrepresentation to procure visa/admission. Permanent bar unless waived.\n4. UNLAWFUL PRESENCE (§212(a)(9)(B)): 3-year bar (180d-1yr), 10-year bar (1yr+). Triggered on departure.\n5. PUBLIC CHARGE (§212(a)(4)): Totality test — age, health, family status, assets, resources, education, skills.\n6. WAIVER ANALYSIS: Many grounds waivable via I-601, I-601A, INA §212(h), §212(i), §212(d)(3).\n7. EXCEPTIONS: Certain T/U visa applicants, VAWA self-petitioners, refugees exempt from some grounds.",
+      "key_factors": ["Each ground has specific elements that must be met", "Criminal inadmissibility has categorical approach per circuit", "Fraud/misrep bar is permanent unless waived under INA §212(i)", "Unlawful presence bars triggered only upon departure", "Many grounds have corresponding waivers"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a), 8 USC §1182(a)", "relevance": "Complete inadmissibility grounds"},
+        {"authority": "INA", "reference": "INA §212(h), 8 USC §1182(h)", "relevance": "Criminal ground waivers"},
+        {"authority": "INA", "reference": "INA §212(i), 8 USC §1182(i)", "relevance": "Fraud/misrep waiver"}
+      ],
+      "counter_arguments": ["Categorical approach to CIMT varies by circuit — analyze under both realistic probability and minimum conduct", "Public charge rule has changed multiple administrations — verify current operative version", "Petty offense exception for single CIMT with max penalty ≤1 year and sentence ≤6 months"],
+      "applicability_test": "Query involves inadmissibility, bars to admission, criminal grounds for denial, public charge, fraud/misrepresentation, or waiver of inadmissibility.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "removal_grounds_deportability",
+      "topic": "Grounds of Deportability (INA §237(a))",
+      "keywords": ["deportability", "deportable", "removal grounds", "section 237", "removable alien", "post-admission grounds", "deportation grounds"],
+      "conclusion_template": "INA §237(a) establishes grounds for removal of aliens who have been admitted. Key categories: inadmissible at entry (§237(a)(1)), criminal grounds (§237(a)(2)), failure to register/document fraud (§237(a)(3)), security (§237(a)(4)), public charge within 5 years (§237(a)(5)). Criminal deportability grounds include aggravated felonies, CIMTs within 5/10 years, controlled substances, firearms, domestic violence, and more.",
+      "reasoning_framework": "1. STATUS: Confirm alien was admitted — deportability applies post-admission, inadmissibility applies at admission.\n2. CRIMINAL DEPORTABILITY (§237(a)(2)): Aggravated felony (INA §101(a)(43)), CIMT within 5 years of admission (or 10 years if 2+), controlled substance except single offense of 30g marijuana, firearms, domestic violence/stalking/child abuse/violation of protection order.\n3. AGGRAVATED FELONY (§101(a)(43)): 21 categories including murder, drug trafficking, fraud/theft with 1yr+ sentence, crime of violence with 1yr+ sentence. Retroactive.\n4. RELIEF AVAILABILITY: Aggravated felony severely limits relief — no cancellation, no VD, limited asylum.\n5. DEFENSES: Challenge conviction validity (Padilla), categorical approach, argue offense doesn't match.",
+      "key_factors": ["Deportability vs inadmissibility distinction critical for relief eligibility", "Aggravated felony is immigration-specific definition broader than criminal law", "Categorical approach determines whether conviction matches ground", "Admission date is key reference point for CIMT timing", "Some grounds have corresponding waivers/relief"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §237(a), 8 USC §1227(a)", "relevance": "Deportability grounds"},
+        {"authority": "INA", "reference": "INA §101(a)(43), 8 USC §1101(a)(43)", "relevance": "Aggravated felony definition"},
+        {"authority": "Case", "reference": "Padilla v. Kentucky, 559 U.S. 356 (2010)", "relevance": "Ineffective assistance — duty to advise of immigration consequences"}
+      ],
+      "counter_arguments": ["Categorical approach may exclude conviction from matching immigration ground", "Modified categorical approach with Shepard-approved documents may narrow offense", "Post-conviction relief may eliminate conviction for immigration purposes in some circuits"],
+      "applicability_test": "Query involves deportability, removal grounds for admitted aliens, criminal convictions and immigration consequences, or aggravated felony analysis.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "asylum_persecution",
+      "topic": "Asylum — Well-Founded Fear of Persecution",
+      "keywords": ["asylum", "persecution", "well-founded fear", "refugee", "political opinion", "particular social group", "race", "religion", "nationality", "I-589"],
+      "conclusion_template": "Asylum under INA §208 requires applicant to establish refugee status per INA §101(a)(42): unable/unwilling to return to country of nationality due to persecution or well-founded fear of persecution on account of race, religion, nationality, membership in a particular social group (PSG), or political opinion. Must file within 1 year of last arrival unless extraordinary circumstances or changed conditions exception.",
+      "reasoning_framework": "1. TIMELINESS: Filed within 1 year of last arrival per INA §208(a)(2)(B). Exceptions: extraordinary circumstances, changed conditions.\n2. NEXUS: Persecution must be ON ACCOUNT OF protected ground. Mixed motive ok if protected ground is at least one central reason per REAL ID Act.\n3. PERSECUTION STANDARD: Harm rising above mere harassment — threat to life/freedom, serious physical harm, severe economic deprivation, cumulative incidents.\n4. PARTICULAR SOCIAL GROUP: Must be (1) immutable/fundamental characteristic, (2) socially distinct, (3) particular. Per Matter of M-E-V-G- and Matter of W-G-R-.\n5. GOVERNMENT ACTION/INABILITY: Persecution by government OR by actors government unable/unwilling to control.\n6. FIRM RESETTLEMENT BAR: If firmly resettled in third country before US arrival.\n7. BARS: Persecutor bar, particularly serious crime, serious nonpolitical crime, danger to security.",
+      "key_factors": ["1-year filing deadline with narrow exceptions", "Nexus to protected ground — at least one central reason", "PSG must meet immutability + social distinction + particularity", "Past persecution creates rebuttable presumption of future fear", "Credibility assessment under REAL ID Act INA §208(b)(1)(B)(iii)"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §208, 8 USC §1158", "relevance": "Asylum authority"},
+        {"authority": "INA", "reference": "INA §101(a)(42), 8 USC §1101(a)(42)", "relevance": "Refugee definition"},
+        {"authority": "BIA", "reference": "Matter of M-E-V-G-, 26 I&N Dec. 227 (BIA 2014)", "relevance": "PSG social distinction requirement"},
+        {"authority": "Case", "reference": "INS v. Cardoza-Fonseca, 480 U.S. 421 (1987)", "relevance": "Well-founded fear standard — 10% probability sufficient"}
+      ],
+      "counter_arguments": ["Changed country conditions may rebut presumption from past persecution", "Failure to report to authorities may undermine claim if government protection available", "Inconsistencies in testimony subject to REAL ID Act credibility assessment"],
+      "applicability_test": "Query involves asylum claim, fear of persecution, refugee status, particular social group, or INA §208 analysis.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "withholding_of_removal",
+      "topic": "Withholding of Removal (INA §241(b)(3))",
+      "keywords": ["withholding of removal", "section 241", "clear probability", "mandatory grant", "withholding", "non-refoulement"],
+      "conclusion_template": "Withholding of removal under INA §241(b)(3) is a mandatory form of relief if applicant establishes clear probability (more likely than not) that life or freedom would be threatened in proposed country on account of a protected ground. Higher standard than asylum but no discretionary denial. Does not lead to LPR status — only protects against removal to specific country.",
+      "reasoning_framework": "1. STANDARD: Clear probability — more likely than not (>50%) that life/freedom would be threatened. Per INS v. Stevic.\n2. NEXUS: Same five protected grounds as asylum — race, religion, nationality, PSG, political opinion.\n3. MANDATORY: No discretionary denial once standard met. Judge must grant.\n4. LIMITATIONS: Country-specific only — alien can be removed to third country. No path to LPR status. No derivative benefits for family.\n5. BARS: Persecutor bar, conviction of particularly serious crime (aggravated felony = presumptively PSC), serious nonpolitical crime, danger to security.\n6. NO TIME BAR: Unlike asylum, no 1-year filing deadline.",
+      "key_factors": ["Higher standard than asylum — more likely than not", "Mandatory if standard met — no discretion", "Country-specific protection only", "No 1-year filing deadline", "Aggravated felony is presumptively particularly serious crime"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §241(b)(3), 8 USC §1231(b)(3)", "relevance": "Withholding authority"},
+        {"authority": "Case", "reference": "INS v. Stevic, 467 U.S. 407 (1984)", "relevance": "Clear probability standard"},
+        {"authority": "Case", "reference": "INS v. Cardoza-Fonseca, 480 U.S. 421 (1987)", "relevance": "Distinction between asylum and withholding standards"}
+      ],
+      "counter_arguments": ["Particularly serious crime bar applies — aggravated felony creates rebuttable presumption", "Cannot be removed to feared country but CAN be removed to any other willing country", "No derivative benefits — family members must independently qualify"],
+      "applicability_test": "Query involves withholding of removal, INA §241(b)(3), clear probability standard, or mandatory relief from removal.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "cat_protection",
+      "topic": "Convention Against Torture (CAT) Protection",
+      "keywords": ["CAT", "convention against torture", "torture", "8 CFR 1208", "government acquiescence", "deferral of removal", "CAT withholding"],
+      "conclusion_template": "CAT protection under 8 CFR §1208.16(c)/§1208.17 prohibits return to country where more likely than not applicant would be tortured by or with acquiescence of government official. Two forms: withholding under CAT (no bars) and deferral of removal (available even to persecutors/terrorists). No nexus to protected ground required — purely based on torture risk.",
+      "reasoning_framework": "1. TORTURE DEFINITION: Severe pain/suffering intentionally inflicted for specific purposes (information, punishment, intimidation, coercion, discrimination).\n2. GOVERNMENT INVOLVEMENT: Must be by or at instigation of or with consent/acquiescence of public official.\n3. ACQUIESCENCE: Official awareness of activity + breach of legal responsibility to intervene. Per Matter of W-G-R-, Zheng v. Ashcroft.\n4. STANDARD: More likely than not — same as withholding.\n5. NO NEXUS: Unlike asylum/withholding, no requirement of nexus to protected ground.\n6. DEFERRAL: Available even when all other relief barred. Terminable if conditions change.",
+      "key_factors": ["No protected ground nexus required", "Government acquiescence standard — awareness plus failure to intervene", "Deferral available even to those barred from all other relief", "Country-specific protection only", "Can be terminated if conditions change"],
+      "primary_authority": [
+        {"authority": "CFR", "reference": "8 CFR §1208.16(c)", "relevance": "CAT withholding of removal"},
+        {"authority": "CFR", "reference": "8 CFR §1208.17", "relevance": "CAT deferral of removal"},
+        {"authority": "Case", "reference": "Zheng v. Ashcroft, 332 F.3d 1186 (9th Cir. 2003)", "relevance": "Acquiescence standard"}
+      ],
+      "counter_arguments": ["Must show specific and individualized risk — generalized country violence insufficient", "Government acquiescence requires more than inability to control — must show awareness", "Changed country conditions can terminate deferral of removal"],
+      "applicability_test": "Query involves Convention Against Torture, CAT claim, torture risk, government acquiescence, or deferral of removal.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "cancellation_removal_lpr",
+      "topic": "Cancellation of Removal for LPRs (INA §240A(a))",
+      "keywords": ["cancellation of removal", "LPR cancellation", "section 240A", "7 years", "5 years LPR", "stop-time rule"],
+      "conclusion_template": "Cancellation of removal for LPRs under INA §240A(a) requires: (1) LPR status for 5+ years; (2) continuous residence in US for 7+ years after admission in any status; (3) no conviction of aggravated felony. Discretionary relief — immigration judge weighs equities. Stop-time rule: clock stops on service of NTA or commission of qualifying criminal offense.",
+      "reasoning_framework": "1. STATUTORY ELIGIBILITY:\n   a. 5 years LPR status per INA §240A(a)(1)\n   b. 7 years continuous residence after admission per INA §240A(a)(2)\n   c. No aggravated felony per INA §240A(a)(3)\n2. STOP-TIME RULE (§240A(d)): Continuous residence stops on NTA service OR commission of offense rendering alien inadmissible/deportable.\n3. DISCRETION: Even if eligible, IJ weighs positive factors (family ties, length of residence, community service, hardship to family) against negative (criminal history, immigration violations, failure to rehabilitate).\n4. AGGRAVATED FELONY BAR: Absolute — single aggravated felony bars relief regardless of equities.\n5. APPEAL: BIA reviews de novo legal eligibility, abuse of discretion for discretionary denial.",
+      "key_factors": ["5 years LPR + 7 years continuous residence", "Aggravated felony is absolute bar", "Stop-time rule triggered by NTA service", "Discretionary balancing of equities", "Particularly favorable discretionary factors can overcome negative factors"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240A(a), 8 USC §1229b(a)", "relevance": "LPR cancellation authority"},
+        {"authority": "INA", "reference": "INA §240A(d), 8 USC §1229b(d)", "relevance": "Stop-time rule"},
+        {"authority": "Case", "reference": "Perez v. Mukasey, 516 F.3d 770 (9th Cir. 2008)", "relevance": "Stop-time rule application"}
+      ],
+      "counter_arguments": ["NTA service date, not filing date, triggers stop-time", "Multiple non-aggravated felony convictions may support discretionary denial", "Alien bears burden of establishing statutory eligibility and meriting discretion"],
+      "applicability_test": "Query involves cancellation of removal for LPRs, 42A relief, 7-year residency requirement, or stop-time rule for permanent residents.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "cancellation_removal_nonlpr",
+      "topic": "Cancellation of Removal for Non-LPRs (INA §240A(b))",
+      "keywords": ["non-LPR cancellation", "10 year cancellation", "exceptional hardship", "section 240A(b)", "NACARA", "4000 cap"],
+      "conclusion_template": "Cancellation of removal for non-LPRs under INA §240A(b)(1) requires: (1) 10 years continuous physical presence; (2) good moral character during 10-year period; (3) no disqualifying criminal convictions; (4) removal would result in exceptional and extremely unusual hardship to USC or LPR spouse, parent, or child. Annual cap of 4,000 grants. Stop-time rule applies.",
+      "reasoning_framework": "1. STATUTORY ELIGIBILITY:\n   a. 10 years continuous physical presence per §240A(b)(1)(A)\n   b. Good moral character during 10-year period per §240A(b)(1)(B)\n   c. Not convicted of offenses under §212(a)(2), §237(a)(2), §237(a)(3) per §240A(b)(1)(C)\n   d. Exceptional and extremely unusual hardship to qualifying relative per §240A(b)(1)(D)\n2. HARDSHIP STANDARD: Must be substantially beyond what would normally be expected from deportation. Per Matter of Recinas.\n3. QUALIFYING RELATIVE: Must be USC or LPR spouse, parent, or child. Hardship to applicant alone insufficient.\n4. ANNUAL CAP: Only 4,000 grants per fiscal year. If cap reached, remaining cases suspended.\n5. STOP-TIME RULE: Physical presence stops on NTA service or commission of disqualifying offense.",
+      "key_factors": ["10 years continuous physical presence", "Hardship to qualifying USC/LPR relative — not to applicant", "Exceptional and extremely unusual standard is very high", "Annual 4,000 cap on grants", "Good moral character required for full 10-year period"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240A(b)(1), 8 USC §1229b(b)(1)", "relevance": "Non-LPR cancellation authority"},
+        {"authority": "BIA", "reference": "Matter of Recinas, 23 I&N Dec. 467 (BIA 2002)", "relevance": "Hardship standard"},
+        {"authority": "INA", "reference": "INA §240A(e), 8 USC §1229b(e)", "relevance": "Annual cap on grants"}
+      ],
+      "counter_arguments": ["Economic hardship alone generally insufficient — must show exceptional circumstances", "Hardship to applicant is irrelevant unless also affects qualifying relative", "Country conditions are relevant only as they affect qualifying relative specifically"],
+      "applicability_test": "Query involves non-LPR cancellation of removal, 10-year cancellation, exceptional and extremely unusual hardship, or INA §240A(b) eligibility.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "naturalization_eligibility",
+      "topic": "Naturalization Eligibility (INA §316)",
+      "keywords": ["naturalization", "citizenship", "N-400", "5 years LPR", "3 years married USC", "good moral character", "civics test", "English requirement", "oath"],
+      "conclusion_template": "Naturalization under INA §316 requires: (1) 5 years LPR status (3 years if married to USC per §319); (2) continuous residence in US during statutory period; (3) physical presence at least half the statutory period; (4) 3 months residence in filing district; (5) good moral character during statutory period and until oath; (6) English language ability; (7) civics knowledge; (8) attachment to Constitution. Filing permitted 90 days before eligibility date.",
+      "reasoning_framework": "1. LPR DURATION: 5 years general (§316) or 3 years married-to-USC (§319) or 1 year military (§328-329).\n2. CONTINUOUS RESIDENCE: Absence >6 months but <1 year creates rebuttable presumption of break. Absence >1 year breaks continuity unless N-470 approved.\n3. PHYSICAL PRESENCE: At least 30 months of 5-year period (18 months of 3-year period).\n4. GOOD MORAL CHARACTER: Statutory bars in INA §101(f) — fraud, gambling, habitual drunkard, 2+ convictions (180d+ aggregate), aggravated felony (permanent bar), false claim to USC. Discretionary assessment beyond statutory bars.\n5. ENGLISH: Speaking, reading, writing (exceptions: 50/20 rule, 55/15 rule, disability waiver N-648).\n6. CIVICS: 100 questions pool, pass 6/10 (exceptions: 50/20, 55/15, disability waiver).\n7. OATH: Willingness to bear arms, perform noncombatant service, or civilian work (religious exemptions).",
+      "key_factors": ["5-year or 3-year LPR period", "Continuous residence — >6 month absence rebuttable presumption", "Physical presence — 50% of statutory period", "Good moral character — statutory bars in INA §101(f)", "Aggravated felony conviction is permanent bar to GMC"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §316, 8 USC §1427", "relevance": "General naturalization requirements"},
+        {"authority": "INA", "reference": "INA §319, 8 USC §1430", "relevance": "Spouses of USCs — 3-year rule"},
+        {"authority": "INA", "reference": "INA §101(f), 8 USC §1101(f)", "relevance": "Good moral character bars"},
+        {"authority": "CFR", "reference": "8 CFR §316.5", "relevance": "Continuous residence requirements"}
+      ],
+      "counter_arguments": ["Pending removal proceedings may bar naturalization application", "Conditional residents must remove conditions before naturalizing", "False claim to USC is permanent bar to GMC under INA §101(f)(6)"],
+      "applicability_test": "Query involves naturalization, citizenship application, N-400, good moral character for citizenship, or eligibility requirements for US citizenship.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "unlawful_presence_bars",
+      "topic": "Unlawful Presence Bars (INA §212(a)(9)(B))",
+      "keywords": ["unlawful presence", "3 year bar", "10 year bar", "3/10 bar", "overstay", "out of status", "section 212(a)(9)(B)", "accrual"],
+      "conclusion_template": "INA §212(a)(9)(B) imposes bars on aliens who accrue unlawful presence and depart: 3-year bar for 180 days to 1 year of unlawful presence, 10-year bar for 1 year or more. Bars triggered only upon departure. Unlawful presence accrues from age 18+ while not in authorized period of stay or admitted. Key exceptions: minors under 18, pending bona fide asylum application, VAWA beneficiaries. Waiver available via I-601A (provisional) or I-601.",
+      "reasoning_framework": "1. ACCRUAL: Begins when alien is not in authorized period of stay (expires, overstay) or present without admission. Only accrues after age 18.\n2. TRIGGER: Bar triggered only upon DEPARTURE from US. Staying in US does not trigger bar.\n3. 3-YEAR BAR: 180 days to <1 year unlawful presence, departs, barred from admission for 3 years.\n4. 10-YEAR BAR: 1 year+ unlawful presence, departs, barred for 10 years.\n5. PERMANENT BAR: 1 year+ unlawful presence, departs, reenters/attempts unlawful reentry = permanent bar (waivable only after 10 years abroad via I-212).\n6. EXCEPTIONS: Under 18, bona fide pending asylum, VAWA, TPS, valid EAD holder.\n7. WAIVER: I-601A provisional waiver (before departure for consular processing), I-601 (at consulate), requires extreme hardship to USC or LPR spouse or parent.",
+      "key_factors": ["Bars triggered on departure — not while present in US", "Only accrues after age 18", "I-601A provisional waiver allows waiver before departure", "Extreme hardship to USC/LPR spouse or parent required for waiver", "Permanent bar for reentry after 1 year unlawful presence"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(9)(B), 8 USC §1182(a)(9)(B)", "relevance": "Unlawful presence bars"},
+        {"authority": "INA", "reference": "INA §212(a)(9)(C), 8 USC §1182(a)(9)(C)", "relevance": "Permanent bar for reentry"},
+        {"authority": "CFR", "reference": "8 CFR §212.7(e)", "relevance": "I-601A provisional waiver"}
+      ],
+      "counter_arguments": ["Tolling provisions stop accrual during certain pending applications", "USCIS error in processing may stop accrual if alien filed timely", "D/S notation complications — unlawful presence may not accrue until USCIS/IJ finding"],
+      "applicability_test": "Query involves unlawful presence, 3-year bar, 10-year bar, overstay consequences, I-601A waiver, or departure triggering bars.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "cimt_analysis",
+      "topic": "Crimes Involving Moral Turpitude (CIMT) Analysis",
+      "keywords": ["CIMT", "moral turpitude", "crime involving moral turpitude", "categorical approach", "petty offense exception", "youthful offender exception"],
+      "conclusion_template": "A crime involving moral turpitude is one inherently base, vile, or depraved, contrary to accepted moral standards. Analysis uses categorical approach: examine minimum conduct criminalized by statute, not actual conduct. For inadmissibility (§212(a)(2)(A)(i)(I)): single CIMT bars admission (exceptions: petty offense, youthful offender). For deportability (§237(a)(2)(A)(i)): CIMT within 5 years of admission with sentence potential of 1+ year. Two or more CIMTs at any time = deportable (§237(a)(2)(A)(ii)).",
+      "reasoning_framework": "1. CATEGORICAL APPROACH: Look at statutory elements, not actual conduct. Per Taylor v. United States, Descamps v. United States.\n2. MODIFIED CATEGORICAL: If statute is divisible (multiple alternative elements), examine limited Shepard-approved documents.\n3. CIMT CHARACTERISTICS: Fraud, theft with intent to permanently deprive, bodily harm with mens rea beyond negligence, sexual offenses, offenses against family relations.\n4. PETTY OFFENSE EXCEPTION (§212(a)(2)(A)(ii)(II)): Single CIMT + max penalty ≤1 year + actual sentence ≤6 months. Not applicable to deportability.\n5. YOUTHFUL OFFENDER EXCEPTION (§212(a)(2)(A)(ii)(I)): Committed under 18 + released from confinement 5+ years before visa/admission application. Inadmissibility only.\n6. CIRCUIT SPLITS: Some circuits (9th) use realistic probability; others use minimum conduct. Critical to identify controlling circuit.",
+      "key_factors": ["Categorical approach examines elements of statute not conduct", "CIMT requires vile/depraved act — fraud and intent to harm are hallmarks", "Petty offense exception: max 1 year + sentence 6 months or less", "Deportability CIMT: within 5 years of admission + 1 year+ sentence potential", "Two CIMTs at any time = deportable regardless of timing"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(2)(A)(i)(I), 8 USC §1182(a)(2)(A)(i)(I)", "relevance": "CIMT inadmissibility"},
+        {"authority": "INA", "reference": "INA §237(a)(2)(A)(i-ii), 8 USC §1227(a)(2)(A)", "relevance": "CIMT deportability"},
+        {"authority": "Case", "reference": "Silva-Trevino v. Sessions (AG 2015, overruled in part)", "relevance": "CIMT analysis framework"},
+        {"authority": "Case", "reference": "Descamps v. United States, 570 U.S. 254 (2013)", "relevance": "Categorical approach to criminal statutes"}
+      ],
+      "counter_arguments": ["Circuit split on realistic probability vs minimum conduct — must analyze under controlling circuit", "Post-conviction relief may eliminate conviction for immigration purposes (varies by circuit and type)", "Expungement effect varies — federal immigration law may not recognize state expungement"],
+      "applicability_test": "Query involves crime involving moral turpitude, CIMT analysis, categorical approach to convictions, petty offense exception, or criminal inadmissibility/deportability.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "aggravated_felony",
+      "topic": "Aggravated Felony (INA §101(a)(43))",
+      "keywords": ["aggravated felony", "section 101(a)(43)", "AF bar", "theft offense", "crime of violence", "drug trafficking", "fraud offense", "1 year sentence"],
+      "conclusion_template": "INA §101(a)(43) defines 'aggravated felony' across 21 categories (A through U). Despite the name, the offense need not be aggravated nor a felony under state law. Key categories: murder (A), drug trafficking (B), firearms trafficking (C), money laundering (D), explosive/firearms offenses (E), crime of violence with 1yr+ sentence (F), theft/burglary with 1yr+ sentence (G), fraud/deceit with loss >$10,000 (M), tax evasion with loss >$10,000 (O). Consequences: mandatory removal, barred from nearly all relief, permanent bar to good moral character.",
+      "reasoning_framework": "1. CATEGORICAL APPROACH: Apply Taylor/Descamps/Mathis framework to determine if conviction matches.\n2. SENTENCE THRESHOLD: Many categories require 'term of imprisonment of at least 1 year.' Suspended sentences count. Per Matter of Song.\n3. LOSS AMOUNT: Categories M, O require loss exceeding $10,000. Restitution orders may establish amount.\n4. CONSEQUENCES: Barred from cancellation of removal, voluntary departure, asylum (generally), naturalization (permanent bar to GMC). Expedited removal. No bond in most circuits.\n5. RETROACTIVITY: Applies to convictions entered before IIRIRA (1996). Per INS v. St. Cyr.\n6. ATTEMPT/CONSPIRACY: Attempt or conspiracy to commit aggravated felony is itself an aggravated felony per §101(a)(43)(U).",
+      "key_factors": ["21 categories — not limited to traditional felonies", "Categorical approach determines match", "1-year sentence threshold includes suspended portions", "Permanent bar to good moral character for naturalization", "Retroactive application to pre-1996 convictions"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(43), 8 USC §1101(a)(43)", "relevance": "Aggravated felony definition"},
+        {"authority": "Case", "reference": "Moncrieffe v. Holder, 569 U.S. 184 (2013)", "relevance": "Categorical approach to drug trafficking"},
+        {"authority": "Case", "reference": "Mathis v. United States, 579 U.S. 500 (2016)", "relevance": "Elements vs means distinction"}
+      ],
+      "counter_arguments": ["Social sharing of marijuana may not be drug trafficking per Moncrieffe", "Simple possession is generally not an aggravated felony (Lopez v. Gonzales)", "Vacatur of conviction may eliminate aggravated felony if based on legal defect not rehabilitation"],
+      "applicability_test": "Query involves aggravated felony determination, INA §101(a)(43) categories, consequences of aggravated felony conviction, or categorical analysis of criminal conviction.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "h1b_specialty_occupation",
+      "topic": "H-1B Specialty Occupation",
+      "keywords": ["H-1B", "specialty occupation", "bachelor degree", "H1B cap", "H1B lottery", "LCA", "labor condition application", "H-1B transfer"],
+      "conclusion_template": "H-1B classification under INA §101(a)(15)(H)(i)(b) requires: (1) specialty occupation — requires theoretical and practical application of highly specialized body of knowledge + minimum bachelor's degree in specific specialty; (2) beneficiary qualified — holds required degree or equivalent; (3) employer files LCA with DOL certifying wages and working conditions. Annual cap: 65,000 + 20,000 advanced degree exemption. Cap-exempt employers: universities, nonprofit research orgs, governmental research orgs.",
+      "reasoning_framework": "1. SPECIALTY OCCUPATION (8 CFR §214.2(h)(4)(ii)): Position must meet 1 of 4 criteria — (a) bachelor's normally required, (b) degree common in industry/position so complex only degreed individuals can perform, (c) employer normally requires degree, (d) duties so specialized/complex that knowledge required is associated with bachelor's+.\n2. BENEFICIARY QUALIFICATIONS: US bachelor's+ in specific specialty, foreign equivalent, or progressive experience per 3-for-1 rule (3 years exp = 1 year education).\n3. LCA: Form ETA 9035, filed with DOL. Attestations: prevailing wage, working conditions, no strike/lockout, notice to workers.\n4. CAP/LOTTERY: Registration in March, selection by lottery, file October 1. H-1B1, E-3 separate from cap.\n5. PORTABILITY (AC21 §105): Can begin work with new employer upon filing H-1B transfer petition.\n6. 6-YEAR LIMIT: Max 6 years with exceptions — 365 days pending PERM or I-140, or recaptured time abroad.",
+      "key_factors": ["Specialty occupation requires specific bachelor's degree", "Annual cap with lottery system", "LCA must be filed and certified before I-129", "Portability allows work upon filing transfer", "6-year maximum with AC21 extensions beyond"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(15)(H)(i)(b), 8 USC §1101(a)(15)(H)(i)(b)", "relevance": "H-1B classification"},
+        {"authority": "CFR", "reference": "8 CFR §214.2(h)(4)(ii)", "relevance": "Specialty occupation criteria"},
+        {"authority": "INA", "reference": "INA §212(n), 8 USC §1182(n)", "relevance": "LCA requirements"}
+      ],
+      "counter_arguments": ["USCIS increasingly challenging whether position requires specific degree vs general degree", "Third-party placement arrangements face heightened scrutiny per Defensor v. Meissner", "Combination of education and experience must be evaluated credential by credential"],
+      "applicability_test": "Query involves H-1B visa, specialty occupation, H-1B cap/lottery, LCA, employer sponsorship for H-1B, or H-1B transfer/extension.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "l1_intracompany_transfer",
+      "topic": "L-1 Intracompany Transferee",
+      "keywords": ["L-1", "L-1A", "L-1B", "intracompany transfer", "multinational", "specialized knowledge", "managerial capacity", "executive capacity", "blanket L"],
+      "conclusion_template": "L-1 classification under INA §101(a)(15)(L) allows multinational companies to transfer managers/executives (L-1A) or specialized knowledge workers (L-1B) to US office. Requirements: (1) qualifying relationship between US and foreign entity; (2) beneficiary employed abroad 1 year in last 3 years in managerial/executive/specialized knowledge capacity; (3) coming to US to work in such capacity. L-1A max 7 years; L-1B max 5 years. No annual cap.",
+      "reasoning_framework": "1. QUALIFYING RELATIONSHIP: Parent, subsidiary, affiliate, or branch per 8 CFR §214.2(l)(1)(ii). Common ownership or control.\n2. EMPLOYMENT ABROAD: 1 continuous year in last 3 years. Must have been in M/E/SK capacity.\n3. L-1A MANAGERIAL/EXECUTIVE: Manages organization/department/function; supervises professional staff; authority to hire/fire; exercises discretion. Executive: directs management, establishes goals/policies, broad authority, minimal day-to-day direction.\n4. L-1B SPECIALIZED KNOWLEDGE: Knowledge of company products/services/procedures that is special or advanced. Not merely skilled — must be distinguishable.\n5. NEW OFFICE: L-1 for new office limited to 1 year initially. Must show physical premises, sufficient financial ability, realistic 1-year staffing plan.\n6. BLANKET L: Available to qualifying organizations filing I-129S instead of individual I-129.",
+      "key_factors": ["Qualifying organizational relationship required", "1 year employment abroad in qualifying capacity in last 3 years", "L-1A: 7 years max; L-1B: 5 years max", "No cap — no lottery system", "New office petitions limited to 1-year initial validity"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(15)(L), 8 USC §1101(a)(15)(L)", "relevance": "L-1 classification"},
+        {"authority": "CFR", "reference": "8 CFR §214.2(l)", "relevance": "L-1 regulatory requirements"},
+        {"authority": "Case", "reference": "Matter of Church Scientology Int'l, 19 I&N Dec. 593 (BIA 1988)", "relevance": "Qualifying relationship analysis"}
+      ],
+      "counter_arguments": ["First-line supervisors of non-professional staff may not qualify as managers", "Specialized knowledge has been narrowed — USCIS scrutinizes whether knowledge is truly special vs merely skilled", "New office petitions face heavy burden to show viable business plan"],
+      "applicability_test": "Query involves L-1 visa, intracompany transfer, multinational company transfer, specialized knowledge, or managerial/executive transfer.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "i601_waiver",
+      "topic": "INA §212(h) Criminal Ground Waiver and I-601 Waiver",
+      "keywords": ["I-601 waiver", "212(h) waiver", "criminal waiver", "extreme hardship", "waiver of inadmissibility", "criminal ground waiver"],
+      "conclusion_template": "INA §212(h) provides waiver of certain criminal inadmissibility grounds. For family-based: must show extreme hardship to USC or LPR spouse, parent, son, or daughter. For CIMT: also available if 15+ years since offense/release, rehabilitated, not contrary to national welfare/safety/security. Not available for murder or criminal acts involving torture (no waiver). Not available for aliens previously admitted as LPRs if convicted of aggravated felony since admission (unless qualifying departure).",
+      "reasoning_framework": "1. ELIGIBLE GROUNDS: §212(a)(2)(A)(i)(I) (CIMT), §212(a)(2)(B) (multiple criminal convictions), §212(a)(2)(D) (prostitution), §212(a)(2)(E) (certain immigration violations with moral turpitude element).\n2. EXTREME HARDSHIP (FAMILY-BASED): Must show hardship to qualifying relative that goes beyond normal consequences of deportation/exclusion. Per Matter of Cervantes-Gonzalez — consider health, financial, education, personal, country conditions.\n3. 15-YEAR RULE: For CIMTs — 15+ years since commission or release from confinement, rehabilitation, admission not contrary to national welfare/safety/security.\n4. BARS: No waiver for murder, torture. LPR with post-admission aggravated felony barred unless hasn't lawfully resided continuously in US for 7+ years before proceedings.\n5. DISCRETION: Even if statutory requirements met, USCIS/IJ retains discretion.",
+      "key_factors": ["Extreme hardship to USC/LPR qualifying relative", "Not available for murder or torture", "LPR aggravated felony bar with narrow exception", "15-year rehabilitation pathway for CIMTs", "Discretionary — positive equities must outweigh negative"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(h), 8 USC §1182(h)", "relevance": "Criminal ground waiver"},
+        {"authority": "BIA", "reference": "Matter of Cervantes-Gonzalez, 22 I&N Dec. 560 (BIA 1999)", "relevance": "Extreme hardship factors"},
+        {"authority": "CFR", "reference": "8 CFR §212.7(d)", "relevance": "Waiver adjudication procedures"}
+      ],
+      "counter_arguments": ["Extreme hardship is higher than mere hardship — must be unusual or disproportionate", "LPR bar for aggravated felony is difficult to overcome", "Multiple criminal convictions may make discretionary denial likely even if statutory requirements met"],
+      "applicability_test": "Query involves waiver of criminal inadmissibility, I-601 waiver, INA §212(h), extreme hardship for criminal grounds, or overcoming criminal bars to immigration.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "i601a_provisional_waiver",
+      "topic": "I-601A Provisional Unlawful Presence Waiver",
+      "keywords": ["I-601A", "provisional waiver", "provisional unlawful presence waiver", "stateside waiver", "extreme hardship waiver", "before departure"],
+      "conclusion_template": "The I-601A provisional unlawful presence waiver allows applicants with approved immigrant visa petitions to seek waiver of 3/10 year unlawful presence bars BEFORE departing for consular processing. Available to those inadmissible only under INA §212(a)(9)(B)(i). Must demonstrate extreme hardship to USC or LPR spouse or parent. Approved waiver is provisional — becomes final only at consular interview if no other inadmissibility grounds found.",
+      "reasoning_framework": "1. ELIGIBILITY: (a) Present in US; (b) 17+ years old; (c) approved I-130/I-140 with immediately available visa; (d) will depart for consular processing; (e) inadmissible only under §212(a)(9)(B)(i); (f) not in removal proceedings (exceptions: administratively closed/terminated).\n2. EXTREME HARDSHIP: To USC or LPR spouse or parent. Factors: separation vs relocation hardship, health conditions, financial impact, country conditions, educational disruption, family ties.\n3. TIMING: File I-601A while in US → approval → schedule consular interview → depart → attend interview → if no additional grounds, admitted with immigrant visa.\n4. DENIAL: If denied, may not appeal. Can file motion to reopen/reconsider. Can still file I-601 at consulate.\n5. BENEFIT: Eliminates risk of prolonged separation — alien knows waiver is approved before departing.",
+      "key_factors": ["Must be filed while in US before departure", "Only covers unlawful presence bars under §212(a)(9)(B)(i)", "Extreme hardship to USC or LPR spouse or parent required", "Provisional until consular interview confirms no other grounds", "Eliminates risk of consular denial and prolonged separation"],
+      "primary_authority": [
+        {"authority": "CFR", "reference": "8 CFR §212.7(e)", "relevance": "I-601A provisional waiver regulations"},
+        {"authority": "INA", "reference": "INA §212(a)(9)(B)(v), 8 USC §1182(a)(9)(B)(v)", "relevance": "Waiver authority for unlawful presence"},
+        {"authority": "USCIS", "reference": "USCIS Policy Manual Vol. 9, Pt. B", "relevance": "I-601A adjudication guidance"}
+      ],
+      "counter_arguments": ["Only covers unlawful presence — if other inadmissibility grounds exist, must file full I-601 at consulate", "Hardship to children alone insufficient — must be to spouse or parent", "Denial has no appeal — must file motion to reopen or proceed with I-601 at consulate"],
+      "applicability_test": "Query involves I-601A waiver, provisional waiver, stateside unlawful presence waiver, or waiving 3/10 year bar before departure.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "vawa_self_petition",
+      "topic": "VAWA Self-Petition (INA §204(a)(1)(A)(iii-iv))",
+      "keywords": ["VAWA", "self-petition", "abused spouse", "battered spouse", "domestic violence immigration", "I-360 VAWA", "Violence Against Women Act"],
+      "conclusion_template": "VAWA self-petition under INA §204(a)(1)(A)(iii-iv) allows abused spouses, children, and parents of USCs or LPRs to self-petition without abuser's knowledge or cooperation. Requirements: qualifying relationship, battery or extreme cruelty, good moral character, residence in US, marriage entered in good faith (spouses). Provides work authorization, deferred action, and path to LPR status independent of abuser.",
+      "reasoning_framework": "1. QUALIFYING RELATIONSHIP: Spouse/child/parent of USC or LPR abuser. Includes divorced spouse if divorced within 2 years of abuse and connection to abuse.\n2. BATTERY OR EXTREME CRUELTY: Physical violence OR pattern of mental/psychological abuse. Extreme cruelty includes threats, intimidation, isolation, economic abuse.\n3. GOOD MORAL CHARACTER: During 3-year period. VAWA has special provisions — certain criminal conduct excused if connected to abuse.\n4. RESIDENCE: Must have resided with abuser in US. Brief periods abroad do not disqualify.\n5. GOOD FAITH MARRIAGE: For spousal petitions — marriage entered in good faith, not solely for immigration benefit.\n6. CONFIDENTIALITY: DHS/USCIS prohibited from contacting abuser or disclosing information per INA §384.\n7. DERIVATIVE BENEFITS: Self-petitioning parent can include children; self-petitioning child can include children.",
+      "key_factors": ["Self-petition without abuser's involvement or knowledge", "Battery or extreme cruelty — physical or psychological", "Strict confidentiality protections", "Special admissibility provisions — many grounds waivable", "Work authorization upon prima facie determination"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §204(a)(1)(A)(iii-iv), 8 USC §1154(a)(1)(A)(iii-iv)", "relevance": "VAWA self-petition authority"},
+        {"authority": "INA", "reference": "INA §384, 8 USC §1367", "relevance": "VAWA confidentiality protections"},
+        {"authority": "CFR", "reference": "8 CFR §204.2(c)", "relevance": "VAWA petition requirements"}
+      ],
+      "counter_arguments": ["Evidence of abuse must be credible — any credible evidence standard applies", "Divorce after 2 years of filing may be too late unless connected to abuse", "Good faith marriage must be independently established — not presumed"],
+      "applicability_test": "Query involves VAWA self-petition, abused spouse immigration relief, domestic violence and immigration, or self-petitioning without abuser's cooperation.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "u_visa",
+      "topic": "U Visa for Crime Victims (INA §101(a)(15)(U))",
+      "keywords": ["U visa", "U-1", "crime victim visa", "I-918", "U visa certification", "law enforcement certification", "substantial abuse"],
+      "conclusion_template": "U nonimmigrant status under INA §101(a)(15)(U) available to victims of qualifying criminal activity who: (1) suffered substantial physical or mental abuse; (2) possess information about the crime; (3) were/are/will be helpful to law enforcement investigation/prosecution (law enforcement certification on Form I-918B); (4) crime occurred in US or violated US laws. Annual cap: 10,000. Provides 4-year status, work authorization, and path to LPR after 3 years.",
+      "reasoning_framework": "1. QUALIFYING CRIMES: 28+ categories including domestic violence, sexual assault, trafficking, kidnapping, abduction, false imprisonment, rape, torture, incest, involuntary servitude, stalking, fraud in foreign labor contracting, and others per INA §101(a)(15)(U)(iii).\n2. SUBSTANTIAL ABUSE: Physical/mental harm — consider injury severity, perpetrator relationship, pattern of abuse, duration, vulnerability of victim.\n3. LAW ENFORCEMENT CERTIFICATION: Form I-918B signed by federal/state/local law enforcement, prosecutor, judge, or other qualifying agency. Must certify helpfulness.\n4. BONA FIDE DETERMINATION: While waitlisted (cap reached), USCIS issues bona fide determination granting deferred action and work authorization.\n5. ADJUSTMENT: After 3 years in U status, continuous physical presence, not unreasonably refused cooperation, discretionary grant. Per INA §245(m).\n6. DERIVATIVES: Spouse, children, parents (if principal under 21), siblings under 18 at time of filing.",
+      "key_factors": ["Law enforcement certification (I-918B) required", "10,000 annual cap with waitlist", "Bona fide determination provides interim protection", "Path to LPR after 3 years in U status", "Qualifying crimes list is expansive — 28+ categories"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(15)(U), 8 USC §1101(a)(15)(U)", "relevance": "U visa classification"},
+        {"authority": "INA", "reference": "INA §245(m), 8 USC §1255(m)", "relevance": "U visa adjustment"},
+        {"authority": "CFR", "reference": "8 CFR §214.14", "relevance": "U visa regulatory requirements"}
+      ],
+      "counter_arguments": ["Certification refusal is discretionary — law enforcement is not required to certify", "Substantial abuse threshold may exclude minor offenses with limited harm", "Helpfulness must be ongoing — unreasonable refusal to cooperate can bar adjustment"],
+      "applicability_test": "Query involves U visa, crime victim immigration relief, law enforcement certification, I-918, or victims of qualifying criminal activity.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "t_visa_trafficking",
+      "topic": "T Visa for Trafficking Victims",
+      "keywords": ["T visa", "trafficking victim", "human trafficking", "severe trafficking", "T-1", "I-914"],
+      "conclusion_template": "T nonimmigrant status under INA §101(a)(15)(T) for victims of severe forms of trafficking in persons. Requirements: (1) victim of severe trafficking (sex trafficking by force/fraud/coercion, or labor trafficking by force/fraud/coercion for involuntary servitude/peonage/debt bondage/slavery); (2) physically present in US on account of trafficking; (3) complied with reasonable request for assistance in investigation/prosecution (exception if under 18 or unable due to trauma); (4) would suffer extreme hardship involving unusual and severe harm upon removal. Annual cap: 5,000.",
+      "reasoning_framework": "1. SEVERE TRAFFICKING: (a) Sex trafficking induced by force, fraud, or coercion, or victim under 18; (b) Labor trafficking by force, fraud, or coercion for involuntary servitude, peonage, debt bondage, or slavery.\n2. PHYSICAL PRESENCE: In US, American Samoa, CNMI, or port of entry on account of trafficking.\n3. COMPLIANCE: Complied with reasonable requests for assistance from law enforcement. Under 18: no compliance required. Trauma exception available.\n4. EXTREME HARDSHIP: Unusual and severe harm upon removal — higher than standard extreme hardship.\n5. ADJUSTMENT: After 3 years, or investigation/prosecution complete. Continuous physical presence, GMC, compliance. Per INA §245(l).\n6. CERTIFICATION: Form I-914B (law enforcement declaration) not required but strongly recommended.",
+      "key_factors": ["Severe trafficking — force/fraud/coercion element", "Physical presence on account of trafficking", "Under 18 exempted from compliance requirement", "Extreme hardship with unusual and severe harm standard", "Annual cap 5,000 with path to LPR after 3 years"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(15)(T), 8 USC §1101(a)(15)(T)", "relevance": "T visa classification"},
+        {"authority": "INA", "reference": "INA §245(l), 8 USC §1255(l)", "relevance": "T visa adjustment"},
+        {"authority": "Statute", "reference": "Trafficking Victims Protection Act (TVPA), 22 USC §7102", "relevance": "Severe trafficking definition"}
+      ],
+      "counter_arguments": ["Voluntary initial travel does not preclude subsequent trafficking finding", "Debt bondage includes schemes where conditions of debt are such that worker cannot pay off", "Trauma-based exception to compliance requirement requires corroborating evidence"],
+      "applicability_test": "Query involves T visa, trafficking victim, human trafficking immigration relief, TVPA, or severe forms of trafficking.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "tps_designation",
+      "topic": "Temporary Protected Status (TPS)",
+      "keywords": ["TPS", "temporary protected status", "TPS designation", "TPS extension", "TPS registration", "country conditions"],
+      "conclusion_template": "TPS under INA §244 provides temporary protection from removal and work authorization to nationals of designated countries experiencing ongoing armed conflict, environmental disaster, or extraordinary/temporary conditions. Must register during designated registration period, be continuously physically present since designation date, and be continuously residing since date specified. No criminal bars. Redesignation allows new registrants; extension continues status for existing holders.",
+      "reasoning_framework": "1. DESIGNATION: Secretary of DHS designates countries based on (a) ongoing armed conflict, (b) environmental disaster with substantial disruption, (c) extraordinary/temporary conditions preventing safe return.\n2. REGISTRATION: Must register during initial or re-registration period. Late registration may be available for good cause.\n3. ELIGIBILITY: (a) National of designated country or stateless last habitual resident; (b) continuously physically present since effective date; (c) continuously residing since date specified; (d) not inadmissible on criminal/security grounds.\n4. BARS: Convicted of any felony or 2+ misdemeanors in US. Persecutor bar. Security grounds.\n5. BENEFITS: Protection from removal, work authorization (EAD), travel authorization (advance parole via I-131).\n6. DOES NOT LEAD TO LPR: TPS alone does not provide path to green card. Must have independent basis.",
+      "key_factors": ["Country must be designated by DHS", "Registration during designated period required", "Continuous physical presence and residence requirements", "Felony or 2+ misdemeanors bar TPS", "Does not independently lead to LPR status"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §244, 8 USC §1254a", "relevance": "TPS statutory authority"},
+        {"authority": "CFR", "reference": "8 CFR §244", "relevance": "TPS regulatory requirements"},
+        {"authority": "Case", "reference": "Ramos v. Nielsen, 336 F.Supp.3d 1075 (N.D. Cal. 2018)", "relevance": "TPS termination challenges"}
+      ],
+      "counter_arguments": ["TPS termination is subject to judicial review — multiple courts have enjoined terminations", "TPS holders who travel with advance parole may be deemed 'admitted' for AOS purposes per 6th/8th/9th Circuits", "Late registration requires showing of good cause — mere ignorance may be insufficient"],
+      "applicability_test": "Query involves temporary protected status, TPS registration, TPS-designated countries, or TPS extension/redesignation.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "daca_eligibility",
+      "topic": "DACA (Deferred Action for Childhood Arrivals)",
+      "keywords": ["DACA", "deferred action", "childhood arrivals", "dreamer", "DACA renewal", "DACA eligibility", "DACA work permit"],
+      "conclusion_template": "DACA provides deferred action (2-year renewable) and work authorization to certain individuals who came to US as children. Original 2012 criteria: (1) under 31 as of June 15, 2012; (2) came to US before age 16; (3) continuously resided since June 15, 2007; (4) present June 15, 2012 and at time of request; (5) no lawful status on June 15, 2012; (6) in school, graduated, obtained GED, or honorably discharged veteran; (7) no felony, significant misdemeanor, or 3+ misdemeanors; (8) no threat to national security/public safety. Status: renewals only per federal court orders; new applications blocked pending litigation.",
+      "reasoning_framework": "1. INITIAL ELIGIBILITY: All 8 criteria must be met as of filing date.\n2. CONTINUOUS RESIDENCE: Since June 15, 2007. Brief, casual, and innocent absences do not break.\n3. EDUCATION: Currently in school (any level), graduated HS, obtained GED, or honorably discharged from Armed Forces/Coast Guard.\n4. CRIMINAL BARS: Felony (any), significant misdemeanor (DUI, drug offenses, domestic violence, sexual abuse, burglary, unlawful possession/use of firearm, any misdemeanor with 90+ days sentence), or 3+ non-significant misdemeanors.\n5. RENEWAL: Must be filed before current DACA period expires. Cannot have departed US without advance parole.\n6. LITIGATION STATUS: DACA program subject to ongoing federal litigation. Check current status of injunctions/orders.\n7. DOES NOT CONFER STATUS: DACA is discretionary — no immigration status, no path to LPR by itself.",
+      "key_factors": ["Renewals currently available; new applications blocked per litigation", "Continuous residence since June 15, 2007", "Came to US before turning 16", "Criminal bars: felony, significant misdemeanor, 3+ misdemeanors", "Does not confer immigration status — discretionary forbearance only"],
+      "primary_authority": [
+        {"authority": "USCIS", "reference": "DHS Secretary Memorandum, June 15, 2012", "relevance": "Original DACA policy"},
+        {"authority": "Case", "reference": "Texas v. United States, 809 F.3d 134 (5th Cir. 2015)", "relevance": "DAPA/expanded DACA litigation"},
+        {"authority": "Case", "reference": "DHS v. Regents of the Univ. of Cal., 591 U.S. 1 (2020)", "relevance": "DACA rescission APA analysis"}
+      ],
+      "counter_arguments": ["DACA status subject to ongoing litigation — could be terminated", "Advance parole under DACA creates admission for AOS purposes per some circuits", "Significant misdemeanor definition is USCIS policy, not statutory — may be challenged"],
+      "applicability_test": "Query involves DACA, deferred action for childhood arrivals, dreamer status, DACA renewal, or DACA eligibility criteria.",
+      "confidence_stratification": "DISCLOSURE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "fraud_misrepresentation",
+      "topic": "Fraud and Willful Misrepresentation (INA §212(a)(6)(C))",
+      "keywords": ["fraud", "misrepresentation", "willful misrepresentation", "material misrepresentation", "section 212(a)(6)(C)", "immigration fraud", "212(i) waiver"],
+      "conclusion_template": "INA §212(a)(6)(C)(i) renders inadmissible any alien who by fraud or willfully misrepresenting a material fact seeks or has sought to procure a visa, admission, or other immigration benefit. Elements: (1) willful (deliberate, not innocent mistake); (2) misrepresentation of material fact (would have cut off line of inquiry that could have led to denial); (3) made to procure immigration benefit. Permanent bar unless waived under INA §212(i) (extreme hardship to USC/LPR spouse or parent).",
+      "reasoning_framework": "1. WILLFULNESS: Deliberate and voluntary misrepresentation. Innocent mistakes, honest misunderstandings, or interpreter errors are not willful.\n2. MATERIALITY: Under Kungys v. United States — misrepresentation is material if it had natural tendency to influence or was predictably capable of affecting the decision. Also material if cut off line of inquiry that might have led to discovery of disqualifying fact.\n3. PROCUREMENT: Must be to procure visa, admission, documentation, or other immigration benefit.\n4. TIMELY RETRACTION: Voluntary, timely, without prompting retraction may prevent finding per Matter of M-.\n5. WAIVER (§212(i)): Requires extreme hardship to USC or LPR spouse or parent. Discretionary.\n6. FALSE CLAIM TO USC: INA §212(a)(6)(C)(ii) — separate, more severe ground. No waiver available (limited exceptions for certain individuals who were under 18, permanently resided in US, reasonably believed they were USCs).",
+      "key_factors": ["Willful — not innocent mistake or misunderstanding", "Material — would have affected decision or cut off line of inquiry", "Permanent bar unless waived under §212(i)", "Timely retraction defense available", "False claim to USC has very limited waiver"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(6)(C)(i), 8 USC §1182(a)(6)(C)(i)", "relevance": "Fraud/misrepresentation inadmissibility"},
+        {"authority": "INA", "reference": "INA §212(i), 8 USC §1182(i)", "relevance": "Waiver of fraud/misrep"},
+        {"authority": "Case", "reference": "Kungys v. United States, 485 U.S. 759 (1988)", "relevance": "Materiality standard"},
+        {"authority": "BIA", "reference": "Matter of Tijam, 22 I&N Dec. 408 (BIA 1998)", "relevance": "Timely retraction doctrine"}
+      ],
+      "counter_arguments": ["Interpreter error may negate willfulness — requires evidence of miscommunication", "Timely retraction must be before discovery by government — timing is critical", "Omission vs affirmative misrepresentation may have different treatment depending on jurisdiction"],
+      "applicability_test": "Query involves fraud/misrepresentation in immigration, INA §212(a)(6)(C), false claim to citizenship, or waiver of fraud finding.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "ead_employment_authorization",
+      "topic": "Employment Authorization Document (EAD) Categories",
+      "keywords": ["EAD", "employment authorization", "work permit", "I-765", "employment authorization document", "work authorization", "incident to status"],
+      "conclusion_template": "Employment authorization falls into three categories per 8 CFR §274a.12: (a) authorized incident to status (no EAD needed — LPRs, asylees, refugees); (b) authorized with specific employer (H-1B, L-1, O-1 — I-94 serves as authorization); (c) must apply for EAD (I-765) — includes AOS pending (C09), asylum applicant (C08), TPS (A12/C19), DACA (C33), and many others. Processing times vary; auto-extension rules apply for timely-filed renewals.",
+      "reasoning_framework": "1. CATEGORY (a) — INCIDENT TO STATUS: LPR, asylee, refugee, certain parolees. No EAD card required but may obtain for convenience.\n2. CATEGORY (b) — SPECIFIC EMPLOYER: H-1B, L-1, O-1, E-1/E-2, TN, etc. I-94 is employment authorization. Employer-specific.\n3. CATEGORY (c) — EAD REQUIRED: Must file I-765 and receive approval. Many subcategories.\n4. AUTO-EXTENSION: Certain (c) categories receive automatic 180-day extension upon timely-filed renewal per 8 CFR §274a.13(d).\n5. COMBO CARD: I-485 pendency generates (c)(9) EAD — also serves as advance parole.\n6. GAPS: Employment authorization gap = unauthorized employment which may trigger bars or deportability.",
+      "key_factors": ["Three categories: incident to status, employer-specific, EAD required", "Auto-extension for timely-filed renewals in eligible categories", "Unauthorized employment may trigger inadmissibility or AOS bar", "Combo card (EAD/AP) for AOS pending applicants", "Specific employer authorization tied to I-94, not EAD card"],
+      "primary_authority": [
+        {"authority": "CFR", "reference": "8 CFR §274a.12", "relevance": "Employment authorization categories"},
+        {"authority": "CFR", "reference": "8 CFR §274a.13(d)", "relevance": "Auto-extension of EAD"},
+        {"authority": "INA", "reference": "INA §274A, 8 USC §1324a", "relevance": "Employer sanctions and employment eligibility"}
+      ],
+      "counter_arguments": ["Auto-extension does not apply to all EAD categories — must verify eligibility", "Gap in employment authorization may bar AOS under §245(c)(2) unless exception applies", "Employer must reverify at EAD expiration unless auto-extension applies"],
+      "applicability_test": "Query involves employment authorization, EAD, work permit, I-765, unauthorized employment consequences, or EAD renewal/extension.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "consular_processing",
+      "topic": "Consular Processing and Immigrant Visa Issuance",
+      "keywords": ["consular processing", "immigrant visa", "DS-260", "consular interview", "NVC", "national visa center", "visa issuance"],
+      "conclusion_template": "Consular processing is the alternative to adjustment of status for obtaining immigrant visa/LPR status. After I-130/I-140 approval and visa availability, case routes to NVC for document collection (DS-260, financial support I-864, civil documents). Interview at US embassy/consulate. Consular officer has authority to issue or refuse visa under INA §221(g). No judicial review of visa refusal (doctrine of consular nonreviewability) with narrow Mandel exception.",
+      "reasoning_framework": "1. NVC PROCESSING: Petition forwarded to NVC. Beneficiary files DS-260, pays fees, submits civil docs.\n2. INTERVIEW: Consular officer reviews eligibility, admissibility, credibility. INA §221(g) refusal for incomplete application.\n3. INADMISSIBILITY: Full §212(a) grounds apply at consulate. Waivers must be applied for.\n4. NONREVIEWABILITY: Consular decisions generally not reviewable by courts. Narrow exception: facially legitimate and bona fide reason (Kleindienst v. Mandel).\n5. 221(g) REFUSAL: Administrative processing — additional evidence/investigation needed. Can remain open indefinitely.\n6. AFTER ISSUANCE: Immigrant visa valid 6 months. Must enter US before expiration. LPR status granted upon admission.",
+      "key_factors": ["NVC document collection precedes interview scheduling", "Consular officer has broad discretion", "Limited judicial review of consular decisions", "INA §221(g) refusals can delay indefinitely", "Immigrant visa valid 6 months after issuance"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §221, 8 USC §1201", "relevance": "Visa issuance and refusal"},
+        {"authority": "Case", "reference": "Kleindienst v. Mandel, 408 U.S. 753 (1972)", "relevance": "Consular nonreviewability doctrine"},
+        {"authority": "CFR", "reference": "22 CFR §42", "relevance": "Immigrant visa regulations"}
+      ],
+      "counter_arguments": ["221(g) refusal is not a final denial — case remains pending", "Mandamus may be available for unreasonable delay in processing", "Consular nonreviewability may not apply when constitutional rights of US citizen petitioner affected"],
+      "applicability_test": "Query involves consular processing, immigrant visa interview, NVC, DS-260, or visa issuance at embassy/consulate.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "affidavit_of_support",
+      "topic": "Affidavit of Support (INA §213A)",
+      "keywords": ["affidavit of support", "I-864", "125% poverty", "sponsor", "joint sponsor", "public charge support", "financial support"],
+      "conclusion_template": "INA §213A requires enforceable affidavit of support (I-864) for most family-based and some employment-based immigrants. Sponsor must demonstrate income at 125% of federal poverty guidelines (100% for active duty military). Legally enforceable contract — sponsored immigrant or government can sue sponsor for reimbursement of means-tested benefits. Obligation ends upon sponsor's death, immigrant's naturalization, earning 40 qualifying quarters, permanent departure, or death.",
+      "reasoning_framework": "1. WHEN REQUIRED: Family-based immigrants, employment-based when relative filed petition or has 5%+ ownership in petitioning entity.\n2. SPONSOR ELIGIBILITY: USC or LPR petitioner, 18+, domiciled in US. Must meet 125% FPG (100% active military).\n3. JOINT SPONSOR: If petitioner cannot meet income threshold, joint sponsor (any USC/LPR 18+ domiciled in US) files separate I-864.\n4. HOUSEHOLD INCOME: Can include household member income (I-864A) if same household and willing to be jointly liable.\n5. ASSETS: If income insufficient, assets at 3x shortfall (5x for sibling/parent of USC) can supplement.\n6. ENFORCEABILITY: Legally binding contract. Government agencies can seek reimbursement. Immigrant can sue sponsor.\n7. TERMINATION: Naturalization, 40 quarters, permanent departure, death of immigrant, or death of sponsor.",
+      "key_factors": ["125% of federal poverty guidelines required", "Enforceable contract — sponsor can be sued", "Joint sponsor available if petitioner income insufficient", "Obligation survives divorce — sponsor remains liable", "Terminates upon naturalization or 40 qualifying quarters"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §213A, 8 USC §1183a", "relevance": "Affidavit of support requirement"},
+        {"authority": "CFR", "reference": "8 CFR §213a", "relevance": "I-864 regulatory requirements"},
+        {"authority": "Case", "reference": "Erler v. Erler, 824 F.3d 1173 (9th Cir. 2016)", "relevance": "I-864 enforceability survives divorce"}
+      ],
+      "counter_arguments": ["Sponsor liability survives divorce — cannot be modified in divorce decree per federal preemption", "Bankruptcy does not discharge I-864 obligation", "Income from sponsored immigrant can count toward sponsor's household income"],
+      "applicability_test": "Query involves affidavit of support, I-864, financial sponsorship, 125% poverty requirement, or sponsor liability.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "LOW"
+    },
+    {
+      "topic_key": "voluntary_departure",
+      "topic": "Voluntary Departure (INA §240B)",
+      "keywords": ["voluntary departure", "VD", "section 240B", "voluntary departure bond", "departure period", "voluntary departure penalty"],
+      "conclusion_template": "Voluntary departure under INA §240B allows alien to depart at own expense in lieu of removal order. Two phases: pre-hearing (up to 120 days, IJ or DHS grant, fewer requirements) and post-hearing (up to 60 days, IJ grant only, must show 1 year physical presence, GMC for 5 years, not aggravated felony, provide clear and convincing evidence of means/intent to depart, post bond). Failure to depart triggers penalties: $1,000-$5,000 civil penalty, 10-year bar from cancellation/AOS/VD/registry.",
+      "reasoning_framework": "1. PRE-HEARING VD (§240B(a)): Request before/at master hearing. Up to 120 days. DHS or IJ grant. No GMC/physical presence requirements.\n2. POST-HEARING VD (§240B(b)): Request at close of removal hearing. Up to 60 days. IJ grant only. Requirements: 1 year physical presence, GMC for 5 years, not aggravated felony, clear/convincing evidence of means/intent, bond ($500+ set by IJ).\n3. PENALTY FOR FAILURE (§240B(d)): Civil penalty $1,000-$5,000. 10-year ineligibility for cancellation, AOS, VD, and registry.\n4. TOLLING: Penalty period may be tolled if alien files timely motion to reopen.\n5. BENEFITS: No formal removal order (avoids 5/10/20 year bars to reentry). Preserves future immigration options.\n6. ALTERNATIVES: Stipulated removal vs voluntary departure — different consequences.",
+      "key_factors": ["Pre-hearing: up to 120 days, fewer requirements", "Post-hearing: up to 60 days, stricter requirements, bond required", "Failure to depart triggers severe penalties", "No formal removal order — preserves future options", "Aggravated felony conviction bars post-hearing VD"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240B, 8 USC §1229c", "relevance": "Voluntary departure authority"},
+        {"authority": "CFR", "reference": "8 CFR §1240.26", "relevance": "VD regulatory requirements"},
+        {"authority": "Case", "reference": "Dada v. Mukasey, 554 U.S. 1 (2008)", "relevance": "Motion to reopen tolls VD period"}
+      ],
+      "counter_arguments": ["Filing motion to reopen automatically tolls VD departure period per Dada", "Failure to depart may be excused for extraordinary circumstances", "VD not available if alien convicted of aggravated felony (post-hearing)"],
+      "applicability_test": "Query involves voluntary departure, leaving US voluntarily instead of removal, VD bond, or consequences of failing to depart.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "sij_status",
+      "topic": "Special Immigrant Juvenile (SIJ) Status",
+      "keywords": ["SIJ", "special immigrant juvenile", "SIJS", "juvenile court", "dependency", "abuse neglect abandonment", "I-360 SIJ"],
+      "conclusion_template": "SIJ status under INA §101(a)(27)(J) provides path to LPR status for abused, neglected, or abandoned children. Requirements: (1) state juvenile court order finding dependency/custody AND that reunification with one or both parents not viable due to abuse, neglect, or abandonment AND that return to home country not in best interest; (2) USCIS consent to SIJ classification; (3) I-360 petition. Must be under 21 and unmarried at filing. Annual cap applies per country.",
+      "reasoning_framework": "1. STATE COURT ORDER: Must contain three specific findings: (a) declared dependent or placed in custody; (b) reunification with one/both parents not viable due to abuse/neglect/abandonment; (c) not in best interest to return to home country.\n2. AGE: Under 21 at I-360 filing. State court jurisdiction must exist under state law.\n3. USCIS CONSENT: USCIS must consent to juvenile court jurisdiction for SIJ purposes per INA §101(a)(27)(J)(iii).\n4. I-360 PETITION: Filed by or on behalf of the child. No sponsor or petitioner required.\n5. ADJUSTMENT: Via I-485. Country caps apply — some countries (Mexico, El Salvador, Guatemala, Honduras) have multi-year backlogs.\n6. AGING OUT: SIJ classification protects from aging out even if over 21 by time visa available per TVPRA §235(d)(6).",
+      "key_factors": ["Three specific state court findings required", "Under 21 and unmarried at I-360 filing", "USCIS consent to juvenile court jurisdiction required", "Country caps create backlogs for certain nationalities", "TVPRA aging-out protection preserves eligibility"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(27)(J), 8 USC §1101(a)(27)(J)", "relevance": "SIJ definition"},
+        {"authority": "Statute", "reference": "TVPRA §235(d), 8 USC §1232(d)", "relevance": "SIJ age-out protections"},
+        {"authority": "CFR", "reference": "8 CFR §204.11", "relevance": "SIJ petition requirements"}
+      ],
+      "counter_arguments": ["State court findings must be based on abuse/neglect/abandonment — not solely for immigration purposes", "USCIS consent function examines whether state proceedings were proper", "Marriage at any time before I-360 approval bars SIJ classification"],
+      "applicability_test": "Query involves special immigrant juvenile, SIJ status, abused/neglected/abandoned minors, juvenile court dependency, or I-360 SIJ petition.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "removal_proceedings",
+      "topic": "Removal Proceedings Structure (INA §240)",
+      "keywords": ["removal proceedings", "immigration court", "NTA", "notice to appear", "master hearing", "individual hearing", "IJ", "immigration judge"],
+      "conclusion_template": "Removal proceedings under INA §240 initiated by service of Notice to Appear (NTA). Proceedings before Immigration Judge (IJ) in EOIR immigration courts. Two phases: master calendar hearing (charges, pleadings, designation of country, relief applications) and individual/merits hearing (testimony, evidence, legal arguments). Government bears burden of deportability by clear and convincing evidence; alien bears burden of admissibility and establishing eligibility for relief.",
+      "reasoning_framework": "1. INITIATION: NTA (Form I-862) served on alien and filed with immigration court. Must specify charges under INA.\n2. PEREIRA REQUIREMENT: NTA must include time and place of hearing per INA §239(a)(1). Per Pereira v. Sessions — NTA without time/place does not trigger stop-time rule.\n3. MASTER CALENDAR: Alien enters pleadings (admit/deny allegations, concede/deny charges), designates country of removal, identifies relief sought.\n4. INDIVIDUAL HEARING: Testimony under oath, cross-examination, documentary evidence, expert witnesses, legal arguments.\n5. BURDEN: Government proves deportability (clear/convincing) or inadmissibility (by evidence). Alien proves eligibility for relief.\n6. RELIEF: Cancellation, asylum, withholding, CAT, VD, 212(h)/(i) waivers, registry, private bills.\n7. APPEAL: BIA appeal within 30 days. Federal circuit petition for review within 30 days of BIA decision.",
+      "key_factors": ["NTA initiates proceedings — must include charges", "Pereira requires time/place for stop-time trigger", "Master calendar then individual hearing", "Government bears burden for removal; alien for relief", "30-day appeal deadline to BIA, then 30 days to circuit court"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240, 8 USC §1229a", "relevance": "Removal proceedings authority"},
+        {"authority": "Case", "reference": "Pereira v. Sessions, 585 U.S. 198 (2018)", "relevance": "NTA completeness requirement"},
+        {"authority": "INA", "reference": "INA §239, 8 USC §1229", "relevance": "NTA requirements"}
+      ],
+      "counter_arguments": ["Niz-Chavez v. Garland extends Pereira — all required information must be in single NTA document", "In absentia orders can be rescinded for lack of notice, exceptional circumstances, or within 180 days for failure to receive notice", "Motions to reopen/reconsider have specific time/number limits per INA §240(c)(7)"],
+      "applicability_test": "Query involves removal proceedings, immigration court, NTA, master hearing, individual hearing, or immigration judge procedures.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "good_moral_character",
+      "topic": "Good Moral Character (INA §101(f))",
+      "keywords": ["good moral character", "GMC", "moral character", "section 101(f)", "statutory bars", "habitual drunkard", "gambling"],
+      "conclusion_template": "Good moral character under INA §101(f) is required for naturalization, non-LPR cancellation, voluntary departure (post-hearing), and other benefits. Statutory bars include: habitual drunkard, gambling income, smuggling, prostitution, 2+ convictions with aggregate 5+ years imprisonment, false testimony for immigration benefits, and aggravated felony conviction (permanent bar). List is not exhaustive — IJ/USCIS has discretion to find lack of GMC based on conduct not listed.",
+      "reasoning_framework": "1. STATUTORY BARS (§101(f)): Specific conduct that precludes GMC finding.\n2. RELEVANT PERIOD: For naturalization — 5 years (or 3 years for §319 spouses). For cancellation — 10 years. Must show GMC during entire period.\n3. AGGRAVATED FELONY: Permanent bar to GMC at any time — no time limitation per §101(f)(8).\n4. FALSE CLAIM TO USC: Bar to GMC under §101(f)(6) — claiming to be USC for any purpose under INA or any federal/state law.\n5. DISCRETIONARY: Even without statutory bar, adjudicator can find lack of GMC based on totality of conduct.\n6. CONDITIONAL: Having been convicted alone may not bar — must analyze whether conduct falls within statutory bars.\n7. EXTENUATING CIRCUMSTANCES: VAWA applicants may be excused for conduct connected to abuse.",
+      "key_factors": ["Statutory bars in INA §101(f) are not exhaustive", "Aggravated felony conviction is permanent bar", "False claim to USC is a bar", "GMC must be maintained through entire statutory period and until oath (naturalization)", "Discretionary denial possible even without statutory bar"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(f), 8 USC §1101(f)", "relevance": "Good moral character definition and bars"},
+        {"authority": "CFR", "reference": "8 CFR §316.10", "relevance": "GMC for naturalization"},
+        {"authority": "USCIS", "reference": "USCIS Policy Manual Vol. 12, Pt. F", "relevance": "GMC adjudication guidance"}
+      ],
+      "counter_arguments": ["Not all criminal convictions bar GMC — must match specific statutory bars", "Rehabilitative evidence can overcome discretionary GMC concerns", "Extenuating circumstances for VAWA applicants may excuse otherwise barring conduct"],
+      "applicability_test": "Query involves good moral character, GMC analysis, statutory bars to moral character, or conduct affecting naturalization/cancellation eligibility.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "expedited_removal",
+      "topic": "Expedited Removal (INA §235(b)(1))",
+      "keywords": ["expedited removal", "section 235", "credible fear", "arriving alien", "expedited order", "inadmissible at entry"],
+      "conclusion_template": "Expedited removal under INA §235(b)(1) allows DHS to remove certain aliens without full removal proceedings. Applies to aliens arriving at port of entry or within US (if present <2 years and not admitted/paroled) who are inadmissible under §212(a)(6)(C) (fraud/misrep) or §212(a)(7) (documentation). Protection: if alien expresses fear of return, entitled to credible fear interview with asylum officer. If positive credible fear, referred to full removal proceedings.",
+      "reasoning_framework": "1. APPLICABILITY: Arriving aliens at port of entry. Within US if present <2 years and not admitted/paroled (per regulations).\n2. GROUNDS: Only §212(a)(6)(C) (fraud/misrep) and §212(a)(7) (lack of documentation).\n3. CREDIBLE FEAR: If alien expresses fear of persecution or torture, must be referred for credible fear interview. Standard: significant possibility of establishing eligibility for asylum.\n4. POSITIVE FINDING: Referred to immigration court for full proceedings (asylum, withholding, CAT).\n5. NEGATIVE FINDING: Can request IJ review within 7 days. If IJ affirms, removed.\n6. CONSEQUENCES: Expedited removal order bars reentry for 5 years. Fraud finding may trigger permanent bar.\n7. NO JUDICIAL REVIEW: Limited judicial review under INA §242(e) — habeas challenge to systemic policies only.",
+      "key_factors": ["Applies at port of entry or within US if <2 years/not admitted", "Only for §212(a)(6)(C) and §212(a)(7)", "Credible fear interview required if fear expressed", "Expedited removal order = 5-year bar", "Very limited judicial review"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §235(b)(1), 8 USC §1225(b)(1)", "relevance": "Expedited removal authority"},
+        {"authority": "CFR", "reference": "8 CFR §235.3", "relevance": "Expedited removal procedures"},
+        {"authority": "CFR", "reference": "8 CFR §208.30", "relevance": "Credible fear procedures"}
+      ],
+      "counter_arguments": ["Failure to refer for credible fear interview is due process violation", "Alien must be informed of right to consult with person of choosing before inspection", "Unaccompanied minors exempt from expedited removal per TVPRA"],
+      "applicability_test": "Query involves expedited removal, credible fear interview, arriving alien removal, or INA §235(b)(1) procedures.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "eb5_investor",
+      "topic": "EB-5 Immigrant Investor Program",
+      "keywords": ["EB-5", "immigrant investor", "investment", "regional center", "job creation", "targeted employment area", "TEA", "million dollar"],
+      "conclusion_template": "EB-5 under INA §203(b)(5) provides immigrant visa to alien who invests required capital in new commercial enterprise that creates 10+ full-time jobs for US workers. Standard investment: $1,050,000. TEA (targeted employment area) investment: $800,000. Regional center program allows indirect job creation counting. I-526E petition with evidence of lawful source of funds, at-risk investment, and job creation plan.",
+      "reasoning_framework": "1. INVESTMENT AMOUNT: $1,050,000 standard; $800,000 for TEA (rural or high unemployment area). Amounts adjusted per EB-5 Reform and Integrity Act of 2022.\n2. NEW COMMERCIAL ENTERPRISE: Any for-profit entity formed for ongoing lawful business. Includes restructuring/expansion of existing business if 140% growth or troubled business.\n3. JOB CREATION: 10 full-time positions for US workers (USC, LPR, asylee, refugee). Regional center: indirect and induced jobs count per economic methodology.\n4. AT-RISK: Investment must be at risk of loss for purpose of generating return. Cannot be guaranteed return of principal.\n5. LAWFUL SOURCE: Must trace source of funds through lawful means — tax returns, business records, bank statements, gift documentation.\n6. CONDITIONAL RESIDENCE: 2-year conditional LPR. I-829 to remove conditions — prove sustained investment and job creation/maintenance.\n7. REGIONAL CENTER: Designated by USCIS. Must comply with integrity measures under 2022 reform act.",
+      "key_factors": ["$1,050,000 or $800,000 TEA investment", "10 full-time US worker jobs (direct or indirect via regional center)", "Lawful source of funds documentation critical", "Investment must be at-risk — no guaranteed returns", "2-year conditional status with I-829 removal of conditions"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §203(b)(5), 8 USC §1153(b)(5)", "relevance": "EB-5 statutory authority"},
+        {"authority": "Statute", "reference": "EB-5 Reform and Integrity Act of 2022", "relevance": "Current EB-5 framework"},
+        {"authority": "CFR", "reference": "8 CFR §204.6", "relevance": "EB-5 petition requirements"}
+      ],
+      "counter_arguments": ["Source of funds scrutiny is intense — any gap in documentation may result in denial", "Regional center failures may leave investor without required job creation", "At-risk requirement means investor may lose entire investment"],
+      "applicability_test": "Query involves EB-5 investor visa, immigrant investor, regional center investment, or investment-based green card.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "o1_extraordinary",
+      "topic": "O-1 Extraordinary Ability/Achievement",
+      "keywords": ["O-1", "O-1A", "O-1B", "extraordinary ability", "extraordinary achievement", "arts sciences", "O visa"],
+      "conclusion_template": "O-1 nonimmigrant visa for individuals with extraordinary ability in sciences, arts, education, business, or athletics (O-1A) or extraordinary achievement in motion picture/TV (O-1B). Requires sustained national or international acclaim. O-1A: meet 3 of 8 criteria or major one-time achievement. O-1B arts/MPTV: different criteria. No cap, no lottery. Employer/agent petitions. Initial 3 years, extensions in 1-year increments.",
+      "reasoning_framework": "1. O-1A CRITERIA (8 of which must meet 3): Awards, membership in associations, published material about alien, judge of others' work, original contributions of major significance, scholarly articles, employment in critical/essential capacity, high salary.\n2. O-1B ARTS: Nomination/receipt of significant award, critical reviews, leading/starring role, record of commercial/critically acclaimed successes, recognition from organizations/critics/experts, high salary.\n3. ADVISORY OPINION: Required from peer group or labor organization. Waived if none exists.\n4. NO CAP: No annual cap or lottery. Can file at any time.\n5. AGENT FILING: Agent can file on behalf of multiple employers.\n6. DURATION: Initial 3 years, 1-year extensions. No maximum duration.",
+      "key_factors": ["3 of 8 criteria for O-1A sciences/business/education/athletics", "Different criteria for O-1B arts/MPTV", "Advisory opinion required", "No cap, no lottery, no maximum duration", "Agent filing permitted for multiple employers"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §101(a)(15)(O), 8 USC §1101(a)(15)(O)", "relevance": "O-1 classification"},
+        {"authority": "CFR", "reference": "8 CFR §214.2(o)", "relevance": "O-1 regulatory requirements"},
+        {"authority": "Case", "reference": "Kazarian v. USCIS, 596 F.3d 1115 (9th Cir. 2010)", "relevance": "Two-step analysis (applies to O-1A by analogy)"}
+      ],
+      "counter_arguments": ["USCIS may apply Kazarian two-step even though developed for EB-1A context", "Sustained acclaim means ongoing — single achievement years ago may be insufficient", "Advisory opinion is important evidence — negative opinion weighs against approval"],
+      "applicability_test": "Query involves O-1 visa, extraordinary ability/achievement nonimmigrant, or O visa for sciences/arts/business/athletics/MPTV.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "ina212d3_waiver",
+      "topic": "Nonimmigrant Waiver (INA §212(d)(3))",
+      "keywords": ["212(d)(3)", "nonimmigrant waiver", "Hranka factors", "temporary waiver", "inadmissibility waiver nonimmigrant"],
+      "conclusion_template": "INA §212(d)(3)(A) provides discretionary waiver of most inadmissibility grounds for nonimmigrant visa applicants. Adjudicated under Matter of Hranka factors: (1) risk of harm to society; (2) seriousness of prior violations; (3) reason for desired admission. Generally more favorable than immigrant waivers — lower standard, broader eligibility. Filed at consulate (Form I-192 for certain categories) or by CBP at port of entry.",
+      "reasoning_framework": "1. AVAILABILITY: Most §212(a) grounds waivable for nonimmigrant purposes. NOT available for: §212(a)(3)(A)/(B) security/terrorism (limited exceptions), §212(a)(3)(C) foreign policy.\n2. HRANKA FACTORS: (a) Risk of harm if admitted; (b) Seriousness of immigration/criminal violations; (c) Reasons for desired admission (family ties, medical treatment, business).\n3. FILING: At consulate during visa application, or I-192 for certain land-border admissions.\n4. DURATION: Typically granted for specific trip or period. May need to reapply for subsequent trips.\n5. CANADIAN CITIZENS: May apply at port of entry via CBP.\n6. DISCRETIONARY: Even if Hranka factors favor applicant, denial possible.",
+      "key_factors": ["Broader than immigrant waivers — most grounds covered", "Three-factor Hranka balancing test", "Discretionary — no entitlement", "Typically limited to specific trip or time period", "Not available for terrorism/security grounds"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(d)(3)(A), 8 USC §1182(d)(3)(A)", "relevance": "Nonimmigrant waiver authority"},
+        {"authority": "BIA", "reference": "Matter of Hranka, 16 I&N Dec. 491 (BIA 1978)", "relevance": "Three-factor balancing test"},
+        {"authority": "CFR", "reference": "8 CFR §212.4", "relevance": "Nonimmigrant waiver procedures"}
+      ],
+      "counter_arguments": ["Waiver may be conditioned on specific restrictions", "Prior criminal convictions weigh heavily under seriousness factor", "Repeated applications may face diminishing returns if circumstances unchanged"],
+      "applicability_test": "Query involves nonimmigrant waiver of inadmissibility, INA §212(d)(3), Hranka factors, or overcoming inadmissibility for temporary visa.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "conditional_residence",
+      "topic": "Conditional Permanent Residence (INA §216)",
+      "keywords": ["conditional residence", "conditional green card", "I-751", "2 year green card", "joint petition", "waiver I-751", "remove conditions"],
+      "conclusion_template": "INA §216 imposes 2-year conditional residence on aliens obtaining LPR status through marriage entered less than 2 years before admission/AOS. Must file I-751 joint petition with spouse within 90-day window before 2-year anniversary to remove conditions. Waivers available if: (1) extreme hardship; (2) good faith marriage terminated; (3) battery or extreme cruelty by USC/LPR spouse; (4) termination would be unconscionable. Failure to file = automatic termination of LPR status.",
+      "reasoning_framework": "1. TRIGGER: Marriage-based LPR status where marriage was <2 years old at admission/AOS.\n2. JOINT FILING: I-751 filed jointly by both spouses during 90-day window before 2nd anniversary.\n3. EVIDENCE: Commingling of finances, shared residence, birth certificates of children, insurance, other evidence of bona fide marriage.\n4. WAIVER (§216(c)(4)): Available if (a) extreme hardship upon removal; (b) marriage was bona fide but terminated (divorce); (c) battery/extreme cruelty during marriage; (d) termination of status would be unconscionable.\n5. LATE FILING: INA permits late filing with good cause and bona fide marriage. Discretionary.\n6. INTERVIEW: USCIS may schedule interview — particularly if fraud indicators present.\n7. DENIAL: If denied, alien placed in removal proceedings where IJ can review de novo.",
+      "key_factors": ["Must file I-751 within 90 days before 2-year anniversary", "Joint petition requires both spouses' signatures", "Waiver available for divorce, abuse, or extreme hardship", "Failure to file results in automatic status termination", "USCIS interview discretionary but common in fraud-indicator cases"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §216, 8 USC §1186a", "relevance": "Conditional residence requirements"},
+        {"authority": "CFR", "reference": "8 CFR §216.4", "relevance": "I-751 filing procedures"},
+        {"authority": "CFR", "reference": "8 CFR §216.5", "relevance": "Waiver requirements"}
+      ],
+      "counter_arguments": ["Late filing requires showing of good cause AND bona fide marriage — both must be met", "Abuse waiver does not require divorce — can be filed while married", "Secondary evidence acceptable if primary evidence unavailable with explanation"],
+      "applicability_test": "Query involves conditional residence, I-751, removing conditions on green card, 2-year conditional status, or conditional residence waiver.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "asylum_one_year_bar",
+      "topic": "Asylum One-Year Filing Deadline Exceptions",
+      "keywords": ["one year bar", "asylum deadline", "one year filing", "extraordinary circumstances", "changed circumstances", "asylum late filing"],
+      "conclusion_template": "INA §208(a)(2)(B) bars asylum if not filed within 1 year of last arrival unless alien demonstrates changed circumstances materially affecting eligibility (e.g., coup, new persecution) or extraordinary circumstances relating to delay (e.g., serious illness, mental/physical disability, ineffective assistance of counsel, minor under 18, pending lawful status). Exception must be filed within reasonable period after change/circumstance.",
+      "reasoning_framework": "1. ONE-YEAR DEADLINE: Counted from date of last arrival into US. Must file I-589 within 1 year.\n2. CHANGED CIRCUMSTANCES: Material change in country conditions, personal circumstances, or US law that affects eligibility. Examples: regime change, new targeting of group, change in law creating new PSG.\n3. EXTRAORDINARY CIRCUMSTANCES: Directly related to failure to file timely. Examples: serious illness, mental/physical disability, ineffective assistance per Matter of Lozada, legal disability (under 18), TPS or other lawful status maintained, death/incapacity of attorney.\n4. REASONABLE PERIOD: Must file within reasonable time after changed/extraordinary circumstances. No fixed timeline — fact-specific.\n5. PROOF: Alien bears burden of establishing exception by preponderance of evidence.\n6. WITHHOLDING/CAT: NOT subject to 1-year bar — alternative if asylum barred.",
+      "key_factors": ["1 year from last arrival — not first arrival", "Changed circumstances: material change affecting eligibility", "Extraordinary circumstances: directly related to delay", "Must file within reasonable period after exception arises", "Withholding and CAT have no filing deadline"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §208(a)(2)(B)-(D), 8 USC §1158(a)(2)(B)-(D)", "relevance": "One-year bar and exceptions"},
+        {"authority": "CFR", "reference": "8 CFR §208.4(a)(4)-(5)", "relevance": "Exception requirements"},
+        {"authority": "BIA", "reference": "Matter of Y-C-, 23 I&N Dec. 286 (BIA 2002)", "relevance": "Changed circumstances analysis"}
+      ],
+      "counter_arguments": ["Mere awareness of right to apply is not extraordinary circumstance", "Delay after circumstances change may defeat reasonableness", "Burden is on applicant — conclusory assertions insufficient"],
+      "applicability_test": "Query involves asylum one-year filing deadline, exceptions to one-year bar, late-filed asylum, changed or extraordinary circumstances.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "natz_derivative_citizenship",
+      "topic": "Derivative Citizenship (INA §320, §322)",
+      "keywords": ["derivative citizenship", "acquisition of citizenship", "child citizenship act", "INA 320", "INA 322", "automatic citizenship", "citizen at birth"],
+      "conclusion_template": "INA §320 provides automatic citizenship to children born abroad who: (1) have at least one USC parent; (2) child is under 18; (3) child is LPR; (4) child is residing in US in legal and physical custody of USC parent. Effective February 27, 2001 (Child Citizenship Act). INA §322 allows USC parent to apply for naturalization of child residing abroad if parent has 5 years physical presence in US (2 after age 14). For children born abroad to USC parents: INA §301/§309 govern citizenship at birth.",
+      "reasoning_framework": "1. INA §320 AUTOMATIC: All four requirements met simultaneously → automatic citizenship. No application required but can obtain certificate of citizenship (N-600).\n2. INA §322 APPLICATION: For children of USCs residing abroad. Parent applies. Child must be under 18, temporarily present in US for oath.\n3. INA §301 BIRTH ABROAD: Citizenship at birth if (a) both parents USCs with one having US residence; (b) one USC parent with 5 years physical presence (2 after age 14) before child's birth.\n4. INA §309 OUT-OF-WEDLOCK: Additional requirements for unwed USC fathers — written agreement to support, legitimation, paternity established by court.\n5. RETROACTIVITY: CCA applies to children who were under 18 on 2/27/2001 AND met all requirements simultaneously.\n6. DOCUMENTATION: N-600 (Certificate of Citizenship) or US passport as evidence.",
+      "key_factors": ["INA §320: automatic if all 4 requirements met simultaneously while child under 18", "INA §322: application for child abroad — parent must have 5 years US presence", "INA §301: citizenship at birth abroad to USC parents", "Child Citizenship Act effective 2/27/2001", "Proof via N-600 or US passport application"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §320, 8 USC §1431", "relevance": "Automatic citizenship for LPR children"},
+        {"authority": "INA", "reference": "INA §301, 8 USC §1401", "relevance": "Citizenship at birth abroad"},
+        {"authority": "Statute", "reference": "Child Citizenship Act of 2000, Pub. L. 106-395", "relevance": "Amended §320 effective 2/27/2001"}
+      ],
+      "counter_arguments": ["All four §320 requirements must be met simultaneously while child under 18", "Adoption cases require final adoption — not mere custody", "Physical presence requirements for §301 must be documented precisely"],
+      "applicability_test": "Query involves derivative citizenship, automatic citizenship for children, Child Citizenship Act, INA §320, or citizenship at birth abroad.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "LOW"
+    },
+    {
+      "topic_key": "i212_consent_to_reapply",
+      "topic": "Consent to Reapply After Removal (INA §212(a)(9))",
+      "keywords": ["I-212", "consent to reapply", "reentry after removal", "reentry bar", "5 year bar", "10 year bar", "20 year bar"],
+      "conclusion_template": "INA §212(a)(9)(A) bars admission of previously removed aliens: 5 years after removal, 10 years after removal if second removal or if convicted of aggravated felony, 20 years after second or subsequent removal. INA §212(a)(9)(C) imposes permanent bar for aliens with 1+ year unlawful presence who reenter without inspection. I-212 application for consent to reapply before expiration of statutory bar period. Discretionary — weighs basis for removal, recency, moral character, family ties, need for services.",
+      "reasoning_framework": "1. §212(a)(9)(A) BARS: (i) 5 years for removal/exclusion/VD-in-lieu; (ii) 10 years for removal order, second or subsequent removal, or aggravated felony; (iii) 20 years for second or subsequent removal.\n2. §212(a)(9)(C) PERMANENT BAR: 1+ year unlawful presence then reentry/attempted reentry without inspection. Only waivable after 10 years outside US via I-212 + consent from Secretary.\n3. I-212 APPLICATION: Filed to seek consent to reapply before bar period expires.\n4. DISCRETIONARY FACTORS: Basis for prior removal, recency, moral character, respect for law, family ties, business/property ties, community ties, need for alien's services.\n5. TIMING: Can file I-212 from abroad or, in limited circumstances, from within US.\n6. NOT AUTOMATIC: Approval of I-212 does not guarantee admission — still must overcome all other inadmissibility grounds.",
+      "key_factors": ["5/10/20 year bars depending on removal history", "Permanent bar under §212(a)(9)(C) for unlawful reentry", "I-212 consent is discretionary", "Approval does not guarantee admission", "Must also overcome any other inadmissibility grounds"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(9)(A), 8 USC §1182(a)(9)(A)", "relevance": "Post-removal inadmissibility bars"},
+        {"authority": "INA", "reference": "INA §212(a)(9)(C), 8 USC §1182(a)(9)(C)", "relevance": "Permanent bar for unlawful reentry"},
+        {"authority": "CFR", "reference": "8 CFR §212.2", "relevance": "I-212 application requirements"}
+      ],
+      "counter_arguments": ["Filing I-212 alone does not overcome other inadmissibility grounds", "§212(a)(9)(C) permanent bar extremely difficult to overcome — requires 10 years outside US first", "Aggravated felony prior removal may make I-212 discretionary denial likely"],
+      "applicability_test": "Query involves reentry after removal, I-212, consent to reapply, post-removal bars, or permanent reentry bar.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "registry",
+      "topic": "Registry (INA §249)",
+      "keywords": ["registry", "section 249", "continuous residence since 1972", "registry green card", "long-term resident"],
+      "conclusion_template": "INA §249 allows adjustment to LPR status for aliens who: (1) entered the US before January 1, 1972; (2) have continuously resided in US since entry; (3) are persons of good moral character; (4) are not inadmissible under §212(a)(3)(E) (Nazi persecution) or §212(a)(2) to extent they are ineligible for citizenship; (5) are not subject to removal as deportable. Filed on Form I-485 with evidence of pre-1972 entry and continuous residence.",
+      "reasoning_framework": "1. ENTRY DATE: Must have entered US before January 1, 1972. Manner of entry irrelevant — EWI qualifies.\n2. CONTINUOUS RESIDENCE: Since entry. Brief, casual, and innocent absences permitted.\n3. GOOD MORAL CHARACTER: Must demonstrate GMC — statutory bars in INA §101(f) apply.\n4. ADMISSIBILITY: Not inadmissible under §212(a)(3)(E) (Nazi persecution). Criminal grounds may apply if rendering ineligible for citizenship.\n5. NOT DEPORTABLE: Cannot be subject to removal under deportability grounds.\n6. EVIDENCE: Any credible evidence of pre-1972 entry — school records, employment records, tax records, church records, affidavits.\n7. DISCRETIONARY: Grant is discretionary even if all statutory requirements met.",
+      "key_factors": ["Entry before January 1, 1972", "Manner of entry irrelevant — EWI qualifies", "Continuous residence since entry", "Good moral character required", "Any credible evidence of entry date accepted"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §249, 8 USC §1259", "relevance": "Registry authority"},
+        {"authority": "CFR", "reference": "8 CFR §249.1", "relevance": "Registry requirements"},
+        {"authority": "USCIS", "reference": "USCIS Policy Manual Vol. 7, Pt. L", "relevance": "Registry adjudication guidance"}
+      ],
+      "counter_arguments": ["Registry date has not been updated since 1986 — increasingly rare applicant pool", "Continuous residence burden is on applicant", "Criminal grounds may bar even if entry date established"],
+      "applicability_test": "Query involves registry, INA §249, pre-1972 entry, or long-term resident adjustment under registry provisions.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "LOW"
+    },
+    {
+      "topic_key": "parole_in_place",
+      "topic": "Parole in Place (PIP)",
+      "keywords": ["parole in place", "PIP", "military parole", "humanitarian parole", "parole for AOS", "parole in place for families"],
+      "conclusion_template": "Parole in place grants parole to individuals already present in the US, providing inspected and paroled status that satisfies AOS eligibility under INA §245(a) without requiring physical departure. Established by regulation and policy — available for military families (spouses, parents, children of active duty/veterans) and periodically expanded by executive action. PIP resolves the EWI bar to AOS by providing paroled status deemed equivalent to inspection and admission.",
+      "reasoning_framework": "1. PURPOSE: Allows EWI aliens to be paroled without departing, satisfying I&A/P requirement for AOS.\n2. MILITARY PIP: Established authority for spouses, parents, and children of active duty military, veterans, and deceased service members.\n3. HUMANITARIAN PIP: Discretionary DHS authority under INA §212(d)(5)(A) for urgent humanitarian reasons or significant public benefit.\n4. PROCESS: Apply via I-131 (Application for Travel Document) or pursuant to specific program guidance.\n5. EFFECT: Recipient is deemed inspected and paroled. May proceed with AOS (I-485) if otherwise eligible.\n6. NOT STATUS: Parole is not an immigration status — does not prevent removal proceedings.\n7. DURATION: Set by DHS at time of grant. May be revoked.",
+      "key_factors": ["Resolves EWI bar to adjustment of status", "Military families have established eligibility", "Does not confer immigration status", "Discretionary — no entitlement", "Must still meet all other AOS requirements"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(d)(5)(A), 8 USC §1182(d)(5)(A)", "relevance": "Parole authority"},
+        {"authority": "CFR", "reference": "8 CFR §212.5", "relevance": "Parole regulations"},
+        {"authority": "USCIS", "reference": "USCIS Policy Manual Vol. 7, Pt. B, Ch. 4", "relevance": "Parole in place guidance"}
+      ],
+      "counter_arguments": ["PIP programs subject to executive policy changes — may be expanded or curtailed", "Parole can be revoked at any time before AOS approval", "PIP does not cure other inadmissibility grounds — separate waivers may be needed"],
+      "applicability_test": "Query involves parole in place, PIP for military families, humanitarian parole, or resolving EWI for adjustment purposes.",
+      "confidence_stratification": "DISCLOSURE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "ac21_portability",
+      "topic": "AC21 Job Portability (INA §204(j))",
+      "keywords": ["AC21", "job portability", "I-485 portability", "same or similar occupation", "180 days pending", "change employer green card"],
+      "conclusion_template": "INA §204(j) (per AC21 §106) allows employment-based I-485 applicants to change employers or positions after I-485 has been pending 180+ days, provided new job is in same or similar occupational classification. I-140 remains valid even if original employer withdraws (if I-485 pending 180+ days). Applicant retains priority date. No new PERM or I-140 required for portability — just demonstrate same/similar.",
+      "reasoning_framework": "1. ELIGIBILITY: I-485 pending 180+ days. Employment-based category.\n2. SAME OR SIMILAR: New position must be in same or similar occupational classification as original I-140 job. Per USCIS guidance — SOC code comparison is useful but not determinative.\n3. I-140 VALIDITY: I-140 remains valid for portability even if employer withdraws/revokes AFTER I-485 pending 180 days.\n4. NOTIFICATION: File Supplement J to I-485 to notify USCIS of new employer/position.\n5. NO NEW PERM: No new labor certification required — portability preserves original PERM/I-140.\n6. PRIORITY DATE RETENTION: Original priority date retained regardless of employer change.\n7. EAD: Use EAD (c)(9) to work for new employer during I-485 pendency.",
+      "key_factors": ["I-485 must be pending 180+ days", "Same or similar occupational classification", "I-140 survives employer withdrawal after 180-day mark", "No new PERM or I-140 needed", "Priority date retained across employer changes"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §204(j), 8 USC §1154(j)", "relevance": "Job portability authority"},
+        {"authority": "Statute", "reference": "AC21 §106, Pub. L. 106-313", "relevance": "American Competitiveness in the 21st Century Act"},
+        {"authority": "CFR", "reference": "8 CFR §245.25", "relevance": "Portability regulations"}
+      ],
+      "counter_arguments": ["Same or similar determination is fact-specific — significant deviation from original job may disqualify", "If I-140 revoked for fraud/misrepresentation, portability does not apply", "Must actually intend to work in offered position at time of AOS approval"],
+      "applicability_test": "Query involves AC21 portability, changing employers during green card process, same or similar occupation, or I-485 job change.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "ina240a_vawa_cancellation",
+      "topic": "VAWA Cancellation of Removal (INA §240A(b)(2))",
+      "keywords": ["VAWA cancellation", "battered spouse cancellation", "240A(b)(2)", "abused spouse removal relief"],
+      "conclusion_template": "INA §240A(b)(2) provides cancellation of removal for battered spouses/children/parents of USCs or LPRs. Requirements: (1) battered or subjected to extreme cruelty by USC/LPR spouse or parent; (2) 3 years continuous physical presence; (3) good moral character during 3-year period; (4) removal would result in extreme hardship to alien, alien's child, or alien's parent. Lower hardship standard than non-LPR cancellation. Not subject to 4,000 annual cap.",
+      "reasoning_framework": "1. QUALIFYING ABUSE: Battery or extreme cruelty by USC or LPR spouse or parent. Must establish connection between abuse and immigration situation.\n2. 3-YEAR PRESENCE: Continuous physical presence for 3 years (not 10 as in regular non-LPR cancellation).\n3. GMC: Good moral character during 3-year period. VAWA provisions may excuse certain conduct connected to abuse.\n4. HARDSHIP: Extreme hardship (not exceptional and extremely unusual) to alien, child, or parent. Lower standard than §240A(b)(1).\n5. NO CAP: Not subject to 4,000 annual grant limitation.\n6. SELF-PETITION NOT REQUIRED: Can seek VAWA cancellation even without prior self-petition.\n7. CONFIDENTIALITY: Full VAWA confidentiality protections apply per INA §384.",
+      "key_factors": ["3 years physical presence (not 10)", "Extreme hardship standard (lower than non-LPR cancellation)", "Hardship to alien themselves counts — not just qualifying relative", "Not subject to 4,000 annual cap", "VAWA confidentiality protections apply"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240A(b)(2), 8 USC §1229b(b)(2)", "relevance": "VAWA cancellation authority"},
+        {"authority": "INA", "reference": "INA §384, 8 USC §1367", "relevance": "Confidentiality protections"},
+        {"authority": "CFR", "reference": "8 CFR §1240.20(c)", "relevance": "VAWA cancellation requirements"}
+      ],
+      "counter_arguments": ["Must establish abuse by USC or LPR — abuse by non-qualifying person insufficient", "GMC requirement may be affected by criminal history unrelated to abuse", "Alien must demonstrate causal connection between abuse and immigration situation"],
+      "applicability_test": "Query involves VAWA cancellation of removal, battered spouse cancellation, INA §240A(b)(2), or abuse-based relief in removal proceedings.",
+      "confidence_stratification": "SUPPORTABLE",
+      "risk_level": "HIGH"
+    },
+    {
+      "topic_key": "advance_parole",
+      "topic": "Advance Parole (Travel Document)",
+      "keywords": ["advance parole", "I-131", "travel document", "travel while AOS pending", "reentry permit", "AP"],
+      "conclusion_template": "Advance parole (AP) under INA §212(d)(5) allows alien to travel abroad and return to US without abandoning pending I-485 or other applications. Filed on Form I-131. Critical: departing without AP while I-485 pending generally results in deemed abandonment of AOS. AP combined with EAD on combo card for AOS applicants. Returning on AP = paroled, not admitted — may affect certain immigration consequences.",
+      "reasoning_framework": "1. WHO NEEDS AP: I-485 pending applicants, TPS holders, DACA recipients, deferred action recipients who wish to travel.\n2. DEEMED ABANDONMENT: Departing without AP while I-485 pending = abandonment unless H-1B/L-1 (dual intent) or H-4/L-2 in some circumstances.\n3. COMBO CARD: EAD/AP combination card issued to I-485 applicants. Functions as both work authorization and travel document.\n4. REENTRY PERMIT: For LPRs planning extended absence (1+ year). Filed on I-131 while in US. Valid 2 years.\n5. PAROLE VS ADMISSION: Returning on AP = paroled. Implications for inadmissibility analysis — full §212(a) grounds apply.\n6. CONDITIONAL: AP grant is discretionary. May be revoked.\n7. VALIDITY: Typically 1 year from issuance. Must be valid at time of reentry.",
+      "key_factors": ["Required for travel during pending I-485 (unless H-1B/L-1 dual intent)", "Departure without AP = deemed abandonment of AOS", "Combo card combines EAD and AP", "Return on AP = paroled status, not admitted", "Reentry permit for LPRs traveling 1+ year"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(d)(5), 8 USC §1182(d)(5)", "relevance": "Parole authority"},
+        {"authority": "CFR", "reference": "8 CFR §245.2(a)(4)(ii)", "relevance": "AOS abandonment upon departure"},
+        {"authority": "CFR", "reference": "8 CFR §223.2", "relevance": "Advance parole requirements"}
+      ],
+      "counter_arguments": ["H-1B/L-1 holders can depart and return on valid visa without AP per dual intent", "TPS AP travel creates admission per some circuits — may cure prior EWI", "Emergency AP available for unforeseen circumstances"],
+      "applicability_test": "Query involves advance parole, travel during pending green card application, I-131, reentry permit, or travel document requirements.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "MEDIUM"
+    },
+    {
+      "topic_key": "controlled_substance_grounds",
+      "topic": "Controlled Substance Inadmissibility and Deportability",
+      "keywords": ["controlled substance", "drug conviction", "drug inadmissibility", "drug deportability", "marijuana", "drug trafficking", "212(a)(2)(A)(i)(II)"],
+      "conclusion_template": "Controlled substance offenses create severe immigration consequences. Inadmissibility: INA §212(a)(2)(A)(i)(II) — conviction or admission of violation of controlled substance law. Deportability: INA §237(a)(2)(B)(i) — conviction of CS violation other than single offense involving 30g or less of marijuana for personal use. Drug trafficking aggravated felony per §101(a)(43)(B). Only limited waivers available — §212(h) waiver available for single offense of simple possession of 30g or less marijuana.",
+      "reasoning_framework": "1. INADMISSIBILITY §212(a)(2)(A)(i)(II): Convicted of or admits violating any law relating to controlled substance. Includes mere admission without conviction.\n2. DEPORTABILITY §237(a)(2)(B)(i): Convicted of violation. Single offense of 30g marijuana for personal use excepted.\n3. AGGRAVATED FELONY: Drug trafficking per §101(a)(43)(B) — includes distribution, even social sharing may qualify per Moncrieffe analysis.\n4. WAIVER LIMITATIONS: §212(h) waiver only for single offense of simple possession of 30g or less marijuana. No other CS waivers for inadmissibility.\n5. REASON TO BELIEVE: §212(a)(2)(C) — known or believed to be illicit trafficker. No conviction required — reasonable suspicion standard.\n6. STATE LEGALIZATION: Federal immigration law controls — state marijuana legalization irrelevant for immigration purposes.\n7. PARAPHERNALIA: Some states' paraphernalia convictions may not be CS violation if statute broader than CSA.",
+      "key_factors": ["Admission alone (without conviction) can trigger inadmissibility", "Only single offense 30g marijuana has waiver/exception", "State marijuana legalization irrelevant for immigration", "Drug trafficking = aggravated felony with severe consequences", "Reason to believe trafficker — no conviction needed"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §212(a)(2)(A)(i)(II), 8 USC §1182(a)(2)(A)(i)(II)", "relevance": "CS inadmissibility"},
+        {"authority": "INA", "reference": "INA §237(a)(2)(B), 8 USC §1227(a)(2)(B)", "relevance": "CS deportability"},
+        {"authority": "Case", "reference": "Moncrieffe v. Holder, 569 U.S. 184 (2013)", "relevance": "Drug trafficking aggravated felony analysis"},
+        {"authority": "Case", "reference": "Lopez v. Gonzales, 549 U.S. 47 (2006)", "relevance": "Simple possession not aggravated felony"}
+      ],
+      "counter_arguments": ["State paraphernalia statute may be overbroad — not matching federal CSA = categorical mismatch", "Post-conviction relief may eliminate CS conviction in some jurisdictions/circuits", "Admission must be voluntary and without duress to trigger inadmissibility"],
+      "applicability_test": "Query involves controlled substance convictions, drug offenses and immigration, marijuana and immigration, or drug trafficking immigration consequences.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "domestic_violence_grounds",
+      "topic": "Domestic Violence Deportability (INA §237(a)(2)(E))",
+      "keywords": ["domestic violence deportation", "DV deportability", "stalking deportation", "child abuse deportation", "protection order violation"],
+      "conclusion_template": "INA §237(a)(2)(E) provides specific deportability grounds for domestic violence, stalking, child abuse/neglect/abandonment, and violation of protection order. Conviction of crime of domestic violence (as defined in 18 USC §16 applied to intimate partner) renders deportable. Stalking conviction deportable. Child abuse/neglect/abandonment conviction deportable. Violation of protection order deportable if involves protection against credible threats, repeated harassment, or bodily injury.",
+      "reasoning_framework": "1. DOMESTIC VIOLENCE §237(a)(2)(E)(i): Convicted of crime of domestic violence as defined — crime of violence (18 USC §16) committed against current/former spouse, cohabitant, person sharing child, person similarly situated under domestic/family violence laws.\n2. STALKING §237(a)(2)(E)(i): Convicted of stalking offense.\n3. CHILD ABUSE §237(a)(2)(E)(i): Convicted of child abuse, child neglect, or child abandonment.\n4. PROTECTION ORDER §237(a)(2)(E)(ii): Determined to have violated protection order that involves protection against credible threats of violence, repeated harassment, or bodily injury.\n5. CRIME OF VIOLENCE: Per 18 USC §16 — use/attempted use/threatened use of physical force OR substantial risk that force may be used in committing. Per Sessions v. Dimaya — §16(b) void for vagueness, only §16(a) valid.\n6. NO WAIVER: No specific statutory waiver for DV deportability ground. Cancellation of removal may be only relief (if no aggravated felony).",
+      "key_factors": ["Crime of violence against intimate partner = deportable", "Protection order violation deportable even without conviction", "Sessions v. Dimaya eliminated §16(b) — only §16(a) valid", "No specific waiver for DV deportability ground", "VAWA protections available for victims — not perpetrators"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §237(a)(2)(E), 8 USC §1227(a)(2)(E)", "relevance": "DV/stalking/child abuse deportability"},
+        {"authority": "Case", "reference": "Sessions v. Dimaya, 584 U.S. 148 (2018)", "relevance": "Crime of violence definition — §16(b) void"},
+        {"authority": "Statute", "reference": "18 USC §16", "relevance": "Crime of violence definition"}
+      ],
+      "counter_arguments": ["Under Dimaya, only §16(a) element — use/attempted use/threatened use of physical force — remains valid", "Not all state DV convictions match federal crime of violence definition", "Protection order violation must meet specific statutory requirements — mere civil order violation insufficient"],
+      "applicability_test": "Query involves domestic violence and immigration consequences, stalking deportability, child abuse deportability, or protection order violation deportability.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "topic_key": "motions_to_reopen",
+      "topic": "Motions to Reopen/Reconsider (INA §240(c)(6)-(7))",
+      "keywords": ["motion to reopen", "motion to reconsider", "MTR", "reopen removal", "sua sponte", "changed country conditions"],
+      "conclusion_template": "INA §240(c)(6) allows one motion to reconsider within 30 days based on legal errors. INA §240(c)(7) allows one motion to reopen within 90 days based on new facts/evidence not available at prior hearing. Exceptions to time/number limits: changed country conditions (asylum claims, no time limit), ineffective assistance of counsel, VAWA (no time/number limits for DV victims), sua sponte (IJ/BIA discretion). In absentia orders: rescission within 180 days (failure to receive notice) or any time (lack of proper notice or exceptional circumstances).",
+      "reasoning_framework": "1. RECONSIDERATION §240(c)(6): One motion, within 30 days. Must specify errors of law or fact. No new evidence.\n2. REOPENING §240(c)(7): One motion, within 90 days. Must present previously unavailable material evidence likely to change outcome.\n3. EXCEPTIONS TO TIME/NUMBER LIMITS:\n   a. Changed country conditions — no time limit for asylum/withholding/CAT claims\n   b. Ineffective assistance per Matter of Lozada — must show: attorney retained, notified of complaint, prejudice\n   c. VAWA — no time or number limits for abuse victims\n   d. Joint DHS-alien motion — no time limit\n   e. Sua sponte — BIA/IJ discretion, no time limit\n4. IN ABSENTIA: §240(b)(5)(C) — rescission within 180 days for lack of receipt, or any time for failure to provide proper notice or exceptional circumstances.\n5. STAY OF REMOVAL: Filing MTR does not automatically stay removal. Must file separate motion for stay.\n6. DEPARTURE BAR: Generally cannot reopen after departure except for in absentia rescission in some circuits.",
+      "key_factors": ["One motion to reconsider (30 days) and one to reopen (90 days)", "Changed country conditions exception — no time limit", "Lozada requirements for IAC claims", "Filing does not automatically stay removal", "Departure generally bars reopening"],
+      "primary_authority": [
+        {"authority": "INA", "reference": "INA §240(c)(6)-(7), 8 USC §1229a(c)(6)-(7)", "relevance": "MTR authority and limits"},
+        {"authority": "BIA", "reference": "Matter of Lozada, 19 I&N Dec. 637 (BIA 1988)", "relevance": "IAC requirements for reopening"},
+        {"authority": "CFR", "reference": "8 CFR §1003.23", "relevance": "Motion procedures before immigration court"}
+      ],
+      "counter_arguments": ["Sua sponte authority is broad but rarely exercised — not a guaranteed path", "Changed country conditions must be material to the specific claim", "Departure bar has circuit-level exceptions that should be analyzed"],
+      "applicability_test": "Query involves motion to reopen, motion to reconsider, reopening removal proceedings, in absentia order rescission, or ineffective assistance of counsel in immigration.",
+      "confidence_stratification": "DEFENSIBLE",
+      "risk_level": "HIGH"
+    }
+  ]
+}

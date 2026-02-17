@@ -1,0 +1,271 @@
+{
+  "engine_id": "LM01",
+  "engine_name": "Title Examination Engine",
+  "version": "1.0.0",
+  "category": "LANDMAN",
+  "subcategory": "TITLE_EXAMINATION",
+  "port": 8421,
+  "host": "0.0.0.0",
+  "description": "Full title examination engine for oil and gas landman operations. Constructs chains of title, detects defects, generates title opinions, and produces run sheets.",
+  "author": "ECHO OMEGA PRIME Build System",
+  "commander": "Bobby Don McWilliams II",
+
+  "jurisdiction": {
+    "primary_state": "TX",
+    "supported_states": ["TX", "NM", "OK", "LA", "CO", "ND", "WY", "MT", "PA", "WV", "OH"],
+    "recording_act_type": "race_notice",
+    "default_county": "REEVES",
+    "texas_property_code_version": "2025"
+  },
+
+  "title_standards": {
+    "marketable_title_threshold": 0.95,
+    "insurable_title_threshold": 0.85,
+    "chain_integrity_minimum": 0.70,
+    "max_gap_days_warning": 365,
+    "max_gap_days_critical": 1825,
+    "sovereign_origin_required": true,
+    "default_search_period_years": 60,
+    "extended_search_period_years": 100,
+    "adverse_possession_years_tx": 10,
+    "limitations_period_years": {
+      "fraud": 4,
+      "forgery": 0,
+      "adverse_possession_5yr": 5,
+      "adverse_possession_10yr": 10,
+      "adverse_possession_25yr": 25,
+      "tax_sale_redemption": 2,
+      "lien_expiration_abstract": 4,
+      "lien_expiration_mechanic": 2,
+      "dormant_mineral_act": 0
+    }
+  },
+
+  "defect_severity": {
+    "break_in_chain": "critical",
+    "wild_deed": "critical",
+    "forgery": "critical",
+    "fraud": "critical",
+    "missing_heir": "critical",
+    "double_grant": "critical",
+    "overlapping_interest": "critical",
+    "unreleased_mortgage": "major",
+    "expired_lien": "major",
+    "tax_delinquency": "major",
+    "missing_marital_acknowledgment": "major",
+    "defective_acknowledgment": "major",
+    "missing_probate": "major",
+    "gap_in_chain": "major",
+    "name_variance": "minor",
+    "recording_gap": "minor",
+    "missing_legal_description": "minor",
+    "consideration_recital_missing": "minor",
+    "scriveners_error": "minor",
+    "improper_venue": "informational",
+    "late_recording": "informational",
+    "missing_filing_stamp": "informational"
+  },
+
+  "instrument_types": {
+    "conveyances": [
+      "WARRANTY_DEED",
+      "SPECIAL_WARRANTY_DEED",
+      "QUITCLAIM_DEED",
+      "GRANT_DEED",
+      "MINERAL_DEED",
+      "ROYALTY_DEED",
+      "CORRECTION_DEED",
+      "BARGAIN_AND_SALE_DEED",
+      "GIFT_DEED",
+      "TRUSTEES_DEED",
+      "EXECUTORS_DEED",
+      "ADMINISTRATORS_DEED",
+      "SHERIFFS_DEED",
+      "TAX_DEED",
+      "MASTERS_DEED"
+    ],
+    "leases": [
+      "OIL_GAS_LEASE",
+      "PAID_UP_LEASE",
+      "TOP_LEASE",
+      "SURFACE_LEASE",
+      "FARM_OUT_AGREEMENT"
+    ],
+    "assignments": [
+      "ASSIGNMENT",
+      "PARTIAL_ASSIGNMENT",
+      "ASSIGNMENT_OF_OGL",
+      "ASSIGNMENT_OF_ORRI",
+      "ASSIGNMENT_OF_PRODUCTION_PAYMENT"
+    ],
+    "releases": [
+      "RELEASE",
+      "PARTIAL_RELEASE",
+      "RELEASE_OF_LIEN",
+      "RELEASE_OF_LEASE",
+      "SATISFACTION_OF_MORTGAGE",
+      "SUBORDINATION_AGREEMENT"
+    ],
+    "encumbrances": [
+      "DEED_OF_TRUST",
+      "MORTGAGE",
+      "MECHANICS_LIEN",
+      "TAX_LIEN",
+      "JUDGMENT_LIEN",
+      "UCC_FILING",
+      "LIS_PENDENS"
+    ],
+    "probate": [
+      "WILL",
+      "PROBATE_ORDER",
+      "AFFIDAVIT_OF_HEIRSHIP",
+      "COURT_ORDER",
+      "LETTERS_TESTAMENTARY",
+      "LETTERS_OF_ADMINISTRATION",
+      "DECREE_OF_DISTRIBUTION",
+      "SMALL_ESTATE_AFFIDAVIT"
+    ],
+    "curative": [
+      "CORRECTION_DEED",
+      "RATIFICATION",
+      "AFFIDAVIT_OF_IDENTITY",
+      "AFFIDAVIT_OF_NON_PRODUCTION",
+      "STIPULATION_OF_INTEREST"
+    ],
+    "other": [
+      "EASEMENT",
+      "RIGHT_OF_WAY",
+      "PLAT",
+      "POOLING_AGREEMENT",
+      "UNIT_DESIGNATION",
+      "DIVISION_ORDER",
+      "MEMORANDUM",
+      "POWER_OF_ATTORNEY"
+    ]
+  },
+
+  "interest_types": {
+    "mineral": ["MINERAL_FEE", "MINERAL_LEASEHOLD", "EXECUTIVE_RIGHT"],
+    "royalty": ["ROYALTY", "OVERRIDING_ROYALTY", "PRODUCTION_PAYMENT", "NET_PROFITS_INTEREST"],
+    "surface": ["SURFACE_FEE", "SURFACE_LEASEHOLD", "EASEMENT", "RIGHT_OF_WAY"],
+    "combined": ["FEE_SIMPLE_ABSOLUTE"],
+    "working": ["WORKING_INTEREST", "CARRIED_INTEREST", "BACK_IN_INTEREST", "FARMOUT_INTEREST"]
+  },
+
+  "texas_specific": {
+    "community_property_state": true,
+    "separate_mineral_estate": true,
+    "dominant_mineral_estate": true,
+    "accommodation_doctrine": true,
+    "surface_destruction_test": false,
+    "executive_right_severable": true,
+    "royalty_fraction_default": "0.125",
+    "bonus_consideration_required": false,
+    "recording_counties": true,
+    "abstract_system": true,
+    "vacancy_act_applies": true,
+    "relinquishment_act_applies": true,
+    "free_royalty_act": false
+  },
+
+  "search_config": {
+    "default_page_size": 50,
+    "max_page_size": 500,
+    "fuzzy_name_threshold": 0.80,
+    "phonetic_matching": true,
+    "soundex_enabled": true,
+    "metaphone_enabled": true,
+    "name_normalization": true,
+    "date_range_default_years": 60,
+    "max_results_per_query": 1000,
+    "relevance_score_minimum": 0.30,
+    "index_fields": [
+      "grantor_name",
+      "grantee_name",
+      "legal_description",
+      "instrument_type",
+      "recording_date",
+      "volume_page",
+      "document_number"
+    ]
+  },
+
+  "opinion_config": {
+    "title_opinion_types": ["PRELIMINARY", "SUPPLEMENTAL", "FINAL", "STANDBY", "DRILLING"],
+    "minimum_search_period_years": 40,
+    "standard_search_period_years": 60,
+    "extended_search_period_years": 100,
+    "opinion_format": "AAPL_STANDARD",
+    "include_run_sheet": true,
+    "include_curative_list": true,
+    "include_ownership_schedule": true,
+    "attorney_certification_required": true,
+    "title_company_certification": false
+  },
+
+  "run_sheet_config": {
+    "format": "STANDARD_LANDMAN",
+    "columns": [
+      "entry_number",
+      "instrument_type",
+      "recording_date",
+      "volume_page",
+      "document_number",
+      "grantor",
+      "grantee",
+      "legal_description",
+      "interest_conveyed",
+      "reservations",
+      "exceptions",
+      "consideration",
+      "remarks"
+    ],
+    "sort_order": "recording_date_asc",
+    "group_by_legal_description": true,
+    "include_plat_references": true,
+    "include_probate_records": true,
+    "net_acres_calculation": true
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "metrics_interval_seconds": 60,
+    "audit_trail_enabled": true,
+    "performance_tracking": true,
+    "query_logging": true,
+    "error_tracking": true,
+    "deterministic_hash": true,
+    "hash_algorithm": "sha256"
+  },
+
+  "integration": {
+    "landman_intelligence_path": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE",
+    "encore_scraper_path": "O:/ECHO_OMEGA_PRIME/ENCORE",
+    "shadowglass_url": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "cognition_cloud_ekm_url": "https://ekm-query.bmcii1976.workers.dev",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": "echo-build-orchestrator",
+    "swarm_brain_url": "https://echo-swarm-brain.bmcii1976.workers.dev"
+  },
+
+  "curative_thresholds": {
+    "auto_cure_name_variance_similarity": 0.90,
+    "require_affidavit_for_heirship": true,
+    "require_probate_for_estate": true,
+    "require_release_for_expired_lien": true,
+    "max_curative_items_before_reject": 15,
+    "curative_deadline_days": 90
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "interval_seconds": 30,
+    "timeout_seconds": 5,
+    "required_components": [
+      "doctrine_cache",
+      "semantic_dictionary",
+      "search_engine",
+      "telemetry"
+    ]
+  }
+}

@@ -1,0 +1,1035 @@
+{
+  "engine_id": "LG10",
+  "domain": "family_law",
+  "version": "1.0.0",
+  "total_blocks": 55,
+  "last_updated": "2026-02-09",
+  "blocks": [
+    {
+      "topic_key": "best_interest_child",
+      "topic": "Best Interest of the Child Standard",
+      "keywords": ["best interest", "child welfare", "custody standard", "parental fitness", "child preference", "stability"],
+      "conclusion_template": "The best interest of the child is the paramount standard in all custody determinations. Courts weigh statutory factors including emotional ties, parental capacity, stability of home environment, the child's adjustment to community and school, mental and physical health of all parties, and any history of domestic violence or substance abuse. No single factor is dispositive; the totality of circumstances governs.",
+      "reasoning_framework": "1. STATUTORY FACTOR ANALYSIS: Enumerate all best-interest factors under applicable state family code. 2. EVIDENCE MAPPING: Map available evidence to each factor with strength rating. 3. WEIGHTING: Courts give heightened weight to domestic violence, substance abuse, and child's expressed preference (age-dependent). 4. STABILITY PREFERENCE: Status quo bias favors maintaining existing arrangements absent compelling reason to change. 5. PARENTAL COOPERATION: Willingness to foster relationship with other parent is a significant factor in most jurisdictions.",
+      "key_factors": ["Emotional ties between child and each parent", "Parental capacity and willingness to provide", "Stability and continuity of environment", "Child's adjustment to home, school, community", "Mental and physical health of parties", "History of family violence", "Child's preference if of sufficient age and maturity", "Willingness to encourage relationship with other parent"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.002", "relevance": "Best interest is primary consideration in custody"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.134", "relevance": "Best interest factors for joint managing conservatorship"},
+        {"authority": "case_law", "reference": "Holley v. Adams, 544 S.W.2d 367 (Tex. 1976)", "relevance": "Establishes non-exhaustive best-interest factors"},
+        {"authority": "statute", "reference": "UMDA \u00a7 402 (Uniform Marriage and Divorce Act)", "relevance": "Model best-interest factors adopted by majority of states"}
+      ],
+      "counter_arguments": ["Factor weighting is inherently subjective and varies by judge", "Status quo bias can perpetuate arrangements born of unequal bargaining", "Child preference evidence is unreliable below age 12 in most jurisdictions", "Best-interest standard gives little predictive guidance to parties negotiating settlement"],
+      "confidence": "defensible",
+      "related_doctrines": ["custody_modification", "relocation_law", "domestic_violence_custody", "parental_alienation"],
+      "entity_scope": ["divorce", "paternity", "modification", "grandparent_rights"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "community_property_division",
+      "topic": "Community Property Division",
+      "keywords": ["community property", "marital property", "property division", "50/50 split", "community estate", "separate property claim"],
+      "conclusion_template": "In community property jurisdictions (AZ, CA, ID, LA, NV, NM, TX, WA, WI), all property acquired during marriage is presumed community unless proven separate by clear and convincing evidence. Courts divide community property in a manner that is 'just and right' (TX) or 'substantially equal' (CA), considering factors including fault, disparity in earning capacity, custody of children, and waste of community assets.",
+      "reasoning_framework": "1. CHARACTERIZATION: Classify each asset as community or separate. Separate property = owned before marriage, acquired by gift/inheritance, or personal injury recovery. 2. TRACING: If commingled, trace inception of title and apply community-out-first rule. 3. REIMBURSEMENT: Calculate reimbursement claims for community funds used on separate property and vice versa. 4. VALUATION: Determine fair market value as of date of division. 5. DIVISION: Divide community estate considering statutory factors. Disproportionate division requires justification on the record.",
+      "key_factors": ["Date of acquisition relative to marriage", "Source of funds (community vs separate)", "Tracing evidence quality", "Commingling extent", "Reimbursement claims", "Fault grounds if applicable", "Disparity in earning capacity", "Custody of minor children", "Waste or dissipation of assets"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 3.002", "relevance": "Community property presumption"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 760", "relevance": "Community property defined"},
+        {"authority": "case_law", "reference": "Zieba v. Martin, 928 S.W.2d 782 (Tex. App. 1996)", "relevance": "Clear and convincing standard for separate property"},
+        {"authority": "case_law", "reference": "In re Marriage of Mix, 14 Cal.3d 604 (1975)", "relevance": "Substantially equal division required in CA"}
+      ],
+      "counter_arguments": ["Tracing evidence is often incomplete making characterization uncertain", "Just and right standard gives courts wide discretion with limited appellate review", "Date of separation disputes affect characterization", "Inception of title vs transmutation theories may yield different results"],
+      "confidence": "defensible",
+      "related_doctrines": ["separate_property", "business_valuation_divorce", "hidden_assets", "dissipation", "reimbursement_claims"],
+      "entity_scope": ["divorce", "legal_separation", "annulment"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "equitable_distribution",
+      "topic": "Equitable Distribution of Marital Property",
+      "keywords": ["equitable distribution", "marital property", "fair division", "property settlement", "non-community state"],
+      "conclusion_template": "In equitable distribution states (41 states + DC), courts divide marital property in a fair and equitable manner, which need not be equal. Courts consider duration of marriage, each spouse's economic circumstances, contributions (monetary and non-monetary including homemaking), age and health, custody arrangements, tax consequences, and any prenuptial agreements. Separate property (pre-marital, gifts, inheritances) is generally excluded unless commingled.",
+      "reasoning_framework": "1. IDENTIFY MARITAL vs SEPARATE: Date of marriage to date of separation/filing. 2. VALUE ALL MARITAL ASSETS: FMV at date of distribution or trial. 3. APPLY STATUTORY FACTORS: Duration, contributions, earning capacity, age/health. 4. CONSIDER TAX IMPACT: Capital gains, retirement account distribution, property transfer. 5. CRAFT DISTRIBUTION: Need not be 50/50; must be equitable based on totality of factors.",
+      "key_factors": ["Duration of marriage", "Each party's income and earning capacity", "Contribution to marital estate including homemaking", "Age and health of parties", "Custody of minor children", "Tax consequences of distribution", "Dissipation or waste of marital assets", "Whether prenuptial agreement applies"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "N.Y. Dom. Rel. Law \u00a7 236(B)(5)(d)", "relevance": "Equitable distribution factors in New York"},
+        {"authority": "statute", "reference": "Fla. Stat. \u00a7 61.075", "relevance": "Florida equitable distribution scheme"},
+        {"authority": "case_law", "reference": "O'Brien v. O'Brien, 66 N.Y.2d 576 (1985)", "relevance": "Enhanced earning capacity as marital property (NY)"},
+        {"authority": "statute", "reference": "Pa. Cons. Stat. \u00a7 3502", "relevance": "Pennsylvania marital property factors"}
+      ],
+      "counter_arguments": ["Equitable does not mean equal giving courts wide discretion", "Valuation dates vary by jurisdiction creating uncertainty", "Non-monetary contributions are inherently subjective to value", "Enhanced earning capacity treatment varies dramatically by state"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "business_valuation_divorce", "professional_license_valuation", "prenuptial_enforceability"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "child_support_guidelines",
+      "topic": "Child Support Guidelines — Income Shares Model",
+      "keywords": ["child support", "income shares", "support calculation", "guideline support", "child support worksheet", "percentage of income"],
+      "conclusion_template": "The majority of states use the Income Shares Model for child support, which estimates the amount parents would have spent on the child if the household were intact and apportions that amount between parents based on their respective incomes. Gross income includes wages, salary, commissions, bonuses, self-employment income, dividends, pensions, and imputed income for voluntarily unemployed or underemployed parents. Deviations require specific findings on the record.",
+      "reasoning_framework": "1. DETERMINE GROSS INCOME: Both parents. Include all sources per statutory definition. 2. ADJUST FOR ALLOWABLE DEDUCTIONS: Taxes, pre-existing support orders, health insurance for the child. 3. COMBINE INCOMES: Look up basic child support obligation on schedule/table. 4. APPORTION: Each parent's share proportional to their percentage of combined income. 5. CREDIT: Offset for health insurance, extraordinary medical, childcare costs. 6. DEVIATION ANALYSIS: Only for specific statutory reasons documented on the record.",
+      "key_factors": ["Gross income of both parents from all sources", "Number of children", "Healthcare costs for children", "Childcare costs", "Extraordinary expenses", "Parenting time allocation", "Pre-existing support obligations", "Imputed income if voluntarily unemployed"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.125", "relevance": "Texas child support guidelines table"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.062", "relevance": "Net resources defined for child support"},
+        {"authority": "regulatory", "reference": "45 C.F.R. \u00a7 302.56", "relevance": "Federal requirement for state guidelines"},
+        {"authority": "case_law", "reference": "In re Marriage of Bush, 191 Ill. App. 3d 249 (1989)", "relevance": "All income sources included in support calculation"}
+      ],
+      "counter_arguments": ["Guideline amounts may be inadequate for high-income families", "Income shares model may not reflect actual expenditure patterns", "Self-employment income is easily manipulated", "Imputed income determinations are inherently speculative"],
+      "confidence": "defensible",
+      "related_doctrines": ["imputed_income", "deviation_from_guidelines", "modification_support", "retroactive_support"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "spousal_support_factors",
+      "topic": "Spousal Support / Alimony Determination",
+      "keywords": ["spousal support", "alimony", "spousal maintenance", "rehabilitative alimony", "permanent alimony", "support duration"],
+      "conclusion_template": "Spousal support is awarded based on statutory factors including the duration of marriage, each spouse's financial resources and earning capacity, age and health, contributions to the other spouse's education or career, and the standard of living during marriage. Modern trend favors rehabilitative support (time-limited) over permanent support, except in long-duration marriages where self-sufficiency is unlikely. Amount and duration are within the court's discretion subject to statutory caps in some jurisdictions.",
+      "reasoning_framework": "1. THRESHOLD: Does requesting spouse meet eligibility criteria (e.g., inability to meet minimum needs, marriage duration thresholds)? 2. AMOUNT: Consider statutory caps, standard of living, needs vs ability to pay. 3. DURATION: Short marriage = rehabilitative; long marriage = potentially indefinite. 4. TYPE: Temporary, rehabilitative, reimbursement, or permanent. 5. MODIFIABILITY: Unless contractual (non-modifiable by agreement), support is modifiable upon material change.",
+      "key_factors": ["Duration of marriage", "Each spouse's earning capacity and education", "Age and health of parties", "Standard of living during marriage", "Contribution to other spouse's career or education", "Available property after division", "Whether custodial responsibilities limit employment", "Marital misconduct (in some jurisdictions)"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 8.051-8.055", "relevance": "Texas spousal maintenance eligibility and factors"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 4320", "relevance": "California spousal support factors"},
+        {"authority": "case_law", "reference": "In re Marriage of Smith, 990 P.2d 342 (Or. App. 1999)", "relevance": "Standard of living as spousal support benchmark"},
+        {"authority": "statute", "reference": "Fla. Stat. \u00a7 61.08", "relevance": "Florida alimony types and factors"}
+      ],
+      "counter_arguments": ["Support duration caps may be inadequate for displaced homemakers", "Earning capacity imputation for long-absent spouse is speculative", "Standard of living measurement is subjective", "Tax treatment changes under TCJA 2017 shifted economics of support"],
+      "confidence": "defensible",
+      "related_doctrines": ["modification_support", "imputed_income", "tax_implications_divorce", "cohabitation_termination"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "prenuptial_enforceability",
+      "topic": "Prenuptial Agreement Enforceability",
+      "keywords": ["prenuptial", "prenup", "premarital agreement", "antenuptial", "enforceability", "unconscionable"],
+      "conclusion_template": "Prenuptial agreements are enforceable if they meet requirements of the Uniform Premarital Agreement Act (UPAA) or state equivalent: voluntary execution, fair disclosure of assets, and terms not unconscionable at enforcement. Procedural defenses include duress, lack of independent counsel, inadequate time to review, and insufficient disclosure. Substantive unconscionability is measured at time of enforcement, not execution, in most jurisdictions.",
+      "reasoning_framework": "1. FORMATION: Written, signed before marriage, voluntary. 2. DISCLOSURE: Full and fair disclosure of assets and obligations. 3. INDEPENDENT COUNSEL: Both parties had opportunity to consult counsel. 4. VOLUNTARINESS: No duress, undue influence, or fraud. 5. UNCONSCIONABILITY: Test at time of enforcement. Consider changed circumstances. 6. SCOPE: Cannot adversely affect child support or custody rights.",
+      "key_factors": ["Whether both parties had independent counsel", "Adequacy of financial disclosure", "Time between presentation and wedding", "Sophistication of the parties", "Whether terms are unconscionable at enforcement", "Compliance with UPAA or state requirements", "Whether agreement waives child support (void if so)"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Uniform Premarital Agreement Act \u00a7 6 (UPAA)", "relevance": "Enforcement standards and defenses"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 4.006", "relevance": "Texas premarital agreement enforcement"},
+        {"authority": "case_law", "reference": "Simeone v. Simeone, 581 A.2d 162 (Pa. 1990)", "relevance": "Prenups enforceable without full understanding of rights waived"},
+        {"authority": "case_law", "reference": "In re Marriage of Bonds, 24 Cal.4th 1 (2000)", "relevance": "Voluntariness analysis for prenuptial agreements"}
+      ],
+      "counter_arguments": ["Unconscionability timing (execution vs enforcement) varies by state", "Independent counsel requirement not universal", "Disclosure adequacy is fact-intensive", "Changed circumstances may render agreement unjust"],
+      "confidence": "defensible",
+      "related_doctrines": ["postnuptial_agreements", "community_property_division", "equitable_distribution", "separate_property"],
+      "entity_scope": ["divorce", "legal_separation", "annulment"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "custody_modification",
+      "topic": "Modification of Custody Orders",
+      "keywords": ["custody modification", "change custody", "material change", "substantial change", "modification standard"],
+      "conclusion_template": "Modification of a custody order requires proof of a material and substantial change in circumstances since the prior order, and that modification serves the child's best interest. The movant bears the burden on both elements. Courts apply a higher threshold than initial custody determinations to promote stability. In Texas, modification within one year of the order requires an additional showing of serious and immediate danger to the child's welfare.",
+      "reasoning_framework": "1. THRESHOLD: Has there been a material and substantial change in circumstances? 2. TIMING: Was prior order entered more or less than one year ago? Different standards may apply. 3. BEST INTEREST: Even if threshold met, modification must serve child's best interest. 4. SPECIFIC GROUNDS: Relocation, abuse, neglect, child's preference (if age-appropriate), parental incapacity. 5. STABILITY PREFERENCE: Courts disfavor frequent modification absent compelling grounds.",
+      "key_factors": ["Nature and degree of changed circumstances", "Time elapsed since prior order", "Whether change was foreseeable at time of prior order", "Impact on child's stability", "Child's current adjustment", "Whether modification serves best interest", "Any history of frivolous modification attempts"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 156.101", "relevance": "Grounds for modification of conservatorship"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 156.102", "relevance": "One-year restriction on modification"},
+        {"authority": "case_law", "reference": "In re Marriage of Burgess, 13 Cal.4th 25 (1996)", "relevance": "Relocation as changed circumstance"},
+        {"authority": "statute", "reference": "UCCJEA \u00a7 202", "relevance": "Exclusive continuing jurisdiction for modification"}
+      ],
+      "counter_arguments": ["Material change standard is vague giving courts wide discretion", "Stability preference may trap children in suboptimal arrangements", "One-year restriction may not protect children in urgent situations", "Foregone circumstances doctrine is inconsistently applied"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "relocation_law", "domestic_violence_custody", "jurisdiction_uccjea"],
+      "entity_scope": ["modification", "divorce", "paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "relocation_law",
+      "topic": "Parental Relocation / Move-Away Cases",
+      "keywords": ["relocation", "move away", "geographic restriction", "move with child", "parental move", "custody relocation"],
+      "conclusion_template": "Relocation cases require balancing the relocating parent's right to mobility against the child's interest in maintaining meaningful contact with both parents. Most jurisdictions require notice to the non-relocating parent (30-60 days typical), and the relocating parent bears the burden of showing relocation serves the child's best interest. Courts consider the reason for the move, impact on visitation, quality of proposed substitute visitation schedule, and the child's ties to the current community.",
+      "reasoning_framework": "1. NOTICE REQUIREMENT: Was proper statutory notice given? 2. BURDEN: Relocating parent must show good faith and best interest (varies by state). 3. FACTORS: Reason for move, enhanced quality of life, feasibility of preserving other parent's relationship, child's preference, impact on child's development. 4. GEOGRAPHIC RESTRICTIONS: If existing order contains restriction, modification is required before relocation. 5. REMEDY: Court may modify custody, modify visitation, or deny relocation.",
+      "key_factors": ["Good faith reason for relocation", "Impact on child's relationship with non-relocating parent", "Feasibility of revised parenting schedule", "Child's ties to current community and school", "Quality of life enhancement for child", "Child's age and developmental needs", "History of co-parenting cooperation"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.001(a)(1)", "relevance": "Geographic restriction as possession term"},
+        {"authority": "case_law", "reference": "In re Marriage of Burgess, 13 Cal.4th 25 (1996)", "relevance": "Custodial parent presumption favoring relocation (CA)"},
+        {"authority": "case_law", "reference": "Tropea v. Tropea, 87 N.Y.2d 727 (1996)", "relevance": "Case-by-case best interest analysis for relocation (NY)"},
+        {"authority": "case_law", "reference": "Lenz v. Lenz, 79 S.W.3d 10 (Tex. 2002)", "relevance": "Geographic restriction enforceability in Texas"}
+      ],
+      "counter_arguments": ["Presumptions favoring custodial parent's relocation may undervalue other parent's relationship", "Geographic restrictions limit parent's economic mobility", "Best interest balancing is inherently speculative", "Virtual visitation is inadequate substitute for in-person contact"],
+      "confidence": "supportable",
+      "related_doctrines": ["best_interest_child", "custody_modification", "parenting_plan", "enforcement_contempt"],
+      "entity_scope": ["modification", "divorce", "paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "domestic_violence_custody",
+      "topic": "Domestic Violence Impact on Custody",
+      "keywords": ["domestic violence", "family violence", "protective order", "custody abuse", "DV custody", "batterer"],
+      "conclusion_template": "Family violence creates a rebuttable presumption against awarding custody (sole or joint) to the perpetrator in most jurisdictions. Courts must make specific findings regarding the impact of violence on the child's best interest. History of violence, protective orders, criminal convictions, completion of batterer intervention programs, and risk of future violence are all considered. The protective parent's credibility is enhanced, not diminished, by seeking protection.",
+      "reasoning_framework": "1. EVIDENCE OF VIOLENCE: Protective orders, criminal records, testimony, medical records, police reports. 2. PRESUMPTION: In states with statutory presumption, burden shifts to perpetrator to overcome. 3. IMPACT ON CHILD: Direct abuse, witnessing violence, climate of fear. 4. RISK ASSESSMENT: Likelihood of future violence, lethality indicators. 5. REMEDIAL MEASURES: BIP completion, sobriety, counseling, supervised visitation. 6. SAFETY PLANNING: Provisions for safe exchange, no-contact provisions, supervised access.",
+      "key_factors": ["Existence of protective orders or criminal convictions", "Whether child witnessed or was victim of violence", "Credibility of allegations", "Completion of batterer intervention program", "Risk of future violence", "Impact on child's emotional and physical safety", "Whether violence was isolated or pattern"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.004", "relevance": "History of family violence considered in custody"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3044", "relevance": "Rebuttable presumption against custody for DV perpetrator"},
+        {"authority": "statute", "reference": "UCCJEA \u00a7 208", "relevance": "Jurisdiction provisions for DV cases"},
+        {"authority": "case_law", "reference": "Custody of Vaughn, 422 Mass. 590 (1996)", "relevance": "DV must be considered in best interest analysis"}
+      ],
+      "counter_arguments": ["False allegations of DV are used tactically in custody disputes", "Presumptions may deny due process to accused parent", "Isolated incident should not determine custody", "Perpetrator rehabilitation should be given weight"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "protective_orders", "supervised_visitation", "parental_alienation"],
+      "entity_scope": ["divorce", "paternity", "protective_order", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "imputed_income",
+      "topic": "Imputed Income for Support Calculations",
+      "keywords": ["imputed income", "voluntary unemployment", "underemployment", "earning capacity", "income imputation", "shirking"],
+      "conclusion_template": "Courts impute income to a parent who is voluntarily unemployed or underemployed for purposes of child support and spousal support calculations. Income is imputed based on earning capacity considering education, work history, job market conditions, age, health, and any legitimate reason for reduced employment (e.g., caring for a young child). The burden is on the party seeking imputation to demonstrate voluntary underemployment; the responding party may rebut by showing good faith job search efforts or legitimate barriers to employment.",
+      "reasoning_framework": "1. VOLUNTARY ANALYSIS: Is the unemployment or underemployment voluntary? Layoff vs quitting. 2. GOOD FAITH: Has the parent made good faith efforts to find employment? 3. EARNING CAPACITY: Education, skills, work history, job market. 4. LEGITIMATE REASONS: Caring for young child, disability, retraining. 5. IMPUTATION AMOUNT: Based on actual earning capacity, not hypothetical maximum. 6. EVIDENCE: Pay stubs, tax returns, vocational expert testimony, job search records.",
+      "key_factors": ["Whether underemployment is voluntary", "Education and work experience", "Local job market conditions", "Age and health limitations", "Childcare responsibilities", "Good faith job search efforts", "Recent earnings history"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.066", "relevance": "Intentional unemployment or underemployment"},
+        {"authority": "case_law", "reference": "In re Marriage of Barth, 210 Ill.2d 97 (2004)", "relevance": "Voluntary underemployment standard"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 4058(b)", "relevance": "Earning capacity may be considered for support"},
+        {"authority": "case_law", "reference": "Ricketts v. Ricketts, 393 Md. 479 (2006)", "relevance": "Two-step inquiry for income imputation"}
+      ],
+      "counter_arguments": ["Imputation based on historical income may not reflect current market", "Stay-at-home parent cannot easily re-enter workforce", "Disability claims may be difficult to evaluate", "Imputed income is inherently speculative"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "spousal_support_factors", "modification_support", "deviation_from_guidelines"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "business_valuation_divorce",
+      "topic": "Business Valuation in Divorce",
+      "keywords": ["business valuation", "closely held business", "marital business", "business appraisal", "goodwill divorce", "enterprise value"],
+      "conclusion_template": "Closely held businesses in divorce require formal valuation using accepted methodologies: income approach (capitalization of earnings, discounted cash flow), market approach (comparable transactions, guideline companies), and asset approach (adjusted net asset value). Courts must determine whether personal goodwill (non-marital in most states) can be separated from enterprise goodwill (marital). Valuation date, discount for lack of marketability, and minority interest discounts are frequently contested.",
+      "reasoning_framework": "1. CHARACTERIZATION: Is business community/marital or separate? When was it acquired/founded? 2. VALUATION DATE: Date of separation, filing, or trial depending on jurisdiction. 3. METHODOLOGY: Income, market, and/or asset approach. Expert testimony typically required. 4. GOODWILL SEPARATION: Personal goodwill (tied to individual) vs enterprise goodwill (business systems). 5. DISCOUNTS: Lack of marketability (DLOM), minority interest, key person. 6. FORENSIC ANALYSIS: Owner compensation normalization, personal expenses through business, hidden income.",
+      "key_factors": ["Date of valuation", "Appropriate valuation methodology", "Personal vs enterprise goodwill", "Owner compensation normalization", "Applicable discounts", "Tax-affecting entity income", "Expert witness credibility"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Nail v. Nail, 486 S.W.2d 761 (Tex. 1972)", "relevance": "Professional goodwill not divisible in TX divorce"},
+        {"authority": "case_law", "reference": "In re Marriage of Brown, 15 Cal.3d 838 (1976)", "relevance": "Goodwill of professional practice is community property in CA"},
+        {"authority": "case_law", "reference": "McReath v. McReath, 335 Wis.2d 643 (2011)", "relevance": "Enterprise vs personal goodwill distinction"},
+        {"authority": "commentary", "reference": "ASA Business Valuation Standards", "relevance": "Professional valuation standards and methodology"}
+      ],
+      "counter_arguments": ["Personal vs enterprise goodwill distinction is artificial", "Valuation is inherently uncertain for closely held businesses", "Discounts are subjective and expert-dependent", "Historical earnings may not predict future performance"],
+      "confidence": "supportable",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "hidden_assets", "dissipation", "professional_license_valuation"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "hidden_assets",
+      "topic": "Hidden Assets and Discovery in Divorce",
+      "keywords": ["hidden assets", "concealed property", "financial discovery", "asset search", "fraud on community", "undisclosed accounts"],
+      "conclusion_template": "Concealment of assets in divorce proceedings constitutes fraud on the court and the other spouse. Discovery tools include interrogatories, requests for production, subpoenas to financial institutions, forensic accounting, lifestyle analysis, and depositions. Red flags include unexplained cash withdrawals, transfers to third parties, sudden business decline, cryptocurrency holdings, offshore accounts, and overpayment of taxes or creditors. Courts may impose sanctions including adverse inference, attorney fee awards, and disproportionate division favoring the non-concealing spouse.",
+      "reasoning_framework": "1. RED FLAG IDENTIFICATION: Cash lifestyle, unexplained transfers, business irregularities. 2. FORMAL DISCOVERY: Interrogatories, document requests, subpoenas. 3. FORENSIC ANALYSIS: Bank records, tax returns, business records, lifestyle analysis. 4. DIGITAL ASSETS: Cryptocurrency, NFTs, digital accounts, app-based financial services. 5. THIRD PARTY TRANSFERS: Transfers to family, friends, entities controlled by spouse. 6. SANCTIONS: Adverse inference, fee shifting, disproportionate division.",
+      "key_factors": ["Unexplained cash withdrawals or spending patterns", "Transfers to related parties near divorce filing", "Discrepancies between lifestyle and reported income", "Business cash flow irregularities", "Unreported cryptocurrency or digital assets", "Offshore account indicators", "Overpayment to creditors or IRS"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 7.009", "relevance": "Fraud on the community — reconstitution of estate"},
+        {"authority": "case_law", "reference": "Schlueter v. Schlueter, 975 S.W.2d 584 (Tex. 1998)", "relevance": "Constructive fraud in community property division"},
+        {"authority": "court_rule", "reference": "Fed. R. Civ. P. 37", "relevance": "Discovery sanctions for concealment"},
+        {"authority": "case_law", "reference": "In re Marriage of Rossi, 90 Cal.App.4th 34 (2001)", "relevance": "Entire hidden asset awarded to non-concealing spouse"}
+      ],
+      "counter_arguments": ["Discovery costs may exceed value of hidden assets", "Forensic accounting is expensive and time-consuming", "Cryptocurrency tracing is technically challenging", "Offshore investigation requires international cooperation"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "dissipation", "business_valuation_divorce"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "dissipation",
+      "topic": "Dissipation of Marital Assets",
+      "keywords": ["dissipation", "waste", "marital waste", "spending down", "depletion", "squandering assets"],
+      "conclusion_template": "Dissipation occurs when one spouse uses marital assets for a non-marital purpose during the breakdown of the marriage, typically after the parties have separated or divorce is contemplated. The party alleging dissipation bears the initial burden of showing prima facie dissipation; the burden then shifts to the spending spouse to account for the expenditures. Courts may credit the non-dissipating spouse with the dissipated amount in the property division.",
+      "reasoning_framework": "1. TIMING: Did spending occur during marriage breakdown (post-separation or when divorce contemplated)? 2. PURPOSE: Was spending for a non-marital purpose (affair expenses, gambling, substance abuse, gifts to paramour)? 3. AMOUNT: Is the amount material relative to the marital estate? 4. ACCOUNTING: Can the spending spouse account for and justify the expenditures? 5. REMEDY: Credit dissipated amount to non-dissipating spouse in division.",
+      "key_factors": ["Timing relative to marriage breakdown", "Whether funds used for non-marital purpose", "Amount relative to total marital estate", "Whether spending spouse can account for funds", "Pattern vs isolated incident", "Knowledge of other spouse"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "In re Marriage of O'Neill, 138 Ill.2d 487 (1990)", "relevance": "Dissipation standard and burden-shifting framework"},
+        {"authority": "statute", "reference": "750 ILCS 5/503(d)(2)", "relevance": "Illinois dissipation factor in property division"},
+        {"authority": "case_law", "reference": "Siegel v. Siegel, 241 Conn. 477 (1997)", "relevance": "Dissipation requires intentional waste during breakdown"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 7.009", "relevance": "Fraud on community encompasses dissipation"}
+      ],
+      "counter_arguments": ["Normal living expenses during separation are not dissipation", "Spending on children benefits the community", "Business losses are not intentional dissipation", "Timing of breakdown is often disputed"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "hidden_assets", "business_valuation_divorce"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "modification_support",
+      "topic": "Modification of Child or Spousal Support",
+      "keywords": ["support modification", "change support", "material change", "modify alimony", "reduce support", "increase support"],
+      "conclusion_template": "Modification of child or spousal support requires a showing of material and substantial change in circumstances since the prior order. Common grounds include significant income change (increase or decrease), job loss, disability, retirement, remarriage of recipient (spousal support), changed needs of child, or emancipation of child. The movant bears the burden of proving both the changed circumstance and that modification is warranted. Voluntary changes in income are scrutinized for good faith.",
+      "reasoning_framework": "1. CHANGED CIRCUMSTANCE: Identify what has materially changed since the prior order. 2. INVOLUNTARY vs VOLUNTARY: Was the change within the obligor's control? 3. DURATION: Is the change temporary or permanent? 4. RECALCULATION: Apply current guidelines to current incomes. 5. RETROACTIVITY: Modification typically effective from date of filing, not earlier. 6. PROCEDURAL: File motion, serve other party, hearing required.",
+      "key_factors": ["Nature and degree of income change", "Whether change is voluntary or involuntary", "Duration of changed circumstances", "Good faith of party seeking reduction", "Current needs of child or spouse", "Remarriage or cohabitation of recipient", "Changes in parenting time"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 156.401", "relevance": "Modification of child support on material change"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 8.057", "relevance": "Modification of spousal maintenance"},
+        {"authority": "case_law", "reference": "Lepis v. Lepis, 83 N.J. 139 (1980)", "relevance": "Changed circumstances standard for support modification"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3651", "relevance": "California support modification grounds"}
+      ],
+      "counter_arguments": ["Voluntary income reduction should not reduce support obligation", "Job loss may be temporary and not warrant modification", "Obligor may manipulate income through entity structuring", "Retroactivity limitation may create hardship"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "spousal_support_factors", "imputed_income", "enforcement_contempt"],
+      "entity_scope": ["modification", "divorce", "paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "parental_alienation",
+      "topic": "Parental Alienation in Custody Cases",
+      "keywords": ["parental alienation", "alienating behavior", "turning child against", "interference", "coaching child", "parental alienation syndrome"],
+      "conclusion_template": "Parental alienation refers to a pattern of behavior by one parent intended to damage the child's relationship with the other parent. Courts recognize alienating behavior as a factor in custody determinations, though 'Parental Alienation Syndrome' (PAS) as a clinical diagnosis remains controversial and is not accepted by the APA. Evidence of alienation includes disparaging the other parent to the child, interfering with communication or visitation, making false allegations, and coaching the child to reject the other parent. Severe alienation may result in custody change to the alienated parent.",
+      "reasoning_framework": "1. BEHAVIORAL EVIDENCE: Identify specific alienating behaviors (disparagement, interference, coaching, false allegations). 2. CHILD RESPONSE: Does the child exhibit rejection disproportionate to any legitimate grievance? 3. DISTINGUISH FROM ESTRANGEMENT: Genuine estrangement based on the child's own experience with a parent is not alienation. 4. SEVERITY: Mild (occasional disparagement) vs severe (complete rejection without basis). 5. REMEDY: Reunification therapy, custody modification, sanctions, contempt.",
+      "key_factors": ["Pattern of disparaging other parent to child", "Interference with court-ordered possession", "False allegations of abuse", "Child's rejection disproportionate to experience", "Alienating parent's willingness to co-parent", "Professional evaluation findings", "Whether behaviors constitute estrangement vs alienation"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "In re Marriage of Bates, 212 Ill.2d 489 (2004)", "relevance": "Alienating behavior as custody modification ground"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.013", "relevance": "False child abuse allegations as factor in custody"},
+        {"authority": "case_law", "reference": "Karen B. v. Clyde M., 151 A.D.3d 1 (N.Y. App. 2017)", "relevance": "Custody reversal based on severe alienation"},
+        {"authority": "commentary", "reference": "APA Position Statement on PAS (2008)", "relevance": "PAS not recognized as clinical diagnosis"}
+      ],
+      "counter_arguments": ["Alienation claims may mask legitimate protective concerns", "PAS is not scientifically validated", "Children may have genuine reasons for rejecting a parent", "Forced reunification can be harmful if abuse occurred"],
+      "confidence": "supportable",
+      "related_doctrines": ["best_interest_child", "custody_modification", "domestic_violence_custody", "enforcement_contempt"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "jurisdiction_uccjea",
+      "topic": "Interstate Custody Jurisdiction (UCCJEA)",
+      "keywords": ["UCCJEA", "jurisdiction", "home state", "interstate custody", "custody jurisdiction", "inconvenient forum"],
+      "conclusion_template": "The Uniform Child Custody Jurisdiction and Enforcement Act (UCCJEA), adopted in all 50 states and DC, establishes jurisdictional priority for custody matters. Home state jurisdiction (state where child lived for 6 consecutive months prior to filing) has priority. Once a state exercises jurisdiction, it retains exclusive continuing jurisdiction until the child and all parties leave the state or the court declines jurisdiction. Emergency jurisdiction exists for abuse/neglect situations but is temporary.",
+      "reasoning_framework": "1. HOME STATE: Where did child live for 6 months before filing? This state has priority. 2. SIGNIFICANT CONNECTION: If no home state, state with significant connection and substantial evidence. 3. EXCLUSIVE CONTINUING: If prior order exists, original state retains jurisdiction. 4. EMERGENCY: Temporary emergency jurisdiction for abuse/neglect/abandonment. 5. INCONVENIENT FORUM: Court may decline jurisdiction in favor of more appropriate state. 6. SIMULTANEOUS PROCEEDINGS: Courts must communicate and resolve conflicting proceedings.",
+      "key_factors": ["Child's home state for 6 months prior to filing", "Whether prior custody order exists", "Location of child and parties", "Availability of evidence", "Whether emergency circumstances exist", "Whether another state has concurrent proceedings"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "UCCJEA \u00a7 201", "relevance": "Initial child custody jurisdiction"},
+        {"authority": "statute", "reference": "UCCJEA \u00a7 202", "relevance": "Exclusive continuing jurisdiction"},
+        {"authority": "statute", "reference": "UCCJEA \u00a7 204", "relevance": "Temporary emergency jurisdiction"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 152.201-207", "relevance": "Texas adoption of UCCJEA"}
+      ],
+      "counter_arguments": ["Home state determination is disputed when family moves frequently", "Emergency jurisdiction scope is vague", "Continuing jurisdiction may persist even when inconvenient", "International cases add Hague Convention complexity"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "custody_modification", "relocation_law", "hague_convention"],
+      "entity_scope": ["divorce", "paternity", "modification", "protective_order"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "paternity_establishment",
+      "topic": "Paternity Establishment",
+      "keywords": ["paternity", "father", "DNA test", "acknowledgment", "presumed father", "biological father"],
+      "conclusion_template": "Paternity may be established by presumption (marriage to mother at birth), voluntary acknowledgment, adjudication, or genetic testing. The marital presumption is rebuttable but requires clear and convincing evidence in most jurisdictions. Voluntary acknowledgment has the force of a court order after the statutory rescission period (typically 60 days). Genetic testing is conclusive at 99% or greater probability of paternity. Establishing paternity creates rights and obligations including custody, visitation, support, and inheritance.",
+      "reasoning_framework": "1. PRESUMPTION: Is there a marital presumption? Was the mother married at conception or birth? 2. ACKNOWLEDGMENT: Was a voluntary acknowledgment of paternity executed? Has rescission period passed? 3. GENETIC TESTING: Has DNA testing been ordered or completed? 4. STANDING: Who has standing to challenge or establish paternity? 5. TIMELINESS: Statute of limitations for paternity actions varies by state. 6. CONSEQUENCES: Support obligation, custody rights, inheritance rights.",
+      "key_factors": ["Whether marital presumption applies", "Voluntary acknowledgment status", "Genetic testing results", "Best interest of child in challenging paternity", "Statute of limitations", "Reliance interests of child and parties"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Uniform Parentage Act \u00a7 204 (UPA 2017)", "relevance": "Presumption of parentage"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 160.201-204", "relevance": "Texas presumed father provisions"},
+        {"authority": "case_law", "reference": "Michael H. v. Gerald D., 491 U.S. 110 (1989)", "relevance": "Marital presumption and due process"},
+        {"authority": "statute", "reference": "42 U.S.C. \u00a7 666(a)(5)", "relevance": "Federal requirements for state paternity proceedings"}
+      ],
+      "counter_arguments": ["Marital presumption may not reflect biological reality", "Acknowledging paternity without DNA testing is risky", "Challenging established paternity may harm child's reliance interests", "Standing restrictions may bar biological father from establishing rights"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "best_interest_child", "de_facto_parent", "adoption"],
+      "entity_scope": ["paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "protective_orders",
+      "topic": "Protective Orders / Restraining Orders",
+      "keywords": ["protective order", "restraining order", "TRO", "family violence order", "no contact", "stay away order"],
+      "conclusion_template": "Protective orders in family law provide injunctive relief against family violence, stalking, or harassment. Temporary ex parte orders (TROs) may be granted without notice to the respondent upon a showing of immediate danger. Permanent protective orders (typically 1-2 years, renewable) require notice and hearing. Violation of a protective order is a criminal offense in all jurisdictions. Orders typically prohibit contact, require distance, may award temporary custody and support, and order surrender of firearms.",
+      "reasoning_framework": "1. GROUNDS: Family violence, sexual assault, stalking, or harassment. 2. EX PARTE TRO: Immediate and present danger of family violence. 3. HEARING: Within 14-20 days for permanent order. 4. EVIDENCE: Testimony, police reports, medical records, photographs, text messages. 5. PROVISIONS: No contact, stay away distance, temporary custody, firearms surrender. 6. ENFORCEMENT: Criminal prosecution for violation, contempt.",
+      "key_factors": ["Evidence of family violence or threat", "Immediacy of danger", "Relationship between parties", "Impact on children", "Prior history of violence", "Criminal history of respondent", "Whether firearms are present"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 82.001-87.003", "relevance": "Texas protective order provisions"},
+        {"authority": "statute", "reference": "18 U.S.C. \u00a7 2265", "relevance": "Full faith and credit for protective orders"},
+        {"authority": "statute", "reference": "18 U.S.C. \u00a7 922(g)(8)", "relevance": "Federal firearms prohibition for respondents"},
+        {"authority": "case_law", "reference": "Town of Castle Rock v. Gonzales, 545 U.S. 748 (2005)", "relevance": "No constitutional right to police enforcement of PO"}
+      ],
+      "counter_arguments": ["Ex parte orders may be granted without adequate due process", "Protective orders may be sought for tactical advantage in custody", "Enforcement depends on police discretion", "Firearms provisions may conflict with Second Amendment claims"],
+      "confidence": "defensible",
+      "related_doctrines": ["domestic_violence_custody", "enforcement_contempt", "temporary_orders", "best_interest_child"],
+      "entity_scope": ["protective_order", "divorce", "paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "enforcement_contempt",
+      "topic": "Enforcement and Contempt of Court Orders",
+      "keywords": ["contempt", "enforcement", "violate order", "non-compliance", "willful violation", "coercive contempt"],
+      "conclusion_template": "Contempt is the primary enforcement mechanism for family court orders. Civil (coercive) contempt aims to compel compliance and the contemnor holds the keys to their release. Criminal contempt punishes past violations with due process protections including right to counsel and proof beyond reasonable doubt. The movant must prove: (1) a clear and specific order existed, (2) the respondent had knowledge of the order, (3) the respondent had the ability to comply, and (4) the respondent willfully failed to comply. Inability to comply is an affirmative defense.",
+      "reasoning_framework": "1. ORDER: Is the order clear, specific, and unambiguous? 2. KNOWLEDGE: Did respondent have actual or constructive knowledge? 3. VIOLATION: What specific provision was violated and how? 4. WILLFULNESS: Was the violation intentional, not merely negligent? 5. ABILITY: Did respondent have the ability to comply? 6. REMEDY: Civil (coercive jail, fines until compliance) or criminal (punishment for past violation). 7. PURGE CONDITIONS: What must respondent do to purge the contempt?",
+      "key_factors": ["Clarity of the order allegedly violated", "Respondent's knowledge of the order", "Whether violation was willful", "Ability to comply", "Prior contempt history", "Severity of violation", "Impact on children or other party"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 157.001-167.001", "relevance": "Enforcement of family court orders"},
+        {"authority": "case_law", "reference": "Ex parte Chambers, 898 S.W.2d 257 (Tex. 1995)", "relevance": "Due process requirements for contempt"},
+        {"authority": "case_law", "reference": "Turner v. Rogers, 564 U.S. 431 (2011)", "relevance": "Right to counsel in civil contempt for child support"},
+        {"authority": "statute", "reference": "Tex. Gov. Code \u00a7 21.002", "relevance": "Contempt power of Texas courts"}
+      ],
+      "counter_arguments": ["Ability to pay is often disputed in support contempt", "Incarcerating indigent obligors does not generate support payments", "Civil vs criminal contempt distinction is blurred in practice", "Contempt may be disproportionate remedy for minor violations"],
+      "confidence": "defensible",
+      "related_doctrines": ["modification_support", "child_support_guidelines", "protective_orders", "temporary_orders"],
+      "entity_scope": ["enforcement", "divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "separate_property",
+      "topic": "Separate Property Claims and Tracing",
+      "keywords": ["separate property", "tracing", "commingling", "inception of title", "gift", "inheritance", "pre-marital"],
+      "conclusion_template": "Property owned before marriage, acquired by gift or inheritance during marriage, or representing personal injury recovery (pain and suffering component) is separate property. The party claiming separate character bears the burden of proof by clear and convincing evidence. When separate and community funds are commingled, tracing is required using either the community-out-first method or the minimum sum balance method. Failure to trace results in community characterization.",
+      "reasoning_framework": "1. INCEPTION OF TITLE: When was the property first acquired? Before marriage = separate. 2. SOURCE OF FUNDS: Gift, inheritance, or pre-marital source documented? 3. COMMINGLING: Were separate funds mixed with community funds? 4. TRACING: Can the separate character be traced through the commingled account? 5. METHOD: Community-out-first or minimum sum balance. 6. MUTATION: Has separate property been transmuted by agreement or gift?",
+      "key_factors": ["Date of acquisition relative to marriage", "Documentary evidence of separate source", "Degree of commingling", "Quality of tracing evidence", "Whether transmutation occurred", "Title documentation", "Intent of the parties"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 3.001-3.003", "relevance": "Texas separate and community property definitions"},
+        {"authority": "case_law", "reference": "Tarver v. Tarver, 394 S.W.2d 780 (Tex. 1965)", "relevance": "Clear and convincing standard for separate property"},
+        {"authority": "case_law", "reference": "In re Marriage of Mix, 14 Cal.3d 604 (1975)", "relevance": "Tracing requirements for commingled funds"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 770", "relevance": "California separate property definition"}
+      ],
+      "counter_arguments": ["Tracing decades-old transactions is often impossible", "Community-out-first method can be manipulated", "Improvements to separate property using community funds create reimbursement claims", "Separate property income may be community in some states"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "reimbursement_claims", "prenuptial_enforceability"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "qdro_retirement",
+      "topic": "QDRO and Retirement Account Division",
+      "keywords": ["QDRO", "retirement division", "pension", "401k divorce", "qualified domestic relations order", "retirement benefits"],
+      "conclusion_template": "Division of retirement benefits in divorce requires a Qualified Domestic Relations Order (QDRO) for ERISA-governed plans (401k, pension, profit sharing). The QDRO must be approved by both the court and the plan administrator. Division methods include immediate offset (one spouse receives other assets of equivalent value) or deferred distribution (benefits divided at retirement). The coverture fraction (years of marriage during participation / total years of participation) determines the marital portion. IRAs are divided by transfer incident to divorce under IRC 408(d)(6) without a QDRO.",
+      "reasoning_framework": "1. PLAN TYPE: ERISA qualified plan (needs QDRO) or IRA (transfer incident to divorce)? 2. COVERTURE FRACTION: Marital portion = marriage overlap with plan participation. 3. DIVISION METHOD: Immediate offset vs deferred distribution. 4. DRAFTING: QDRO must comply with plan requirements and ERISA. 5. APPROVAL: Submit to plan administrator for pre-approval, then court order. 6. TAX: Transfer under QDRO is not a taxable event; distribution to alternate payee is taxed to recipient.",
+      "key_factors": ["Type of retirement plan", "Coverture fraction calculation", "Immediate offset vs deferred distribution", "Plan administrator requirements", "Survivor benefit provisions", "Tax implications", "Vesting status"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "29 U.S.C. \u00a7 1056(d)(3)", "relevance": "ERISA QDRO requirements"},
+        {"authority": "statute", "reference": "IRC \u00a7 414(p)", "relevance": "Tax code QDRO definition"},
+        {"authority": "statute", "reference": "IRC \u00a7 408(d)(6)", "relevance": "IRA transfer incident to divorce"},
+        {"authority": "case_law", "reference": "Howell v. Howell, 581 U.S. 214 (2017)", "relevance": "State courts cannot divide military disability pay"}
+      ],
+      "counter_arguments": ["Immediate offset requires accurate present-value calculation", "Deferred distribution creates ongoing entanglement between ex-spouses", "Plan administrator rejection can delay division", "Military and government pensions have unique rules"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "tax_implications_divorce", "military_divorce"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "tax_implications_divorce",
+      "topic": "Tax Implications of Divorce",
+      "keywords": ["divorce tax", "TCJA", "alimony tax", "property transfer tax", "filing status divorce", "dependency exemption"],
+      "conclusion_template": "The Tax Cuts and Jobs Act of 2017 (TCJA) eliminated the alimony deduction for divorce agreements executed after December 31, 2018. Property transfers incident to divorce are tax-free under IRC 1041 but carry over the transferor's basis. Filing status is determined by marital status on December 31. Child-related tax benefits (Child Tax Credit, Head of Household status) are allocated to the custodial parent unless Form 8332 releases the claim. Capital gains exclusion under IRC 121 may be affected by divorce timing.",
+      "reasoning_framework": "1. ALIMONY: Pre-2019 agreements: deductible/includable. Post-2018: no tax consequence. 2. PROPERTY TRANSFERS: IRC 1041 nonrecognition, basis carryover. 3. FILING STATUS: Married or single as of Dec 31; Head of Household requires maintaining household for dependent. 4. CHILD TAX BENEFITS: CTC, EITC, HOH status follow custodial parent unless released. 5. RESIDENCE: IRC 121 exclusion ($250K/$500K) — timing of sale relative to divorce. 6. RETIREMENT: QDRO transfers are not taxable events.",
+      "key_factors": ["Date of divorce agreement (pre/post 2019 for alimony)", "Basis of transferred property", "Filing status optimization", "Child tax benefit allocation", "Timing of home sale", "Retirement account division method"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "IRC \u00a7 1041", "relevance": "Nonrecognition on transfers between spouses/incident to divorce"},
+        {"authority": "statute", "reference": "IRC \u00a7 71/215 (pre-TCJA)", "relevance": "Alimony inclusion/deduction (pre-2019 agreements only)"},
+        {"authority": "statute", "reference": "IRC \u00a7 121", "relevance": "Capital gains exclusion on sale of principal residence"},
+        {"authority": "statute", "reference": "IRC \u00a7 152(e)", "relevance": "Release of dependency claim (Form 8332)"}
+      ],
+      "counter_arguments": ["TCJA alimony change shifts tax burden unfavorably in many cases", "Basis carryover on appreciated assets creates deferred tax liability", "Filing status planning depends on divorce timing which may not be controllable", "Complex tax rules are often overlooked in settlement negotiations"],
+      "confidence": "defensible",
+      "related_doctrines": ["spousal_support_factors", "community_property_division", "equitable_distribution", "qdro_retirement"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "temporary_orders",
+      "topic": "Temporary Orders in Family Law",
+      "keywords": ["temporary orders", "temporary custody", "pendente lite", "interim orders", "temporary support", "status quo"],
+      "conclusion_template": "Temporary orders maintain the status quo and protect parties and children during the pendency of divorce or custody proceedings. Courts may award temporary custody, temporary support (child and spousal), exclusive possession of the marital home, temporary restraining orders on assets, and interim attorney fees. The standard for temporary orders is lower than final orders — courts consider the immediate needs and circumstances rather than conducting full best-interest or equitable division analysis.",
+      "reasoning_framework": "1. IMMEDIATE NEEDS: What must be addressed before final trial? 2. STATUS QUO: Maintain existing arrangements to extent possible. 3. TEMPORARY CUSTODY: Immediate best interest, not full evaluation. 4. TEMPORARY SUPPORT: Based on current financial need and ability to pay. 5. ASSET PRESERVATION: Mutual restraining orders on dissipation, transfer, destruction. 6. DURATION: In effect until final order or further court order.",
+      "key_factors": ["Immediate needs of children and parties", "Current financial circumstances", "Existing living arrangements", "Risk of asset dissipation", "Need for interim support", "Safety concerns requiring protective provisions"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 105.001", "relevance": "Temporary orders in suit affecting parent-child relationship"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 6.502", "relevance": "Temporary orders in divorce"},
+        {"authority": "court_rule", "reference": "Tex. R. Civ. P. 680", "relevance": "Temporary restraining order requirements"},
+        {"authority": "case_law", "reference": "In re Derzapf, 219 S.W.3d 327 (Tex. 2007)", "relevance": "Appellate review standard for temporary orders"}
+      ],
+      "counter_arguments": ["Temporary orders often become de facto permanent due to status quo bias", "Lower standard may result in less thorough analysis", "Temporary support may not reflect actual needs", "Asset freezes may cause hardship to both parties"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "child_support_guidelines", "spousal_support_factors", "protective_orders"],
+      "entity_scope": ["divorce", "paternity", "protective_order"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "attorney_fees_family",
+      "topic": "Attorney Fee Awards in Family Law",
+      "keywords": ["attorney fees", "fee award", "fee shifting", "ability to pay", "necessity", "interim fees"],
+      "conclusion_template": "Family courts have broad discretion to award attorney fees to ensure equal access to the legal process. Courts consider the financial resources of each party, reasonableness of fees incurred, complexity of issues, and conduct of the parties. Interim fee awards ensure the less-resourced spouse can participate meaningfully. Fee awards may also serve as sanctions for discovery abuse, frivolous motions, or other bad faith conduct.",
+      "reasoning_framework": "1. NEED: Does requesting party lack resources for adequate representation? 2. ABILITY: Does other party have ability to pay? 3. REASONABLENESS: Are fees reasonable for the complexity and duration? 4. NECESSITY: Were the fees necessarily incurred? 5. CONDUCT: Did either party's conduct increase fees unnecessarily? 6. INTERIM vs FINAL: Interim fees to level the playing field; final fees in the decree.",
+      "key_factors": ["Financial disparity between parties", "Reasonableness of fees incurred", "Complexity of case", "Conduct of the parties", "Good faith of fee request", "Whether fees were necessarily incurred"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 106.002", "relevance": "Attorney fee awards in family cases"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 2030", "relevance": "Need-based attorney fee awards in California"},
+        {"authority": "case_law", "reference": "In re Marriage of Tharp, 131 Cal.App.4th 624 (2005)", "relevance": "Fee award to ensure parity of representation"},
+        {"authority": "statute", "reference": "N.Y. Dom. Rel. Law \u00a7 237", "relevance": "NY attorney fee awards in matrimonial actions"}
+      ],
+      "counter_arguments": ["Fee awards are discretionary with limited appellate review", "Reasonable fee determination is subjective", "Interim fees may not be recovered if requesting party prevails", "Fee-shifting may incentivize litigation rather than settlement"],
+      "confidence": "defensible",
+      "related_doctrines": ["temporary_orders", "enforcement_contempt", "discovery_sanctions"],
+      "entity_scope": ["divorce", "paternity", "modification", "enforcement"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "parenting_plan",
+      "topic": "Parenting Plan and Possession Schedules",
+      "keywords": ["parenting plan", "possession schedule", "visitation", "standard possession", "custody schedule", "holiday schedule"],
+      "conclusion_template": "Parenting plans allocate physical possession of children between parents on a regular schedule, holidays, summers, and special occasions. Most jurisdictions have a standard possession order (SPO) that applies as a default. Plans should address exchange logistics, communication protocols, decision-making authority, geographic restrictions, right of first refusal, and dispute resolution. Courts favor detailed, specific plans that minimize conflict and provide predictability for children.",
+      "reasoning_framework": "1. STANDARD vs CUSTOM: Does the standard possession order work for this family? 2. AGE-APPROPRIATE: Young children may need modified schedules. 3. LOGISTICS: Exchange locations, transportation, communication. 4. HOLIDAYS: Alternating, fixed, or divided schedule. 5. DECISION-MAKING: Joint vs sole on education, medical, religious, extracurricular. 6. FLEXIBILITY: Right of first refusal, makeup time, communication provisions.",
+      "key_factors": ["Age and developmental needs of children", "Geographic proximity of parents", "Work schedules of parents", "School schedule", "Children's activities and preferences", "History of co-parenting cooperation", "Any safety concerns"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.311-317", "relevance": "Texas Standard Possession Order"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3040-3049", "relevance": "California custody and visitation framework"},
+        {"authority": "case_law", "reference": "In re Marriage of Brown & Yana, 37 Cal.4th 947 (2006)", "relevance": "Joint custody and parenting plan standards"},
+        {"authority": "court_rule", "reference": "Model Parenting Plan Guidelines (AFCC)", "relevance": "Professional standards for parenting plans"}
+      ],
+      "counter_arguments": ["Standard possession orders may not fit every family", "Young children may suffer from overnight separations", "Rigid schedules limit flexibility for older children", "Geographic restrictions conflict with parent's mobility rights"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "relocation_law", "custody_modification", "enforcement_contempt"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "deviation_from_guidelines",
+      "topic": "Deviation from Child Support Guidelines",
+      "keywords": ["deviation", "above guidelines", "below guidelines", "support deviation", "unjust result", "guidelines cap"],
+      "conclusion_template": "Courts may deviate from guideline child support when strict application would be unjust or inappropriate. Common grounds include extraordinary medical expenses, educational needs, travel costs for long-distance possession, multiple family obligations, and income above or below the guideline range. Deviation must be supported by specific findings on the record. High-income cases often require deviation analysis because guideline tables cap at a specific income level.",
+      "reasoning_framework": "1. GUIDELINE CALCULATION: Start with guideline amount. 2. DEVIATION GROUNDS: Identify statutory basis for deviation. 3. EVIDENCE: Document why guidelines are unjust or inappropriate. 4. FINDINGS: Court must make specific findings supporting deviation. 5. BEST INTEREST: Deviation must still serve child's best interest.",
+      "key_factors": ["Whether guideline amount meets child's needs", "Extraordinary expenses", "High or low income situations", "Multiple families", "Travel costs for possession", "Child's special needs"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.123", "relevance": "Additional factors for court consideration"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.126", "relevance": "Above-guidelines support for high earners"},
+        {"authority": "case_law", "reference": "In re Marriage of Bush, 191 Ill. App. 3d 249 (1989)", "relevance": "Deviation findings requirement"},
+        {"authority": "regulatory", "reference": "45 C.F.R. \u00a7 302.56(g)", "relevance": "Federal deviation criteria"}
+      ],
+      "counter_arguments": ["Deviation undermines guideline predictability", "Judicial discretion in deviation is hard to review on appeal", "High-income deviation may result in windfall to custodial parent"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "imputed_income", "modification_support"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "retroactive_support",
+      "topic": "Retroactive Child Support",
+      "keywords": ["retroactive support", "back support", "past due support", "arrearages", "retroactive child support"],
+      "conclusion_template": "Retroactive child support may be ordered back to the date of the child's birth (paternity cases) or the date of separation/filing (divorce cases), subject to statutory limitations. Courts consider whether the obligor knew of the child's existence, whether the obligee sought support timely, the obligor's ability to pay retroactively, and the needs of the child during the retroactive period. In Texas, retroactive support is limited to four years before the date of filing.",
+      "reasoning_framework": "1. STATUTORY LIMIT: What is the maximum retroactive period? 2. KNOWLEDGE: Did the obligor know of paternity/obligation? 3. DELAY: Was there unreasonable delay in seeking support? 4. ABILITY: Did obligor have ability to pay during retroactive period? 5. NEEDS: Were the child's needs met during the period? 6. CALCULATION: Apply guidelines to historical income.",
+      "key_factors": ["Statutory limitation period", "Obligor's knowledge of child or obligation", "Reason for delay in seeking support", "Obligor's historical income and ability to pay", "Whether child's needs were met", "Obligor's access to child during period"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.009", "relevance": "Retroactive child support provisions"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 154.131", "relevance": "Factors for retroactive support in paternity cases"},
+        {"authority": "case_law", "reference": "In re J.W.T., 872 S.W.2d 189 (Tex. 1994)", "relevance": "Retroactive support in paternity establishment"},
+        {"authority": "statute", "reference": "42 U.S.C. \u00a7 666(a)(4)", "relevance": "Federal requirement for retroactive support enforcement"}
+      ],
+      "counter_arguments": ["Retroactive obligations may be financially devastating", "Delayed paternity establishment should not penalize obligor", "Historical income may be difficult to reconstruct", "Laches should apply to unreasonable delay"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "paternity_establishment", "enforcement_contempt"],
+      "entity_scope": ["paternity", "divorce", "enforcement"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "military_divorce",
+      "topic": "Military Divorce and USFSPA",
+      "keywords": ["military divorce", "USFSPA", "military pension", "10/10 rule", "SBP", "military benefits"],
+      "conclusion_template": "Military divorce involves unique federal considerations under the Uniformed Services Former Spouses' Protection Act (USFSPA). State courts may divide disposable retired pay as marital property. The 10/10 rule (10 years of marriage overlapping 10 years of service) enables direct payment from DFAS but does not limit the right to divide the pension. Disability pay cannot be divided. The Survivor Benefit Plan (SBP) requires election or court order. Jurisdiction requires the servicemember's domicile, residence, or consent.",
+      "reasoning_framework": "1. JURISDICTION: Is the court in the servicemember's domicile, residence, or consent state? 2. CHARACTERIZATION: Military retired pay is divisible marital property. 3. COVERTURE: Marital share = months married during service / total months of service. 4. 10/10 RULE: Only affects direct DFAS payment, not divisibility. 5. DISABILITY OFFSET: VA disability pay replaces retired pay and is not divisible. 6. SBP: Must be addressed to protect former spouse's interest.",
+      "key_factors": ["Jurisdictional nexus to servicemember", "Length of marriage overlapping military service", "Disability vs retired pay allocation", "SBP election or court order", "Rank and years of service at retirement or divorce", "Whether member has retired or divorce is pre-retirement"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "10 U.S.C. \u00a7 1408 (USFSPA)", "relevance": "Authority for state courts to divide military retired pay"},
+        {"authority": "case_law", "reference": "Howell v. Howell, 581 U.S. 214 (2017)", "relevance": "States cannot divide military disability pay even indirectly"},
+        {"authority": "case_law", "reference": "Mansell v. Mansell, 490 U.S. 581 (1989)", "relevance": "VA disability pay preemption"},
+        {"authority": "statute", "reference": "10 U.S.C. \u00a7 1447-1455", "relevance": "Survivor Benefit Plan provisions"}
+      ],
+      "counter_arguments": ["Disability offset creates windfall to servicemember at former spouse's expense", "Pre-retirement division requires hypothetical calculation", "SBP costs reduce net retired pay", "Jurisdiction requirements may bar action in convenient forum"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "qdro_retirement", "spousal_support_factors"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "hague_convention",
+      "topic": "Hague Convention on International Child Abduction",
+      "keywords": ["Hague Convention", "international abduction", "wrongful removal", "habitual residence", "ICARA", "return remedy"],
+      "conclusion_template": "The Hague Convention on the Civil Aspects of International Child Abduction (implemented in the US by ICARA, 22 U.S.C. 9001-9011) provides for the prompt return of children wrongfully removed or retained across international borders. The petitioner must establish that the child was habitually resident in the requesting state and the removal violated custody rights under that state's law. Defenses include consent, grave risk of harm, child's objection (if of sufficient age), and fundamental rights violations. The Convention is a jurisdictional remedy, not a custody determination.",
+      "reasoning_framework": "1. HABITUAL RESIDENCE: Where was the child habitually resident before removal? 2. CUSTODY RIGHTS: Did the left-behind parent have custody rights under that state's law? 3. WRONGFUL REMOVAL: Was the removal in breach of those rights? 4. DEFENSES: Consent, acquiescence, grave risk, settled in new environment, child's objection. 5. TIMING: Petition within one year of wrongful removal for strongest claim. 6. RETURN: Remedy is return to habitual residence, not custody determination.",
+      "key_factors": ["Child's habitual residence before removal", "Whether left-behind parent had custody rights", "Whether removal was wrongful", "Whether one-year period has elapsed", "Grave risk of harm to child", "Child's age and maturity for objection defense"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "22 U.S.C. \u00a7 9001-9011 (ICARA)", "relevance": "US implementation of Hague Convention"},
+        {"authority": "case_law", "reference": "Monasky v. Taglieri, 589 U.S. 68 (2020)", "relevance": "Habitual residence is totality-of-circumstances test"},
+        {"authority": "case_law", "reference": "Lozano v. Montoya Alvarez, 572 U.S. 1 (2014)", "relevance": "Equitable tolling not available for one-year period"},
+        {"authority": "statute", "reference": "Hague Convention Art. 13(b)", "relevance": "Grave risk defense"}
+      ],
+      "counter_arguments": ["Habitual residence test is fact-intensive and unpredictable", "Grave risk defense is narrowly construed", "Return to abusive home environment may be ordered", "Convention does not apply to non-signatory countries"],
+      "confidence": "defensible",
+      "related_doctrines": ["jurisdiction_uccjea", "best_interest_child", "domestic_violence_custody", "protective_orders"],
+      "entity_scope": ["international_custody", "protective_order"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "de_facto_parent",
+      "topic": "De Facto Parent / Psychological Parent Doctrine",
+      "keywords": ["de facto parent", "psychological parent", "in loco parentis", "equitable parent", "non-biological parent", "third party custody"],
+      "conclusion_template": "The de facto parent doctrine grants standing and potential custody or visitation rights to non-biological, non-adoptive individuals who have functioned as a parent with the legal parent's consent. Requirements typically include: living with the child for a significant period, assuming parental obligations, establishing a bonded relationship, and the legal parent having fostered or supported the relationship. Recognition varies significantly by jurisdiction. Some states have statutory frameworks; others rely on common law.",
+      "reasoning_framework": "1. STANDING: Does the claimant meet de facto parent criteria under applicable law? 2. CONSENT: Did the legal parent encourage or consent to the parental relationship? 3. DURATION: How long and how consistently did the claimant function as a parent? 4. BOND: Is there a significant parent-child bond? 5. BEST INTEREST: Even if standing is established, custody/visitation must serve the child's best interest. 6. PARENTAL PRESUMPTION: The legal parent's rights are presumptively superior to any third party.",
+      "key_factors": ["Duration of parental relationship", "Whether legal parent consented to relationship", "Nature and extent of parental responsibilities assumed", "Strength of parent-child bond", "Impact on child of severing relationship", "Legal parent's fitness"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "In re Custody of H.S.H.-K., 193 Wis.2d 649 (1995)", "relevance": "De facto parent standing test"},
+        {"authority": "statute", "reference": "Uniform Parentage Act \u00a7 609 (UPA 2017)", "relevance": "De facto parentage provisions"},
+        {"authority": "case_law", "reference": "V.C. v. M.J.B., 163 N.J. 200 (2000)", "relevance": "Psychological parent doctrine"},
+        {"authority": "case_law", "reference": "Troxel v. Granville, 530 U.S. 57 (2000)", "relevance": "Parental rights presumption against third-party visitation"}
+      ],
+      "counter_arguments": ["De facto parent doctrine may infringe on legal parent's constitutional rights", "Duration and consent requirements are vague", "May open door to unwanted custody claims by former partners", "Inconsistent recognition across states creates forum shopping"],
+      "confidence": "supportable",
+      "related_doctrines": ["best_interest_child", "grandparent_visitation", "adoption", "paternity_establishment"],
+      "entity_scope": ["custody", "visitation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "grandparent_visitation",
+      "topic": "Grandparent Visitation Rights",
+      "keywords": ["grandparent visitation", "grandparent rights", "third party visitation", "grandparent standing", "Troxel"],
+      "conclusion_template": "Grandparent visitation rights are limited by the constitutional presumption that fit parents act in their children's best interest (Troxel v. Granville). Most states permit grandparent visitation petitions only in specific circumstances: when the nuclear family has been disrupted (divorce, death of a parent, parental incarceration), when the child previously lived with the grandparent, or when denial would cause significant harm. The grandparent bears the burden of overcoming the parental presumption, typically requiring clear and convincing evidence.",
+      "reasoning_framework": "1. STANDING: Does the grandparent meet statutory standing requirements? 2. PARENTAL FITNESS: Is the parent fit? If so, strong presumption in parent's favor. 3. SIGNIFICANT HARM: Would denial of visitation cause significant harm to the child? 4. BEST INTEREST: Would visitation serve the child's best interest? 5. SPECIAL CIRCUMSTANCES: Death of parent, divorce, prior custodial relationship. 6. CONSTITUTIONAL LIMITS: Troxel requires special weight to fit parent's wishes.",
+      "key_factors": ["Whether parent is fit", "Prior relationship between grandparent and child", "Whether nuclear family has been disrupted", "Evidence of significant harm from denial", "Parent's stated reasons for denying visitation", "History of relationship"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Troxel v. Granville, 530 U.S. 57 (2000)", "relevance": "Due process limits on third-party visitation"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.433", "relevance": "Texas grandparent access suit requirements"},
+        {"authority": "case_law", "reference": "In re Derzapf, 219 S.W.3d 327 (Tex. 2007)", "relevance": "Presumption in favor of fit parent"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3102-3104", "relevance": "California grandparent visitation provisions"}
+      ],
+      "counter_arguments": ["Grandparent visitation statutes may be unconstitutional as applied", "Significant harm standard is too restrictive", "Parent's animus toward grandparent should not deny child relationship", "Special weight to parental wishes makes relief nearly impossible"],
+      "confidence": "supportable",
+      "related_doctrines": ["best_interest_child", "de_facto_parent", "third_party_custody"],
+      "entity_scope": ["visitation", "custody"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "emancipation",
+      "topic": "Minor Emancipation",
+      "keywords": ["emancipation", "emancipated minor", "removal of disabilities", "adult minor", "self-supporting minor"],
+      "conclusion_template": "Emancipation grants a minor legal adult status for specified purposes, typically including contracting, consenting to medical treatment, establishing residence, and managing earnings. Requirements vary by jurisdiction but generally include: minimum age (typically 16-17), self-sufficiency demonstrated by employment and separate residence, and a showing that emancipation serves the minor's best interest. Emancipation terminates child support obligations and parental authority. Courts may grant full or partial emancipation.",
+      "reasoning_framework": "1. AGE: Does the minor meet minimum age requirement? 2. SELF-SUFFICIENCY: Can the minor support themselves financially? 3. MATURITY: Does the minor demonstrate sufficient maturity? 4. BEST INTEREST: Is emancipation in the minor's best interest? 5. PARENTAL CONSENT: Is parental consent required or available? 6. SCOPE: Full emancipation vs removal of specific disabilities.",
+      "key_factors": ["Minor's age", "Employment and income sufficiency", "Separate living arrangement", "Maturity and decision-making capacity", "Reason for seeking emancipation", "Parental consent or lack thereof"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 31.001-31.007", "relevance": "Texas removal of disabilities of minority"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 7120-7143", "relevance": "California emancipation of minors law"},
+        {"authority": "case_law", "reference": "In re Anonymous, 150 Misc.2d 67 (N.Y. Fam. Ct. 1991)", "relevance": "Emancipation requires self-sufficiency showing"}
+      ],
+      "counter_arguments": ["Self-sufficiency at 16-17 is difficult to maintain", "Emancipation terminates safety net of parental support", "Minor may lack maturity to understand long-term consequences", "Partial emancipation creates uncertain legal status"],
+      "confidence": "defensible",
+      "related_doctrines": ["child_support_guidelines", "modification_support"],
+      "entity_scope": ["emancipation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "annulment",
+      "topic": "Annulment vs Divorce",
+      "keywords": ["annulment", "void marriage", "voidable marriage", "declaration of invalidity", "marriage validity"],
+      "conclusion_template": "Annulment declares a marriage void or voidable ab initio, as if it never existed, unlike divorce which dissolves a valid marriage. Void marriages (bigamy, incest, underage without consent) are invalid from inception and need no court action. Voidable marriages (fraud, duress, mental incapacity, impotence, intoxication) are valid until annulled by court order. Property and support rights after annulment vary by jurisdiction — some states apply equitable division principles, others treat parties as unmarried. Children of annulled marriages retain legitimacy.",
+      "reasoning_framework": "1. VOID vs VOIDABLE: Was the marriage void from inception or voidable? 2. GROUNDS: Identify specific statutory ground for annulment. 3. TIMELINESS: Was annulment sought within statutory time limit? 4. RATIFICATION: Did the complaining party ratify the marriage after the impediment was removed? 5. PROPERTY: How will property be divided — community/equitable or as unmarried persons? 6. CHILDREN: Children remain legitimate regardless of annulment.",
+      "key_factors": ["Whether marriage is void or voidable", "Specific ground for invalidity", "Timing of petition", "Whether impediment was removed and marriage ratified", "Impact on property rights", "Status of children"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 6.101-6.111", "relevance": "Grounds for annulment in Texas"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 2210-2211", "relevance": "California void and voidable marriage grounds"},
+        {"authority": "case_law", "reference": "Ghassemi v. Ghassemi, 998 So.2d 731 (La. App. 2008)", "relevance": "Putative spouse doctrine for property after annulment"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 6.202", "relevance": "Putative marriage and property rights"}
+      ],
+      "counter_arguments": ["Annulment may deprive spouse of community/marital property rights", "Statute of limitations may bar annulment", "Ratification may waive right to annulment", "Putative spouse doctrine is inconsistently applied"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "spousal_support_factors"],
+      "entity_scope": ["annulment"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "legal_separation",
+      "topic": "Legal Separation",
+      "keywords": ["legal separation", "separate maintenance", "separation agreement", "bed and board divorce"],
+      "conclusion_template": "Legal separation provides court-ordered division of rights and responsibilities without dissolving the marriage. Not all states recognize legal separation (Texas does not). Where available, it addresses property division, support, custody, and debt allocation while maintaining marital status. Reasons for choosing separation over divorce include religious objections, health insurance continuation, tax benefits, and potential reconciliation. Separation agreements are enforceable contracts and may be incorporated into a later divorce decree.",
+      "reasoning_framework": "1. AVAILABILITY: Does the jurisdiction recognize legal separation? 2. GROUNDS: Are grounds required (same as divorce) or no-fault? 3. SCOPE: Property, support, custody — all addressable. 4. CONVERSION: Can separation be converted to divorce? 5. INSURANCE: Does separation preserve health insurance benefits? 6. ENFORCEABILITY: Separation agreements are binding contracts.",
+      "key_factors": ["Whether jurisdiction recognizes legal separation", "Reason for choosing separation over divorce", "Impact on health insurance and benefits", "Tax filing status implications", "Whether separation agreement is desired", "Potential for reconciliation"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "N.Y. Dom. Rel. Law \u00a7 200", "relevance": "New York separation action"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 2347", "relevance": "California legal separation"},
+        {"authority": "case_law", "reference": "Massey v. Massey, 807 S.W.2d 391 (Tex. App. 1991)", "relevance": "Separation agreements enforceability as contracts"},
+        {"authority": "commentary", "reference": "24 Am. Jur. 2d Divorce and Separation \u00a7 1", "relevance": "Legal separation vs divorce distinction"}
+      ],
+      "counter_arguments": ["Legal separation creates ongoing legal entanglement", "Neither party can remarry", "Property and financial changes during separation create complications", "Some states do not recognize legal separation"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "spousal_support_factors", "date_of_separation"],
+      "entity_scope": ["legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "common_law_marriage",
+      "topic": "Common Law Marriage",
+      "keywords": ["common law marriage", "informal marriage", "cohabitation rights", "agreed marriage", "holding out"],
+      "conclusion_template": "Common law (informal) marriage is recognized in a minority of states (TX, CO, UT, IA, KS, MT, SC, NH, DC, and others by prior recognition). In Texas, elements are: (1) agreement to be married, (2) cohabitation in Texas, and (3) holding out to the public as married. No ceremony or license is required. Once established, a common law marriage has the same legal effect as a ceremonial marriage. The party asserting common law marriage bears the burden of proof.",
+      "reasoning_framework": "1. JURISDICTION: Does the state recognize common law marriage? 2. ELEMENTS: Agreement + cohabitation + holding out (TX). Vary by state. 3. EVIDENCE: Joint tax returns, shared surname, joint accounts, testimony of friends/family. 4. EFFECT: Same as ceremonial marriage — requires divorce to dissolve. 5. CONFLICT OF LAWS: Marriage valid where contracted is generally valid everywhere. 6. BURDEN: On party asserting the marriage.",
+      "key_factors": ["Whether jurisdiction recognizes common law marriage", "Evidence of agreement to be married", "Duration and nature of cohabitation", "How parties held themselves out to public", "Documentary evidence (tax returns, insurance, etc.)", "Testimony of third parties"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 2.401", "relevance": "Texas informal marriage declaration/proof"},
+        {"authority": "case_law", "reference": "Russell v. Russell, 865 S.W.2d 929 (Tex. 1993)", "relevance": "Evidence required for common law marriage in Texas"},
+        {"authority": "statute", "reference": "Colo. Rev. Stat. \u00a7 14-2-109.5", "relevance": "Colorado common law marriage recognition"},
+        {"authority": "case_law", "reference": "In re Estate of Claveria, 615 S.W.2d 164 (Tex. 1981)", "relevance": "Holding out requirement analysis"}
+      ],
+      "counter_arguments": ["Evidence of agreement is often disputed and circumstantial", "Cohabitation alone does not create marriage", "Holding out requirement is subjective", "Party may dispute marriage to avoid property division"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "date_of_separation"],
+      "entity_scope": ["divorce", "probate"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "same_sex_dissolution",
+      "topic": "Same-Sex Marriage Dissolution",
+      "keywords": ["same sex divorce", "Obergefell", "same sex dissolution", "marriage equality divorce", "civil union dissolution"],
+      "conclusion_template": "Following Obergefell v. Hodges (2015), same-sex marriages are subject to the same divorce laws as opposite-sex marriages in all jurisdictions. Unique issues include: determination of marital duration (from date of ceremonial marriage, civil union, or domestic partnership), pre-Obergefell property characterization, parental rights for non-biological parents, and recognition of out-of-state marriages or civil unions. Courts apply standard divorce principles but may face novel fact patterns regarding parentage and property acquired before marriage was legally recognized.",
+      "reasoning_framework": "1. MARRIAGE DATE: When was the marriage or civil union established? 2. PROPERTY: Was property acquired before or after marriage was legal in the jurisdiction? 3. PARENTAGE: Were children born through ART, surrogacy, or adoption? 4. NON-BIO PARENT: Does the non-biological parent have legal parentage? 5. STANDARD DIVORCE: Apply same community property/equitable distribution rules.",
+      "key_factors": ["Date of marriage or civil union", "Pre-Obergefell relationship duration", "Parentage of children", "Property acquired during non-recognized relationship", "Whether second-parent adoption was obtained"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Obergefell v. Hodges, 576 U.S. 644 (2015)", "relevance": "Constitutional right to same-sex marriage"},
+        {"authority": "case_law", "reference": "Pavan v. Smith, 582 U.S. 563 (2017)", "relevance": "Parental rights of same-sex spouses"},
+        {"authority": "statute", "reference": "Uniform Parentage Act \u00a7 703 (UPA 2017)", "relevance": "Parentage for children of assisted reproduction"},
+        {"authority": "case_law", "reference": "V.L. v. E.L., 577 U.S. 404 (2016)", "relevance": "Full faith and credit for same-sex adoption"}
+      ],
+      "counter_arguments": ["Pre-Obergefell cohabitation period creates property characterization uncertainty", "Non-biological parent may lack legal parentage if adoption not completed", "Some jurisdictions slow to adapt procedures", "Civil union vs marriage distinction may persist for some benefits"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "de_facto_parent", "paternity_establishment"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "surrogacy_agreements",
+      "topic": "Surrogacy Agreements and Parentage",
+      "keywords": ["surrogacy", "gestational surrogacy", "traditional surrogacy", "surrogate mother", "parentage order", "intended parents"],
+      "conclusion_template": "Surrogacy law varies dramatically by jurisdiction. Gestational surrogacy (surrogate has no genetic relationship to child) is more widely recognized than traditional surrogacy (surrogate provides egg). Pre-birth parentage orders are available in many states, establishing intended parents as legal parents before birth. Enforceable surrogacy agreements typically require: independent counsel for all parties, medical/psychological screening, compensation terms, and compliance with state statutory requirements. Some states (MI, NY pre-2021) ban compensated surrogacy; others have comprehensive frameworks.",
+      "reasoning_framework": "1. TYPE: Gestational vs traditional surrogacy — different legal frameworks. 2. JURISDICTION: What does the state allow? 3. AGREEMENT: Does the agreement meet statutory requirements? 4. PARENTAGE ORDER: Can a pre-birth order be obtained? 5. CONFLICT: If surrogate refuses to relinquish, what is the remedy? 6. INTERSTATE/INTERNATIONAL: Conflict of laws for cross-border surrogacy.",
+      "key_factors": ["Whether gestational or traditional surrogacy", "Applicable state law and enforceability", "Whether pre-birth parentage order is available", "Compliance with statutory requirements", "Whether surrogate had independent counsel", "Genetic relationship of intended parents to child"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Uniform Parentage Act \u00a7 801-809 (UPA 2017)", "relevance": "Gestational surrogacy agreement framework"},
+        {"authority": "case_law", "reference": "Johnson v. Calvert, 5 Cal.4th 84 (1993)", "relevance": "Intent-based parentage in gestational surrogacy"},
+        {"authority": "case_law", "reference": "In re Baby M, 109 N.J. 396 (1988)", "relevance": "Traditional surrogacy contracts unenforceable (NJ)"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 160.751-763", "relevance": "Texas gestational agreement provisions"}
+      ],
+      "counter_arguments": ["Surrogacy commercializes reproduction", "Traditional surrogacy agreements are unenforceable in many states", "International surrogacy creates citizenship complications", "Conflict when surrogate changes mind is legally complex"],
+      "confidence": "supportable",
+      "related_doctrines": ["paternity_establishment", "adoption", "de_facto_parent"],
+      "entity_scope": ["parentage", "adoption"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "adoption_stepparent",
+      "topic": "Stepparent Adoption",
+      "keywords": ["stepparent adoption", "step parent", "adoption by spouse", "second parent adoption", "adoption consent"],
+      "conclusion_template": "Stepparent adoption terminates the legal rights and obligations of the non-custodial biological parent and creates a new parent-child relationship with the stepparent. Requirements include: consent of the biological parent (or termination of their rights), consent of the child if over a certain age, and a finding that adoption serves the child's best interest. Consent may be dispensed with if the biological parent has abandoned the child, failed to support the child for a statutory period, or had parental rights terminated. Home study requirements may be waived for stepparents.",
+      "reasoning_framework": "1. CONSENT: Has the biological parent consented or can consent be dispensed with? 2. GROUNDS TO DISPENSE: Abandonment, failure to support, termination of rights. 3. BEST INTEREST: Does adoption serve the child's best interest? 4. HOME STUDY: Is one required for stepparents? Usually waived. 5. EFFECT: Terminates all rights/obligations of biological parent. 6. CHILD CONSENT: Required if child is over statutory age (typically 12).",
+      "key_factors": ["Whether biological parent consents", "Grounds to dispense with consent", "Length of stepparent-child relationship", "Child's best interest", "Child's wishes if of sufficient age", "Whether biological parent has maintained relationship"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 162.001-162.308", "relevance": "Texas adoption requirements"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 161.001", "relevance": "Grounds for termination of parental rights"},
+        {"authority": "case_law", "reference": "In re M.S., 115 S.W.3d 534 (Tex. 2003)", "relevance": "Clear and convincing standard for termination and adoption"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 9000", "relevance": "California stepparent adoption provisions"}
+      ],
+      "counter_arguments": ["Biological parent may contest consent dispensation", "Termination of parental rights is disfavored and heavily scrutinized", "Child may have conflicting feelings about adoption", "Failure to support alone may not justify dispensing with consent"],
+      "confidence": "defensible",
+      "related_doctrines": ["termination_parental_rights", "best_interest_child", "paternity_establishment"],
+      "entity_scope": ["adoption"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "termination_parental_rights",
+      "topic": "Termination of Parental Rights",
+      "keywords": ["termination", "TPR", "parental rights termination", "involuntary termination", "abandonment", "unfitness"],
+      "conclusion_template": "Involuntary termination of parental rights (TPR) is the most severe family law remedy, requiring clear and convincing evidence of statutory grounds AND that termination is in the child's best interest. The constitutional right to parent means TPR requires heightened due process protections. Grounds include: abandonment, severe neglect or abuse, failure to support, conviction of certain crimes, failure to comply with service plan, mental illness rendering parent unable to care for child, and endangerment. TPR is a prerequisite for adoption without consent.",
+      "reasoning_framework": "1. GROUNDS: Identify specific statutory ground(s) for termination. 2. BURDEN: Clear and convincing evidence required (Santosky v. Kramer). 3. BEST INTEREST: Even if grounds proven, must still serve child's best interest. 4. DUE PROCESS: Right to counsel in most states, adequate notice, meaningful hearing. 5. ALTERNATIVES: Court should consider alternatives less drastic than termination. 6. EFFECT: Permanent — severs all legal ties between parent and child.",
+      "key_factors": ["Specific statutory grounds alleged", "Quality of evidence meeting clear and convincing standard", "Parent's compliance with service plan", "Whether parent can remedy conditions", "Child's need for permanency", "Available alternatives to termination"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Santosky v. Kramer, 455 U.S. 745 (1982)", "relevance": "Clear and convincing evidence required for TPR"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 161.001", "relevance": "Texas grounds for involuntary termination"},
+        {"authority": "case_law", "reference": "In re C.H., 89 S.W.3d 17 (Tex. 2002)", "relevance": "Factual sufficiency review for TPR findings"},
+        {"authority": "statute", "reference": "42 U.S.C. \u00a7 675(5)(E)", "relevance": "Federal ASFA requirements for TPR timelines"}
+      ],
+      "counter_arguments": ["TPR is irreversible and constitutional right is at stake", "Parent may be able to remedy conditions with more time", "Child may prefer maintaining parental relationship", "Racial and economic bias in TPR proceedings is documented"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "adoption_stepparent", "domestic_violence_custody"],
+      "entity_scope": ["termination", "adoption", "dependency"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "supervised_visitation",
+      "topic": "Supervised Visitation",
+      "keywords": ["supervised visitation", "supervised access", "visitation restrictions", "monitored visits", "third party supervision"],
+      "conclusion_template": "Supervised visitation is ordered when unsupervised contact poses a risk to the child's physical or emotional safety. Grounds include: history of abuse or neglect, substance abuse, mental health concerns, domestic violence, parental alienation, or lack of established relationship. Supervision may be by a professional provider, family member, or friend approved by the court. Courts should include specific terms regarding location, duration, supervisor qualifications, and conditions for transition to unsupervised access.",
+      "reasoning_framework": "1. RISK ASSESSMENT: What specific risk does unsupervised contact pose? 2. LEVEL: Professional supervision, family member, or therapeutic supervision. 3. CONDITIONS: Location, frequency, duration, approved activities. 4. TRANSITION PLAN: What must parent demonstrate to earn unsupervised access? 5. COST: Who bears cost of professional supervision? 6. REVIEW: Periodic review and modification based on progress.",
+      "key_factors": ["Nature and severity of concern prompting supervision", "Type of supervisor appropriate", "Parent's progress in addressing underlying issues", "Child's comfort level with parent", "Available supervision resources", "Plan for transitioning to unsupervised access"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.004(d)", "relevance": "Supervised visitation for family violence history"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3100", "relevance": "California visitation with conditions"},
+        {"authority": "court_rule", "reference": "AFCC Guidelines for Supervised Visitation", "relevance": "Professional standards for supervised access"},
+        {"authority": "case_law", "reference": "In re Marriage of Battenburg, 28 Cal.App.4th 1338 (1994)", "relevance": "Criteria for ordering supervised visitation"}
+      ],
+      "counter_arguments": ["Supervised visitation may not adequately protect child in severe cases", "Professional supervision is expensive", "Family member supervisors may not be impartial", "Indefinite supervision may effectively terminate relationship"],
+      "confidence": "defensible",
+      "related_doctrines": ["domestic_violence_custody", "best_interest_child", "parental_alienation", "enforcement_contempt"],
+      "entity_scope": ["divorce", "paternity", "modification", "protective_order"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "guardian_ad_litem",
+      "topic": "Guardian ad Litem and Amicus Attorney",
+      "keywords": ["guardian ad litem", "GAL", "amicus attorney", "child representative", "best interest attorney", "CASA"],
+      "conclusion_template": "A guardian ad litem (GAL) is appointed by the court to represent the child's best interest in custody proceedings. The GAL investigates facts, interviews parties and children, reviews records, and makes recommendations to the court. An amicus attorney represents the child's expressed wishes rather than the GAL's determination of best interest. CASA (Court Appointed Special Advocates) serve a similar function in dependency cases. The GAL's recommendations are advisory; the court makes the final determination.",
+      "reasoning_framework": "1. APPOINTMENT: When is a GAL mandatory vs discretionary? 2. ROLE: Best interest advocate (GAL) vs expressed wishes (amicus). 3. INVESTIGATION: What should the GAL investigate? 4. REPORT: Written report and recommendations to the court. 5. TESTIMONY: Can the GAL testify? (Varies by jurisdiction). 6. CONFIDENTIALITY: Scope of privilege and reporting obligations.",
+      "key_factors": ["Whether appointment is mandatory or discretionary", "GAL vs amicus distinction", "Scope of investigation", "Weight given to recommendations", "Cost allocation between parties", "Qualifications and training of appointee"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 107.001-107.015", "relevance": "Texas GAL and amicus attorney provisions"},
+        {"authority": "statute", "reference": "42 U.S.C. \u00a7 5106a(b)(2)(B)(xiii)", "relevance": "Federal CAPTA requirement for GAL in abuse/neglect cases"},
+        {"authority": "case_law", "reference": "In re M.P.B., 257 S.W.3d 804 (Tex. App. 2008)", "relevance": "GAL duties and standards in Texas"},
+        {"authority": "court_rule", "reference": "NACC Recommendations for Representation of Children", "relevance": "National standards for child representation"}
+      ],
+      "counter_arguments": ["GAL recommendations are not binding but carry significant weight", "GAL investigation quality varies widely", "Cost of GAL may be prohibitive for some families", "GAL may substitute personal values for legal analysis"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "domestic_violence_custody", "termination_parental_rights"],
+      "entity_scope": ["divorce", "paternity", "dependency", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "mediation_requirements",
+      "topic": "Mediation Requirements in Family Law",
+      "keywords": ["mediation", "ADR", "mandatory mediation", "family mediation", "dispute resolution", "settlement conference"],
+      "conclusion_template": "Most jurisdictions require mediation before trial in family law cases. Mediation is confidential, voluntary in outcome (parties cannot be forced to settle), and conducted by a neutral mediator. Exceptions to mandatory mediation include cases involving family violence, where mediation may re-traumatize the victim or create power imbalance. Mediated settlement agreements are binding contracts enforceable as court orders. Mediator testimony and communications are privileged and inadmissible.",
+      "reasoning_framework": "1. REQUIREMENT: Is mediation mandatory in this jurisdiction/case? 2. EXCEPTION: Does a domestic violence exception apply? 3. SELECTION: Court-appointed or party-selected mediator? 4. CONFIDENTIALITY: All communications privileged and inadmissible. 5. AGREEMENT: If reached, binding contract enforceable as order. 6. IMPASSE: If no agreement, case proceeds to trial.",
+      "key_factors": ["Whether mediation is mandatory", "Domestic violence exception applicability", "Mediator qualifications", "Confidentiality protections", "Enforceability of mediated agreement", "Cost allocation"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.0071", "relevance": "Texas mediation provisions in family cases"},
+        {"authority": "statute", "reference": "Tex. Civ. Prac. & Rem. Code \u00a7 154.053", "relevance": "Confidentiality of mediation communications"},
+        {"authority": "case_law", "reference": "In re Marriage of Kieturakis, 138 Cal.App.4th 56 (2006)", "relevance": "Enforceability of mediated settlement agreements"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3170", "relevance": "California mandatory custody mediation"}
+      ],
+      "counter_arguments": ["Mediation may perpetuate power imbalances", "DV exception is underutilized", "Mediators lack authority to compel disclosure", "Rushed mediation may result in unfair agreements"],
+      "confidence": "defensible",
+      "related_doctrines": ["collaborative_divorce", "temporary_orders", "domestic_violence_custody"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "collaborative_divorce",
+      "topic": "Collaborative Divorce Process",
+      "keywords": ["collaborative divorce", "collaborative law", "participation agreement", "team approach", "non-adversarial divorce"],
+      "conclusion_template": "Collaborative divorce is a voluntary, non-adversarial process where both parties and their attorneys commit to resolving all issues without court intervention. The hallmark is the disqualification provision: if the process fails, both attorneys must withdraw and parties must retain new counsel for litigation. The process typically involves a team including attorneys, financial professionals, and mental health coaches. Collaborative agreements are enforceable contracts. The process is not suitable for cases involving domestic violence, hidden assets, or extreme power imbalances.",
+      "reasoning_framework": "1. PARTICIPATION AGREEMENT: Both parties and attorneys sign commitment to collaborative process. 2. DISQUALIFICATION: Attorneys cannot represent in litigation if process fails. 3. TEAM: Financial neutral, child specialist, communication coaches. 4. DISCLOSURE: Full voluntary disclosure required — no formal discovery. 5. AGREEMENT: Result is binding settlement agreement. 6. SUITABILITY: Screen for DV, power imbalance, and hidden assets.",
+      "key_factors": ["Whether both parties voluntarily agree to process", "Disqualification provision signed", "Suitability screening completed", "Full financial disclosure", "Appropriate professional team assembled", "Both parties have independent counsel"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Uniform Collaborative Law Act (UCLA \u00a7 1-20)", "relevance": "Model statutory framework for collaborative law"},
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 15.001-15.116", "relevance": "Texas Collaborative Family Law Act"},
+        {"authority": "case_law", "reference": "Schwartz v. Schwartz (Colo. 2016)", "relevance": "Collaborative agreement enforceability"},
+        {"authority": "commentary", "reference": "IACP Ethical Standards for Collaborative Practitioners", "relevance": "Professional standards for collaborative practice"}
+      ],
+      "counter_arguments": ["Disqualification provision creates perverse incentive to settle at any cost", "Power imbalances may not be apparent until process is underway", "No formal discovery means potential for incomplete disclosure", "Process may be more expensive than mediation"],
+      "confidence": "supportable",
+      "related_doctrines": ["mediation_requirements", "prenuptial_enforceability", "community_property_division"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "cohabitation_termination",
+      "topic": "Cohabitation and Spousal Support Termination",
+      "keywords": ["cohabitation", "live-in partner", "support termination", "cohabitation clause", "alimony reduction"],
+      "conclusion_template": "Cohabitation by the spousal support recipient with a new partner may constitute grounds for reduction or termination of support. The standard varies by jurisdiction: some require a showing of economic benefit from the cohabitation relationship, others terminate support automatically upon cohabitation. In Texas, cohabitation in a dating or conjugal relationship on a continuing basis is grounds for termination. Courts examine the nature of the relationship, shared expenses, financial interdependence, and public perception.",
+      "reasoning_framework": "1. DEFINITION: What constitutes cohabitation under applicable law? 2. EVIDENCE: Shared residence, financial interdependence, romantic relationship. 3. ECONOMIC BENEFIT: Does cohabitation reduce recipient's financial need? 4. AUTOMATIC vs DISCRETIONARY: Does cohabitation automatically terminate or trigger review? 5. BURDEN: Who bears the burden of proving cohabitation? 6. CONTRACTUAL: Does the support agreement address cohabitation?",
+      "key_factors": ["Whether parties share a residence", "Financial interdependence of cohabitants", "Nature of relationship (romantic, conjugal)", "Duration and continuity of cohabitation", "Economic benefit to recipient", "Whether support order or agreement addresses cohabitation"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 8.056", "relevance": "Termination of maintenance on cohabitation"},
+        {"authority": "statute", "reference": "N.J. Stat. \u00a7 2A:34-23(n)", "relevance": "NJ cohabitation rebuttable presumption of reduced need"},
+        {"authority": "case_law", "reference": "Konzelman v. Konzelman, 158 N.J. 185 (1999)", "relevance": "Cohabitation analysis for alimony modification"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 4323", "relevance": "CA rebuttable presumption of decreased need on cohabitation"}
+      ],
+      "counter_arguments": ["Cohabitation may not actually reduce financial need", "Definition of cohabitation is vague", "Surveillance to prove cohabitation raises privacy concerns", "Automatic termination may be harsh if cohabitation is brief"],
+      "confidence": "defensible",
+      "related_doctrines": ["spousal_support_factors", "modification_support", "enforcement_contempt"],
+      "entity_scope": ["modification", "enforcement"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "marital_debt_division",
+      "topic": "Division of Marital Debt",
+      "keywords": ["marital debt", "debt division", "community debt", "credit card divorce", "mortgage divorce", "student loan divorce"],
+      "conclusion_template": "Marital debts are divided along with assets in divorce. In community property states, debts incurred during marriage for the benefit of the community are community obligations. In equitable distribution states, debts are allocated based on factors similar to property division. Critically, property settlement agreements do not bind creditors — if one spouse is ordered to pay a joint debt and defaults, the creditor may pursue the other spouse. Indemnification provisions and hold-harmless clauses provide contractual protection but not creditor protection.",
+      "reasoning_framework": "1. CHARACTERIZATION: Is the debt community/marital or separate? 2. TIMING: Was the debt incurred during the marriage? 3. PURPOSE: Was the debt for the benefit of the community/marriage? 4. ALLOCATION: Divide debts equitably, often with the asset they encumber. 5. CREDITOR RIGHTS: Assignment does not affect creditor rights against both parties. 6. INDEMNIFICATION: Include hold-harmless provisions for protection.",
+      "key_factors": ["Whether debt was incurred during marriage", "Purpose of the debt", "Which spouse benefited from the debt", "Whether debt is secured by marital asset", "Creditor rights considerations", "Ability of each party to pay"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 3.202", "relevance": "Community liability for debts"},
+        {"authority": "case_law", "reference": "In re Marriage of Feldman, 153 Cal.App.4th 1470 (2007)", "relevance": "Debt characterization and division in California"},
+        {"authority": "statute", "reference": "11 U.S.C. \u00a7 523(a)(15)", "relevance": "Non-dischargeability of divorce debt allocation in bankruptcy"},
+        {"authority": "case_law", "reference": "Tedder v. Gardner Aldrich, LLP, 421 S.W.3d 651 (Tex. 2013)", "relevance": "Attorney fee debt characterization"}
+      ],
+      "counter_arguments": ["Property settlement does not bind creditors creating ongoing exposure", "Bankruptcy may discharge obligation to pay assigned debt", "Student loan characterization varies by jurisdiction", "Tax debt allocation follows different rules"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "equitable_distribution", "hidden_assets"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "professional_license_valuation",
+      "topic": "Professional License and Degree Valuation",
+      "keywords": ["professional license", "professional degree", "enhanced earning capacity", "education contribution", "license valuation"],
+      "conclusion_template": "Whether a professional license or degree is marital/community property is highly jurisdiction-dependent. New York (O'Brien) treats enhanced earning capacity as marital property subject to equitable distribution. Most other states reject this approach, instead providing reimbursement for the supporting spouse's contributions. In community property states, community funds spent on education may be subject to reimbursement. The trend is away from treating degrees as divisible property and toward compensating the supporting spouse through alimony or equitable division of other assets.",
+      "reasoning_framework": "1. JURISDICTION: Does the state treat licenses/degrees as marital property? 2. IF PROPERTY: Calculate present value of enhanced earning capacity (O'Brien method). 3. IF NOT PROPERTY: Calculate reimbursement for community funds spent on education. 4. SPOUSAL SUPPORT: Consider supporting spouse's contribution in alimony determination. 5. EVIDENCE: Expert testimony on enhanced earning capacity. 6. ALTERNATIVE REMEDY: Disproportionate property division or extended alimony.",
+      "key_factors": ["Whether jurisdiction treats degree as marital property", "Duration of marriage relative to education", "Supporting spouse's contribution and sacrifice", "Whether supporting spouse benefited from enhanced income", "Value of enhanced earning capacity", "Available alternative remedies"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "O'Brien v. O'Brien, 66 N.Y.2d 576 (1985)", "relevance": "Professional license as marital property (NY)"},
+        {"authority": "case_law", "reference": "In re Marriage of Graham, 194 Colo. 429 (1978)", "relevance": "Degree is not marital property (majority view)"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 2641", "relevance": "California community contribution reimbursement"},
+        {"authority": "case_law", "reference": "Postema v. Postema, 189 Mich. App. 89 (1991)", "relevance": "Michigan enhanced earning capacity approach"}
+      ],
+      "counter_arguments": ["Degrees cannot be sold or transferred like property", "Enhanced earning capacity calculation is speculative", "Reimbursement may not adequately compensate supporting spouse", "Future earning capacity is not guaranteed"],
+      "confidence": "supportable",
+      "related_doctrines": ["equitable_distribution", "business_valuation_divorce", "spousal_support_factors"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "reimbursement_claims",
+      "topic": "Reimbursement Claims in Property Division",
+      "keywords": ["reimbursement", "community reimbursement", "separate property contribution", "economic contribution", "capital contribution"],
+      "conclusion_template": "Reimbursement claims arise when one estate (community or separate) benefits another estate. In Texas, economic contribution claims (Tex. Fam. Code 3.402-3.410) address community funds used to pay down separate property debt, and vice versa. The claim is measured by the reduction in principal on the debt, not the total payments made (which include interest). Reimbursement is equitable, not automatic — the court considers offset and whether the benefit was intended as a gift.",
+      "reasoning_framework": "1. IDENTIFY BENEFIT: Which estate benefited from which estate's funds? 2. MEASURE: Calculate principal reduction, not total payments. 3. OFFSET: Was there an offsetting benefit (e.g., rent-free use of separate property home)? 4. GIFT: Was the contribution intended as a gift? Gift negates reimbursement. 5. EQUITY: Court has discretion to award or deny reimbursement based on equity.",
+      "key_factors": ["Which estate made the contribution", "Which estate received the benefit", "Amount of principal reduction", "Whether offsetting benefits exist", "Whether contribution was intended as gift", "Equity and fairness considerations"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 3.402-3.410", "relevance": "Economic contribution claims in Texas"},
+        {"authority": "case_law", "reference": "Anderson v. Gilliland, 684 S.W.2d 673 (Tex. 1985)", "relevance": "Reimbursement for community contributions to separate estate"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 2640", "relevance": "California reimbursement for separate property contributions"},
+        {"authority": "case_law", "reference": "In re Marriage of Walrath, 17 Cal.4th 907 (1998)", "relevance": "Reimbursement rights and gift presumption"}
+      ],
+      "counter_arguments": ["Tracing contributions over long marriages is difficult", "Gift presumption may defeat legitimate claims", "Offset calculations are subjective", "Principal-only measurement may understate true contribution"],
+      "confidence": "defensible",
+      "related_doctrines": ["separate_property", "community_property_division", "equitable_distribution"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "date_of_separation",
+      "topic": "Date of Separation Issues",
+      "keywords": ["date of separation", "separation date", "when separated", "living apart", "end of community"],
+      "conclusion_template": "The date of separation determines when community property accumulation ceases and affects property characterization, support calculations, and filing deadlines. In California, the date of separation requires a complete and final break evidenced by objective conduct. In Texas, there is no formal separation concept — community property continues until final divorce decree. The date is frequently contested because it affects classification of assets and debts acquired between separation and divorce.",
+      "reasoning_framework": "1. DEFINITION: How does the jurisdiction define separation? 2. EVIDENCE: Objective conduct showing complete break (separate residences, filed divorce, separate finances). 3. IMPACT: On property characterization, support, filing deadlines. 4. LIVING TOGETHER: Can parties be separated while living under the same roof? (Some jurisdictions yes). 5. RECONCILIATION: Does reconciliation restart the community? 6. TEXAS: No formal separation — community continues until decree.",
+      "key_factors": ["Whether parties maintained separate residences", "Whether finances were separated", "Whether divorce was filed or contemplated", "Objective evidence of intent to end marriage", "Whether reconciliation occurred", "Impact on specific asset or debt classification"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 70", "relevance": "California date of separation definition"},
+        {"authority": "case_law", "reference": "In re Marriage of Davis, 61 Cal.4th 846 (2015)", "relevance": "Objective evidence required for date of separation (CA)"},
+        {"authority": "case_law", "reference": "Zieba v. Martin, 928 S.W.2d 782 (Tex. App. 1996)", "relevance": "Texas community continues until divorce decree"},
+        {"authority": "statute", "reference": "N.Y. Dom. Rel. Law \u00a7 170(6)", "relevance": "NY one-year separation ground for divorce"}
+      ],
+      "counter_arguments": ["Parties may disagree on when separation occurred", "Living under same roof complicates determination", "Reconciliation attempts may reset the date", "In Texas absence of separation concept creates extended community period"],
+      "confidence": "defensible",
+      "related_doctrines": ["community_property_division", "separate_property", "equitable_distribution", "legal_separation"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "postnuptial_agreements",
+      "topic": "Postnuptial Agreement Standards",
+      "keywords": ["postnuptial", "postnup", "marital agreement", "partition agreement", "post-marriage agreement"],
+      "conclusion_template": "Postnuptial agreements are contracts between spouses during marriage that alter property rights. In Texas, spouses may partition community property or convert separate to community (and vice versa) by written agreement. Postnuptial agreements face heightened scrutiny compared to prenuptial agreements because of the fiduciary relationship between spouses. Requirements include full disclosure, voluntary execution, fair terms, and in some jurisdictions, independent counsel for both parties.",
+      "reasoning_framework": "1. AUTHORITY: Does the jurisdiction allow postnuptial agreements? 2. FIDUCIARY DUTY: Spouses owe each other heightened duty of disclosure. 3. DISCLOSURE: Full and fair financial disclosure required. 4. VOLUNTARINESS: Free from duress, coercion, or overreaching. 5. FAIRNESS: Terms must be fair and equitable at execution. 6. INDEPENDENT COUNSEL: Recommended or required for both parties.",
+      "key_factors": ["Whether jurisdiction recognizes postnuptial agreements", "Full financial disclosure by both parties", "Voluntariness and absence of duress", "Fairness of terms", "Whether both parties had independent counsel", "Compliance with formal requirements"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 4.102-4.106", "relevance": "Texas partition and exchange agreement provisions"},
+        {"authority": "case_law", "reference": "Marsh v. Marsh, 49 S.W.3d 749 (Tex. App. 2001)", "relevance": "Postnuptial agreement requirements in Texas"},
+        {"authority": "statute", "reference": "Uniform Premarital and Marital Agreements Act (UPMAA) \u00a7 9", "relevance": "Model postnuptial agreement provisions"},
+        {"authority": "case_law", "reference": "Pacelli v. Pacelli, 319 N.J. Super. 185 (1999)", "relevance": "Heightened scrutiny for postnuptial agreements"}
+      ],
+      "counter_arguments": ["Fiduciary duty makes arms-length negotiation difficult", "Agreements during marital crisis may be coercive", "Consideration issues arise since marriage already exists", "Enforceability is less certain than prenuptial agreements"],
+      "confidence": "supportable",
+      "related_doctrines": ["prenuptial_enforceability", "community_property_division", "separate_property"],
+      "entity_scope": ["divorce", "legal_separation"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "child_preference",
+      "topic": "Child's Preference in Custody",
+      "keywords": ["child preference", "child wishes", "child interview", "in chambers interview", "child testimony custody"],
+      "conclusion_template": "A child's preference regarding custody is a relevant factor but not determinative. In Texas, children 12 and older have the right to express a preference to the court by interview in chambers. The court gives the preference appropriate weight based on the child's age, maturity, understanding of the situation, and whether the preference appears freely given or coached. The child's preference does not override the best interest standard. In some jurisdictions, the judge must interview the child if requested; in others, it is discretionary.",
+      "reasoning_framework": "1. AGE THRESHOLD: Does the child meet the minimum age for preference (12 in TX, varies elsewhere)? 2. MATURITY: Is the child mature enough for a reliable preference? 3. FREE WILL: Is the preference freely given or result of coaching/alienation? 4. REASON: What is the basis for the child's preference? 5. WEIGHT: Preference is one factor, not controlling. 6. PROCEDURE: In chambers interview, often without parties present.",
+      "key_factors": ["Child's age and maturity", "Whether preference appears freely given", "Basis and reasoning for preference", "Whether coaching or alienation is suspected", "Consistency of expressed preference", "Child's understanding of consequences"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 153.009", "relevance": "Interview of child 12 or older regarding preference"},
+        {"authority": "case_law", "reference": "In re J.R.D., 169 S.W.3d 740 (Tex. App. 2005)", "relevance": "Weight given to child's preference in Texas"},
+        {"authority": "statute", "reference": "Cal. Fam. Code \u00a7 3042", "relevance": "California child's wishes consideration"},
+        {"authority": "case_law", "reference": "Lincoln v. Lincoln, 24 N.Y.2d 270 (1969)", "relevance": "Child's preference as factor in custody"}
+      ],
+      "counter_arguments": ["Young children's preferences may reflect manipulation", "Child may choose the permissive parent over the structured one", "Interview process may traumatize child", "Child's current preference may not reflect long-term best interest"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "parental_alienation", "guardian_ad_litem"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "expert_witnesses_family",
+      "topic": "Expert Witnesses in Family Law",
+      "keywords": ["expert witness", "custody evaluator", "forensic psychologist", "vocational expert", "business appraiser", "actuarial expert"],
+      "conclusion_template": "Expert witnesses play critical roles in family law proceedings: custody evaluators assess parenting capacity and make recommendations, forensic psychologists evaluate mental health and abuse allegations, vocational experts determine earning capacity for imputation and rehabilitative support, business appraisers value closely held businesses and professional practices, and actuaries value pension and retirement benefits. Expert selection, qualification, and cross-examination are essential litigation skills. Daubert/Robinson standards apply to expert testimony admissibility.",
+      "reasoning_framework": "1. NEED: What issue requires expert testimony? 2. TYPE: Which type of expert is appropriate? 3. QUALIFICATION: Does the expert meet Daubert/Robinson standards? 4. METHODOLOGY: Is the expert's methodology reliable and accepted? 5. OPINION: Is the opinion supported by the facts? 6. CROSS-EXAMINATION: Identify weaknesses in methodology and opinions.",
+      "key_factors": ["Type of expert needed for the issue", "Expert's qualifications and experience", "Reliability of methodology used", "Whether opinion is supported by facts", "Cost of expert retention", "Potential for dueling experts"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Daubert v. Merrell Dow Pharmaceuticals, 509 U.S. 579 (1993)", "relevance": "Expert testimony admissibility standard"},
+        {"authority": "case_law", "reference": "E.I. du Pont v. Robinson, 923 S.W.2d 549 (Tex. 1995)", "relevance": "Texas expert testimony standard"},
+        {"authority": "court_rule", "reference": "Fed. R. Evid. 702", "relevance": "Expert witness qualification and testimony"},
+        {"authority": "commentary", "reference": "APA Guidelines for Child Custody Evaluations (2010)", "relevance": "Professional standards for custody evaluation"}
+      ],
+      "counter_arguments": ["Expert opinions are inherently subjective in family law context", "Dueling experts confuse rather than clarify issues", "Cost of experts creates access to justice concerns", "Custody evaluation methodology lacks standardization"],
+      "confidence": "defensible",
+      "related_doctrines": ["best_interest_child", "business_valuation_divorce", "imputed_income", "spousal_support_factors"],
+      "entity_scope": ["divorce", "paternity", "modification"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "discovery_family",
+      "topic": "Discovery in Family Law Proceedings",
+      "keywords": ["discovery", "interrogatories", "production", "deposition", "subpoena", "sworn inventory"],
+      "conclusion_template": "Discovery in family law includes interrogatories, requests for production, depositions, subpoenas to third parties, and jurisdiction-specific tools like sworn inventories and appraisements. In Texas, each party must file a sworn inventory and appraisement of all property. Discovery is essential for property characterization, income determination, and hidden asset identification. Proportionality and good faith requirements apply. Discovery abuse may result in sanctions including adverse inferences, fee awards, and striking pleadings.",
+      "reasoning_framework": "1. MANDATORY DISCLOSURE: Sworn inventory, financial declarations, UCCJEA declaration. 2. WRITTEN DISCOVERY: Interrogatories and requests for production. 3. ORAL DISCOVERY: Depositions of parties and third parties. 4. SUBPOENAS: Financial institutions, employers, business records. 5. DIGITAL: Social media, email, text messages, app data. 6. SANCTIONS: For failure to disclose or discovery abuse.",
+      "key_factors": ["Completeness of mandatory disclosures", "Scope and proportionality of requests", "Third-party subpoena needs", "Digital evidence preservation", "Privilege and work product issues", "Timeline and deadlines"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "Tex. Fam. Code \u00a7 7.006", "relevance": "Sworn inventory and appraisement requirement"},
+        {"authority": "court_rule", "reference": "Tex. R. Civ. P. 190-215", "relevance": "Texas discovery rules applicable to family cases"},
+        {"authority": "case_law", "reference": "In re Kuntz, 124 S.W.3d 179 (Tex. 2003)", "relevance": "Discovery abuse sanctions in family cases"},
+        {"authority": "court_rule", "reference": "Cal. Fam. Code \u00a7 2100-2113", "relevance": "California fiduciary duty of disclosure in divorce"}
+      ],
+      "counter_arguments": ["Discovery costs may be disproportionate to estate value", "Digital evidence raises privacy concerns", "Discovery abuse is common and enforcement inconsistent", "Privilege claims may shield relevant information"],
+      "confidence": "defensible",
+      "related_doctrines": ["hidden_assets", "business_valuation_divorce", "enforcement_contempt", "attorney_fees_family"],
+      "entity_scope": ["divorce", "paternity"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "domestic_relations_exception",
+      "topic": "Domestic Relations Exception to Federal Jurisdiction",
+      "keywords": ["domestic relations exception", "federal jurisdiction", "diversity jurisdiction", "family law federal court"],
+      "conclusion_template": "The domestic relations exception bars federal courts from exercising diversity jurisdiction over cases involving divorce, alimony, or child custody, even when diversity of citizenship and amount-in-controversy requirements are met. The exception is narrowly construed — federal courts may hear tort actions between spouses, contract disputes arising from divorce settlements, and constitutional claims affecting family law (e.g., Troxel, Obergefell). The Rooker-Feldman doctrine separately bars federal review of state family court judgments.",
+      "reasoning_framework": "1. EXCEPTION SCOPE: Does the claim seek divorce, alimony, or custody? If so, barred from federal court. 2. NARROW CONSTRUCTION: Claims collateral to domestic relations (torts, contracts, constitutional) may proceed. 3. ABSTENTION: Even if not barred, federal courts may abstain under Younger or Burford. 4. ROOKER-FELDMAN: Federal courts cannot review state court family law judgments. 5. CONSTITUTIONAL CLAIMS: 1983 actions, due process, equal protection claims may proceed.",
+      "key_factors": ["Whether claim directly involves divorce, alimony, or custody", "Whether claim is collateral to domestic relations", "Abstention considerations", "Constitutional dimension of claim", "Whether state court judgment is being challenged"],
+      "primary_authority": [
+        {"authority": "case_law", "reference": "Ankenbrandt v. Richards, 504 U.S. 689 (1992)", "relevance": "Scope of domestic relations exception to federal jurisdiction"},
+        {"authority": "case_law", "reference": "Marshall v. Marshall, 547 U.S. 293 (2006)", "relevance": "Narrow scope of probate/domestic relations exception"},
+        {"authority": "case_law", "reference": "Rooker-Feldman doctrine (D.C. Ct. App. v. Feldman, 460 U.S. 462 (1983))", "relevance": "Federal courts cannot review state court judgments"},
+        {"authority": "statute", "reference": "28 U.S.C. \u00a7 1332", "relevance": "Federal diversity jurisdiction"}
+      ],
+      "counter_arguments": ["Exception's scope is uncertain for claims tangential to domestic relations", "Federal courts may be better forum for constitutional claims", "Abstention gives state courts monopoly even on federal claims", "Exception is judicially created, not statutory"],
+      "confidence": "defensible",
+      "related_doctrines": ["jurisdiction_uccjea", "enforcement_contempt"],
+      "entity_scope": ["divorce", "custody", "enforcement"],
+      "staleness_date": "2026-02-09"
+    },
+    {
+      "topic_key": "covenant_marriage",
+      "topic": "Covenant Marriage",
+      "keywords": ["covenant marriage", "restricted divorce", "fault divorce", "covenant state", "marriage commitment"],
+      "conclusion_template": "Covenant marriage is an optional legal marriage framework available in Louisiana, Arizona, and Arkansas that requires premarital counseling and limits grounds for divorce to fault-based causes (adultery, abuse, abandonment, felony conviction, substance abuse) or extended separation (typically 2 years). Couples choosing covenant marriage agree to seek counseling before filing for divorce. The covenant limits no-fault divorce options. Courts in non-covenant states must give full faith and credit to covenant marriages but may apply their own divorce standards.",
+      "reasoning_framework": "1. AVAILABILITY: Is the marriage a covenant marriage? Only in LA, AZ, AR. 2. GROUNDS: Limited to fault grounds or extended separation. 3. COUNSELING: Pre-divorce counseling is required before filing. 4. FULL FAITH AND CREDIT: Other states recognize but may apply own standards. 5. CONVERSION: Can a standard marriage be converted to covenant? (Yes in covenant states).",
+      "key_factors": ["Whether marriage is designated as covenant", "Available grounds for divorce under covenant law", "Whether pre-divorce counseling was completed", "Which state is adjudicating the divorce", "Whether conversion from standard marriage occurred"],
+      "primary_authority": [
+        {"authority": "statute", "reference": "La. Rev. Stat. \u00a7 9:272-275", "relevance": "Louisiana covenant marriage provisions"},
+        {"authority": "statute", "reference": "Ariz. Rev. Stat. \u00a7 25-901-906", "relevance": "Arizona covenant marriage law"},
+        {"authority": "statute", "reference": "Ark. Code \u00a7 9-11-801-811", "relevance": "Arkansas covenant marriage act"},
+        {"authority": "commentary", "reference": "Spaht, 'Louisiana's Covenant Marriage Law,' 12 Regent U. L. Rev. 192 (1999)", "relevance": "Analysis of covenant marriage policy"}
+      ],
+      "counter_arguments": ["Covenant marriage restricts individual autonomy", "Fault requirements may trap spouses in unhappy marriages", "Very low adoption rate suggests limited public support", "Full faith and credit issues when litigating in non-covenant state"],
+      "confidence": "defensible",
+      "related_doctrines": ["annulment", "legal_separation", "spousal_support_factors"],
+      "entity_scope": ["divorce"],
+      "staleness_date": "2026-02-09"
+    }
+  ]
+}
+

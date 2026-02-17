@@ -1,0 +1,129 @@
+{
+    "engine_id": "LG09",
+    "engine_name": "Criminal Law Engine",
+    "version": "1.0.0",
+    "domain": "criminal_law",
+    "port": 8399,
+    "host": "0.0.0.0",
+    "authority_level": 11.0,
+    "description": "Full TIE-20 criminal law analysis engine covering federal and Texas state criminal law",
+    "author": "ECHO OMEGA PRIME",
+    "response_modes": {
+        "DET": {
+            "label": "Deterministic",
+            "description": "Strict doctrine-only responses with SHA-256 hashing for reproducibility",
+            "max_tokens": 2000,
+            "temperature": 0.0,
+            "require_citations": true,
+            "allow_inference": false
+        },
+        "EF": {
+            "label": "Expert Flex",
+            "description": "Expert-level analysis allowing reasoned inference beyond cached doctrines",
+            "max_tokens": 8000,
+            "temperature": 0.3,
+            "require_citations": true,
+            "allow_inference": true
+        },
+        "HYBRID": {
+            "label": "Hybrid",
+            "description": "Doctrine-first with expert flex fallback on cache miss",
+            "max_tokens": 5000,
+            "temperature": 0.15,
+            "require_citations": true,
+            "allow_inference": true
+        }
+    },
+    "analysis_layers": {
+        "quick": {
+            "label": "Quick Analysis",
+            "max_latency_ms": 200,
+            "description": "Doctrine cache lookup, immediate response"
+        },
+        "standard": {
+            "label": "Standard Analysis",
+            "max_latency_ms": 2000,
+            "description": "Doctrine + semantic search, structured reasoning"
+        },
+        "deep": {
+            "label": "Deep Analysis",
+            "max_latency_ms": 15000,
+            "description": "Full multi-source synthesis with citation chains"
+        }
+    },
+    "jurisdictions": {
+        "federal": {
+            "primary_sources": ["Title 18 USC", "Title 21 USC", "Federal Sentencing Guidelines", "Federal Rules of Criminal Procedure"],
+            "courts": ["US Supreme Court", "Circuit Courts of Appeals", "US District Courts"],
+            "enabled": true
+        },
+        "texas": {
+            "primary_sources": ["Texas Penal Code", "Texas Code of Criminal Procedure", "Texas Health and Safety Code"],
+            "courts": ["Texas Court of Criminal Appeals", "Texas Courts of Appeals", "Texas District Courts"],
+            "enabled": true
+        },
+        "model_penal_code": {
+            "primary_sources": ["Model Penal Code (ALI 1962)"],
+            "description": "Reference framework for comparative analysis",
+            "enabled": true
+        }
+    },
+    "doctrine_topics": {
+        "elements_of_crime": ["actus_reus", "mens_rea", "concurrence", "causation", "attendant_circumstances"],
+        "homicide": ["capital_murder", "first_degree_murder", "second_degree_murder", "voluntary_manslaughter", "involuntary_manslaughter", "criminally_negligent_homicide", "felony_murder"],
+        "assault_battery": ["simple_assault", "aggravated_assault", "battery", "aggravated_battery", "assault_on_officer", "domestic_violence"],
+        "property_crimes": ["theft", "burglary", "robbery", "arson", "criminal_mischief", "trespass", "receiving_stolen_property"],
+        "fraud_white_collar": ["wire_fraud", "mail_fraud", "bank_fraud", "securities_fraud", "embezzlement", "money_laundering", "rico", "insider_trading", "tax_fraud", "identity_theft"],
+        "drug_offenses": ["possession", "distribution", "manufacturing", "trafficking", "drug_scheduling", "controlled_substance_analogue", "drug_paraphernalia"],
+        "sex_offenses": ["sexual_assault", "aggravated_sexual_assault", "indecency", "child_exploitation", "sex_offender_registration", "online_solicitation"],
+        "dwi_dui": ["driving_while_intoxicated", "field_sobriety", "blood_alcohol", "implied_consent", "intoxication_assault", "intoxication_manslaughter"],
+        "constitutional_rights": ["fourth_amendment", "fifth_amendment", "sixth_amendment", "eighth_amendment", "due_process", "equal_protection"],
+        "search_seizure": ["probable_cause", "warrant_requirement", "exceptions_to_warrant", "exclusionary_rule", "fruit_of_poisonous_tree", "good_faith_exception", "terry_stop"],
+        "miranda_rights": ["custody_determination", "interrogation", "waiver", "invocation", "public_safety_exception", "impeachment_use"],
+        "defenses": ["self_defense", "defense_of_others", "castle_doctrine", "stand_your_ground", "insanity", "diminished_capacity", "duress", "necessity", "entrapment", "intoxication", "mistake_of_fact", "mistake_of_law", "statute_of_limitations", "double_jeopardy"],
+        "sentencing": ["sentencing_guidelines", "mandatory_minimums", "three_strikes", "death_penalty", "life_without_parole", "concurrent_consecutive", "sentencing_enhancement", "downward_departure"],
+        "plea_bargaining": ["charge_bargaining", "sentence_bargaining", "plea_agreement_requirements", "withdrawal_of_plea", "alford_plea", "nolo_contendere"],
+        "probation_parole": ["conditions_of_probation", "revocation", "parole_eligibility", "parole_conditions", "supervised_release", "community_supervision"],
+        "expungement": ["eligibility_requirements", "deferred_adjudication", "nondisclosure_orders", "record_sealing", "effect_of_expungement"],
+        "juvenile_justice": ["juvenile_jurisdiction", "certification_as_adult", "disposition", "juvenile_records", "status_offenses", "delinquent_conduct"],
+        "inchoate_crimes": ["attempt", "conspiracy", "solicitation", "aiding_and_abetting", "accessory"],
+        "federal_procedure": ["grand_jury", "indictment", "arraignment", "discovery", "speedy_trial", "bail_detention", "habeas_corpus"]
+    },
+    "confidence_levels": {
+        "DEFINITIVE": {"min_score": 0.95, "label": "Definitive - Settled law with clear precedent"},
+        "HIGH": {"min_score": 0.80, "label": "High - Strong authority, minor variations possible"},
+        "MODERATE": {"min_score": 0.60, "label": "Moderate - Multiple interpretations exist"},
+        "LOW": {"min_score": 0.40, "label": "Low - Evolving area, conflicting authority"},
+        "SPECULATIVE": {"min_score": 0.0, "label": "Speculative - Limited authority, novel question"}
+    },
+    "telemetry": {
+        "enabled": true,
+        "log_rotation_mb": 50,
+        "log_retention_days": 30,
+        "audit_trail_enabled": true,
+        "metrics_collection_enabled": true,
+        "performance_tracking_enabled": true
+    },
+    "vector_search": {
+        "collection_name": "lg09_criminal_law",
+        "embedding_model": "all-MiniLM-L6-v2",
+        "similarity_threshold": 0.65,
+        "max_results": 10,
+        "persist_directory": "./chroma_db"
+    },
+    "health_check": {
+        "interval_seconds": 30,
+        "timeout_seconds": 5,
+        "components": ["doctrine_cache", "semantic_normalizer", "vector_search", "telemetry", "audit_trail"]
+    },
+    "rate_limiting": {
+        "enabled": true,
+        "requests_per_minute": 120,
+        "burst_limit": 20
+    },
+    "cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["*"]
+    }
+}

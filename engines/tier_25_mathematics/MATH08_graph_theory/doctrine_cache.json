@@ -1,0 +1,189 @@
+[
+  {
+    "topic": "graph_representations",
+    "keywords": ["adjacency", "matrix", "list", "incidence", "representation", "storage"],
+    "conclusion_template": "Graphs are represented primarily via adjacency lists (O(V+E) space, fast neighbor iteration) or adjacency matrices (O(V^2) space, O(1) edge lookup). Adjacency lists are preferred for sparse graphs; matrices for dense graphs or when checking edge existence frequently. Incidence matrices are used in algebraic graph theory.",
+    "reasoning_framework": "The choice of representation determines the complexity of nearly every graph algorithm. Adjacency lists store neighbors per vertex in linked lists or arrays, giving O(deg(v)) neighbor enumeration. Adjacency matrices use a V×V boolean/weighted grid, enabling O(1) edge queries at the cost of O(V^2) memory. For sparse graphs (E << V^2), lists save significant memory. For dense graphs or small V, matrices provide cache-friendly access patterns. The incidence matrix (V×E) maps vertices to edges, used in network flow formulations and spectral analysis.",
+    "key_factors": ["graph density", "memory constraints", "edge query frequency", "algorithm requirements", "cache performance"],
+    "primary_authority": ["Cormen et al. Introduction to Algorithms Ch.22", "Sedgewick & Wayne Algorithms 4th Ed.", "Bondy & Murty Graph Theory"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "breadth_first_search",
+    "keywords": ["bfs", "breadth", "first", "search", "level", "order", "shortest", "unweighted"],
+    "conclusion_template": "BFS explores a graph layer by layer from a source vertex using a FIFO queue. It computes shortest unweighted paths in O(V+E) time and O(V) space. BFS produces a BFS tree where the path from root to any vertex is a shortest path. It is the foundation for algorithms like Edmonds-Karp max flow and bipartite checking.",
+    "reasoning_framework": "BFS visits all vertices at distance k before any at distance k+1. Maintain a queue initialized with the source. For each dequeued vertex u, enqueue all unvisited neighbors, recording distance = dist[u]+1. This guarantees shortest-path discovery in unweighted graphs. BFS also determines connected components, bipartiteness (via 2-coloring during traversal), and provides the level structure used in Hopcroft-Karp matching. The BFS tree has no cross edges going down more than one level.",
+    "key_factors": ["queue-based exploration", "shortest unweighted paths", "level decomposition", "O(V+E) complexity", "foundation for multiple algorithms"],
+    "primary_authority": ["Cormen et al. CLRS Ch.22.2", "Moore 1959 (original BFS)", "Even Graph Algorithms 2nd Ed."],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "depth_first_search",
+    "keywords": ["dfs", "depth", "first", "search", "backtrack", "discovery", "finish", "stack"],
+    "conclusion_template": "DFS explores as deep as possible before backtracking, using a stack (explicit or recursive). It runs in O(V+E) time, producing discovery and finish timestamps that classify edges into tree, back, forward, and cross edges. DFS is the backbone of topological sorting, cycle detection, SCC computation, and bridge/articulation point finding.",
+    "reasoning_framework": "DFS assigns each vertex discovery time d[v] and finish time f[v]. Edge classification: tree edges (to white/unvisited), back edges (to gray/in-stack — indicates cycle), forward edges (to black descendant), cross edges (to black non-descendant). For undirected graphs, only tree and back edges exist. The parenthesis theorem states intervals [d[u],f[u]] are either nested or disjoint. Iterative DFS uses an explicit stack to avoid recursion depth limits on large graphs. Tarjan's algorithms exploit DFS properties for bridges and SCCs.",
+    "key_factors": ["stack-based exploration", "edge classification", "timestamp properties", "cycle detection backbone", "SCC foundation"],
+    "primary_authority": ["Cormen et al. CLRS Ch.22.3", "Tarjan 1972 (DFS applications)", "Hopcroft & Tarjan 1973"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "dijkstra_shortest_path",
+    "keywords": ["dijkstra", "shortest", "path", "priority", "queue", "heap", "non-negative", "single-source"],
+    "conclusion_template": "Dijkstra's algorithm finds single-source shortest paths in graphs with non-negative edge weights. Using a binary min-heap, it runs in O((V+E) log V). It greedily extracts the minimum-distance vertex and relaxes outgoing edges. It fails on negative weights — use Bellman-Ford instead.",
+    "reasoning_framework": "Initialize dist[source]=0, all others infinity. Use a priority queue keyed by distance. Extract-min gives vertex u with smallest tentative distance. For each neighbor v of u, if dist[u]+w(u,v) < dist[v], update dist[v] and push to queue. Once extracted, a vertex's distance is final (greedy correctness proof via cut property). With a Fibonacci heap, complexity is O(E + V log V), but binary heaps are simpler and practically faster for most inputs. A* extends Dijkstra with heuristic guidance for point-to-point queries.",
+    "key_factors": ["non-negative weights required", "greedy extract-min", "relaxation of edges", "O((V+E) log V) with binary heap", "fails on negative edges"],
+    "primary_authority": ["Dijkstra 1959 (original paper)", "Cormen et al. CLRS Ch.24.3", "Fredman & Tarjan 1987 (Fibonacci heap)"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "bellman_ford_algorithm",
+    "keywords": ["bellman", "ford", "negative", "weight", "cycle", "detection", "relax", "single-source"],
+    "conclusion_template": "Bellman-Ford computes single-source shortest paths in O(V*E) time, handling negative edge weights. After V-1 relaxation passes over all edges, a V-th pass detects negative-weight cycles (any further relaxation means a negative cycle exists). It is slower than Dijkstra but more general.",
+    "reasoning_framework": "Repeat V-1 times: for every edge (u,v,w), if dist[u]+w < dist[v], update dist[v]. After V-1 iterations, all shortest paths of at most V-1 edges are found (a shortest path in a graph without negative cycles has at most V-1 edges). A final pass checks for further relaxation — if found, a negative-weight cycle is reachable from the source. The algorithm handles negative weights correctly because it considers all edges in each pass, unlike Dijkstra's greedy approach. SPFA (Shortest Path Faster Algorithm) is a queue-based optimization that is faster in practice.",
+    "key_factors": ["handles negative weights", "V-1 relaxation passes", "negative cycle detection", "O(V*E) complexity", "more general than Dijkstra"],
+    "primary_authority": ["Bellman 1958", "Ford 1956", "Cormen et al. CLRS Ch.24.1"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "floyd_warshall_all_pairs",
+    "keywords": ["floyd", "warshall", "all-pairs", "all pairs", "shortest", "dynamic", "programming", "transitive"],
+    "conclusion_template": "Floyd-Warshall computes all-pairs shortest paths via dynamic programming in O(V^3) time and O(V^2) space. It processes intermediate vertices k=0..V-1, updating dist[i][j] = min(dist[i][j], dist[i][k]+dist[k][j]). It handles negative weights and detects negative cycles (dist[i][i] < 0). Practical for V up to ~2000.",
+    "reasoning_framework": "Define dist^k[i][j] as the shortest path from i to j using only vertices 0..k-1 as intermediates. Base case: direct edge weights. Recurrence: dist^(k+1)[i][j] = min(dist^k[i][j], dist^k[i][k] + dist^k[k][j]). The triple loop over k, i, j can be done in-place since dist[k][k] is always 0 or negative (cycle). Path reconstruction uses a next matrix: next[i][j] stores the first vertex after i on the shortest path to j. Transitive closure is a special case with boolean OR/AND instead of min/+.",
+    "key_factors": ["dynamic programming formulation", "O(V^3) time", "all-pairs solution", "handles negative weights", "path reconstruction via next matrix"],
+    "primary_authority": ["Floyd 1962", "Warshall 1962", "Cormen et al. CLRS Ch.25.2"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "minimum_spanning_tree_theory",
+    "keywords": ["spanning", "tree", "mst", "minimum", "kruskal", "prim", "cut", "property"],
+    "conclusion_template": "A minimum spanning tree (MST) of a connected, weighted, undirected graph is a spanning tree with minimum total edge weight. The cut property (lightest edge crossing any cut must be in some MST) and cycle property (heaviest edge on any cycle can be excluded) form the theoretical foundation. Kruskal's (O(E log E)) and Prim's (O((V+E) log V)) are the two classical algorithms.",
+    "reasoning_framework": "MST theory rests on two fundamental properties. Cut property: for any cut (S, V-S), the minimum-weight edge crossing the cut belongs to some MST. This justifies both Kruskal (global greedy on sorted edges) and Prim (local greedy growing from a vertex). Cycle property: the maximum-weight edge on any cycle is not in the MST (unless it is the unique crossing edge of some cut). An MST has exactly V-1 edges. If all edge weights are distinct, the MST is unique. Borůvka's algorithm (O(E log V)) is a third approach, useful for parallel/distributed MST.",
+    "key_factors": ["cut property", "cycle property", "V-1 edges", "uniqueness with distinct weights", "connected undirected graph required"],
+    "primary_authority": ["Kruskal 1956", "Prim 1957", "Cormen et al. CLRS Ch.23", "Borůvka 1926"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "max_flow_min_cut_theorem",
+    "keywords": ["max", "flow", "min", "cut", "ford", "fulkerson", "edmonds", "karp", "capacity", "augmenting"],
+    "conclusion_template": "The max-flow min-cut theorem states that the maximum flow from source to sink equals the minimum cut capacity separating them. Ford-Fulkerson iteratively finds augmenting paths in the residual graph. Edmonds-Karp uses BFS for augmenting paths, guaranteeing O(V*E^2) time. The residual graph tracks remaining capacity and allows flow cancellation via back edges.",
+    "reasoning_framework": "A flow network has source s, sink t, and edge capacities c(u,v). A flow assigns values f(u,v) satisfying capacity constraints (f ≤ c) and conservation (flow in = flow out at non-s,t vertices). The residual graph has edges with capacity c(u,v)-f(u,v) (forward) and f(u,v) (backward). An augmenting path is an s-t path in the residual graph. Ford-Fulkerson repeatedly finds augmenting paths and pushes flow. Termination is guaranteed with integer capacities. Edmonds-Karp chooses shortest augmenting paths via BFS, achieving O(VE^2). More advanced: Dinic's O(V^2*E), push-relabel O(V^2*E) or O(V^3).",
+    "key_factors": ["max-flow equals min-cut", "residual graph with back edges", "augmenting path method", "BFS guarantees polynomial time", "integer capacity termination"],
+    "primary_authority": ["Ford & Fulkerson 1956", "Edmonds & Karp 1972", "Cormen et al. CLRS Ch.26", "Dinic 1970"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "topological_sorting",
+    "keywords": ["topological", "sort", "dag", "directed", "acyclic", "kahn", "ordering", "dependency"],
+    "conclusion_template": "Topological sort produces a linear ordering of vertices in a DAG such that for every edge (u,v), u appears before v. Kahn's algorithm uses BFS with in-degree tracking in O(V+E). DFS-based topological sort uses reverse finish order. A graph has a topological order if and only if it is a DAG. Applications: build systems, scheduling, dependency resolution.",
+    "reasoning_framework": "Kahn's algorithm: compute in-degrees, enqueue all zero-in-degree vertices. Process queue: for each vertex u, remove u and decrement in-degrees of neighbors; enqueue any new zero-in-degree vertices. If all vertices are processed, the graph is a DAG and the processing order is a valid topological sort. If not all vertices processed, a cycle exists. DFS approach: run full DFS, then reverse the finish order. Both are O(V+E). Multiple valid orderings may exist (the DAG is not a total order). Topological sort is fundamental to critical path analysis (PERT/CPM).",
+    "key_factors": ["DAG requirement", "Kahn's BFS-based approach", "DFS reverse finish order", "O(V+E) complexity", "cycle detection as side effect"],
+    "primary_authority": ["Kahn 1962", "Cormen et al. CLRS Ch.22.4", "Knuth TAOCP Vol.1 §2.2.3"],
+    "confidence": 0.99,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "cycle_detection_methods",
+    "keywords": ["cycle", "detection", "back", "edge", "coloring", "acyclic", "directed", "undirected"],
+    "conclusion_template": "Cycle detection uses DFS with three-color marking: white (unvisited), gray (in current DFS path), black (fully processed). In directed graphs, a back edge (to a gray vertex) indicates a cycle. In undirected graphs, visiting a non-parent visited vertex indicates a cycle. Union-Find provides an alternative for undirected graphs. Time: O(V+E).",
+    "reasoning_framework": "For directed graphs: DFS from each unvisited vertex. When exploring edge (u,v), if v is gray (on the current recursion stack), a cycle exists from v back through the DFS path to u. If v is black, the edge leads to an already-completed subtree — no cycle. For undirected graphs: during DFS, if we encounter a visited vertex that is not our parent, we have a cycle. The three-color scheme prevents false positives from cross/forward edges in directed graphs. Cycle detection is equivalent to checking if topological sort succeeds (no topological order exists for cyclic graphs).",
+    "key_factors": ["three-color DFS scheme", "back edge detection (directed)", "non-parent visited (undirected)", "O(V+E) complexity", "equivalence with topological sort failure"],
+    "primary_authority": ["Cormen et al. CLRS Ch.22.3", "Tarjan 1972", "Sedgewick & Wayne Algorithms 4th Ed."],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "connected_components_analysis",
+    "keywords": ["connected", "component", "strongly", "kosaraju", "tarjan", "scc", "weakly", "reachability"],
+    "conclusion_template": "Connected components partition a graph into maximal connected subgraphs. For undirected graphs, BFS/DFS from each unvisited vertex identifies components in O(V+E). For directed graphs, strongly connected components (SCCs) are found via Kosaraju's (two DFS passes) or Tarjan's algorithm (single DFS with low-link values), both O(V+E). The condensation of SCCs forms a DAG.",
+    "reasoning_framework": "Undirected: simple BFS/DFS from each unvisited vertex grows each component. Directed: SCCs require vertices to be mutually reachable. Kosaraju's algorithm: (1) DFS on original graph, record finish order; (2) DFS on reversed graph in reverse finish order — each DFS tree is an SCC. Tarjan's: single DFS maintaining a stack and low-link values; when low[v]==disc[v], pop the stack to get an SCC. The SCC condensation (replacing each SCC with a single node) produces a DAG, useful for analyzing reachability and dependency structure.",
+    "key_factors": ["undirected: simple BFS/DFS", "directed: Kosaraju or Tarjan", "O(V+E) complexity", "SCC condensation yields DAG", "mutual reachability defines SCC"],
+    "primary_authority": ["Kosaraju 1978 (unpublished, attributed)", "Tarjan 1972", "Cormen et al. CLRS Ch.22.5"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "graph_coloring_chromatic_number",
+    "keywords": ["coloring", "chromatic", "number", "greedy", "planar", "four", "color", "NP"],
+    "conclusion_template": "Graph coloring assigns colors to vertices so no adjacent pair shares a color. The chromatic number χ(G) is the minimum colors needed. Computing χ(G) is NP-hard in general. Greedy coloring uses at most Δ+1 colors (Δ = max degree). Planar graphs need at most 4 colors (Four Color Theorem). Bipartite graphs have χ=2.",
+    "reasoning_framework": "Greedy coloring processes vertices in some order, assigning the smallest available color. The result depends on ordering — worst case uses Δ+1 colors (Brooks' theorem: exactly Δ unless complete graph or odd cycle). Optimal coloring is NP-hard (reduction from 3-SAT). Special cases: trees are 2-colorable, interval graphs are optimally colorable in polynomial time, planar graphs ≤ 4 (proved by Appel-Haken 1976, verified by Robertson et al. 1997). Edge coloring (Vizing's theorem): needs Δ or Δ+1 colors. Chromatic polynomial P(G,k) counts valid k-colorings.",
+    "key_factors": ["NP-hard in general", "greedy gives Δ+1 bound (Brooks theorem)", "Four Color Theorem for planar graphs", "bipartite implies χ=2", "chromatic polynomial for counting"],
+    "primary_authority": ["Appel & Haken 1976 (Four Color Theorem)", "Brooks 1941", "Vizing 1964", "Cormen et al. CLRS"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "bipartite_graphs",
+    "keywords": ["bipartite", "two-colorable", "matching", "konig", "hall", "odd", "cycle", "partition"],
+    "conclusion_template": "A graph is bipartite iff it can be 2-colored, equivalently iff it contains no odd-length cycle (König's characterization). BFS 2-coloring checks bipartiteness in O(V+E). Bipartite graphs have special properties: König's theorem (max matching = min vertex cover), Hall's marriage theorem (conditions for perfect matching). Maximum bipartite matching via Hopcroft-Karp runs in O(E√V).",
+    "reasoning_framework": "Start BFS from any vertex, assign color 0. For each neighbor, assign opposite color. If a neighbor already has the same color, the graph is not bipartite (odd cycle found). König's theorem relates matchings and covers in bipartite graphs: the size of the maximum matching equals the size of the minimum vertex cover. Hall's condition: a bipartite graph has a complete matching from A to B iff for every subset S ⊆ A, |N(S)| ≥ |S|. These properties do NOT hold for general graphs (König fails, Hall needs modification).",
+    "key_factors": ["no odd cycles characterization", "BFS 2-coloring O(V+E)", "König's theorem (matching = vertex cover)", "Hall's marriage theorem", "Hopcroft-Karp O(E√V)"],
+    "primary_authority": ["König 1931", "Hall 1935", "Hopcroft & Karp 1973", "Cormen et al. CLRS"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "eulerian_and_hamiltonian_paths",
+    "keywords": ["euler", "eulerian", "hamiltonian", "circuit", "path", "traverse", "every", "edge", "vertex"],
+    "conclusion_template": "An Eulerian path visits every edge exactly once; an Eulerian circuit returns to start. Undirected: circuit iff connected with all even degrees, path iff exactly 2 odd-degree vertices. Hierholzer's algorithm finds Eulerian circuits in O(E). Hamiltonian paths visit every vertex exactly once — determining existence is NP-complete (reduction from SAT). No efficient general algorithm exists for Hamiltonian paths.",
+    "reasoning_framework": "Euler's theorem (1736, Königsberg bridges): a connected graph has an Eulerian circuit iff every vertex has even degree. For directed graphs: in-degree equals out-degree for all vertices. Hierholzer's algorithm: start at any vertex, follow edges (removing as you go) until stuck, then splice in sub-tours from vertices with remaining edges. Time O(E). Hamiltonian path/cycle: NP-complete (Karp 1972). Special cases solvable: Dirac's theorem (deg ≥ V/2 implies Hamiltonian cycle), Ore's theorem (deg(u)+deg(v) ≥ V for non-adjacent u,v). Exponential algorithms: Held-Karp DP O(2^V * V^2).",
+    "key_factors": ["Eulerian: polynomial time O(E)", "Hamiltonian: NP-complete", "even degree characterization (Euler)", "Dirac/Ore sufficient conditions (Hamilton)", "fundamental complexity divide"],
+    "primary_authority": ["Euler 1736", "Hierholzer 1873", "Karp 1972 (NP-completeness)", "Dirac 1952", "Held & Karp 1962"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "centrality_measures",
+    "keywords": ["centrality", "degree", "betweenness", "closeness", "pagerank", "eigenvector", "importance"],
+    "conclusion_template": "Centrality measures quantify vertex importance. Degree centrality: proportional to connections. Betweenness centrality (Brandes O(VE)): fraction of shortest paths through a vertex. Closeness centrality: inverse of average distance. PageRank: random-walk importance with damping. Eigenvector centrality: influence from being connected to influential nodes. Each captures a different notion of importance.",
+    "reasoning_framework": "Degree centrality = deg(v)/(V-1), simple but ignores network structure. Betweenness = Σ_{s≠v≠t} σ_st(v)/σ_st where σ_st is the number of shortest s-t paths and σ_st(v) those passing through v. Brandes' algorithm computes this in O(VE) via accumulation during BFS/Dijkstra. Closeness = (V-1)/Σ d(v,u), high for vertices close to all others. PageRank models a random surfer following links with probability d (~0.85) or jumping randomly; the stationary distribution gives scores. Eigenvector centrality is the dominant eigenvector of the adjacency matrix. Katz centrality generalizes with a decay factor.",
+    "key_factors": ["degree: local metric", "betweenness: global shortest-path metric", "closeness: distance-based", "PageRank: random walk model", "different measures for different questions"],
+    "primary_authority": ["Freeman 1977 (betweenness)", "Brandes 2001 (efficient algorithm)", "Page et al. 1998 (PageRank)", "Bonacich 1987 (eigenvector centrality)"],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "bridges_and_articulation_points",
+    "keywords": ["bridge", "articulation", "cut", "vertex", "biconnected", "tarjan", "low", "discovery"],
+    "conclusion_template": "A bridge is an edge whose removal disconnects the graph. An articulation point is a vertex whose removal disconnects it. Both are found in O(V+E) using Tarjan's DFS with discovery/low-link values. Edge (u,v) is a bridge iff low[v] > disc[u]. Vertex u is an articulation point if: (root with 2+ DFS children) or (non-root with child v where low[v] >= disc[u]). Biconnected components are maximal subgraphs without articulation points.",
+    "reasoning_framework": "During DFS, disc[v] is the discovery time and low[v] is the minimum discovery time reachable from v's subtree via back edges. If low[v] > disc[u], then v's subtree cannot reach above u without the edge (u,v), making it a bridge. For articulation points: if u is root and has 2+ DFS children, removing u splits the tree. If u is non-root and has child v with low[v] >= disc[u], then v's subtree cannot reach above u, making u a cut vertex. Biconnected components decompose the graph at articulation points into 2-connected subgraphs, stored as edge sets on a stack during DFS.",
+    "key_factors": ["DFS discovery and low-link values", "bridge condition: low[v] > disc[u]", "articulation: root with 2+ children or low[v] >= disc[u]", "O(V+E) time", "biconnected component decomposition"],
+    "primary_authority": ["Tarjan 1972", "Hopcroft & Tarjan 1973", "Cormen et al. CLRS"],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  },
+  {
+    "topic": "clustering_and_community_structure",
+    "keywords": ["clustering", "coefficient", "triangle", "community", "modularity", "density", "small-world"],
+    "conclusion_template": "The clustering coefficient measures local density of connections. Local CC(v) = (edges among v's neighbors) / (possible edges among them). Global CC = 3*triangles/connected_triples. High clustering indicates community structure (small-world property). Community detection algorithms (Louvain, Girvan-Newman) partition graphs into densely connected groups. Modularity Q measures quality of community partitions.",
+    "reasoning_framework": "Watts-Strogatz small-world model: high clustering + short average path length. Clustering coefficient captures the 'my friends know each other' property. Computing local CC requires counting triangles through each vertex — O(V*d^2) naive, O(E^1.5) with matrix multiplication tricks. Global CC normalizes by total triples. Community detection: Girvan-Newman removes high-betweenness edges iteratively; Louvain optimizes modularity Q = Σ[e_ii - a_i^2] greedily. Modularity values > 0.3 suggest significant community structure. Spectral clustering uses eigenvectors of the Laplacian.",
+    "key_factors": ["local vs global clustering", "triangle counting", "small-world phenomenon", "modularity optimization", "community detection algorithms"],
+    "primary_authority": ["Watts & Strogatz 1998", "Newman & Girvan 2004", "Blondel et al. 2008 (Louvain)", "Fortunato 2010 (community detection survey)"],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE",
+    "entity_scope": "graph_theory"
+  }
+]

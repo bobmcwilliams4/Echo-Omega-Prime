@@ -1,0 +1,277 @@
+{
+  "engine": {
+    "name": "TX09_amt_calculator",
+    "version": "1.0.0",
+    "domain": "Alternative Minimum Tax (IRC §55-59)",
+    "port": 8609,
+    "host": "0.0.0.0",
+    "author": "ECHO OMEGA PRIME",
+    "authority_level": "11.0 SOVEREIGN"
+  },
+  "architecture": {
+    "pattern": "TIE-20",
+    "layers": [
+      {
+        "name": "doctrine",
+        "description": "Pre-compiled AMT expert reasoning cache",
+        "target_latency_ms": 200,
+        "priority": 1
+      },
+      {
+        "name": "retrieval",
+        "description": "Semantic vector search on AMT knowledge base",
+        "target_latency_ms": 700,
+        "priority": 2
+      },
+      {
+        "name": "deep_analysis",
+        "description": "Multi-source synthesis and complex reasoning",
+        "target_latency_ms": 2000,
+        "priority": 3
+      }
+    ]
+  },
+  "doctrine_cache": {
+    "total_blocks": 50,
+    "issue_categories": [
+      "calculation",
+      "adjustments",
+      "preferences",
+      "exemption",
+      "credits",
+      "planning",
+      "compliance",
+      "entities"
+    ],
+    "confidence_stratification": [
+      "defensible",
+      "aggressive_supportable",
+      "disclosure_recommended",
+      "high_audit_risk"
+    ]
+  },
+  "amt_components": {
+    "sections": [
+      "IRC §55 - AMT Framework",
+      "IRC §56 - AMT Adjustments",
+      "IRC §57 - Tax Preferences",
+      "IRC §53 - AMT Credit",
+      "IRC §59 - Corporate AMT (CAMT)"
+    ],
+    "adjustments": [
+      "depreciation_ads",
+      "mining_exploration",
+      "long_term_contracts",
+      "pollution_control",
+      "installment_sales",
+      "passive_activity_loss",
+      "iso_exercise_spread",
+      "salt_disallowance",
+      "nol_limitation"
+    ],
+    "preferences": [
+      "private_activity_bonds",
+      "percentage_depletion",
+      "intangible_drilling_costs",
+      "accelerated_depreciation_pre1987"
+    ],
+    "exemption_amounts_2024": {
+      "single": 85700,
+      "married_joint": 133300,
+      "married_separate": 66650,
+      "head_household": 85700,
+      "estate_trust": 29200
+    },
+    "phaseout_thresholds_2024": {
+      "single": 609350,
+      "married_joint": 1218700,
+      "married_separate": 609350,
+      "head_household": 609350,
+      "estate_trust": 98950
+    },
+    "amt_rates": {
+      "rate_26_percent": 0.26,
+      "rate_28_percent": 0.28,
+      "threshold_single": 220700,
+      "threshold_married": 220700
+    }
+  },
+  "response_modes": {
+    "fast": {
+      "description": "Doctrine-driven, minimal citations, sub-2 seconds",
+      "target_latency_ms": 1000,
+      "citation_depth": "minimal",
+      "reasoning_detail": "concise"
+    },
+    "defense": {
+      "description": "Structured reasoning, audit-ready, burden analysis",
+      "target_latency_ms": 2000,
+      "citation_depth": "moderate",
+      "reasoning_detail": "detailed",
+      "includes": [
+        "burden_analysis",
+        "irs_position",
+        "counter_arguments",
+        "fact_fragility",
+        "zoned_analysis"
+      ]
+    },
+    "memo": {
+      "description": "Long-form, citation-heavy, firm documentation",
+      "target_latency_ms": 3000,
+      "citation_depth": "comprehensive",
+      "reasoning_detail": "exhaustive",
+      "includes": [
+        "full_citations",
+        "multi_doctrine_analysis",
+        "planning_alpha",
+        "precedent_analysis"
+      ]
+    }
+  },
+  "entity_scope": [
+    "individual",
+    "sole_proprietorship",
+    "partnership",
+    "llc",
+    "s_corporation",
+    "c_corporation",
+    "trust",
+    "estate"
+  ],
+  "filing_statuses": [
+    "single",
+    "married_joint",
+    "married_separate",
+    "head_household"
+  ],
+  "vector_search": {
+    "enabled": true,
+    "implementation": "simple_keyword",
+    "future_integration": "cloudflare_vectorize",
+    "document_count": 12,
+    "top_k_default": 5
+  },
+  "telemetry": {
+    "enabled": true,
+    "trace_queries": true,
+    "log_errors": true,
+    "metrics_snapshot_interval_seconds": 3600,
+    "retention": {
+      "traces_days": 30,
+      "errors_days": 90,
+      "metrics_days": 365
+    },
+    "log_directory": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/TX09_amt_calculator/logs"
+  },
+  "logging": {
+    "level": "INFO",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+    "audit_trail": true
+  },
+  "performance": {
+    "max_concurrent_queries": 10,
+    "query_timeout_seconds": 30,
+    "doctrine_cache_size": 50,
+    "latency_p95_target_ms": 500,
+    "latency_p99_target_ms": 1000,
+    "error_rate_threshold": 0.05
+  },
+  "health_check": {
+    "enabled": true,
+    "endpoint": "/health",
+    "components": [
+      "doctrine_cache",
+      "vector_db",
+      "telemetry",
+      "memory",
+      "api_latency"
+    ]
+  },
+  "cors": {
+    "enabled": true,
+    "allow_origins": ["*"],
+    "allow_credentials": true,
+    "allow_methods": ["*"],
+    "allow_headers": ["*"]
+  },
+  "security": {
+    "rate_limiting": false,
+    "api_key_required": false,
+    "audit_all_queries": true,
+    "sanitize_inputs": true,
+    "determinism_hash": true
+  },
+  "compliance": {
+    "epistemic_guardrails": true,
+    "position_zone_separation": true,
+    "fact_fragility_scoring": true,
+    "doctrine_coverage_tracking": true,
+    "drift_detection": true
+  },
+  "calculation_engine": {
+    "enabled": true,
+    "components": [
+      "amti_calculator",
+      "exemption_calculator",
+      "tentative_amt_calculator",
+      "credit_calculator"
+    ],
+    "precision": "2_decimal_places",
+    "validation": "strict"
+  },
+  "endpoints": {
+    "root": "/",
+    "query": "/query",
+    "calculate": "/calculate",
+    "health": "/health",
+    "doctrines": "/doctrines",
+    "drift": "/drift"
+  },
+  "dependencies": {
+    "python": "3.11+",
+    "fastapi": "^0.100.0",
+    "pydantic": "^2.0.0",
+    "uvicorn": "^0.23.0",
+    "loguru": "^0.7.0",
+    "psutil": "^5.9.0"
+  },
+  "deployment": {
+    "environment": "production",
+    "cloudflare_worker": false,
+    "local_uvicorn": true,
+    "process_manager": "systemd",
+    "auto_restart": true
+  },
+  "integration": {
+    "build_orchestrator": "https://echo-build-orchestrator.bmcii1976.workers.dev",
+    "omniscient_sync": "https://omniscient-sync.bmcii1976.workers.dev",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": null
+  },
+  "metadata": {
+    "created": "2026-02-12",
+    "last_updated": "2026-02-12",
+    "status": "active",
+    "build_phase": "critical_infrastructure",
+    "priority": "high",
+    "tags": [
+      "amt",
+      "alternative_minimum_tax",
+      "irc_section_55",
+      "irc_section_56",
+      "irc_section_57",
+      "irc_section_53",
+      "tax_calculation",
+      "no_llm"
+    ]
+  },
+  "documentation": {
+    "user_guide": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/TX09_amt_calculator/USER_GUIDE.md",
+    "ai_guide": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/TX09_amt_calculator/AI_GUIDE.md",
+    "technical_spec": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/TX09_amt_calculator/TECHNICAL_SPEC.md",
+    "api_reference": "http://localhost:8609/docs"
+  }
+}

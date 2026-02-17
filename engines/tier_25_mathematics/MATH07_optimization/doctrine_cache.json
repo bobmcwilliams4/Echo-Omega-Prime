@@ -1,0 +1,158 @@
+{
+  "engine": "MATH07_optimization",
+  "version": "1.0.0",
+  "tier": 13,
+  "domain": "Mathematics — Optimization",
+  "doctrines": [
+    {
+      "topic": "linear_programming_duality",
+      "keywords": ["LP", "duality", "primal", "dual", "weak duality", "strong duality", "complementary slackness"],
+      "conclusion_template": "Every linear program has a dual. Weak duality guarantees the dual objective bounds the primal. Strong duality (when both are feasible) ensures equal optima. Complementary slackness links primal and dual solutions.",
+      "reasoning_framework": "1. Formulate the primal LP in standard form: max c^T x s.t. Ax <= b, x >= 0.\n2. Derive the dual: min b^T y s.t. A^T y >= c, y >= 0.\n3. Weak duality: for any feasible primal x and dual y, c^T x <= b^T y.\n4. Strong duality: if primal has optimal x*, dual has optimal y* with c^T x* = b^T y*.\n5. Complementary slackness: y_i*(b_i - A_i x*) = 0 and x_j*(A^T_j y* - c_j) = 0.\n6. Economic interpretation: dual variables are shadow prices measuring marginal value of resources.\n7. Use duality to verify optimality: if primal and dual objectives match, both are optimal.\n8. Duality gap = 0 at optimality for LPs (contrast with nonlinear where gap may persist).",
+      "key_factors": ["primal feasibility", "dual feasibility", "complementary slackness", "shadow prices", "reduced costs", "basis structure"],
+      "primary_authority": ["Dantzig (1947) simplex method", "von Neumann minimax theorem", "Gale-Kuhn-Tucker duality theorem"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "LP duality is a rigorous mathematical theorem with no ambiguity in finite dimensions."
+    },
+    {
+      "topic": "simplex_method",
+      "keywords": ["simplex", "tableau", "pivot", "basis", "entering variable", "leaving variable", "Bland's rule"],
+      "conclusion_template": "The simplex method traverses vertices of the feasible polyhedron, improving the objective at each pivot. Bland's rule prevents cycling. Worst-case exponential but practically efficient on most instances.",
+      "reasoning_framework": "1. Convert LP to standard form with slack variables: max c^T x s.t. Ax = b, x >= 0.\n2. Initialize with a basic feasible solution (BFS), typically using artificial variables if needed.\n3. Compute reduced costs: c_bar_j = c_j - c_B^T B^{-1} A_j.\n4. If all reduced costs <= 0 (for max), current BFS is optimal.\n5. Select entering variable: most negative reduced cost (Dantzig's rule) or first negative (Bland's rule).\n6. Minimum ratio test: determine leaving variable to maintain feasibility.\n7. Pivot: update the tableau (Gauss-Jordan elimination on the pivot column).\n8. Repeat until optimal or unbounded (no valid leaving variable).\n9. Degeneracy: when BFS has fewer than m positive variables; can cause cycling without Bland's rule.\n10. Two-phase simplex: Phase I minimizes sum of artificials to find initial BFS; Phase II optimizes original objective.",
+      "key_factors": ["reduced costs", "minimum ratio test", "degeneracy", "cycling prevention", "two-phase method", "big-M method"],
+      "primary_authority": ["Dantzig (1947)", "Bland (1977) anti-cycling rule", "Klee-Minty (1972) worst-case example"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Simplex is the most widely used LP algorithm with decades of industrial validation."
+    },
+    {
+      "topic": "kkt_conditions",
+      "keywords": ["KKT", "Karush-Kuhn-Tucker", "stationarity", "complementary slackness", "primal feasibility", "dual feasibility", "constraint qualification"],
+      "conclusion_template": "KKT conditions are necessary (and sufficient for convex problems) for optimality in constrained nonlinear optimization. They generalize Lagrange multipliers to inequality constraints.",
+      "reasoning_framework": "1. Problem: min f(x) s.t. g_i(x) <= 0, h_j(x) = 0.\n2. Stationarity: nabla f(x*) + sum mu_i nabla g_i(x*) + sum lambda_j nabla h_j(x*) = 0.\n3. Primal feasibility: g_i(x*) <= 0, h_j(x*) = 0.\n4. Dual feasibility: mu_i >= 0 for all i.\n5. Complementary slackness: mu_i * g_i(x*) = 0 for all i.\n6. Constraint qualification (e.g., LICQ, Slater's) must hold for KKT to be necessary.\n7. For convex f and convex g_i with affine h_j, KKT is both necessary and sufficient.\n8. Interpretation: at optimum, gradient of objective is a non-negative combination of active constraint gradients.\n9. Second-order conditions: check positive definiteness of Lagrangian Hessian on the constraint null space.",
+      "key_factors": ["stationarity", "complementary slackness", "constraint qualification", "LICQ", "Slater condition", "second-order sufficiency"],
+      "primary_authority": ["Karush (1939)", "Kuhn-Tucker (1951)", "Mangasarian-Fromovitz CQ"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "KKT theory is foundational to all of nonlinear programming."
+    },
+    {
+      "topic": "convexity_and_convex_optimization",
+      "keywords": ["convex", "convex set", "convex function", "global optimum", "local optimum", "Jensen inequality", "epigraph"],
+      "conclusion_template": "In convex optimization every local minimum is a global minimum. This property makes convex problems tractable and is the foundation of efficient algorithms like interior point methods.",
+      "reasoning_framework": "1. A set S is convex if for all x,y in S and t in [0,1]: tx + (1-t)y in S.\n2. A function f is convex if f(tx + (1-t)y) <= t*f(x) + (1-t)*f(y).\n3. Equivalently, the Hessian of f is positive semidefinite everywhere.\n4. Key property: every local minimum of a convex function over a convex set is global.\n5. Sublevel sets of convex functions are convex.\n6. Sum of convex functions is convex; pointwise maximum of convex functions is convex.\n7. Affine functions are both convex and concave.\n8. Practical test: compute Hessian eigenvalues — all non-negative implies convex.\n9. Many real problems have convex relaxations that provide bounds on the true optimum.",
+      "key_factors": ["positive semidefinite Hessian", "global optimality", "sublevel sets", "preservation under composition", "convex relaxation"],
+      "primary_authority": ["Boyd & Vandenberghe (2004) Convex Optimization", "Rockafellar (1970) Convex Analysis", "Nesterov (2004)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Convexity theory is mathematically rigorous with no ambiguity."
+    },
+    {
+      "topic": "gradient_descent",
+      "keywords": ["gradient descent", "learning rate", "step size", "convergence", "steepest descent", "line search", "Armijo"],
+      "conclusion_template": "Gradient descent iterates x_{k+1} = x_k - alpha * nabla f(x_k). Convergence rate is O(1/k) for convex and linear for strongly convex with appropriate step size. Step size selection (fixed, diminishing, line search) critically affects performance.",
+      "reasoning_framework": "1. Update rule: x_{k+1} = x_k - alpha_k * nabla f(x_k).\n2. Fixed step size: alpha < 2/L where L is the Lipschitz constant of the gradient.\n3. Exact line search: alpha_k = argmin_alpha f(x_k - alpha * nabla f(x_k)).\n4. Backtracking (Armijo): start with alpha=1, reduce by factor beta until sufficient decrease.\n5. Convergence for convex: f(x_k) - f(x*) <= O(1/k).\n6. Convergence for strongly convex: linear rate (1 - mu/L)^k where mu is strong convexity parameter.\n7. Condition number kappa = L/mu governs convergence speed; ill-conditioned problems converge slowly.\n8. Zigzagging behavior on elongated level sets is the primary weakness.\n9. Momentum methods (Polyak, Nesterov) accelerate convergence to O(1/k^2).",
+      "key_factors": ["step size", "Lipschitz constant", "strong convexity", "condition number", "convergence rate", "line search"],
+      "primary_authority": ["Cauchy (1847) steepest descent", "Armijo (1966) line search", "Nesterov (1983) accelerated gradient"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Gradient descent convergence theory is well-established."
+    },
+    {
+      "topic": "newton_method_optimization",
+      "keywords": ["Newton method", "Hessian", "quadratic convergence", "second order", "Newton step", "damped Newton"],
+      "conclusion_template": "Newton's method uses second-order (Hessian) information: x_{k+1} = x_k - H^{-1} nabla f. It achieves quadratic convergence near the optimum but requires Hessian computation and inversion, and may diverge far from the solution.",
+      "reasoning_framework": "1. Newton step: delta_x = -H(x_k)^{-1} nabla f(x_k) where H is the Hessian.\n2. Update: x_{k+1} = x_k + delta_x (or with damping: x_k + alpha * delta_x).\n3. Quadratic convergence: ||x_{k+1} - x*|| <= C * ||x_k - x*||^2 near optimum.\n4. Requires Hessian to be positive definite; if not, modify (add lambda*I) or use trust region.\n5. Newton decrement: lambda^2 = nabla f^T H^{-1} nabla f measures proximity to optimum.\n6. Cost per iteration: O(n^3) for Hessian inversion (or O(n^2) with Cholesky).\n7. Quasi-Newton (BFGS, L-BFGS): approximate Hessian from gradient history, superlinear convergence.\n8. Globally: combine with line search or trust region for convergence guarantee.\n9. For large-scale: use conjugate gradient to solve Newton system approximately (truncated Newton).",
+      "key_factors": ["Hessian computation", "positive definiteness", "quadratic convergence", "Newton decrement", "trust region", "quasi-Newton"],
+      "primary_authority": ["Newton-Raphson method", "Dennis & More (1977) quasi-Newton", "Nocedal & Wright (2006) Numerical Optimization"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Newton's method convergence theory is classical and rigorous."
+    },
+    {
+      "topic": "lagrange_multipliers",
+      "keywords": ["Lagrange", "multiplier", "equality constraint", "gradient parallel", "constrained optimization", "saddle point"],
+      "conclusion_template": "Lagrange multipliers convert constrained optimization to an unconstrained saddle-point problem. At the optimum, the objective gradient is a linear combination of constraint gradients, with multipliers indicating marginal cost of constraints.",
+      "reasoning_framework": "1. Problem: min f(x) s.t. h_i(x) = 0 for i=1..m.\n2. Lagrangian: L(x, lambda) = f(x) + sum lambda_i h_i(x).\n3. Necessary conditions: nabla_x L = 0 and nabla_lambda L = 0 (constraints satisfied).\n4. Geometric interpretation: nabla f is parallel to the constraint surface normal.\n5. lambda_i = -df*/db_i: marginal change in optimum per unit relaxation of constraint i.\n6. Second-order check: bordered Hessian determines if critical point is min/max.\n7. For m constraints in n variables, solve (n+m) equations in (n+m) unknowns.\n8. Extend to inequality constraints via KKT conditions (complementary slackness).",
+      "key_factors": ["Lagrangian function", "saddle point", "bordered Hessian", "constraint sensitivity", "regularity"],
+      "primary_authority": ["Lagrange (1788) Mecanique Analytique", "Kuhn-Tucker extension (1951)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Lagrange multiplier theory is a cornerstone of mathematical optimization."
+    },
+    {
+      "topic": "integer_programming_branch_and_bound",
+      "keywords": ["integer programming", "branch and bound", "LP relaxation", "branching", "bounding", "feasibility", "MIP"],
+      "conclusion_template": "Branch and bound solves integer programs by systematically partitioning the feasible region (branching), solving LP relaxations (bounding), and pruning subproblems that cannot improve the best known solution.",
+      "reasoning_framework": "1. Solve LP relaxation to get continuous optimum z_LP.\n2. If solution is integral, done. Otherwise, select a fractional variable x_j = f.\n3. Branch: create two subproblems with x_j <= floor(f) and x_j >= ceil(f).\n4. Solve LP relaxation of each subproblem.\n5. Prune if: (a) infeasible, (b) LP bound <= best integer solution (incumbant), (c) integral solution found.\n6. Update incumbent if better integer solution found.\n7. Continue branching on unpruned nodes until tree is exhausted.\n8. Branching strategies: most fractional, strong branching, reliability branching.\n9. LP relaxation provides upper bound (for max); incumbent provides lower bound.\n10. Gap = (UB - LB) / UB measures optimality gap.",
+      "key_factors": ["LP relaxation bound", "branching variable selection", "pruning rules", "incumbent solution", "optimality gap", "node selection"],
+      "primary_authority": ["Land & Doig (1960)", "Dakin (1965)", "Padberg & Rinaldi (1991) cutting planes"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Branch and bound is the standard exact method for integer programming."
+    },
+    {
+      "topic": "markowitz_portfolio_optimization",
+      "keywords": ["Markowitz", "mean-variance", "portfolio", "efficient frontier", "minimum variance", "risk", "return", "diversification"],
+      "conclusion_template": "Markowitz mean-variance optimization finds portfolios that minimize variance for a given expected return, tracing an efficient frontier. The framework quantifies the diversification benefit and the risk-return tradeoff.",
+      "reasoning_framework": "1. Decision: weight vector w (w_i = fraction in asset i), sum w_i = 1.\n2. Expected return: mu_p = w^T mu where mu is the vector of expected returns.\n3. Portfolio variance: sigma_p^2 = w^T Sigma w where Sigma is the covariance matrix.\n4. Minimum variance portfolio: min w^T Sigma w s.t. w^T 1 = 1.\n5. Efficient frontier: min w^T Sigma w s.t. w^T mu >= target, w^T 1 = 1.\n6. Two-fund separation: any efficient portfolio is a combination of two efficient portfolios.\n7. With risk-free asset: Capital Market Line tangent to efficient frontier.\n8. Sharpe ratio: (mu_p - r_f) / sigma_p; tangency portfolio maximizes this.\n9. Practical issues: estimation error in mu and Sigma, short-selling constraints, transaction costs.\n10. Black-Litterman (1992): Bayesian approach combining market equilibrium with investor views.",
+      "key_factors": ["covariance matrix", "expected returns", "efficient frontier", "Sharpe ratio", "diversification", "estimation error"],
+      "primary_authority": ["Markowitz (1952) Portfolio Selection", "Sharpe (1964) CAPM", "Black-Litterman (1992)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Mean-variance theory is Nobel Prize-winning foundational finance."
+    },
+    {
+      "topic": "multi_objective_optimization_pareto",
+      "keywords": ["multi-objective", "Pareto", "Pareto front", "dominance", "tradeoff", "scalarization", "epsilon-constraint"],
+      "conclusion_template": "Multi-objective optimization seeks the Pareto front: the set of solutions where no objective can be improved without worsening another. Methods include weighted sum scalarization, epsilon-constraint, and evolutionary algorithms (NSGA-II).",
+      "reasoning_framework": "1. Problem: min (f_1(x), f_2(x), ..., f_k(x)) s.t. x in X.\n2. Pareto dominance: x dominates y if f_i(x) <= f_i(y) for all i with strict inequality for at least one.\n3. Pareto optimal: no feasible point dominates x.\n4. Pareto front: image of Pareto optimal set in objective space.\n5. Weighted sum: min sum w_i f_i(x) — finds efficient points but misses non-convex portions.\n6. Epsilon-constraint: min f_1(x) s.t. f_j(x) <= epsilon_j for j >= 2 — finds all Pareto points.\n7. Utopia point: (min f_1, min f_2, ...) individually — usually infeasible but useful reference.\n8. Compromise programming: minimize distance to utopia point.\n9. For discrete approximation: sample epsilon values and solve a sequence of single-objective problems.",
+      "key_factors": ["Pareto dominance", "efficient set", "scalarization weights", "epsilon levels", "utopia point", "tradeoff surface"],
+      "primary_authority": ["Pareto (1896)", "Ehrgott (2005) Multicriteria Optimization", "Deb (2001) NSGA-II"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Pareto optimality is the universally accepted multi-objective framework."
+    },
+    {
+      "topic": "sensitivity_analysis_lp",
+      "keywords": ["sensitivity", "shadow price", "reduced cost", "ranging", "right-hand side", "objective coefficient"],
+      "conclusion_template": "Sensitivity analysis determines how the optimal LP solution changes with perturbations in objective coefficients and constraint bounds. Shadow prices give the marginal value of each resource; reduced costs indicate how much an objective coefficient must improve before a non-basic variable enters the basis.",
+      "reasoning_framework": "1. Shadow price y_i* = change in optimal objective per unit increase in b_i (RHS of constraint i).\n2. Valid within a range: b_i can change within [b_i - delta_lower, b_i + delta_upper] without changing the basis.\n3. Reduced cost c_bar_j: how much c_j must improve before x_j enters the basis.\n4. For basic variables: reduced cost is 0.\n5. Objective coefficient ranging: range of c_j values keeping current basis optimal.\n6. RHS ranging: range of b_i values keeping current basis feasible.\n7. 100% rule: simultaneous changes within proportional limits preserve basis.\n8. Parametric LP: trace optimal solution as a parameter varies continuously.",
+      "key_factors": ["shadow prices", "reduced costs", "basis stability", "ranging", "parametric analysis", "100% rule"],
+      "primary_authority": ["Dantzig (1963) Linear Programming and Extensions", "Gal (1979) Postoptimal Analysis"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "LP sensitivity analysis is exact and well-defined within the simplex framework."
+    },
+    {
+      "topic": "golden_section_search",
+      "keywords": ["golden section", "golden ratio", "1D optimization", "unimodal", "bracket", "Fibonacci search"],
+      "conclusion_template": "Golden section search is a derivative-free method for finding the minimum of a unimodal function on an interval. It reduces the search interval by a factor of the golden ratio (0.618) at each step, requiring only one new function evaluation per iteration.",
+      "reasoning_framework": "1. Assume f is unimodal on [a, b] (one minimum, no other local minima).\n2. Golden ratio: phi = (sqrt(5) - 1) / 2 ≈ 0.618.\n3. Evaluate f at x1 = a + (1-phi)(b-a) and x2 = a + phi(b-a).\n4. If f(x1) < f(x2): new interval [a, x2], reuse x1 evaluation.\n5. If f(x1) >= f(x2): new interval [x1, b], reuse x2 evaluation.\n6. Each step reduces interval by factor phi ≈ 0.618.\n7. After n evaluations: interval width is phi^(n-2) * (b-a).\n8. Convergence is linear with rate phi.\n9. Fibonacci search is theoretically optimal for n evaluations but requires knowing n in advance.",
+      "key_factors": ["unimodality assumption", "golden ratio", "interval reduction", "one evaluation per step", "linear convergence"],
+      "primary_authority": ["Kiefer (1953) Fibonacci search", "Avriel & Wilde (1966)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Golden section search is a classical, well-proven 1D optimization method."
+    },
+    {
+      "topic": "conjugate_gradient_optimization",
+      "keywords": ["conjugate gradient", "CG", "conjugate directions", "quadratic", "Polak-Ribiere", "Fletcher-Reeves"],
+      "conclusion_template": "The conjugate gradient method generates search directions that are conjugate with respect to the Hessian, achieving exact minimization of a quadratic in n steps. For general functions, it provides superlinear convergence without storing the Hessian.",
+      "reasoning_framework": "1. For quadratic f(x) = 0.5 x^T A x - b^T x: solves Ax = b in at most n steps.\n2. Directions d_0, d_1, ... are A-conjugate: d_i^T A d_j = 0 for i != j.\n3. Initial: d_0 = -g_0 (negative gradient).\n4. Step size: alpha_k = g_k^T g_k / (d_k^T A d_k) (exact for quadratic).\n5. Update: x_{k+1} = x_k + alpha_k d_k.\n6. New gradient: g_{k+1} = g_k + alpha_k A d_k.\n7. Beta (Fletcher-Reeves): beta_k = g_{k+1}^T g_{k+1} / (g_k^T g_k).\n8. Beta (Polak-Ribiere): beta_k = g_{k+1}^T (g_{k+1} - g_k) / (g_k^T g_k).\n9. New direction: d_{k+1} = -g_{k+1} + beta_k d_k.\n10. For nonlinear: use line search for alpha, restart every n steps.",
+      "key_factors": ["conjugate directions", "exact line search", "beta formula", "restarts", "Hessian-free", "n-step convergence for quadratics"],
+      "primary_authority": ["Hestenes & Stiefel (1952)", "Fletcher & Reeves (1964)", "Polak & Ribiere (1969)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "CG is mathematically proven for quadratics and well-validated for general optimization."
+    },
+    {
+      "topic": "convex_relaxation_and_bounds",
+      "keywords": ["convex relaxation", "lower bound", "SDP relaxation", "LP relaxation", "Lagrangian relaxation", "integrality gap"],
+      "conclusion_template": "Convex relaxations replace a hard (non-convex or integer) optimization problem with a tractable convex approximation whose optimal value bounds the true optimum. The tightness of this bound (integrality gap) determines practical usefulness.",
+      "reasoning_framework": "1. Replace integer constraint x in {0,1} with 0 <= x <= 1 (LP relaxation).\n2. Replace non-convex f with its convex envelope (tightest convex underestimator).\n3. Lagrangian relaxation: move hard constraints into objective with multipliers.\n4. SDP relaxation: lift variables to matrix space, relax rank constraint.\n5. Relaxation provides a bound: for minimization, relaxed optimum <= true optimum.\n6. Integrality gap: ratio of integer optimum to relaxed optimum.\n7. Tighter relaxations (cutting planes, SDP vs LP) give better bounds but cost more.\n8. Randomized rounding: convert fractional relaxation solution to integer feasible solution.",
+      "key_factors": ["bound quality", "integrality gap", "relaxation tightness", "computational cost tradeoff", "rounding schemes"],
+      "primary_authority": ["Lovasz (1979) theta function", "Goemans-Williamson (1995) SDP rounding", "Schrijver (2003)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Convex relaxation theory is rigorous; bound quality depends on problem structure."
+    },
+    {
+      "topic": "numerical_stability_optimization",
+      "keywords": ["numerical stability", "conditioning", "ill-conditioned", "floating point", "regularization", "scaling"],
+      "conclusion_template": "Numerical stability in optimization requires careful handling of floating-point arithmetic, problem scaling, and conditioning. Ill-conditioned problems (high condition number) amplify errors and slow convergence. Regularization and proper scaling are essential remedies.",
+      "reasoning_framework": "1. Condition number kappa(A) = ||A|| * ||A^{-1}||: ratio of largest to smallest singular value.\n2. For LP: poor scaling of A, b, c leads to numerical errors in simplex pivots.\n3. For gradient methods: high kappa means elongated level sets and slow zigzagging.\n4. Remedies: scale variables and constraints to similar magnitudes.\n5. Tikhonov regularization: add lambda ||x||^2 to objective to improve conditioning.\n6. Pivoting strategies in simplex (partial, full) improve numerical stability.\n7. Interior point methods: use iterative refinement and Mehrotra predictor-corrector.\n8. Machine epsilon ~1e-16 for float64: results below this threshold are noise.",
+      "key_factors": ["condition number", "scaling", "regularization", "pivot strategy", "machine epsilon", "iterative refinement"],
+      "primary_authority": ["Higham (2002) Accuracy and Stability", "Trefethen & Bau (1997)", "Nocedal & Wright (2006)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "Numerical stability theory is well-established in scientific computing."
+    }
+  ]
+}

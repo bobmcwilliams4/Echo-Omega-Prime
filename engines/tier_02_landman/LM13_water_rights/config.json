@@ -1,0 +1,379 @@
+{
+  "engine_id": "LM13",
+  "engine_name": "Water Rights Analyzer Engine",
+  "version": "1.0.0",
+  "category": "LANDMAN",
+  "subcategory": "WATER_RIGHTS",
+  "port": 8413,
+  "host": "0.0.0.0",
+  "log_level": "INFO",
+  "max_concurrent_analyses": 16,
+  "analysis_timeout_seconds": 120,
+  "cache_ttl_seconds": 3600,
+  "texas_water_districts": {
+    "permian_basin_gcds": [
+      {
+        "name": "Midland County Groundwater Conservation District",
+        "county": "Midland",
+        "aquifer_primary": "Ogallala",
+        "aquifer_secondary": "Edwards-Trinity",
+        "established_year": 2002,
+        "permit_required_gpm": 25,
+        "annual_report_required": true,
+        "spacing_rule_ft": 300,
+        "production_limit_acre_ft_per_year": 1.5,
+        "exempt_domestic_gpm": 25
+      },
+      {
+        "name": "Ector County Groundwater Conservation District",
+        "county": "Ector",
+        "aquifer_primary": "Ogallala",
+        "aquifer_secondary": "Dockum",
+        "established_year": 2001,
+        "permit_required_gpm": 25,
+        "annual_report_required": true,
+        "spacing_rule_ft": 200,
+        "production_limit_acre_ft_per_year": 2.0,
+        "exempt_domestic_gpm": 25
+      },
+      {
+        "name": "Pecos Valley Water District",
+        "county": "Reeves",
+        "aquifer_primary": "Pecos Valley",
+        "aquifer_secondary": "Rustler",
+        "established_year": 1999,
+        "permit_required_gpm": 17.5,
+        "annual_report_required": true,
+        "spacing_rule_ft": 250,
+        "production_limit_acre_ft_per_year": 1.0,
+        "exempt_domestic_gpm": 17.5
+      },
+      {
+        "name": "Martin County Underground Water Conservation District",
+        "county": "Martin",
+        "aquifer_primary": "Ogallala",
+        "aquifer_secondary": "Santa Rosa",
+        "established_year": 2005,
+        "permit_required_gpm": 25,
+        "annual_report_required": true,
+        "spacing_rule_ft": 300,
+        "production_limit_acre_ft_per_year": 1.25,
+        "exempt_domestic_gpm": 25
+      },
+      {
+        "name": "Winkler County Groundwater Conservation District",
+        "county": "Winkler",
+        "aquifer_primary": "Pecos Valley",
+        "aquifer_secondary": "Rustler",
+        "established_year": 2003,
+        "permit_required_gpm": 25,
+        "annual_report_required": true,
+        "spacing_rule_ft": 300,
+        "production_limit_acre_ft_per_year": 1.5,
+        "exempt_domestic_gpm": 25
+      },
+      {
+        "name": "Crockett County Groundwater Conservation District",
+        "county": "Crockett",
+        "aquifer_primary": "Edwards-Trinity",
+        "aquifer_secondary": "Dockum",
+        "established_year": 2001,
+        "permit_required_gpm": 25,
+        "annual_report_required": true,
+        "spacing_rule_ft": 250,
+        "production_limit_acre_ft_per_year": 2.0,
+        "exempt_domestic_gpm": 25
+      }
+    ],
+    "major_statewide_authorities": [
+      {
+        "name": "Edwards Aquifer Authority",
+        "abbreviation": "EAA",
+        "region": "South-Central Texas",
+        "counties_served": ["Bexar", "Comal", "Hays", "Medina", "Uvalde", "Kinney", "Atascosa", "Caldwell", "Guadalupe"],
+        "aquifer": "Edwards",
+        "permit_types": ["Initial Regular", "Term", "Emergency", "Interim Authorization"],
+        "annual_cap_acre_feet": 572000,
+        "critical_period_stages": 5,
+        "springflow_trigger_comal_cfs": 225,
+        "springflow_trigger_san_marcos_cfs": 96,
+        "market_based_transfers": true,
+        "base_regulatory_fee_per_af": 52
+      },
+      {
+        "name": "Harris-Galveston Subsidence District",
+        "abbreviation": "HGSD",
+        "region": "Houston Metro",
+        "counties_served": ["Harris", "Galveston"],
+        "aquifer": "Gulf Coast",
+        "conversion_mandate_year": 2035,
+        "groundwater_reduction_pct": 80,
+        "permit_types": ["Well", "Alternative Water Supply"]
+      },
+      {
+        "name": "Fort Bend Subsidence District",
+        "abbreviation": "FBSD",
+        "region": "Fort Bend County",
+        "counties_served": ["Fort Bend"],
+        "aquifer": "Gulf Coast",
+        "conversion_mandate_year": 2025,
+        "groundwater_reduction_pct": 60
+      }
+    ]
+  },
+  "aquifer_zones": {
+    "major_aquifers": [
+      {
+        "name": "Ogallala",
+        "type": "unconfined",
+        "region": "Texas Panhandle / West Texas",
+        "area_sq_miles": 34000,
+        "avg_saturated_thickness_ft": 95,
+        "recharge_rate_inches_per_year": 0.5,
+        "primary_use": ["irrigation", "municipal", "industrial"],
+        "tds_range_mg_l": [300, 1500],
+        "permian_basin_relevance": "HIGH",
+        "depletion_concern": "CRITICAL",
+        "formation_age": "Miocene-Pliocene"
+      },
+      {
+        "name": "Edwards-Trinity (Plateau)",
+        "type": "confined-unconfined",
+        "region": "Central-West Texas",
+        "area_sq_miles": 35700,
+        "avg_saturated_thickness_ft": 400,
+        "recharge_rate_inches_per_year": 1.2,
+        "primary_use": ["irrigation", "municipal", "livestock"],
+        "tds_range_mg_l": [250, 2000],
+        "permian_basin_relevance": "MODERATE",
+        "depletion_concern": "MODERATE",
+        "formation_age": "Cretaceous"
+      },
+      {
+        "name": "Pecos Valley",
+        "type": "unconfined",
+        "region": "Trans-Pecos / Reeves-Ward-Pecos Counties",
+        "area_sq_miles": 6800,
+        "avg_saturated_thickness_ft": 250,
+        "recharge_rate_inches_per_year": 0.3,
+        "primary_use": ["irrigation", "industrial", "oilfield"],
+        "tds_range_mg_l": [500, 5000],
+        "permian_basin_relevance": "CRITICAL",
+        "depletion_concern": "HIGH",
+        "formation_age": "Cenozoic"
+      },
+      {
+        "name": "Dockum",
+        "type": "confined",
+        "region": "West Texas / Eastern New Mexico",
+        "area_sq_miles": 18000,
+        "avg_saturated_thickness_ft": 200,
+        "recharge_rate_inches_per_year": 0.1,
+        "primary_use": ["municipal", "livestock"],
+        "tds_range_mg_l": [1000, 10000],
+        "permian_basin_relevance": "HIGH",
+        "depletion_concern": "HIGH",
+        "formation_age": "Triassic"
+      },
+      {
+        "name": "Rustler",
+        "type": "confined",
+        "region": "Trans-Pecos",
+        "area_sq_miles": 3500,
+        "avg_saturated_thickness_ft": 150,
+        "recharge_rate_inches_per_year": 0.05,
+        "primary_use": ["limited-industrial", "oilfield"],
+        "tds_range_mg_l": [3000, 35000],
+        "permian_basin_relevance": "MODERATE",
+        "depletion_concern": "LOW",
+        "formation_age": "Permian"
+      },
+      {
+        "name": "Santa Rosa",
+        "type": "confined",
+        "region": "Southern High Plains",
+        "area_sq_miles": 8000,
+        "avg_saturated_thickness_ft": 100,
+        "recharge_rate_inches_per_year": 0.2,
+        "primary_use": ["municipal", "livestock", "industrial"],
+        "tds_range_mg_l": [500, 3000],
+        "permian_basin_relevance": "MODERATE",
+        "depletion_concern": "MODERATE",
+        "formation_age": "Triassic"
+      }
+    ],
+    "minor_aquifers_permian_region": [
+      "Capitan Reef Complex",
+      "Cenozoic Alluvium",
+      "Bone Spring-Victorio Peak",
+      "Igneous",
+      "Marathon",
+      "West Texas Bolsons"
+    ]
+  },
+  "permit_thresholds": {
+    "tceq_water_rights": {
+      "appropriation_permit_required": true,
+      "domestic_and_livestock_exempt": true,
+      "exempt_volume_acre_feet_per_year": 200,
+      "bed_and_banks_authorization_required": true,
+      "amendment_threshold_pct_change": 25,
+      "cancellation_nonuse_years": 10,
+      "priority_date_system": "first_in_time_first_in_right"
+    },
+    "rrc_injection_wells": {
+      "uic_class_ii_permit_required": true,
+      "h1_application_form": "H-1",
+      "h1a_amendment_form": "H-1A",
+      "area_of_review_radius_miles": 0.25,
+      "mechanical_integrity_test_interval_years": 5,
+      "max_injection_pressure_formula": "0.5_psi_per_ft_depth",
+      "casing_cement_requirements": true,
+      "annual_monitoring_report_required": true,
+      "financial_assurance_required": true,
+      "plugging_bond_per_well_usd": 25000,
+      "statewide_blanket_bond_usd": 250000,
+      "commercial_swd_additional_requirements": true,
+      "seismicity_review_areas": ["Permian Basin", "Eagle Ford", "Barnett Shale"],
+      "seismicity_monitoring_threshold_magnitude": 2.0,
+      "max_daily_volume_bbls_default": 30000,
+      "disposal_zone_usdw_separation_ft": 500
+    },
+    "freshwater_protection": {
+      "usdw_tds_threshold_mg_l": 10000,
+      "drinking_water_tds_threshold_mg_l": 500,
+      "surface_casing_depth_below_freshwater_ft": 200,
+      "cement_to_surface_required": true,
+      "aquifer_exemption_process": "EPA_approval_required",
+      "groundwater_monitoring_well_distance_ft": 500,
+      "spill_notification_threshold_bbls": 5,
+      "produced_water_surface_discharge_prohibited": true,
+      "freshwater_pit_liner_required": true,
+      "freshwater_pit_max_volume_bbls": 500
+    },
+    "produced_water_management": {
+      "disposal_options": ["injection_well", "evaporation_pit", "recycling", "treatment_discharge"],
+      "recycling_incentive_available": true,
+      "road_spreading_prohibited": true,
+      "land_application_permit_required": true,
+      "beneficial_reuse_permit_required": true,
+      "tds_for_surface_discharge_mg_l": 500,
+      "chloride_limit_surface_discharge_mg_l": 250,
+      "norm_screening_required": true,
+      "norm_limit_picocuries_per_liter": 30,
+      "h2s_limit_ppm": 10,
+      "benzene_limit_mg_l": 0.005,
+      "oil_and_grease_limit_mg_l": 15,
+      "ph_range": [6.0, 9.0],
+      "typical_permian_tds_mg_l": 250000,
+      "typical_permian_volume_bbls_per_well_per_day": 1500
+    },
+    "water_transport": {
+      "pipeline_right_of_way_permit": true,
+      "road_crossing_permit": true,
+      "temporary_water_line_max_days": 180,
+      "produced_water_pipeline_rrc_permit": true,
+      "freshwater_pipeline_tceq_notification": true,
+      "truck_transport_manifest_required": true,
+      "truck_transport_dot_hazmat_if_h2s": true,
+      "max_truck_volume_bbls": 130,
+      "pipeline_hydrostatic_test_required": true,
+      "pipeline_leak_detection_required": true
+    },
+    "brackish_water": {
+      "tds_range_mg_l": [1000, 10000],
+      "desalination_permit_required": false,
+      "concentrate_disposal_permit_required": true,
+      "twdb_brackish_production_zones": true,
+      "gcd_permit_may_be_required": true,
+      "preferred_use_oilfield": true,
+      "desal_energy_kwh_per_1000_gal": [4, 12],
+      "brine_disposal_options": ["deep_well_injection", "evaporation_pond", "zero_liquid_discharge"]
+    }
+  },
+  "regulatory_agencies": {
+    "tceq": {
+      "full_name": "Texas Commission on Environmental Quality",
+      "jurisdiction": "surface_water_rights, water_quality, discharge_permits",
+      "water_rights_program": "Water Rights Permitting",
+      "tac_title": 30,
+      "tac_chapters": [290, 291, 295, 297, 298, 299, 307, 309, 312, 321],
+      "npdes_delegation": true,
+      "tpdes_program": true
+    },
+    "rrc": {
+      "full_name": "Railroad Commission of Texas",
+      "jurisdiction": "injection_wells, produced_water, saltwater_disposal, oilfield_waste",
+      "tac_title": 16,
+      "tac_chapter": 3,
+      "statewide_rules": [8, 9, 13, 14, 46, 91, 95, 97],
+      "form_h1": "Application for Permit to Dispose of Oil and Gas Waste by Injection into a Formation Not Productive of Oil or Gas",
+      "form_w14": "Application for Permit to Dispose of Oil and Gas NORM Waste"
+    },
+    "twdb": {
+      "full_name": "Texas Water Development Board",
+      "jurisdiction": "water_planning, groundwater_data, brackish_zones, water_supply_funding",
+      "gma_regions": 16,
+      "regional_water_planning_groups": 16,
+      "state_water_plan_cycle_years": 5
+    },
+    "epa": {
+      "full_name": "U.S. Environmental Protection Agency",
+      "jurisdiction": "uic_primacy_oversight, aquifer_exemptions, sdwa_enforcement",
+      "uic_program": "Underground Injection Control",
+      "sdwa": "Safe Drinking Water Act",
+      "region": 6,
+      "office": "Dallas"
+    }
+  },
+  "compliance_scoring": {
+    "risk_categories": [
+      {"category": "permit_compliance", "weight": 0.25, "max_score": 100},
+      {"category": "mechanical_integrity", "weight": 0.20, "max_score": 100},
+      {"category": "reporting_compliance", "weight": 0.15, "max_score": 100},
+      {"category": "environmental_impact", "weight": 0.20, "max_score": 100},
+      {"category": "seismicity_risk", "weight": 0.10, "max_score": 100},
+      {"category": "water_sourcing", "weight": 0.10, "max_score": 100}
+    ],
+    "risk_thresholds": {
+      "low": [80, 100],
+      "moderate": [60, 79],
+      "high": [40, 59],
+      "critical": [0, 39]
+    },
+    "auto_flag_conditions": [
+      "expired_permit",
+      "failed_mechanical_integrity_test",
+      "exceeded_injection_pressure",
+      "exceeded_volume_limit",
+      "missed_annual_report",
+      "seismic_event_within_radius",
+      "usdw_contamination_detected",
+      "spill_unreported",
+      "casing_failure",
+      "surface_leak_detected"
+    ]
+  },
+  "seismicity_monitoring": {
+    "texnet_integration": true,
+    "magnitude_threshold_review": 2.0,
+    "magnitude_threshold_curtailment": 3.5,
+    "magnitude_threshold_shutin": 4.0,
+    "radius_of_review_miles": 10,
+    "historical_baseline_years": 5,
+    "traffic_light_protocol": {
+      "green": {"magnitude_below": 2.0, "action": "continue_operations"},
+      "yellow": {"magnitude_range": [2.0, 3.5], "action": "reduce_volume_50_pct"},
+      "orange": {"magnitude_range": [3.5, 4.0], "action": "suspend_and_review"},
+      "red": {"magnitude_above": 4.0, "action": "immediate_shutin_and_report"}
+    }
+  },
+  "data_sources": {
+    "tceq_water_rights_db": "https://www.tceq.texas.gov/permitting/water_rights",
+    "rrc_injection_wells": "https://www.rrc.texas.gov/oil-and-gas/applications-and-permits/injection-disposal-permits/",
+    "twdb_groundwater_db": "https://www.twdb.texas.gov/groundwater/data/",
+    "texnet_seismicity": "https://www.beg.utexas.edu/texnet",
+    "eaa_permits": "https://www.edwardsaquifer.org/",
+    "gcd_map": "https://www.twdb.texas.gov/groundwater/conservation_districts/"
+  }
+}

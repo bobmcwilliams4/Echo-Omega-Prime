@@ -1,0 +1,89 @@
+{
+  "engine_id": "TX13",
+  "engine_name": "Real Estate Tax Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8463,
+  "mode": "EF",
+  "domain": "real_estate_taxation",
+  "authority_level": 11.0,
+  "commander": "Bobby Don McWilliams II",
+  "description": "Comprehensive real estate tax intelligence covering IRC 1031, MACRS depreciation, passive activity rules, Section 199A, Opportunity Zones, installment sales, depreciation recapture, REITs, LIHTC, and 30+ additional real estate tax domains.",
+  "irc_sections_covered": [
+    "IRC 1031 - Like-Kind Exchanges",
+    "IRC 168 - MACRS Depreciation / Bonus Depreciation",
+    "IRC 469 - Passive Activity Loss Rules",
+    "IRC 199A - Qualified Business Income Deduction",
+    "IRC 1400Z-1/1400Z-2 - Opportunity Zones",
+    "IRC 453 - Installment Sales",
+    "IRC 1250 - Depreciation Recapture",
+    "IRC 121 - Primary Residence Exclusion",
+    "IRC 856-860 - REITs",
+    "IRC 42 - Low-Income Housing Tax Credit",
+    "IRC 47 - Historic Rehabilitation Tax Credit",
+    "IRC 179D - Energy Efficient Commercial Buildings",
+    "IRC 465 - At-Risk Rules",
+    "IRC 860A-G - REMICs",
+    "IRC 263A - Construction Period Interest Capitalization",
+    "IRC 280B - Demolition Costs",
+    "IRC 198 - Environmental Remediation",
+    "IRC 1033 - Involuntary Conversions",
+    "IRC 110 - Ground Lease Construction Allowances",
+    "IRC 197 - Amortization of Intangibles (Real Estate)",
+    "IRC 163(j) - Business Interest Limitation",
+    "IRC 1060 - Allocation Rules for Asset Acquisitions",
+    "IRC 267 - Related Party Transactions",
+    "IRC 1031(f) - Related Party Exchanges",
+    "IRC 754 - Partnership Basis Elections",
+    "IRC 704(c) - Contributed Property Allocations"
+  ],
+  "response_modes": ["FAST", "DEFENSE", "MEMO"],
+  "three_layer_architecture": {
+    "layer_1": "Doctrine Cache (0-200ms) - Pre-compiled expert reasoning blocks",
+    "layer_2": "Semantic Retrieval (200-700ms) - Vector search on cache miss",
+    "layer_3": "Deep Analysis (on-demand) - Multi-source synthesis with full reasoning chain"
+  },
+  "confidence_stratification": {
+    "DEFENSIBLE": "Well-settled law, strong authority, low recharacterization risk",
+    "AGGRESSIVE": "Favorable but contestable position, audit risk present",
+    "DISCLOSURE": "Position requires Form 8275/8275-R disclosure to avoid penalties",
+    "HIGH_RISK": "Likely challenge on audit, thin authority, high penalty exposure"
+  },
+  "doctrine_block_count_target": 55,
+  "minimum_lines": {
+    "engine_py": 3000,
+    "doctrines_py": 1200,
+    "semantic_py": 500,
+    "search_py": 300,
+    "telemetry_py": 400
+  },
+  "telemetry": {
+    "log_rotation": "50 MB",
+    "log_retention": "30 days",
+    "audit_trail": true,
+    "determinism_hash": "SHA-256",
+    "metrics_window_seconds": 3600
+  },
+  "fastapi": {
+    "cors_origins": ["*"],
+    "docs_url": "/docs",
+    "redoc_url": "/redoc",
+    "title": "TX13 Real Estate Tax Intelligence Engine",
+    "version": "1.0.0"
+  },
+  "quality_gates": {
+    "tie_20_components": true,
+    "no_stubs": true,
+    "no_todos": true,
+    "type_hints": true,
+    "pydantic_models": true,
+    "loguru_logging": true,
+    "determinism_hash": true,
+    "health_endpoint": true
+  },
+  "build_metadata": {
+    "built_by": "ECHO OMEGA PRIME Worker W006",
+    "build_date": "2026-02-11",
+    "tie_standard": "TIE-20 Gold",
+    "prompt_version": "v3.0"
+  }
+}

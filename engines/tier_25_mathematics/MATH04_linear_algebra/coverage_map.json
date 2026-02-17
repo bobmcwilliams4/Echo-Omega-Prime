@@ -1,0 +1,171 @@
+{
+  "engine_id": "MATH04",
+  "engine_name": "Linear Algebra Intelligence Engine",
+  "version": "1.0.0",
+  "domains": {
+    "matrix_operations": {
+      "description": "Core matrix arithmetic: add, subtract, multiply, scalar multiply, transpose, power, trace",
+      "topics": {
+        "matrix_addition": 0,
+        "matrix_subtraction": 0,
+        "matrix_multiplication": 0,
+        "scalar_multiplication": 0,
+        "transpose": 0,
+        "matrix_power": 0,
+        "trace": 0,
+        "elementwise_multiply": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "determinant_inverse": {
+      "description": "Determinant computation (cofactor and row-reduction) and matrix inverse (Gauss-Jordan)",
+      "topics": {
+        "determinant_cofactor": 0,
+        "determinant_row_reduction": 0,
+        "inverse_gauss_jordan": 0,
+        "invertibility_test": 0,
+        "cramers_rule_concept": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "gaussian_elimination": {
+      "description": "Row reduction: REF, RREF, rank, nullity, null space, column space, row space, system solving",
+      "topics": {
+        "row_echelon_form": 0,
+        "reduced_row_echelon_form": 0,
+        "rank_computation": 0,
+        "nullity_computation": 0,
+        "null_space_basis": 0,
+        "column_space_basis": 0,
+        "row_space_basis": 0,
+        "solve_linear_system": 0,
+        "partial_pivoting": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "decompositions": {
+      "description": "Matrix factorizations: LU, QR, Cholesky, SVD",
+      "topics": {
+        "lu_doolittle": 0,
+        "lu_solve": 0,
+        "qr_gram_schmidt": 0,
+        "cholesky_decomposition": 0,
+        "positive_definite_test": 0,
+        "svd_computation": 0,
+        "singular_values": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "eigenvalues": {
+      "description": "Eigenvalue and eigenvector computation: 2x2 direct, 3x3 Cardano, nxn QR algorithm",
+      "topics": {
+        "eigenvalue_2x2": 0,
+        "eigenvalue_3x3": 0,
+        "eigenvalue_qr_algorithm": 0,
+        "characteristic_polynomial": 0,
+        "spectral_theorem": 0,
+        "diagonalization": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "vector_operations": {
+      "description": "Vector arithmetic: dot product, cross product, norm, normalize, projection, angle, outer product",
+      "topics": {
+        "dot_product": 0,
+        "cross_product": 0,
+        "vector_norm": 0,
+        "unit_vector": 0,
+        "vector_projection": 0,
+        "vector_rejection": 0,
+        "angle_between": 0,
+        "outer_product": 0,
+        "linear_combination": 0,
+        "triple_scalar_product": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "orthogonalization": {
+      "description": "Gram-Schmidt process: orthogonalize, orthonormalize",
+      "topics": {
+        "classical_gram_schmidt": 0,
+        "modified_gram_schmidt": 0,
+        "orthogonal_basis": 0,
+        "orthonormal_basis": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "least_squares": {
+      "description": "Least squares: normal equations, polynomial fitting, residuals",
+      "topics": {
+        "normal_equations": 0,
+        "polynomial_fit": 0,
+        "residual_computation": 0,
+        "overdetermined_systems": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "norms_conditioning": {
+      "description": "Matrix norms (Frobenius, spectral, 1, infinity) and condition number",
+      "topics": {
+        "frobenius_norm": 0,
+        "spectral_norm": 0,
+        "one_norm": 0,
+        "infinity_norm": 0,
+        "condition_number": 0,
+        "ill_conditioning": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "linear_transformations": {
+      "description": "Linear maps: apply, compose, kernel, image, injectivity, surjectivity, rotations, projections",
+      "topics": {
+        "transformation_apply": 0,
+        "composition": 0,
+        "kernel_computation": 0,
+        "image_computation": 0,
+        "injectivity_test": 0,
+        "surjectivity_test": 0,
+        "rotation_2d": 0,
+        "rotation_3d": 0,
+        "reflection": 0,
+        "scaling_transform": 0,
+        "projection_matrix": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    },
+    "vector_spaces": {
+      "description": "Abstract vector space concepts: basis, dimension, span, independence, subspaces",
+      "topics": {
+        "basis_computation": 0,
+        "dimension": 0,
+        "span": 0,
+        "linear_independence": 0,
+        "four_fundamental_subspaces": 0,
+        "rank_nullity_theorem": 0
+      },
+      "total_hits": 0,
+      "coverage_status": "full"
+    }
+  },
+  "epistemic_gaps": [
+    "Complex eigenvalues for general non-symmetric matrices (only real eigenvalues computed)",
+    "Large-scale SVD (limited to ~10x10 in pure Python implementation)",
+    "Iterative solvers (CG, GMRES) not implemented — direct methods only",
+    "Sparse matrix storage and operations not implemented",
+    "Jordan normal form computation not implemented",
+    "Schur decomposition not directly implemented (QR algorithm approximates it)"
+  ],
+  "total_doctrines": 16,
+  "total_topics_tracked": 82,
+  "last_updated": "2026-02-12T00:00:00Z"
+}

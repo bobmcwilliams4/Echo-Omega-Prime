@@ -1,0 +1,400 @@
+    authorities_cited: List[str]
+    reasoning_chain: Optional[str] = None
+    determinism_hash: str
+    epistemic_warnings: List[str] = Field(default_factory=list)
+    processing_time_ms: float
+    telemetry: Dict[str, Any] = Field(default_factory=dict)
+
+# ============================================================================
+# DOCTRINE CACHE - 25+ AVIATION SYSTEMS BLOCKS
+# ============================================================================
+
+DOCTRINE_CACHE: List[DoctrineBlock] = [
+    DoctrineBlock(
+        topic="turbofan_engine_operation",
+        keywords=["turbofan", "jet engine", "thrust", "bypass ratio", "N1", "N2", "EPR", "EGT"],
+        conclusion_template=[
+            "Turbofan engines generate thrust through a high bypass ratio design with separate fan and core streams.",
+            "Key operational parameters include N1 (fan speed), N2 (core speed), EPR (engine pressure ratio), and EGT (exhaust gas temperature).",
+            "The bypass ratio determines engine efficiency - higher ratios provide better fuel economy but lower specific thrust."
+        ],
+        reasoning_framework="""
+        TURBOFAN ENGINE ANALYSIS:
+        1. Airflow path: intake → fan → bypass stream + core stream
+        2. Core components: compressor → combustor → turbine
+        3. Fan driven by low-pressure turbine, compressor by high-pressure turbine
+        4. Bypass air provides 70-90% of total thrust in modern engines
+        5. FADEC (Full Authority Digital Engine Control) manages all parameters
+        6. Critical limits: EGT redline, maximum N1/N2, EPR limits
+        7. Thrust reversers redirect bypass air forward for braking
+        8. Start sequence: starter motor → ignition → light-off → acceleration
+        9. Failure modes: compressor stall, flame-out, surging, hot start
+        10. Maintenance intervals based on flight cycles and hours
+        """,
+        key_factors=[
+            "Bypass ratio (thrust efficiency)",
+            "Pressure ratio (compression efficiency)",
+            "Turbine inlet temperature (power output)",
+            "Specific fuel consumption (economy)",
+            "Thrust-to-weight ratio",
+            "FADEC redundancy",
+            "Foreign object damage (FOD) protection"
+        ],
+        primary_authority=[
+            "14 CFR Part 33 - Airworthiness Standards: Aircraft Engines",
+            "FAA AC 20-62E - Eligibility, Quality, and Identification of Aeronautical Replacement Parts",
+            "Manufacturer's Engine Manual (e.g., CFM56, PW4000, GE90)"
+        ],
+        burden_holder="Engine manufacturer and operator",
+        adversary_position="Older turbojet designs or piston engines",
+        counter_arguments=[
+            "Turbojets provide higher specific thrust for military applications",
+            "Piston engines offer simplicity for light aircraft",
+            "Turboprops more efficient at lower speeds",
+            "Electric propulsion emerging for small aircraft",
+            "Supersonic flight requires different engine cycles"
+        ],
+        resolution_strategy="Match engine type to mission profile - turbofans optimal for subsonic commercial transport",
+        entity_scope="Commercial aviation, business jets, military transports",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Based on established aerodynamic principles and regulatory standards",
+        controlling_precedent="FAA Part 33 certification requirements",
+        issue_category=IssueCategory.POWERPLANT,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["FADEC", "fuel_system", "hydraulic_system", "electrical_system", "fire_detection"],
+        failure_modes=["compressor_stall", "flame_out", "turbine_failure", "bearing_failure", "FOD"],
+        maintenance_requirements=["borescope_inspection", "hot_section_inspection", "overhaul_TBO"]
+    ),
+
+    DoctrineBlock(
+        topic="fly_by_wire_flight_controls",
+        keywords=["fly-by-wire", "FBW", "flight control computer", "envelope protection", "control laws"],
+        conclusion_template=[
+            "Fly-by-wire systems replace mechanical linkages with electronic signals between pilot controls and flight control surfaces.",
+            "Flight control computers interpret pilot inputs and apply envelope protection to prevent unsafe conditions.",
+            "Redundant computer channels and multiple independent electrical/hydraulic power sources ensure safety."
+        ],
+        reasoning_framework="""
+        FLY-BY-WIRE SYSTEM DESIGN:
+        1. Pilot input → control stick/yoke sensors
+        2. Signal processing by flight control computers (typically 3-5 redundant channels)
+        3. Control law computation: normal, alternate, direct, mechanical backup
+        4. Actuator commands sent to hydraulic servo-actuators
+        5. Surface position feedback for closed-loop control
+        6. Envelope protection: stall protection, load factor limits, bank angle limits
+        7. Flight mode transitions: ground, flight, landing, flare
+        8. Sensor fusion: air data, inertial, GPS, radio altimeter
+        9. Failure detection and reconfiguration (FDIR)
+        10. Certification: catastrophic failure rate < 10^-9 per flight hour
+        """,
+        key_factors=[
+            "Redundancy architecture (triple or quadruple)",
+            "Dissimilar computing platforms (segregation)",
+            "Power source independence",
+            "Control law design (handling qualities)",
+            "Envelope protection algorithms",
+            "Mechanical backup mode",
+            "Software verification (DO-178C Level A)"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.671 - Control Systems - General",
+            "14 CFR Part 25.1309 - Equipment, systems, and installations",
+            "SAE ARP4754A - Guidelines for Development of Civil Aircraft and Systems"
+        ],
+        burden_holder="Aircraft manufacturer and certification authority",
+        adversary_position="Conventional mechanical/hydraulic control systems",
+        counter_arguments=[
+            "Mechanical systems simpler and more pilot-intuitive",
+            "Cable systems provide direct tactile feedback",
+            "Electronic systems vulnerable to electromagnetic interference",
+            "Software complexity introduces certification burden",
+            "Loss of all electrical power catastrophic in pure FBW"
+        ],
+        resolution_strategy="FBW superior for large aircraft with high control forces; mechanical appropriate for light aircraft",
+        entity_scope="Modern commercial jets (A320, 777, 787), military fighters",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Decades of proven safety record in commercial aviation",
+        controlling_precedent="FAA Part 25.1309 safety assessment requirements",
+        issue_category=IssueCategory.FLIGHT_CONTROLS,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["hydraulic_system", "electrical_system", "air_data_system", "inertial_reference"],
+        failure_modes=["total_electrical_failure", "hydraulic_loss", "sensor_failure", "computer_failure", "actuator_jam"],
+        maintenance_requirements=["software_updates", "actuator_inspection", "sensor_calibration", "BITE_test"]
+    ),
+
+    DoctrineBlock(
+        topic="glass_cockpit_avionics",
+        keywords=["EFIS", "PFD", "ND", "MFD", "glass cockpit", "electronic flight instruments"],
+        conclusion_template=[
+            "Electronic Flight Instrument Systems (EFIS) replace mechanical gauges with integrated displays showing flight, navigation, and system data.",
+            "Primary Flight Display (PFD) shows attitude, airspeed, altitude, vertical speed, heading.",
+            "Navigation Display (ND) shows flight plan, navigation aids, weather, traffic, terrain."
+        ],
+        reasoning_framework="""
+        GLASS COCKPIT ARCHITECTURE:
+        1. Display units: PFD, ND, EICAS/ECAM (engine/systems), MFD (multi-function)
+        2. Symbol generators: process data from multiple sources into graphical displays
+        3. Data sources: ADIRU (air data + inertial), GPS, FMS, weather radar, TCAS, EGPWS
+        4. Integration: synthetic vision, enhanced vision, head-up displays
+        5. Reversionary modes: automatic reconfiguration on display failure
+        6. Brightness/declutter controls for different flight phases
+        7. Database updates: navigation, terrain, obstacles
+        8. Crew alerting: color-coded messages (red/amber/cyan/white)
+        9. Flight deck standardization reduces pilot training requirements
+        10. Certification: DO-160 environmental, DO-178C software
+        """,
+        key_factors=[
+            "Display redundancy (dual or triple)",
+            "Symbol generator independence",
+            "Reversion modes on failure",
+            "Data source validity checking",
+            "Human factors design (clutter management)",
+            "Database currency",
+            "Night vision compatibility"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.1321 - Arrangement and visibility",
+            "14 CFR Part 25.1322 - Warning, caution, and advisory lights",
+            "FAA AC 25-11B - Electronic Flight Deck Displays"
+        ],
+        burden_holder="Aircraft manufacturer and operator",
+        adversary_position="Traditional steam gauges (mechanical instruments)",
+        counter_arguments=[
+            "Mechanical instruments immune to electrical failure",
+            "Steam gauges simpler, less training required",
+            "Electronic displays can fail completely (black screen)",
+            "Database out-of-date creates hazard",
+            "Information overload possible with glass displays"
+        ],
+        resolution_strategy="Glass cockpit standard for all new aircraft; standby mechanical instruments required",
+        entity_scope="All modern commercial, business, and general aviation aircraft",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Industry standard with mandatory backup instruments",
+        controlling_precedent="FAA AC 25-11B display design guidance",
+        issue_category=IssueCategory.AVIONICS,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["ADIRU", "FMS", "weather_radar", "TCAS", "EGPWS", "electrical_system"],
+        failure_modes=["display_failure", "symbol_generator_failure", "power_loss", "database_corruption"],
+        maintenance_requirements=["display_testing", "database_updates", "brightness_calibration", "cooling_inspection"]
+    ),
+
+    DoctrineBlock(
+        topic="aircraft_electrical_system",
+        keywords=["AC power", "DC power", "generator", "alternator", "bus", "battery", "APU", "inverter", "TRU"],
+        conclusion_template=[
+            "Modern aircraft use 115V AC 400Hz primary power from engine-driven generators and APU.",
+            "Transformer-rectifier units (TRU) convert AC to 28V DC for avionics and other DC loads.",
+            "Multiple buses with isolation and cross-tie capability provide redundancy.",
+            "Batteries provide emergency power and engine start capability."
+        ],
+        reasoning_framework="""
+        ELECTRICAL SYSTEM ARCHITECTURE:
+        1. Primary AC generation: 2-4 engine-driven generators (IDG - Integrated Drive Generator)
+        2. APU generator for ground and backup in-flight power
+        3. Ram air turbine (RAT) for emergency power generation
+        4. AC bus architecture: main buses, essential buses, isolated buses
+        5. TRUs convert AC to DC for avionics buses
+        6. Battery buses for critical loads (flight controls, instruments)
+        7. Bus tie breakers allow cross-feed between sources
+        8. Generator control units (GCU) regulate voltage/frequency
+        9. Load shedding on loss of generator (non-essential loads dropped)
+        10. External power receptacle for ground operations
+        11. Static inverters convert DC to AC for backup
+        12. Circuit protection: current limiters, circuit breakers, fuses
+        """,
+        key_factors=[
+            "Generator redundancy (multiple sources)",
+            "Bus isolation (fault containment)",
+            "Load shedding priorities",
+            "Battery capacity (30-60 minutes emergency)",
+            "RAT deployment criteria",
+            "Power quality (voltage/frequency regulation)",
+            "Grounding and bonding (lightning protection)"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.1351 - General electrical requirements",
+            "14 CFR Part 25.1353 - Electrical equipment and installations",
+            "SAE ARP5150 - Safety Assessment of Transport Airplanes in Commercial Service"
+        ],
+        burden_holder="Aircraft manufacturer and maintenance organization",
+        adversary_position="Single-source electrical systems in older/smaller aircraft",
+        counter_arguments=[
+            "Small aircraft adequate with single alternator",
+            "Redundancy adds weight and complexity",
+            "Battery technology advancing (lithium backup)",
+            "Fuel cells potential future power source",
+            "More electric aircraft reduce hydraulic/pneumatic dependence"
+        ],
+        resolution_strategy="Dual or triple redundant electrical for transport category; single adequate for Part 23",
+        entity_scope="All powered aircraft from light GA to large transports",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Well-established electrical engineering principles and certification standards",
+        controlling_precedent="FAA Part 25.1351 redundancy requirements for transport aircraft",
+        issue_category=IssueCategory.ELECTRICAL,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["engines", "APU", "flight_controls", "avionics", "lighting", "anti_ice"],
+        failure_modes=["generator_failure", "bus_fault", "battery_depletion", "TRU_failure", "short_circuit"],
+        maintenance_requirements=["battery_capacity_test", "generator_inspection", "circuit_breaker_test", "bonding_check"]
+    ),
+
+    DoctrineBlock(
+        topic="hydraulic_flight_control_system",
+        keywords=["hydraulic", "pressure", "actuator", "pump", "reservoir", "accumulator", "PTU", "servo"],
+        conclusion_template=[
+            "Hydraulic systems provide the force amplification needed to move large flight control surfaces.",
+            "Multiple independent hydraulic systems (2-4) ensure continued operation after single failure.",
+            "Typical operating pressure: 3000 psi; accumulator provides temporary pressure during transients."
+        ],
+        reasoning_framework="""
+        HYDRAULIC SYSTEM DESIGN:
+        1. Engine-driven pumps (EDP) - primary power source
+        2. Electric motor-driven pumps (EMDP) - backup/ground operations
+        3. Power transfer unit (PTU) - transfers power between hydraulic systems
+        4. Ram air turbine (RAT) - emergency hydraulic power
+        5. Reservoirs with standpipes ensure critical actuators served first
+        6. Accumulators smooth pressure pulses and provide surge capacity
+        7. Actuators: linear (control surfaces), rotary (landing gear, doors)
+        8. Servo valves control actuator position with high precision
+        9. Filters prevent contamination damage
+        10. Thermal management: heat exchangers prevent overheating
+        11. Fluid types: MIL-PRF-5606 (petroleum), Skydrol (phosphate ester)
+        12. System isolation: separate systems for primary, secondary, utility functions
+        """,
+        key_factors=[
+            "System redundancy (A, B, C systems independent)",
+            "Pressure regulation (3000 psi typical)",
+            "Fluid contamination control",
+            "Accumulator precharge pressure",
+            "Thermal limits (fluid degradation)",
+            "Leak detection and containment",
+            "Material compatibility with hydraulic fluid"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.1435 - Hydraulic systems",
+            "SAE AS1241 - Aerospace Hydraulic Fluids",
+            "ARP4754A - Development of Civil Aircraft Systems"
+        ],
+        burden_holder="Aircraft manufacturer and maintenance provider",
+        adversary_position="All-electric actuators (more electric aircraft)",
+        counter_arguments=[
+            "Electric actuators eliminate hydraulic fluid fire risk",
+            "No hydraulic leaks or contamination with electric",
+            "Electric systems lighter for small control surfaces",
+            "Hydraulic systems proven and reliable",
+            "Electric actuators temperature-sensitive"
+        ],
+        resolution_strategy="Hydraulic standard for large aircraft; electric viable for smaller surfaces and future designs",
+        entity_scope="Transport category aircraft, business jets, helicopters",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Decades of service history and engineering validation",
+        controlling_precedent="FAA Part 25.1435 system design requirements",
+        issue_category=IssueCategory.HYDRAULIC,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["engines", "electrical_system", "flight_controls", "landing_gear", "brakes"],
+        failure_modes=["pump_failure", "leak", "contamination", "overheat", "accumulator_loss", "actuator_jam"],
+        maintenance_requirements=["fluid_sampling", "filter_replacement", "accumulator_precharge", "leak_inspection", "actuator_test"]
+    ),
+
+    DoctrineBlock(
+        topic="aircraft_fuel_system",
+        keywords=["fuel tanks", "fuel pumps", "crossfeed", "fuel management", "center tank", "wing tanks", "APU fuel"],
+        conclusion_template=[
+            "Fuel stored in multiple tanks (wing, center, auxiliary) with pumps and gravity feed capability.",
+            "Crossfeed valves allow engines to draw from any tank, providing redundancy.",
+            "Fuel quantity indication system monitors fuel remaining and center of gravity position."
+        ],
+        reasoning_framework="""
+        FUEL SYSTEM ARCHITECTURE:
+        1. Tank locations: main wing tanks, center tank, tail tank (747), auxiliary tanks
+        2. Fuel pumps: AC electric pumps in each tank, suction feed (gravity) as backup
+        3. Crossfeed system: manifold allows fuel transfer between tanks and to any engine
+        4. Fuel control unit (FCU) meters fuel to engine based on throttle and conditions
+        5. Fuel quantity indicating system (FQIS): capacitance probes measure fuel level
+        6. APU draws from dedicated APU fuel line or main tanks
+        7. Fuel jettison (dump) system for overweight landing emergencies
+        8. Tank inerting (nitrogen generation) prevents explosion in center tank
+        9. Fuel temperature management: heat exchangers prevent freezing
+        10. Defueling capability for maintenance
+        11. Refueling: single-point or overwing depending on aircraft type
+        12. Surge tanks prevent fuel overflow during maneuvers
+        """,
+        key_factors=[
+            "Tank sequencing (center tank used first to avoid structural stress)",
+            "Pump redundancy (multiple pumps per tank)",
+            "Crossfeed valve operation",
+            "Fuel imbalance limits",
+            "Jettison rate and minimum landing fuel",
+            "FQIS accuracy and drift",
+            "Tank inerting (OBIGGS) effectiveness"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.951 - Fuel system - General",
+            "14 CFR Part 25.963 - Fuel tanks: general",
+            "14 CFR Part 25.981 - Fuel tank ignition prevention"
+        ],
+        burden_holder="Aircraft operator and fuel system manufacturer",
+        adversary_position="Simplified fuel systems in light aircraft",
+        counter_arguments=[
+            "Single tank adequate for short-range light aircraft",
+            "Gravity feed eliminates pump failure modes",
+            "Electric pumps add weight and complexity",
+            "Manual fuel management simpler than automated",
+            "Tank inerting adds maintenance burden"
+        ],
+        resolution_strategy="Complexity scales with aircraft size and range; transport category requires full redundancy",
+        entity_scope="All fuel-powered aircraft",
+        confidence=ConfidenceLevel.DEFENSIBLE,
+        confidence_stratification="Regulatory requirements clear for fuel system safety",
+        controlling_precedent="FAA Part 25.981 fuel tank safety rule (post-TWA 800)",
+        issue_category=IssueCategory.FUEL_SYSTEMS,
+        authority_level=AuthorityLevel.FAA_REGULATION,
+        system_interactions=["engines", "APU", "electrical_system", "fire_detection", "inerting_system"],
+        failure_modes=["pump_failure", "fuel_leak", "FQIS_error", "crossfeed_valve_jam", "contamination"],
+        maintenance_requirements=["fuel_filter_change", "pump_test", "FQIS_calibration", "leak_check", "water_drain"]
+    ),
+
+    DoctrineBlock(
+        topic="bleed_air_pneumatic_system",
+        keywords=["bleed air", "pneumatic", "engine bleed", "APU bleed", "packs", "anti-ice", "pressurization"],
+        conclusion_template=[
+            "Pneumatic systems use hot compressed air bled from engine compressors or APU.",
+            "Bleed air powers environmental control, anti-ice, hydraulic reservoir pressurization, engine start.",
+            "Modern aircraft (787, A350) use electrically-driven systems to eliminate bleed air dependency."
+        ],
+        reasoning_framework="""
+        PNEUMATIC SYSTEM OPERATION:
+        1. Bleed air sources: engine compressor stages (low and high), APU compressor
+        2. Bleed air temperature: 200-500°C from engine, requires cooling
+        3. Pressure regulation: bleed air valves and pressure regulators
+        4. Precooler: air-to-air heat exchanger reduces temperature for distribution
+        5. Bleed air uses:
+           - Environmental control system (cabin air conditioning)
+           - Wing and engine anti-ice
+           - Hydraulic reservoir pressurization
+           - Engine starting (cross-bleed start)
+           - Water system pressurization
+        6. Leak detection: duct overheat sensors
+        7. Bleed air valve control: manual or automatic based on flight phase
+        8. APU bleed available on ground and in flight (emergency)
+        9. Bleedless aircraft: 787 uses electric compressors for ECS, eliminates bleed
+        10. Engine efficiency impact: bleeding air reduces thrust and fuel efficiency
+        """,
+        key_factors=[
+            "Bleed air temperature limits",
+            "Engine performance penalty (3-5% thrust loss)",
+            "Anti-ice demand in icing conditions",
+            "Cross-bleed start capability",
+            "Leak detection sensitivity",
+            "Precooler effectiveness",
+            "Bleed valve reliability"
+        ],
+        primary_authority=[
+            "14 CFR Part 25.831 - Ventilation",
+            "14 CFR Part 25.1093 - Induction system icing protection",
+            "SAE ARP85 - Air Conditioning Systems for Subsonic Airplanes"
+        ],
+        burden_holder="Aircraft operator and engine manufacturer",
+        adversary_position="More electric aircraft (bleedless designs)",
+        counter_arguments=[
+            "Electric ECS eliminates engine efficiency penalty",
+            "Electric systems reduce maintenance (no bleed leaks)",

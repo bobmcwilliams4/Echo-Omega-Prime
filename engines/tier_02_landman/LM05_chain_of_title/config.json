@@ -1,0 +1,314 @@
+{
+  "engine_id": "LM05",
+  "engine_name": "Chain of Title Builder",
+  "version": "1.0.0",
+  "category": "LANDMAN",
+  "subcategory": "CHAIN_OF_TITLE",
+  "port": 8405,
+  "host": "0.0.0.0",
+  "description": "Constructs and validates chains of title from recorded instruments. Traces ownership from sovereign patent to current owner, detects gaps, validates links, handles fractional conveyances and mergers.",
+  "author": "ECHO OMEGA PRIME Build System",
+  "commander": "Bobby Don McWilliams II",
+
+  "jurisdiction": {
+    "primary_state": "TX",
+    "supported_states": ["TX", "NM", "OK", "LA", "CO", "ND", "WY", "MT", "PA", "WV", "OH"],
+    "recording_act_type": "race_notice",
+    "default_county": "REEVES",
+    "texas_property_code_version": "2025"
+  },
+
+  "chain_construction": {
+    "direction": "backward",
+    "backward_from_current_owner": true,
+    "forward_from_sovereign": true,
+    "dual_pass_reconciliation": true,
+    "max_chain_depth": 500,
+    "max_branch_factor": 50,
+    "max_fractional_splits": 200,
+    "require_sovereign_root": true,
+    "allow_root_of_title_shortcut": true,
+    "root_of_title_minimum_years": 40,
+    "extended_root_search_years": 60,
+    "full_chain_search_years": 150,
+    "abstract_number_required_tx": true,
+    "survey_system_required_tx": true
+  },
+
+  "sovereign_origins": {
+    "spanish_crown": {
+      "authority": "Kingdom of Spain",
+      "period": "pre-1821",
+      "grant_types": ["royal_grant", "empresario_grant", "mission_grant"],
+      "validity_basis": "Treaty of Guadalupe Hidalgo 1848"
+    },
+    "republic_of_mexico": {
+      "authority": "Republic of Mexico",
+      "period": "1821-1836",
+      "grant_types": ["colonization_grant", "empresario_grant"],
+      "validity_basis": "Treaty of Velasco / Texas Revolution"
+    },
+    "republic_of_texas": {
+      "authority": "Republic of Texas",
+      "period": "1836-1846",
+      "grant_types": ["headright", "bounty_warrant", "donation_grant", "land_script"],
+      "validity_basis": "Annexation Act 1845"
+    },
+    "state_of_texas": {
+      "authority": "State of Texas",
+      "period": "1846-present",
+      "grant_types": ["patent", "school_land_sale", "university_land_sale", "vacancy_grant"],
+      "validity_basis": "Texas Constitution"
+    },
+    "federal_government": {
+      "authority": "United States of America",
+      "period": "varies",
+      "grant_types": ["homestead_patent", "cash_entry_patent", "railroad_grant", "military_bounty"],
+      "validity_basis": "US Constitution Art. IV"
+    }
+  },
+
+  "recording_act_rules": {
+    "texas_race_notice": {
+      "statute": "Texas Property Code Section 13.001",
+      "type": "race_notice",
+      "priority_rule": "first_recorded_bfp_wins",
+      "bfp_requirements": ["valuable_consideration", "good_faith", "no_actual_notice", "no_constructive_notice"],
+      "constructive_notice_sources": ["deed_records", "lis_pendens", "tax_records", "judgment_liens", "ucc_filings"],
+      "actual_notice_types": ["direct_knowledge", "inquiry_notice", "possession_notice"],
+      "recording_required_for_priority": true,
+      "unrecorded_deed_valid_between_parties": true,
+      "grace_period_days": 0,
+      "shelter_rule_applies": true
+    },
+    "oklahoma_race_notice": {
+      "statute": "16 O.S. Section 16",
+      "type": "race_notice",
+      "priority_rule": "first_recorded_bfp_wins"
+    },
+    "new_mexico_race_notice": {
+      "statute": "NMSA Section 14-9-3",
+      "type": "race_notice",
+      "priority_rule": "first_recorded_bfp_wins"
+    }
+  },
+
+  "gap_detection": {
+    "temporal_gap_warning_days": 365,
+    "temporal_gap_critical_days": 1825,
+    "temporal_gap_fatal_days": 7300,
+    "conveyance_gap_is_critical": true,
+    "recording_gap_warning_days": 180,
+    "recording_gap_critical_days": 1095,
+    "ownership_overlap_tolerance_days": 30,
+    "missing_link_classifications": [
+      "UNRECORDED_CONVEYANCE",
+      "LOST_INSTRUMENT",
+      "PROBATE_NOT_RECORDED",
+      "HEIRSHIP_NOT_ESTABLISHED",
+      "TAX_SALE_REDEMPTION_EXPIRED",
+      "ADVERSE_POSSESSION_CLAIM",
+      "ESCHEAT_TO_STATE",
+      "CORPORATE_DISSOLUTION",
+      "TRUST_TERMINATION"
+    ],
+    "gap_cure_instruments": [
+      "AFFIDAVIT_OF_HEIRSHIP",
+      "CORRECTION_DEED",
+      "QUITCLAIM_DEED",
+      "STIPULATION_OF_INTEREST",
+      "COURT_ORDER",
+      "QUIET_TITLE_JUDGMENT"
+    ]
+  },
+
+  "link_validation": {
+    "execution_requirements": {
+      "signature_required": true,
+      "consideration_recital_preferred": true,
+      "legal_description_required": true,
+      "granting_clause_required": true,
+      "habendum_clause_preferred": true,
+      "warranty_clause_varies": true
+    },
+    "acknowledgment_requirements": {
+      "notary_required_for_recording": true,
+      "notary_venue_must_match": false,
+      "notary_commission_expiry_check": true,
+      "notary_seal_required_tx": true,
+      "acknowledgment_date_before_recording": true,
+      "foreign_acknowledgment_requirements": "apostille_or_consular"
+    },
+    "delivery_requirements": {
+      "delivery_presumed_if_recorded": true,
+      "delivery_presumed_if_acknowledged": true,
+      "acceptance_presumed_if_beneficial": true,
+      "death_before_delivery_voids": true,
+      "conditional_delivery_escrow_valid": true
+    }
+  },
+
+  "instrument_classification": {
+    "conveyances": [
+      "WARRANTY_DEED", "SPECIAL_WARRANTY_DEED", "QUITCLAIM_DEED",
+      "GRANT_DEED", "MINERAL_DEED", "ROYALTY_DEED", "CORRECTION_DEED",
+      "BARGAIN_AND_SALE_DEED", "GIFT_DEED", "TRUSTEES_DEED",
+      "EXECUTORS_DEED", "ADMINISTRATORS_DEED", "SHERIFFS_DEED",
+      "TAX_DEED", "MASTERS_DEED", "COMMISSIONERS_DEED"
+    ],
+    "leases": [
+      "OIL_GAS_LEASE", "PAID_UP_LEASE", "TOP_LEASE",
+      "SURFACE_LEASE", "FARM_OUT_AGREEMENT"
+    ],
+    "assignments": [
+      "ASSIGNMENT", "PARTIAL_ASSIGNMENT", "ASSIGNMENT_OF_OGL",
+      "ASSIGNMENT_OF_ORRI", "ASSIGNMENT_OF_PRODUCTION_PAYMENT"
+    ],
+    "releases": [
+      "RELEASE", "PARTIAL_RELEASE", "RELEASE_OF_LIEN",
+      "RELEASE_OF_LEASE", "SATISFACTION_OF_MORTGAGE",
+      "SUBORDINATION_AGREEMENT"
+    ],
+    "encumbrances": [
+      "DEED_OF_TRUST", "MORTGAGE", "MECHANICS_LIEN", "TAX_LIEN",
+      "JUDGMENT_LIEN", "UCC_FILING", "LIS_PENDENS"
+    ],
+    "probate": [
+      "WILL", "PROBATE_ORDER", "AFFIDAVIT_OF_HEIRSHIP",
+      "COURT_ORDER", "LETTERS_TESTAMENTARY",
+      "LETTERS_OF_ADMINISTRATION", "DECREE_OF_DISTRIBUTION",
+      "SMALL_ESTATE_AFFIDAVIT", "MUNIMENT_OF_TITLE"
+    ],
+    "sovereign": [
+      "PATENT", "LAND_GRANT", "HEADRIGHT", "BOUNTY_WARRANT",
+      "EMPRESARIO_GRANT", "SCHOOL_LAND_SALE"
+    ]
+  },
+
+  "interest_tracking": {
+    "mineral_estate_severable": true,
+    "royalty_interest_severable": true,
+    "executive_right_severable": true,
+    "surface_estate_separate": true,
+    "default_royalty_fraction": "1/8",
+    "overriding_royalty_tracked": true,
+    "net_mineral_acres_calculation": true,
+    "fractional_precision_decimal": 10,
+    "total_must_equal_one": true,
+    "tolerance_for_rounding": 0.0001
+  },
+
+  "texas_specific": {
+    "community_property_state": true,
+    "separate_mineral_estate": true,
+    "dominant_mineral_estate": true,
+    "accommodation_doctrine": true,
+    "executive_right_severable": true,
+    "royalty_fraction_default": "1/8",
+    "abstract_system": true,
+    "vacancy_act_applies": true,
+    "relinquishment_act_applies": true,
+    "school_land_psf_rules": true,
+    "railroad_commission_jurisdiction": true,
+    "mother_hubbard_clause_disfavored": true,
+    "after_acquired_title_applies_warranty": true,
+    "estoppel_by_deed_applies_warranty": true
+  },
+
+  "search_config": {
+    "default_page_size": 50,
+    "max_page_size": 500,
+    "fuzzy_name_threshold": 0.80,
+    "phonetic_matching": true,
+    "soundex_enabled": true,
+    "metaphone_enabled": true,
+    "name_normalization": true,
+    "date_range_default_years": 60,
+    "max_results_per_query": 2000,
+    "relevance_score_minimum": 0.25,
+    "grantor_grantee_index_search": true,
+    "tract_index_search": true,
+    "book_page_search": true,
+    "document_number_search": true
+  },
+
+  "data_sources": {
+    "reeves_county_g_drive": {
+      "path": "G:/",
+      "file_count": 415181,
+      "coverage": "Vols 1-1345, 95% complete",
+      "format": "scanned_images"
+    },
+    "r2_archive": {
+      "bucket": "echo-prime-knowledge",
+      "prefix": "ENCORE/REEVES/",
+      "file_count": 436051,
+      "format": "mixed"
+    },
+    "encore_scraper": {
+      "local_path": "O:/ECHO_OMEGA_PRIME/ENCORE",
+      "cloud_url": "https://encore-cloud-scraper.bmcii1976.workers.dev",
+      "format": "json_records"
+    },
+    "shadowglass_d1": {
+      "url": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+      "format": "d1_database"
+    },
+    "cognition_cloud_ekm": {
+      "url": "https://ekm-query.bmcii1976.workers.dev",
+      "format": "fts5_index"
+    },
+    "landman_enriched": {
+      "path": "O:/ECHO_OMEGA_PRIME/LANDMAN_ENRICHED",
+      "format": "ndjson_classifications"
+    }
+  },
+
+  "integration": {
+    "landman_intelligence_path": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE",
+    "encore_scraper_path": "O:/ECHO_OMEGA_PRIME/ENCORE",
+    "shadowglass_url": "https://shadowglass-v8-warpspeed.bmcii1976.workers.dev",
+    "cognition_cloud_ekm_url": "https://ekm-query.bmcii1976.workers.dev",
+    "swarm_brain_url": "https://echo-swarm-brain.bmcii1976.workers.dev",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": "echo-build-orchestrator",
+    "chain_analyzer_v2_path": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE/landman_chain_analyzer_v2.py"
+  },
+
+  "output": {
+    "chain_output_dir": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE/chains",
+    "run_sheet_output_dir": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE/run_sheets",
+    "timeline_output_dir": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE/timelines",
+    "gap_report_dir": "O:/ECHO_OMEGA_PRIME/LANDMAN_INTELLIGENCE/gap_reports",
+    "chain_graph_format": "json",
+    "timeline_format": "json",
+    "run_sheet_format": "json",
+    "include_confidence_scores": true,
+    "include_source_references": true
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "metrics_interval_seconds": 60,
+    "audit_trail_enabled": true,
+    "performance_tracking": true,
+    "query_logging": true,
+    "error_tracking": true,
+    "deterministic_hash": true,
+    "hash_algorithm": "sha256"
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "interval_seconds": 30,
+    "timeout_seconds": 5,
+    "required_components": [
+      "doctrine_cache",
+      "semantic_dictionary",
+      "search_engine",
+      "chain_builder",
+      "gap_detector",
+      "telemetry"
+    ]
+  }
+}

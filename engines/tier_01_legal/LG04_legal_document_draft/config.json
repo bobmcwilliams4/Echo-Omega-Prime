@@ -1,0 +1,281 @@
+{
+    "engine_id": "LG04",
+    "engine_name": "Legal Document Draft Engine",
+    "engine_version": "1.0.0",
+    "engine_authority": 5.0,
+    "engine_tier": "LEGAL",
+    "engine_mode": "EF",
+    "port": 8394,
+    "host": "0.0.0.0",
+
+    "description": "Production-grade legal document drafting engine providing contract generation, clause library management, template assembly, jurisdiction-specific document variations, compliance checking against regulations, version tracking, collaborative editing support, and deterministic document hashing for audit trails.",
+
+    "architecture": {
+        "layers": [
+            {
+                "name": "Doctrine Cache",
+                "order": 1,
+                "latency_target_ms": 150,
+                "description": "Pre-compiled legal drafting doctrines for instant clause retrieval"
+            },
+            {
+                "name": "Semantic Search",
+                "order": 2,
+                "latency_target_ms": 500,
+                "description": "TF-IDF inverted index search over clause library and templates"
+            },
+            {
+                "name": "Document Assembly",
+                "order": 3,
+                "latency_target_ms": 1200,
+                "description": "Template-driven document assembly with variable substitution"
+            },
+            {
+                "name": "Deep Analysis",
+                "order": 4,
+                "latency_target_ms": 3000,
+                "description": "Multi-doctrine synthesis for complex document generation"
+            }
+        ],
+        "normalization": "semantic.py",
+        "telemetry": "telemetry.py",
+        "search": "search.py",
+        "doctrines": "doctrines.py",
+        "engine": "engine.py"
+    },
+
+    "response_modes": {
+        "DET": {
+            "description": "Deterministic mode - exact template-driven drafting with no variation",
+            "max_latency_ms": 2000,
+            "allow_variation": false
+        },
+        "EF": {
+            "description": "Efficiency mode - balanced drafting with smart defaults",
+            "max_latency_ms": 5000,
+            "allow_variation": true
+        },
+        "SPEC": {
+            "description": "Specialist mode - detailed jurisdiction-specific drafting",
+            "max_latency_ms": 10000,
+            "allow_variation": true
+        },
+        "QUANTUM": {
+            "description": "Quantum mode - multi-scenario drafting with alternative clauses",
+            "max_latency_ms": 15000,
+            "allow_variation": true
+        }
+    },
+
+    "document_types": {
+        "contract": {
+            "subtypes": [
+                "sales_agreement", "service_agreement", "license_agreement",
+                "subscription_agreement", "consulting_agreement", "supply_agreement",
+                "distribution_agreement", "franchise_agreement", "joint_venture_agreement"
+            ],
+            "required_sections": ["parties", "recitals", "definitions", "terms", "conditions", "signatures"]
+        },
+        "real_estate": {
+            "subtypes": [
+                "general_warranty_deed", "special_warranty_deed", "quitclaim_deed",
+                "deed_of_trust", "mortgage", "lease_agreement", "purchase_agreement",
+                "easement", "restrictive_covenant", "option_to_purchase"
+            ],
+            "required_sections": ["grantor_grantee", "legal_description", "consideration", "covenants", "signatures", "notarization"]
+        },
+        "employment": {
+            "subtypes": [
+                "offer_letter", "employment_agreement", "independent_contractor",
+                "non_compete", "non_disclosure", "non_solicitation",
+                "severance_agreement", "change_in_control"
+            ],
+            "required_sections": ["parties", "position", "compensation", "term", "termination", "restrictive_covenants"]
+        },
+        "corporate": {
+            "subtypes": [
+                "articles_of_incorporation", "bylaws", "operating_agreement",
+                "board_resolution", "shareholder_agreement", "stock_purchase_agreement",
+                "merger_agreement", "asset_purchase_agreement"
+            ],
+            "required_sections": ["entity_identification", "governance", "capitalization", "management", "dissolution"]
+        },
+        "intellectual_property": {
+            "subtypes": [
+                "patent_assignment", "trademark_license", "copyright_assignment",
+                "technology_license", "software_license", "trade_secret_agreement"
+            ],
+            "required_sections": ["ip_identification", "scope_of_rights", "compensation", "term", "infringement"]
+        },
+        "finance": {
+            "subtypes": [
+                "promissory_note", "loan_agreement", "security_agreement",
+                "guaranty", "subordination_agreement", "intercreditor_agreement"
+            ],
+            "required_sections": ["principal", "interest", "payment_terms", "security", "default", "remedies"]
+        },
+        "estate_planning": {
+            "subtypes": [
+                "revocable_trust", "irrevocable_trust", "last_will", "power_of_attorney",
+                "healthcare_directive", "beneficiary_designation"
+            ],
+            "required_sections": ["grantor_trustee", "beneficiaries", "assets", "distributions", "administration", "signatures"]
+        },
+        "regulatory": {
+            "subtypes": [
+                "compliance_policy", "privacy_policy", "terms_of_service",
+                "cookie_policy", "aml_kyc_policy", "whistleblower_policy"
+            ],
+            "required_sections": ["scope", "definitions", "requirements", "procedures", "enforcement", "amendments"]
+        }
+    },
+
+    "jurisdictions": {
+        "federal": {
+            "authority": "United States Federal Law",
+            "governing_law_clause": "This Agreement shall be governed by and construed in accordance with the laws of the United States."
+        },
+        "states": {
+            "TX": {"name": "Texas", "ucc_adopted": true, "community_property": true, "at_will_employment": true, "non_compete_enforceable": "limited"},
+            "CA": {"name": "California", "ucc_adopted": true, "community_property": true, "at_will_employment": true, "non_compete_enforceable": false},
+            "NY": {"name": "New York", "ucc_adopted": true, "community_property": false, "at_will_employment": true, "non_compete_enforceable": "limited"},
+            "DE": {"name": "Delaware", "ucc_adopted": true, "community_property": false, "at_will_employment": true, "non_compete_enforceable": true},
+            "FL": {"name": "Florida", "ucc_adopted": true, "community_property": false, "at_will_employment": true, "non_compete_enforceable": true},
+            "IL": {"name": "Illinois", "ucc_adopted": true, "community_property": false, "at_will_employment": true, "non_compete_enforceable": "limited"},
+            "NV": {"name": "Nevada", "ucc_adopted": true, "community_property": true, "at_will_employment": true, "non_compete_enforceable": true},
+            "WA": {"name": "Washington", "ucc_adopted": true, "community_property": true, "at_will_employment": true, "non_compete_enforceable": "limited"}
+        }
+    },
+
+    "clause_library": {
+        "categories": [
+            "definitions", "representations_warranties", "covenants", "conditions_precedent",
+            "indemnification", "limitation_of_liability", "confidentiality", "non_compete",
+            "non_solicitation", "intellectual_property", "termination", "dispute_resolution",
+            "governing_law", "force_majeure", "assignment", "notices", "severability",
+            "entire_agreement", "amendment", "waiver", "counterparts", "survival",
+            "insurance", "compliance_with_laws", "third_party_beneficiaries"
+        ],
+        "max_clauses_per_document": 200,
+        "version_tracking": true
+    },
+
+    "compliance_rules": {
+        "ucc_article_2": {
+            "applies_to": ["sales_agreement", "supply_agreement", "distribution_agreement"],
+            "required_elements": ["identification_of_goods", "price_or_mechanism", "delivery_terms", "risk_of_loss"]
+        },
+        "statute_of_frauds": {
+            "applies_to": ["real_estate", "goods_over_500", "contracts_over_1_year", "suretyship", "marriage"],
+            "required_elements": ["writing", "signed_by_party_to_be_charged", "essential_terms"]
+        },
+        "gdpr": {
+            "applies_to": ["privacy_policy", "terms_of_service", "data_processing_agreement"],
+            "required_elements": ["lawful_basis", "data_subject_rights", "data_retention", "breach_notification"]
+        },
+        "sox_compliance": {
+            "applies_to": ["corporate_governance", "financial_reporting"],
+            "required_elements": ["internal_controls", "audit_committee", "officer_certification"]
+        }
+    },
+
+    "confidence_bands": {
+        "HIGH": {
+            "min_score": 0.85,
+            "label": "Document conforms to established legal standards",
+            "requires_caveat": false
+        },
+        "MEDIUM": {
+            "min_score": 0.65,
+            "label": "Document generally sound but review recommended",
+            "requires_caveat": true
+        },
+        "LOW": {
+            "min_score": 0.40,
+            "label": "Document has potential issues requiring attorney review",
+            "requires_caveat": true
+        },
+        "UNCERTAIN": {
+            "min_score": 0.0,
+            "label": "Document requires significant legal review before use",
+            "requires_caveat": true
+        }
+    },
+
+    "drift_watcher": {
+        "enabled": true,
+        "check_interval_hours": 24,
+        "staleness_threshold_days": 90,
+        "confidence_reduction_percent": 10,
+        "registry_path": "doctrine_drift_registry.json",
+        "signal_types": [
+            "legislative_change", "new_regulation", "case_law_update",
+            "jurisdiction_rule_change", "ucc_amendment", "model_law_update"
+        ]
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "ring_buffer_size": 10000,
+        "flush_batch_size": 50,
+        "flush_interval_seconds": 5.0,
+        "log_dir": "logs",
+        "retention_days": 30
+    },
+
+    "search": {
+        "default_top_k": 5,
+        "score_threshold": 0.3,
+        "max_token_length": 50,
+        "min_token_length": 2
+    },
+
+    "audit": {
+        "enabled": true,
+        "log_format": "jsonl",
+        "hash_algorithm": "sha256",
+        "retention_days": 365
+    },
+
+    "epistemic_guardrails": {
+        "banned_phrases": [
+            "This document is guaranteed to be enforceable",
+            "No court would challenge this",
+            "This is a bulletproof contract",
+            "You are fully protected",
+            "This eliminates all legal risk",
+            "No one can sue you with this",
+            "This is absolutely binding",
+            "There is zero chance of dispute"
+        ],
+        "required_disclaimers": {
+            "not_legal_advice": "This document is generated for informational purposes. Consult a licensed attorney before execution.",
+            "jurisdiction_specific": "Legal requirements vary by jurisdiction. This document should be reviewed for local compliance.",
+            "fact_dependent": "Document enforceability depends on specific facts and circumstances."
+        }
+    },
+
+    "cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["*"]
+    },
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation": "50 MB",
+        "retention": "30 days"
+    },
+
+    "metadata": {
+        "author": "ECHO OMEGA PRIME",
+        "authority": "11.0 SOVEREIGN",
+        "build_date": "2026-02-10",
+        "domain": "Legal Document Drafting & Assembly",
+        "classification": "LEGAL",
+        "tier_id": 1,
+        "engine_index": 4,
+        "total_target_lines": 10500
+    }
+}

@@ -1,0 +1,112 @@
+{
+  "engine_id": "GOV03",
+  "engine_name": "System Health Monitor",
+  "version": "1.0.0",
+  "coverage_domains": {
+    "health_polling": {
+      "covered": true,
+      "doctrines": ["health_check_protocol", "port_availability_scanning"],
+      "endpoints": ["/health", "/engine/{engine_id}/health"],
+      "description": "HTTP health check polling with state machine, TCP port probing"
+    },
+    "sla_tracking": {
+      "covered": true,
+      "doctrines": ["sla_uptime_definition", "response_time_percentile_tracking"],
+      "endpoints": ["/sla", "/sla/{engine_id}"],
+      "description": "Uptime percentage and response time percentile tracking per engine"
+    },
+    "dependency_management": {
+      "covered": true,
+      "doctrines": ["dependency_graph_health_propagation"],
+      "endpoints": ["/dependencies", "/dependencies/{engine_id}"],
+      "description": "Directed acyclic graph of engine dependencies with cascading status propagation"
+    },
+    "resource_monitoring": {
+      "covered": true,
+      "doctrines": ["resource_monitoring_per_engine"],
+      "endpoints": ["/resources", "/resources/{engine_id}"],
+      "description": "Per-engine CPU, memory, disk, thread, FD tracking"
+    },
+    "capacity_forecasting": {
+      "covered": true,
+      "doctrines": ["capacity_forecasting_linear_regression", "historical_trend_retention"],
+      "endpoints": ["/capacity", "/capacity/{engine_id}"],
+      "description": "Linear regression on resource trends to project exhaustion dates"
+    },
+    "alert_management": {
+      "covered": true,
+      "doctrines": ["alert_severity_classification", "flapping_detection_and_suppression"],
+      "endpoints": ["/alerts", "/alerts/active", "/alerts/history"],
+      "description": "Multi-severity alerting with deduplication, suppression, and flapping detection"
+    },
+    "crash_detection": {
+      "covered": true,
+      "doctrines": ["engine_crash_detection", "automated_remediation_policy"],
+      "endpoints": ["/incidents", "/incidents/{incident_id}"],
+      "description": "Crash/hang detection with restart recommendations and automated remediation"
+    },
+    "incident_management": {
+      "covered": true,
+      "doctrines": ["incident_response_workflow"],
+      "endpoints": ["/incidents", "/incidents/{incident_id}/resolve"],
+      "description": "Full incident lifecycle from detection to resolution with escalation"
+    },
+    "dashboard_aggregation": {
+      "covered": true,
+      "doctrines": ["dashboard_data_aggregation"],
+      "endpoints": ["/dashboard"],
+      "description": "Pre-computed system-wide health overview"
+    },
+    "maintenance_management": {
+      "covered": true,
+      "doctrines": ["maintenance_window_management"],
+      "endpoints": ["/maintenance", "/maintenance/{engine_id}"],
+      "description": "Planned downtime declaration and SLA exclusion"
+    },
+    "security_monitoring": {
+      "covered": true,
+      "doctrines": ["security_health_monitoring"],
+      "endpoints": ["/security", "/security/{engine_id}"],
+      "description": "Authentication failure tracking, anomaly detection, certificate monitoring"
+    },
+    "log_analysis": {
+      "covered": true,
+      "doctrines": ["log_aggregation_and_analysis"],
+      "endpoints": ["/logs", "/logs/{engine_id}"],
+      "description": "Cross-engine log correlation and error pattern analysis"
+    },
+    "multi_region": {
+      "covered": true,
+      "doctrines": ["multi_region_health_awareness"],
+      "endpoints": ["/regions", "/regions/{region_id}"],
+      "description": "Region-tagged engines with regional health aggregation"
+    }
+  },
+  "epistemic_gaps": [
+    {
+      "domain": "distributed_tracing",
+      "description": "End-to-end request tracing across engine chains not yet implemented",
+      "priority": "MEDIUM",
+      "planned_version": "1.2.0"
+    },
+    {
+      "domain": "ml_anomaly_detection",
+      "description": "Machine learning based anomaly detection (beyond stddev) not yet implemented",
+      "priority": "LOW",
+      "planned_version": "2.0.0"
+    },
+    {
+      "domain": "synthetic_monitoring",
+      "description": "Proactive synthetic transaction monitoring not yet implemented",
+      "priority": "MEDIUM",
+      "planned_version": "1.3.0"
+    }
+  ],
+  "trigger_stats": {
+    "total_doctrines": 18,
+    "triggered_count": 0,
+    "untriggered_count": 18,
+    "coverage_percent": 0.0,
+    "last_reset": "2026-02-12T00:00:00Z"
+  }
+}

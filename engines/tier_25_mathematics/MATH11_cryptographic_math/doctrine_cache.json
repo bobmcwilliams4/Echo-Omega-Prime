@@ -1,0 +1,322 @@
+[
+  {
+    "topic": "RSA Security Foundations",
+    "keywords": ["rsa", "factoring", "integer factorization", "public key", "key size"],
+    "conclusion_template": "RSA security rests on the computational hardness of factoring the product of two large primes. Current best attacks (General Number Field Sieve) run in sub-exponential time L_n[1/3, 1.923], making 2048-bit moduli the minimum for near-term security and 3072-bit or 4096-bit moduli recommended for long-term protection. The public exponent e=65537 is standard because it balances efficiency (low Hamming weight for fast exponentiation) with resistance to small-exponent attacks.",
+    "reasoning_framework": "RSA relies on the trapdoor one-way function n=pq where multiplication is easy but factoring is hard. The security parameter is the bit length of n. NIST SP 800-57 maps key lengths to security strength: 2048-bit RSA provides ~112-bit security, 3072-bit provides ~128-bit. Attacks include: (1) direct factoring via GNFS, (2) Coppersmith's method for partial key exposure, (3) Wiener's attack on small d, (4) Hastad's broadcast attack on small e, (5) Bleichenbacher's padding oracle against PKCS#1 v1.5. The relationship phi(n)=(p-1)(q-1) is the trapdoor: knowing phi(n) makes computing d=e^{-1} mod phi(n) trivial, which is equivalent to factoring n.",
+    "key_factors": [
+      "Modulus bit length determines security strength",
+      "p and q should be of similar bit length to resist Fermat factoring",
+      "Public exponent e=65537 is standard (low Hamming weight)",
+      "Private exponent d must be large enough to resist Wiener's attack",
+      "CRT-based decryption gives ~4x speedup"
+    ],
+    "primary_authority": [
+      "NIST SP 800-57 Part 1 Rev 5 (Key Management)",
+      "Rivest, Shamir, Adleman (1978) — original RSA paper",
+      "FIPS 186-5 — Digital Signature Standard"
+    ],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Elliptic Curve Advantages Over RSA",
+    "keywords": ["elliptic curve", "ecc", "key size comparison", "ecdsa", "secp256k1", "curve25519"],
+    "conclusion_template": "Elliptic curve cryptography achieves equivalent security to RSA with much smaller key sizes: a 256-bit ECC key provides roughly the same security as a 3072-bit RSA key (~128-bit security). This results in faster computation, lower bandwidth, and smaller certificates. The security of ECC relies on the hardness of the Elliptic Curve Discrete Logarithm Problem (ECDLP), for which no sub-exponential classical algorithm is known.",
+    "reasoning_framework": "The ECDLP in a group of order n requires O(sqrt(n)) operations via Pollard's rho, giving true exponential security scaling. By contrast, integer factorization and finite-field DLP have sub-exponential attacks. For 128-bit security: ECC needs ~256-bit keys, RSA needs ~3072-bit keys, DH/DSA needs ~3072-bit keys. Standardized curves include NIST P-256 (secp256r1), secp256k1 (Bitcoin), and Curve25519 (modern, twist-secure). The choice of curve matters: some curves have special structure that could weaken security. Rigidity in parameter generation (verifiably random curves) is preferred to prevent backdoors.",
+    "key_factors": [
+      "256-bit ECC is equivalent to 3072-bit RSA in security",
+      "ECDLP has no known sub-exponential classical algorithm",
+      "Smaller keys mean faster operations and lower bandwidth",
+      "Curve selection matters — rigid parameter generation preferred",
+      "Both RSA and ECC are vulnerable to quantum attacks (Shor's algorithm)"
+    ],
+    "primary_authority": [
+      "NIST SP 800-186 (Recommendations for ECC)",
+      "SEC 2: Recommended Elliptic Curve Domain Parameters",
+      "Bernstein & Lange — SafeCurves project"
+    ],
+    "confidence": 0.93,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "SHA-256 Cryptographic Hash Properties",
+    "keywords": ["sha256", "hash", "collision resistance", "preimage", "avalanche", "digest"],
+    "conclusion_template": "SHA-256 is a 256-bit cryptographic hash function from the SHA-2 family, providing 128-bit collision resistance and 256-bit preimage resistance. It satisfies three fundamental properties: preimage resistance (given h, hard to find m with H(m)=h), second preimage resistance (given m1, hard to find m2 != m1 with H(m1)=H(m2)), and collision resistance (hard to find any m1 != m2 with H(m1)=H(m2)). The avalanche effect ensures that a single bit change in input flips approximately 50% of output bits.",
+    "reasoning_framework": "SHA-256 operates on 512-bit blocks via 64 rounds of mixing using bitwise operations (Ch, Maj, sigma functions), modular addition, and round constants derived from the cube roots of the first 64 primes. The Merkle-Damgard construction builds the full hash from a compression function. Security: birthday attack requires O(2^128) work for collisions. No practical attacks on full SHA-256 exist as of 2026. Length extension attacks are possible due to Merkle-Damgard structure, which is why HMAC-SHA256 or SHA-3 is preferred for MACs. The output is deterministic and uniform over the 2^256 output space for random inputs.",
+    "key_factors": [
+      "256-bit output provides 128-bit collision resistance (birthday bound)",
+      "64 rounds of compression per 512-bit block",
+      "Merkle-Damgard construction — susceptible to length extension",
+      "No practical collision or preimage attacks known on full SHA-256",
+      "Avalanche effect: ~50% bit change per single-bit input change"
+    ],
+    "primary_authority": [
+      "FIPS 180-4 (Secure Hash Standard)",
+      "NIST SP 800-107 Rev 1 (Use of Hash Functions)",
+      "Guido Bertoni et al. — SHA-3 competition analysis"
+    ],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Diffie-Hellman Key Exchange Security",
+    "keywords": ["diffie-hellman", "dh", "key exchange", "discrete log", "shared secret", "man in the middle"],
+    "conclusion_template": "Diffie-Hellman key exchange enables two parties to establish a shared secret over an insecure channel. Its security relies on the Computational Diffie-Hellman (CDH) assumption: given g, g^a mod p, and g^b mod p, it is computationally infeasible to compute g^{ab} mod p. DH is vulnerable to man-in-the-middle attacks unless combined with authentication. Modern deployments use ephemeral DH (DHE) for forward secrecy.",
+    "reasoning_framework": "The DLP in (Z/pZ)* can be solved in sub-exponential time by the Number Field Sieve, requiring p >= 2048 bits for 112-bit security. Safe primes (p = 2q + 1 with q prime) prevent small-subgroup attacks. The generator g should generate a large prime-order subgroup. Key vulnerabilities: (1) small subgroup attacks if parameters not validated, (2) logjam attack if p is reused across many connections, (3) MITM without authentication. ECDH on a 256-bit curve provides equivalent security with much smaller parameters. Forward secrecy is achieved by using ephemeral keys and discarding them after session establishment.",
+    "key_factors": [
+      "Security reduces to the Computational Diffie-Hellman assumption",
+      "Requires p >= 2048 bits for 112-bit security",
+      "Vulnerable to MITM without authentication",
+      "Ephemeral DH (DHE) provides forward secrecy",
+      "Safe primes prevent small-subgroup attacks"
+    ],
+    "primary_authority": [
+      "Diffie & Hellman (1976) — original paper",
+      "RFC 7919 — Negotiated Finite Field DH Parameters",
+      "NIST SP 800-56A Rev 3 (Key Agreement Schemes)"
+    ],
+    "confidence": 0.94,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Miller-Rabin Primality Testing",
+    "keywords": ["miller-rabin", "primality", "probabilistic", "witness", "pseudoprime", "deterministic"],
+    "conclusion_template": "The Miller-Rabin test is a probabilistic primality test with error probability at most 4^{-k} after k independent rounds. For numbers below 3.3 * 10^24, using the first 13 prime witnesses makes the test deterministic (no false positives). It is based on Fermat's little theorem and the fact that the only square roots of 1 modulo a prime are +/- 1.",
+    "reasoning_framework": "Write n-1 = 2^r * d (d odd). For a witness a, compute a^d mod n, then repeatedly square. If we ever get 1 without passing through n-1 first, we have a non-trivial square root of 1, proving n is composite. Each composite n has at most n/4 'strong liars' (values a that fail to detect compositeness), giving 75%+ detection rate per round. Carmichael numbers, which fool Fermat's test, are always detected by Miller-Rabin. The algorithm runs in O(k * log^2(n) * log(log(n))) time. For cryptographic prime generation, 20-40 rounds provide negligible error probability (< 2^{-80}).",
+    "key_factors": [
+      "Error probability <= 4^{-k} for k rounds",
+      "Deterministic for n < 3.3e24 with 13 witnesses",
+      "Detects Carmichael numbers (unlike Fermat test)",
+      "Each round is O(log^2 n) via modular exponentiation",
+      "20 rounds gives error probability < 2^{-40}"
+    ],
+    "primary_authority": [
+      "Rabin (1980) — Probabilistic algorithm for primality",
+      "Miller (1976) — Riemann Hypothesis conditional deterministic test",
+      "FIPS 186-5 Appendix C — Prime Generation"
+    ],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Modular Exponentiation and Square-and-Multiply",
+    "keywords": ["modular exponentiation", "square and multiply", "fast exponentiation", "power mod", "binary method"],
+    "conclusion_template": "Modular exponentiation computes base^exp mod n efficiently using the square-and-multiply (binary) method in O(log(exp)) multiplications. This is the core operation of RSA, Diffie-Hellman, and digital signatures. Each multiplication is modular, keeping intermediate results bounded by n^2 before reduction.",
+    "reasoning_framework": "The naive approach (compute base^exp then reduce) is infeasible for cryptographic-size exponents (2048+ bits). Square-and-multiply processes the exponent bit by bit from MSB to LSB: for each bit, square the accumulator; if the bit is 1, multiply by the base. This requires at most 2*log2(exp) modular multiplications. Montgomery multiplication and Barrett reduction optimize the modular reduction step. Side-channel resistance requires constant-time implementations that don't branch on secret exponent bits. Sliding window and fixed-window methods reduce the number of multiplications further.",
+    "key_factors": [
+      "O(log exp) modular multiplications",
+      "Core operation for RSA, DH, DSA, ECDSA",
+      "Side-channel attacks target branching on exponent bits",
+      "Montgomery multiplication optimizes modular reduction",
+      "Sliding window methods reduce multiplication count"
+    ],
+    "primary_authority": [
+      "Knuth — The Art of Computer Programming, Vol 2",
+      "Menezes, Oorschot, Vanstone — Handbook of Applied Cryptography Ch 14",
+      "Kocher (1996) — Timing Attacks on RSA"
+    ],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Extended Euclidean Algorithm and Modular Inverse",
+    "keywords": ["extended gcd", "euclidean", "modular inverse", "bezout", "gcd"],
+    "conclusion_template": "The Extended Euclidean Algorithm computes gcd(a,b) along with Bezout coefficients x,y such that ax + by = gcd(a,b). When gcd(a,m)=1, this yields the modular inverse a^{-1} mod m = x mod m. The algorithm runs in O(log(min(a,b))) division steps and is fundamental to RSA key generation (computing d = e^{-1} mod phi(n)) and all modular arithmetic.",
+    "reasoning_framework": "The algorithm extends the classical Euclidean algorithm by tracking the linear combination at each step. Starting from (a, 1, 0) and (b, 0, 1), each division step transforms (r1, x1, y1), (r2, x2, y2) into (r2, x2, y2), (r1 - q*r2, x1 - q*x2, y1 - q*y2) until the remainder is 0. The worst case occurs for consecutive Fibonacci numbers, giving O(log(phi) * min(a,b)) divisions. This is the only efficient method for computing modular inverses for general moduli (Fermat's method requires the modulus to be prime).",
+    "key_factors": [
+      "Computes gcd and Bezout coefficients simultaneously",
+      "O(log min(a,b)) division steps",
+      "Foundation for RSA private key computation",
+      "Works for all moduli (not just primes)",
+      "Worst case is consecutive Fibonacci numbers"
+    ],
+    "primary_authority": [
+      "Euclid — Elements, Book VII (c. 300 BCE)",
+      "Knuth — The Art of Computer Programming, Vol 2, Section 4.5.2",
+      "Shoup — A Computational Introduction to Number Theory and Algebra"
+    ],
+    "confidence": 0.98,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Chinese Remainder Theorem in Cryptography",
+    "keywords": ["crt", "chinese remainder theorem", "rsa crt", "simultaneous congruences"],
+    "conclusion_template": "The Chinese Remainder Theorem (CRT) provides a unique solution to a system of simultaneous congruences x = r_i mod m_i when the moduli are pairwise coprime. In cryptography, CRT-based RSA decryption computes m1 = c^{dp} mod p and m2 = c^{dq} mod q separately, then combines via CRT, achieving approximately 4x speedup over direct computation with the full modulus.",
+    "reasoning_framework": "CRT isomorphism: Z/NZ is isomorphic to Z/m1Z x Z/m2Z x ... when N = product(mi) and gcd(mi, mj) = 1. This decomposition is used in: (1) RSA-CRT decryption (~4x speedup because exponentiations with half-size moduli are ~4x faster), (2) multi-prime RSA (3+ primes for even more speedup), (3) secret sharing schemes, (4) residue number systems for parallel arithmetic. Fault attacks on CRT-RSA (Boneh et al., 1997) can recover the private key from a single faulty signature, requiring blinding countermeasures.",
+    "key_factors": [
+      "~4x speedup for RSA decryption via CRT",
+      "Requires pairwise coprime moduli",
+      "Unique solution in [0, product(moduli))",
+      "Vulnerable to fault attacks without blinding",
+      "Foundation for multi-prime RSA variants"
+    ],
+    "primary_authority": [
+      "Sun Tzu — Sunzi Suanjing (c. 3rd-5th century CE)",
+      "Garner (1959) — efficient CRT reconstruction algorithm",
+      "Boneh, DeMillo, Lipton (1997) — CRT-RSA fault attacks"
+    ],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "AES Galois Field GF(2^8) Arithmetic",
+    "keywords": ["galois field", "gf(2^8)", "aes", "mixcolumns", "sbox", "rijndael", "finite field"],
+    "conclusion_template": "AES operates in the Galois field GF(2^8) with irreducible polynomial x^8 + x^4 + x^3 + x + 1 (0x11B). Addition is XOR, multiplication uses polynomial multiplication with reduction. The S-box is constructed by computing the multiplicative inverse in GF(2^8) followed by an affine transformation. MixColumns multiplies each column by a fixed matrix in GF(2^8), providing diffusion across all 4 bytes.",
+    "reasoning_framework": "GF(2^8) has exactly 256 elements (0x00-0xFF), making it a natural fit for byte-level operations. Multiplication: treat bytes as degree-7 polynomials over GF(2), multiply, then reduce mod the irreducible polynomial. The field has multiplicative group of order 255, generated by g=0x03. The S-box's algebraic structure (inverse + affine) provides non-linearity resistant to linear and differential cryptanalysis. MixColumns matrix [[2,3,1,1],[1,2,3,1],[1,1,2,3],[3,1,1,2]] is an MDS (Maximum Distance Separable) code, ensuring maximum branch number of 5 for optimal diffusion. The inverse MixColumns matrix uses {14, 11, 13, 9} as coefficients.",
+    "key_factors": [
+      "Irreducible polynomial 0x11B defines the field",
+      "Addition is XOR; multiplication is polynomial with reduction",
+      "S-box = inverse + affine transform for non-linearity",
+      "MixColumns is MDS with branch number 5",
+      "Generator g=3 produces log/antilog tables for fast multiplication"
+    ],
+    "primary_authority": [
+      "FIPS 197 (AES Standard)",
+      "Daemen & Rijmen — The Design of Rijndael (2002)",
+      "Lidl & Niederreiter — Finite Fields (Encyclopedia of Mathematics)"
+    ],
+    "confidence": 0.96,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Discrete Logarithm Problem and Baby-Step Giant-Step",
+    "keywords": ["discrete log", "baby step", "giant step", "bsgs", "dlp", "pohlig-hellman"],
+    "conclusion_template": "The Discrete Logarithm Problem (DLP) asks: given g, h, and p, find x such that g^x = h (mod p). Baby-step giant-step (BSGS) solves it in O(sqrt(n)) time and space where n is the group order. For large primes, the Number Field Sieve solves DLP in sub-exponential time L_p[1/3, 1.923], analogous to integer factorization. Pohlig-Hellman decomposes the DLP when the group order is smooth.",
+    "reasoning_framework": "BSGS creates a time-space tradeoff: precompute a table of g^j for j in [0, sqrt(n)), then check g^{-m*i} * h against the table for i in [0, sqrt(n)). Match at (i,j) gives x = im + j. Total: O(sqrt(n)) multiplications and O(sqrt(n)) storage. Pohlig-Hellman reduces DLP in a group of order n = product(p_i^{e_i}) to sub-problems of size p_i, then combines via CRT. If all p_i are small (smooth order), DLP is easy. This is why DH/DSA require prime-order subgroups. Index calculus methods (NFS) exploit the structure of multiplicative groups mod p for sub-exponential attacks, not applicable to generic groups or elliptic curves.",
+    "key_factors": [
+      "BSGS: O(sqrt(n)) time and space",
+      "Pohlig-Hellman exploits smooth group orders",
+      "NFS gives sub-exponential DLP in (Z/pZ)*",
+      "Elliptic curve DLP has no sub-exponential classical algorithm",
+      "Smooth-order groups are cryptographically weak"
+    ],
+    "primary_authority": [
+      "Shanks (1971) — Baby-step giant-step algorithm",
+      "Pohlig & Hellman (1978) — DLP with smooth orders",
+      "Schirokauer (1993) — Number Field Sieve for DLP"
+    ],
+    "confidence": 0.94,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Elliptic Curve Point Arithmetic",
+    "keywords": ["point addition", "point doubling", "scalar multiplication", "weierstrass", "chord tangent"],
+    "conclusion_template": "Elliptic curve point arithmetic over finite fields follows the chord-and-tangent rule. Point addition (P+Q for P != Q) draws a line through P and Q, finds the third intersection with the curve, and reflects over the x-axis. Point doubling (P+P) uses the tangent at P. Scalar multiplication kP is computed via double-and-add in O(log k) point operations, analogous to square-and-multiply for modular exponentiation.",
+    "reasoning_framework": "For the Weierstrass form y^2 = x^3 + ax + b over GF(p): Addition (P != Q): lambda = (y2-y1)/(x2-x1) mod p, x3 = lambda^2 - x1 - x2, y3 = lambda(x1-x3) - y1. Doubling: lambda = (3x1^2 + a)/(2y1) mod p, then same formula. The point at infinity O is the identity element. The set of points forms an abelian group. For security, the group order must be (nearly) prime to prevent Pohlig-Hellman attacks. Projective or Jacobian coordinates avoid costly modular inversions during intermediate computations. Side-channel resistance requires constant-time scalar multiplication (e.g., Montgomery ladder).",
+    "key_factors": [
+      "Group law defined by chord-and-tangent construction",
+      "Point at infinity is the identity element",
+      "Double-and-add gives O(log k) scalar multiplication",
+      "Group order must be nearly prime for security",
+      "Projective coordinates avoid field inversions"
+    ],
+    "primary_authority": [
+      "Silverman — The Arithmetic of Elliptic Curves",
+      "Hankerson, Menezes, Vanstone — Guide to ECC",
+      "NIST SP 800-186 (ECC recommendations)"
+    ],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Prime Generation for Cryptographic Applications",
+    "keywords": ["prime generation", "random prime", "safe prime", "strong prime", "rejection sampling"],
+    "conclusion_template": "Cryptographic prime generation uses rejection sampling: generate random odd numbers of the desired bit length, apply trial division by small primes, then Miller-Rabin testing. The Prime Number Theorem guarantees that roughly 1 in ln(n) odd numbers near n is prime, so for a 1024-bit prime, approximately 710 candidates are tested on average. Safe primes (p = 2q+1, q prime) are needed for DH parameters.",
+    "reasoning_framework": "By PNT, pi(x) ~ x/ln(x), so the density of primes near a k-bit number is ~1/(k*ln(2)). For 512-bit primes, ~355 candidates on average. Trial division by the first few hundred small primes eliminates ~88% of candidates cheaply. FIPS 186-5 specifies provable primes (Maurer/Shawe-Taylor) or probable primes (Miller-Rabin with sufficient rounds). For RSA, p and q should satisfy |p-q| > 2^(n/2-100) to resist Fermat factoring. Safe primes p=2q+1 require both p and q to be prime, making generation slower by a factor of ~ln(p). Strong primes additionally require (p-1) to have a large prime factor, but this is considered unnecessary with modern key sizes.",
+    "key_factors": [
+      "Rejection sampling with trial division + Miller-Rabin",
+      "Average ~k*ln(2) candidates for a k-bit prime",
+      "FIPS 186-5 specifies acceptable generation methods",
+      "RSA requires |p-q| to be large",
+      "Safe primes needed for DH parameters"
+    ],
+    "primary_authority": [
+      "FIPS 186-5 Appendix C (Prime Generation)",
+      "Hardy & Wright — Introduction to Theory of Numbers",
+      "Maurer (1995) — Fast generation of prime numbers with provable primality"
+    ],
+    "confidence": 0.94,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "ECDSA Digital Signatures",
+    "keywords": ["ecdsa", "digital signature", "elliptic curve signature", "sign", "verify", "nonce"],
+    "conclusion_template": "ECDSA (Elliptic Curve Digital Signature Algorithm) produces compact signatures (64 bytes for 256-bit curves) with security equivalent to 3072-bit RSA. The signature (r, s) is computed using a per-signature random nonce k. Nonce reuse or bias is catastrophic: it directly reveals the private key. RFC 6979 specifies deterministic nonce generation to eliminate this attack vector.",
+    "reasoning_framework": "Signing: choose random k in [1, n-1], compute R = kG, r = R.x mod n, s = k^{-1}(z + rd) mod n where z is the message hash and d is the private key. Verification: compute u1 = zs^{-1}, u2 = rs^{-1}, check that (u1*G + u2*Q).x mod n == r. If the same nonce k is used for two different messages, the private key d is algebraically recoverable. The Sony PS3 ECDSA break (2010) exploited a constant nonce. RFC 6979 derives k deterministically from the message and private key via HMAC-DRBG, making the scheme deterministic and nonce-safe.",
+    "key_factors": [
+      "Nonce k must be unique and secret per signature",
+      "Nonce reuse reveals the private key algebraically",
+      "RFC 6979 provides deterministic nonce generation",
+      "64-byte signatures for 128-bit security (P-256)",
+      "Verification requires two scalar multiplications"
+    ],
+    "primary_authority": [
+      "FIPS 186-5 (Digital Signature Standard)",
+      "RFC 6979 (Deterministic ECDSA)",
+      "Johnson, Menezes, Vanstone — The Elliptic Curve Digital Signature Algorithm"
+    ],
+    "confidence": 0.95,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Quantum Threats to Cryptographic Mathematics",
+    "keywords": ["quantum", "shor", "grover", "post-quantum", "lattice", "quantum computing"],
+    "conclusion_template": "Shor's algorithm solves both integer factorization and discrete logarithm problems in polynomial time on a quantum computer, breaking RSA, DH, and ECC. Grover's algorithm provides a quadratic speedup for brute-force search, effectively halving symmetric key security (AES-256 becomes 128-bit against quantum). Post-quantum cryptography (lattice-based, code-based, hash-based) is being standardized by NIST to replace vulnerable schemes.",
+    "reasoning_framework": "Shor's algorithm runs in O(log^3(n)) quantum gates and O(log(n)) qubits for factoring n-bit numbers. Current quantum computers have ~1,000 logical qubits; factoring 2048-bit RSA requires ~4,000+ logical qubits with error correction. Timeline estimates range from 10-30 years. NIST PQC standardization selected CRYSTALS-Kyber (key encapsulation) and CRYSTALS-Dilithium (signatures) as primary standards, both lattice-based. Hybrid approaches (classical + PQC) recommended during transition. Harvest-now-decrypt-later attacks make migration urgent for long-term secrets.",
+    "key_factors": [
+      "Shor's algorithm breaks RSA, DH, and ECC in polynomial time",
+      "Grover halves effective symmetric key lengths",
+      "4,000+ logical qubits needed for 2048-bit RSA",
+      "NIST PQC standards: Kyber (KEM) and Dilithium (signatures)",
+      "Harvest-now-decrypt-later makes transition urgent"
+    ],
+    "primary_authority": [
+      "Shor (1994) — Polynomial-time algorithms for factoring and DLP",
+      "NIST PQC Standardization Process (2016-2024)",
+      "Grover (1996) — Quantum search algorithm"
+    ],
+    "confidence": 0.90,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Side-Channel Attacks on Cryptographic Implementations",
+    "keywords": ["side channel", "timing attack", "power analysis", "constant time", "cache attack"],
+    "conclusion_template": "Side-channel attacks exploit physical implementation characteristics (timing, power consumption, electromagnetic emissions, cache behavior) rather than mathematical weaknesses. Timing attacks on RSA (Kocher 1996) and cache-timing attacks on AES demonstrate that mathematically sound algorithms can be broken through implementation flaws. Countermeasures include constant-time code, blinding, masking, and hardware isolation.",
+    "reasoning_framework": "Timing attacks: if modular exponentiation branches on secret bits (skipping multiplication when bit is 0), timing differences leak the exponent. Power analysis: Simple Power Analysis (SPA) directly reads key bits from power traces; Differential Power Analysis (DPA) uses statistical methods. Cache attacks: AES table lookups create cache-line-dependent timing variations. Constant-time implementations avoid all secret-dependent branches, memory accesses, and instruction timing. Montgomery ladder for scalar multiplication is inherently regular. Blinding adds random factors before computation and removes them after, decorrelating power traces from the secret.",
+    "key_factors": [
+      "Timing variations leak secret exponent bits",
+      "Power analysis reads key material from hardware traces",
+      "Cache-timing attacks exploit table lookup patterns",
+      "Constant-time code eliminates most timing channels",
+      "Blinding decorrelates computation from secrets"
+    ],
+    "primary_authority": [
+      "Kocher (1996) — Timing Attacks on Diffie-Hellman, RSA, DSS",
+      "Kocher, Jaffe, Jun (1999) — Differential Power Analysis",
+      "Bernstein (2005) — Cache-timing attacks on AES"
+    ],
+    "confidence": 0.93,
+    "confidence_stratification": "DEFENSIBLE"
+  },
+  {
+    "topic": "Euler's Totient and Multiplicative Group Structure",
+    "keywords": ["euler totient", "phi", "multiplicative group", "primitive root", "group order", "carmichael"],
+    "conclusion_template": "Euler's totient function phi(n) counts the integers in [1,n] coprime to n. For prime p, phi(p) = p-1. For n = p*q with distinct primes, phi(n) = (p-1)(q-1). The multiplicative group (Z/nZ)* has order phi(n) and is cyclic if and only if n is 1, 2, 4, p^k, or 2p^k for odd prime p. Knowledge of phi(n) for n=pq is equivalent to knowing the factorization, which is why RSA security depends on keeping phi(n) secret.",
+    "reasoning_framework": "phi is multiplicative: phi(ab) = phi(a)*phi(b) when gcd(a,b)=1. For prime powers: phi(p^k) = p^k - p^{k-1}. Euler's theorem: a^{phi(n)} = 1 mod n when gcd(a,n)=1, generalizing Fermat's little theorem. The Carmichael function lambda(n) gives the smallest exponent: lambda(pq) = lcm(p-1, q-1). For RSA, d = e^{-1} mod lambda(n) also works and gives a smaller private exponent. Primitive roots exist only for n = 1, 2, 4, p^k, 2p^k; they generate the full cyclic group (Z/nZ)*.",
+    "key_factors": [
+      "phi(p) = p-1 for prime p; phi(pq) = (p-1)(q-1)",
+      "phi is multiplicative for coprime arguments",
+      "Euler's theorem: a^phi(n) = 1 mod n",
+      "Knowing phi(n) is equivalent to factoring n = pq",
+      "Carmichael's lambda gives the minimal universal exponent"
+    ],
+    "primary_authority": [
+      "Euler (1763) — Theoremata circa divisores numerorum",
+      "Ireland & Rosen — A Classical Introduction to Modern Number Theory",
+      "Niven, Zuckerman, Montgomery — An Introduction to the Theory of Numbers"
+    ],
+    "confidence": 0.97,
+    "confidence_stratification": "DEFENSIBLE"
+  }
+]

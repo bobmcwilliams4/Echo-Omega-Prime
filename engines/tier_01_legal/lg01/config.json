@@ -1,0 +1,216 @@
+{
+  "engine_id": "LG01",
+  "engine_name": "Contract Analysis Engine",
+  "version": "1.0.0",
+  "tier": 1,
+  "tier_name": "LEGAL",
+  "mode": "DET",
+  "mode_name": "Deterministic",
+  "priority": 90,
+  "priority_label": "Critical Infrastructure",
+  "port": 8401,
+  "host": "0.0.0.0",
+  "description": "Production-grade contract analysis engine providing deterministic clause extraction, risk assessment, obligation tracking, compliance checking, and contract comparison capabilities.",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "11.0 SOVEREIGN",
+  "architecture": {
+    "pattern": "TIE-6",
+    "layers": {
+      "layer_1": {
+        "name": "Doctrine Cache",
+        "latency_target_ms": 200,
+        "description": "Pre-compiled contract law reasoning blocks with authority hierarchy"
+      },
+      "layer_2": {
+        "name": "Semantic Retrieval",
+        "latency_target_ms": 700,
+        "description": "Fast semantic search on cache miss using normalized contract terminology"
+      },
+      "layer_3": {
+        "name": "Deep Analysis",
+        "latency_target_ms": 5000,
+        "description": "Multi-source synthesis for complex multi-clause contract disputes"
+      }
+    },
+    "files": [
+      "engine.py",
+      "doctrines.py",
+      "semantic.py",
+      "telemetry.py",
+      "search.py",
+      "config.json"
+    ]
+  },
+  "response_modes": {
+    "FAST": {
+      "description": "Quick clause identification, sub-2 second target",
+      "max_latency_ms": 2000,
+      "include_citations": false,
+      "include_risk_score": true
+    },
+    "REVIEW": {
+      "description": "Detailed clause review with risk assessment and recommendations",
+      "max_latency_ms": 10000,
+      "include_citations": true,
+      "include_risk_score": true
+    },
+    "MEMO": {
+      "description": "Full legal memorandum with case law, regulatory analysis, and negotiation guidance",
+      "max_latency_ms": 30000,
+      "include_citations": true,
+      "include_risk_score": true
+    }
+  },
+  "contract_types_supported": [
+    "service_agreement",
+    "master_service_agreement",
+    "software_license",
+    "saas_agreement",
+    "nda",
+    "employment_agreement",
+    "independent_contractor",
+    "lease_agreement",
+    "purchase_agreement",
+    "supply_agreement",
+    "joint_venture",
+    "partnership_agreement",
+    "merger_agreement",
+    "asset_purchase",
+    "stock_purchase",
+    "franchise_agreement",
+    "distribution_agreement",
+    "consulting_agreement",
+    "loan_agreement",
+    "guaranty",
+    "settlement_agreement",
+    "licensing_agreement",
+    "construction_contract",
+    "real_estate_purchase",
+    "oil_gas_lease",
+    "mineral_rights_agreement",
+    "operating_agreement",
+    "shareholders_agreement",
+    "subscription_agreement",
+    "convertible_note"
+  ],
+  "risk_categories": {
+    "financial": {
+      "weight": 0.25,
+      "subcategories": ["liability_caps", "indemnification", "liquidated_damages", "payment_terms", "penalties"]
+    },
+    "operational": {
+      "weight": 0.20,
+      "subcategories": ["performance_standards", "sla_terms", "delivery_obligations", "quality_requirements"]
+    },
+    "legal": {
+      "weight": 0.20,
+      "subcategories": ["governing_law", "jurisdiction", "dispute_resolution", "regulatory_compliance"]
+    },
+    "termination": {
+      "weight": 0.15,
+      "subcategories": ["termination_rights", "cure_periods", "survival_clauses", "wind_down"]
+    },
+    "ip_data": {
+      "weight": 0.10,
+      "subcategories": ["ip_ownership", "license_grants", "data_protection", "confidentiality"]
+    },
+    "change_control": {
+      "weight": 0.10,
+      "subcategories": ["assignment_rights", "change_of_control", "subcontracting", "amendment_process"]
+    }
+  },
+  "clause_taxonomy": {
+    "core_clauses": [
+      "definitions",
+      "scope_of_work",
+      "term_and_duration",
+      "payment_terms",
+      "representations_warranties",
+      "indemnification",
+      "limitation_of_liability",
+      "confidentiality",
+      "intellectual_property",
+      "termination",
+      "governing_law",
+      "dispute_resolution",
+      "force_majeure",
+      "assignment",
+      "notices",
+      "entire_agreement",
+      "amendments",
+      "severability",
+      "waiver",
+      "counterparts"
+    ],
+    "specialized_clauses": [
+      "non_compete",
+      "non_solicitation",
+      "exclusivity",
+      "most_favored_nation",
+      "change_of_control",
+      "audit_rights",
+      "insurance_requirements",
+      "data_protection",
+      "regulatory_compliance",
+      "environmental",
+      "anti_corruption",
+      "sanctions",
+      "survival",
+      "escalation",
+      "benchmarking",
+      "step_in_rights"
+    ]
+  },
+  "epistemic_guardrails": {
+    "enabled": true,
+    "banned_phrases": [
+      "this contract is definitely",
+      "there is no risk",
+      "this clause is completely safe",
+      "you have nothing to worry about",
+      "this is guaranteed to",
+      "no court would ever",
+      "this is always enforceable",
+      "this clause is bulletproof"
+    ],
+    "required_disclosures": {
+      "jurisdiction_variance": "Contract enforceability may vary by jurisdiction. This analysis assumes {jurisdiction} law unless otherwise specified.",
+      "not_legal_advice": "This analysis is for informational purposes. Consult qualified legal counsel for binding legal opinions.",
+      "temporal_caveat": "Legal standards evolve. This analysis reflects law as of {analysis_date}.",
+      "fact_dependency": "Conclusions depend on the accuracy and completeness of the contract text provided."
+    }
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/LG01/telemetry",
+    "query_log": "query_traces.jsonl",
+    "reasoning_log": "reasoning_snapshots.jsonl",
+    "error_log": "error_spine.jsonl",
+    "performance_log": "performance_metrics.jsonl",
+    "audit_db": "audit_trail.db",
+    "rotation_mb": 100,
+    "retention_days": 90
+  },
+  "search": {
+    "max_results": 50,
+    "min_relevance_score": 0.3,
+    "fuzzy_threshold": 0.7,
+    "boost_exact_match": 2.0,
+    "boost_clause_type": 1.5,
+    "boost_risk_level": 1.3
+  },
+  "performance": {
+    "max_contract_size_bytes": 10485760,
+    "max_clauses_per_analysis": 500,
+    "cache_doctrine_ttl_seconds": 3600,
+    "cache_search_ttl_seconds": 300,
+    "max_concurrent_analyses": 20,
+    "worker_threads": 4
+  },
+  "integrations": {
+    "omniscient_sync": "https://omniscient-sync.bmcii1976.workers.dev",
+    "build_orchestrator": "https://echo-build-orchestrator.bmcii1976.workers.dev",
+    "crystal_memory": "O:/ECHO_OMEGA_PRIME/MEMORY_ORCHESTRATION/CRYSTALS_NEW",
+    "r2_bucket": "echo-build-plans"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "engine_id": "P01",
+  "engine_name": "heirship_determiner",
+  "version": "1.0.0",
+  "port": 8651,
+  "mode": "rule_based",
+  "domain": "probate_intestacy",
+  "jurisdiction": "texas_primary",
+
+  "capabilities": [
+    "intestate_succession_analysis",
+    "per_stirpes_distribution",
+    "per_capita_distribution",
+    "community_property_determination",
+    "separate_property_succession",
+    "affidavit_of_heirship_requirements",
+    "homestead_rights_analysis",
+    "simultaneous_death_scenarios",
+    "advancement_doctrine",
+    "adopted_children_rights",
+    "half_blood_relatives",
+    "posthumous_heirs",
+    "escheat_determination"
+  ],
+
+  "authority_sources": [
+    "Texas Estates Code Chapter 201",
+    "Texas Estates Code Chapter 202",
+    "Texas Estates Code Chapter 71 (Escheat)",
+    "Texas Estates Code Chapter 401 (Independent Administration)",
+    "Texas Estates Code Chapter 121 (Simultaneous Death)",
+    "Texas Family Code Title 1 (Community Property)",
+    "Texas Constitution Art. XVI Sec. 52 (Homestead)",
+    "Uniform Probate Code (comparative)",
+    "Texas Supreme Court probate precedent",
+    "Texas Probate Forms Manual"
+  ],
+
+  "issue_categories": [
+    "INTESTATE_SUCCESSION",
+    "PROPERTY_CHARACTERIZATION",
+    "DISTRIBUTION_METHODOLOGY",
+    "HEIR_QUALIFICATION",
+    "ADVANCEMENT_CLAIMS",
+    "HOMESTEAD_EXEMPTION",
+    "FAMILY_ALLOWANCE",
+    "AFFIDAVIT_HEIRSHIP",
+    "ESCHEAT_RISK",
+    "ADMINISTRATION_TYPE",
+    "SIMULTANEOUS_DEATH",
+    "REPRESENTATION_RIGHTS"
+  ],
+
+  "response_modes": {
+    "FAST": {
+      "max_tokens": 500,
+      "include_citations": false,
+      "detail_level": "concise"
+    },
+    "DEFENSE": {
+      "max_tokens": 2000,
+      "include_citations": true,
+      "detail_level": "audit_ready",
+      "adversarial_review": true
+    },
+    "MEMO": {
+      "max_tokens": 4000,
+      "include_citations": true,
+      "detail_level": "comprehensive",
+      "include_alternatives": true
+    }
+  },
+
+  "confidence_thresholds": {
+    "DEFENSIBLE": 0.90,
+    "AGGRESSIVE": 0.75,
+    "DISCLOSURE": 0.60,
+    "HIGH_RISK": 0.45
+  },
+
+  "analysis_zones": {
+    "PLANNING": "pre_death_structure",
+    "REPORTING": "post_death_determination",
+    "AUDIT": "affidavit_preparation"
+  },
+
+  "telemetry": {
+    "log_level": "INFO",
+    "audit_trail": true,
+    "metrics_enabled": true,
+    "drift_monitoring": true,
+    "coverage_tracking": true
+  },
+
+  "cloud_retrieval": {
+    "enabled": true,
+    "graph_worker": "https://cognition-graph.bmcii1976.workers.dev",
+    "ekm_worker": "https://cognition-ekm.bmcii1976.workers.dev",
+    "timeout_seconds": 10,
+    "fallback_to_local": true
+  },
+
+  "database": {
+    "doctrine_cache_size": 50,
+    "vector_dimensions": 384,
+    "semantic_threshold": 0.75
+  },
+
+  "api": {
+    "cors_origins": ["*"],
+    "request_timeout": 60,
+    "max_concurrent": 10
+  }
+}

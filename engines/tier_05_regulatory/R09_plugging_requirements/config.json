@@ -1,0 +1,201 @@
+{
+  "engine_id": "R09",
+  "name": "Plugging Requirements Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8709,
+  "mode": "no_llm",
+  "description": "Analyze well plugging requirements under RRC Statewide Rule 14",
+
+  "regulatory_framework": {
+    "primary_authority": "16 TAC §3.14",
+    "secondary_authorities": [
+      "16 TAC §3.78 (Financial Security)",
+      "16 TAC §3.9 (Injection Wells)",
+      "16 TAC §3.15 (Inactive Wells)",
+      "Texas Natural Resources Code §89.083",
+      "Texas Natural Resources Code §91.111",
+      "30 TAC §331 (TCEQ UIC Rules)"
+    ],
+    "federal_regulations": [
+      "40 CFR Part 144-148 (EPA UIC Program)"
+    ]
+  },
+
+  "capabilities": {
+    "three_layer_response": true,
+    "response_modes": ["fast", "defense", "memo"],
+    "doctrine_cache": true,
+    "semantic_normalization": true,
+    "vector_search": true,
+    "telemetry": true,
+    "drift_watcher": false,
+    "coverage_map": true,
+    "audit_trail": true,
+    "determinism_hash": true,
+    "health_endpoint": true
+  },
+
+  "doctrine_blocks": {
+    "total": 50,
+    "categories": [
+      "cement_placement",
+      "notification",
+      "financial_security",
+      "surface_restoration",
+      "regulatory_compliance",
+      "environmental_protection",
+      "injection_wells",
+      "special_conditions"
+    ]
+  },
+
+  "response_configuration": {
+    "default_mode": "fast",
+    "fast_mode": {
+      "max_tokens": 500,
+      "include_citations": false,
+      "detail_level": "summary"
+    },
+    "defense_mode": {
+      "max_tokens": 2000,
+      "include_citations": true,
+      "detail_level": "full",
+      "include_alternatives": true
+    },
+    "memo_mode": {
+      "max_tokens": 5000,
+      "include_citations": true,
+      "detail_level": "comprehensive",
+      "include_reasoning": true
+    }
+  },
+
+  "cost_estimation": {
+    "enabled": true,
+    "default_parameters": {
+      "mobilization_cost": 5000.0,
+      "shallow_rig_day_rate": 3500.0,
+      "deep_rig_day_rate": 7500.0,
+      "cement_per_sack": 20.0,
+      "verification_test_cost": 2000.0,
+      "filing_fee": 250.0,
+      "injection_well_testing": 5000.0
+    }
+  },
+
+  "notification_requirements": {
+    "rrc_notice_days": 5,
+    "surface_owner_notice_days": 14,
+    "tceq_notice_days": 30,
+    "required_forms": ["H-10", "W-3A"],
+    "notification_methods": ["certified_mail", "personal_delivery"]
+  },
+
+  "plug_specifications": {
+    "minimum_plug_length_feet": 50,
+    "surface_casing_plug_feet": 50,
+    "production_casing_plug_feet": 100,
+    "h2s_multiplier": 2.0,
+    "bay_estuary_multiplier": 2.0,
+    "cement_yield_cuft_per_sack": 1.15,
+    "safety_factor": 1.2
+  },
+
+  "authority_hierarchy": {
+    "16 TAC §3.14": 100,
+    "16 TAC §3.78": 95,
+    "16 TAC §3.8": 90,
+    "Texas Natural Resources Code": 85,
+    "RRC field rules": 80,
+    "RRC policy": 70,
+    "Industry standards": 50,
+    "Best practices": 40
+  },
+
+  "confidence_thresholds": {
+    "high": {
+      "min_doctrine_matches": 3,
+      "min_authority_weight": 80,
+      "requires_verification": false
+    },
+    "medium": {
+      "min_doctrine_matches": 2,
+      "min_authority_weight": 60,
+      "requires_verification": false
+    },
+    "low": {
+      "min_doctrine_matches": 1,
+      "min_authority_weight": 40,
+      "requires_verification": true
+    }
+  },
+
+  "telemetry_configuration": {
+    "enabled": true,
+    "audit_trail_path": "./audit_trail.jsonl",
+    "metrics_retention_days": 90,
+    "performance_targets": {
+      "doctrine_cache_hit_ms": 50,
+      "semantic_retrieval_ms": 200,
+      "total_response_ms": 500,
+      "p95_latency_ms": 1000
+    }
+  },
+
+  "integration": {
+    "cloud_retriever": {
+      "enabled": false,
+      "r2_bucket": "echo-prime-knowledge",
+      "fallback_to_local": true
+    },
+    "external_apis": {
+      "rrc_online": false,
+      "tceq_api": false
+    }
+  },
+
+  "logging": {
+    "level": "INFO",
+    "format": "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>",
+    "rotation": "100 MB",
+    "retention": "30 days",
+    "compression": "zip"
+  },
+
+  "api_configuration": {
+    "cors_enabled": true,
+    "cors_origins": ["*"],
+    "rate_limiting": {
+      "enabled": false,
+      "requests_per_minute": 60
+    },
+    "authentication": {
+      "enabled": false,
+      "type": "none"
+    }
+  },
+
+  "maintenance": {
+    "doctrine_update_check": "monthly",
+    "regulatory_review": "quarterly",
+    "version_control": true,
+    "backup_frequency": "weekly"
+  },
+
+  "deployment": {
+    "environment": "production",
+    "host": "0.0.0.0",
+    "port": 8709,
+    "workers": 1,
+    "reload": false,
+    "access_log": true
+  },
+
+  "metadata": {
+    "created": "2026-02-12",
+    "author": "ECHO OMEGA PRIME",
+    "authority": "Bobby Don McWilliams II",
+    "tier": "regulatory_intelligence",
+    "domain": "oil_gas_regulatory"
+  }
+}

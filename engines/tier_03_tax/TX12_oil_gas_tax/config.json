@@ -1,0 +1,147 @@
+{
+    "engine_id": "TX12",
+    "engine_name": "Oil & Gas Tax Intelligence Engine",
+    "version": "1.0.0",
+    "port": 8462,
+    "mode": "EF",
+    "domain": "oil_gas_taxation",
+    "description": "Comprehensive oil and gas tax intelligence engine covering percentage depletion, cost depletion, intangible drilling costs, working/royalty interest taxation, production payments, severance taxes, enhanced oil recovery credits, marginal well credits, partnership pass-through, farmout agreements, JOA treatment, and Permian Basin specific considerations.",
+    "author": "ECHO OMEGA PRIME",
+    "authority_level": 11.0,
+    "commander": "Bobby Don McWilliams II",
+
+    "taxonomy": {
+        "primary_domain": "oil_gas_taxation",
+        "sub_domains": [
+            "percentage_depletion",
+            "cost_depletion",
+            "intangible_drilling_costs",
+            "working_interest",
+            "royalty_interest",
+            "overriding_royalty_interest",
+            "production_payments",
+            "lease_bonus",
+            "delay_rental",
+            "severance_tax",
+            "enhanced_oil_recovery",
+            "marginal_well_credit",
+            "section_199a_qbi",
+            "partnership_oil_gas",
+            "geological_geophysical_costs",
+            "abandonment_plugging",
+            "farmout_agreements",
+            "joa_treatment",
+            "net_profits_interest",
+            "texas_franchise_tax",
+            "mineral_deed_consequences",
+            "unitization",
+            "carried_interest",
+            "reversionary_interest",
+            "like_kind_exchange_minerals",
+            "depletable_interest",
+            "economic_interest_doctrine",
+            "pool_of_capital_doctrine",
+            "lease_operating_expenses",
+            "workover_vs_capital",
+            "stripper_well_exemption",
+            "alternative_minimum_tax",
+            "passive_activity_oil_gas",
+            "at_risk_rules_oil_gas",
+            "state_severance_comparison",
+            "horizontal_drilling_idc",
+            "saltwater_disposal_wells",
+            "midstream_gathering_tax",
+            "mineral_rights_valuation",
+            "bonus_depreciation_equipment"
+        ],
+        "jurisdictions": [
+            "federal",
+            "texas",
+            "new_mexico",
+            "oklahoma",
+            "north_dakota",
+            "colorado",
+            "wyoming",
+            "louisiana",
+            "pennsylvania",
+            "ohio",
+            "west_virginia"
+        ]
+    },
+
+    "tie_components": [
+        "three_layer_response",
+        "response_modes",
+        "doctrine_cache",
+        "authority_hardening",
+        "confidence_stratification",
+        "semantic_normalization",
+        "vector_search",
+        "telemetry",
+        "drift_watcher",
+        "coverage_map",
+        "metrics_collector",
+        "health_endpoint",
+        "zoned_analysis",
+        "fact_fragility_scoring",
+        "audit_trail_jsonl",
+        "determinism_hash_sha256",
+        "fastapi_server",
+        "loguru_logging",
+        "multi_doctrine_decomposition",
+        "deep_analysis_mode"
+    ],
+
+    "performance": {
+        "doctrine_cache_target_ms": 200,
+        "semantic_retrieval_target_ms": 700,
+        "deep_analysis_target_ms": 5000,
+        "max_concurrent_queries": 50,
+        "cache_ttl_seconds": 3600,
+        "audit_log_rotation_mb": 50,
+        "audit_log_retention_days": 365
+    },
+
+    "quality_gates": {
+        "min_engine_lines": 3000,
+        "min_doctrine_blocks": 50,
+        "min_doctrine_lines_each": 40,
+        "min_config_lines": 100,
+        "min_telemetry_lines": 400,
+        "min_semantic_lines": 500,
+        "min_search_lines": 300,
+        "require_type_hints": true,
+        "require_pydantic_models": true,
+        "require_loguru": true,
+        "require_health_endpoint": true,
+        "require_determinism_hash": true,
+        "require_pytest": true
+    },
+
+    "dependencies": {
+        "python": ">=3.11",
+        "fastapi": ">=0.100.0",
+        "uvicorn": ">=0.22.0",
+        "pydantic": ">=2.0.0",
+        "loguru": ">=0.7.0"
+    },
+
+    "api_endpoints": [
+        {"method": "POST", "path": "/query", "description": "Submit oil & gas tax query"},
+        {"method": "POST", "path": "/analyze", "description": "Deep multi-doctrine analysis"},
+        {"method": "GET", "path": "/health", "description": "System health check"},
+        {"method": "GET", "path": "/doctrines", "description": "List all doctrine topics"},
+        {"method": "GET", "path": "/doctrines/{topic}", "description": "Get specific doctrine"},
+        {"method": "GET", "path": "/metrics", "description": "Performance metrics"},
+        {"method": "GET", "path": "/coverage", "description": "Doctrine coverage report"},
+        {"method": "POST", "path": "/batch", "description": "Batch query processing"}
+    ],
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation": "50 MB",
+        "retention": "365 days",
+        "audit_trail": true
+    }
+}

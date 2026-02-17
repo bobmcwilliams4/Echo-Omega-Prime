@@ -1,0 +1,89 @@
+{
+  "engine_id": "P05_creditor_claim",
+  "version": "1.0.0",
+  "port": 8655,
+  "domain": "creditor_claims",
+  "mode": "hybrid",
+  "description": "Texas creditor claim analysis engine - priority, statute of limitations, secured vs unsecured, exempt property",
+  "authority_sources": [
+    "Texas Estates Code Chapter 355",
+    "Texas Estates Code Chapter 353",
+    "Texas Constitution Article XVI Section 50",
+    "Texas Property Code Chapter 41",
+    "Texas Business & Commerce Code",
+    "11 USC (Bankruptcy Code)",
+    "Texas Civil Practice & Remedies Code"
+  ],
+  "primary_statutes": [
+    "TEC §355.001-355.159",
+    "TEC §353.051-353.154",
+    "TX Const. Art. XVI §50",
+    "TPC §41.001-41.002",
+    "26 USC §6321-6323"
+  ],
+  "claim_categories": [
+    "SECURED_CLAIMS",
+    "UNSECURED_CLAIMS",
+    "PRIORITY_CLAIMS",
+    "ADMINISTRATION_EXPENSES",
+    "FUNERAL_EXPENSES",
+    "LAST_ILLNESS",
+    "FAMILY_ALLOWANCE",
+    "EXEMPT_PROPERTY",
+    "MATURED_CLAIMS",
+    "CONTINGENT_CLAIMS",
+    "FEDERAL_TAX",
+    "HOMESTEAD",
+    "REJECTED_CLAIMS",
+    "PERMISSIVE_CLAIMS",
+    "STATUTORY_CLAIMS"
+  ],
+  "confidence_levels": {
+    "DEFENSIBLE": 0.95,
+    "AGGRESSIVE": 0.75,
+    "DISCLOSURE": 0.60,
+    "HIGH_RISK": 0.40
+  },
+  "response_modes": {
+    "FAST": "concise_answer_only",
+    "DEFENSE": "audit_ready_full_citations",
+    "MEMO": "comprehensive_documentation"
+  },
+  "cache_ttl_seconds": 3600,
+  "max_doctrine_blocks": 60,
+  "semantic_threshold": 0.75,
+  "telemetry_enabled": true,
+  "audit_trail_enabled": true,
+  "drift_detection_enabled": true,
+  "vector_fallback_enabled": true,
+  "epistemic_guardrails_enabled": true,
+  "health_check_interval": 300,
+  "log_rotation": "100 MB",
+  "claim_filing_periods": {
+    "standard_notice": 120,
+    "publication_notice": 180,
+    "four_month_independent": 120,
+    "six_month_dependent": 180,
+    "nonclaim_statute": 730
+  },
+  "priority_order": [
+    "funeral_expenses",
+    "family_allowance",
+    "administration_expenses",
+    "exempt_property",
+    "secured_claims",
+    "last_illness",
+    "medical_expenses",
+    "federal_tax",
+    "child_support",
+    "unsecured_claims"
+  ],
+  "exemption_limits": {
+    "homestead_urban_acres": 10,
+    "homestead_rural_acres": 100,
+    "personal_property_single": 50000,
+    "personal_property_family": 100000,
+    "vehicle_exemption_per_person": 0,
+    "family_allowance_year": 1
+  }
+}

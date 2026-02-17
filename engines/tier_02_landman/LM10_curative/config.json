@@ -1,0 +1,81 @@
+{
+  "engine_id": "LM10",
+  "engine_name": "Curative",
+  "version": "1.0.0",
+  "port": 8510,
+  "domain": "title_curative",
+  "description": "Title curative work for oil and gas operations — identifying and resolving title defects including affidavits of heirship, probate proceedings, correction instruments, quiet title actions, adverse possession, tax sale curative, dormant mineral interests, and entity authority documentation.",
+  "tier": "LANDMAN_INTELLIGENCE",
+  "classification": "OPERATIONAL",
+  "authority_sources": [
+    "Texas Property Code",
+    "Texas Estates Code",
+    "Texas Natural Resources Code",
+    "Texas Civil Practice and Remedies Code",
+    "Texas Business Organizations Code",
+    "Texas Tax Code",
+    "Texas Local Government Code",
+    "Railroad Commission of Texas Rules",
+    "Texas Supreme Court Opinions",
+    "Texas Courts of Appeals Opinions",
+    "AAPL Title Standards",
+    "TLTA Title Standards",
+    "Restatement of Property"
+  ],
+  "issue_categories": [
+    "HEIRSHIP",
+    "PROBATE",
+    "CORRECTION_INSTRUMENTS",
+    "QUIET_TITLE",
+    "MISSING_INSTRUMENTS",
+    "LIEN_RELEASE",
+    "RATIFICATION",
+    "STIPULATION",
+    "POOLING_AMENDMENTS",
+    "TAX_SALE_CURATIVE",
+    "ADVERSE_POSSESSION",
+    "DORMANT_MINERALS",
+    "GAP_RESOLUTION",
+    "BOUNDARY_DISPUTES",
+    "ESTATE_REUNIFICATION",
+    "JUDGMENT_RESOLUTION",
+    "LIS_PENDENS",
+    "FORECLOSURE_CURATIVE",
+    "NAME_VARIATIONS",
+    "ENTITY_AUTHORITY"
+  ],
+  "confidence_tiers": {
+    "DEFENSIBLE": {"min_score": 0.85, "description": "Supported by clear statutory authority and established case law"},
+    "AGGRESSIVE": {"min_score": 0.65, "description": "Reasonable interpretation but may face challenge"},
+    "DISCLOSURE": {"min_score": 0.45, "description": "Must disclose uncertainty to examiner or client"},
+    "HIGH_RISK": {"min_score": 0.0, "description": "Significant risk of title failure or litigation"}
+  },
+  "response_modes": {
+    "FAST": {"max_tokens": 800, "include_citations": false, "doctrine_depth": "summary"},
+    "DEFENSE": {"max_tokens": 4000, "include_citations": true, "doctrine_depth": "full"},
+    "MEMO": {"max_tokens": 12000, "include_citations": true, "doctrine_depth": "exhaustive"}
+  },
+  "position_zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "telemetry": {
+    "enabled": true,
+    "metrics_interval_seconds": 60,
+    "audit_trail": true,
+    "log_rotation_mb": 50,
+    "log_retention_days": 90
+  },
+  "vector_search": {
+    "enabled": true,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "similarity_threshold": 0.72,
+    "max_results": 10
+  },
+  "drift_detection": {
+    "enabled": true,
+    "baseline_interval_hours": 24,
+    "drift_threshold": 0.08
+  },
+  "health_check": {
+    "interval_seconds": 30,
+    "timeout_seconds": 5
+  }
+}

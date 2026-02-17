@@ -1,0 +1,189 @@
+{
+  "engine_id": "BLD05",
+  "engine_name": "Legacy Archive",
+  "tier": "BLD",
+  "version": "1.0.0",
+  "doctrine_count": 18,
+  "doctrines": [
+    {
+      "topic": "archival_integrity_principle",
+      "keywords": ["integrity", "archive", "immutable", "tamper", "hash", "verification", "authenticity"],
+      "conclusion_template": "Archival integrity requires cryptographic verification of every stored artifact. Content hash chains ensure no record can be altered without detection. The Legacy Archive enforces append-only semantics with SHA-256 provenance chains binding each entry to its predecessor.",
+      "reasoning_framework": "Digital archives face three existential threats: silent corruption, unauthorized modification, and provenance loss. The Legacy Archive addresses all three through a content-addressable storage model where every artifact is identified by its SHA-256 hash. Each new entry references the hash of the previous entry in its category, creating an unbreakable chain. Verification is performed on read by recomputing hashes and walking the chain backward. Any break in the chain triggers an integrity alert. This model borrows from blockchain principles without the overhead of consensus, since the archive operates under single-authority (Commander) governance. The hash chain also serves as a natural audit trail, since every entry's position in the chain is deterministic and verifiable.",
+      "key_factors": ["SHA-256 content hashing", "Append-only storage model", "Hash chain linking", "Integrity verification on read", "Tamper detection alerts", "Single-authority governance"],
+      "primary_authority": ["OAIS Reference Model (ISO 14721)", "NDSA Levels of Digital Preservation", "Library of Congress Digital Preservation Guidelines"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "provenance_tracking_doctrine",
+      "keywords": ["provenance", "origin", "attribution", "source", "creator", "lineage", "chain of custody"],
+      "conclusion_template": "Every artifact in the Legacy Archive carries full provenance metadata: who created it, when, why, from what source, and through what process. Provenance is non-optional and enforced at the API layer. Without provenance, an artifact is an orphan and cannot be trusted for historical reconstruction.",
+      "reasoning_framework": "Provenance answers the fundamental archival question: where did this come from? In the context of the McWilliams legacy and ECHO PRIME system history, provenance serves dual purposes. First, it enables trust: future readers can assess the reliability of any record by examining its source chain. Second, it enables reconstruction: given a date and context, the system can trace which artifacts were created by whom and why. The provenance model tracks five dimensions: actor (who), temporal (when), causal (why), material (from what), and procedural (how). Each dimension is stored as structured metadata alongside the artifact content. Provenance metadata itself is hashed and included in the integrity chain.",
+      "key_factors": ["Five-dimension provenance model", "Actor attribution", "Temporal precision", "Causal documentation", "Material source tracking", "Procedural recording"],
+      "primary_authority": ["W3C PROV Data Model", "Dublin Core Metadata Initiative", "PREMIS Preservation Metadata"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "digital_time_capsule_protocol",
+      "keywords": ["time capsule", "sealed", "future", "embargo", "reveal", "scheduled", "deferred"],
+      "conclusion_template": "Digital time capsules are sealed entries with an embargo date. Content is stored encrypted and only decrypted when the reveal date has passed. This enables the Commander to leave messages, predictions, or instructions for future dates with confidence that premature access is prevented.",
+      "reasoning_framework": "Time capsules serve a unique archival function: they preserve intent at the moment of creation while deferring access to a future date. This is valuable for recording predictions (to verify foresight), instructions (to be executed at the right time), and reflections (to compare past and future perspectives). The implementation uses symmetric encryption with a key derived from the capsule ID and reveal date. Before the reveal date, the content field returns only a hash and metadata. After the reveal date, the full content is decrypted and returned. Capsules cannot be modified after sealing, only appended with annotations.",
+      "key_factors": ["Embargo date enforcement", "Sealed content encryption", "Post-reveal decryption", "Immutable after sealing", "Annotation support", "Prediction verification"],
+      "primary_authority": ["Digital Preservation Coalition Handbook", "ISO 16363 Trusted Digital Repository"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "historical_state_reconstruction",
+      "keywords": ["historical", "state", "reconstruction", "snapshot", "point-in-time", "retrospective", "rollback"],
+      "conclusion_template": "Historical state reconstruction answers the question: what did the system look like at date X? By maintaining timestamped event logs with category tags and importance weights, the archive can reconstruct a narrative of system state at any past date through event aggregation and interpolation.",
+      "reasoning_framework": "System archaeology is essential for understanding how ECHO PRIME evolved. Every deployment, configuration change, engine build, and architectural decision is an event. By querying events up to a target date, grouped by subsystem, the archive can generate a point-in-time snapshot describing what was deployed, what was planned, what had recently changed, and what issues were active. This reconstruction is approximate by nature since not every state change generates an event but the archive prioritizes high-importance events that capture inflection points. The reconstruction algorithm sorts events chronologically, applies category filters, and generates a narrative summary with confidence indicators based on event density around the target date.",
+      "key_factors": ["Timestamped event aggregation", "Category-based filtering", "Importance weighting", "Confidence based on event density", "Narrative generation", "Subsystem grouping"],
+      "primary_authority": ["Software Architecture Documentation Standards", "IEEE 1471 Architecture Description"],
+      "confidence": "AGGRESSIVE",
+      "confidence_stratification": "AGGRESSIVE"
+    },
+    {
+      "topic": "document_versioning_chain",
+      "keywords": ["versioning", "version", "document", "revision", "diff", "history", "evolution"],
+      "conclusion_template": "Every document in the archive supports full version history. Each revision is stored as a complete snapshot with a hash linking it to the previous version. Diffs can be computed between any two versions. The version chain is immutable: old versions are never deleted or modified.",
+      "reasoning_framework": "Document versioning in an archive context differs from source control. In source control, the focus is on collaboration and merge conflict resolution. In archival versioning, the focus is on preservation and auditability. Every version is a complete, self-contained snapshot that can be read independently. The version chain records the evolution of a document's content over time, enabling questions like: when was this section added? who changed this value? what did the original look like? The archive stores full snapshots rather than diffs to ensure each version is independently verifiable via its content hash. Diffs are computed on-demand for presentation but are not the storage format.",
+      "key_factors": ["Full snapshot per version", "Content hash chain", "On-demand diff computation", "Independent version verification", "Immutable version history", "Evolution tracking"],
+      "primary_authority": ["Git Object Model principles", "OAIS Information Package model", "ISO 15489 Records Management"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "family_history_documentation",
+      "keywords": ["family", "McWilliams", "genealogy", "heritage", "bloodline", "dynasty", "history"],
+      "conclusion_template": "The McWilliams family history is a first-class data type in the Legacy Archive. Family events, milestones, and genealogical records are stored with the same rigor as system events. The family timeline integrates with the system timeline to show the full picture of the dynasty's evolution alongside its technological achievements.",
+      "reasoning_framework": "ECHO OMEGA PRIME exists to serve the McWilliams dynasty. The Legacy Archive therefore treats family history as foundational data, not secondary metadata. Family events include births, marriages, achievements, property acquisitions, business milestones, and personal records. Each family event is tagged with family member references, enabling per-person timelines. The archive supports relationship modeling (parent-child, spouse, sibling) to build a genealogical graph. This graph enables queries like: show all events involving Bobby Don McWilliams II and his descendants. Family data receives the highest importance weighting by default.",
+      "key_factors": ["First-class family events", "Genealogical graph", "Per-person timelines", "Relationship modeling", "Integration with system timeline", "Highest default importance"],
+      "primary_authority": ["GEDCOM genealogical data standard", "FamilySearch data model"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "milestone_classification_taxonomy",
+      "keywords": ["milestone", "achievement", "classification", "taxonomy", "category", "importance", "significance"],
+      "conclusion_template": "Milestones are classified along two axes: category (system, family, business, personal, legal, financial) and importance (1-10 scale). This taxonomy enables filtered timeline views and importance-weighted reporting. A milestone at importance 10 represents a dynasty-defining event; importance 1 is routine but worth recording.",
+      "reasoning_framework": "Not all events are equal. A system deployment is important but a new family member or a major business acquisition is more significant in the dynasty context. The importance scale from 1-10 allows nuanced weighting: 10 for dynasty-defining moments (births, major acquisitions, system genesis), 7-9 for significant achievements (engine completions, legal victories, financial milestones), 4-6 for operational events (deployments, upgrades, configurations), 1-3 for routine records (daily operations, minor fixes, housekeeping). Category classification enables orthogonal filtering: show all financial milestones regardless of importance, or show all events above importance 7 regardless of category.",
+      "key_factors": ["Dual-axis classification", "10-point importance scale", "Six primary categories", "Orthogonal filtering", "Importance-weighted reporting", "Dynasty context prioritization"],
+      "primary_authority": ["Information Classification Standards", "Records Retention Scheduling"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "legacy_report_generation",
+      "keywords": ["report", "legacy", "summary", "narrative", "achievement", "growth", "retrospective"],
+      "conclusion_template": "Legacy reports are structured narratives covering a time period, highlighting milestones, decisions, growth metrics, and achievements. Reports are generated from archived events and formatted for human consumption. They serve as the official record of what was accomplished and why.",
+      "reasoning_framework": "A legacy report answers: what happened during this period and why does it matter? The report generator queries events within the specified time range, groups them by category, ranks by importance, and constructs a narrative. The narrative follows a consistent structure: executive summary, timeline of key events, decisions and their outcomes, metrics (engines built, lines of code, systems deployed), challenges overcome, and forward outlook. Reports can be generated for any time range from a single day to the entire history of ECHO PRIME. The generator uses importance weighting to determine which events appear in the executive summary versus the detailed timeline.",
+      "key_factors": ["Structured narrative format", "Importance-weighted inclusion", "Multi-category coverage", "Metrics integration", "Challenge documentation", "Forward outlook section"],
+      "primary_authority": ["Business Intelligence Reporting Standards", "Executive Summary Best Practices"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "knowledge_preservation_mandate",
+      "keywords": ["preservation", "knowledge", "future", "generations", "permanent", "endurance", "longevity"],
+      "conclusion_template": "Knowledge preservation is the core mission of the Legacy Archive. Every piece of institutional knowledge, every decision rationale, every architectural choice must be captured and preserved for future generations. The archive is designed to outlive any single technology platform through format-agnostic storage and self-describing metadata.",
+      "reasoning_framework": "Technology platforms come and go but knowledge must endure. The Legacy Archive stores content in format-agnostic representations (plain text, JSON, markdown) that can be read by any future system. Self-describing metadata means every record contains enough context to be understood without external documentation. The archive avoids proprietary formats, binary blobs without text descriptions, and external dependencies for content interpretation. This preservation-first approach trades storage efficiency for longevity. A record written today should be readable and meaningful in 50 years even if ECHO PRIME itself has been replaced by something entirely different.",
+      "key_factors": ["Format-agnostic storage", "Self-describing metadata", "No proprietary format dependencies", "50-year readability target", "Institutional knowledge capture", "Decision rationale preservation"],
+      "primary_authority": ["UNESCO Memory of the World Programme", "NDSA Levels of Preservation", "Digital Preservation Coalition"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "decision_recording_protocol",
+      "keywords": ["decision", "reasoning", "rationale", "choice", "alternative", "tradeoff", "record"],
+      "conclusion_template": "Every major decision is recorded with its full context: what was decided, why, what alternatives were considered, what tradeoffs were accepted, and what the expected outcome was. This decision log enables future review of whether decisions played out as expected and what lessons can be drawn.",
+      "reasoning_framework": "Decisions are the most valuable artifacts in an archive because they capture human judgment under uncertainty. A decision record contains: the decision statement, the context at the time, the alternatives considered with pros/cons, the rationale for the chosen option, the expected outcome, and later an actual outcome assessment. This structure enables retrospective analysis: were our predictions accurate? Did we systematically overlook certain risks? Do we have decision patterns that lead to good or bad outcomes? The decision log is indexed by domain (technical, business, personal, legal) and tagged with the decision maker's identity for accountability.",
+      "key_factors": ["Full context capture", "Alternative documentation", "Tradeoff analysis", "Expected vs actual outcomes", "Pattern detection", "Decision maker attribution"],
+      "primary_authority": ["Architecture Decision Records (ADR)", "TOGAF Decision Log", "Military After-Action Review format"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "system_evolution_tracking",
+      "keywords": ["evolution", "system", "growth", "change", "architecture", "progression", "development"],
+      "conclusion_template": "The Legacy Archive tracks the evolution of ECHO PRIME as a system: from initial concept through current state. Every architectural change, technology adoption, engine deployment, and capability addition is recorded. This evolution log serves as the authoritative history of the system's development.",
+      "reasoning_framework": "Complex systems evolve through discrete changes that accumulate over time. Understanding the current system requires understanding how it got here. The evolution log records each significant change with: what changed, why, what it replaced, what it enabled, and what risks it introduced. Changes are categorized as: additions (new capabilities), modifications (improved existing), removals (deprecated), and migrations (platform changes). The evolution log integrates with the engine registry to show which engines existed at any point in time. This enables questions like: what was the system architecture in January 2026? When was the first Cloudflare Worker deployed? How has the engine count grown over time?",
+      "key_factors": ["Change categorization", "Before/after documentation", "Engine registry integration", "Architecture snapshots", "Growth metrics over time", "Technology adoption timeline"],
+      "primary_authority": ["IEEE 1471 Architecture Description", "C4 Model documentation", "ThoughtWorks Technology Radar methodology"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "full_text_search_architecture",
+      "keywords": ["search", "full-text", "query", "find", "retrieve", "index", "lookup"],
+      "conclusion_template": "The archive provides full-text search across all stored content using inverted index construction and TF-IDF relevance scoring. Search results are ranked by relevance and can be filtered by category, date range, importance, and content type. Search is the primary discovery mechanism for archived knowledge.",
+      "reasoning_framework": "An archive is only as useful as its search capability. The Legacy Archive builds an inverted index at ingestion time, mapping tokens to document IDs with position information. At query time, the index enables sub-second retrieval across the entire corpus. Relevance scoring uses TF-IDF with importance weighting: a match in a high-importance document ranks higher than the same match in a routine record. Search supports boolean operators (AND, OR, NOT), phrase matching (quoted strings), and field-specific queries (category:system, importance:>7). Results include highlighted snippets showing the match context. The search index is rebuilt incrementally as new content is added.",
+      "key_factors": ["Inverted index construction", "TF-IDF relevance scoring", "Importance-weighted ranking", "Boolean operators", "Phrase matching", "Field-specific queries"],
+      "primary_authority": ["Information Retrieval principles (Manning et al.)", "Apache Lucene architecture"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "audit_trail_immutability",
+      "keywords": ["audit", "trail", "immutable", "log", "forensic", "accountability", "record"],
+      "conclusion_template": "The audit trail is append-only and cryptographically chained. Every operation on the archive (create, read, search, report generation) is logged with timestamp, actor, operation type, and affected records. The audit trail itself cannot be modified or deleted, ensuring complete forensic accountability.",
+      "reasoning_framework": "Trust in an archive depends on the trustworthiness of its audit trail. If the audit trail can be modified, the archive's integrity claims are hollow. The Legacy Archive implements an append-only audit log where each entry contains a SHA-256 hash of the previous entry, creating a tamper-evident chain. Any attempt to modify a historical audit entry would break the hash chain and be detected on the next verification pass. The audit trail logs all operations including reads, since access patterns are themselves valuable historical data. Periodic audit trail verification runs automatically to detect any corruption.",
+      "key_factors": ["Append-only semantics", "Cryptographic chaining", "All operations logged including reads", "Periodic integrity verification", "Tamper-evident design", "Access pattern recording"],
+      "primary_authority": ["SOX Compliance audit requirements", "NIST SP 800-92 Log Management", "ISO 27001 Audit Logging"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "importance_decay_model",
+      "keywords": ["decay", "relevance", "aging", "importance", "temporal", "recency", "weight"],
+      "conclusion_template": "Event importance does not decay over time in the Legacy Archive. Unlike operational systems where old data loses relevance, archival data gains value with age. A founding event from 2024 is more historically significant today than a routine deployment from yesterday. The archive uses inverse decay: older high-importance events receive bonus weighting in reports.",
+      "reasoning_framework": "Most information systems apply recency bias, surfacing recent items above older ones. An archive must invert this bias. The founding of ECHO PRIME, the first engine deployment, the establishment of the McWilliams digital dynasty these are events that become MORE significant over time, not less. The importance model applies an age bonus to events above importance 7: for every year since the event, its effective importance increases by 0.1 (capped at +2.0). This ensures that foundational events rise to the top of reports and timelines as the archive grows. Routine events (importance 1-3) receive no age bonus and naturally recede in relative importance.",
+      "key_factors": ["No importance decay", "Age bonus for high-importance events", "Inverse recency bias", "Foundational event prioritization", "Capped bonus (+2.0 max)", "Routine event natural recession"],
+      "primary_authority": ["Archival Science temporal valuation", "Historical significance assessment frameworks"],
+      "confidence": "AGGRESSIVE",
+      "confidence_stratification": "AGGRESSIVE"
+    },
+    {
+      "topic": "cross_reference_linking",
+      "keywords": ["cross-reference", "link", "relationship", "connection", "related", "association", "graph"],
+      "conclusion_template": "Archive entries can be cross-referenced to create a knowledge graph of relationships. A decision links to the milestone it enabled. A family event links to the system changes it motivated. These cross-references enable navigation and discovery across the archive's content.",
+      "reasoning_framework": "Isolated records are less valuable than connected records. Cross-references transform the archive from a flat list into a knowledge graph where relationships between events tell a richer story. The linking model supports typed relationships: caused_by, enabled, related_to, superseded_by, response_to, and part_of. Links are bidirectional and stored with both referenced entries. This enables traversal queries: starting from a milestone, follow caused_by links to discover the decisions that led to it, then follow enabled links to see what it made possible. The cross-reference graph is the archive's most powerful analytical tool.",
+      "key_factors": ["Typed relationships", "Bidirectional linking", "Traversal queries", "Knowledge graph construction", "Narrative discovery", "Six relationship types"],
+      "primary_authority": ["Knowledge Graph principles", "RDF relationship modeling", "Archival description standards (ISAD-G)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "format_migration_strategy",
+      "keywords": ["migration", "format", "obsolescence", "future-proof", "conversion", "compatibility", "standard"],
+      "conclusion_template": "The archive stores content in plain text and JSON to minimize format obsolescence risk. Binary content is stored alongside text descriptions. The archive includes format metadata sufficient to interpret content even if the original application is unavailable. Periodic format reviews identify at-risk content for proactive migration.",
+      "reasoning_framework": "Format obsolescence is the silent killer of digital archives. Content stored in proprietary formats becomes unreadable when the application that created it is discontinued. The Legacy Archive mitigates this by preferring open, text-based formats: plain text, JSON, markdown, and CSV. Binary content (images, PDFs, audio) is stored alongside textual descriptions and extracted metadata. Every stored artifact includes a format field describing the content type and version. Periodic reviews (annually) scan for formats approaching obsolescence and trigger proactive migration to current standards. The goal is perpetual readability without dependency on any specific software.",
+      "key_factors": ["Text-based format preference", "Binary content with text descriptions", "Format metadata inclusion", "Annual obsolescence review", "Proactive migration triggers", "Zero proprietary format dependencies"],
+      "primary_authority": ["Library of Congress Recommended Formats", "PRONOM Technical Registry", "Digital Preservation Coalition Technology Watch"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "access_control_classification",
+      "keywords": ["access", "control", "classification", "confidential", "public", "restricted", "clearance"],
+      "conclusion_template": "Archive content is classified into four access levels: PUBLIC (anyone), INTERNAL (ECHO system components), RESTRICTED (Commander and designated family), and SOVEREIGN (Commander only). Access control is enforced at the API layer and logged in the audit trail. Classification can be upgraded but never downgraded without Commander approval.",
+      "reasoning_framework": "Not all archived content should be equally accessible. Family financial records require different access controls than system deployment logs. The four-tier classification maps to ECHO PRIME's authority model: SOVEREIGN (level 11.0) for the most sensitive dynasty records, RESTRICTED for family-sensitive information, INTERNAL for system operational data, and PUBLIC for information intended for external sharing. Classification is assigned at creation time and defaults to INTERNAL. Upgrade to higher classification is automatic when content contains sensitive keywords. Downgrade requires explicit Commander approval. This asymmetric classification prevents accidental exposure of sensitive content.",
+      "key_factors": ["Four-tier classification", "Authority model alignment", "Default INTERNAL classification", "Automatic upgrade on sensitive content", "Commander-only downgrade", "API-layer enforcement"],
+      "primary_authority": ["Information Security Classification Standards", "NIST SP 800-60 Information Type Mapping"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "continuity_of_operations",
+      "keywords": ["continuity", "disaster", "recovery", "backup", "redundancy", "resilience", "survival"],
+      "conclusion_template": "The Legacy Archive implements multi-layer redundancy: local storage, R2 cloud backup, and exportable archives. The archive can be fully reconstructed from any single backup layer. Export functionality produces self-contained archive packages that can be imported into any future system.",
+      "reasoning_framework": "An archive that can be lost is not an archive. The Legacy Archive stores data in three redundant locations: local filesystem (O: drive), Cloudflare R2 (cloud), and periodic export packages (portable). Each layer contains the complete archive with integrity verification data. Recovery priority: local first (fastest), R2 second (most reliable), export packages third (most portable). The export format is a self-contained JSON bundle with embedded integrity hashes, requiring no special software to read. This ensures that even if ECHO PRIME ceases to exist, the archive's content survives in a universally readable format.",
+      "key_factors": ["Three-layer redundancy", "Self-contained exports", "Universal readability", "Integrity verification per layer", "Recovery priority ordering", "Platform-independent format"],
+      "primary_authority": ["NIST SP 800-34 Contingency Planning", "ISO 22301 Business Continuity", "3-2-1 Backup Rule"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[32m2026-02-14 14:35:50.065[0m | [1mINFO    [0m | [36m__main__[0m:[36m__init__[0m:[36m842[0m - [1mWell Control & Kick Management initialized with 28 doctrine blocks[0m
+[32m2026-02-14 14:35:50.119[0m | [1mINFO    [0m | [36m__main__[0m:[36m<module>[0m:[36m1116[0m - [1mStarting Well Control & Kick Management v1.0.0 on port 9016[0m
+[32m2026-02-14 14:35:50.119[0m | [1mINFO    [0m | [36m__main__[0m:[36m<module>[0m:[36m1117[0m - [1mDoctrine blocks loaded: 28[0m
+INFO:     Started server process [28508]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9016 (Press CTRL+C to quit)

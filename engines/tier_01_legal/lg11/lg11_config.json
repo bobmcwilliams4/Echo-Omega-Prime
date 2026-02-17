@@ -1,0 +1,143 @@
+{
+  "engine_id": "LG11",
+  "engine_name": "Immigration Law Intelligence Engine",
+  "version": "1.0.0",
+  "authority_level": 5,
+  "tier": 1,
+  "tier_name": "LEGAL",
+  "port": 8500,
+  "mode": "DET",
+  "domain": "immigration_law",
+  "description": "Professional-grade immigration law doctrine engine for attorneys, accredited representatives, and DOJ-recognized organizations. Covers visa petitions, removal defense, asylum, naturalization, waivers, and employment authorization under the INA, 8 CFR, BIA precedent, and federal circuit case law.",
+
+  "response_modes": {
+    "FAST": {
+      "description": "Doctrine cache lookup, minimal citations, sub-2 second response",
+      "min_citations": 1,
+      "confidence_threshold": 0.60,
+      "max_latency_ms": 2000
+    },
+    "STANDARD": {
+      "description": "Doctrine + retrieval, moderate citations, thorough analysis",
+      "min_citations": 2,
+      "confidence_threshold": 0.50,
+      "max_latency_ms": 5000
+    },
+    "DEEP": {
+      "description": "Full multi-doctrine analysis with counter-arguments and risk assessment",
+      "min_citations": 3,
+      "confidence_threshold": 0.40,
+      "max_latency_ms": 15000
+    },
+    "DEFENSE": {
+      "description": "Court-defensible analysis, maximum citation density, fragility scoring",
+      "min_citations": 4,
+      "confidence_threshold": 0.30,
+      "max_latency_ms": 30000
+    }
+  },
+
+  "confidence_bands": {
+    "DEFENSIBLE": {"min": 0.85, "max": 1.00, "label": "Defensible", "color": "green"},
+    "SUPPORTABLE": {"min": 0.70, "max": 0.84, "label": "Supportable", "color": "yellow"},
+    "DISCLOSURE": {"min": 0.50, "max": 0.69, "label": "Disclosure Recommended", "color": "orange"},
+    "HIGH_RISK": {"min": 0.00, "max": 0.49, "label": "High Risk", "color": "red"}
+  },
+
+  "authority_weights": {
+    "PRIMARY": {"weight": 100, "sources": ["INA (8 USC)", "IIRIRA", "REAL ID Act"]},
+    "SECONDARY": {"weight": 80, "sources": ["8 CFR", "22 CFR", "20 CFR"]},
+    "TERTIARY": {"weight": 60, "sources": ["BIA Precedent Decisions", "Federal Circuit Courts", "Supreme Court"]},
+    "QUATERNARY": {"weight": 40, "sources": ["USCIS Policy Manual", "AAO Decisions", "AFM", "PM/Memos"]},
+    "COMMENTARY": {"weight": 20, "sources": ["AILA Practice Advisories", "Law Review Articles", "Treatises"]}
+  },
+
+  "analysis_zones": {
+    "PETITION": {
+      "description": "Prospective: visa category selection, eligibility pathways, strategy",
+      "confidence_floor": 0.60,
+      "min_citations": 2
+    },
+    "COMPLIANCE": {
+      "description": "Regulatory: status maintenance, employment authorization, conditions",
+      "confidence_floor": 0.70,
+      "min_citations": 2
+    },
+    "DEFENSE": {
+      "description": "Removal defense: what will survive immigration court proceedings",
+      "confidence_floor": 0.50,
+      "min_citations": 3
+    },
+    "NATURALIZATION": {
+      "description": "Citizenship pathway: eligibility, bars, good moral character",
+      "confidence_floor": 0.65,
+      "min_citations": 2
+    }
+  },
+
+  "risk_taxonomy": {
+    "CRITICAL": "Removal/deportation risk, permanent inadmissibility bars, fraud/misrep findings",
+    "HIGH": "Unlawful presence bars (3/10 year), expedited removal, aggravated felony consequences",
+    "MEDIUM": "RFE responses, status violations, employment authorization gaps, priority date issues",
+    "LOW": "Filing deadlines, fee issues, documentation gaps, address change requirements",
+    "INFO": "Processing times, policy updates, form changes, USCIS fee schedule changes"
+  },
+
+  "doctrine_drift": {
+    "stale_threshold_days": 180,
+    "confidence_reduction_percent": 10,
+    "check_interval_hours": 24,
+    "auto_flag_enabled": true
+  },
+
+  "vector_search": {
+    "similarity_threshold": 0.30,
+    "max_results": 5,
+    "algorithm": "tfidf_cosine"
+  },
+
+  "telemetry": {
+    "ring_buffer_size": 10000,
+    "flush_threshold": 1000,
+    "jsonl_rotation_mb": 50,
+    "retention_days": 30
+  },
+
+  "logging": {
+    "console_level": "INFO",
+    "file_level": "DEBUG",
+    "rotation_mb": 10,
+    "retention_days": 7,
+    "compression": "gz",
+    "audit_log_separate": true
+  },
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8500,
+    "cors_origins": ["*"],
+    "docs_url": "/docs",
+    "openapi_url": "/openapi.json"
+  },
+
+  "issue_categories": [
+    "visa_classification",
+    "admissibility",
+    "deportability",
+    "relief_from_removal",
+    "citizenship",
+    "employment_authorization",
+    "family_unity",
+    "humanitarian_protection",
+    "criminal_consequences",
+    "unlawful_presence",
+    "consular_processing",
+    "adjustment_of_status"
+  ],
+
+  "doctrine_strata": {
+    "PRIMARY": "Main classification/eligibility doctrine",
+    "SECONDARY": "Constraints, bars, and enabling conditions",
+    "TERTIARY": "Waivers, exceptions, and discretionary relief"
+  }
+}

@@ -1,0 +1,315 @@
+{
+    "engine_id": "LM14",
+    "engine_name": "Easement Analyzer Engine",
+    "engine_version": "1.0.0",
+    "engine_authority": 7.0,
+    "engine_tier": "LANDMAN",
+    "engine_mode": "DET",
+    "port": 8434,
+    "host": "0.0.0.0",
+
+    "description": "Production-grade easement analysis engine providing identification, classification, and risk assessment of easements, rights-of-way, surface use agreements, and pipeline corridors for oil and gas operations across Texas and Permian Basin jurisdictions. Covers express, implied, prescriptive, and necessity easements, dominant/servient estate analysis, accommodation doctrine compliance, surface damage acts, eminent domain condemnation, and ROW width/depth engineering parameters.",
+
+    "architecture": {
+        "layers": [
+            {
+                "name": "Doctrine Cache",
+                "order": 1,
+                "latency_target_ms": 200,
+                "description": "Pre-compiled easement doctrine for instant retrieval on common ROW, surface use, and pipeline queries"
+            },
+            {
+                "name": "Semantic Search",
+                "order": 2,
+                "latency_target_ms": 700,
+                "description": "TF-IDF inverted index search over easement doctrine blocks, statutory references, and recorded instruments"
+            },
+            {
+                "name": "Easement Analysis",
+                "order": 3,
+                "latency_target_ms": 1500,
+                "description": "Structured easement analysis including type classification, scope determination, and conflict detection"
+            },
+            {
+                "name": "Deep Analysis",
+                "order": 4,
+                "latency_target_ms": 3000,
+                "description": "Multi-doctrine synthesis for complex easement disputes, overburdening claims, and accommodation doctrine compliance"
+            }
+        ],
+        "normalization": "semantic.py",
+        "telemetry": "telemetry.py",
+        "search": "search.py",
+        "doctrines": "doctrines.py",
+        "engine": "engine.py"
+    },
+
+    "response_modes": {
+        "fast": {
+            "description": "Quick easement identification and type classification with key statutory citations",
+            "max_latency_ms": 2000,
+            "min_citations": 1
+        },
+        "analysis": {
+            "description": "Structured easement analysis with scope determination, conflict check, and accommodation doctrine review",
+            "max_latency_ms": 5000,
+            "min_citations": 3
+        },
+        "memo": {
+            "description": "Full easement memorandum with comprehensive citation, risk assessment, and recommended actions",
+            "max_latency_ms": 10000,
+            "min_citations": 5
+        },
+        "row_review": {
+            "description": "Pipeline ROW and surface use agreement review with engineering parameters and compliance check",
+            "max_latency_ms": 8000,
+            "min_citations": 4
+        },
+        "condemnation_analysis": {
+            "description": "Eminent domain and condemnation proceeding analysis with valuation factors and procedural requirements",
+            "max_latency_ms": 12000,
+            "min_citations": 6
+        }
+    },
+
+    "easement_types": {
+        "express": {
+            "description": "Granted by written instrument recorded in county records",
+            "recording_required": true,
+            "typical_duration": "perpetual or term of years"
+        },
+        "implied_prior_use": {
+            "description": "Implied from prior use at time of severance when apparent, continuous, and reasonably necessary",
+            "recording_required": false,
+            "typical_duration": "perpetual"
+        },
+        "implied_necessity": {
+            "description": "Created when property is landlocked and no other reasonable access exists",
+            "recording_required": false,
+            "typical_duration": "perpetual (lasts as long as necessity exists)"
+        },
+        "prescriptive": {
+            "description": "Acquired through open, notorious, hostile, continuous use for statutory period",
+            "recording_required": false,
+            "statutory_period_years_texas": 10,
+            "typical_duration": "perpetual once established"
+        },
+        "appurtenant": {
+            "description": "Benefits a specific parcel (dominant estate), burdens another (servient estate), runs with land",
+            "runs_with_land": true,
+            "requires_dominant_estate": true
+        },
+        "in_gross": {
+            "description": "Benefits a person or entity rather than a specific parcel, does not require dominant estate",
+            "runs_with_land": false,
+            "requires_dominant_estate": false,
+            "common_in": ["pipeline ROW", "utility easements", "railroad ROW"]
+        },
+        "pipeline_row": {
+            "description": "Right-of-way for oil, gas, or product pipelines across surface estate",
+            "typical_width_ft": {"gathering": 30, "transmission": 50, "major_trunk": 75},
+            "depth_requirements_ft": {"minimum": 36, "road_crossing": 48, "waterway_crossing": 60}
+        },
+        "surface_use": {
+            "description": "Agreement between mineral lessee/operator and surface owner governing surface operations",
+            "typical_provisions": ["road construction", "pad site location", "water source", "restoration obligations"]
+        },
+        "road_access": {
+            "description": "Access easement for ingress and egress to landlocked or remote parcels",
+            "typical_width_ft": {"private_road": 20, "county_road": 40, "oilfield_road": 30}
+        },
+        "utility": {
+            "description": "Easement for electric, water, sewer, telephone, or communication lines",
+            "typical_width_ft": {"overhead_power": 30, "underground_power": 15, "water_sewer": 20, "fiber_optic": 10}
+        },
+        "flowage": {
+            "description": "Right to flood or allow water drainage across another's property",
+            "common_in": ["reservoir operations", "stormwater management", "produced water disposal"]
+        },
+        "conservation": {
+            "description": "Restricts development to protect natural resources, habitat, or agricultural character",
+            "typical_duration": "perpetual",
+            "tax_benefits": true
+        }
+    },
+
+    "pipeline_specifications": {
+        "gathering_lines": {
+            "diameter_range_inches": [2, 12],
+            "pressure_range_psi": [15, 1440],
+            "row_width_ft": 30,
+            "temp_workspace_ft": 25,
+            "depth_of_cover_ft": 36,
+            "marker_spacing_ft": 660,
+            "cathodic_protection": true
+        },
+        "transmission_lines": {
+            "diameter_range_inches": [6, 42],
+            "pressure_range_psi": [200, 1440],
+            "row_width_ft": 50,
+            "temp_workspace_ft": 50,
+            "depth_of_cover_ft": 36,
+            "road_crossing_depth_ft": 48,
+            "waterway_crossing_depth_ft": 60,
+            "marker_spacing_ft": 440,
+            "cathodic_protection": true,
+            "class_location_requirements": true
+        },
+        "product_lines": {
+            "diameter_range_inches": [4, 24],
+            "pressure_range_psi": [100, 1000],
+            "row_width_ft": 40,
+            "depth_of_cover_ft": 36,
+            "marker_spacing_ft": 660,
+            "leak_detection_required": true
+        },
+        "produced_water_lines": {
+            "diameter_range_inches": [2, 16],
+            "pressure_range_psi": [15, 500],
+            "row_width_ft": 25,
+            "depth_of_cover_ft": 36,
+            "cathodic_protection": true,
+            "secondary_containment_at_connections": true
+        }
+    },
+
+    "txdot_standards": {
+        "highway_crossing_permit": "TxDOT Form 1082",
+        "minimum_depth_under_highway_ft": 48,
+        "minimum_depth_under_railroad_ft": 60,
+        "casing_required_under_highway": true,
+        "casing_material": ["steel", "concrete"],
+        "bore_method_preferred": "horizontal_directional_drill",
+        "open_cut_allowed": "only with TxDOT approval for low-traffic roads",
+        "utility_accommodation_policy": "TAC Title 43, Part 1, Chapter 21",
+        "permit_processing_days": 30,
+        "encroachment_setback_ft": 15
+    },
+
+    "rrc_requirements": {
+        "pipeline_permit": "T-4 Permit",
+        "gathering_system_registration": "Form H-7",
+        "pipeline_inspection_interval_years": 5,
+        "cathodic_protection_monitoring": "annual",
+        "leak_survey_frequency": "annual for transmission, biannual for gathering",
+        "abandonment_procedure": "purge, fill, cap, mark, file Form W-1X",
+        "depth_of_cover_minimum_ft": 36,
+        "marker_requirements": "at crossings, fences, and every 660 ft minimum"
+    },
+
+    "surface_damage_act": {
+        "texas_statute": "Tex. Nat. Res. Code Ch. 52",
+        "effective_date": "2003-09-01",
+        "applies_to": "mineral lessees and operators on non-owner surface estates",
+        "requirements": [
+            "Written notice to surface owner before commencement",
+            "Good faith negotiation of surface use and damage payment",
+            "Payment of actual damages to land and improvements",
+            "Restoration of surface to as near original condition as practicable"
+        ],
+        "notice_period_days": 30,
+        "exclusions": ["surface owned by mineral owner", "surface leased by mineral owner"]
+    },
+
+    "accommodation_doctrine": {
+        "source_case": "Getty Oil Co. v. Jones, 470 S.W.2d 618 (Tex. 1971)",
+        "elements": [
+            "Mineral estate has dominant right to use surface",
+            "But must exercise rights with due regard to surface owner",
+            "If alternative methods exist that are industry-standard",
+            "And would allow both mineral and surface use to coexist",
+            "Mineral owner must accommodate the existing surface use"
+        ],
+        "burden_of_proof": "surface owner",
+        "modern_expansion": "Merriman v. XTO Energy, 407 S.W.3d 244 (Tex. 2013)"
+    },
+
+    "valuation_factors": {
+        "row_compensation": [
+            "Market value of land within easement corridor",
+            "Diminution of value to remainder parcel",
+            "Crop and timber damage",
+            "Loss of use during construction",
+            "Restoration costs",
+            "Inconvenience and access disruption"
+        ],
+        "surface_damage_factors": [
+            "Value of crops destroyed or damaged",
+            "Cost to repair fences, roads, improvements",
+            "Lost grazing capacity",
+            "Compaction and soil damage",
+            "Water well or spring disruption",
+            "Aesthetic impact",
+            "Noise and dust during operations"
+        ],
+        "condemnation_just_compensation": [
+            "Fair market value of property taken",
+            "Severance damages to remainder",
+            "Cost to cure (if cure reduces severance damage)",
+            "Special benefits (offset against severance)",
+            "Temporary construction damages"
+        ]
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "flush_interval_sec": 30,
+        "max_buffer_size": 500,
+        "metrics_prefix": "lm14",
+        "track_latency": true,
+        "track_cache_hits": true,
+        "track_error_rates": true,
+        "track_query_patterns": true
+    },
+
+    "search": {
+        "max_results": 50,
+        "default_results": 10,
+        "fuzzy_threshold": 0.65,
+        "boost_texas": 1.5,
+        "boost_permian": 1.3,
+        "supported_filters": [
+            "easement_type",
+            "county",
+            "state",
+            "grantor",
+            "grantee",
+            "pipeline_operator",
+            "width_ft",
+            "depth_ft",
+            "instrument_type",
+            "recording_date",
+            "status"
+        ]
+    },
+
+    "integration": {
+        "lm07_legal_description_parser": {
+            "port": 8427,
+            "endpoint": "/parse",
+            "used_for": "parsing metes and bounds, PLSS, and lot/block legal descriptions within easement instruments"
+        },
+        "lm01_title_examination": {
+            "port": 8401,
+            "endpoint": "/examine",
+            "used_for": "verifying easement chain of title and identifying conflicts with fee ownership"
+        },
+        "lm05_chain_of_title": {
+            "port": 8425,
+            "endpoint": "/chain",
+            "used_for": "tracing easement grants through successive conveyances and assignments"
+        },
+        "lg08_real_estate_law": {
+            "port": 8398,
+            "endpoint": "/analyze",
+            "used_for": "general real estate law doctrine support for complex easement disputes"
+        }
+    },
+
+    "texas_counties_permian_basin": [
+        "Andrews", "Borden", "Crane", "Crockett", "Dawson", "Ector",
+        "Gaines", "Glasscock", "Howard", "Irion", "Lea", "Loving",
+        "Martin", "Midland", "Mitchell", "Pecos", "Reagan", "Reeves",
+        "Scurry", "Sterling", "Terrell", "Upton", "Ward", "Winkler", "Yoakum"
+    ]
+}

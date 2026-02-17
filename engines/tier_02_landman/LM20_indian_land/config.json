@@ -1,0 +1,91 @@
+{
+  "engine_id": "LM20",
+  "engine_name": "Indian Land Engine",
+  "version": "1.0.0",
+  "port": 8520,
+  "domain": "indian_land_oil_gas",
+  "description": "TIE Gold Standard engine for Indian/tribal land oil & gas operations, title, leasing, and regulatory compliance under federal Indian mineral law.",
+  "authority_hierarchy": [
+    "federal_statute",
+    "cfr_regulation",
+    "doi_bia_order",
+    "onrr_guidance",
+    "tribal_code",
+    "solicitor_opinion",
+    "ibia_decision",
+    "federal_court",
+    "blm_instruction_memo",
+    "industry_practice"
+  ],
+  "issue_categories": [
+    "LEASING",
+    "TITLE",
+    "ROYALTY",
+    "ALLOTMENT",
+    "TRUST_STATUS",
+    "ENVIRONMENTAL",
+    "JURISDICTIONAL",
+    "FRACTIONATION",
+    "UNITIZATION",
+    "ASSIGNMENT",
+    "SELF_DETERMINATION",
+    "CULTURAL_RESOURCE"
+  ],
+  "confidence_strata": {
+    "DEFENSIBLE": { "min_score": 0.85, "label": "High confidence, well-settled law" },
+    "AGGRESSIVE": { "min_score": 0.65, "label": "Supportable but contestable position" },
+    "DISCLOSURE": { "min_score": 0.45, "label": "Material uncertainty, disclose risk" },
+    "HIGH_RISK":  { "min_score": 0.0,  "label": "Speculative, requires tribal/BIA consultation" }
+  },
+  "response_modes": {
+    "FAST": { "max_tokens": 500, "layers": ["doctrine_cache"] },
+    "DEFENSE": { "max_tokens": 3000, "layers": ["doctrine_cache", "semantic_retrieval", "deep_analysis"] },
+    "MEMO": { "max_tokens": 8000, "layers": ["doctrine_cache", "semantic_retrieval", "deep_analysis", "full_documentation"] }
+  },
+  "key_statutes": [
+    "25 USC 396a-396g (Indian Mineral Leasing Act of 1938)",
+    "25 USC 2101-2108 (Indian Mineral Development Act of 1982)",
+    "25 USC 2201-2219 (Indian Land Consolidation Act)",
+    "25 USC 5301-5423 (Indian Self-Determination Act)",
+    "25 USC 2001 (American Indian Probate Reform Act)",
+    "25 USC 3001-3013 (NAGPRA)",
+    "30 USC 1701-1757 (Federal Oil and Gas Royalty Management Act)",
+    "42 USC 4321 (NEPA)",
+    "54 USC 306108 (NHPA Section 106)",
+    "25 USC 81 (Contracts with Indian Tribes)",
+    "25 USC 415 (Leasing of Restricted Lands)"
+  ],
+  "key_regulations": [
+    "25 CFR Part 211 (Indian Mineral Leasing)",
+    "25 CFR Part 212 (Leasing of Allotted Lands)",
+    "25 CFR Part 225 (IMDA Agreements)",
+    "25 CFR Part 162 (Non-Mineral Leases)",
+    "25 CFR Part 169 (Rights-of-Way)",
+    "30 CFR Part 1202 (Royalty Valuation Indian Leases)",
+    "30 CFR Part 1206 (Product Valuation)",
+    "25 CFR Part 15 (Probate of Indian Estates)",
+    "25 CFR Part 152 (Trust and Restricted Lands)",
+    "43 CFR Part 3160 (Onshore Oil and Gas Operations)"
+  ],
+  "telemetry": {
+    "enabled": true,
+    "log_rotation": "10 MB",
+    "log_retention": 5,
+    "metrics_interval_seconds": 60
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "include_doctrine_stats": true,
+    "include_telemetry_summary": true
+  },
+  "cors": {
+    "allow_origins": ["*"],
+    "allow_methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["*"]
+  },
+  "deployment": {
+    "host": "0.0.0.0",
+    "workers": 2,
+    "reload": false
+  }
+}

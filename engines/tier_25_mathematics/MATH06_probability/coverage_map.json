@@ -1,0 +1,66 @@
+{
+  "domains": {
+    "AXIOMS": {
+      "topics": ["kolmogorov_axioms", "sigma_algebra", "probability_space", "sample_space", "event_algebra", "measure_properties"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "COMBINATORICS": {
+      "topics": ["factorial", "permutation", "combination", "multinomial_coefficient", "stirling_approximation", "stars_and_bars", "binomial_coefficient", "inclusion_exclusion_counting"],
+      "status": "COVERED",
+      "doctrine_count": 2
+    },
+    "DISCRETE_DISTRIBUTIONS": {
+      "topics": ["binomial", "poisson", "geometric", "hypergeometric", "negative_binomial", "bernoulli", "discrete_uniform", "pmf", "cdf"],
+      "status": "COVERED",
+      "doctrine_count": 5
+    },
+    "CONTINUOUS_DISTRIBUTIONS": {
+      "topics": ["normal", "exponential", "gamma", "beta", "uniform_continuous", "pdf", "cdf", "quantile"],
+      "status": "COVERED",
+      "doctrine_count": 5
+    },
+    "CONDITIONAL_PROBABILITY": {
+      "topics": ["conditional_definition", "multiplication_rule", "chain_rule", "independence", "conditional_independence", "simpsons_paradox"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "BAYESIAN_INFERENCE": {
+      "topics": ["bayes_theorem", "prior_posterior", "likelihood", "law_of_total_probability", "conjugate_priors", "sequential_updating"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "EXPECTATION_VARIANCE": {
+      "topics": ["expected_value", "variance", "standard_deviation", "linearity_of_expectation", "variance_of_sum", "LOTUS"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "MOMENT_GENERATING": {
+      "topics": ["mgf_definition", "moment_extraction", "uniqueness_theorem", "product_rule", "cumulant_generating", "characteristic_function"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "JOINT_DISTRIBUTIONS": {
+      "topics": ["joint_pmf_pdf", "marginal_distributions", "conditional_distributions", "covariance", "correlation", "independence_test"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "LIMIT_THEOREMS": {
+      "topics": ["weak_lln", "strong_lln", "central_limit_theorem", "convergence_in_probability", "almost_sure_convergence", "convergence_in_distribution"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "MARKOV_CHAINS": {
+      "topics": ["markov_property", "transition_matrix", "steady_state", "ergodicity", "irreducibility", "periodicity", "absorbing_states", "power_iteration"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    },
+    "INCLUSION_EXCLUSION": {
+      "topics": ["principle_statement", "two_event_case", "general_formula", "bonferroni_inequalities", "derangements", "sieve_methods"],
+      "status": "COVERED",
+      "doctrine_count": 1
+    }
+  },
+  "hits": {},
+  "misses": {}
+}

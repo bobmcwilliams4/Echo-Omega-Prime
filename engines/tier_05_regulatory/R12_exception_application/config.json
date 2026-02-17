@@ -1,0 +1,25 @@
+{
+  "engine_id": "R12",
+  "name": "Exception Application Analyzer",
+  "version": "1.0.0",
+  "port": 8712,
+  "mode": "hybrid",
+  "description": "Analyze RRC exception applications (Rule 37, Rule 38, etc.)",
+  "primary_authorities": ["16 TAC §3.37", "16 TAC §3.38", "16 TAC §3.32"],
+  "exception_types": [
+    "rule_37",
+    "rule_38",
+    "density",
+    "flaring",
+    "disposal",
+    "enhanced_recovery",
+    "horizontal_well",
+    "special_field_rule"
+  ],
+  "hearing_requirements": {
+    "rule_37": true,
+    "rule_38": true,
+    "flaring": false
+  },
+  "created": "2026-02-12"
+}

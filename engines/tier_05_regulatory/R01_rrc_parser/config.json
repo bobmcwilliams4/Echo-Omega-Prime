@@ -1,0 +1,228 @@
+{
+  "engine_id": "R01_rrc_parser",
+  "version": "1.0.0",
+  "port": 8701,
+  "description": "Texas Railroad Commission data parser with TIE-20 compliance",
+  "tier": "R",
+  "domain": "regulatory_compliance",
+  "subdomain": "texas_rrc",
+
+  "capabilities": [
+    "W-1 permit application analysis",
+    "W-2 completion report parsing",
+    "P-4 production reporting compliance",
+    "Rule 37 spacing/density analysis",
+    "Rule 13 casing/cementing requirements",
+    "Plugging compliance (Rule 14)",
+    "Operator transfer (P-4 Transfer)",
+    "Horizontal well lateral section compliance",
+    "Class II injection well permits (UIC)",
+    "Pipeline permit (T-4) requirements",
+    "Administrative penalty analysis",
+    "H2S safety (Rule 38)",
+    "Gas well classification (Rule 26)",
+    "Financial assurance (Rule 46)",
+    "Seismic monitoring requirements",
+    "Proration and allowable analysis (Rule 36)",
+    "Gas flaring permits (Rule 32)"
+  ],
+
+  "doctrine_coverage": {
+    "total_blocks": 15,
+    "categories": [
+      "drilling_permit",
+      "well_completion",
+      "production_reporting",
+      "operator_transfer",
+      "plugging_compliance",
+      "injection_well",
+      "pipeline_permit",
+      "rule_violation",
+      "proration",
+      "horizontal_well"
+    ],
+    "authority_levels": [
+      "STATUTE",
+      "STATEWIDE_RULE",
+      "TAC",
+      "RRC_ORDER",
+      "GUIDANCE"
+    ]
+  },
+
+  "response_modes": {
+    "FAST": {
+      "description": "Concise cache-only response",
+      "target_latency_ms": 200,
+      "tier": "CACHE"
+    },
+    "DEFENSE": {
+      "description": "Audit-ready with citations",
+      "target_latency_ms": 1000,
+      "tier": "SEMANTIC"
+    },
+    "MEMO": {
+      "description": "Full documentation with all doctrines",
+      "target_latency_ms": 5000,
+      "tier": "DEEP"
+    }
+  },
+
+  "confidence_levels": {
+    "defensible": "Clear statutory authority, low risk",
+    "aggressive": "Interpretive position, moderate risk",
+    "disclosure": "Material uncertainty, disclosure recommended",
+    "high_risk": "Litigation/penalty risk, legal counsel advised"
+  },
+
+  "position_zones": {
+    "planning": "Forward-looking strategic analysis",
+    "reporting": "Historical compliance reporting",
+    "audit": "Third-party audit review"
+  },
+
+  "primary_sources": [
+    "Texas Natural Resources Code Chapter 81-91",
+    "16 TAC Chapter 3 (Oil and Gas Division)",
+    "RRC Statewide Rules (37, 13, 14, 36, 32, 38, 26, 46)",
+    "Texas Water Code (groundwater protection)",
+    "Texas Tax Code (severance tax)",
+    "49 CFR Part 192/195 (pipeline safety)"
+  ],
+
+  "cloud_integration": {
+    "enabled": true,
+    "ekm_url": "https://ekm-query-engine.bmcii1976.workers.dev",
+    "graph_url": "https://graph-query-engine.bmcii1976.workers.dev",
+    "crystal_url": "https://crystal-memory-engine.bmcii1976.workers.dev",
+    "embedding_url": "https://embedding-pipeline.bmcii1976.workers.dev",
+    "timeout_ms": 10000
+  },
+
+  "performance_targets": {
+    "cache_hit_rate": 0.60,
+    "avg_latency_ms": 500,
+    "p95_latency_ms": 2000,
+    "error_rate": 0.01,
+    "uptime_pct": 99.9
+  },
+
+  "audit_logging": {
+    "enabled": true,
+    "log_path": "O:/ECHO_OMEGA_PRIME/LOGS/RRC_PARSER_AUDIT.jsonl",
+    "fields": [
+      "timestamp",
+      "query",
+      "mode",
+      "zone",
+      "tier",
+      "doctrines",
+      "confidence",
+      "latency_ms",
+      "determinism_hash"
+    ]
+  },
+
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "always",
+      "never",
+      "guaranteed",
+      "certain",
+      "definitely",
+      "without exception",
+      "in all cases"
+    ],
+    "disclosure_triggers": [
+      "high_risk",
+      "disclosure",
+      "audit_zone"
+    ],
+    "caveats_required": true
+  },
+
+  "adversarial_analysis": {
+    "enabled": true,
+    "counter_arguments_min": 3,
+    "resolution_strategy_required": true
+  },
+
+  "fact_fragility_scoring": {
+    "enabled": true,
+    "factors": [
+      "verifiability",
+      "recharacterization_risk",
+      "testimony_dependence",
+      "authority_level",
+      "confidence_level"
+    ],
+    "threshold_disclosure": 0.7
+  },
+
+  "multi_doctrine_decomposition": {
+    "enabled": true,
+    "max_interactions": 20,
+    "dag_analysis": true
+  },
+
+  "determinism": {
+    "hash_algorithm": "SHA-256",
+    "fields_hashed": [
+      "query",
+      "doctrines",
+      "synthesis",
+      "confidence"
+    ]
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "trace_queries": true,
+    "trace_errors": true,
+    "metrics_retention_hours": 168
+  },
+
+  "drift_watcher": {
+    "enabled": true,
+    "log_path": "O:/ECHO_OMEGA_PRIME/LOGS/rrc_drift.jsonl",
+    "alert_threshold_hours": 24
+  },
+
+  "coverage_map": {
+    "enabled": true,
+    "track_triggered": true,
+    "track_missed": true,
+    "gap_analysis": true
+  },
+
+  "cors": {
+    "allow_origins": ["*"],
+    "allow_credentials": true,
+    "allow_methods": ["*"],
+    "allow_headers": ["*"]
+  },
+
+  "deployment": {
+    "host": "0.0.0.0",
+    "port": 8701,
+    "workers": 1,
+    "log_level": "INFO",
+    "log_rotation": "100 MB",
+    "log_retention": "30 days"
+  },
+
+  "dependencies": {
+    "python": ">=3.11",
+    "fastapi": ">=0.100.0",
+    "uvicorn": ">=0.23.0",
+    "pydantic": ">=2.0.0",
+    "loguru": ">=0.7.0",
+    "httpx": ">=0.24.0"
+  },
+
+  "contacts": {
+    "maintainer": "ECHO OMEGA PRIME",
+    "email": "bobmcwilliams4@outlook.com",
+    "documentation": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/R01_rrc_parser/README.md"
+  }
+}

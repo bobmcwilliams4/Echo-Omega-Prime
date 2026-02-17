@@ -1,0 +1,103 @@
+{
+  "engine_id": "P08_probate_procedure",
+  "engine_name": "Probate Procedure Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8658,
+  "description": "Maps probate procedures by state — independent administration, dependent administration, muniment of title, small estate affidavit. No-LLM mode authority-driven reasoning.",
+  "domain": "probate_procedure",
+  "primary_jurisdiction": "Texas",
+  "multi_state_capable": true,
+  "authority_sources": [
+    "Texas Estates Code Title 2 (Probate Procedures)",
+    "Texas Estates Code §401 (Independent Administration)",
+    "Texas Estates Code §257 (Muniment of Title)",
+    "Texas Estates Code §205 (Small Estate Affidavit)",
+    "Texas Estates Code §202 (Determination of Heirship)",
+    "Texas Estates Code §33 (Venue)",
+    "Texas Estates Code §31-32 (Jurisdiction)",
+    "Texas Estates Code §501 (Foreign Wills)",
+    "Texas Estates Code §203.001 (Affidavit of Heirship)",
+    "Uniform Probate Code (UPC) comparative reference",
+    "State-specific probate procedure statutes"
+  ],
+  "confidence_thresholds": {
+    "DEFENSIBLE": 0.95,
+    "AGGRESSIVE": 0.80,
+    "DISCLOSURE": 0.65,
+    "HIGH_RISK": 0.50
+  },
+  "cache_ttl_seconds": 86400,
+  "max_cache_blocks": 150,
+  "telemetry_enabled": true,
+  "audit_trail_enabled": true,
+  "drift_detection_enabled": true,
+  "vector_fallback_enabled": true,
+  "epistemic_guardrails": {
+    "require_authority_citation": true,
+    "flag_conflicting_authority": true,
+    "detect_epistemic_gaps": true,
+    "enforce_position_zone_separation": true
+  },
+  "response_modes": {
+    "FAST": {
+      "max_tokens": 500,
+      "cache_only": true,
+      "include_citations": false
+    },
+    "DEFENSE": {
+      "max_tokens": 2000,
+      "full_reasoning": true,
+      "audit_ready": true,
+      "include_citations": true,
+      "adversarial_analysis": true
+    },
+    "MEMO": {
+      "max_tokens": 4000,
+      "comprehensive": true,
+      "include_alternatives": true,
+      "risk_analysis": true,
+      "multi_jurisdiction": true
+    }
+  },
+  "position_zones": {
+    "PLANNING": "pre_death estate planning advice",
+    "REPORTING": "probate status and procedure description",
+    "AUDIT": "compliance review and procedure validation"
+  },
+  "issue_categories": [
+    "PROCEDURE_SELECTION",
+    "JURISDICTION_VENUE",
+    "WILL_PROBATE",
+    "INDEPENDENT_ADMIN",
+    "DEPENDENT_ADMIN",
+    "MUNIMENT_TITLE",
+    "SMALL_ESTATE",
+    "HEIRSHIP_DETERMINATION",
+    "FOREIGN_WILL",
+    "ANCILLARY_PROBATE",
+    "NOTICE_CITATION",
+    "STANDING_CONTEST"
+  ],
+  "fragility_factors": [
+    "will_validity",
+    "beneficiary_identification",
+    "asset_characterization",
+    "deadline_compliance",
+    "notice_sufficiency",
+    "court_approval_requirements"
+  ],
+  "temporal_considerations": {
+    "four_year_will_probate_limit": "Texas Estates Code §256.003",
+    "late_probate_exceptions": "good cause showing required",
+    "small_estate_30_day_waiting_period": "§205.003",
+    "temporary_admin_emergency": "immediate appointment possible"
+  },
+  "health_check_endpoint": "/health",
+  "metrics_endpoint": "/metrics",
+  "logging": {
+    "level": "INFO",
+    "rotation": "500 MB",
+    "retention": "30 days",
+    "format": "json"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "engine_id": "P03_trust_analyzer",
+  "engine_name": "Trust Analyzer Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8653,
+  "category": "LEGAL",
+  "subcategory": "TRUST_LAW",
+  "authority_level": 9.5,
+  "mode": "HYBRID",
+  "description": "Analyzes trust provisions including revocable/irrevocable trusts, grantor trust rules, distribution standards, trustee powers and duties under Texas Trust Code and federal tax law",
+
+  "primary_authorities": [
+    "Texas Property Code Title 9 (Trust Code) §§111-115",
+    "Texas Property Code §§123 (Charitable Trusts)",
+    "IRC §§671-679 (Grantor Trust Rules)",
+    "IRC §§2503 (Transfers to Minors)",
+    "Uniform Trust Code (2000) - comparison reference",
+    "Treasury Regulations §1.671-1 through §1.679-7"
+  ],
+
+  "domain_scope": [
+    "Trust creation and validity",
+    "Revocable vs irrevocable trust analysis",
+    "Grantor trust taxation (IRC §§671-679)",
+    "Intentionally defective grantor trusts (IDGTs)",
+    "Trustee powers, duties, and liability",
+    "Distribution standards (HEMS, discretionary, mandatory)",
+    "Spendthrift provisions (§112.035)",
+    "Trust modification and termination (§112.054)",
+    "Decanting statutes",
+    "Dynasty trusts and perpetuities",
+    "Charitable remainder trusts (CRTs)",
+    "Charitable lead trusts (CLTs)",
+    "Qualified personal residence trusts (QPRTs)",
+    "Irrevocable life insurance trusts (ILITs)",
+    "Crummey powers and demand rights",
+    "Trust protectors and directed trusts",
+    "Total return trusts"
+  ],
+
+  "epistemic_controls": {
+    "position_zones": ["PLANNING", "REPORTING", "AUDIT"],
+    "confidence_strata": ["DEFENSIBLE", "AGGRESSIVE", "DISCLOSURE", "HIGH_RISK"],
+    "banned_phrases": [
+      "always safe",
+      "no risk",
+      "guaranteed",
+      "IRS will never",
+      "completely protected",
+      "bulletproof trust"
+    ],
+    "disclosure_triggers": [
+      "novel trust structure",
+      "untested provision",
+      "aggressive grantor trust position",
+      "self-dealing concerns",
+      "conflicting authorities"
+    ]
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P03_trust_analyzer/logs",
+    "audit_trail": true,
+    "drift_detection": true,
+    "coverage_mapping": true,
+    "metrics_retention_days": 90
+  },
+
+  "response_modes": {
+    "FAST": {
+      "max_latency_ms": 2000,
+      "citation_depth": "minimal",
+      "format": "concise"
+    },
+    "DEFENSE": {
+      "max_latency_ms": 5000,
+      "citation_depth": "comprehensive",
+      "format": "structured_reasoning"
+    },
+    "MEMO": {
+      "max_latency_ms": 10000,
+      "citation_depth": "exhaustive",
+      "format": "long_form_documentation"
+    }
+  },
+
+  "performance_targets": {
+    "doctrine_cache_hit_rate": 0.75,
+    "p95_latency_ms": 800,
+    "error_rate": 0.02,
+    "uptime": 0.999
+  },
+
+  "cloud_integration": {
+    "enabled": true,
+    "retriever_module": "cloud_retriever",
+    "vectorize_index": "trust-law-vectors",
+    "r2_bucket": "echo-prime-knowledge",
+    "d1_database": "trust-analyzer-cache"
+  },
+
+  "deployment": {
+    "environment": "production",
+    "auto_restart": true,
+    "health_check_interval_sec": 60,
+    "max_workers": 4
+  }
+}

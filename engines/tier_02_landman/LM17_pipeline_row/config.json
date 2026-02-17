@@ -1,0 +1,88 @@
+{
+  "engine_id": "LM17",
+  "engine_name": "Pipeline ROW",
+  "version": "1.0.0",
+  "port": 8517,
+  "domain": "pipeline_right_of_way",
+  "description": "Pipeline right-of-way acquisition, routing, easement negotiation, FERC compliance, eminent domain, environmental permitting, and landowner dispute resolution intelligence engine.",
+  "tier": "LANDMAN_INTELLIGENCE",
+  "classification": "PRODUCTION",
+  "author": "ECHO OMEGA PRIME",
+  "created": "2026-02-11",
+  "tie_standard": "TIE-20 GOLD",
+  "components": {
+    "three_layer_response": true,
+    "response_modes": true,
+    "doctrine_cache": true,
+    "authority_hardening": true,
+    "confidence_stratification": true,
+    "semantic_normalization": true,
+    "vector_search": true,
+    "telemetry": true,
+    "drift_watcher": true,
+    "coverage_map": true,
+    "metrics_collector": true,
+    "health_endpoint": true,
+    "zoned_analysis": true,
+    "fact_fragility_scoring": true,
+    "audit_trail_jsonl": true,
+    "determinism_hash_sha256": true,
+    "fastapi_server": true,
+    "loguru_logging": true,
+    "multi_doctrine_decomposition": true,
+    "deep_analysis_mode": true
+  },
+  "doctrine_topics": 45,
+  "issue_categories": [
+    "ROW_ACQUISITION",
+    "EASEMENT_NEGOTIATION",
+    "FERC_COMPLIANCE",
+    "EMINENT_DOMAIN",
+    "CROSSING_PERMITS",
+    "ENVIRONMENTAL_PERMITTING",
+    "SURFACE_DAMAGE",
+    "PIPELINE_SAFETY",
+    "ABANDONMENT",
+    "DISPUTE_RESOLUTION",
+    "TEMPORARY_WORKSPACE",
+    "ENCROACHMENT"
+  ],
+  "authority_sources": [
+    "FERC Natural Gas Act Section 7",
+    "Texas Natural Resources Code Chapter 111",
+    "49 CFR Parts 190-199 (PHMSA)",
+    "Clean Water Act Section 404",
+    "NHPA Section 106",
+    "ESA Section 7",
+    "Texas Property Code",
+    "Texas Utilities Code",
+    "TCEQ Regulations",
+    "USACE Nationwide Permits",
+    "Railroad Commission of Texas"
+  ],
+  "confidence_levels": {
+    "DEFENSIBLE": "Supported by statute, regulation, or binding precedent",
+    "AGGRESSIVE": "Supported by persuasive authority or industry practice",
+    "DISCLOSURE": "Material uncertainty requiring client notification",
+    "HIGH_RISK": "Novel position with substantial adverse authority"
+  },
+  "performance": {
+    "doctrine_cache_target_ms": 200,
+    "semantic_retrieval_target_ms": 1500,
+    "deep_analysis_target_ms": 5000,
+    "max_concurrent_queries": 50
+  },
+  "logging": {
+    "level": "INFO",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "format": "{time:YYYY-MM-DD HH:mm:ss} | {level} | {module}:{function}:{line} | {message}"
+  },
+  "endpoints": {
+    "query": "/query",
+    "health": "/health",
+    "doctrines": "/doctrines",
+    "metrics": "/metrics",
+    "coverage": "/coverage"
+  }
+}

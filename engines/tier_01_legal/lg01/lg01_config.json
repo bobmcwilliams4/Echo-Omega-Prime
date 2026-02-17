@@ -1,0 +1,198 @@
+{
+    "engine_id": "LG01",
+    "engine_name": "Contract Analysis Engine",
+    "version": "1.0.0",
+    "tier": "LEGAL",
+    "tier_number": 1,
+    "authority_level": 5,
+    "port": 8500,
+    "mode": "DET",
+    "description": "Professional-grade contract analysis engine for attorneys, paralegals, and corporate counsel. Provides doctrine-driven analysis of contract formation, breach, remedies, UCC, and commercial transactions.",
+    "author": "ECHO OMEGA PRIME",
+    "authority": "11.0 SOVEREIGN",
+
+    "server": {
+        "host": "0.0.0.0",
+        "port": 8500,
+        "workers": 4,
+        "timeout_seconds": 30,
+        "max_request_size_mb": 10,
+        "cors_origins": ["*"],
+        "rate_limit_rpm": 120
+    },
+
+    "doctrine": {
+        "cache_enabled": true,
+        "min_doctrine_blocks": 60,
+        "confidence_threshold": 0.85,
+        "staleness_check_interval_hours": 24,
+        "max_drift_severity_before_flag": 50.0,
+        "auto_reduce_confidence_on_drift_pct": 10
+    },
+
+    "semantic": {
+        "normalization_enabled": true,
+        "min_entries": 150,
+        "governance_locked": true,
+        "version": "1.0.0"
+    },
+
+    "search": {
+        "algorithm": "BM25",
+        "k1": 1.5,
+        "b": 0.75,
+        "default_top_k": 5,
+        "min_score_threshold": 0.3,
+        "max_results": 20
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "trace_buffer_size": 10000,
+        "error_buffer_size": 1000,
+        "mutation_buffer_size": 500,
+        "flush_interval_seconds": 60,
+        "jsonl_log_dir": "logs",
+        "retention_days": 30,
+        "rotation_mb": 50
+    },
+
+    "authority_hardening": {
+        "weights": {
+            "PRIMARY": 100,
+            "SECONDARY": 80,
+            "TERTIARY": 60,
+            "QUATERNARY": 40,
+            "COMMENTARY": 20
+        },
+        "conflict_resolution": "highest_authority_wins",
+        "min_authority_for_defensible": 60
+    },
+
+    "confidence_stratification": {
+        "bands": {
+            "DEFENSIBLE": {"min": 0.85, "max": 1.0, "label": "Strong legal basis"},
+            "SUPPORTABLE": {"min": 0.65, "max": 0.85, "label": "Reasonable legal position"},
+            "DISCLOSURE": {"min": 0.50, "max": 0.65, "label": "Requires disclosure of risk"},
+            "HIGH_RISK": {"min": 0.0, "max": 0.50, "label": "Significant legal risk"}
+        }
+    },
+
+    "zones": {
+        "TRANSACTIONAL": {
+            "description": "Contract drafting and negotiation analysis",
+            "citation_requirement": "primary_authority_required",
+            "min_confidence": 0.70
+        },
+        "LITIGATION": {
+            "description": "Breach analysis and dispute resolution",
+            "citation_requirement": "case_law_mandatory",
+            "min_confidence": 0.80
+        },
+        "COMPLIANCE": {
+            "description": "Regulatory and statutory compliance review",
+            "citation_requirement": "statute_refs_mandatory",
+            "min_confidence": 0.85
+        }
+    },
+
+    "response_modes": {
+        "FAST": {
+            "max_latency_ms": 2000,
+            "citation_depth": "minimal",
+            "analysis_depth": "doctrine_only"
+        },
+        "DEFENSE": {
+            "max_latency_ms": 5000,
+            "citation_depth": "full",
+            "analysis_depth": "multi_source"
+        },
+        "MEMO": {
+            "max_latency_ms": 15000,
+            "citation_depth": "exhaustive",
+            "analysis_depth": "deep_synthesis"
+        }
+    },
+
+    "audit_trail": {
+        "enabled": true,
+        "format": "jsonl",
+        "sha256_response_hash": true,
+        "retention_days": 365,
+        "append_only": true
+    },
+
+    "drift_watcher": {
+        "enabled": true,
+        "check_interval_hours": 24,
+        "severity_weights": {
+            "low": 10.0,
+            "medium": 25.0,
+            "high": 50.0,
+            "critical": 80.0
+        },
+        "signal_types": [
+            "new_legislation",
+            "new_case_law",
+            "regulatory_change",
+            "circuit_split",
+            "restatement_update"
+        ],
+        "auto_confidence_reduction_pct": 10,
+        "registry_path": "doctrine_drift_registry.json"
+    },
+
+    "coverage_map": {
+        "enabled": true,
+        "categories": [
+            "formation",
+            "performance",
+            "breach",
+            "remedies",
+            "ucc",
+            "specialized_contracts",
+            "defenses",
+            "third_parties",
+            "interpretation",
+            "termination"
+        ],
+        "gap_alert_threshold": 0.30
+    },
+
+    "determinism": {
+        "hash_algorithm": "sha256",
+        "verify_endpoint": "/verify",
+        "same_input_same_output": true
+    },
+
+    "fact_fragility": {
+        "single_source_rating": "HIGH",
+        "dual_source_rating": "MEDIUM",
+        "multi_source_rating": "LOW",
+        "min_sources_for_defensible": 2
+    },
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation_mb": 50,
+        "retention_days": 30,
+        "log_dir": "logs"
+    },
+
+    "endpoints": [
+        {"path": "/health", "method": "GET", "description": "Health check"},
+        {"path": "/query", "method": "POST", "description": "Single contract query"},
+        {"path": "/analyze", "method": "POST", "description": "Deep contract analysis"},
+        {"path": "/batch", "method": "POST", "description": "Batch query processing"},
+        {"path": "/explain", "method": "POST", "description": "Explain reasoning chain"},
+        {"path": "/doctrines", "method": "GET", "description": "List all doctrine topics"},
+        {"path": "/doctrines/{key}", "method": "GET", "description": "Get specific doctrine"},
+        {"path": "/coverage", "method": "GET", "description": "Coverage map report"},
+        {"path": "/metrics", "method": "GET", "description": "Performance metrics"},
+        {"path": "/audit", "method": "GET", "description": "Audit trail entries"},
+        {"path": "/verify", "method": "POST", "description": "Determinism verification"},
+        {"path": "/drift", "method": "GET", "description": "Doctrine drift report"},
+        {"path": "/search", "method": "POST", "description": "Doctrine similarity search"}
+    ]
+}

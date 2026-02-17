@@ -1,0 +1,155 @@
+{
+  "engine_id": "MATH10",
+  "engine_name": "Geometry Intelligence Engine",
+  "version": "1.0.0",
+  "domains": [
+    "EUCLIDEAN_2D",
+    "EUCLIDEAN_3D",
+    "COORDINATE",
+    "TRIGONOMETRY",
+    "TRANSFORMATIONS",
+    "COMPUTATIONAL",
+    "ANALYTIC",
+    "PROOF"
+  ],
+  "domain_details": {
+    "EUCLIDEAN_2D": {
+      "description": "2D shape area, perimeter, and properties",
+      "capabilities": [
+        "triangle_area_heron",
+        "triangle_area_cross_product",
+        "triangle_centroid",
+        "triangle_incircle",
+        "triangle_circumcircle",
+        "rectangle_properties",
+        "circle_properties",
+        "ellipse_properties",
+        "regular_polygon_properties",
+        "trapezoid_area",
+        "parallelogram_properties"
+      ],
+      "doctrine_coverage": [
+        "Pythagorean Theorem",
+        "Heron's Formula",
+        "Regular Polygon Properties",
+        "Ellipse Properties",
+        "Euclidean Axioms and Postulates"
+      ]
+    },
+    "EUCLIDEAN_3D": {
+      "description": "3D solid volume and surface area",
+      "capabilities": [
+        "sphere_volume_surface_area",
+        "cylinder_volume_surface_area",
+        "cone_volume_surface_area",
+        "prism_volume_surface_area",
+        "pyramid_volume_surface_area",
+        "torus_volume_surface_area"
+      ],
+      "doctrine_coverage": [
+        "Sphere, Cylinder, Cone Volumes"
+      ]
+    },
+    "COORDINATE": {
+      "description": "Coordinate geometry operations",
+      "capabilities": [
+        "distance_between_points",
+        "midpoint_computation",
+        "slope_computation",
+        "line_equation_two_points",
+        "line_equation_point_slope",
+        "perpendicular_slope",
+        "angle_between_lines",
+        "point_to_line_distance"
+      ],
+      "doctrine_coverage": [
+        "Coordinate Distance and Midpoint",
+        "Line Equations"
+      ]
+    },
+    "TRIGONOMETRY": {
+      "description": "Trigonometric functions, identities, and triangle solving",
+      "capabilities": [
+        "all_six_trig_functions",
+        "inverse_trig_functions",
+        "identity_verification",
+        "law_of_sines",
+        "law_of_cosines",
+        "triangle_solve_SSS",
+        "triangle_solve_SAS",
+        "triangle_solve_ASA",
+        "triangle_solve_AAS",
+        "triangle_solve_SSA_ambiguous"
+      ],
+      "doctrine_coverage": [
+        "Trigonometric Identities",
+        "Law of Cosines",
+        "Law of Sines"
+      ]
+    },
+    "TRANSFORMATIONS": {
+      "description": "2D geometric transformations",
+      "capabilities": [
+        "rotation_about_point",
+        "reflection_across_axis",
+        "translation",
+        "scaling_about_point",
+        "transform_composition"
+      ],
+      "doctrine_coverage": [
+        "2D Transformations and Matrices"
+      ]
+    },
+    "COMPUTATIONAL": {
+      "description": "Computational geometry algorithms",
+      "capabilities": [
+        "convex_hull_graham_scan",
+        "point_in_polygon_ray_casting",
+        "line_segment_intersection",
+        "polygon_area_shoelace",
+        "polygon_perimeter"
+      ],
+      "doctrine_coverage": [
+        "Convex Hull Algorithm",
+        "Point-in-Polygon Test",
+        "Shoelace Formula for Polygon Area",
+        "Line Segment Intersection"
+      ]
+    },
+    "ANALYTIC": {
+      "description": "Analytic/circle geometry",
+      "capabilities": [
+        "circle_equation_standard_general",
+        "tangent_line_at_point",
+        "circle_line_intersection",
+        "arc_length",
+        "sector_area"
+      ],
+      "doctrine_coverage": [
+        "Circle Equations and Properties"
+      ]
+    },
+    "PROOF": {
+      "description": "Axiomatic foundations and theorem references",
+      "capabilities": [
+        "axiom_reference",
+        "theorem_lookup",
+        "identity_verification_numerical"
+      ],
+      "doctrine_coverage": [
+        "Euclidean Axioms and Postulates"
+      ]
+    }
+  },
+  "total_capabilities": 48,
+  "total_doctrines": 17,
+  "epistemic_gaps": [
+    "Non-Euclidean geometry (hyperbolic/elliptic) not implemented",
+    "Projective geometry not covered",
+    "Differential geometry (curvature, geodesics) not covered",
+    "Algebraic geometry not covered",
+    "3D transformations (rotation matrices, quaternions) not implemented",
+    "Fractal geometry not covered",
+    "Topology not covered"
+  ]
+}

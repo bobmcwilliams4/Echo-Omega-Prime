@@ -1,0 +1,340 @@
+{
+    "engine_id": "LG14",
+    "engine_name": "Healthcare Law Engine",
+    "engine_version": "2.0.0",
+    "engine_authority": 5.0,
+    "engine_tier": "LEGAL",
+    "engine_mode": "EF",
+    "port": 8404,
+    "host": "0.0.0.0",
+
+    "description": "Production-grade healthcare law analysis engine providing HIPAA privacy/security/breach notification, HITECH Act, ACA compliance, Medicare/Medicaid fraud (False Claims Act, Anti-Kickback Statute, Stark Law), medical malpractice, informed consent, patient rights, clinical trials/IRB, FDA drug/device regulation, mental health parity (MHPAEA), EMTALA, telemedicine regulation, state medical board licensing, healthcare entity M&A (CON laws), tax-exempt hospital requirements (IRC 501(r)), pharmacy law, substance abuse confidentiality (42 CFR Part 2), public health emergency law, and healthcare data interoperability (21st Century Cures Act) analysis across federal and state statutory frameworks.",
+
+    "architecture": {
+        "layers": [
+            {
+                "name": "Doctrine Cache",
+                "order": 1,
+                "latency_target_ms": 200,
+                "description": "Pre-compiled healthcare law doctrine for instant retrieval on common HIPAA, fraud, malpractice, and regulatory queries"
+            },
+            {
+                "name": "Semantic Search",
+                "order": 2,
+                "latency_target_ms": 700,
+                "description": "TF-IDF inverted index search over healthcare law doctrine blocks and statutory references"
+            },
+            {
+                "name": "Healthcare Analysis",
+                "order": 3,
+                "latency_target_ms": 1500,
+                "description": "Structured healthcare law analysis including HIPAA compliance review, Stark Law evaluation, and fraud risk assessment"
+            },
+            {
+                "name": "Deep Analysis",
+                "order": 4,
+                "latency_target_ms": 3000,
+                "description": "Multi-doctrine synthesis for complex healthcare regulatory issues, multi-jurisdictional compliance, and fraud investigations"
+            }
+        ],
+        "normalization": "semantic.py",
+        "telemetry": "telemetry.py",
+        "search": "search.py",
+        "doctrines": "doctrines.py",
+        "engine": "engine.py"
+    },
+
+    "response_modes": {
+        "fast": {
+            "description": "Quick doctrine-driven healthcare law guidance with key statutory citations",
+            "max_latency_ms": 2000,
+            "min_citations": 1
+        },
+        "analysis": {
+            "description": "Structured healthcare law analysis with statutory framework and compliance assessment",
+            "max_latency_ms": 5000,
+            "min_citations": 3
+        },
+        "memo": {
+            "description": "Full healthcare law memorandum with comprehensive citation and risk assessment",
+            "max_latency_ms": 10000,
+            "min_citations": 5
+        },
+        "compliance_audit": {
+            "description": "Compliance audit mode with HIPAA, Stark Law, AKS, and ACA gap analysis",
+            "max_latency_ms": 12000,
+            "min_citations": 8
+        },
+        "regulatory_review": {
+            "description": "Full regulatory review with multi-statute analysis, enforcement history, and penalty exposure",
+            "max_latency_ms": 15000,
+            "min_citations": 10
+        }
+    },
+
+    "healthcare_categories": {
+        "hipaa_privacy": {
+            "types": ["notice_of_privacy_practices", "minimum_necessary", "individual_rights", "deidentification", "business_associate", "breach_notification", "preemption"],
+            "key_statutes": ["45 CFR 160", "45 CFR 164 Subpart E", "HITECH Act SS 13402"],
+            "common_issues": ["unauthorized_disclosure", "patient_access", "right_to_amend", "accounting_of_disclosures", "marketing"]
+        },
+        "hipaa_security": {
+            "types": ["administrative_safeguards", "physical_safeguards", "technical_safeguards", "risk_analysis", "breach_notification"],
+            "key_statutes": ["45 CFR 164 Subpart C", "HITECH Act SS 13401"],
+            "common_issues": ["risk_assessment", "encryption", "access_controls", "audit_logs", "workforce_training"]
+        },
+        "fraud_and_abuse": {
+            "types": ["false_claims", "anti_kickback", "stark_law", "exclusion", "civil_monetary_penalties"],
+            "key_statutes": ["31 USC 3729 (FCA)", "42 USC 1320a-7b (AKS)", "42 USC 1395nn (Stark)", "42 USC 1320a-7 (Exclusion)"],
+            "common_issues": ["referral_arrangements", "physician_compensation", "value_based_arrangements", "fair_market_value", "commercial_reasonableness"]
+        },
+        "stark_law": {
+            "types": ["designated_health_services", "financial_relationship", "ownership_interest", "compensation_arrangement", "exception"],
+            "key_statutes": ["42 USC 1395nn", "42 CFR 411.350-411.389"],
+            "exceptions": ["in_office_ancillary", "employment", "personal_services", "rental", "isolated_transactions", "fair_market_value", "academic_medical_centers"]
+        },
+        "anti_kickback": {
+            "types": ["remuneration", "safe_harbor", "advisory_opinion", "criminal_prosecution", "civil_monetary_penalty"],
+            "key_statutes": ["42 USC 1320a-7b(b)", "42 CFR 1001.952"],
+            "safe_harbors": ["investment_interests", "space_rental", "equipment_rental", "personal_services", "employee", "practitioner_recruitment", "group_purchasing", "electronic_health_records"]
+        },
+        "aca_compliance": {
+            "types": ["individual_mandate", "employer_mandate", "essential_health_benefits", "exchange_marketplace", "medicaid_expansion", "preventive_services"],
+            "key_statutes": ["42 USC 18001 et seq.", "26 USC 4980H", "26 USC 36B"],
+            "common_issues": ["employer_shared_responsibility", "reporting_requirements", "grandfathered_plans", "self_insured_plans"]
+        },
+        "medicare_medicaid": {
+            "types": ["enrollment", "coverage", "reimbursement", "conditions_of_participation", "audit", "overpayment", "appeals"],
+            "key_statutes": ["42 USC 1395 et seq. (Medicare)", "42 USC 1396 et seq. (Medicaid)", "42 CFR Parts 400-699"],
+            "common_issues": ["coding_compliance", "documentation", "medical_necessity", "timely_filing", "bundling"]
+        },
+        "malpractice": {
+            "types": ["medical_negligence", "informed_consent", "vicarious_liability", "hospital_liability", "telemedicine_liability"],
+            "key_statutes": ["State medical malpractice statutes", "State tort reform statutes", "State statutes of limitations"],
+            "common_issues": ["standard_of_care", "causation", "damages_caps", "expert_testimony", "screening_panels", "certificate_of_merit"]
+        },
+        "fda_regulation": {
+            "types": ["drug_approval", "device_classification", "clinical_trials", "post_market_surveillance", "labeling", "advertising", "off_label_promotion"],
+            "key_statutes": ["21 USC 301 et seq. (FD&C Act)", "21 CFR Parts 1-1299", "21 USC 360e (PMA)", "21 USC 360(k) (510k)"],
+            "common_issues": ["premarket_approval", "substantial_equivalence", "adverse_event_reporting", "recalls", "warning_letters"]
+        },
+        "emtala": {
+            "types": ["medical_screening", "stabilization", "appropriate_transfer", "on_call_obligations", "hospital_capacity"],
+            "key_statutes": ["42 USC 1395dd", "42 CFR 489.24"],
+            "common_issues": ["emergency_medical_condition", "dedicated_emergency_department", "patient_dumping", "reverse_dumping", "physician_on_call"]
+        },
+        "telemedicine": {
+            "types": ["interstate_licensure", "prescribing", "reimbursement", "technology_requirements", "standard_of_care", "informed_consent"],
+            "key_statutes": ["Ryan Haight Act (21 USC 829)", "State telemedicine statutes", "Interstate Medical Licensure Compact"],
+            "common_issues": ["originating_site", "distant_site", "store_and_forward", "remote_monitoring", "audio_only"]
+        },
+        "mental_health_parity": {
+            "types": ["quantitative_treatment_limitations", "nonquantitative_treatment_limitations", "financial_requirements", "comparative_analysis"],
+            "key_statutes": ["MHPAEA (29 USC 1185a)", "42 USC 300gg-26", "CAA 2021 NQTL Comparative Analysis"],
+            "common_issues": ["parity_compliance", "prior_authorization", "network_adequacy", "step_therapy", "reimbursement_rates"]
+        },
+        "clinical_trials": {
+            "types": ["irb_review", "informed_consent", "data_safety_monitoring", "adverse_event_reporting", "sponsor_obligations"],
+            "key_statutes": ["45 CFR 46 (Common Rule)", "21 CFR 50 (Informed Consent)", "21 CFR 56 (IRBs)", "21 CFR 312 (IND)"],
+            "common_issues": ["protocol_compliance", "subject_protection", "conflict_of_interest", "data_integrity", "registration_requirements"]
+        },
+        "tax_exempt_hospitals": {
+            "types": ["community_health_needs_assessment", "financial_assistance_policy", "billing_limitations", "charges_limitation"],
+            "key_statutes": ["IRC 501(r)", "26 CFR 1.501(r)-1 through 1.501(r)-7", "IRC 501(c)(3)"],
+            "common_issues": ["chna_requirements", "fap_implementation", "extraordinary_collection_actions", "community_benefit"]
+        },
+        "pharmacy_law": {
+            "types": ["controlled_substances", "compounding", "drug_supply_chain", "pharmacy_benefit_managers", "340B_program"],
+            "key_statutes": ["21 USC 801 et seq. (CSA)", "Drug Quality and Security Act", "340B (42 USC 256b)"],
+            "common_issues": ["prescriber_verification", "dispensing_requirements", "drug_diversion", "REMS", "state_pharmacy_practice_acts"]
+        },
+        "substance_abuse_confidentiality": {
+            "types": ["patient_consent", "qualified_service_organization", "court_order", "audit_evaluation", "medical_emergency"],
+            "key_statutes": ["42 USC 290dd-2", "42 CFR Part 2"],
+            "common_issues": ["redisclosure_prohibition", "part2_vs_hipaa", "consent_requirements", "criminal_justice_referrals", "care_coordination"]
+        },
+        "public_health_emergency": {
+            "types": ["emergency_declarations", "liability_protections", "waiver_authority", "reporting_obligations", "quarantine_authority"],
+            "key_statutes": ["42 USC 247d (PHE Declaration)", "PREP Act (42 USC 247d-6d)", "Stafford Act", "National Emergencies Act"],
+            "common_issues": ["cms_waivers", "hipaa_flexibility", "scope_of_practice", "vaccine_distribution", "emergency_use_authorization"]
+        },
+        "interoperability": {
+            "types": ["information_blocking", "patient_access", "api_requirements", "uscdi_standard", "trusted_exchange"],
+            "key_statutes": ["21st Century Cures Act SS 4004", "45 CFR 171 (Information Blocking)", "ONC Final Rule"],
+            "common_issues": ["information_blocking_exceptions", "certified_health_it", "patient_matching", "data_exchange_frameworks"]
+        },
+        "healthcare_ma": {
+            "types": ["certificate_of_need", "change_of_ownership", "antitrust", "due_diligence", "regulatory_approvals"],
+            "key_statutes": ["State CON laws", "HSR Act (15 USC 18a)", "42 CFR 489.18 (CHOW)", "State AG notification statutes"],
+            "common_issues": ["regulatory_notifications", "license_transfers", "medicare_enrollment", "contract_assignment", "workforce_issues"]
+        },
+        "licensing": {
+            "types": ["state_medical_board", "facility_licensing", "accreditation", "scope_of_practice", "disciplinary_proceedings"],
+            "key_statutes": ["State Medical Practice Acts", "State facility licensing statutes", "Joint Commission standards"],
+            "common_issues": ["license_application", "renewal", "reciprocity", "supervision_requirements", "telemedicine_licensure"]
+        }
+    },
+
+    "authority_weights": {
+        "us_supreme_court": 100,
+        "federal_circuit_court": 85,
+        "federal_district_court": 70,
+        "state_supreme_court": 90,
+        "state_appellate_court": 75,
+        "state_trial_court": 55,
+        "federal_statute": 95,
+        "state_statute": 90,
+        "cfr_regulation": 80,
+        "oig_advisory_opinion": 75,
+        "cms_guidance": 75,
+        "fda_guidance": 70,
+        "hhs_regulation": 80,
+        "ocr_guidance": 70,
+        "oig_special_advisory_bulletin": 72,
+        "compliance_guidance": 60,
+        "treatise": 40,
+        "law_review": 30,
+        "cms_manual": 65,
+        "restatement_torts": 50
+    },
+
+    "confidence_bands": {
+        "DEFENSIBLE": {
+            "min_score": 0.85,
+            "label": "Position is well-supported by established healthcare law and precedent",
+            "requires_caveat": false
+        },
+        "SUPPORTABLE": {
+            "min_score": 0.65,
+            "label": "Position has reasonable support but some uncertainty in application or jurisdiction",
+            "requires_caveat": true
+        },
+        "DISCLOSURE": {
+            "min_score": 0.50,
+            "label": "Position requires disclosure of contrary authority, regulatory risk, or jurisdictional variation",
+            "requires_caveat": true
+        },
+        "HIGH_RISK": {
+            "min_score": 0.0,
+            "label": "Position faces significant adverse authority, untested theory, or active enforcement risk",
+            "requires_caveat": true
+        }
+    },
+
+    "drift_watcher": {
+        "enabled": true,
+        "check_interval_hours": 24,
+        "staleness_threshold_days": 90,
+        "confidence_reduction_percent": 10,
+        "registry_path": "doctrine_drift_registry.json",
+        "signal_types": [
+            "new_healthcare_case",
+            "scotus_cert_grant",
+            "legislative_change",
+            "hhs_regulation_change",
+            "cms_policy_update",
+            "oig_advisory_opinion",
+            "fda_guidance_update",
+            "state_medical_board_action",
+            "hipaa_enforcement_action",
+            "ocr_settlement",
+            "stark_final_rule_change",
+            "aks_safe_harbor_update"
+        ]
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "ring_buffer_size": 10000,
+        "flush_batch_size": 50,
+        "flush_interval_seconds": 5.0,
+        "log_dir": "logs",
+        "retention_days": 30
+    },
+
+    "search": {
+        "default_top_k": 5,
+        "score_threshold": 0.3,
+        "max_token_length": 50,
+        "min_token_length": 2
+    },
+
+    "audit": {
+        "enabled": true,
+        "log_format": "jsonl",
+        "hash_algorithm": "sha256",
+        "retention_days": 365
+    },
+
+    "epistemic_guardrails": {
+        "banned_phrases": [
+            "This is definitely HIPAA compliant",
+            "There is absolutely no Stark Law violation",
+            "You will certainly win this malpractice case",
+            "The Anti-Kickback Statute does not apply here",
+            "This arrangement is guaranteed to be legal",
+            "There is zero enforcement risk",
+            "OCR will definitely not investigate",
+            "The False Claims Act cannot reach this conduct",
+            "EMTALA does not apply to this facility",
+            "This is absolutely a safe harbor arrangement",
+            "No court would find an FCA violation",
+            "Your HIPAA breach does not require notification",
+            "This clinical trial is fully compliant",
+            "The FDA will certainly approve this device"
+        ],
+        "required_disclaimers": {
+            "not_legal_advice": "This analysis is for informational purposes only and does not constitute legal advice. Consult a licensed healthcare attorney for specific legal guidance.",
+            "jurisdiction_specific": "Healthcare law varies significantly by state and involves complex federal-state interactions. This analysis may not apply in all jurisdictions.",
+            "fact_dependent": "Healthcare law outcomes depend heavily on specific facts, regulatory interpretation, and enforcement priorities. This analysis is based on the information provided.",
+            "regulatory_risk": "Healthcare regulatory enforcement is active and evolving. Government interpretations may differ from the analysis presented. Consider obtaining regulatory counsel."
+        }
+    },
+
+    "cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["*"]
+    },
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation": "50 MB",
+        "retention": "30 days"
+    },
+
+    "tie_20_components": [
+        "three_layer_response",
+        "response_modes",
+        "doctrine_cache",
+        "authority_hardening",
+        "confidence_stratification",
+        "semantic_normalization",
+        "vector_search_tfidf",
+        "telemetry_module",
+        "doctrine_drift_watcher",
+        "doctrine_coverage_map",
+        "metrics_collector",
+        "health_endpoint",
+        "zoned_analysis",
+        "fact_fragility_scoring",
+        "audit_trail_jsonl",
+        "determinism_hash_sha256",
+        "fastapi_server",
+        "loguru_logging",
+        "multi_doctrine_decomposition",
+        "deep_analysis_mode"
+    ],
+
+    "metadata": {
+        "author": "ECHO OMEGA PRIME",
+        "authority": "11.0 SOVEREIGN",
+        "build_date": "2026-02-10",
+        "domain": "Healthcare Law",
+        "classification": "LEGAL",
+        "tier_id": 1,
+        "engine_index": 14,
+        "total_target_lines": 10500
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "engine_id": "R10",
+  "name": "Bond Requirements Calculator",
+  "version": "1.0.0",
+  "port": 8710,
+  "mode": "no_llm",
+  "description": "Calculate operator bond requirements per 16 TAC §3.78",
+  "primary_authority": "16 TAC §3.78",
+  "bond_tables": {
+    "individual_bonds": {
+      "0_2000": 2000,
+      "2001_4000": 4000,
+      "4001_6000": 6000,
+      "6001_10000": 10000,
+      "10001_plus": 25000
+    },
+    "blanket_bonds": {
+      "1_10": 25000,
+      "11_25": 50000,
+      "26_100": 125000,
+      "101_250": 250000,
+      "251_plus_base": 250000,
+      "per_well_over_250": 2500
+    },
+    "multipliers": {
+      "bay_estuary": 2.0,
+      "h2s": 1.5,
+      "injection": 2.0
+    }
+  },
+  "created": "2026-02-12",
+  "author": "ECHO OMEGA PRIME"
+}

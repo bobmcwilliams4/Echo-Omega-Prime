@@ -1,0 +1,212 @@
+[
+  {
+    "topic": "central_limit_theorem",
+    "keywords": ["clt", "central limit", "sampling distribution", "normal approximation", "sample mean"],
+    "conclusion_template": "The Central Limit Theorem guarantees that the sampling distribution of the sample mean approaches normality as n increases, regardless of the population distribution shape. For practical purposes, n >= 30 is the conventional threshold, though highly skewed distributions may require larger samples. This underpins the validity of z-tests and confidence intervals for means.",
+    "reasoning_framework": "1. Define the population distribution (any shape, finite variance). 2. Draw repeated samples of size n. 3. Compute the mean of each sample. 4. As n grows, the distribution of sample means converges to N(mu, sigma^2/n). 5. Rate of convergence depends on population skewness and kurtosis. 6. Berry-Esseen theorem bounds the approximation error at O(1/sqrt(n)).",
+    "key_factors": ["sample_size", "population_variance", "population_skewness", "independence_of_observations"],
+    "primary_authority": ["Probability and Statistics (DeGroot & Schervish)", "Mathematical Statistics (Wackerly, Mendenhall, Scheaffer)", "Casella & Berger Statistical Inference"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "CLT is a proven mathematical theorem, not an empirical claim"
+  },
+  {
+    "topic": "hypothesis_testing_framework",
+    "keywords": ["hypothesis", "null", "alternative", "p-value", "significance", "type I", "type II", "alpha", "beta"],
+    "conclusion_template": "Hypothesis testing follows the Neyman-Pearson framework: state H0 and H1, choose alpha, compute test statistic, determine p-value, reject H0 if p < alpha. The p-value is the probability of observing data at least as extreme as the sample, assuming H0 is true. It is NOT the probability that H0 is true. Type I error (false positive) is controlled at alpha; Type II error (false negative) depends on effect size, sample size, and variance.",
+    "reasoning_framework": "1. Formulate H0 (status quo) and H1 (research hypothesis). 2. Select significance level alpha (conventionally 0.05). 3. Choose appropriate test statistic based on data type and assumptions. 4. Compute test statistic from sample data. 5. Find p-value from the reference distribution. 6. Compare p-value to alpha. 7. Report effect size alongside significance. 8. State conclusion in context of the problem.",
+    "key_factors": ["significance_level", "test_statistic", "sample_size", "effect_size", "assumptions_validity", "one_vs_two_tailed"],
+    "primary_authority": ["Neyman & Pearson (1933)", "Fisher (1925) Statistical Methods", "ASA Statement on P-Values (2016)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Neyman-Pearson lemma provides optimality guarantee for likelihood ratio tests"
+  },
+  {
+    "topic": "regression_assumptions",
+    "keywords": ["regression", "ols", "assumptions", "linearity", "homoscedasticity", "normality", "independence", "multicollinearity"],
+    "conclusion_template": "OLS regression requires: (1) linearity of the relationship, (2) independence of errors, (3) homoscedasticity (constant error variance), (4) normality of error terms (for inference), (5) no perfect multicollinearity among predictors. Violation of these assumptions can lead to biased coefficients (omitted variable bias), inefficient estimates (heteroscedasticity), or invalid inference (non-normal errors with small n). Diagnostic plots (residuals vs fitted, Q-Q plot, leverage plot) are essential.",
+    "reasoning_framework": "1. Check linearity via residual plots. 2. Test independence via Durbin-Watson statistic. 3. Check homoscedasticity via Breusch-Pagan or White test. 4. Assess normality via Shapiro-Wilk or Q-Q plot on residuals. 5. Check multicollinearity via VIF (>10 is problematic). 6. If assumptions violated, consider transformations, robust SE, or alternative models.",
+    "key_factors": ["linearity", "error_independence", "constant_variance", "error_normality", "no_multicollinearity", "influential_points"],
+    "primary_authority": ["Gauss-Markov Theorem", "Applied Linear Statistical Models (Kutner et al.)", "Econometrics (Wooldridge)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Gauss-Markov theorem proves OLS is BLUE under assumptions 1-3"
+  },
+  {
+    "topic": "normal_distribution_properties",
+    "keywords": ["normal", "gaussian", "bell curve", "standard normal", "z-score", "empirical rule"],
+    "conclusion_template": "The normal distribution N(mu, sigma^2) is fully characterized by its mean and variance. The empirical rule states: 68% of data within 1 sigma, 95% within 2 sigma, 99.7% within 3 sigma. Standard normal Z ~ N(0,1) is obtained via z = (x-mu)/sigma. The normal distribution is symmetric (skewness=0, kurtosis=3), closed under linear combinations, and serves as the asymptotic distribution for many statistics via the CLT.",
+    "reasoning_framework": "1. The PDF is f(x) = (1/sqrt(2*pi*sigma^2)) * exp(-(x-mu)^2 / (2*sigma^2)). 2. The CDF has no closed form but is expressed via the error function erf. 3. Linear combination of independent normals is normal. 4. The MGF is exp(mu*t + sigma^2*t^2/2). 5. Maximum entropy distribution for given mean and variance.",
+    "key_factors": ["symmetry", "mean_equals_median_equals_mode", "infinite_support", "kurtosis_equals_3", "additive_closure"],
+    "primary_authority": ["Gauss (1809)", "de Moivre-Laplace theorem", "Probability and Statistics (Walpole, Myers, Myers)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Mathematical properties are proven theorems"
+  },
+  {
+    "topic": "t_distribution_and_small_samples",
+    "keywords": ["t-distribution", "student", "small sample", "degrees of freedom", "heavy tails", "t-test"],
+    "conclusion_template": "The t-distribution arises when estimating the mean of a normally distributed population with unknown variance. It has heavier tails than the normal, with the shape controlled by degrees of freedom (df). As df increases, t converges to normal. For df < 30, the wider tails appropriately reflect the additional uncertainty from estimating sigma. The t-test is robust to mild departures from normality for n > 15-20.",
+    "reasoning_framework": "1. If X ~ N(mu, sigma^2) and s^2 is sample variance, then (xbar - mu)/(s/sqrt(n)) ~ t(n-1). 2. PDF involves the gamma function: f(t) = Gamma((v+1)/2) / (sqrt(v*pi)*Gamma(v/2)) * (1+t^2/v)^(-(v+1)/2). 3. Variance = v/(v-2) for v > 2. 4. For paired data, apply t-test to differences. 5. Welch's modification handles unequal variances.",
+    "key_factors": ["degrees_of_freedom", "tail_heaviness", "variance_estimation_uncertainty", "normality_assumption", "sample_size_threshold"],
+    "primary_authority": ["Gosset/Student (1908)", "Welch (1947)", "Statistical Methods (Snedecor & Cochran)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Student's derivation and subsequent proofs of exact distribution"
+  },
+  {
+    "topic": "chi_square_distribution_and_tests",
+    "keywords": ["chi-square", "chi-squared", "goodness of fit", "independence", "contingency table", "categorical"],
+    "conclusion_template": "The chi-square distribution with k degrees of freedom is the distribution of the sum of k squared standard normal variables. In testing, chi-square tests assess whether observed frequencies differ significantly from expected frequencies (goodness-of-fit) or whether two categorical variables are independent (test of independence). Assumptions: expected cell counts should be >= 5 (some texts allow >= 1 with Yates correction). The statistic is sum of (O-E)^2/E.",
+    "reasoning_framework": "1. For GOF: H0 states the data follows a specified distribution. 2. Compute expected counts under H0. 3. Chi-square = sum((O_i - E_i)^2 / E_i). 4. df = categories - 1 - estimated parameters. 5. For independence: df = (rows-1)(cols-1). 6. Cramér's V provides effect size. 7. Fisher's exact test preferred for small expected counts.",
+    "key_factors": ["expected_cell_counts", "sample_size", "degrees_of_freedom", "categorical_data_requirement", "independence_of_observations"],
+    "primary_authority": ["Pearson (1900)", "Fisher (1922)", "Agresti Categorical Data Analysis"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Pearson's chi-square test is foundational to categorical data analysis"
+  },
+  {
+    "topic": "f_distribution_and_anova",
+    "keywords": ["f-distribution", "f-test", "anova", "variance ratio", "between groups", "within groups"],
+    "conclusion_template": "The F-distribution is the ratio of two chi-square variables divided by their respective degrees of freedom. ANOVA uses the F-statistic to test whether group means differ significantly. F = MS_between / MS_within. A significant F indicates at least one group mean differs, but not which ones (post-hoc tests needed). ANOVA assumes normality, homogeneity of variances (Levene's test), and independence. Eta-squared provides effect size.",
+    "reasoning_framework": "1. Partition total variability: SS_total = SS_between + SS_within. 2. Compute mean squares: MS = SS/df. 3. F = MS_between / MS_within. 4. Under H0 (all means equal), F ~ F(k-1, N-k). 5. Reject if F > F_critical or p < alpha. 6. Post-hoc: Tukey HSD, Bonferroni, Scheffé. 7. Effect size: eta^2 = SS_between / SS_total.",
+    "key_factors": ["number_of_groups", "group_sizes", "homogeneity_of_variance", "normality_within_groups", "independence"],
+    "primary_authority": ["Fisher (1925)", "ANOVA (Scheffe 1959)", "Design and Analysis of Experiments (Montgomery)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Fisher's original derivation of the F-test for ANOVA"
+  },
+  {
+    "topic": "correlation_vs_causation",
+    "keywords": ["correlation", "causation", "confounding", "spurious", "pearson", "spearman", "association"],
+    "conclusion_template": "Correlation measures the strength and direction of a linear (Pearson) or monotonic (Spearman) relationship between two variables. Correlation does NOT imply causation due to: (1) confounding variables, (2) reverse causation, (3) coincidental association. Pearson's r assumes linearity and bivariate normality; Spearman's rho is robust to non-linearity and outliers. Statistical significance of r depends heavily on sample size — trivially small correlations become 'significant' with large n.",
+    "reasoning_framework": "1. Pearson r = cov(X,Y) / (s_X * s_Y), range [-1, 1]. 2. Spearman rho: Pearson correlation on ranks. 3. Test significance: t = r * sqrt((n-2)/(1-r^2)), df = n-2. 4. r^2 = proportion of variance explained. 5. Partial correlation controls for confounders. 6. Establish causation requires randomized experiment or strong theoretical framework.",
+    "key_factors": ["linearity_assumption", "outlier_sensitivity", "sample_size_effect_on_significance", "confounding", "restriction_of_range"],
+    "primary_authority": ["Pearson (1896)", "Spearman (1904)", "The Book of Why (Pearl 2018)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Mathematical definition of correlation is unambiguous; causal interpretation requires domain knowledge"
+  },
+  {
+    "topic": "test_selection_guide",
+    "keywords": ["which test", "test selection", "parametric", "non-parametric", "decision tree", "choose test"],
+    "conclusion_template": "Test selection depends on: (1) data type (continuous, ordinal, categorical), (2) number of groups/samples, (3) paired vs independent, (4) distributional assumptions met. For continuous data with normal distribution: 1 sample → t-test; 2 independent → two-sample t; 2 paired → paired t; 3+ groups → one-way ANOVA. For non-normal: Mann-Whitney U (2 independent), Wilcoxon signed-rank (2 paired), Kruskal-Wallis (3+ groups). For categorical: chi-square test.",
+    "reasoning_framework": "1. Identify the research question (comparison, association, prediction). 2. Determine data type. 3. Check sample size and distribution. 4. Assess independence/pairing. 5. Verify assumptions (normality, equal variances). 6. Select appropriate test. 7. If assumptions violated, use non-parametric alternative or transformation.",
+    "key_factors": ["data_type", "number_of_groups", "paired_vs_independent", "normality", "sample_size", "variance_homogeneity"],
+    "primary_authority": ["Biostatistics (Daniel)", "Statistical Methods for the Social Sciences (Agresti & Finlay)", "Fundamentals of Biostatistics (Rosner)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Established statistical methodology with well-defined decision rules"
+  },
+  {
+    "topic": "effect_size_interpretation",
+    "keywords": ["effect size", "cohen d", "eta squared", "practical significance", "magnitude", "clinical significance"],
+    "conclusion_template": "Effect size quantifies the magnitude of a difference or relationship independent of sample size. Cohen's d: small=0.2, medium=0.5, large=0.8. Eta-squared: small=0.01, medium=0.06, large=0.14. Pearson r: small=0.1, medium=0.3, large=0.5. Effect size is essential because statistical significance alone is insufficient — with large n, trivially small effects become 'significant.' Always report effect size alongside p-values (APA 6th edition mandate).",
+    "reasoning_framework": "1. Cohen's d = (M1 - M2) / s_pooled (standardized mean difference). 2. Eta^2 = SS_effect / SS_total (proportion of variance). 3. Omega^2 is less biased than eta^2 for small samples. 4. r = sqrt(t^2 / (t^2 + df)) converts t-statistic to correlation. 5. Confidence intervals for effect sizes provide additional information. 6. Context matters: a 'small' effect may be practically important in some domains.",
+    "key_factors": ["cohen_d_thresholds", "eta_squared_thresholds", "domain_context", "sample_size_independence", "apa_reporting_requirement"],
+    "primary_authority": ["Cohen (1988) Statistical Power Analysis", "APA Publication Manual 6th/7th Edition", "Cumming (2012) Understanding The New Statistics"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Cohen's conventions are widely adopted standards, though domain-specific benchmarks may override"
+  },
+  {
+    "topic": "power_analysis_and_sample_size",
+    "keywords": ["power", "sample size", "type II error", "beta", "detectable effect", "power analysis"],
+    "conclusion_template": "Statistical power = 1 - beta = probability of correctly rejecting a false H0. Power depends on: alpha, effect size, sample size, and variability. The standard target is power >= 0.80. A priori power analysis determines required n before data collection. Post-hoc power analysis (observed power) is widely criticized as uninformative. For a two-sided t-test: n = ((z_alpha/2 + z_beta) / delta)^2 where delta is the standardized effect size.",
+    "reasoning_framework": "1. Specify the minimum clinically/practically meaningful effect size. 2. Set alpha (typically 0.05) and desired power (typically 0.80). 3. Estimate population variability from pilot data or literature. 4. Compute required n using power formula or iterative methods. 5. Adjust for expected attrition/dropout. 6. If computed n is infeasible, consider: increasing alpha, targeting larger effect, reducing variance, or using more powerful design.",
+    "key_factors": ["effect_size_specification", "alpha_level", "desired_power", "variance_estimate", "one_vs_two_tailed", "study_design"],
+    "primary_authority": ["Cohen (1988) Statistical Power Analysis", "Lenth (2001) on post-hoc power", "G*Power software documentation"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Power analysis is required by NIH, FDA, and most IRBs for study proposals"
+  },
+  {
+    "topic": "binomial_distribution",
+    "keywords": ["binomial", "bernoulli", "trials", "success", "failure", "proportion", "binary"],
+    "conclusion_template": "The binomial distribution B(n,p) models the number of successes in n independent Bernoulli trials, each with success probability p. PMF: P(X=k) = C(n,k) * p^k * (1-p)^(n-k). Mean = np, Variance = np(1-p). For large n, the binomial is well-approximated by N(np, np(1-p)) when np >= 5 and n(1-p) >= 5. The binomial test assesses whether an observed proportion differs from a hypothesized value.",
+    "reasoning_framework": "1. Verify conditions: fixed n, independent trials, constant p, binary outcome. 2. Compute exact probabilities via PMF for small n. 3. Use normal approximation with continuity correction for large n. 4. For confidence intervals on proportions: Wilson score interval preferred over Wald interval. 5. For comparing two proportions: z-test or Fisher's exact test.",
+    "key_factors": ["fixed_trial_count", "independence", "constant_probability", "binary_outcome", "normal_approximation_validity"],
+    "primary_authority": ["Bernoulli (1713)", "de Moivre (1738)", "Agresti & Coull (1998) on confidence intervals"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Exact combinatorial derivation; no approximation needed for the theoretical distribution"
+  },
+  {
+    "topic": "poisson_distribution",
+    "keywords": ["poisson", "count", "rate", "rare events", "lambda", "occurrences"],
+    "conclusion_template": "The Poisson distribution models the number of events in a fixed interval when events occur independently at a constant average rate lambda. PMF: P(X=k) = (lambda^k * e^(-lambda)) / k!. Mean = Variance = lambda. It approximates the binomial when n is large and p is small (lambda = np). Used for: count data, rare events, arrival processes. The Poisson test evaluates whether an observed rate differs from an expected rate.",
+    "reasoning_framework": "1. Verify conditions: events occur independently, at constant rate, no simultaneous events. 2. Estimate lambda from data (sample mean). 3. For large lambda (>20), normal approximation N(lambda, lambda) is adequate. 4. For comparing two Poisson rates: conditional test or rate ratio. 5. Overdispersion (variance > mean) suggests negative binomial instead.",
+    "key_factors": ["independence_of_events", "constant_rate", "no_clustering", "equidispersion", "time_or_space_interval"],
+    "primary_authority": ["Poisson (1837)", "Statistical Distributions (Forbes et al.)", "Generalized Linear Models (McCullagh & Nelder)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Derived as limit of binomial; exact mathematical properties"
+  },
+  {
+    "topic": "non_parametric_methods",
+    "keywords": ["non-parametric", "nonparametric", "distribution-free", "rank", "robust", "assumption-free"],
+    "conclusion_template": "Non-parametric tests make fewer assumptions about the data distribution, using ranks instead of raw values. Key tests: Mann-Whitney U (independent 2-sample), Wilcoxon signed-rank (paired 2-sample), Kruskal-Wallis (3+ groups), Spearman correlation (association). Advantages: robust to outliers, valid for ordinal data, no normality assumption. Disadvantages: generally less powerful than parametric equivalents when assumptions hold, harder to construct confidence intervals.",
+    "reasoning_framework": "1. Convert data to ranks (handle ties by averaging). 2. Compute test statistic from rank sums/differences. 3. For small samples, use exact permutation distribution. 4. For large samples, use normal approximation. 5. Effect size: rank-biserial correlation for Mann-Whitney, matched-pairs rank-biserial for Wilcoxon. 6. Use non-parametric when: data is ordinal, severely non-normal, contains outliers, or sample size is very small.",
+    "key_factors": ["rank_transformation", "tie_handling", "exact_vs_asymptotic", "power_relative_to_parametric", "ordinal_data_applicability"],
+    "primary_authority": ["Wilcoxon (1945)", "Mann & Whitney (1947)", "Kruskal & Wallis (1952)", "Conover Practical Nonparametric Statistics"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Distribution-free validity is mathematically proven under stated conditions"
+  },
+  {
+    "topic": "multiple_testing_correction",
+    "keywords": ["multiple testing", "bonferroni", "family-wise error", "false discovery rate", "fdr", "multiplicity"],
+    "conclusion_template": "When performing multiple hypothesis tests, the probability of at least one false positive (family-wise error rate, FWER) inflates rapidly. With m independent tests at alpha=0.05: FWER = 1-(1-0.05)^m. Corrections: Bonferroni (alpha/m, conservative), Holm-Bonferroni (step-down, less conservative), Benjamini-Hochberg (controls FDR, more powerful for many tests). Always report the correction method used. Failing to correct is a common source of irreproducible results.",
+    "reasoning_framework": "1. Count the number of simultaneous tests (m). 2. Choose FWER or FDR control based on context. 3. Bonferroni: reject if p_i < alpha/m. 4. Holm: order p-values, reject p_(i) < alpha/(m-i+1) until first non-rejection. 5. Benjamini-Hochberg: order p-values, find largest i where p_(i) <= i*alpha/m. 6. In exploratory analysis, FDR control is often appropriate; in confirmatory, FWER control is preferred.",
+    "key_factors": ["number_of_tests", "correlation_among_tests", "fwer_vs_fdr", "exploratory_vs_confirmatory", "test_independence"],
+    "primary_authority": ["Bonferroni (1936)", "Holm (1979)", "Benjamini & Hochberg (1995)", "Westfall & Young (1993)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Mathematical proofs of error rate control under stated assumptions"
+  },
+  {
+    "topic": "descriptive_statistics_fundamentals",
+    "keywords": ["mean", "median", "mode", "variance", "standard deviation", "descriptive", "summary", "central tendency"],
+    "conclusion_template": "Descriptive statistics summarize data through measures of central tendency (mean, median, mode), dispersion (variance, standard deviation, range, IQR), and shape (skewness, kurtosis). The mean is sensitive to outliers; the median is robust. Sample variance uses n-1 (Bessel's correction) for unbiased estimation. For symmetric distributions, mean approximately equals median; for skewed distributions, the median better represents the 'typical' value. Always report both central tendency AND dispersion.",
+    "reasoning_framework": "1. Compute measures of central tendency. 2. Assess which measure is most appropriate (mean for symmetric, median for skewed). 3. Compute measures of spread. 4. Check for outliers via IQR rule (below Q1-1.5*IQR or above Q3+1.5*IQR). 5. Assess distribution shape via skewness and kurtosis. 6. Visualize with histogram, box plot, or Q-Q plot.",
+    "key_factors": ["data_distribution_shape", "outlier_presence", "measurement_scale", "sample_size", "purpose_of_analysis"],
+    "primary_authority": ["Tukey (1977) Exploratory Data Analysis", "Statistics (Freedman, Pisani, Purves)", "Introduction to the Practice of Statistics (Moore, McCabe)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Definitions are mathematical facts; Bessel's correction is proven unbiased"
+  },
+  {
+    "topic": "confidence_interval_interpretation",
+    "keywords": ["confidence interval", "ci", "margin of error", "coverage probability", "interpretation"],
+    "conclusion_template": "A 95% confidence interval means that if we repeated the sampling procedure many times, approximately 95% of the resulting intervals would contain the true population parameter. It does NOT mean there is a 95% probability the parameter lies in this specific interval (the parameter is fixed, not random). Width depends on: confidence level, sample size, and variability. Narrower intervals come from larger n, lower confidence level, or lower variability. For means: CI = xbar +/- t_(alpha/2) * s/sqrt(n).",
+    "reasoning_framework": "1. Select confidence level (90%, 95%, 99%). 2. Determine if sigma is known (z-interval) or unknown (t-interval). 3. Compute margin of error = critical_value * standard_error. 4. CI = point_estimate +/- margin_of_error. 5. Report and interpret in context. 6. A CI that does not contain the null value corresponds to rejecting H0 at the complementary alpha level.",
+    "key_factors": ["confidence_level", "sample_size", "variability", "known_vs_unknown_sigma", "distribution_assumption"],
+    "primary_authority": ["Neyman (1937) original CI paper", "Statistical Intervals (Meeker & Escobar)", "Cox & Hinkley Theoretical Statistics"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Neyman's frequentist construction has proven coverage properties"
+  },
+  {
+    "topic": "logistic_regression_basics",
+    "keywords": ["logistic", "binary outcome", "odds ratio", "logit", "classification", "probability"],
+    "conclusion_template": "Logistic regression models the probability of a binary outcome using the logit link function: log(p/(1-p)) = beta_0 + beta_1*x. Coefficients represent log-odds ratios: exp(beta_1) is the multiplicative change in odds for a one-unit increase in x. Maximum likelihood estimation is used (not OLS). Assumptions: binary/ordinal outcome, independence of observations, linearity of logit, no multicollinearity, adequate sample size (minimum 10-20 events per predictor). Goodness-of-fit: Hosmer-Lemeshow test, AUC-ROC.",
+    "reasoning_framework": "1. Specify the binary outcome and predictors. 2. Fit via maximum likelihood (iteratively reweighted least squares). 3. Interpret coefficients as log-odds ratios. 4. Assess model fit (deviance, AIC, Hosmer-Lemeshow). 5. Evaluate predictive performance (sensitivity, specificity, AUC). 6. Check for influential observations and multicollinearity.",
+    "key_factors": ["binary_outcome", "logit_link", "odds_ratio_interpretation", "mle_estimation", "events_per_variable_rule"],
+    "primary_authority": ["Hosmer & Lemeshow Applied Logistic Regression", "Agresti Categorical Data Analysis", "McCullagh & Nelder GLMs"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "MLE properties (consistency, asymptotic normality, efficiency) are proven under regularity conditions"
+  },
+  {
+    "topic": "p_value_misinterpretation",
+    "keywords": ["p-value", "misinterpretation", "significance", "asa statement", "p-hacking", "replication crisis"],
+    "conclusion_template": "Common p-value misinterpretations: (1) p is NOT the probability H0 is true, (2) 1-p is NOT the probability H1 is true, (3) p > 0.05 does NOT prove H0, (4) p < 0.05 does NOT prove H1, (5) p does NOT measure effect size or practical importance. The ASA (2016) statement emphasizes: p-values can indicate incompatibility between data and a model, but do not measure probability of hypotheses. P-hacking (selective reporting, optional stopping) inflates false positive rates. Always report effect sizes and confidence intervals alongside p-values.",
+    "reasoning_framework": "1. P-value = P(data at least this extreme | H0 is true). 2. It is a property of the data, not the hypothesis. 3. The 0.05 threshold is arbitrary (Fisher called it 'convenient'). 4. Bayesian alternatives: Bayes factor, posterior probability. 5. Pre-registration prevents p-hacking. 6. Replication is the gold standard for confirming findings.",
+    "key_factors": ["frequentist_definition", "not_posterior_probability", "arbitrary_threshold", "effect_size_complement", "pre_registration"],
+    "primary_authority": ["ASA Statement on P-Values (Wasserstein & Lazar 2016)", "Fisher (1925)", "Nuzzo (2014) Nature: Statistical Errors", "Benjamin et al. (2018) Redefine Statistical Significance"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "ASA consensus statement represents formal position of the statistics profession"
+  },
+  {
+    "topic": "exponential_distribution",
+    "keywords": ["exponential", "waiting time", "memoryless", "hazard rate", "survival", "lambda"],
+    "conclusion_template": "The exponential distribution models the time between events in a Poisson process. PDF: f(x) = lambda * exp(-lambda*x) for x >= 0. Mean = 1/lambda, Variance = 1/lambda^2. Key property: memorylessness — P(X > s+t | X > s) = P(X > t). This means the remaining wait time is independent of how long you have already waited. Used in reliability engineering (time to failure), queueing theory (service times), and survival analysis (constant hazard rate assumption).",
+    "reasoning_framework": "1. Verify memoryless property is reasonable for the application. 2. Estimate lambda = 1/sample_mean. 3. CDF: F(x) = 1 - exp(-lambda*x). 4. Survival function: S(x) = exp(-lambda*x). 5. Hazard rate is constant: h(x) = lambda. 6. If hazard is not constant, consider Weibull or other distributions.",
+    "key_factors": ["memorylessness", "constant_hazard_rate", "poisson_process_connection", "single_parameter", "non_negative_support"],
+    "primary_authority": ["Ross Introduction to Probability Models", "Lawless Statistical Models for Lifetime Data", "Cox & Oakes Analysis of Survival Data"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Mathematical derivation from Poisson process axioms"
+  },
+  {
+    "topic": "variance_and_standard_deviation",
+    "keywords": ["variance", "standard deviation", "spread", "dispersion", "bessel", "sample vs population"],
+    "conclusion_template": "Variance measures the average squared deviation from the mean. Population variance: sigma^2 = sum(x_i - mu)^2 / N. Sample variance: s^2 = sum(x_i - xbar)^2 / (n-1), where the n-1 denominator (Bessel's correction) ensures unbiased estimation. Standard deviation is the square root of variance, expressed in original units. Coefficient of variation (CV = s/xbar) enables comparison of variability across different scales. Variance is additive for independent variables: Var(X+Y) = Var(X) + Var(Y).",
+    "reasoning_framework": "1. Compute deviations from mean. 2. Square deviations (eliminates sign, penalizes large deviations). 3. Average with n-1 for sample (unbiased) or n for population. 4. Take square root for standard deviation. 5. Bessel's correction proof: E[s^2] = sigma^2 when dividing by n-1. 6. For comparing groups with different means, use CV instead of raw SD.",
+    "key_factors": ["bessels_correction", "units_of_measurement", "sensitivity_to_outliers", "additivity_for_independent_variables", "coefficient_of_variation"],
+    "primary_authority": ["Bessel (1818)", "Mathematical Statistics (Hogg, McKean, Craig)", "Probability and Statistics (DeGroot & Schervish)"],
+    "confidence_stratification": "DEFENSIBLE",
+    "controlling_precedent": "Unbiasedness of s^2 is a proven mathematical result"
+  }
+]

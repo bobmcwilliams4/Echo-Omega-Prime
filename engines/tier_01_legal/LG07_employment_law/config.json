@@ -1,0 +1,223 @@
+{
+  "engine_id": "LG07",
+  "engine_name": "Employment Law Engine",
+  "version": "1.0.0",
+  "tier": 1,
+  "tier_name": "LEGAL",
+  "mode": "DET",
+  "mode_name": "Deterministic",
+  "priority": 85,
+  "priority_label": "High Priority",
+  "port": 8397,
+  "host": "0.0.0.0",
+  "authority_level": 5.0,
+  "description": "Production-grade employment law analysis engine providing deterministic FLSA compliance, discrimination claim assessment, wrongful termination analysis, non-compete enforceability review, wage & hour dispute resolution, FMLA compliance checking, worker classification, harassment investigation guidance, and severance negotiation analysis.",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "11.0 SOVEREIGN",
+  "architecture": {
+    "pattern": "TIE-20",
+    "components": [
+      "three_layer_response",
+      "response_modes",
+      "doctrine_cache",
+      "authority_hardening",
+      "confidence_stratification",
+      "semantic_normalization",
+      "vector_search_chromadb",
+      "telemetry_module",
+      "doctrine_drift_watcher",
+      "doctrine_coverage_map",
+      "metrics_collector",
+      "health_endpoint",
+      "zoned_analysis",
+      "fact_fragility_scoring",
+      "audit_trail_jsonl",
+      "determinism_hash_sha256",
+      "fastapi_server",
+      "loguru_logging",
+      "multi_doctrine_decomposition",
+      "deep_analysis_mode"
+    ],
+    "layers": {
+      "layer_1": {
+        "name": "Doctrine Cache",
+        "latency_target_ms": 200,
+        "description": "Pre-compiled employment law reasoning blocks with statutory authority hierarchy"
+      },
+      "layer_2": {
+        "name": "Semantic Retrieval",
+        "latency_target_ms": 700,
+        "description": "Fast semantic search across employment law corpus on cache miss"
+      },
+      "layer_3": {
+        "name": "Deep Analysis",
+        "latency_target_ms": 5000,
+        "description": "Multi-source synthesis for complex multi-statute employment disputes"
+      }
+    },
+    "files": [
+      "engine.py",
+      "doctrines.py",
+      "semantic.py",
+      "telemetry.py",
+      "search.py",
+      "config.json",
+      "__init__.py"
+    ]
+  },
+  "response_modes": {
+    "FAST": {
+      "description": "Quick employment law issue identification, sub-2 second target",
+      "max_latency_ms": 2000,
+      "include_citations": false,
+      "include_risk_score": true
+    },
+    "REVIEW": {
+      "description": "Detailed employment law analysis with compliance scoring and recommendations",
+      "max_latency_ms": 10000,
+      "include_citations": true,
+      "include_risk_score": true
+    },
+    "MEMO": {
+      "description": "Full legal memorandum with statutory analysis, case law, and strategic guidance",
+      "max_latency_ms": 30000,
+      "include_citations": true,
+      "include_risk_score": true
+    }
+  },
+  "employment_domains": [
+    "flsa_compliance",
+    "title_vii_discrimination",
+    "ada_accommodation",
+    "adea_age_discrimination",
+    "fmla_leave",
+    "warn_act",
+    "erisa_benefits",
+    "nlra_labor_relations",
+    "osha_safety",
+    "wrongful_termination",
+    "at_will_employment",
+    "non_compete_agreements",
+    "wage_hour_disputes",
+    "worker_classification",
+    "harassment_investigation",
+    "retaliation_claims",
+    "whistleblower_protection",
+    "constructive_discharge",
+    "severance_negotiation",
+    "employment_contracts",
+    "disparate_impact",
+    "disparate_treatment",
+    "bfoq_defense",
+    "reasonable_accommodation",
+    "workers_compensation",
+    "unemployment_insurance",
+    "executive_compensation",
+    "trade_secrets",
+    "restrictive_covenants",
+    "workplace_privacy"
+  ],
+  "risk_categories": {
+    "liability": {
+      "weight": 0.25,
+      "subcategories": ["compensatory_damages", "punitive_damages", "back_pay", "front_pay", "liquidated_damages"]
+    },
+    "regulatory": {
+      "weight": 0.20,
+      "subcategories": ["dol_enforcement", "eeoc_charges", "osha_citations", "nlrb_complaints", "state_agency_actions"]
+    },
+    "operational": {
+      "weight": 0.20,
+      "subcategories": ["workforce_disruption", "morale_impact", "retention_risk", "productivity_loss"]
+    },
+    "reputational": {
+      "weight": 0.15,
+      "subcategories": ["media_exposure", "class_action_risk", "employer_brand", "recruiting_impact"]
+    },
+    "compliance": {
+      "weight": 0.10,
+      "subcategories": ["policy_gaps", "training_deficiency", "documentation_failures", "audit_readiness"]
+    },
+    "strategic": {
+      "weight": 0.10,
+      "subcategories": ["precedent_setting", "multi_jurisdiction", "union_organizing", "legislative_changes"]
+    }
+  },
+  "federal_statutes": [
+    "29 USC 201-219 (FLSA)",
+    "42 USC 2000e (Title VII)",
+    "42 USC 12101-12213 (ADA)",
+    "29 USC 621-634 (ADEA)",
+    "29 USC 2601-2654 (FMLA)",
+    "29 USC 2101-2109 (WARN Act)",
+    "29 USC 1001-1461 (ERISA)",
+    "29 USC 151-169 (NLRA)",
+    "29 USC 651-678 (OSH Act)",
+    "42 USC 1981 (Section 1981)",
+    "42 USC 1983 (Section 1983)",
+    "18 USC 1514A (Sarbanes-Oxley Whistleblower)",
+    "38 USC 4301-4335 (USERRA)",
+    "29 USC 206(d) (Equal Pay Act)",
+    "8 USC 1324b (IRCA Anti-Discrimination)",
+    "20 USC 1681 (Title IX)",
+    "29 USC 2001-2009 (EPPA)",
+    "15 USC 1681 (FCRA in Employment)",
+    "42 USC 2000ff (GINA)"
+  ],
+  "epistemic_guardrails": {
+    "enabled": true,
+    "banned_phrases": [
+      "this is definitely illegal",
+      "you will certainly win",
+      "there is no risk of liability",
+      "this is guaranteed to be enforceable",
+      "no court would rule against",
+      "this is completely compliant",
+      "there are no employment law issues",
+      "this termination is bulletproof",
+      "you cannot be sued for this",
+      "this is always lawful"
+    ],
+    "required_disclosures": {
+      "jurisdiction_variance": "Employment law varies significantly by state and locality. This analysis assumes {jurisdiction} law unless otherwise specified.",
+      "not_legal_advice": "This analysis is for informational purposes only. Consult qualified employment counsel for binding legal opinions.",
+      "temporal_caveat": "Employment law evolves through legislation, regulation, and case law. This analysis reflects law as of {analysis_date}.",
+      "fact_dependency": "Conclusions depend on the accuracy and completeness of the facts provided. Material omissions may change the analysis.",
+      "administrative_requirements": "Many employment claims require exhaustion of administrative remedies (EEOC filing, DOL complaint) before litigation."
+    }
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/LG07_employment_law/telemetry",
+    "query_log": "query_traces.jsonl",
+    "reasoning_log": "reasoning_snapshots.jsonl",
+    "error_log": "error_spine.jsonl",
+    "performance_log": "performance_metrics.jsonl",
+    "audit_db": "audit_trail.db",
+    "rotation_mb": 100,
+    "retention_days": 90
+  },
+  "search": {
+    "max_results": 50,
+    "min_relevance_score": 0.3,
+    "fuzzy_threshold": 0.7,
+    "boost_exact_match": 2.0,
+    "boost_statute_match": 1.8,
+    "boost_domain_match": 1.5,
+    "boost_risk_level": 1.3
+  },
+  "performance": {
+    "max_query_size_bytes": 10485760,
+    "max_doctrines_per_analysis": 500,
+    "cache_doctrine_ttl_seconds": 3600,
+    "cache_search_ttl_seconds": 300,
+    "max_concurrent_analyses": 20,
+    "worker_threads": 4
+  },
+  "integrations": {
+    "omniscient_sync": "https://omniscient-sync.bmcii1976.workers.dev",
+    "build_orchestrator": "https://echo-build-orchestrator.bmcii1976.workers.dev",
+    "crystal_memory": "O:/ECHO_OMEGA_PRIME/MEMORY_ORCHESTRATION/CRYSTALS_NEW",
+    "r2_bucket": "echo-build-plans"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "engine_id": "R11",
+  "name": "Penalty Calculator",
+  "version": "1.0.0",
+  "port": 8711,
+  "mode": "no_llm",
+  "description": "Calculate RRC penalty amounts per 16 TAC §3.107",
+  "primary_authority": "16 TAC §3.107",
+  "max_penalty_per_day": 10000,
+  "created": "2026-02-12"
+}

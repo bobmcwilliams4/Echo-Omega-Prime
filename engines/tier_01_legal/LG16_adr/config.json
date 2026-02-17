@@ -1,0 +1,373 @@
+{
+  "engine_id": "LG16",
+  "engine_name": "ADR Engine (Alternative Dispute Resolution)",
+  "version": "2.0.0",
+  "domain": "alternative_dispute_resolution",
+  "port": 8446,
+  "host": "0.0.0.0",
+  "tier": "LG",
+  "tier_name": "Legal",
+  "description": "Comprehensive alternative dispute resolution engine covering arbitration (FAA 9 USC 1-16, RUAA, AAA Commercial/Construction/Employment Rules, JAMS, FINRA, ICSID, UNCITRAL, ICC), mediation (UMA, court-annexed, facilitative/evaluative/transformative), negotiation theory (BATNA/WATNA/ZOPA), online dispute resolution (ODR), med-arb/arb-med hybrid processes, class action arbitration, arbitrability, clause drafting/enforceability, judicial review of awards (vacatur under FAA 10), confirmation/enforcement (New York Convention), discovery in arbitration, emergency arbitrator provisions, multi-party arbitration, Texas ADR Act (CPRC Ch. 154), securities arbitration, employment arbitration (Epic Systems), consumer arbitration, construction disputes (AIA), real estate disputes, oil and gas disputes (JOA arbitration), international commercial arbitration, and investment treaty arbitration.",
+  "tie_version": "20.0",
+  "response_modes": [
+    "DET"
+  ],
+  "analysis_modes": [
+    "fast",
+    "analysis",
+    "memo",
+    "clause_review",
+    "process_design"
+  ],
+  "analysis_layers": [
+    "QUICK",
+    "STANDARD",
+    "DEEP",
+    "EXPERT"
+  ],
+  "default_response_mode": "DET",
+  "default_analysis_mode": "analysis",
+  "default_analysis_layer": "STANDARD",
+  "authority_level": 5.0,
+  "confidence_thresholds": {
+    "high": 0.85,
+    "medium": 0.65,
+    "low": 0.4,
+    "uncertain": 0.2
+  },
+  "jurisdictions": {
+    "primary": "TX",
+    "supported": [
+      "TX",
+      "CA",
+      "NY",
+      "FL",
+      "IL",
+      "PA",
+      "OH",
+      "GA",
+      "NC",
+      "MI",
+      "NJ",
+      "VA",
+      "WA",
+      "AZ",
+      "MA",
+      "TN",
+      "IN",
+      "MO",
+      "MD",
+      "WI",
+      "CO",
+      "MN",
+      "SC",
+      "AL",
+      "LA",
+      "KY",
+      "OR",
+      "OK",
+      "CT",
+      "UT",
+      "IA",
+      "NV",
+      "AR",
+      "MS",
+      "KS",
+      "NM",
+      "NE",
+      "ID",
+      "WV",
+      "HI",
+      "NH",
+      "ME",
+      "MT",
+      "RI",
+      "DE",
+      "SD",
+      "ND",
+      "AK",
+      "VT",
+      "WY",
+      "DC",
+      "FEDERAL",
+      "INTERNATIONAL"
+    ],
+    "ruaa_states": [
+      "AZ",
+      "CO",
+      "CT",
+      "DC",
+      "FL",
+      "HI",
+      "MI",
+      "MN",
+      "NV",
+      "NJ",
+      "NM",
+      "NC",
+      "ND",
+      "OK",
+      "OR",
+      "UT",
+      "WA"
+    ],
+    "uma_states": [
+      "DC",
+      "HI",
+      "ID",
+      "IL",
+      "IA",
+      "NE",
+      "NJ",
+      "OH",
+      "SD",
+      "VT",
+      "WA"
+    ],
+    "texas_adr_act": "CPRC Chapter 154"
+  },
+  "federal_statutes": {
+    "faa": {
+      "usc_title": 9,
+      "usc_sections": "1-16",
+      "description": "Federal Arbitration Act",
+      "year_enacted": 1925,
+      "amended": [
+        2022
+      ]
+    },
+    "faa_chapter_2": {
+      "usc_title": 9,
+      "usc_sections": "201-208",
+      "description": "Convention on the Recognition and Enforcement of Foreign Arbitral Awards (New York Convention)",
+      "year_enacted": 1970
+    },
+    "faa_chapter_3": {
+      "usc_title": 9,
+      "usc_sections": "301-307",
+      "description": "Inter-American Convention on International Commercial Arbitration (Panama Convention)",
+      "year_enacted": 1990
+    },
+    "ending_forced_arbitration_act": {
+      "public_law": "117-90",
+      "description": "Ending Forced Arbitration of Sexual Assault and Sexual Harassment Act",
+      "year_enacted": 2022,
+      "amends": "9 USC 401-402"
+    }
+  },
+  "arbitral_institutions": {
+    "aaa": {
+      "name": "American Arbitration Association",
+      "rule_sets": [
+        "commercial",
+        "construction",
+        "employment",
+        "consumer",
+        "international_icdr"
+      ],
+      "website": "adr.org"
+    },
+    "jams": {
+      "name": "JAMS (Judicial Arbitration and Mediation Services)",
+      "rule_sets": [
+        "comprehensive",
+        "streamlined",
+        "employment",
+        "construction",
+        "international"
+      ],
+      "website": "jamsadr.com"
+    },
+    "finra": {
+      "name": "Financial Industry Regulatory Authority",
+      "rule_sets": [
+        "customer_code_12000",
+        "industry_code_13000"
+      ],
+      "website": "finra.org"
+    },
+    "icsid": {
+      "name": "International Centre for Settlement of Investment Disputes",
+      "rule_sets": [
+        "convention_rules",
+        "additional_facility",
+        "conciliation_rules"
+      ],
+      "parent": "World Bank Group"
+    },
+    "icc": {
+      "name": "International Chamber of Commerce",
+      "rule_sets": [
+        "icc_arbitration_2021",
+        "icc_mediation_2014",
+        "icc_expedited_procedure"
+      ],
+      "website": "iccwbo.org"
+    },
+    "uncitral": {
+      "name": "United Nations Commission on International Trade Law",
+      "rule_sets": [
+        "arbitration_rules_2021",
+        "mediation_rules",
+        "transparency_rules"
+      ],
+      "model_laws": [
+        "model_law_arbitration_1985_2006",
+        "model_law_mediation_2018"
+      ]
+    },
+    "lcia": {
+      "name": "London Court of International Arbitration",
+      "rule_sets": [
+        "lcia_rules_2020"
+      ],
+      "website": "lcia.org"
+    }
+  },
+  "doctrine_domains": [
+    "faa_scope_applicability",
+    "faa_section_2_savings_clause",
+    "faa_section_3_stay_proceedings",
+    "faa_section_4_compel_arbitration",
+    "faa_section_5_arbitrator_appointment",
+    "faa_section_9_confirmation",
+    "faa_section_10_vacatur",
+    "faa_section_11_modification",
+    "arbitrability_substantive",
+    "arbitrability_procedural",
+    "class_action_arbitration",
+    "class_waiver_enforceability",
+    "unconscionability_defense",
+    "delegation_clause",
+    "separability_doctrine",
+    "kompetenz_kompetenz",
+    "manifest_disregard",
+    "evident_partiality",
+    "arbitrator_disclosure",
+    "arbitration_discovery",
+    "emergency_arbitrator",
+    "interim_measures",
+    "multi_party_arbitration",
+    "consolidation_joinder",
+    "new_york_convention_enforcement",
+    "new_york_convention_defenses",
+    "panama_convention",
+    "icsid_jurisdiction",
+    "investor_state_arbitration",
+    "bilateral_investment_treaty",
+    "mediation_confidentiality",
+    "uma_provisions",
+    "mediator_ethics_model_standards",
+    "facilitative_mediation",
+    "evaluative_mediation",
+    "transformative_mediation",
+    "court_annexed_mediation",
+    "med_arb_hybrid",
+    "arb_med_hybrid",
+    "batna_watna_zopa",
+    "negotiation_theory",
+    "online_dispute_resolution",
+    "consumer_arbitration",
+    "employment_arbitration",
+    "securities_arbitration_finra",
+    "construction_arbitration",
+    "real_estate_arbitration",
+    "oil_gas_joa_arbitration",
+    "texas_adr_act_cprc_154",
+    "texas_arbitration_act_cprc_171",
+    "aaa_commercial_rules",
+    "aaa_construction_rules",
+    "jams_comprehensive_rules",
+    "icc_arbitration_rules",
+    "uncitral_arbitration_rules",
+    "arbitration_clause_drafting",
+    "pathological_clauses",
+    "arbitration_costs_fee_shifting",
+    "punitive_damages_arbitration",
+    "appeal_mechanisms_arbitration",
+    "confidentiality_in_arbitration",
+    "res_judicata_collateral_estoppel",
+    "award_enforcement_domestication"
+  ],
+  "adr_process_types": {
+    "binding": [
+      "arbitration",
+      "med_arb",
+      "baseball_arbitration",
+      "final_offer_arbitration"
+    ],
+    "non_binding": [
+      "mediation",
+      "conciliation",
+      "early_neutral_evaluation",
+      "mini_trial",
+      "summary_jury_trial"
+    ],
+    "hybrid": [
+      "med_arb",
+      "arb_med",
+      "collaborative_law",
+      "dispute_review_board"
+    ]
+  },
+  "chromadb": {
+    "collection_name": "lg16_adr",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "persist_directory": "./chroma_db",
+    "distance_metric": "cosine",
+    "max_results": 20,
+    "relevance_threshold": 0.35
+  },
+  "telemetry": {
+    "enabled": true,
+    "metrics_retention_hours": 168,
+    "audit_log_path": "./audit_trail.jsonl",
+    "performance_log_path": "./performance.jsonl",
+    "max_audit_size_mb": 500,
+    "rotation_policy": "daily"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {name}:{function}:{line} | {message}",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "compression": "gz"
+  },
+  "api": {
+    "cors_origins": [
+      "*"
+    ],
+    "rate_limit_per_minute": 120,
+    "max_query_length": 10000,
+    "timeout_seconds": 60,
+    "enable_docs": true
+  },
+  "determinism": {
+    "hash_algorithm": "sha256",
+    "include_timestamp": false,
+    "include_version": true,
+    "salt": "LG16_ADR_v2"
+  },
+  "tie_components": [
+    "three_layer_response",
+    "response_modes",
+    "doctrine_cache",
+    "authority_hardening",
+    "confidence_stratification",
+    "semantic_normalization",
+    "vector_search_tfidf",
+    "telemetry_module",
+    "doctrine_drift_watcher",
+    "doctrine_coverage_map",
+    "metrics_collector",
+    "health_endpoint",
+    "zoned_analysis",
+    "fact_fragility_scoring",
+    "audit_trail_jsonl",
+    "determinism_hash_sha256",
+    "fastapi_server",
+    "loguru_logging",
+    "multi_doctrine_decomposition",
+    "deep_analysis_mode"
+  ]
+}

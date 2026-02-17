@@ -1,0 +1,176 @@
+{
+  "engine_id": "LG05",
+  "engine_name": "Litigation Risk Engine",
+  "version": "1.0.0",
+  "tier": 1,
+  "tier_name": "LEGAL",
+  "mode": "DET",
+  "mode_name": "Deterministic",
+  "priority": 88,
+  "priority_label": "Core Legal Infrastructure",
+  "port": 8395,
+  "host": "0.0.0.0",
+  "authority_level": 5.0,
+  "description": "Production-grade litigation risk assessment engine providing deterministic case merit scoring, damages estimation, jurisdiction analysis, discovery cost modeling, settlement valuation, and precedent matching with full audit trail.",
+  "author": "ECHO OMEGA PRIME",
+  "authority": "11.0 SOVEREIGN",
+  "architecture": {
+    "pattern": "TIE-20",
+    "layers": {
+      "layer_1": {
+        "name": "Doctrine Cache",
+        "latency_target_ms": 200,
+        "description": "Pre-compiled litigation risk reasoning blocks with authority hierarchy"
+      },
+      "layer_2": {
+        "name": "Semantic Retrieval",
+        "latency_target_ms": 700,
+        "description": "Fast semantic search on cache miss using normalized litigation terminology"
+      },
+      "layer_3": {
+        "name": "Deep Analysis",
+        "latency_target_ms": 5000,
+        "description": "Multi-source synthesis for complex multi-factor litigation risk assessment"
+      }
+    },
+    "files": [
+      "engine.py",
+      "doctrines.py",
+      "semantic.py",
+      "telemetry.py",
+      "search.py",
+      "config.json"
+    ]
+  },
+  "response_modes": {
+    "FAST": {
+      "description": "Quick risk triage and merit screening, sub-2 second target",
+      "max_latency_ms": 2000,
+      "include_citations": false,
+      "include_risk_score": true
+    },
+    "REVIEW": {
+      "description": "Detailed risk assessment with damages range and strategy analysis",
+      "max_latency_ms": 10000,
+      "include_citations": true,
+      "include_risk_score": true
+    },
+    "MEMO": {
+      "description": "Full litigation risk memorandum with case law, cost modeling, and settlement analysis",
+      "max_latency_ms": 30000,
+      "include_citations": true,
+      "include_risk_score": true
+    }
+  },
+  "litigation_types_supported": [
+    "breach_of_contract",
+    "negligence",
+    "strict_liability",
+    "intentional_tort",
+    "wrongful_termination",
+    "employment_discrimination",
+    "flsa_wage_hour",
+    "securities_fraud_10b5",
+    "class_action",
+    "derivative_action",
+    "antitrust_sherman",
+    "antitrust_clayton",
+    "patent_infringement",
+    "trade_secret_misappropriation",
+    "trademark_infringement",
+    "copyright_infringement",
+    "environmental_cercla",
+    "toxic_tort",
+    "products_liability",
+    "medical_malpractice",
+    "insurance_coverage",
+    "insurance_bad_faith",
+    "real_estate_dispute",
+    "construction_defect",
+    "qui_tam_whistleblower",
+    "regulatory_enforcement",
+    "administrative_action",
+    "arbitration",
+    "commercial_fraud",
+    "partnership_dispute"
+  ],
+  "risk_dimensions": {
+    "case_merit": {
+      "weight": 0.25,
+      "factors": ["legal_theory_strength", "factual_support", "burden_of_proof", "affirmative_defenses"]
+    },
+    "damages_exposure": {
+      "weight": 0.20,
+      "factors": ["compensatory", "consequential", "punitive", "statutory", "attorneys_fees"]
+    },
+    "jurisdiction_risk": {
+      "weight": 0.15,
+      "factors": ["venue_favorability", "judge_tendencies", "jury_composition", "local_rules"]
+    },
+    "discovery_cost": {
+      "weight": 0.15,
+      "factors": ["document_volume", "deposition_count", "expert_witnesses", "e_discovery"]
+    },
+    "settlement_pressure": {
+      "weight": 0.15,
+      "factors": ["litigation_cost_ratio", "publicity_risk", "business_disruption", "precedent_value"]
+    },
+    "regulatory_escalation": {
+      "weight": 0.10,
+      "factors": ["agency_involvement", "enforcement_trends", "consent_decree_risk", "criminal_referral"]
+    }
+  },
+  "epistemic_guardrails": {
+    "enabled": true,
+    "banned_phrases": [
+      "you will definitely win",
+      "there is no litigation risk",
+      "this case is guaranteed to settle",
+      "no jury would ever find liability",
+      "damages are capped at zero",
+      "you cannot lose this case",
+      "the statute of limitations has definitely expired",
+      "this claim is frivolous"
+    ],
+    "required_disclosures": {
+      "jurisdiction_variance": "Litigation outcomes vary significantly by jurisdiction. This assessment assumes {jurisdiction} law unless otherwise specified.",
+      "not_legal_advice": "This risk assessment is for informational and planning purposes. Consult qualified litigation counsel for case-specific legal advice.",
+      "temporal_caveat": "Legal standards and judicial precedent evolve. This assessment reflects the legal landscape as of {analysis_date}.",
+      "fact_dependency": "Risk conclusions depend on the accuracy and completeness of the facts provided. Undisclosed facts may materially alter the assessment."
+    }
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/LG05_litigation_risk/telemetry",
+    "query_log": "query_traces.jsonl",
+    "reasoning_log": "reasoning_snapshots.jsonl",
+    "error_log": "error_spine.jsonl",
+    "performance_log": "performance_metrics.jsonl",
+    "audit_db": "audit_trail.db",
+    "rotation_mb": 100,
+    "retention_days": 90
+  },
+  "search": {
+    "max_results": 50,
+    "min_relevance_score": 0.3,
+    "fuzzy_threshold": 0.7,
+    "boost_exact_match": 2.0,
+    "boost_case_type": 1.5,
+    "boost_risk_level": 1.3,
+    "boost_recent_precedent": 1.2
+  },
+  "performance": {
+    "max_case_description_bytes": 10485760,
+    "max_claims_per_analysis": 200,
+    "cache_doctrine_ttl_seconds": 3600,
+    "cache_search_ttl_seconds": 300,
+    "max_concurrent_analyses": 20,
+    "worker_threads": 4
+  },
+  "integrations": {
+    "omniscient_sync": "https://omniscient-sync.bmcii1976.workers.dev",
+    "build_orchestrator": "https://echo-build-orchestrator.bmcii1976.workers.dev",
+    "crystal_memory": "O:/ECHO_OMEGA_PRIME/MEMORY_ORCHESTRATION/CRYSTALS_NEW",
+    "r2_bucket": "echo-build-plans"
+  }
+}

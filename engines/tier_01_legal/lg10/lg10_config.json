@@ -1,0 +1,147 @@
+{
+  "engine_id": "LG10",
+  "engine_name": "Family Law Intelligence Engine",
+  "version": "1.0.0",
+  "tier": 1,
+  "tier_name": "LEGAL",
+  "auth_level": 5,
+  "port": 8500,
+  "mode": "EF",
+  "domain": "family_law",
+  "description": "Production-grade family law doctrine engine for attorneys, mediators, and judicial staff. Covers custody, support, property division, enforcement, and domestic relations.",
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8500,
+    "workers": 4,
+    "cors_origins": ["*"],
+    "request_timeout_ms": 30000,
+    "body_limit_bytes": 1048576
+  },
+
+  "logging": {
+    "console_level": "INFO",
+    "file_level": "DEBUG",
+    "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/lg10/logs",
+    "rotation": "10 MB",
+    "retention": "7 days",
+    "compression": "gz",
+    "audit_log": "audit_trail.jsonl",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}"
+  },
+
+  "doctrine_cache": {
+    "source_file": "lg10_doctrines.json",
+    "preload_on_startup": true,
+    "max_blocks": 500,
+    "stale_threshold_days": 365,
+    "confidence_reduction_stale": 0.10,
+    "confidence_reduction_gap": 0.15,
+    "fuzzy_match_threshold": 0.30
+  },
+
+  "response_layers": {
+    "fast": {
+      "max_latency_ms": 200,
+      "min_confidence": 0.70,
+      "require_citations": false,
+      "max_citations": 3
+    },
+    "standard": {
+      "max_latency_ms": 700,
+      "min_confidence": 0.60,
+      "require_citations": true,
+      "max_citations": 8
+    },
+    "deep": {
+      "max_latency_ms": 5000,
+      "min_confidence": 0.50,
+      "require_citations": true,
+      "max_citations": 20
+    },
+    "defense": {
+      "max_latency_ms": 10000,
+      "min_confidence": 0.40,
+      "require_citations": true,
+      "min_citations_per_assertion": 3,
+      "max_citations": 50
+    }
+  },
+
+  "confidence_bands": {
+    "defensible": { "min": 0.85, "max": 1.00, "label": "DEFENSIBLE" },
+    "supportable": { "min": 0.70, "max": 0.84, "label": "SUPPORTABLE" },
+    "disclosure": { "min": 0.50, "max": 0.69, "label": "DISCLOSURE" },
+    "high_risk": { "min": 0.00, "max": 0.49, "label": "HIGH_RISK" }
+  },
+
+  "authority_weights": {
+    "statute": 100,
+    "case_law": 80,
+    "court_rule": 60,
+    "regulatory": 40,
+    "commentary": 20
+  },
+
+  "analysis_zones": {
+    "litigation": {
+      "description": "Court proceedings analysis — what WILL happen before a judge",
+      "min_confidence": 0.70,
+      "min_citations": 2
+    },
+    "negotiation": {
+      "description": "Settlement strategy — leverage points, BATNA analysis, mediation tactics",
+      "min_confidence": 0.60,
+      "min_citations": 1
+    },
+    "compliance": {
+      "description": "Order enforcement — contempt exposure, modification grounds, procedural requirements",
+      "min_confidence": 0.75,
+      "min_citations": 2
+    }
+  },
+
+  "risk_taxonomy": {
+    "critical": { "threshold": 0.90, "label": "CRITICAL", "description": "Immediate legal exposure, potential sanctions or custody loss" },
+    "high": { "threshold": 0.70, "label": "HIGH", "description": "Significant adverse outcome likely without intervention" },
+    "medium": { "threshold": 0.50, "label": "MEDIUM", "description": "Adverse outcome possible, mitigation advisable" },
+    "low": { "threshold": 0.30, "label": "LOW", "description": "Minor risk, standard precautions sufficient" },
+    "info": { "threshold": 0.00, "label": "INFO", "description": "Informational, no actionable risk" }
+  },
+
+  "telemetry": {
+    "ring_buffer_size": 10000,
+    "flush_interval_seconds": 60,
+    "jsonl_file": "telemetry.jsonl",
+    "mutation_file": "mutations.jsonl"
+  },
+
+  "metrics": {
+    "latency_buffer_size": 100,
+    "error_retention_hours": 24,
+    "query_retention_hours": 1
+  },
+
+  "drift_watcher": {
+    "stale_threshold_days": 365,
+    "check_interval_hours": 24,
+    "confidence_penalty": 0.10,
+    "alert_on_stale": true
+  },
+
+  "jurisdictions_supported": [
+    "US_FEDERAL",
+    "TX", "CA", "NY", "FL", "IL", "PA", "OH", "GA", "NC", "MI",
+    "NJ", "VA", "WA", "AZ", "MA", "TN", "IN", "MO", "MD", "WI",
+    "CO", "MN", "SC", "AL", "LA", "KY", "OR", "OK", "CT", "UT",
+    "NV", "AR", "MS", "KS", "IA", "NM", "NE", "WV", "ID", "HI",
+    "NH", "ME", "MT", "RI", "DE", "SD", "ND", "AK", "VT", "WY", "DC"
+  ],
+
+  "community_property_states": ["AZ", "CA", "ID", "LA", "NV", "NM", "TX", "WA", "WI"],
+  "equitable_distribution_states_note": "All other states follow equitable distribution",
+
+  "startup_self_test": true,
+  "determinism_mode": true,
+  "engine_hash_algorithm": "sha256"
+}

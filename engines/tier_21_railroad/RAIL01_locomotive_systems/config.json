@@ -1,0 +1,86 @@
+{
+  "engine_id": "RAIL01",
+  "name": "Locomotive Systems Intelligence Engine",
+  "version": "1.0.0",
+  "port": 9101,
+  "domain": "railroad_locomotive_systems",
+  "description": "Railroad locomotive systems expertise covering diesel-electric prime movers, traction systems, braking, cooling, turbochargers, adhesion control, fuel systems, emissions, PTC, FRA compliance, and maintenance programs",
+  "capabilities": [
+    "Diesel-electric locomotive prime mover analysis (EMD/GE engines)",
+    "AC vs DC traction system comparison and troubleshooting",
+    "Dynamic braking systems (rheostatic/regenerative)",
+    "Air brake systems (26-L, CCBII, ECP)",
+    "Distributed power and LOCOTROL operation",
+    "Fuel system and fuel efficiency optimization",
+    "Cooling system troubleshooting (radiators, fans, oil coolers)",
+    "Turbocharger systems and boost pressure analysis",
+    "Wheel-rail adhesion and creep control",
+    "FRA Part 229 compliance and inspection requirements",
+    "Positive Train Control (PTC) systems",
+    "Event recorder data analysis",
+    "Locomotive weight and tractive effort calculations",
+    "EPA emissions standards (Tier 0-4)",
+    "Maintenance program optimization (RCM/CBM)"
+  ],
+  "response_modes": {
+    "FAST": "Quick technical reference, component identification, 0-2 seconds",
+    "DEFENSE": "Detailed troubleshooting, FRA compliance analysis, safety procedures, 2-5 seconds",
+    "MEMO": "Comprehensive system documentation, maintenance procedures, full technical analysis, 5-10 seconds"
+  },
+  "doctrine_coverage": {
+    "total_doctrines": 25,
+    "primary_categories": [
+      "prime_movers",
+      "traction_systems",
+      "braking_systems",
+      "cooling_systems",
+      "turbochargers",
+      "adhesion_control",
+      "fuel_systems",
+      "regulatory_compliance",
+      "maintenance",
+      "safety_systems"
+    ]
+  },
+  "technical_specifications": {
+    "doctrine_cache_topics": 25,
+    "avg_response_time_ms": 150,
+    "target_uptime": "99.9%",
+    "max_concurrent_queries": 50
+  },
+  "regulatory_authorities": [
+    "FRA Part 229 Locomotive Safety Standards",
+    "49 CFR Part 232 Brake System Safety",
+    "49 CFR Part 236 Subpart I (PTC)",
+    "40 CFR Part 1033 (EPA Emissions)",
+    "AAR M-1003 Locomotive Standards",
+    "IEEE 1653-2004 Traction Power Systems"
+  ],
+  "logging": {
+    "level": "INFO",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "audit_trail": true
+  },
+  "integrations": {
+    "cloud_retriever": false,
+    "vector_search": false,
+    "telemetry": true,
+    "drift_watcher": true,
+    "coverage_map": true
+  },
+  "deployment": {
+    "environment": "production",
+    "host": "127.0.0.1",
+    "port": 9101,
+    "protocol": "http",
+    "cors_enabled": true
+  },
+  "metadata": {
+    "author": "ECHO OMEGA PRIME",
+    "authority_level": "11.0 SOVEREIGN",
+    "created": "2026-02-14",
+    "last_updated": "2026-02-14",
+    "status": "operational"
+  }
+}

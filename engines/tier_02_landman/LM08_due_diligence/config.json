@@ -1,0 +1,90 @@
+{
+  "engine_id": "LM08",
+  "engine_name": "Due Diligence",
+  "version": "1.0.0",
+  "port": 8508,
+  "domain": "oil_gas_acquisition_due_diligence",
+  "description": "Comprehensive oil and gas acquisition due diligence intelligence engine covering title examination, environmental compliance, regulatory audit, reserve estimation, lease verification, lien search, litigation review, PSA analysis, and deficiency cure methodology.",
+  "tie_standard": "TIE-20 Gold",
+  "components": [
+    "three_layer_response",
+    "response_modes",
+    "doctrine_cache",
+    "authority_hardening",
+    "confidence_stratification",
+    "semantic_normalization",
+    "vector_search",
+    "telemetry",
+    "drift_watcher",
+    "coverage_map",
+    "metrics_collector",
+    "health_endpoint",
+    "zoned_analysis",
+    "fact_fragility_scoring",
+    "audit_trail_jsonl",
+    "determinism_hash_sha256",
+    "fastapi_server",
+    "loguru_logging",
+    "multi_doctrine_decomposition",
+    "deep_analysis_mode"
+  ],
+  "doctrine_topics": 45,
+  "issue_categories": [
+    "TITLE_DUE_DILIGENCE",
+    "ENVIRONMENTAL_COMPLIANCE",
+    "REGULATORY_AUDIT",
+    "PRODUCTION_ANALYSIS",
+    "RESERVE_ESTIMATION",
+    "LEASE_STATUS",
+    "LIEN_ENCUMBRANCE",
+    "LITIGATION_REVIEW",
+    "PREFERENTIAL_RIGHTS",
+    "CONSENT_ASSIGN",
+    "CHANGE_OF_CONTROL",
+    "AMI_AGREEMENTS",
+    "DEFICIENCY_CURE",
+    "PSA_REVIEW",
+    "REPS_WARRANTIES",
+    "INDEMNIFICATION",
+    "NRI_WI_VERIFICATION",
+    "SUSPENSE_ANALYSIS",
+    "OPERATOR_QUALIFICATION"
+  ],
+  "confidence_levels": [
+    "DEFENSIBLE",
+    "AGGRESSIVE",
+    "DISCLOSURE",
+    "HIGH_RISK"
+  ],
+  "response_modes": [
+    "FAST",
+    "DEFENSE",
+    "MEMO"
+  ],
+  "position_zones": [
+    "BUYER",
+    "SELLER",
+    "NEUTRAL"
+  ],
+  "authority_hierarchy": [
+    {"level": 1, "source": "State Statutes & Regulations", "weight": 1.0},
+    {"level": 2, "source": "Federal Regulations (EPA, BLM, SEC)", "weight": 0.95},
+    {"level": 3, "source": "State Court Decisions", "weight": 0.90},
+    {"level": 4, "source": "AAPL Standards & Model Forms", "weight": 0.85},
+    {"level": 5, "source": "Industry Practice & Custom", "weight": 0.75},
+    {"level": 6, "source": "Treatises & Commentary", "weight": 0.65}
+  ],
+  "logging": {
+    "level": "DEBUG",
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {name}:{function}:{line} | {message}"
+  },
+  "fastapi": {
+    "host": "0.0.0.0",
+    "port": 8508,
+    "cors_origins": ["*"],
+    "title": "LM08 Due Diligence Engine",
+    "version": "1.0.0"
+  }
+}

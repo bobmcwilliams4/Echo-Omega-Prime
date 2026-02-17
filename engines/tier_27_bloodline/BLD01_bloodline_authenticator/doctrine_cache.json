@@ -1,0 +1,536 @@
+{
+  "engine_id": "BLD01",
+  "engine_name": "Bloodline Authenticator",
+  "version": "1.0.0",
+  "generated": "2026-02-12T00:00:00Z",
+  "doctrines": [
+    {
+      "topic": "sovereign_identity_verification",
+      "keywords": ["sovereign", "identity", "commander", "verify", "authenticate", "11.0"],
+      "conclusion_template": "SOVEREIGN identity (Level 11.0) verification requires the full authentication ceremony protocol. No shortcut paths exist for the highest authority level. The Commander's identity must be established through multi-factor verification including knowledge challenge, behavioral pattern match, and bloodline position confirmation before any SOVEREIGN-level session can be created.",
+      "reasoning_framework": "The SOVEREIGN level represents absolute authority within the McWilliams Dynasty system. Unlike lower authority levels that may be verified through single-factor authentication, SOVEREIGN verification demands the complete ceremony protocol. This ensures that even in the event of credential compromise at lower factors, the highest privilege operations remain protected. The ceremony is a sequential multi-step process where each step must be completed before the next is revealed, preventing parallel attack vectors. The design principle is that convenience never supersedes security at the SOVEREIGN tier.",
+      "key_factors": [
+        "Full ceremony required (4-5 steps)",
+        "Knowledge challenge with HMAC-SHA256 verification",
+        "Bloodline position confirmation",
+        "Authorization phrase with full legal name",
+        "DOB verification as final sovereign confirmation",
+        "300-second ceremony timeout"
+      ],
+      "primary_authority": [
+        "BLD01 Sovereign Auth Protocol v1.0",
+        "McWilliams Dynasty Succession Charter",
+        "ECHO PRIME Authority Framework"
+      ],
+      "burden_holder": "System (must prove identity beyond reasonable doubt)",
+      "adversary_position": "Attacker may possess partial credentials from phishing or social engineering",
+      "counter_arguments": [
+        "Ceremony adds friction to legitimate operations",
+        "Timeout may expire during complex verification",
+        "Knowledge challenges can be brute-forced given enough time",
+        "Behavioral patterns may shift over time",
+        "Device fingerprints can be cloned"
+      ],
+      "resolution_strategy": "Multi-factor layering ensures no single compromised factor grants access. Ceremony timeout prevents slow brute-force. Failed attempt lockout prevents rapid retry. The combination of knowledge, position, and biometric factors creates a defense-in-depth architecture.",
+      "entity_scope": "SOVEREIGN",
+      "confidence": 0.97,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-001: Sovereign Identity is Non-Delegable"
+    },
+    {
+      "topic": "multi_factor_authentication_principles",
+      "keywords": ["multi-factor", "mfa", "factors", "knowledge", "biometric", "behavioral", "device"],
+      "conclusion_template": "Multi-factor authentication in the Bloodline system uses three independent verification channels: knowledge (security question hash), behavioral (typing cadence and temporal patterns), and device (hardware fingerprint). Each factor contributes an independent confidence score, and their combination reduces composite fragility multiplicatively. A minimum of two factors should be verified for any operation above OPERATOR level.",
+      "reasoning_framework": "The MFA architecture follows the principle that authentication factors should be independent — compromise of one factor should not aid in compromising another. Knowledge factors are the most common but also the most phishable. Behavioral factors are harder to replicate but may drift over time as user patterns change. Device factors provide strong binding but can be circumvented by device cloning. The system assigns different confidence weights to each factor: knowledge (0.40), device (0.25), behavioral (0.20), with a base confidence of 0.10 for known identity. These weights reflect the relative strength and independence of each factor type.",
+      "key_factors": [
+        "Knowledge: HMAC-SHA256 hashed security responses with pepper",
+        "Device: Hardware fingerprint matching against registered devices",
+        "Behavioral: Typing cadence hash comparison",
+        "Independence: Factors verified through separate channels",
+        "Confidence weights: knowledge=0.40, device=0.25, behavioral=0.20",
+        "Composite fragility: multiplicative reduction across factors"
+      ],
+      "primary_authority": [
+        "NIST SP 800-63B Digital Identity Guidelines",
+        "BLD01 Multi-Factor Authentication Standard",
+        "ECHO PRIME Security Framework"
+      ],
+      "burden_holder": "Authenticating party (must present valid factors)",
+      "adversary_position": "Attacker may possess one factor through theft, phishing, or surveillance",
+      "counter_arguments": [
+        "MFA adds user friction and can cause lockouts",
+        "Behavioral biometrics have false positive rates",
+        "Device fingerprinting may fail on hardware changes",
+        "Knowledge factors remain vulnerable to social engineering",
+        "Factor synchronization across devices is complex"
+      ],
+      "resolution_strategy": "Graduated authentication — lower-risk operations accept fewer factors, higher-risk operations require more. Failed factor attempts are tracked with exponential backoff lockout. New devices are accepted but with reduced confidence until pattern establishes.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.95,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-002: Defense in Depth Through Factor Independence"
+    },
+    {
+      "topic": "authority_delegation_framework",
+      "keywords": ["delegate", "delegation", "grant", "authority", "permission", "scope", "temporary"],
+      "conclusion_template": "Authority delegation allows the Commander (or any identity with delegate capability) to grant temporary, scoped access tokens to other identities. Delegations are strictly descending — a delegator can only grant levels below their own, up to the system maximum of 8.0 for delegates. All delegations have mandatory expiration times and can be revoked at any time by the delegator or any higher authority.",
+      "reasoning_framework": "The delegation framework implements the principle of least privilege with temporal bounds. Every delegation creates a new trust chain link that must be validated on each use. The system enforces that delegation chains are strictly descending — each link must be at a lower authority level than the previous. This prevents privilege escalation through chained delegations. Scope restrictions ensure that a delegate receives only the specific capabilities needed for their task, not blanket access. The maximum delegation level of 8.0 ensures that even the Commander cannot delegate SOVEREIGN or HEIR-level access, preserving the bloodline integrity.",
+      "key_factors": [
+        "Strictly descending authority chains",
+        "Maximum delegate level: 8.0 (COMMANDER_DELEGATE)",
+        "Mandatory expiration (1-720 hours)",
+        "Scope-limited: specific capability lists",
+        "Revocable at any time by delegator or higher authority",
+        "Audit trail for all delegation actions"
+      ],
+      "primary_authority": [
+        "BLD01 Delegation Protocol v1.0",
+        "McWilliams Dynasty Authority Charter",
+        "ECHO PRIME Least Privilege Standard"
+      ],
+      "burden_holder": "Delegator (responsible for scope and duration appropriateness)",
+      "adversary_position": "Delegate may attempt to exceed granted scope or extend duration",
+      "counter_arguments": [
+        "Delegation chains add complexity to authorization checks",
+        "Expired delegations may disrupt active operations",
+        "Scope definitions may be too coarse or too fine",
+        "Revocation propagation may have latency",
+        "Multiple active delegations create combinatorial permission sets"
+      ],
+      "resolution_strategy": "Clear scope definitions with capability enumeration. Automatic expiration enforcement. Real-time revocation with session invalidation. Audit trail for forensic review of delegation usage.",
+      "entity_scope": "LIEUTENANT_AND_ABOVE",
+      "confidence": 0.93,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-003: Delegation is Privilege, Not Right"
+    },
+    {
+      "topic": "succession_planning_protocol",
+      "keywords": ["succession", "heir", "bloodline", "dynasty", "chain", "inheritance", "dead man"],
+      "conclusion_template": "The succession protocol ensures continuity of the McWilliams Dynasty authority structure in the event of Commander incapacitation. A designated heir (maximum level 9.5) is pre-registered in the bloodline registry but remains dormant until activated by the dead man's switch. The succession chain is strictly ordered: SOVEREIGN -> HEIR APPARENT -> HEIR -> COMMANDER_DELEGATE. No heir can exceed level 9.5, preserving the uniqueness of SOVEREIGN authority.",
+      "reasoning_framework": "Succession planning addresses the single point of failure inherent in a SOVEREIGN-led authority structure. The dead man's switch monitors Commander heartbeats and triggers succession after a configurable timeout (default 72 hours). This timeout balances responsiveness against false positives from temporary unavailability. The heir is pre-registered but dormant — they cannot self-activate, preventing insider succession attacks. When activated, the heir gains their registered authority level (up to 9.5) but never SOVEREIGN (11.0). This design choice ensures that certain SOVEREIGN-only operations become permanently inaccessible until the Commander returns, creating a natural incentive for succession to be temporary.",
+      "key_factors": [
+        "Dead man's switch with configurable timeout (default 72h)",
+        "Heir maximum level: 9.5 (SOVEREIGN 11.0 is unique)",
+        "Dormant until switch triggers — cannot self-activate",
+        "Ordered succession chain with no skip-levels",
+        "Emergency lockout preserved through succession",
+        "Commander return automatically deactivates succession"
+      ],
+      "primary_authority": [
+        "McWilliams Dynasty Succession Charter",
+        "BLD01 Dead Man's Switch Protocol",
+        "ECHO PRIME Continuity Standard"
+      ],
+      "burden_holder": "Commander (must maintain heartbeat to prevent succession)",
+      "adversary_position": "Insider may attempt to suppress heartbeat to trigger false succession",
+      "counter_arguments": [
+        "72-hour timeout may be too long for critical operations",
+        "Heartbeat monitoring requires persistent infrastructure",
+        "Heir activation without Commander verification risks legitimacy",
+        "Multiple heirs create succession ambiguity",
+        "Network partition could prevent heartbeat delivery"
+      ],
+      "resolution_strategy": "Configurable timeout allows Commander to set appropriate threshold. Heartbeat verification uses authenticated sessions. Single designated heir eliminates ambiguity. Network partition detection through multiple heartbeat channels.",
+      "entity_scope": "SOVEREIGN_AND_HEIRS",
+      "confidence": 0.91,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-004: SOVEREIGN is Unique and Non-Transferable"
+    },
+    {
+      "topic": "emergency_lockout_protocol",
+      "keywords": ["lockout", "emergency", "revoke", "panic", "freeze", "security", "breach"],
+      "conclusion_template": "Emergency lockout is the nuclear option — it revokes ALL active sessions, ALL delegations, and ALL pending ceremonies in a single atomic operation. Only SOVEREIGN authority can trigger lockout. One emergency recovery session can be preserved to allow the Commander to lift the lockout when the threat is resolved. Global lockout blocks all new authentication attempts until lifted.",
+      "reasoning_framework": "The emergency lockout protocol is designed for worst-case scenarios: credential breach, insider attack, or system compromise. It prioritizes security over availability by immediately revoking all trust relationships. The preserved emergency recovery session is a careful compromise — without it, the Commander would be locked out of their own system. The recovery session is stored in a separate set and is the only session type that can lift the lockout. This creates a known, controlled recovery path while ensuring that any compromised sessions are immediately invalidated. The atomic nature of the operation ensures that partial lockout states cannot exist.",
+      "key_factors": [
+        "SOVEREIGN-only trigger (Level 11.0 required)",
+        "Atomic: all sessions, delegations, ceremonies revoked simultaneously",
+        "Optional emergency recovery session preservation",
+        "Global lockout blocks all new authentication",
+        "Recovery requires the preserved emergency session",
+        "Full audit trail of lockout and recovery"
+      ],
+      "primary_authority": [
+        "BLD01 Emergency Protocol v1.0",
+        "ECHO PRIME Incident Response Standard",
+        "McWilliams Dynasty Security Charter"
+      ],
+      "burden_holder": "Commander (must verify threat before triggering lockout)",
+      "adversary_position": "Attacker with SOVEREIGN session could trigger lockout as denial-of-service",
+      "counter_arguments": [
+        "Lockout disrupts all active operations",
+        "Recovery process introduces single point of failure",
+        "False positive lockout wastes time and trust",
+        "Emergency session itself could be compromised",
+        "No automated threat detection — relies on manual trigger"
+      ],
+      "resolution_strategy": "Lockout is manual-only to prevent automated false positives. Recovery session uses highest-confidence authentication. All lockout events create permanent audit records. Post-lockout review process identifies root cause and prevents recurrence.",
+      "entity_scope": "SOVEREIGN_ONLY",
+      "confidence": 0.96,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-005: Emergency Lockout is Irreversible Except by Recovery"
+    },
+    {
+      "topic": "session_management_lifecycle",
+      "keywords": ["session", "token", "login", "logout", "timeout", "expire", "concurrent"],
+      "conclusion_template": "Sessions are time-bounded authentication tokens with a default TTL of 24 hours. Each session records the identity, authority level, authentication factors used, confidence score, and scope. Maximum concurrent sessions per identity is 5, preventing credential sharing. Sessions can be validated, revoked, or allowed to expire naturally. Expired sessions are automatically cleaned.",
+      "reasoning_framework": "Session management implements the principle that authentication state should be ephemeral and verifiable. Every session carries its own confidence score derived from the authentication factors used at creation time, meaning sessions created with fewer factors have reduced authority even for the same identity. The concurrent session limit of 5 prevents credential sharing while accommodating multiple devices. Session validation checks three conditions: existence, non-revocation, and non-expiration. The 24-hour TTL forces periodic re-authentication, limiting the window of exposure if a session token is compromised. Device fingerprint binding provides an additional layer of session integrity.",
+      "key_factors": [
+        "24-hour default TTL",
+        "Maximum 5 concurrent sessions per identity",
+        "Per-session confidence score from auth factors",
+        "Device fingerprint binding",
+        "Three validation checks: exists, not revoked, not expired",
+        "Automatic expiration cleanup"
+      ],
+      "primary_authority": [
+        "BLD01 Session Management Standard",
+        "OWASP Session Management Guidelines",
+        "ECHO PRIME Token Security Standard"
+      ],
+      "burden_holder": "System (must enforce TTL and concurrency limits)",
+      "adversary_position": "Attacker may attempt session fixation, hijacking, or token theft",
+      "counter_arguments": [
+        "24-hour TTL may be too long for high-security contexts",
+        "Session storage in memory is lost on restart",
+        "Concurrent limit may inconvenience legitimate multi-device users",
+        "Token-based sessions are bearer tokens (no proof of possession)",
+        "Session revocation has no push notification mechanism"
+      ],
+      "resolution_strategy": "Configurable TTL for different authority levels. Session persistence to vault for restart recovery. Concurrent limit tunable per identity. Token binding to device fingerprint reduces bearer token risk.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.94,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-006: Sessions are Ephemeral Trust Assertions"
+    },
+    {
+      "topic": "behavioral_pattern_authentication",
+      "keywords": ["behavioral", "pattern", "typing", "cadence", "habit", "biometric", "temporal"],
+      "conclusion_template": "Behavioral pattern authentication uses hashed representations of user behavior (typing cadence, interaction timing) as an authentication factor. Unlike knowledge factors, behavioral patterns are difficult to transfer or steal because they represent subconscious physical characteristics. The system stores a baseline behavioral hash and compares new samples for consistency. Behavioral drift over time is expected and handled through gradual baseline updates.",
+      "reasoning_framework": "Behavioral biometrics represent the frontier of continuous authentication. Traditional authentication happens at a point in time (login), but behavioral patterns can provide ongoing confidence that the authenticated user is still the one operating the session. The hash-based comparison ensures that raw behavioral data is never stored — only a cryptographic representation. This protects user privacy while enabling verification. The confidence contribution of behavioral factors (0.20) is lower than knowledge (0.40) because behavioral patterns are probabilistic rather than deterministic. A new behavioral sample that differs from baseline may indicate either an impostor or natural drift — the system cannot distinguish these cases with certainty, hence the moderate confidence weight.",
+      "key_factors": [
+        "HMAC-SHA256 hashed behavioral samples",
+        "Typing cadence as primary behavioral signal",
+        "Confidence weight: 0.20 (moderate)",
+        "First-sample registration with reduced confidence",
+        "Baseline drift handling through hash updates",
+        "Privacy-preserving: raw data never stored"
+      ],
+      "primary_authority": [
+        "BLD01 Behavioral Authentication Standard",
+        "NIST SP 800-63B Biometric Authentication Guidelines",
+        "IEEE Behavioral Biometrics Research"
+      ],
+      "burden_holder": "System (must distinguish legitimate drift from impostor)",
+      "adversary_position": "Sophisticated attacker may train to replicate behavioral patterns",
+      "counter_arguments": [
+        "Behavioral patterns change with fatigue, stress, or injury",
+        "Hash comparison is binary — no partial match scoring",
+        "First-use registration creates a cold start problem",
+        "Environmental factors (keyboard, desk) affect typing cadence",
+        "Replay attacks could use recorded behavioral samples"
+      ],
+      "resolution_strategy": "Behavioral is a supplementary factor, never sole. Hash updates accommodate natural drift. Replay prevention through temporal binding. Environmental normalization in future versions.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.88,
+      "confidence_stratification": "AGGRESSIVE",
+      "controlling_precedent": "BLD01-DOCTRINE-007: Behavioral Auth is Supplementary, Not Primary"
+    },
+    {
+      "topic": "device_trust_fingerprinting",
+      "keywords": ["device", "fingerprint", "hardware", "trusted", "machine", "registration"],
+      "conclusion_template": "Device trust is established through hardware fingerprint matching. Known devices receive higher confidence (0.25), new devices receive reduced confidence (0.15), and unknown devices from registered identities receive minimal confidence (0.05). First device registration is automatic during initial authentication. The device fingerprint list is maintained per identity and can grow as users add new trusted devices.",
+      "reasoning_framework": "Device fingerprinting binds authentication to specific hardware, creating a strong binding between identity and physical access. Unlike passwords or behavioral patterns, device fingerprints represent a 'something you have' factor. The graduated confidence model (known=0.25, new=0.15, unknown=0.05) reflects the decreasing trust as device familiarity decreases. Automatic first-device registration reduces friction for initial setup while maintaining security for subsequent authentications. The system stores fingerprints as opaque hashes — the actual hardware characteristics are never exposed, preventing fingerprint recreation attacks.",
+      "key_factors": [
+        "Hardware fingerprint hash comparison",
+        "Known device confidence: 0.25",
+        "New device confidence: 0.15 (auto-registered)",
+        "Unknown device confidence: 0.05",
+        "Per-identity device list",
+        "Opaque hash storage"
+      ],
+      "primary_authority": [
+        "BLD01 Device Trust Standard",
+        "W3C Device Fingerprinting Guidelines",
+        "ECHO PRIME Hardware Binding Standard"
+      ],
+      "burden_holder": "User (must authenticate from registered or registerable devices)",
+      "adversary_position": "Attacker may clone device fingerprints or use stolen hardware",
+      "counter_arguments": [
+        "Device fingerprints can be spoofed in software",
+        "Hardware replacement invalidates existing fingerprints",
+        "Multiple legitimate devices dilute device binding strength",
+        "VM environments produce unstable fingerprints",
+        "Privacy concerns with device tracking"
+      ],
+      "resolution_strategy": "Device is one factor among several — spoofing alone is insufficient. Hardware replacement handled through re-registration with reduced initial confidence. VM detection adds risk flags.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.90,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-008: Device Trust Enhances But Does Not Replace Identity"
+    },
+    {
+      "topic": "authentication_ceremony_protocol",
+      "keywords": ["ceremony", "ritual", "multi-step", "sovereign", "supreme", "verification"],
+      "conclusion_template": "The authentication ceremony is a multi-step sequential verification process required for SOVEREIGN-level operations. It consists of 4-5 steps: identity confirmation, knowledge verification, bloodline position verification, sovereign action authorization, and (for SOVEREIGN level) final DOB confirmation. Each step must be completed in order within a 300-second timeout. A cryptographic challenge token rotates after each step to prevent replay attacks.",
+      "reasoning_framework": "The ceremony protocol is the highest-assurance authentication mechanism in the Bloodline system. It exists because single-factor or even multi-factor point-in-time authentication may not provide sufficient confidence for irreversible SOVEREIGN operations. The sequential nature of the ceremony ensures that each step builds on the confidence of the previous steps. The rotating challenge token prevents step-replay attacks where an attacker captures a valid step response and tries to use it later. The 300-second timeout is a carefully chosen balance: long enough for a legitimate user to complete all steps thoughtfully, short enough to prevent slow brute-force attacks on individual steps. Ceremony completion creates a session with the highest possible confidence score.",
+      "key_factors": [
+        "4-5 sequential verification steps",
+        "300-second timeout for full completion",
+        "Rotating challenge tokens per step",
+        "Steps must be completed in prescribed order",
+        "Failed step records as auth failure (contributes to lockout)",
+        "Successful completion grants highest confidence session"
+      ],
+      "primary_authority": [
+        "BLD01 Ceremony Protocol v1.0",
+        "McWilliams Dynasty Sovereign Operations Charter",
+        "ECHO PRIME Maximum Assurance Standard"
+      ],
+      "burden_holder": "Authenticating party (must complete all steps within timeout)",
+      "adversary_position": "Attacker must compromise all ceremony steps within 5 minutes",
+      "counter_arguments": [
+        "Ceremony is slow and inconvenient for frequent operations",
+        "Timeout may expire for users in high-latency environments",
+        "Sequential steps create a known attack surface",
+        "Challenge token rotation adds implementation complexity",
+        "Step verification logic must be kept secret"
+      ],
+      "resolution_strategy": "Ceremony reserved for infrequent SOVEREIGN operations. Timeout is configurable. Each step uses different verification logic to prevent single-vector attacks. Token rotation prevents replay. Step logic is hashed, not cleartext.",
+      "entity_scope": "SOVEREIGN",
+      "confidence": 0.98,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-009: Ceremony is the Gold Standard of Authentication"
+    },
+    {
+      "topic": "failed_attempt_lockout_policy",
+      "keywords": ["failed", "attempt", "lockout", "brute force", "rate limit", "block"],
+      "conclusion_template": "The system implements an automatic lockout after 5 failed authentication attempts within a 15-minute window. During lockout, all authentication requests for the affected identity are rejected. Lockout is per-identity, not global, to prevent denial-of-service against other identities. Failed ceremony steps count as failed attempts. The lockout window uses a sliding time window that automatically clears as old attempts age out.",
+      "reasoning_framework": "The lockout policy is the first line of defense against brute-force attacks. The threshold of 5 attempts in 15 minutes was chosen to accommodate legitimate typos (1-2 attempts) while quickly detecting systematic attacks. Per-identity lockout ensures that an attacker targeting one account cannot lock out the entire system. The sliding window approach (rather than fixed-window) prevents timing attacks where an attacker times their attempts to straddle window boundaries. Failed ceremony steps contribute to the lockout counter because ceremony attempts are authentication attempts — treating them differently would create an unprotected attack surface.",
+      "key_factors": [
+        "5 failed attempts trigger lockout",
+        "15-minute (900s) lockout duration",
+        "Sliding time window for attempt tracking",
+        "Per-identity lockout scope",
+        "Ceremony failures count as failed attempts",
+        "Automatic clearance as old attempts age out"
+      ],
+      "primary_authority": [
+        "BLD01 Lockout Policy v1.0",
+        "NIST SP 800-63B Throttling Guidelines",
+        "OWASP Brute Force Prevention"
+      ],
+      "burden_holder": "System (must accurately track and enforce limits)",
+      "adversary_position": "Attacker may use distributed sources or slow-rate attacks",
+      "counter_arguments": [
+        "Lockout enables denial-of-service against specific identities",
+        "Legitimate users locked out by typos or changed passwords",
+        "Distributed attacks from multiple IPs bypass per-identity tracking",
+        "15-minute window may be too short for sophisticated attacks",
+        "No progressive lockout (5th attempt same as 50th)"
+      ],
+      "resolution_strategy": "Per-identity scope limits DoS blast radius. SOVEREIGN lockout can only be triggered by the lockout endpoint, not by failed attempts. Future: progressive backoff and IP correlation.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.92,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-010: Lockout Protects Against Brute Force"
+    },
+    {
+      "topic": "confidence_stratification_framework",
+      "keywords": ["confidence", "stratification", "defensible", "aggressive", "disclosure", "risk"],
+      "conclusion_template": "Every authentication decision carries a confidence stratification: DEFENSIBLE (>=0.90), AGGRESSIVE (>=0.75), DISCLOSURE (>=0.55), HIGH_RISK (>=0.30), or CEREMONY_REQUIRED (<0.30). The stratification determines what actions are permitted and what additional verification may be needed. Operations requiring SOVEREIGN authority always require DEFENSIBLE confidence, achievable only through full ceremony.",
+      "reasoning_framework": "Confidence stratification provides a framework for making nuanced authorization decisions rather than binary allow/deny. A session with AGGRESSIVE confidence may be permitted to perform routine operations but blocked from irreversible actions. This graduated approach reduces friction for low-risk operations while maintaining high assurance for critical ones. The thresholds were calibrated based on the multi-factor confidence weights: a user providing all three factors (knowledge=0.40 + device=0.25 + behavioral=0.20 + base=0.10 = 0.95) achieves DEFENSIBLE. Two factors typically achieve AGGRESSIVE. One factor typically achieves DISCLOSURE.",
+      "key_factors": [
+        "Five stratification levels with clear thresholds",
+        "DEFENSIBLE: full audit-proof confidence (>=0.90)",
+        "AGGRESSIVE: strong but not exhaustive (>=0.75)",
+        "DISCLOSURE: moderate with caveats (>=0.55)",
+        "HIGH_RISK: below operational threshold (>=0.30)",
+        "CEREMONY_REQUIRED: identity not established (<0.30)"
+      ],
+      "primary_authority": [
+        "BLD01 Confidence Framework v1.0",
+        "Risk-Based Authentication Standards",
+        "ECHO PRIME Graduated Trust Model"
+      ],
+      "burden_holder": "System (must accurately compute and enforce confidence levels)",
+      "adversary_position": "Attacker may attempt to manipulate confidence scores through factor injection",
+      "counter_arguments": [
+        "Threshold values are somewhat arbitrary",
+        "Confidence computation is additive, not probabilistic",
+        "Intermediate levels create ambiguous authorization states",
+        "Users may not understand why operations are blocked",
+        "Confidence decay over session lifetime not implemented"
+      ],
+      "resolution_strategy": "Thresholds calibrated to multi-factor weight sums. Clear action guidance per level. User-facing error messages explain required additional factors. Future: time-decay confidence model.",
+      "entity_scope": "ALL_LEVELS",
+      "confidence": 0.93,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-011: Confidence Determines Capability"
+    },
+    {
+      "topic": "bloodline_chain_integrity",
+      "keywords": ["bloodline", "chain", "dynasty", "mcwilliams", "patriarch", "heir", "lineage"],
+      "conclusion_template": "The bloodline chain represents the authority lineage of the McWilliams Dynasty. The chain is strictly ordered: PATRIARCH (SOVEREIGN, 11.0) -> FIRST_IN_LINE (HEIR_APPARENT, 9.5) -> additional heirs (HEIR, 9.0). Each position in the chain has a fixed maximum authority level that cannot be exceeded. The chain is immutable once established — positions can only be modified by the SOVEREIGN through authenticated ceremony.",
+      "reasoning_framework": "The bloodline chain is the foundational trust anchor of the entire authentication system. Unlike delegation (which is temporary and scoped), bloodline positions are permanent authority grants tied to dynastic succession. The strict ordering ensures unambiguous authority resolution — there is never a question of who has higher authority in any dispute. The immutability requirement (modification only through ceremony) prevents unauthorized manipulation of the succession chain. The PATRIARCH position at level 11.0 is unique by design — no other position can reach this level, ensuring that the Commander always has ultimate override authority.",
+      "key_factors": [
+        "Strictly ordered: PATRIARCH > FIRST_IN_LINE > HEIR",
+        "Fixed maximum levels per position",
+        "PATRIARCH (SOVEREIGN) is unique at level 11.0",
+        "Chain modification requires SOVEREIGN ceremony",
+        "Immutable once established",
+        "Each position has defined capabilities"
+      ],
+      "primary_authority": [
+        "McWilliams Dynasty Charter of Authority",
+        "BLD01 Bloodline Registry Protocol",
+        "ECHO PRIME Succession Framework"
+      ],
+      "burden_holder": "SOVEREIGN (sole authority to modify bloodline chain)",
+      "adversary_position": "Insider may attempt to elevate their bloodline position",
+      "counter_arguments": [
+        "Rigid hierarchy may not adapt to changing circumstances",
+        "Single SOVEREIGN creates critical dependency",
+        "No mechanism for SOVEREIGN removal if compromised",
+        "Bloodline metaphor may not map to organizational needs",
+        "Chain length is limited by authority level granularity"
+      ],
+      "resolution_strategy": "Dead man's switch provides continuity mechanism. Ceremony requirement prevents unauthorized modification. Authority level granularity (0.1 increments) allows fine-grained chain ordering.",
+      "entity_scope": "ALL_BLOODLINE_MEMBERS",
+      "confidence": 0.95,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-012: Bloodline Authority is Inherited, Not Earned"
+    },
+    {
+      "topic": "audit_trail_integrity",
+      "keywords": ["audit", "trail", "log", "forensic", "integrity", "hash", "tamper"],
+      "conclusion_template": "Every authentication event is logged to an append-only JSONL audit trail with SHA-256 integrity hashes. The audit trail records authentication attempts (success/failure), session operations, delegations, ceremonies, lockouts, and dead man's switch events. Each entry includes a unique ID, timestamp, event type, and data payload. The integrity hash ensures tamper detection.",
+      "reasoning_framework": "The audit trail serves two purposes: operational monitoring and forensic investigation. The append-only design prevents log modification — entries can only be added, never changed or deleted. Each entry's SHA-256 hash is computed over the entry's canonical JSON representation, creating a verifiable chain of integrity. The JSONL format enables efficient streaming reads and is compatible with standard log analysis tools. The comprehensive event coverage ensures that any authentication-related action can be reconstructed from the audit trail, supporting both real-time monitoring and post-incident forensics.",
+      "key_factors": [
+        "Append-only JSONL format",
+        "SHA-256 integrity hash per entry",
+        "Unique UUID per entry",
+        "ISO-8601 timestamps in UTC",
+        "Covers all auth events: authenticate, delegate, ceremony, lockout, heartbeat",
+        "Queryable by event type with limit control"
+      ],
+      "primary_authority": [
+        "BLD01 Audit Standard v1.0",
+        "SOC 2 Type II Logging Requirements",
+        "ECHO PRIME Forensic Investigation Standard"
+      ],
+      "burden_holder": "System (must ensure log integrity and completeness)",
+      "adversary_position": "Attacker may attempt to delete or modify logs to cover tracks",
+      "counter_arguments": [
+        "Append-only log grows unboundedly",
+        "Local storage is vulnerable to disk failure",
+        "Hash chain can be recomputed if entire log is compromised",
+        "High-volume systems may have logging performance impact",
+        "Sensitive data in logs creates privacy considerations"
+      ],
+      "resolution_strategy": "Log rotation with compression. Cloud backup to R2. Hash verification on periodic integrity checks. Sensitive data masking in log entries. Performance-optimized async logging.",
+      "entity_scope": "SYSTEM",
+      "confidence": 0.94,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-013: Every Auth Action Leaves a Permanent Record"
+    },
+    {
+      "topic": "cryptographic_secret_handling",
+      "keywords": ["hash", "hmac", "sha256", "pepper", "secret", "cryptographic", "password"],
+      "conclusion_template": "All secrets in the Bloodline Authenticator are stored as HMAC-SHA256 hashes with a system pepper. Raw secrets are never stored, logged, or transmitted. The HMAC key and pepper are loaded from environment variables, defaulting to built-in values for development. Constant-time comparison (hmac.compare_digest) is used for all hash comparisons to prevent timing attacks. Token generation uses cryptographically secure random sources (secrets module).",
+      "reasoning_framework": "Cryptographic secret handling follows defense-in-depth principles. HMAC-SHA256 (rather than plain SHA-256) ensures that even if an attacker obtains the hash database, they cannot verify candidate secrets without the HMAC key. The pepper adds a second layer — even with the HMAC key, the pepper must also be known. Constant-time comparison prevents timing side-channel attacks where an attacker measures response time to determine how many bytes of a hash matched. The secrets module provides OS-level entropy for token generation, ensuring unpredictability. All of these measures collectively ensure that the secret storage is robust against known cryptographic attack vectors.",
+      "key_factors": [
+        "HMAC-SHA256 with system pepper",
+        "HMAC key from environment variable (BLD01_HMAC_KEY)",
+        "Pepper from environment variable (BLD01_PEPPER)",
+        "Constant-time comparison via hmac.compare_digest",
+        "Token generation via secrets.token_urlsafe",
+        "Raw secrets never stored or logged"
+      ],
+      "primary_authority": [
+        "NIST SP 800-132 Password-Based Key Derivation",
+        "OWASP Password Storage Cheat Sheet",
+        "BLD01 Cryptographic Standards"
+      ],
+      "burden_holder": "System (must protect secrets at all stages)",
+      "adversary_position": "Attacker may attempt hash extraction, timing attacks, or rainbow tables",
+      "counter_arguments": [
+        "HMAC-SHA256 is fast — not ideal for password hashing (vs bcrypt/argon2)",
+        "Default HMAC key and pepper reduce security in development",
+        "Key rotation requires re-hashing all stored secrets",
+        "Single pepper means all hashes compromised if pepper leaks",
+        "No salt per-secret means identical secrets produce identical hashes"
+      ],
+      "resolution_strategy": "Production deployments must set unique environment variables. Future: migrate to Argon2id with per-secret salt. Key rotation protocol with graceful migration. Secret uniqueness enforced at registration time.",
+      "entity_scope": "SYSTEM",
+      "confidence": 0.91,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-014: Secrets are Write-Only — Hash In, Never Out"
+    },
+    {
+      "topic": "threat_model_assessment",
+      "keywords": ["threat", "attack", "breach", "compromise", "suspicious", "adversary", "risk"],
+      "conclusion_template": "The Bloodline Authenticator's threat model considers five primary attack vectors: credential theft (phishing, keylogging), session hijacking (token theft, network interception), insider threat (heir/delegate misuse), brute force (systematic credential guessing), and social engineering (impersonation). Each vector is mitigated by specific countermeasures: MFA against credential theft, device binding against session hijacking, authority limits against insider threat, lockout against brute force, and ceremony against social engineering.",
+      "reasoning_framework": "Threat modeling is the foundation of security architecture. Rather than defending against every possible attack, the system focuses on the most likely and most impactful threats. Credential theft is the most common attack vector and is mitigated by requiring multiple independent factors. Session hijacking is addressed by binding sessions to device fingerprints and implementing short TTLs. Insider threats are controlled by strict authority limits and audit trails. Brute force is prevented by attempt lockout. Social engineering — the most sophisticated attack — is countered by the ceremony protocol, which requires knowledge that cannot be obtained through manipulation alone (DOB, bloodline position). The defense-in-depth approach means that no single countermeasure failure is catastrophic.",
+      "key_factors": [
+        "Five primary attack vectors identified",
+        "Multi-factor auth mitigates credential theft",
+        "Device binding mitigates session hijacking",
+        "Authority limits mitigate insider threats",
+        "Lockout mitigates brute force",
+        "Ceremony mitigates social engineering"
+      ],
+      "primary_authority": [
+        "STRIDE Threat Model Framework",
+        "MITRE ATT&CK Authentication Techniques",
+        "BLD01 Security Architecture Document"
+      ],
+      "burden_holder": "System (must implement and maintain all countermeasures)",
+      "adversary_position": "Sophisticated attacker may combine multiple vectors (multi-stage attack)",
+      "counter_arguments": [
+        "Threat model may not cover novel attack vectors",
+        "Countermeasures add complexity that can introduce new vulnerabilities",
+        "Advanced persistent threats may operate below detection thresholds",
+        "Physical access attacks are not fully addressed",
+        "Supply chain attacks on dependencies are out of scope"
+      ],
+      "resolution_strategy": "Regular threat model reviews. Drift watcher detects anomalous patterns. Audit trail supports post-incident analysis. Ceremony protocol is the last line of defense for highest-value operations.",
+      "entity_scope": "SYSTEM",
+      "confidence": 0.89,
+      "confidence_stratification": "AGGRESSIVE",
+      "controlling_precedent": "BLD01-DOCTRINE-015: Defense in Depth — No Single Point of Failure"
+    },
+    {
+      "topic": "determinism_and_reproducibility",
+      "keywords": ["determinism", "reproducible", "hash", "sha256", "consistent", "verifiable"],
+      "conclusion_template": "Every authentication decision in the Bloodline Authenticator includes a SHA-256 determinism hash computed over the canonical JSON representation of the decision inputs. Given identical inputs (identity, factors, timestamps), the system produces identical hashes, enabling external verification that authentication decisions are consistent and reproducible. This is critical for audit compliance and dispute resolution.",
+      "reasoning_framework": "Determinism in authentication decisions means that the same inputs always produce the same outputs. This property is essential for audit verification — an auditor can replay a recorded authentication attempt and verify that the system would have made the same decision. The SHA-256 hash serves as a compact proof of determinism: if the hash matches, the decision was consistent with the recorded inputs. The canonical JSON serialization (sorted keys, minimal separators) ensures that formatting differences don't affect the hash. This approach transforms authentication from a trust-me system to a verify-me system.",
+      "key_factors": [
+        "SHA-256 hash over canonical JSON",
+        "Sorted keys for serialization consistency",
+        "Minimal separators to eliminate formatting variance",
+        "Hash included in every authentication response",
+        "Enables external verification and audit replay",
+        "Consistent across system restarts and versions"
+      ],
+      "primary_authority": [
+        "BLD01 Determinism Standard",
+        "RFC 8785 JSON Canonicalization",
+        "ECHO PRIME Reproducibility Framework"
+      ],
+      "burden_holder": "System (must maintain deterministic behavior)",
+      "adversary_position": "Attacker may attempt to manipulate inputs to produce desired hash",
+      "counter_arguments": [
+        "Determinism requires excluding non-deterministic inputs (timestamps, random IDs)",
+        "Hash collision risk (theoretical, negligible for SHA-256)",
+        "Version changes may alter canonicalization",
+        "Floating-point inputs may not be deterministic across platforms",
+        "Hash verification requires access to all original inputs"
+      ],
+      "resolution_strategy": "Determinism hash excludes timestamps and random tokens. SHA-256 collision resistance is sufficient for audit purposes. Version field in hash inputs detects version-related changes.",
+      "entity_scope": "SYSTEM",
+      "confidence": 0.96,
+      "confidence_stratification": "DEFENSIBLE",
+      "controlling_precedent": "BLD01-DOCTRINE-016: Every Decision is Verifiably Reproducible"
+    }
+  ]
+}

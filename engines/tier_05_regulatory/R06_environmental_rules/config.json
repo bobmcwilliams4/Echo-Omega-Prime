@@ -1,0 +1,51 @@
+{
+  "engine_id": "R06_environmental_rules",
+  "engine_name": "ECHO R06 Environmental Rules Engine",
+  "version": "1.0.0",
+  "domain": "oil_gas_environmental_compliance",
+  "port": 8706,
+  "mode": "hybrid",
+  "description": "Environmental compliance intelligence for oil & gas operations. Covers TCEQ, EPA, RCRA, CWA, CAA, SPCC, stormwater, produced water, NORM, endangered species.",
+  "capabilities": [
+    "TCEQ air permit requirements (NSR/PSD)",
+    "SPCC plan requirements (40 CFR 112)",
+    "Produced water management and disposal",
+    "Stormwater permits (TXR05 MSGP)",
+    "Pit closure requirements",
+    "Endangered Species Act compliance",
+    "NORM handling and disposal",
+    "Wetlands permits (Section 404)",
+    "Clean Air Act compliance",
+    "Clean Water Act compliance",
+    "RCRA waste management"
+  ],
+  "jurisdictions": ["Texas (TCEQ)", "Federal (EPA)", "USFWS", "Corps of Engineers"],
+  "doctrine_cache": {"total_doctrines": 8, "categories": ["air_quality", "water_quality", "waste_management", "species_protection", "spill_prevention"], "confidence_threshold": 0.7},
+  "response_modes": {
+    "fast": {"description": "Doctrine-driven, sub-2 second response", "use_case": "Quick compliance checks"},
+    "defense": {"description": "Structured reasoning, audit-ready", "use_case": "Environmental audits, enforcement"},
+    "memo": {"description": "Long-form, citation-heavy", "use_case": "Compliance manuals, environmental reports"}
+  },
+  "three_layer_architecture": {
+    "layer_1_doctrine_cache": {"target_latency_ms": "0-200", "coverage": "8 major environmental requirements"},
+    "layer_2_semantic_retrieval": {"target_latency_ms": "200-700", "fallback_for": "cache_misses"},
+    "layer_3_deep_analysis": {"target_latency_ms": "700-2000", "fallback_for": "retrieval_misses"}
+  },
+  "penalty_framework": {
+    "air_permit_violation": "$25,000/day, forced shutdown",
+    "spcc_violation": "$25,000-50,000/day, spill cleanup liability",
+    "unauthorized_disposal": "$25,000/day plus remediation costs",
+    "stormwater_violation": "$25,000/day unpermitted discharge",
+    "pit_closure_late": "$10,000/day",
+    "esa_violation": "$50,000 civil + criminal penalties + injunctions",
+    "norm_unlicensed": "$25,000/day + CERCLA liability",
+    "wetlands_violation": "$25-50K/day + restoration orders"
+  },
+  "integrations": {
+    "telemetry": {"enabled": true, "trace_all_queries": true},
+    "audit_trail": {"enabled": true, "format": "jsonl"},
+    "metrics": {"enabled": true}
+  },
+  "deployment": {"host": "0.0.0.0", "port": 8706, "workers": 4},
+  "metadata": {"created": "2026-02-12", "authority": "11.0 SOVEREIGN", "tie_compliant": true}
+}

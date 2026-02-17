@@ -1,0 +1,137 @@
+{
+  "engine_id": "R02_permit_analyzer",
+  "name": "Oil & Gas Permit Analyzer",
+  "version": "1.0.0",
+  "description": "Comprehensive permit requirement analysis for drilling, injection, disposal, pipeline, and related oil/gas operations",
+  "port": 8702,
+  "author": "ECHO OMEGA PRIME",
+  "authority_level": 11.0,
+  "deployment_date": "2026-02-12",
+
+  "capabilities": {
+    "permit_types": [
+      "drilling_permits_w1",
+      "drilling_permits_w1a",
+      "rule_37_spacing_exceptions",
+      "rule_38_density",
+      "injection_wells_uic",
+      "disposal_wells_swd",
+      "enhanced_recovery",
+      "pipeline_construction_t4",
+      "surface_casing",
+      "air_quality_tceq",
+      "stormwater_permits",
+      "flaring_venting",
+      "emergency_permits",
+      "temporary_permits",
+      "permit_amendments",
+      "permit_renewals",
+      "permit_transfers"
+    ],
+    "regulatory_bodies": [
+      "RRC",
+      "TCEQ",
+      "EPA",
+      "COUNTY",
+      "GLO",
+      "USACE"
+    ],
+    "analysis_modes": [
+      "FAST",
+      "COMPLIANCE_AUDIT",
+      "FILING_MEMO"
+    ],
+    "no_llm_mode": true
+  },
+
+  "response_layer_config": {
+    "layer_1_doctrine_cache": {
+      "enabled": true,
+      "target_latency_ms": 150,
+      "min_confidence": 0.75
+    },
+    "layer_2_semantic_retrieval": {
+      "enabled": true,
+      "target_latency_ms": 600,
+      "fallback_on_cache_miss": true
+    },
+    "layer_3_deep_analysis": {
+      "enabled": true,
+      "on_demand_only": true,
+      "multi_source_synthesis": true
+    }
+  },
+
+  "authority_sources": {
+    "texas_admin_code": {
+      "weight": 1.0,
+      "chapters": ["3", "26", "30", "36", "37", "38", "53", "305"]
+    },
+    "rrc_rules": {
+      "weight": 1.0,
+      "statewide_rules": true
+    },
+    "tceq_regulations": {
+      "weight": 0.95,
+      "coordination_required": true
+    },
+    "epa_uic": {
+      "weight": 1.0,
+      "class_ii_wells": true
+    },
+    "field_rules": {
+      "weight": 0.9,
+      "field_specific": true
+    }
+  },
+
+  "confidence_stratification": {
+    "COMPLIANCE_CERTAIN": {
+      "threshold": 0.95,
+      "description": "Clear regulatory requirement with explicit authority"
+    },
+    "STANDARD_REQUIREMENT": {
+      "threshold": 0.85,
+      "description": "Well-established permit requirement"
+    },
+    "CASE_DEPENDENT": {
+      "threshold": 0.70,
+      "description": "Requirement varies by location, depth, or operation type"
+    },
+    "DISCRETIONARY": {
+      "threshold": 0.55,
+      "description": "RRC or TCEQ discretion involved"
+    }
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "audit_trail_path": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/R02_permit_analyzer/logs/audit_trail.jsonl",
+    "rotation": "50 MB",
+    "retention_days": 90,
+    "log_level": "INFO"
+  },
+
+  "drift_detection": {
+    "enabled": true,
+    "observation_window_days": 30,
+    "alert_threshold": 0.15
+  },
+
+  "epistemic_controls": {
+    "banned_phrases": [
+      "always required",
+      "never needed",
+      "guaranteed approval",
+      "automatic exemption"
+    ],
+    "disclosure_required": true,
+    "fact_fragility_scoring": true
+  },
+
+  "health_check": {
+    "endpoint": "/health",
+    "include_metrics": true,
+    "include_doctrine_status": true
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "version": "1.0.0",
+  "documents": [
+    {
+      "topic": "irc_1011_adjusted_basis_definition",
+      "content": "\nIRC \u00a71011 provides the foundational framework for all basis calculations:\n\n1. INITIAL BASIS DETERMINATION (\u00a71012 or other provision):\n   - Cost basis for purchased property (\u00a71012)\n   - Fair market value for inherited property (\u00a71014)\n   - Carryover basis for gifts (\u00a71015)\n   - Substituted basis for exchanges (\u00a71031, \u00a71033)\n   - Transferred basis for contributions (\u00a7351, \u00a7721)\n\n2. UPWARD ADJUSTMENTS (\u00a71016(a)(1)):\n   - Capital improvements and betterments\n   - Assessments for local benefits\n   - Certain carrying costs elected to capitalize\n   - Legal fees to defend or perfect title\n   - Capitalized interest under \u00a7263A\n\n3. DOWNWARD ADJUSTMENTS (\u00a71016(a)(2)-(32)):\n   - Depreciation and amortization allowed or allowable\n   - Depletion deductions taken\n   - Tax-free distributions reducing basis\n   - Casualty losses claimed\n   - Investment credit recapture\n   - Amortization of bond premium\n   - Discharge of indebtedness (\u00a7108(b))\n\n4. TRACKING REQUIREMENTS:\n   - Maintain contemporaneous records of all adjustments\n   - Separate tracking for AMT basis differences\n   - Partnership/S-corp basis tracking on K-1\n   - Documentation of improvement vs repair classification\n\n5. COMPUTATIONAL ORDER:\n   - Start with initial basis under applicable section\n   - Add all upward adjustments chronologically\n   - Subtract all downward adjustments\n   - Apply limitation rules (basis cannot go negative except for partnerships)\n   - Calculate gain/loss as amount realized minus adjusted basis\n\nThe burden is on the taxpayer to establish both the initial basis and all subsequent adjustments.\nIRS may challenge basis if taxpayer lacks adequate records, shifting burden to taxpayer to reconstruct.\n",
+      "keywords": [
+        "adjusted basis",
+        "\u00a71011",
+        "gain calculation",
+        "basis determination",
+        "property valuation",
+        "cost recovery",
+        "adjustment tracking"
+      ],
+      "authority": [
+        "IRC \u00a71011(a) - adjusted basis defined",
+        "IRC \u00a71016 - adjustments to basis enumerated",
+        "Treas. Reg. \u00a71.1011-1 - adjusted basis determination",
+        "Treas. Reg. \u00a71.1016-2 - items properly chargeable to capital account",
+        "Treas. Reg. \u00a71.1016-3 - exhaustion, wear and tear, obsolescence, amortization, and depletion"
+      ]
+    },
+    {
+      "topic": "irc_1012_cost_basis",
+      "content": "\nIRC \u00a71012 cost basis calculation framework:\n\n1. CASH COMPONENT:\n   - Purchase price paid in cash or check\n   - Down payment plus financed amount\n   - Does NOT include interest on debt (deductible or capitalized separately)\n\n2. DEBT COMPONENT:\n   - Debt assumed by taxpayer in acquisition\n   - Property taken \"subject to\" existing debt (nonrecourse)\n   - Debt basis included even if exceeds FMV (Crane doctrine)\n   - Recourse vs nonrecourse debt distinction for at-risk and loss limitations\n\n3. PROPERTY EXCHANGED:\n   - FMV of property transferred in exchange\n   - If exchange qualifies for deferral (\u00a71031), substituted basis rules apply instead\n   - Part sale/part exchange requires allocation between taxable and deferred portions\n\n4. ACQUISITION COSTS (capitalize into basis):\n   - Title insurance, recording fees, transfer taxes\n   - Attorney fees for acquisition, title search, preparation of deed\n   - Appraisal fees for purchase price determination\n   - Survey costs, environmental assessments\n   - Real estate broker commissions (buyer-paid)\n   - Sales tax, excise tax on purchase\n\n5. PREPARATION COSTS (capitalize):\n   - Costs to place property in service\n   - Installation, testing, delivery charges\n   - Building permits for improvements before placed in service\n   - Demolition of old structure if part of acquisition plan\n\n6. EXCLUDED FROM BASIS (deduct currently or capitalize separately):\n   - Interest on acquisition debt (\u00a7163 deduction or \u00a7263A capitalization)\n   - Real estate taxes during construction (\u00a7164 deduction or capitalize)\n   - Repairs after acquisition (deduct under \u00a7162)\n   - Insurance premiums (deduct or capitalize under separate rules)\n\n7. SPECIAL BASIS RULES:\n   - Bargain purchase from employer: basis = amount paid + compensation income recognized\n   - Property acquired for services: basis = FMV included in income\n   - Partial gift/partial sale: dual basis (higher of amount paid or donor's basis)\n   - Below-market purchase from related party: basis stepped up to FMV, gift tax consequences\n\n8. ALLOCATION REQUIREMENTS:\n   - Purchase of multiple assets requires allocation under \u00a71060 residual method\n   - Land vs building allocation affects depreciation (land not depreciable)\n   - Tangible vs intangible asset allocation (goodwill, covenants not to compete)\n   - Purchase price allocation binding if both parties agree and report consistently\n",
+      "keywords": [
+        "cost basis",
+        "\u00a71012",
+        "purchase price",
+        "acquisition cost",
+        "bargain purchase",
+        "debt assumption",
+        "closing costs"
+      ],
+      "authority": [
+        "IRC \u00a71012 - cost basis",
+        "Treas. Reg. \u00a71.1012-1 - basis of property",
+        "Crane v. Commissioner, 331 U.S. 1 (1947) - debt included in basis",
+        "Commissioner v. Tufts, 461 U.S. 300 (1983) - nonrecourse debt in basis",
+        "Treas. Reg. \u00a71.1060-1 - allocation rules for asset acquisitions"
+      ]
+    },
+    {
+      "topic": "irc_1014_stepped_up_basis_inherited",
+      "content": "\nIRC \u00a71014 inherited property basis framework:\n\n1. GENERAL RULE - FMV AT DEATH:\n   - Basis = FMV on date of death, regardless of decedent's adjusted basis\n   - Eliminates all pre-death appreciation (no carryover of built-in gain)\n   - Also eliminates built-in loss (FMV less than decedent's basis)\n   - Applies to property \"acquired from decedent\" within \u00a71014(b) definition\n\n2. ALTERNATE VALUATION DATE (\u00a72032):\n   - Estate may elect valuation 6 months after death if reduces estate tax\n   - If elected, heir's basis also uses alternate valuation date FMV\n   - Property sold before 6-month date valued at sale date/price\n   - Election applies to entire estate (cannot cherry-pick assets)\n\n3. PROPERTY \"ACQUIRED FROM DECEDENT\" (\u00a71014(b)):\n   - Property passing by will or intestacy\n   - Property in revocable trust (grantor trust includible in estate)\n   - Joint tenancy with right of survivorship (portion included in estate)\n   - Tenancy by entirety (portion based on contribution)\n   - Property subject to general power of appointment exercised by decedent\n   - Community property in community property states (special 100% step-up rule)\n   - \u00a72036 transfers with retained life estate (included in gross estate)\n   - \u00a72037 transfers taking effect at death (included in gross estate)\n   - \u00a72038 revocable transfers (included in gross estate)\n   - \u00a72041 property over which decedent held general power of appointment\n\n4. COMMUNITY PROPERTY SPECIAL RULE (\u00a71014(b)(6)):\n   - In community property states: both halves receive step-up to FMV\n   - Surviving spouse's 50% share also stepped up (not just decedent's 50%)\n   - Massive planning advantage compared to common law states\n   - Requires property to be community property under state law\n   - Community property states: AZ, CA, ID, LA, NV, NM, TX, WA, WI (+ opt-in AK, TN, SD)\n\n5. JOINT TENANCY SPECIAL RULES (\u00a72040):\n   - Spousal joint tenancy: 50% included in estate, 50% of property gets step-up\n   - Non-spousal joint tenancy: included based on contribution (presumption 100% if no proof)\n   - Joint bank/brokerage accounts: trace contributions to determine inclusion\n\n6. EXCEPTIONS - NO STEP-UP:\n   - Income in respect of decedent (IRD) under \u00a7691: NO basis step-up\n   - IRAs, 401(k)s, deferred compensation, accrued interest, installment sale notes\n   - Appreciated property gifted to decedent within 1 year of death and passing back to donor (\u00a71014(e))\n\n7. VALUATION METHODS:\n   - Real estate: appraisal as of date of death\n   - Publicly traded securities: mean of high/low on date of death (or next trading day)\n   - Closely held stock: business valuation, often uses estate tax return valuation\n   - Personal property: FMV appraisal or estate inventory valuation\n   - Consistency requirement: basis should match estate tax value (\u00a71014(f))\n\n8. BASIS CONSISTENCY REQUIREMENT (\u00a71014(f), added 2015):\n   - Heir's basis cannot exceed FMV reported on estate tax return (Form 706)\n   - Applies to estates required to file Form 706 (over exemption amount)\n   - Executor must report basis to IRS and beneficiaries (Form 8971)\n   - Beneficiary can challenge estate's valuation but bears burden of proof\n\n9. STEP-DOWN (LOSS PROPERTY):\n   - If FMV < decedent's adjusted basis, heir gets lower FMV basis (step-down)\n   - Built-in loss disappears (unlike gifts where loss basis preserved)\n   - Planning: consider lifetime gift instead to preserve loss basis under \u00a71015\n",
+      "keywords": [
+        "inherited property",
+        "\u00a71014",
+        "stepped-up basis",
+        "FMV at death",
+        "alternate valuation",
+        "estate tax",
+        "date of death"
+      ],
+      "authority": [
+        "IRC \u00a71014(a) - basis of property acquired from decedent",
+        "IRC \u00a71014(b)(6) - community property 100% step-up",
+        "IRC \u00a71014(e) - appreciated property gifted back to donor",
+        "IRC \u00a71014(f) - basis consistency with estate tax return",
+        "IRC \u00a72032 - alternate valuation",
+        "Treas. Reg. \u00a71.1014-1 through \u00a71.1014-9",
+        "Rev. Rul. 68-80 - community property step-up",
+        "Estate of Bright v. United States, 658 F.2d 999 (5th Cir. 1981)"
+      ]
+    },
+    {
+      "topic": "irc_1015_gift_basis_carryover",
+      "content": "\nIRC \u00a71015 gift basis framework:\n\n1. GENERAL RULE - CARRYOVER BASIS (\u00a71015(a)):\n   - Donee takes donor's adjusted basis as of date of gift\n   - Plus portion of gift tax paid attributable to appreciation\n   - Preserves donor's holding period (tacking under \u00a71223(2))\n   - Preserves character (capital asset, inventory, etc.)\n\n2. GIFT TAX ADJUSTMENT (\u00a71015(d)):\n   - Add to basis: (gift tax paid) \u00d7 (appreciation / FMV at gift)\n   - Appreciation = FMV at gift minus donor's adjusted basis\n   - Only applies if FMV > donor's basis (appreciated property)\n   - Gift tax paid = net gift tax after annual exclusion and unified credit\n   - Gift tax addition limited: cannot increase basis above FMV at gift\n\n   Example calculation:\n   - Donor's basis: $100,000\n   - FMV at gift: $500,000\n   - Gift tax paid: $60,000\n   - Appreciation: $400,000\n   - Basis increase: $60,000 \u00d7 ($400,000 / $500,000) = $48,000\n   - Donee's basis: $100,000 + $48,000 = $148,000\n\n3. LOSS PROPERTY DUAL BASIS RULE (\u00a71015(a)):\n   - If FMV at gift < donor's adjusted basis (built-in loss)\n   - Donee has TWO bases:\n     * For computing GAIN: donor's adjusted basis (higher)\n     * For computing LOSS: FMV at date of gift (lower)\n   - If donee sells between the two basis amounts: no gain or loss\n   - Preserves donor's built-in loss but prevents \"whipsaw\" (gift to shift loss)\n\n   Example:\n   - Donor's basis: $100,000\n   - FMV at gift: $60,000\n   - Donee sells for $120,000: gain = $120,000 - $100,000 = $20,000 (use higher basis)\n   - Donee sells for $50,000: loss = $50,000 - $60,000 = $10,000 loss (use lower basis)\n   - Donee sells for $80,000: no gain or loss (between two basis amounts)\n\n4. PART GIFT / PART SALE (\u00a71.1015-4):\n   - Transfer for consideration less than FMV\n   - Donee's basis = GREATER of:\n     * Amount paid by donee, OR\n     * Donor's adjusted basis (allocated if partial interest)\n   - Amount realized by donor = amount received (not FMV)\n   - Donor recognizes gain only to extent amount realized > basis\n\n   Example:\n   - Donor's basis: $100,000\n   - FMV: $500,000\n   - Sale price: $200,000 (less than FMV = part gift)\n   - Donee's basis: greater of $200,000 paid or $100,000 donor's basis = $200,000\n   - Donor's gain: $200,000 - $100,000 = $100,000 recognized\n\n5. GIFT OF ENCUMBERED PROPERTY:\n   - Debt assumed by donee treated as amount realized by donor (taxable)\n   - If debt > basis: donor recognizes gain on excess\n   - Donee's basis: donor's basis + gain recognized by donor\n   - Donee takes property subject to debt (included in donee's amount realized on sale)\n\n6. GIFTS BETWEEN SPOUSES (\u00a71041):\n   - Transfers between spouses or incident to divorce: NO gift (treated as gift for basis)\n   - Transferee spouse takes transferor's adjusted basis (pure carryover)\n   - No gift tax paid adjustment (not a gift for gift tax purposes)\n   - No gain or loss recognized by transferor spouse\n\n7. GIFTS WITHIN 1 YEAR BEFORE DONOR'S DEATH (\u00a71014(e)):\n   - Property gifted to decedent within 1 year of death\n   - Passing back to original donor or donor's spouse\n   - NO step-up at death; reverts to donor's original basis\n   - Anti-abuse rule prevents deathbed gift to get step-up\n\n8. BASIS ADJUSTMENTS AFTER GIFT:\n   - Donee's holding period includes donor's period (\u00a71223(2))\n   - Donee's basis subject to \u00a71016 adjustments (depreciation, improvements, etc.)\n   - Character in donor's hands carries over (capital asset, \u00a71231 property, etc.)\n\n9. DOCUMENTATION REQUIREMENTS:\n   - Donor must disclose basis to donee (no statutory requirement but practical necessity)\n   - Gift tax return (Form 709) shows FMV and gift tax paid\n   - Donee should obtain donor's acquisition records to establish basis\n   - Appraisal at date of gift to establish FMV for dual basis rule\n",
+      "keywords": [
+        "gift basis",
+        "\u00a71015",
+        "carryover basis",
+        "donor's basis",
+        "gift tax paid",
+        "dual basis",
+        "loss property",
+        "partial sale"
+      ],
+      "authority": [
+        "IRC \u00a71015(a) - gift basis carryover",
+        "IRC \u00a71015(d) - gift tax paid adjustment",
+        "IRC \u00a71014(e) - gifts within 1 year of death back to donor",
+        "Treas. Reg. \u00a71.1015-1 - basis of property acquired by gift",
+        "Treas. Reg. \u00a71.1015-4 - part gift/part sale",
+        "Treas. Reg. \u00a71.1015-5 - encumbered property",
+        "Diedrich v. Commissioner, 457 U.S. 191 (1982) - donee pays gift tax"
+      ]
+    },
+    {
+      "topic": "irc_1031_like_kind_exchange_basis",
+      "content": "\nIRC \u00a71031 like-kind exchange basis framework:\n\n1. SUBSTITUTED BASIS FORMULA (\u00a71031(d)):\n   Basis of replacement property =\n     Adjusted basis of relinquished property\n     - Cash boot received\n     - FMV of other boot received\n     - Debt relief (treated as boot received)\n     + Cash boot paid\n     + Adjusted basis of other boot given\n     + Debt assumed or taken subject to (treated as boot paid)\n     + Gain recognized\n     - Loss recognized (usually zero in qualified exchange)\n\n2. QUALIFYING PROPERTY (post-2017):\n   - ONLY real property held for investment or business use\n   - Real property includes land, buildings, improvements, leaseholds (30+ years)\n   - Must be like-kind: broadly defined for real estate (any real for any real)\n   - Excludes: inventory, stock in trade, securities, partnership interests, personal property\n\n3. BOOT - TAXABLE COMPONENT:\n   - Cash boot received: fully taxable as gain (up to realized gain)\n   - Property boot received: FMV taxable as gain (up to realized gain)\n   - Debt relief: treated as cash boot received (taxable)\n   - Gain recognized limited to realized gain (cannot exceed amount realized minus basis)\n\n4. DEFERRED EXCHANGE MECHANICS:\n   - Qualified intermediary (QI) holds proceeds to avoid constructive receipt\n   - 45-day identification period (strict, no extensions)\n   - 180-day exchange period (or tax return due date if earlier, with extension)\n   - Three-property rule: identify up to 3 properties regardless of value\n   - 200% rule: identify unlimited properties if aggregate FMV \u2264 200% of relinquished\n   - 95% rule: if exceed 200%, must acquire 95% of identified FMV\n\n5. REVERSE EXCHANGE (Rev. Proc. 2000-37):\n   - Acquire replacement before relinquishing (backwards order)\n   - Exchange accommodation titleholder (EAT) holds property\n   - 180 days to complete exchange\n   - Same identification and timing rules apply\n\n6. IMPROVEMENT EXCHANGE (BUILD-TO-SUIT):\n   - Use exchange proceeds to improve replacement property\n   - Improvements must occur during 180-day period\n   - QI or EAT holds property during construction\n   - Value of improvements counts toward like-kind exchange\n\n7. RELATED PARTY EXCHANGE (\u00a71031(f)):\n   - Allowed, but 2-year holding period required for both parties\n   - If either party disposes within 2 years, original exchange disqualified\n   - Exceptions: death, involuntary conversion, non-tax avoidance purpose\n\n8. PARTNERSHIP INTEREST EXCHANGES:\n   - Partnership interests NOT like-kind (specifically excluded)\n   - But: drop-and-swap strategy to exchange underlying real estate\n   - Technical termination issues under \u00a7708 (repealed 2017, but still relevant for old exchanges)\n\n9. VACATION/SECOND HOME ISSUES (Rev. Proc. 2008-16):\n   - Personal use vacation home: does NOT qualify\n   - Rental property with occasional personal use: may qualify if predominantly rental\n   - Safe harbor: rent 14+ days at FMV, personal use <14 days or <10% of rental days\n\n10. STATE LAW COMPLICATIONS:\n    - Some states do not recognize \u00a71031 (e.g., Massachusetts)\n    - Withholding requirements in some states\n    - Property tax reassessment in some states (CA Prop 13 exceptions)\n\nExample calculation:\n  Relinquished property:\n    - FMV: $1,000,000\n    - Adjusted basis: $400,000\n    - Mortgage: $300,000\n    - Equity: $700,000\n\n  Replacement property:\n    - FMV: $1,200,000\n    - Mortgage assumed: $500,000\n    - Cash paid: $700,000\n\n  Boot analysis:\n    - Debt relief: $300,000 (boot received)\n    - Debt assumed: $500,000 (boot paid)\n    - Net boot: $500,000 - $300,000 = $200,000 paid (no boot received)\n\n  Realized gain:\n    - Amount realized: $1,000,000 (FMV relinquished)\n    - Adjusted basis: $400,000\n    - Realized gain: $600,000\n\n  Recognized gain:\n    - No boot received (debt assumed > debt relieved)\n    - Recognized gain: $0\n\n  Basis of replacement property:\n    - Basis of relinquished: $400,000\n    - Plus debt assumed: $500,000\n    - Plus cash paid: $700,000\n    - Minus debt relief: $300,000\n    - Basis: $1,300,000\n\n  Check: FMV $1,200,000 - Basis $1,300,000 = Built-in loss $100,000\n  (This seems wrong - let's recalculate)\n\n  Correct formula:\n    - Basis of relinquished: $400,000\n    - Minus cash boot received: $0\n    - Minus debt relief: $300,000\n    - Plus cash boot paid: $700,000\n    - Plus debt assumed: $500,000\n    - Plus gain recognized: $0\n    = $400,000 - $300,000 + $700,000 + $500,000 = $1,300,000\n\n  Built-in gain check:\n    - FMV replacement: $1,200,000\n    - Basis replacement: $1,300,000\n    - Built-in loss: $100,000 (ERROR - should preserve gain)\n\n  Alternative calculation using \u00a71031(d) directly:\n    Basis = FMV of property received\n            - Gain not recognized (deferred gain)\n            + Loss not recognized (N/A in qualified exchange)\n\n    FMV received: $1,200,000\n    Deferred gain: $600,000 realized - $0 recognized = $600,000\n    Basis: $1,200,000 - $600,000 = $600,000\n\n  This gives built-in gain of $1,200,000 - $600,000 = $600,000 (correct - deferred gain preserved)\n",
+      "keywords": [
+        "like-kind exchange",
+        "\u00a71031",
+        "deferred basis",
+        "substituted basis",
+        "boot",
+        "qualified intermediary",
+        "real property",
+        "exchange period"
+      ],
+      "authority": [
+        "IRC \u00a71031(a) - nonrecognition of gain or loss",
+        "IRC \u00a71031(b) - recognition of gain to extent of boot",
+        "IRC \u00a71031(d) - basis of property received",
+        "IRC \u00a71031(f) - related party exchanges",
+        "Treas. Reg. \u00a71.1031(a)-1 through \u00a71.1031(k)-1",
+        "Rev. Proc. 2000-37 - reverse exchanges",
+        "Rev. Proc. 2008-16 - vacation home safe harbor"
+      ]
+    },
+    {
+      "topic": "irc_1016_basis_adjustments",
+      "content": "\nIRC \u00a71016 basis adjustment framework:\n\n1. UPWARD ADJUSTMENTS (\u00a71016(a)(1)):\n   - Capital improvements and betterments\n   - Expenditures that prolong useful life, increase value, or adapt to new use\n   - Carrying costs elected to capitalize (taxes, interest during construction)\n   - Assessments for local benefits (sidewalks, sewers, streets)\n   - Legal fees to defend or perfect title\n   - Rehabilitation expenses (not currently deductible)\n   - Demolition costs if not currently deducted\n   - Capitalized interest under \u00a7263A (UNICAP)\n   - Basis of property received in part sale/part gift\n\n2. DOWNWARD ADJUSTMENTS - DEPRECIATION (\u00a71016(a)(2)):\n   - Depreciation, amortization, or depletion ALLOWED OR ALLOWABLE\n   - \"Allowed\" = actually claimed on tax returns\n   - \"Allowable\" = could have claimed under applicable method\n   - Must reduce basis even if depreciation not claimed (prevents double benefit)\n   - Straight-line minimum if accelerated not claimed (reasonable allowance)\n   - Different methods for AMT create separate AMT basis tracking\n\n3. DOWNWARD ADJUSTMENTS - DISTRIBUTIONS (\u00a71016(a)(4), (5)):\n   - Tax-free distributions from corporations reducing basis (return of capital)\n   - Partnership distributions under \u00a7733 (reduce partner's outside basis)\n   - S corporation distributions in excess of AAA (reduce stock basis)\n   - Mutual fund return of capital distributions\n   - Basis cannot be reduced below zero (excess = gain or carried forward)\n\n4. DOWNWARD ADJUSTMENTS - CASUALTY/THEFT (\u00a71016(a)(1)):\n   - Casualty or theft losses claimed reduce basis\n   - Insurance or other reimbursements reduce basis\n   - If reimbursement > basis: gain recognized (unless \u00a71033 applies)\n   - Repairs restore basis (capitalize), not reduce\n\n5. DOWNWARD ADJUSTMENTS - AMORTIZATION (\u00a71016(a)(7)-(14)):\n   - Amortization of bond premium (\u00a7171)\n   - Amortization of organizational/startup costs (\u00a7195)\n   - Amortization of intangibles (\u00a7197 - goodwill, covenants, etc.)\n   - Amortization of pollution control facilities (\u00a7169)\n   - Amortization of reforestation costs (\u00a7194)\n   - Amortization of research/experimental costs (\u00a7174, post-2021 mandatory)\n\n6. DOWNWARD ADJUSTMENTS - CREDITS/SUBSIDIES (\u00a71016(a)(15)-(37)):\n   - Investment credit (basis reduction under \u00a750(c))\n   - Rehabilitation credit (basis reduction)\n   - Energy credits (basis reduction for solar, wind, etc.)\n   - Discharge of indebtedness excluded under \u00a7108 (\u00a71017 basis reduction)\n   - Tax-exempt bond financed property (\u00a71016(a)(17))\n   - Deferred gain on appreciated property contributed to ESOP\n\n7. PARTNERSHIP SPECIAL ADJUSTMENTS (\u00a71016(a)(22), (23)):\n   - Partnership losses and deductions flow through (reduce outside basis)\n   - Partnership distributions (reduce outside basis per \u00a7733)\n   - Partnership liabilities: increase in share = basis increase; decrease = basis decrease\n   - \u00a7754 election: inside basis adjustments under \u00a7734(b) and \u00a7743(b)\n   - Negative basis NOT allowed (excess losses suspended or trigger deemed distribution)\n\n8. S CORPORATION SPECIAL ADJUSTMENTS (\u00a71016(a)(17)):\n   - AAA account tracks undistributed income and distributions\n   - Stock basis increased by income items (including tax-exempt)\n   - Stock basis decreased by distributions, losses, deductions, non-deductible expenses\n   - Basis of indebtedness to shareholder (debt basis) if stock basis exhausted\n   - Distribution in excess of basis = capital gain\n\n9. CORPORATE REORGANIZATION ADJUSTMENTS:\n   - \u00a7362(a) transferred basis in \u00a7351 contribution\n   - \u00a7358 exchanged basis in stock received in reorganization\n   - \u00a71223 tacked holding period for carryover/substituted basis\n   - \u00a71245 and \u00a71250 recapture potential carries over\n\n10. ADJUSTMENT TRACKING REQUIREMENTS:\n    - Maintain contemporaneous records of all adjustments\n    - Separate schedule for each property/partnership/S-corp\n    - Reconcile annually against depreciation schedules and K-1s\n    - Software tracking for complex portfolios\n    - Retention: life of asset + 3 years after disposition\n\nExample - Rental Property:\n  Initial cost basis (\u00a71012): $500,000\n    Land: $100,000 (not depreciable)\n    Building: $400,000 (depreciable)\n\n  Year 1 adjustments:\n    + Improvements (new HVAC): $30,000\n    + Property tax assessment (sewer): $5,000\n    - Depreciation ($400,000 / 27.5 years): -$14,545\n  Adjusted basis end of year 1: $520,455\n\n  Year 5 adjustments:\n    + Additional improvements (roof): $25,000\n    - Depreciation years 2-5 ($430,000 / 27.5 \u00d7 4): -$62,545\n    - Casualty loss (storm damage, net of insurance): -$10,000\n  Adjusted basis end of year 5: $472,910\n\n  Sale in year 6:\n    Amount realized: $600,000\n    Adjusted basis: $472,910\n    Gain: $127,090\n    \u00a71250 recapture: depreciation taken $77,090 (ordinary income if accelerated used)\n",
+      "keywords": [
+        "basis adjustment",
+        "\u00a71016",
+        "depreciation",
+        "improvements",
+        "capital expenditures",
+        "return of capital",
+        "distributions",
+        "depletion"
+      ],
+      "authority": [
+        "IRC \u00a71016(a) - adjustments to basis enumerated",
+        "IRC \u00a71016(a)(2) - depreciation allowed or allowable",
+        "Treas. Reg. \u00a71.1016-1 - general rule",
+        "Treas. Reg. \u00a71.1016-3 - depreciation adjustment",
+        "Treas. Reg. \u00a71.1016-5 - expenditures by lessee",
+        "Treas. Reg. \u00a71.1016-6 - discharge of indebtedness",
+        "Virginia Iron Coal & Coke Co. v. Commissioner, 99 F.2d 919 (4th Cir. 1938) - allowable depreciation"
+      ]
+    },
+    {
+      "topic": "irc_351_corporate_contribution_basis",
+      "content": "\nIRC \u00a7351 contribution to corporation basis framework:\n\n1. CONTROL REQUIREMENT (\u00a7351(a), \u00a7368(c)):\n   - Contributors must own 80% or more of:\n     * Total combined voting power of all classes of voting stock, AND\n     * 80% of total number of shares of each class of nonvoting stock\n   - Measured immediately after the exchange\n   - Tacked transactions: multiple contributors aggregated if part of integrated plan\n   - Loss of control after exchange OK if initial control met\n\n2. SHAREHOLDER BASIS IN STOCK RECEIVED (\u00a7358):\n   Formula:\n     Basis = Adjusted basis of property contributed\n             - Cash boot received\n             - FMV of other boot received\n             - Liabilities assumed by corporation (treated as boot)\n             + Cash paid\n             + Basis of other property given as boot\n             + Gain recognized\n             - Loss recognized (rare in \u00a7351)\n\n   Alternative formula (\u00a7358(a)(1)):\n     Basis = FMV of stock received\n             - Gain not recognized (deferred)\n             + Loss not recognized (N/A)\n\n3. CORPORATION BASIS IN PROPERTY RECEIVED (\u00a7362(a)):\n   - Corporation takes transferor's adjusted basis (transferred basis)\n   - Plus gain recognized by transferor on the exchange\n   - Carryover of holding period (\u00a71223(2))\n   - Tainted property: if gain recognized, basis increased by gain\n\n4. BOOT - TAXABLE COMPONENT (\u00a7351(b)):\n   - Cash or other property received: taxable as gain\n   - Liability assumed by corporation: treated as cash received (\u00a7357(a))\n   - Gain recognized limited to realized gain\n   - Character: capital gain (stock) or ordinary income (inventory, depreciation recapture)\n\n5. LIABILITY ASSUMPTION GENERAL RULE (\u00a7357(a)):\n   - Liabilities assumed do NOT trigger gain recognition\n   - Treated as boot received (reduces stock basis but does not trigger gain)\n   - Exception: liabilities > basis triggers gain under \u00a7357(c)\n\n6. LIABILITY EXCEPTION - EXCESS LIABILITIES (\u00a7357(c)):\n   - If liabilities assumed exceed aggregate adjusted basis of property contributed\n   - Excess = gain recognized to contributing shareholder\n   - Character: depends on nature of property contributed\n   - Cannot avoid by contributing cash or other property to increase basis\n\n   Example:\n     Property FMV: $500,000\n     Property adjusted basis: $100,000\n     Liability assumed: $300,000\n     Excess liability: $300,000 - $100,000 = $200,000 gain recognized\n     Stock basis: $100,000 basis - $300,000 liability + $200,000 gain = $0\n\n7. LIABILITY EXCEPTION - TAX AVOIDANCE PURPOSE (\u00a7357(b)):\n   - If liability assumption has principal purpose of tax avoidance\n   - OR if not bona fide business purpose\n   - ALL liabilities treated as boot (entire amount triggers gain)\n   - Rarely invoked, but dangerous if applicable\n\n8. MULTIPLE CONTRIBUTORS:\n   - Each contributor applies \u00a7351 separately to their contribution\n   - Aggregate 80% control measured collectively\n   - Pro rata allocation not required (can have disproportionate ownership)\n   - Midstream transaction: new contributor can join if part of plan\n\n9. SERVICES FOR STOCK (\u00a7351(d)):\n   - Stock issued for services does NOT qualify for \u00a7351\n   - Service provider recognizes ordinary income = FMV of stock\n   - Service provider counts toward control if also contributes property\n   - Property + services: allocate FMV between property (\u00a7351) and services (income)\n\n10. CONTRIBUTION OF ENCUMBERED PROPERTY:\n    - Contributing shareholder treated as receiving cash = liability amount\n    - Corporation takes property subject to debt (included in basis)\n    - Shareholder recognizes gain only if liability > basis (\u00a7357(c))\n    - Corporation's debt assumption not included in shareholder's amount realized unless gain triggered\n\nExample calculation:\n  Shareholder contributes:\n    - Property A: FMV $400,000, basis $100,000\n    - Property B: FMV $200,000, basis $150,000\n    - Liability on Property A: $250,000 assumed by corporation\n    - Cash: $50,000\n\n  Shareholder receives:\n    - Common stock: FMV $400,000\n\n  Control test:\n    - Shareholder owns 100% after exchange (meets 80%)\n\n  Realized gain:\n    - Amount realized: $400,000 stock + $250,000 liability relief = $650,000\n    - Basis given up: $100,000 + $150,000 + $50,000 cash = $300,000\n    - Realized gain: $350,000\n\n  Recognized gain (\u00a7357(c)):\n    - Liabilities assumed: $250,000\n    - Aggregate basis: $100,000 + $150,000 = $250,000 (exclude cash)\n    - Excess: $250,000 - $250,000 = $0 (no gain triggered)\n\n  Stock basis (\u00a7358):\n    - Basis of property: $250,000\n    - Plus cash: $50,000\n    - Minus liability assumed: $250,000\n    - Plus gain recognized: $0\n    - Stock basis: $50,000\n\n  Corporation basis (\u00a7362(a)):\n    - Property A: $100,000 (transferor's basis)\n    - Property B: $150,000 (transferor's basis)\n    - Cash: $50,000\n    - Total assets: $300,000 basis\n    - Liability: $250,000 (not part of basis)\n",
+      "keywords": [
+        "\u00a7351",
+        "contribution to corporation",
+        "transferred basis",
+        "control requirement",
+        "80% ownership",
+        "boot",
+        "assumption of liabilities"
+      ],
+      "authority": [
+        "IRC \u00a7351(a) - nonrecognition on contribution to controlled corporation",
+        "IRC \u00a7357(a) - liability assumption general rule",
+        "IRC \u00a7357(c) - liabilities in excess of basis",
+        "IRC \u00a7358 - basis to shareholder",
+        "IRC \u00a7362(a) - basis to corporation",
+        "IRC \u00a7368(c) - control defined",
+        "Treas. Reg. \u00a71.351-1 - transfer to corporation controlled by transferor",
+        "Treas. Reg. \u00a71.358-1 - basis to shareholders",
+        "Treas. Reg. \u00a71.358-2 - allocation of basis among stock and securities"
+      ]
+    }
+  ],
+  "inverted_index": {
+    "adjusted basis": [
+      0
+    ],
+    "\u00a71011": [
+      0
+    ],
+    "gain calculation": [
+      0
+    ],
+    "basis determination": [
+      0
+    ],
+    "property valuation": [
+      0
+    ],
+    "cost recovery": [
+      0
+    ],
+    "adjustment tracking": [
+      0
+    ],
+    "cost basis": [
+      1
+    ],
+    "\u00a71012": [
+      1
+    ],
+    "purchase price": [
+      1
+    ],
+    "acquisition cost": [
+      1
+    ],
+    "bargain purchase": [
+      1
+    ],
+    "debt assumption": [
+      1
+    ],
+    "closing costs": [
+      1
+    ],
+    "inherited property": [
+      2
+    ],
+    "\u00a71014": [
+      2
+    ],
+    "stepped-up basis": [
+      2
+    ],
+    "FMV at death": [
+      2
+    ],
+    "alternate valuation": [
+      2
+    ],
+    "estate tax": [
+      2
+    ],
+    "date of death": [
+      2
+    ],
+    "gift basis": [
+      3
+    ],
+    "\u00a71015": [
+      3
+    ],
+    "carryover basis": [
+      3
+    ],
+    "donor's basis": [
+      3
+    ],
+    "gift tax paid": [
+      3
+    ],
+    "dual basis": [
+      3
+    ],
+    "loss property": [
+      3
+    ],
+    "partial sale": [
+      3
+    ],
+    "like-kind exchange": [
+      4
+    ],
+    "\u00a71031": [
+      4
+    ],
+    "deferred basis": [
+      4
+    ],
+    "substituted basis": [
+      4
+    ],
+    "boot": [
+      4,
+      6
+    ],
+    "qualified intermediary": [
+      4
+    ],
+    "real property": [
+      4
+    ],
+    "exchange period": [
+      4
+    ],
+    "basis adjustment": [
+      5
+    ],
+    "\u00a71016": [
+      5
+    ],
+    "depreciation": [
+      5
+    ],
+    "improvements": [
+      5
+    ],
+    "capital expenditures": [
+      5
+    ],
+    "return of capital": [
+      5
+    ],
+    "distributions": [
+      5
+    ],
+    "depletion": [
+      5
+    ],
+    "\u00a7351": [
+      6
+    ],
+    "contribution to corporation": [
+      6
+    ],
+    "transferred basis": [
+      6
+    ],
+    "control requirement": [
+      6
+    ],
+    "80% ownership": [
+      6
+    ],
+    "assumption of liabilities": [
+      6
+    ]
+  },
+  "last_updated": null
+}

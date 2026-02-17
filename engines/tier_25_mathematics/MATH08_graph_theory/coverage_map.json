@@ -1,0 +1,139 @@
+{
+  "engine_id": "MATH08",
+  "engine_name": "Graph Theory Intelligence Engine",
+  "version": "1.0.0",
+  "domains": {
+    "graph_representations": {
+      "coverage": "FULL",
+      "algorithms": ["adjacency_list", "adjacency_matrix"],
+      "doctrines": ["graph_representations"],
+      "notes": "Adjacency list is primary internal representation"
+    },
+    "traversals": {
+      "coverage": "FULL",
+      "algorithms": ["bfs", "dfs"],
+      "doctrines": ["breadth_first_search", "depth_first_search"],
+      "notes": "Both iterative implementations to avoid recursion limits"
+    },
+    "shortest_path": {
+      "coverage": "FULL",
+      "algorithms": ["dijkstra", "bellman_ford", "floyd_warshall", "floyd_warshall_path"],
+      "doctrines": ["dijkstra_shortest_path", "bellman_ford_algorithm", "floyd_warshall_all_pairs"],
+      "notes": "Single-source (Dijkstra, Bellman-Ford) and all-pairs (Floyd-Warshall)"
+    },
+    "minimum_spanning_tree": {
+      "coverage": "FULL",
+      "algorithms": ["kruskal_mst", "prim_mst"],
+      "doctrines": ["minimum_spanning_tree_theory"],
+      "notes": "Both classical MST algorithms with union-find and priority queue"
+    },
+    "network_flow": {
+      "coverage": "HIGH",
+      "algorithms": ["edmonds_karp"],
+      "doctrines": ["max_flow_min_cut_theorem"],
+      "notes": "Edmonds-Karp (BFS-based Ford-Fulkerson). Dinic's and push-relabel not yet implemented.",
+      "gaps": ["dinic_max_flow", "push_relabel", "min_cost_flow"]
+    },
+    "topological_sorting": {
+      "coverage": "FULL",
+      "algorithms": ["topological_sort"],
+      "doctrines": ["topological_sorting"],
+      "notes": "Kahn's BFS-based algorithm with cycle detection"
+    },
+    "cycle_analysis": {
+      "coverage": "FULL",
+      "algorithms": ["cycle_detection", "topological_sort"],
+      "doctrines": ["cycle_detection_methods"],
+      "notes": "DFS coloring for directed and undirected graphs"
+    },
+    "connectivity": {
+      "coverage": "FULL",
+      "algorithms": ["connected_components", "bridges", "articulation_points"],
+      "doctrines": ["connected_components_analysis", "bridges_and_articulation_points"],
+      "notes": "Undirected CC via BFS, SCC via Kosaraju, bridges/APs via Tarjan"
+    },
+    "bipartite_analysis": {
+      "coverage": "FULL",
+      "algorithms": ["bipartite_check"],
+      "doctrines": ["bipartite_graphs"],
+      "notes": "BFS 2-coloring with odd cycle detection"
+    },
+    "graph_coloring": {
+      "coverage": "PARTIAL",
+      "algorithms": ["greedy_coloring"],
+      "doctrines": ["graph_coloring_chromatic_number"],
+      "notes": "Greedy coloring only; exact chromatic number is NP-hard",
+      "gaps": ["exact_chromatic_number", "dsatur", "welsh_powell"]
+    },
+    "centrality_measures": {
+      "coverage": "FULL",
+      "algorithms": ["degree_centrality", "betweenness_centrality", "closeness_centrality", "pagerank"],
+      "doctrines": ["centrality_measures"],
+      "notes": "All four major centrality measures implemented"
+    },
+    "eulerian_analysis": {
+      "coverage": "HIGH",
+      "algorithms": ["eulerian_check"],
+      "doctrines": ["eulerian_and_hamiltonian_paths"],
+      "notes": "Existence check only; path construction (Hierholzer) not yet implemented",
+      "gaps": ["hierholzer_circuit_construction", "hamiltonian_check"]
+    },
+    "clustering": {
+      "coverage": "FULL",
+      "algorithms": ["clustering_coefficient"],
+      "doctrines": ["clustering_and_community_structure"],
+      "notes": "Local and global clustering coefficients with triangle counting"
+    },
+    "structural_properties": {
+      "coverage": "HIGH",
+      "algorithms": ["diameter", "bridges", "articulation_points"],
+      "doctrines": ["bridges_and_articulation_points"],
+      "notes": "Diameter, radius, center, eccentricities computed",
+      "gaps": ["girth", "treewidth"]
+    }
+  },
+  "total_algorithms": 23,
+  "total_doctrines": 17,
+  "coverage_summary": {
+    "FULL": 9,
+    "HIGH": 3,
+    "PARTIAL": 1,
+    "NONE": 0
+  },
+  "known_gaps": [
+    "Dinic's max flow algorithm",
+    "Push-relabel max flow",
+    "Min-cost max flow",
+    "Hierholzer's Eulerian circuit construction",
+    "Hamiltonian path/cycle check (NP-complete)",
+    "Exact chromatic number (NP-hard)",
+    "Maximum matching (Hopcroft-Karp for bipartite, Edmonds for general)",
+    "Minimum vertex cover",
+    "Maximum independent set",
+    "Planarity testing (Boyer-Myrvold)",
+    "Graph isomorphism",
+    "Treewidth computation"
+  ],
+  "tie_20_compliance": {
+    "three_layer_response": true,
+    "response_modes": true,
+    "doctrine_cache": true,
+    "authority_hardening": true,
+    "confidence_stratification": true,
+    "semantic_normalization": true,
+    "vector_search": true,
+    "telemetry": true,
+    "drift_watcher": true,
+    "coverage_map": true,
+    "metrics_collector": true,
+    "health_endpoint": true,
+    "zoned_analysis": true,
+    "fact_fragility_scoring": true,
+    "audit_trail_jsonl": true,
+    "determinism_hash_sha256": true,
+    "fastapi_server": true,
+    "loguru_logging": true,
+    "multi_doctrine_decomposition": true,
+    "deep_analysis_mode": true
+  }
+}

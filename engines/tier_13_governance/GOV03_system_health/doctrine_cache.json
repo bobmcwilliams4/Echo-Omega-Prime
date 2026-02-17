@@ -1,0 +1,188 @@
+{
+  "engine_id": "GOV03",
+  "engine_name": "System Health Monitor",
+  "version": "1.0.0",
+  "doctrine_count": 18,
+  "doctrines": [
+    {
+      "topic": "sla_uptime_definition",
+      "keywords": ["sla", "uptime", "availability", "nines", "downtime", "service level"],
+      "conclusion_template": "Service Level Agreements define minimum acceptable uptime thresholds. Standard tiers: 99% (3.65 days/year downtime), 99.9% (8.76 hours/year), 99.99% (52.6 minutes/year). Each engine MUST declare its SLA tier at registration. Uptime is measured as (total_seconds - unplanned_downtime_seconds) / total_seconds * 100. Planned maintenance windows are excluded from SLA calculations when announced 24h in advance.",
+      "reasoning_framework": "SLA measurement requires continuous health polling at intervals shorter than the minimum detectable outage. For 99.9% SLA, polling must occur at least every 30 seconds to detect sub-minute outages. The health poller records timestamps of successful and failed checks. A failed check starts a potential outage window. Three consecutive failures confirm an outage. The outage window closes when the first successful check returns. Uptime percentage is recalculated on every check cycle across rolling 24h, 7d, and 30d windows. SLA breaches trigger immediate CRITICAL alerts to Commander. Historical SLA data is retained for 90 days minimum for trend analysis and capacity planning. SLA degradation trends (e.g., dropping from 99.95% to 99.8% over 2 weeks) trigger early warning alerts before actual breach occurs.",
+      "key_factors": ["polling_interval_seconds", "consecutive_failures_threshold", "maintenance_window_exclusion", "rolling_window_periods", "breach_notification_policy"],
+      "primary_authority": ["ECHO PRIME Governance Policy v2.0", "ITILv4 Service Level Management", "SRE Handbook Chapter 4"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "dependency_graph_health_propagation",
+      "keywords": ["dependency", "graph", "propagation", "degraded", "cascade", "upstream", "downstream"],
+      "conclusion_template": "Engine dependencies form a directed acyclic graph. When engine B is DOWN and engine A depends on B, engine A is marked DEGRADED regardless of its own health check status. Propagation is transitive: if C depends on A which depends on B, and B is DOWN, both A and C are DEGRADED. Health status hierarchy: HEALTHY > DEGRADED > UNHEALTHY > DOWN > UNKNOWN. Dependency health is the minimum of the engine's own health and all its dependencies' health.",
+      "reasoning_framework": "The dependency graph is stored as an adjacency list where each engine ID maps to a list of engine IDs it depends on. On every health poll cycle, after individual engine statuses are updated, a topological sort determines evaluation order. Each engine's effective status is computed as min(own_status, min(dependency_effective_statuses)). This ensures cascading degradation is captured in a single pass. Circular dependencies are detected at registration time and rejected. The graph supports both hard dependencies (downstream is DOWN if upstream is DOWN) and soft dependencies (downstream is DEGRADED if upstream is DOWN). Dependency declarations are validated against the engine registry to prevent references to non-existent engines.",
+      "key_factors": ["graph_topology", "hard_vs_soft_dependency", "cascade_depth_limit", "circular_dependency_detection", "transitive_propagation"],
+      "primary_authority": ["ECHO PRIME Architecture Spec v3.0", "Distributed Systems Design Patterns", "Google SRE Chapter 21"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "capacity_forecasting_linear_regression",
+      "keywords": ["capacity", "forecast", "regression", "trend", "growth", "planning", "projection"],
+      "conclusion_template": "Capacity forecasting uses least-squares linear regression on historical resource usage data to project when thresholds will be breached. For each resource metric (CPU, memory, disk, connections), the system fits a line y = mx + b to the last 7 days of hourly samples. The projected date when y exceeds the configured threshold is the capacity exhaustion date. If exhaustion is projected within 14 days, a WARNING alert is generated. Within 7 days triggers CRITICAL.",
+      "reasoning_framework": "Linear regression is chosen over more complex models because it is robust, interpretable, and sufficient for medium-term infrastructure planning. The system collects hourly resource snapshots per engine: cpu_percent, memory_mb, disk_usage_mb, open_connections. These are stored in a circular buffer of 720 samples (30 days). For forecasting, only the most recent 168 samples (7 days) are used to capture recent trends rather than long-term averages. The regression coefficients (slope m, intercept b) are computed using the normal equation: m = (n*sum(xy) - sum(x)*sum(y)) / (n*sum(x^2) - sum(x)^2). If the slope is positive (resource usage increasing), the exhaustion time is calculated as t = (threshold - b) / m. Negative slopes indicate improving conditions and generate no capacity alerts. R-squared values below 0.3 indicate noisy data where linear projection is unreliable; these are flagged with reduced confidence.",
+      "key_factors": ["sample_window_hours", "regression_confidence_r_squared", "threshold_values", "projection_horizon_days", "trend_direction"],
+      "primary_authority": ["Capacity Planning Best Practices (ITIL)", "Statistical Methods for SRE", "ECHO PRIME Resource Policy"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "health_check_protocol",
+      "keywords": ["health", "check", "poll", "heartbeat", "liveness", "readiness", "probe"],
+      "conclusion_template": "Health checks are HTTP GET requests to each engine's /health endpoint with a 5-second timeout. A healthy response is HTTP 200 with a JSON body containing status='healthy'. Any other HTTP status, timeout, or connection refused is a failure. Three consecutive failures mark the engine as DOWN. One failure marks as UNHEALTHY. Recovery requires two consecutive successes to transition back to HEALTHY, preventing flapping.",
+      "reasoning_framework": "The health check protocol implements a state machine with hysteresis to prevent alert fatigue from transient failures. States: UNKNOWN -> HEALTHY -> UNHEALTHY -> DOWN, with recovery path DOWN -> UNHEALTHY -> HEALTHY requiring consecutive successes. The polling interval is configurable per engine (default 30 seconds) to balance freshness against load. Health check requests include a X-Health-Check: GOV03 header so engines can differentiate monitoring traffic from real requests. Response time is measured and recorded for SLA calculations. The health endpoint response should include sub-component status (database connectivity, cache availability, external API reachability) enabling root cause identification without additional probing.",
+      "key_factors": ["timeout_seconds", "consecutive_failures_threshold", "recovery_threshold", "polling_interval", "state_machine_hysteresis"],
+      "primary_authority": ["Kubernetes Liveness/Readiness Probe Design", "ECHO PRIME Health Standard v1.0", "RFC 7230 HTTP/1.1"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "alert_severity_classification",
+      "keywords": ["alert", "severity", "critical", "warning", "info", "threshold", "notification"],
+      "conclusion_template": "Alerts are classified into four severity levels: CRITICAL (immediate Commander notification, system integrity at risk), HIGH (requires attention within 1 hour, significant degradation), WARNING (requires attention within 24 hours, trending toward breach), INFO (logged for awareness, no action required). Alert deduplication ensures the same condition does not generate repeated alerts within a suppression window (default 15 minutes for CRITICAL, 1 hour for WARNING).",
+      "reasoning_framework": "Alert classification follows the principle of actionability: every alert above INFO level must have a clear recommended action. CRITICAL alerts are reserved for conditions that threaten system stability or data integrity: engine DOWN affecting 3+ dependents, SLA breach, resource exhaustion (>95%), or security anomaly. HIGH alerts cover single-engine failures, SLA degradation trends, and resource warnings (>85%). WARNING alerts cover capacity projections, minor performance degradation, and configuration drift. INFO alerts log routine events like engine restarts, configuration changes, and maintenance windows. Each alert includes: severity, source_engine_id, metric_name, current_value, threshold_value, recommended_action, and timestamp. Alert suppression uses a hash of (severity, source, metric) as the dedup key.",
+      "key_factors": ["severity_levels", "suppression_window", "deduplication_key", "recommended_action", "escalation_policy"],
+      "primary_authority": ["PagerDuty Incident Management Guide", "ECHO PRIME Alert Policy v1.0", "ITIL Incident Classification"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "engine_crash_detection",
+      "keywords": ["crash", "hang", "unresponsive", "timeout", "restart", "recovery", "watchdog"],
+      "conclusion_template": "Engine crashes manifest as connection refused (process died) or sustained timeouts (process hung). Connection refused triggers immediate DOWN status. Sustained timeouts (3+ consecutive) with increasing response times suggest a hang rather than crash. The restart recommendation algorithm considers: crash frequency (>3 in 1 hour suggests underlying issue), dependency impact (high-dependency engines get priority restart), and resource availability (don't restart if system is resource-starved).",
+      "reasoning_framework": "Crash detection is a core function of the health monitor. The system distinguishes between three failure modes: (1) Clean crash - process exits, port closes, connection refused immediately detected. (2) Hang - process alive but unresponsive, detected via timeout escalation (response time grows from normal to timeout). (3) Partial failure - health endpoint returns 200 but reports internal component failures. For each failure mode, the response differs. Clean crashes get immediate restart recommendations. Hangs require investigation (possible deadlock, resource starvation, or infinite loop) before restart. Partial failures may self-heal and get a watch period before escalation. The crash history per engine is maintained in a rolling 24-hour window. Engines with >3 crashes in 1 hour are flagged as chronically unstable requiring Commander intervention rather than automated restart.",
+      "key_factors": ["failure_mode_classification", "crash_frequency_tracking", "restart_recommendation_logic", "dependency_priority", "chronic_instability_threshold"],
+      "primary_authority": ["ECHO PRIME Process Management Policy", "Erlang OTP Supervisor Design", "Kubernetes Pod Restart Policy"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "resource_monitoring_per_engine",
+      "keywords": ["resource", "cpu", "memory", "disk", "process", "utilization", "consumption"],
+      "conclusion_template": "Per-engine resource monitoring tracks CPU percentage, resident memory (RSS), virtual memory (VSZ), open file descriptors, thread count, and disk I/O rates. Metrics are collected via process-level instrumentation (psutil or /proc filesystem). Resource limits per engine are defined in the engine registry. Exceeding 80% of any limit triggers WARNING; exceeding 95% triggers CRITICAL. Resource data feeds both real-time alerting and capacity forecasting.",
+      "reasoning_framework": "Resource monitoring operates at the process level, not just the system level, to attribute consumption to specific engines. Each monitored engine has a known PID obtained either from the health endpoint response or from port-to-PID mapping. The monitor collects snapshots at configurable intervals (default 60 seconds for resources vs 30 seconds for health). CPU percentage is calculated as delta_cpu_time / delta_wall_time over the collection interval. Memory is measured as RSS (actual physical memory used) rather than VSZ (which includes shared libraries and mapped files). Disk I/O is measured as bytes read/written per interval. Thread count helps detect thread leaks. File descriptor count helps detect connection leaks. All metrics are stored in a time-series buffer per engine for trend analysis.",
+      "key_factors": ["pid_discovery_method", "collection_interval", "metric_types", "threshold_configuration", "trend_buffer_duration"],
+      "primary_authority": ["Linux proc(5) man page", "psutil documentation v5.9", "ECHO PRIME Resource Allocation Policy"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "port_availability_scanning",
+      "keywords": ["port", "scan", "listen", "bind", "available", "conflict", "socket"],
+      "conclusion_template": "Port scanning verifies that each engine's assigned port is actively listening and accepting connections. A TCP connect probe to localhost:port with a 2-second timeout determines port status: LISTENING (connection accepted), CLOSED (connection refused), FILTERED (timeout, possible firewall). Port conflicts are detected when an unexpected process holds an engine's assigned port. The port registry maps engine IDs to assigned ports, enabling conflict detection and resolution.",
+      "reasoning_framework": "Port scanning is the fastest and lowest-overhead method of basic liveness detection. Before performing a full HTTP health check, a TCP connect probe confirms the port is listening. This two-stage approach reduces overhead: the TCP probe takes <10ms for local connections vs 100ms+ for a full HTTP round-trip. If the TCP probe fails, the HTTP health check is skipped and the engine is immediately marked as DOWN (connection refused) or FILTERED (timeout). Port scanning also detects configuration errors where two engines are assigned the same port. On startup, GOV03 scans the entire configured port range to build a baseline map. Periodic rescans detect port conflicts introduced by new engine deployments.",
+      "key_factors": ["tcp_probe_timeout", "two_stage_detection", "port_registry_validation", "conflict_detection", "baseline_mapping"],
+      "primary_authority": ["TCP/IP Illustrated Volume 1", "nmap Service Detection", "ECHO PRIME Port Allocation Registry"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "incident_response_workflow",
+      "keywords": ["incident", "response", "runbook", "escalation", "mitigation", "postmortem", "recovery"],
+      "conclusion_template": "Incident response follows a structured workflow: DETECT (automated health check failure) -> CLASSIFY (severity assignment) -> NOTIFY (alert generation) -> MITIGATE (restart recommendation or automatic action) -> RESOLVE (confirmed recovery) -> REVIEW (log incident for postmortem). Each incident is assigned a unique ID and tracked from detection to resolution. Incidents unresolved for >30 minutes are auto-escalated to the next severity level.",
+      "reasoning_framework": "The incident response workflow ensures no failure goes unaddressed. Detection is automated via the health polling system. Classification uses the alert severity framework with additional context from dependency analysis (a failure affecting many dependents is automatically elevated). Notification targets are severity-dependent: INFO goes to logs only, WARNING to the dashboard, HIGH to Commander via dashboard + alert queue, CRITICAL to Commander via all channels including potential Twilio SMS. Mitigation recommendations are generated based on failure mode: clean crash -> restart, hang -> kill + restart, resource exhaustion -> identify top consumers + restart, dependency failure -> fix upstream first. Resolution is confirmed when the engine returns to HEALTHY status and maintains it for 2+ check cycles. All incidents are logged with full context for postmortem analysis.",
+      "key_factors": ["incident_lifecycle_stages", "auto_escalation_timer", "severity_dependent_notification", "mitigation_recommendations", "postmortem_logging"],
+      "primary_authority": ["Google SRE Chapter 14 - Incident Management", "PagerDuty Incident Response", "ECHO PRIME Incident Policy"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "dashboard_data_aggregation",
+      "keywords": ["dashboard", "overview", "aggregate", "summary", "visualization", "status", "report"],
+      "conclusion_template": "The dashboard endpoint provides a single-request overview of entire system health. It aggregates: total engines monitored, count by status (HEALTHY/DEGRADED/UNHEALTHY/DOWN/UNKNOWN), active alerts by severity, worst SLA performers, resource utilization heatmap, and recent incidents. Data is pre-computed on each poll cycle rather than computed on request to ensure sub-100ms dashboard response times.",
+      "reasoning_framework": "Dashboard data aggregation follows the materialized view pattern. On each health poll cycle, after all individual engine statuses are updated, a dashboard summary is recomputed and cached. This ensures the dashboard endpoint is a simple cache read rather than an expensive aggregation query. The dashboard includes multiple views: (1) Fleet overview - pie chart data of engine status distribution. (2) Alert summary - count of active alerts by severity with oldest unresolved. (3) SLA leaderboard - engines ranked by uptime percentage, highlighting any below target. (4) Resource heatmap - engines ranked by CPU, memory, disk usage. (5) Incident timeline - last 24 hours of incidents with status. (6) Dependency health - count of engines in cascading degradation. (7) Capacity forecast - engines projected to hit limits within 14 days. All data is JSON-serializable for easy consumption by web UIs.",
+      "key_factors": ["materialized_view_pattern", "pre_computation_on_poll", "multi_view_aggregation", "json_serializable", "sub_100ms_response"],
+      "primary_authority": ["Grafana Dashboard Design Patterns", "ECHO PRIME UI/UX Standards", "Materialized View Pattern (CQRS)"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "flapping_detection_and_suppression",
+      "keywords": ["flapping", "oscillation", "unstable", "intermittent", "debounce", "suppress"],
+      "conclusion_template": "Flapping occurs when an engine rapidly alternates between HEALTHY and UNHEALTHY states. Detection: if an engine changes state more than 5 times in a 10-minute window, it is classified as FLAPPING. Flapping engines are held in UNHEALTHY state regardless of individual check results until they demonstrate 5 consecutive successes. This prevents alert storms and misleading uptime calculations.",
+      "reasoning_framework": "Flapping is a common operational headache that wastes attention and corrupts metrics. The detection algorithm maintains a state change counter per engine with a sliding 10-minute window. Each state transition increments the counter. When the counter exceeds the threshold (default 5), the engine enters FLAPPING state. In FLAPPING state, the engine is reported as UNHEALTHY regardless of individual check results. To exit FLAPPING, the engine must demonstrate stability: 5 consecutive successful health checks without any failures. This hysteresis prevents premature exit from flapping state. Flapping root causes are typically: resource contention causing intermittent timeouts, network instability, garbage collection pauses, or a failing dependency that itself is flapping. The monitor logs flapping events with timestamps to aid root cause analysis.",
+      "key_factors": ["state_change_counter", "sliding_window_minutes", "flapping_threshold", "exit_criteria_consecutive_successes", "root_cause_logging"],
+      "primary_authority": ["Nagios Flap Detection Algorithm", "ECHO PRIME Stability Standards", "Network Management Best Practices"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "response_time_percentile_tracking",
+      "keywords": ["response", "time", "latency", "percentile", "p50", "p95", "p99", "performance"],
+      "conclusion_template": "Response time tracking uses percentile statistics rather than averages because averages mask tail latency. The system tracks p50 (median), p90, p95, and p99 response times per engine over rolling windows of 1h, 24h, and 7d. SLA targets are defined as p95 < threshold (e.g., p95 < 500ms). Percentiles are computed using the t-digest algorithm for memory-efficient streaming calculation.",
+      "reasoning_framework": "Averages are misleading for response time analysis because a few extreme outliers can skew the mean while the majority of requests perform well, or conversely, a bimodal distribution can have an acceptable mean while a significant fraction of requests are unacceptably slow. Percentiles provide a more accurate picture of user experience. The p50 represents the typical case. The p95 represents the worst case for the vast majority of requests. The p99 captures true tail latency. For memory efficiency, exact percentile tracking of all samples is impractical. The t-digest algorithm provides accurate percentile estimates using O(compression * log(n)) memory. Each engine maintains three t-digest instances for the three rolling windows. On each health check, the response time (measured from TCP connect to full response received) is inserted into all three digests. Expired samples are handled by the rolling window mechanism.",
+      "key_factors": ["percentile_levels", "rolling_window_durations", "t_digest_compression", "sla_threshold_definition", "tail_latency_importance"],
+      "primary_authority": ["Google SRE Chapter 6 - Monitoring", "t-digest Paper (Dunning 2019)", "ECHO PRIME Performance Standards"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "maintenance_window_management",
+      "keywords": ["maintenance", "window", "planned", "downtime", "schedule", "exclusion"],
+      "conclusion_template": "Maintenance windows are pre-declared periods during which engine downtime is expected and excluded from SLA calculations. Windows must be declared at least 1 hour in advance via the /maintenance endpoint. During a maintenance window, health check failures are logged but do not trigger alerts or affect uptime calculations. Post-maintenance, the engine must pass 3 consecutive health checks before returning to normal monitoring.",
+      "reasoning_framework": "Maintenance windows are essential for honest SLA reporting. Without them, routine updates and deployments would falsely degrade uptime metrics. The system maintains a schedule of declared maintenance windows per engine. Each window has a start time, expected duration, and reason. During the window, the engine's status is set to MAINTENANCE (distinct from DOWN) and alerts are suppressed. If the engine does not recover within the declared window duration plus a 15-minute grace period, the status transitions to DOWN and alerts resume. This prevents maintenance windows from being used to hide genuine outages. Maintenance windows can be declared for individual engines or groups of engines (for coordinated updates). The system tracks maintenance frequency and duration as additional metrics for operational health assessment.",
+      "key_factors": ["advance_declaration_requirement", "sla_exclusion_logic", "grace_period", "post_maintenance_validation", "abuse_prevention"],
+      "primary_authority": ["ITIL Change Management", "ECHO PRIME Maintenance Policy", "SLA Best Practices RFC"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "multi_region_health_awareness",
+      "keywords": ["region", "zone", "locality", "network", "partition", "distributed"],
+      "conclusion_template": "While ECHO PRIME currently operates on a single host, the health monitor is designed for future multi-region deployment. Engine locations are tagged with region identifiers. Cross-region dependency health accounts for network latency and partition tolerance. Regional aggregation provides per-region health summaries alongside the global view.",
+      "reasoning_framework": "Forward-compatible design ensures the health monitor does not need a rewrite when ECHO PRIME scales beyond a single host. Each engine registration includes a region tag (default 'local'). The dependency graph supports cross-region edges with configurable latency thresholds. Health checks to remote engines use longer timeouts to account for network latency. Regional health summaries aggregate engine status within each region, enabling identification of region-specific issues. The alert system can be configured with region-aware routing, sending alerts to region-specific channels. This architecture supports the planned Cloudflare Workers deployment where engines may run in multiple edge locations.",
+      "key_factors": ["region_tagging", "cross_region_latency", "regional_aggregation", "network_partition_tolerance", "forward_compatibility"],
+      "primary_authority": ["Cloudflare Workers Architecture", "ECHO PRIME Scaling Roadmap", "CAP Theorem Practical Application"],
+      "confidence": "AGGRESSIVE",
+      "confidence_stratification": "AGGRESSIVE"
+    },
+    {
+      "topic": "security_health_monitoring",
+      "keywords": ["security", "anomaly", "unauthorized", "access", "intrusion", "authentication"],
+      "conclusion_template": "Security health monitoring tracks authentication failures, unauthorized access attempts, unusual traffic patterns, and certificate expiry. Anomaly detection flags engines receiving traffic volumes >3 standard deviations from their 7-day baseline. Certificate expiry warnings are generated 30 days before expiration. All security events are logged with full context for forensic analysis.",
+      "reasoning_framework": "Security monitoring is a critical dimension of system health beyond availability and performance. The health monitor tracks several security signals per engine: (1) Authentication failure rate - sudden spikes may indicate brute force attacks. (2) Request origin diversity - a sudden increase in unique source IPs may indicate scanning. (3) Error rate patterns - specific HTTP error codes (401, 403, 429) in unusual volumes. (4) TLS certificate status - expiry date, issuer validity, cipher strength. (5) Configuration drift - changes to engine configuration files that were not logged through normal channels. These signals are combined into a per-engine security health score. Scores below threshold trigger security-specific alerts that are always classified as HIGH or CRITICAL severity.",
+      "key_factors": ["auth_failure_tracking", "anomaly_detection_stddev", "certificate_monitoring", "configuration_drift", "security_health_score"],
+      "primary_authority": ["OWASP Monitoring Guidelines", "ECHO PRIME Security Policy", "NIST SP 800-137"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "log_aggregation_and_analysis",
+      "keywords": ["log", "aggregation", "analysis", "pattern", "error", "correlation"],
+      "conclusion_template": "Log aggregation collects structured log entries from all monitored engines via their /logs endpoint or log file paths. Error log analysis identifies recurring patterns, correlates errors across engines (suggesting shared root causes), and tracks error rate trends. Log volume itself is a health metric: sudden drops indicate logging failure, sudden spikes indicate error storms.",
+      "reasoning_framework": "Centralized log analysis provides insights that individual engine monitoring cannot. When multiple engines experience errors simultaneously, log correlation reveals shared root causes such as database connectivity issues, network problems, or resource exhaustion. The system collects log entries via two mechanisms: (1) Pull-based: periodic fetch from engine /logs endpoints. (2) File-based: tail monitoring of known log file paths. Collected logs are parsed for severity level, timestamp, error category, and stack trace. Error patterns are identified using simple frequency analysis: errors matching the same category and message template are grouped. Cross-engine correlation uses temporal proximity (errors within 5 seconds across engines) and shared error categories. Log volume anomaly detection uses the same stddev-based approach as security monitoring.",
+      "key_factors": ["collection_mechanisms", "structured_parsing", "pattern_frequency_analysis", "cross_engine_correlation", "volume_anomaly_detection"],
+      "primary_authority": ["ELK Stack Best Practices", "ECHO PRIME Logging Standards", "Distributed Tracing Concepts"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "automated_remediation_policy",
+      "keywords": ["remediation", "auto", "restart", "heal", "recover", "self", "repair"],
+      "conclusion_template": "Automated remediation performs pre-approved recovery actions without Commander intervention. Tier 1 actions (restart a single crashed engine) are auto-approved if the engine has crashed <3 times in the last hour. Tier 2 actions (restart dependent engines in order) require Commander approval. Tier 3 actions (system-wide restart) always require Commander approval. All remediation actions are logged with full before/after state.",
+      "reasoning_framework": "Automated remediation reduces mean time to recovery (MTTR) by eliminating human response latency for common failure modes. The remediation policy defines three tiers based on blast radius. Tier 1: single-engine restart. This is the most common remediation and is safe when the engine has not been crash-looping (indicating a persistent bug that restart won't fix). The restart command is issued via the engine's process manager or systemd equivalent. Tier 2: cascading restart of an engine and its dependents in dependency order. This is needed when a restart alone doesn't resolve the issue because dependent engines have cached stale connections. Tier 3: coordinated restart of all engines, used only as a last resort. Each remediation action is logged with: action_type, target_engines, trigger_condition, pre_action_state, post_action_state, duration, and success boolean. Failed remediation attempts are escalated to the next tier.",
+      "key_factors": ["tier_classification", "auto_approval_criteria", "crash_loop_detection", "dependency_order_restart", "full_state_logging"],
+      "primary_authority": ["Kubernetes Self-Healing Patterns", "ECHO PRIME Remediation Policy", "Erlang Supervisor Strategies"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    },
+    {
+      "topic": "historical_trend_retention",
+      "keywords": ["history", "trend", "retention", "archive", "time series", "storage"],
+      "conclusion_template": "Historical health data is retained at multiple granularities: raw samples for 24 hours, 5-minute aggregates for 7 days, 1-hour aggregates for 30 days, and daily summaries for 1 year. This multi-resolution storage balances detail with storage efficiency. Trend analysis uses the appropriate granularity for the query window.",
+      "reasoning_framework": "Storing every raw health check sample indefinitely is impractical. With 128 engines polled every 30 seconds, raw data accumulates at 128 * 2 * 60 * 24 = 368,640 samples per day. Multi-resolution downsampling reduces storage while preserving analytical value. Raw data (30-second resolution) is needed for recent incident investigation. 5-minute aggregates (min, max, avg, p95 per metric) suffice for week-long trend analysis. Hourly aggregates are adequate for monthly capacity planning. Daily summaries support annual reporting and long-term trend identification. Downsampling runs as a background task after each poll cycle, aging out raw data older than 24 hours into 5-minute buckets. The transition between granularities preserves statistical properties by storing min, max, mean, and selected percentiles rather than just the mean.",
+      "key_factors": ["multi_resolution_storage", "downsampling_schedule", "statistical_preservation", "storage_budget", "query_routing_by_window"],
+      "primary_authority": ["Prometheus TSDB Design", "RRDtool Concepts", "ECHO PRIME Data Retention Policy"],
+      "confidence": "DEFENSIBLE",
+      "confidence_stratification": "DEFENSIBLE"
+    }
+  ]
+}

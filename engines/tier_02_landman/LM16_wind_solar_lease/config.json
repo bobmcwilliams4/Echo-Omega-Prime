@@ -1,0 +1,86 @@
+{
+  "engine_id": "LM16",
+  "engine_name": "Wind/Solar Lease Intelligence Engine",
+  "version": "1.0.0",
+  "port": 8516,
+  "domain": "renewable_energy_land_acquisition",
+  "description": "TIE Gold Standard engine for wind and solar lease negotiation, structure analysis, royalty calculations, surface use conflicts, tax incentive analysis, and landowner protection in renewable energy land transactions.",
+  "tier": "LANDMAN_INTELLIGENCE",
+  "status": "DEPLOYED",
+  "author": "ECHO OMEGA PRIME",
+  "created": "2026-02-11",
+  "components": [
+    "three_layer_response",
+    "response_modes",
+    "doctrine_cache",
+    "authority_hardening",
+    "confidence_stratification",
+    "semantic_normalization",
+    "vector_search",
+    "telemetry",
+    "drift_watcher",
+    "coverage_map",
+    "metrics_collector",
+    "health_endpoint",
+    "zoned_analysis",
+    "fact_fragility_scoring",
+    "audit_trail_jsonl",
+    "determinism_hash_sha256",
+    "fastapi_server",
+    "loguru_logging",
+    "multi_doctrine_decomposition",
+    "deep_analysis_mode"
+  ],
+  "doctrine_domains": [
+    "wind_lease_structure",
+    "solar_lease_structure",
+    "royalty_payment_structures",
+    "surface_use_restrictions",
+    "landowner_protections",
+    "oil_gas_coexistence",
+    "resource_assessment_easements",
+    "transmission_easements",
+    "battery_storage_siting",
+    "decommissioning_obligations",
+    "tax_incentives_ptc_itc",
+    "texas_regulatory",
+    "ercot_interconnection",
+    "environmental_compliance",
+    "estate_planning_renewables",
+    "assignment_financing",
+    "agricultural_exemption",
+    "eminent_domain_transmission",
+    "shadow_flicker_noise",
+    "accommodation_doctrine"
+  ],
+  "confidence_levels": {
+    "DEFENSIBLE": "Position supported by statute, regulation, or established case law with high certainty",
+    "AGGRESSIVE": "Position supportable but involves interpretation risk or untested application",
+    "DISCLOSURE": "Material uncertainty requiring explicit disclosure to client or counterparty",
+    "HIGH_RISK": "Position with substantial litigation or regulatory challenge risk"
+  },
+  "response_modes": {
+    "FAST": "Concise answer with key lease terms and critical provisions",
+    "DEFENSE": "Full analysis with authority citations, risk assessment, and defensive drafting",
+    "MEMO": "Complete memorandum with background, analysis, conclusion, and recommended lease language"
+  },
+  "analysis_zones": {
+    "NEGOTIATION": "Active lease negotiation and term structuring",
+    "DUE_DILIGENCE": "Pre-acquisition investigation and resource assessment",
+    "COMPLIANCE": "Regulatory compliance, permitting, and environmental review",
+    "DISPUTE": "Conflict resolution, accommodation doctrine, surface use disputes"
+  },
+  "dependencies": {
+    "python": ">=3.11",
+    "fastapi": ">=0.104.0",
+    "pydantic": ">=2.0",
+    "loguru": ">=0.7.0",
+    "uvicorn": ">=0.24.0"
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_rotation": "10 MB",
+    "log_retention": "30 days",
+    "metrics_interval_seconds": 60
+  }
+}

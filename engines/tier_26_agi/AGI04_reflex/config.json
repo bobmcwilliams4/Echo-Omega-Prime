@@ -1,0 +1,52 @@
+{
+  "engine_id": "AGI04",
+  "engine_name": "REFLEX — Autonomous Response & Feedback Loop",
+  "version": "1.0.0",
+  "port": 8804,
+  "domain": "autonomy",
+  "tier": "AGI",
+  "description": "Autonomous reflex engine that classifies urgency, routes to the fastest resolution path, manages circuit breakers and rate limiters, and provides real-time feedback loops for system self-correction.",
+  "dependencies": {
+    "cloud_retriever": "optional",
+    "fastapi": ">=0.100.0",
+    "pydantic": ">=2.0.0",
+    "loguru": ">=0.7.0",
+    "uvicorn": ">=0.22.0"
+  },
+  "endpoints": {
+    "/health": {"method": "GET", "description": "Engine health check with doctrine count, cache stats, and metrics"},
+    "/query": {"method": "POST", "description": "Main query endpoint — urgency-classified 3-layer pipeline"},
+    "/analyze": {"method": "POST", "description": "Force deep analysis mode with DEFENSE-level output"},
+    "/doctrines": {"method": "GET", "description": "List all doctrine blocks with metadata"},
+    "/coverage": {"method": "GET", "description": "Coverage map showing triggered doctrines and knowledge gaps"},
+    "/metrics": {"method": "GET", "description": "Performance telemetry: latency percentiles, cache hit rates, error rates"}
+  },
+  "modes": ["FAST", "STANDARD", "DEFENSE", "MEMO"],
+  "zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "tie_components": {
+    "three_layer_response": true,
+    "response_modes": true,
+    "doctrine_cache": true,
+    "authority_hardening": true,
+    "confidence_stratification": true,
+    "semantic_normalization": true,
+    "vector_search": true,
+    "telemetry": true,
+    "drift_watcher": true,
+    "coverage_map": true,
+    "metrics_collector": true,
+    "health_endpoint": true,
+    "zoned_analysis": true,
+    "fact_fragility_scoring": true,
+    "audit_trail_jsonl": true,
+    "determinism_hash_sha256": true,
+    "fastapi_server": true,
+    "loguru_logging": true,
+    "multi_doctrine_decomposition": true,
+    "deep_analysis_mode": true
+  },
+  "doctrine_count": 50,
+  "build_source": "Claude Code Opus 4.6",
+  "build_date": "2026-02-15",
+  "line_count": 1215
+}

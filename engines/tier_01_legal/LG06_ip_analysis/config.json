@@ -1,0 +1,380 @@
+{
+    "engine_id": "LG06",
+    "engine_name": "IP Analysis Engine",
+    "engine_version": "2.0.0",
+    "engine_authority": 5.0,
+    "engine_tier": "LEGAL",
+    "engine_mode": "DET",
+    "port": 8396,
+    "host": "0.0.0.0",
+
+    "description": "Production-grade intellectual property analysis engine providing patent prosecution, trademark evaluation, copyright analysis, trade secret assessment, IP portfolio management, prior art search, infringement detection, licensing strategy, IP valuation, freedom-to-operate analysis, design patent evaluation, and provisional patent strategy across 35 USC, Lanham Act, 17 USC, DTSA, UTSA, PCT, Madrid Protocol, and Hague Agreement frameworks.",
+
+    "architecture": {
+        "layers": [
+            {
+                "name": "Doctrine Cache",
+                "order": 1,
+                "latency_target_ms": 200,
+                "description": "Pre-compiled IP doctrine for instant retrieval on common patent, trademark, copyright, and trade secret queries"
+            },
+            {
+                "name": "Semantic Search",
+                "order": 2,
+                "latency_target_ms": 700,
+                "description": "TF-IDF inverted index search over IP doctrine blocks and prior art references"
+            },
+            {
+                "name": "IP Analysis",
+                "order": 3,
+                "latency_target_ms": 1500,
+                "description": "Structured IP analysis including claim mapping, infringement detection, and FTO assessment"
+            },
+            {
+                "name": "Deep Analysis",
+                "order": 4,
+                "latency_target_ms": 3000,
+                "description": "Multi-doctrine synthesis for complex IP portfolio and litigation strategy"
+            }
+        ],
+        "normalization": "semantic.py",
+        "telemetry": "telemetry.py",
+        "search": "search.py",
+        "doctrines": "doctrines.py",
+        "engine": "engine.py"
+    },
+
+    "response_modes": {
+        "fast": {
+            "description": "Quick doctrine-driven IP guidance with key statutory citations",
+            "max_latency_ms": 2000,
+            "min_citations": 1
+        },
+        "analysis": {
+            "description": "Structured IP analysis with claim mapping and statutory framework",
+            "max_latency_ms": 5000,
+            "min_citations": 3
+        },
+        "memo": {
+            "description": "Full IP memorandum with comprehensive citation and risk assessment",
+            "max_latency_ms": 10000,
+            "min_citations": 5
+        },
+        "fto": {
+            "description": "Freedom-to-operate opinion mode with infringement risk matrix",
+            "max_latency_ms": 12000,
+            "min_citations": 8
+        },
+        "portfolio": {
+            "description": "Full IP portfolio assessment with valuation and strategy",
+            "max_latency_ms": 15000,
+            "min_citations": 10
+        }
+    },
+
+    "ip_categories": {
+        "utility_patent": {
+            "statute": "35 USC",
+            "requirements": ["novelty", "non_obviousness", "utility", "enablement", "written_description"],
+            "term_years": 20,
+            "term_from": "filing_date",
+            "office": "USPTO",
+            "prosecution_timeline_months": 24
+        },
+        "design_patent": {
+            "statute": "35 USC 171",
+            "requirements": ["novelty", "non_obviousness", "ornamentality"],
+            "term_years": 15,
+            "term_from": "grant_date",
+            "office": "USPTO",
+            "prosecution_timeline_months": 18
+        },
+        "plant_patent": {
+            "statute": "35 USC 161",
+            "requirements": ["novelty", "distinctness", "asexual_reproduction"],
+            "term_years": 20,
+            "term_from": "filing_date",
+            "office": "USPTO",
+            "prosecution_timeline_months": 24
+        },
+        "trademark": {
+            "statute": "Lanham Act (15 USC 1051-1141)",
+            "requirements": ["distinctiveness", "use_in_commerce", "non_functionality"],
+            "term_years": 10,
+            "renewable": true,
+            "office": "USPTO_TTAB",
+            "prosecution_timeline_months": 12
+        },
+        "copyright": {
+            "statute": "17 USC",
+            "requirements": ["originality", "fixation", "expression_not_idea"],
+            "term_years": "life_plus_70_or_95_pub",
+            "office": "USCO",
+            "registration_timeline_months": 6
+        },
+        "trade_secret": {
+            "statute": "DTSA (18 USC 1836) / UTSA",
+            "requirements": ["secrecy", "economic_value", "reasonable_measures"],
+            "term_years": "indefinite",
+            "office": "none",
+            "protection_method": "self_help_plus_litigation"
+        }
+    },
+
+    "patent_prosecution": {
+        "stages": [
+            "prior_art_search",
+            "provisional_application",
+            "non_provisional_filing",
+            "publication_18_months",
+            "office_action_response",
+            "interview_with_examiner",
+            "final_rejection_response",
+            "rce_continuation",
+            "appeal_to_ptab",
+            "notice_of_allowance",
+            "issue_fee_payment",
+            "grant"
+        ],
+        "office_action_types": [
+            "non_final_rejection",
+            "final_rejection",
+            "restriction_requirement",
+            "election_of_species",
+            "ex_parte_quayle"
+        ],
+        "claim_types": [
+            "independent",
+            "dependent",
+            "method",
+            "apparatus",
+            "system",
+            "composition",
+            "means_plus_function",
+            "product_by_process",
+            "jepson",
+            "markush"
+        ]
+    },
+
+    "infringement_analysis": {
+        "types": [
+            "literal_infringement",
+            "doctrine_of_equivalents",
+            "induced_infringement",
+            "contributory_infringement",
+            "willful_infringement",
+            "divided_infringement"
+        ],
+        "defenses": [
+            "invalidity",
+            "non_infringement",
+            "prior_art",
+            "inequitable_conduct",
+            "prosecution_history_estoppel",
+            "laches",
+            "equitable_estoppel",
+            "patent_exhaustion",
+            "experimental_use",
+            "repair_vs_reconstruction",
+            "reverse_doctrine_of_equivalents"
+        ],
+        "damages": [
+            "lost_profits",
+            "reasonable_royalty",
+            "price_erosion",
+            "enhanced_damages_willful",
+            "attorneys_fees_exceptional",
+            "injunctive_relief"
+        ]
+    },
+
+    "trademark_analysis": {
+        "distinctiveness_spectrum": [
+            {"level": "fanciful", "strength": 100, "example": "Kodak, Xerox"},
+            {"level": "arbitrary", "strength": 90, "example": "Apple (computers)"},
+            {"level": "suggestive", "strength": 75, "example": "Coppertone"},
+            {"level": "descriptive", "strength": 40, "example": "Sharp (TVs)"},
+            {"level": "generic", "strength": 0, "example": "Computer"}
+        ],
+        "likelihood_confusion_factors": [
+            "similarity_of_marks",
+            "similarity_of_goods_services",
+            "strength_of_senior_mark",
+            "evidence_of_actual_confusion",
+            "intent_of_junior_user",
+            "channels_of_trade",
+            "sophistication_of_buyers",
+            "likelihood_of_expansion",
+            "du_pont_factors"
+        ],
+        "dilution_types": [
+            "blurring",
+            "tarnishment"
+        ]
+    },
+
+    "international_ip": {
+        "pct": {
+            "name": "Patent Cooperation Treaty",
+            "filing_deadline_months": 12,
+            "national_phase_deadline_months": 30,
+            "member_countries": 157
+        },
+        "madrid_protocol": {
+            "name": "Madrid Protocol (Trademarks)",
+            "filing_deadline_months": 6,
+            "member_countries": 130
+        },
+        "hague_agreement": {
+            "name": "Hague Agreement (Industrial Designs)",
+            "member_countries": 94
+        },
+        "berne_convention": {
+            "name": "Berne Convention (Copyright)",
+            "member_countries": 181
+        },
+        "trips": {
+            "name": "TRIPS Agreement",
+            "administered_by": "WTO"
+        },
+        "paris_convention": {
+            "name": "Paris Convention for IP Protection",
+            "priority_period_months": 12,
+            "member_countries": 177
+        }
+    },
+
+    "authority_weights": {
+        "us_supreme_court": 100,
+        "federal_circuit": 95,
+        "federal_district_court": 70,
+        "ptab": 75,
+        "ttab": 72,
+        "itc": 78,
+        "federal_statute": 95,
+        "cfr_regulation": 80,
+        "mpep": 70,
+        "tmep": 70,
+        "copyright_compendium": 65,
+        "treatise": 40,
+        "patent_office_guidance": 60,
+        "wipo_guidelines": 50,
+        "restatement": 45,
+        "law_review": 30
+    },
+
+    "confidence_bands": {
+        "DEFENSIBLE": {
+            "min_score": 0.85,
+            "label": "Position is well-supported by established IP law and precedent",
+            "requires_caveat": false
+        },
+        "SUPPORTABLE": {
+            "min_score": 0.65,
+            "label": "Position has reasonable support but some uncertainty in application",
+            "requires_caveat": true
+        },
+        "DISCLOSURE": {
+            "min_score": 0.50,
+            "label": "Position requires disclosure of contrary authority or prosecution history",
+            "requires_caveat": true
+        },
+        "HIGH_RISK": {
+            "min_score": 0.0,
+            "label": "Position faces significant adverse authority or untested legal theory",
+            "requires_caveat": true
+        }
+    },
+
+    "drift_watcher": {
+        "enabled": true,
+        "check_interval_hours": 24,
+        "staleness_threshold_days": 90,
+        "confidence_reduction_percent": 10,
+        "registry_path": "doctrine_drift_registry.json",
+        "signal_types": [
+            "new_patent_case",
+            "federal_circuit_opinion",
+            "scotus_cert_grant",
+            "ptab_precedential",
+            "legislative_change",
+            "mpep_revision",
+            "tmep_update",
+            "alice_101_development",
+            "international_treaty_change"
+        ]
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "ring_buffer_size": 10000,
+        "flush_batch_size": 50,
+        "flush_interval_seconds": 5.0,
+        "log_dir": "logs",
+        "retention_days": 30
+    },
+
+    "search": {
+        "default_top_k": 5,
+        "score_threshold": 0.3,
+        "max_token_length": 50,
+        "min_token_length": 2
+    },
+
+    "audit": {
+        "enabled": true,
+        "log_format": "jsonl",
+        "hash_algorithm": "sha256",
+        "retention_days": 365
+    },
+
+    "epistemic_guardrails": {
+        "banned_phrases": [
+            "This patent is definitely valid",
+            "You will certainly get a patent",
+            "There is no prior art",
+            "This is clearly not infringing",
+            "No reasonable examiner would reject",
+            "The trademark is guaranteed to register",
+            "You have zero risk of infringement",
+            "This is an airtight IP position",
+            "No court would find infringement",
+            "The patent is bulletproof",
+            "There is absolutely no doubt about patentability",
+            "Your trade secret is completely safe",
+            "Copyright protection is automatic and absolute",
+            "This design patent covers everything"
+        ],
+        "required_disclaimers": {
+            "not_legal_advice": "This analysis is for informational purposes only and does not constitute legal advice. Consult a registered patent attorney or trademark attorney for specific legal guidance.",
+            "jurisdiction_specific": "IP rights and enforcement vary by jurisdiction. International analysis requires country-specific review.",
+            "fact_dependent": "IP outcomes depend heavily on specific facts, claim language, prosecution history, and prior art. This analysis is based on the information provided.",
+            "prior_art_caveat": "Prior art searches cannot guarantee completeness. Undiscovered prior art may affect patentability or validity assessments."
+        }
+    },
+
+    "cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["*"]
+    },
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation": "50 MB",
+        "retention": "30 days"
+    },
+
+    "metadata": {
+        "author": "ECHO OMEGA PRIME",
+        "authority": "11.0 SOVEREIGN",
+        "build_date": "2026-02-10",
+        "domain": "Intellectual Property Analysis",
+        "classification": "LEGAL",
+        "tier_id": 1,
+        "engine_index": 6,
+        "total_target_lines": 10500
+    }
+}

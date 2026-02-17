@@ -1,0 +1,105 @@
+{
+  "engine_id": "R03",
+  "engine_name": "Compliance Checker",
+  "version": "1.0.0",
+  "domain": "regulatory_compliance",
+  "subdomain": "oil_gas_operations",
+  "mode": "RULE_BASED",
+  "port": 8703,
+  "host": "localhost",
+  "log_level": "INFO",
+  "log_rotation": "100 MB",
+  "log_retention": "30 days",
+
+  "regulatory_authorities": [
+    "RRC",
+    "TCEQ",
+    "EPA",
+    "OSHA",
+    "DOT_PHMSA"
+  ],
+
+  "doctrine_cache_size": 64,
+  "doctrine_topics": 52,
+  "semantic_fallback_enabled": true,
+  "vector_search_enabled": false,
+  "deep_analysis_max_tokens": 4000,
+
+  "authority_weights": {
+    "RRC_STATEWIDE_RULES": 1.0,
+    "RRC_DISTRICT_RULES": 0.95,
+    "TCEQ_RULES": 1.0,
+    "EPA_REGULATIONS": 1.0,
+    "OSHA_STANDARDS": 1.0,
+    "DOT_REGULATIONS": 1.0,
+    "RRC_GUIDANCE": 0.75,
+    "INDUSTRY_PRACTICE": 0.5,
+    "OPERATOR_MANUAL": 0.3
+  },
+
+  "confidence_thresholds": {
+    "DEFENSIBLE": 0.95,
+    "AGGRESSIVE": 0.75,
+    "DISCLOSURE": 0.60,
+    "HIGH_RISK": 0.40
+  },
+
+  "compliance_zones": {
+    "PREVENTIVE": "Pre-operation compliance planning",
+    "OPERATIONAL": "Day-to-day regulatory compliance",
+    "REMEDIAL": "Violation correction and response",
+    "AUDIT": "Compliance audit and verification"
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "trace_queries": true,
+    "log_cache_hits": true,
+    "log_cache_misses": true,
+    "performance_tracking": true,
+    "audit_trail_path": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/R03_compliance_checker/audit_trail.jsonl"
+  },
+
+  "api_config": {
+    "cors_origins": ["*"],
+    "timeout_seconds": 60,
+    "max_query_length": 2000,
+    "response_formats": ["FAST", "DEFENSE", "MEMO"]
+  },
+
+  "drift_monitoring": {
+    "enabled": true,
+    "check_interval_hours": 168,
+    "alert_threshold": 0.15
+  },
+
+  "critical_deadlines": {
+    "P4_MONTHLY": "20th of following month",
+    "P5_ORGANIZATION_REPORT": "Within 30 days of change",
+    "WELL_COMPLETION_REPORT": "30 days after completion",
+    "PLUGGING_NOTICE_14DAY": "14 days before plugging",
+    "SPILL_REPORT_IMMEDIATE": "Immediate for reportable quantity",
+    "FORM_R1_INACTIVE": "Annually by March 31"
+  },
+
+  "rule_categories": [
+    "DRILLING_PERMITS",
+    "PRODUCTION_REPORTING",
+    "WELL_TESTING",
+    "ENVIRONMENTAL_COMPLIANCE",
+    "SAFETY_STANDARDS",
+    "FINANCIAL_ASSURANCE",
+    "PLUGGING_ABANDONMENT",
+    "SURFACE_OPERATIONS",
+    "AIR_EMISSIONS",
+    "WATER_DISCHARGE",
+    "WASTE_MANAGEMENT",
+    "PIPELINE_SAFETY"
+  ],
+
+  "health_check": {
+    "endpoint": "/health",
+    "include_metrics": true,
+    "include_doctrine_stats": true
+  }
+}

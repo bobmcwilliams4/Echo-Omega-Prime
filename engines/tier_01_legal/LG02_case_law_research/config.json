@@ -1,0 +1,421 @@
+{
+    "engine_id": "LG02",
+    "engine_name": "Case Law Research Engine",
+    "engine_version": "2.0.0",
+    "engine_authority": 5,
+    "engine_tier": "LEGAL",
+    "engine_mode": "EF",
+    "port": 8392,
+    "host": "0.0.0.0",
+
+    "description": "Professional-grade case law research and analysis engine providing structured legal doctrine, Bluebook citation parsing, Shepardize verification, precedent chain tracking, court hierarchy analysis, opinion section parsing, headnote extraction, key number mapping, and litigation strategy support.",
+
+    "architecture": {
+        "layers": [
+            {
+                "name": "Doctrine Cache",
+                "order": 1,
+                "latency_target_ms": 200,
+                "description": "Pre-compiled expert legal doctrine for instant retrieval"
+            },
+            {
+                "name": "Semantic Search",
+                "order": 2,
+                "latency_target_ms": 700,
+                "description": "TF-IDF inverted index search over doctrine blocks"
+            },
+            {
+                "name": "Citation Analysis",
+                "order": 3,
+                "latency_target_ms": 1500,
+                "description": "Citation parsing, Shepardize, precedent chain resolution"
+            },
+            {
+                "name": "Deep Analysis",
+                "order": 4,
+                "latency_target_ms": 3000,
+                "description": "Multi-source synthesis for complex legal questions"
+            }
+        ],
+        "normalization": "semantic.py",
+        "telemetry": "telemetry.py",
+        "search": "search.py",
+        "doctrines": "doctrines.py",
+        "engine": "engine.py"
+    },
+
+    "response_modes": {
+        "fast": {
+            "description": "Quick doctrine-driven response with key citations",
+            "max_latency_ms": 2000,
+            "min_citations": 1
+        },
+        "defense": {
+            "description": "Structured analysis with opposing arguments and risk assessment",
+            "max_latency_ms": 5000,
+            "min_citations": 3
+        },
+        "memo": {
+            "description": "Full legal memorandum format with comprehensive citation",
+            "max_latency_ms": 10000,
+            "min_citations": 5
+        },
+        "shepardize": {
+            "description": "Citation verification and treatment analysis mode",
+            "max_latency_ms": 8000,
+            "min_citations": 1
+        },
+        "precedent_chain": {
+            "description": "Full precedent ancestry and descendant analysis",
+            "max_latency_ms": 15000,
+            "min_citations": 5
+        }
+    },
+
+    "court_hierarchy": {
+        "us_supreme_court": {
+            "weight": 100,
+            "level": 1,
+            "binding_scope": "national",
+            "abbreviation": "U.S.",
+            "reporters": ["U.S.", "S. Ct.", "L. Ed.", "L. Ed. 2d"]
+        },
+        "federal_circuit_court": {
+            "weight": 85,
+            "level": 2,
+            "binding_scope": "circuit",
+            "abbreviation": "Cir.",
+            "reporters": ["F.", "F.2d", "F.3d", "F.4th", "F. App'x"]
+        },
+        "federal_district_court": {
+            "weight": 70,
+            "level": 3,
+            "binding_scope": "district",
+            "abbreviation": "D.",
+            "reporters": ["F. Supp.", "F. Supp. 2d", "F. Supp. 3d"]
+        },
+        "federal_bankruptcy_court": {
+            "weight": 60,
+            "level": 4,
+            "binding_scope": "district",
+            "abbreviation": "Bankr.",
+            "reporters": ["B.R."]
+        },
+        "state_supreme_court": {
+            "weight": 75,
+            "level": 2,
+            "binding_scope": "state",
+            "abbreviation": "varies",
+            "reporters": ["varies"]
+        },
+        "state_appellate_court": {
+            "weight": 60,
+            "level": 3,
+            "binding_scope": "state_district",
+            "abbreviation": "varies",
+            "reporters": ["varies"]
+        },
+        "state_trial_court": {
+            "weight": 45,
+            "level": 4,
+            "binding_scope": "county",
+            "abbreviation": "varies",
+            "reporters": ["varies"]
+        },
+        "tax_court": {
+            "weight": 72,
+            "level": 3,
+            "binding_scope": "national_tax",
+            "abbreviation": "T.C.",
+            "reporters": ["T.C.", "T.C.M.", "T.C. Memo."]
+        },
+        "court_of_federal_claims": {
+            "weight": 70,
+            "level": 3,
+            "binding_scope": "federal_claims",
+            "abbreviation": "Fed. Cl.",
+            "reporters": ["Fed. Cl."]
+        }
+    },
+
+    "authority_weights": {
+        "us_supreme_court": 100,
+        "federal_circuit_court": 85,
+        "federal_district_court": 70,
+        "state_supreme_court": 75,
+        "state_appellate_court": 60,
+        "state_trial_court": 45,
+        "tax_court": 72,
+        "court_of_federal_claims": 70,
+        "federal_statute": 95,
+        "state_statute": 80,
+        "federal_regulation": 75,
+        "state_regulation": 60,
+        "restatement": 50,
+        "law_review": 30,
+        "treatise": 35,
+        "legal_encyclopedia": 20,
+        "alr_annotation": 40,
+        "practice_guide": 25
+    },
+
+    "citation_treatment_signals": {
+        "positive": [
+            "followed", "affirmed", "approved", "adopted",
+            "harmonized", "relied_upon", "cited_favorably"
+        ],
+        "negative": [
+            "overruled", "reversed", "vacated", "abrogated",
+            "superseded", "criticized", "questioned", "limited"
+        ],
+        "neutral": [
+            "cited", "discussed", "mentioned", "compared",
+            "distinguished", "explained"
+        ],
+        "warning": [
+            "modified", "partially_overruled", "narrowed",
+            "called_into_doubt", "declining_to_follow"
+        ]
+    },
+
+    "shepardize_signals": {
+        "green": {
+            "label": "Good Law",
+            "description": "Case has positive treatment and is valid precedent",
+            "treatments": ["followed", "affirmed", "approved", "adopted"]
+        },
+        "yellow": {
+            "label": "Caution",
+            "description": "Case has some negative but not dispositive treatment",
+            "treatments": ["questioned", "criticized", "limited", "narrowed"]
+        },
+        "red": {
+            "label": "Negative Treatment",
+            "description": "Case has been overruled, reversed, or superseded",
+            "treatments": ["overruled", "reversed", "vacated", "abrogated", "superseded"]
+        },
+        "blue": {
+            "label": "Neutral/Cited",
+            "description": "Case has been cited without strong positive or negative signal",
+            "treatments": ["cited", "discussed", "mentioned", "distinguished"]
+        }
+    },
+
+    "confidence_bands": {
+        "DEFENSIBLE": {
+            "min_score": 0.85,
+            "label": "Position is well-supported by established precedent",
+            "requires_caveat": false
+        },
+        "SUPPORTABLE": {
+            "min_score": 0.65,
+            "label": "Position has reasonable support but some uncertainty",
+            "requires_caveat": true
+        },
+        "DISCLOSURE": {
+            "min_score": 0.50,
+            "label": "Position requires disclosure of contrary authority",
+            "requires_caveat": true
+        },
+        "HIGH_RISK": {
+            "min_score": 0.0,
+            "label": "Position faces significant adverse authority or is novel",
+            "requires_caveat": true
+        }
+    },
+
+    "bluebook_reporters": {
+        "federal": {
+            "us_reports": {"abbrev": "U.S.", "court": "us_supreme_court"},
+            "supreme_court_reporter": {"abbrev": "S. Ct.", "court": "us_supreme_court"},
+            "lawyers_edition": {"abbrev": "L. Ed.", "court": "us_supreme_court"},
+            "lawyers_edition_2d": {"abbrev": "L. Ed. 2d", "court": "us_supreme_court"},
+            "federal_reporter": {"abbrev": "F.", "court": "federal_circuit_court"},
+            "federal_reporter_2d": {"abbrev": "F.2d", "court": "federal_circuit_court"},
+            "federal_reporter_3d": {"abbrev": "F.3d", "court": "federal_circuit_court"},
+            "federal_reporter_4th": {"abbrev": "F.4th", "court": "federal_circuit_court"},
+            "federal_appendix": {"abbrev": "F. App'x", "court": "federal_circuit_court"},
+            "federal_supplement": {"abbrev": "F. Supp.", "court": "federal_district_court"},
+            "federal_supplement_2d": {"abbrev": "F. Supp. 2d", "court": "federal_district_court"},
+            "federal_supplement_3d": {"abbrev": "F. Supp. 3d", "court": "federal_district_court"},
+            "bankruptcy_reporter": {"abbrev": "B.R.", "court": "federal_bankruptcy_court"},
+            "federal_claims": {"abbrev": "Fed. Cl.", "court": "court_of_federal_claims"},
+            "tax_court": {"abbrev": "T.C.", "court": "tax_court"},
+            "tax_court_memo": {"abbrev": "T.C.M.", "court": "tax_court"}
+        },
+        "regional": {
+            "atlantic": {"abbrev": "A.", "series": ["A.", "A.2d", "A.3d"]},
+            "northeastern": {"abbrev": "N.E.", "series": ["N.E.", "N.E.2d", "N.E.3d"]},
+            "northwestern": {"abbrev": "N.W.", "series": ["N.W.", "N.W.2d"]},
+            "pacific": {"abbrev": "P.", "series": ["P.", "P.2d", "P.3d"]},
+            "southeastern": {"abbrev": "S.E.", "series": ["S.E.", "S.E.2d"]},
+            "southern": {"abbrev": "So.", "series": ["So.", "So. 2d", "So. 3d"]},
+            "southwestern": {"abbrev": "S.W.", "series": ["S.W.", "S.W.2d", "S.W.3d"]}
+        }
+    },
+
+    "federal_circuits": {
+        "1st": {"states": ["ME", "MA", "NH", "RI", "PR"], "seat": "Boston"},
+        "2nd": {"states": ["CT", "NY", "VT"], "seat": "New York"},
+        "3rd": {"states": ["DE", "NJ", "PA", "VI"], "seat": "Philadelphia"},
+        "4th": {"states": ["MD", "NC", "SC", "VA", "WV"], "seat": "Richmond"},
+        "5th": {"states": ["LA", "MS", "TX"], "seat": "New Orleans"},
+        "6th": {"states": ["KY", "MI", "OH", "TN"], "seat": "Cincinnati"},
+        "7th": {"states": ["IL", "IN", "WI"], "seat": "Chicago"},
+        "8th": {"states": ["AR", "IA", "MN", "MO", "NE", "ND", "SD"], "seat": "St. Louis"},
+        "9th": {"states": ["AK", "AZ", "CA", "HI", "ID", "MT", "NV", "OR", "WA", "GU", "MP"], "seat": "San Francisco"},
+        "10th": {"states": ["CO", "KS", "NM", "OK", "UT", "WY"], "seat": "Denver"},
+        "11th": {"states": ["AL", "FL", "GA"], "seat": "Atlanta"},
+        "DC": {"states": ["DC"], "seat": "Washington"},
+        "Federal": {"states": [], "seat": "Washington", "note": "Patent, trade, government contracts"}
+    },
+
+    "key_number_system": {
+        "description": "West Key Number System classification mapping",
+        "top_level_topics": [
+            {"number": 92, "name": "Constitutional Law", "subtopics": 3100},
+            {"number": 106, "name": "Contracts", "subtopics": 1200},
+            {"number": 110, "name": "Corporations", "subtopics": 850},
+            {"number": "170A", "name": "Federal Courts", "subtopics": 1500},
+            {"number": "170B", "name": "Federal Civil Procedure", "subtopics": 2800},
+            {"number": 379, "name": "Torts", "subtopics": 600},
+            {"number": 371, "name": "Taxation", "subtopics": 3500},
+            {"number": 157, "name": "Evidence", "subtopics": 1800},
+            {"number": "110A", "name": "Criminal Law", "subtopics": 2400},
+            {"number": 307, "name": "Property", "subtopics": 950},
+            {"number": 231, "name": "Labor & Employment", "subtopics": 1600},
+            {"number": "349B", "name": "Securities Regulation", "subtopics": 700},
+            {"number": 29, "name": "Antitrust & Trade Regulation", "subtopics": 500},
+            {"number": 51, "name": "Bankruptcy", "subtopics": 1200},
+            {"number": 99, "name": "Copyrights & IP", "subtopics": 800}
+        ]
+    },
+
+    "opinion_sections": {
+        "syllabus": {
+            "description": "Court-prepared summary of holding and reasoning",
+            "binding": false,
+            "weight_modifier": 0.3
+        },
+        "majority": {
+            "description": "Opinion of the court, joined by a majority of justices",
+            "binding": true,
+            "weight_modifier": 1.0
+        },
+        "plurality": {
+            "description": "Opinion joined by the largest group but not a majority",
+            "binding": "limited",
+            "weight_modifier": 0.7
+        },
+        "concurrence": {
+            "description": "Justice agrees with result but on different reasoning",
+            "binding": false,
+            "weight_modifier": 0.4
+        },
+        "concurrence_in_judgment": {
+            "description": "Justice agrees with result but rejects majority reasoning entirely",
+            "binding": false,
+            "weight_modifier": 0.3
+        },
+        "dissent": {
+            "description": "Justice disagrees with both result and reasoning",
+            "binding": false,
+            "weight_modifier": 0.2
+        },
+        "per_curiam": {
+            "description": "Unsigned opinion of the court as a whole",
+            "binding": true,
+            "weight_modifier": 0.9
+        }
+    },
+
+    "drift_watcher": {
+        "enabled": true,
+        "check_interval_hours": 24,
+        "staleness_threshold_days": 90,
+        "confidence_reduction_percent": 10,
+        "registry_path": "doctrine_drift_registry.json",
+        "signal_types": [
+            "new_case_law",
+            "overruled_precedent",
+            "circuit_split",
+            "legislative_change",
+            "rule_amendment",
+            "scotus_cert_grant",
+            "en_banc_rehearing"
+        ]
+    },
+
+    "telemetry": {
+        "enabled": true,
+        "ring_buffer_size": 10000,
+        "flush_batch_size": 50,
+        "flush_interval_seconds": 5.0,
+        "log_dir": "logs",
+        "retention_days": 30
+    },
+
+    "search": {
+        "default_top_k": 5,
+        "score_threshold": 0.3,
+        "max_token_length": 50,
+        "min_token_length": 2
+    },
+
+    "audit": {
+        "enabled": true,
+        "log_format": "jsonl",
+        "hash_algorithm": "sha256",
+        "retention_days": 365
+    },
+
+    "epistemic_guardrails": {
+        "banned_phrases": [
+            "I'm certain that",
+            "This is definitely",
+            "There is no doubt",
+            "It's guaranteed",
+            "You will always win",
+            "The court will certainly",
+            "This is a slam dunk",
+            "No judge would",
+            "Any reasonable court",
+            "It's black letter law that",
+            "There's zero chance",
+            "This is an open and shut case",
+            "You are guaranteed to prevail",
+            "No court has ever"
+        ],
+        "required_disclaimers": {
+            "jurisdiction_specific": "This analysis is based on the cited jurisdiction. Laws and precedent vary by jurisdiction.",
+            "not_legal_advice": "This analysis is for informational purposes only and does not constitute legal advice.",
+            "fact_dependent": "Legal outcomes depend on specific facts and circumstances. This analysis is based on the facts as presented.",
+            "precedent_currency": "Legal precedent may have changed since the last update. Always verify current status via Shepardize or KeyCite."
+        }
+    },
+
+    "cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["*"]
+    },
+
+    "logging": {
+        "level": "INFO",
+        "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}",
+        "rotation": "50 MB",
+        "retention": "30 days"
+    },
+
+    "metadata": {
+        "author": "ECHO OMEGA PRIME",
+        "authority": "11.0 SOVEREIGN",
+        "build_date": "2026-02-10",
+        "domain": "Case Law Research & Legal Analysis",
+        "classification": "LEGAL",
+        "tier_id": 1,
+        "engine_index": 2,
+        "predecessor": "lg02 v1.0.0 (8500)",
+        "total_target_lines": 10500
+    }
+}

@@ -1,0 +1,165 @@
+{
+  "engine_id": "P04_estate_asset_mapper",
+  "version": "1.0.0",
+  "port": 8654,
+  "domain": "estate_planning",
+  "subdomain": "asset_mapping_and_valuation",
+  "description": "Map estate assets, classify property inclusion/exclusion, determine valuation for estate tax purposes under IRC 2031-2044",
+
+  "capabilities": [
+    "gross_estate_classification",
+    "property_inclusion_analysis",
+    "irc_2033_owned_property",
+    "irc_2035_three_year_transfers",
+    "irc_2036_retained_life_estate",
+    "irc_2037_reversionary_interests",
+    "irc_2038_revocable_transfers",
+    "irc_2039_annuities",
+    "irc_2040_joint_interests",
+    "irc_2041_powers_of_appointment",
+    "irc_2042_life_insurance",
+    "irc_2043_insufficient_consideration",
+    "irc_2044_qtip_property",
+    "community_property_classification",
+    "mineral_rights_valuation",
+    "flp_llc_discount_analysis",
+    "real_property_valuation",
+    "date_of_death_valuation",
+    "alternate_valuation_date",
+    "special_use_valuation_2032a",
+    "fractional_interest_discounts",
+    "marketability_discounts",
+    "blockage_discounts"
+  ],
+
+  "authority_hierarchy": {
+    "tier_1_controlling": ["IRC", "Treasury Regulations", "Supreme Court"],
+    "tier_2_persuasive": ["Tax Court", "Circuit Courts", "Revenue Rulings"],
+    "tier_3_guidance": ["Private Letter Rulings", "IRS Publications", "Chief Counsel Advice"],
+    "tier_4_reference": ["State Law (community property)", "Appraisal Standards", "Case Law"]
+  },
+
+  "primary_statutes": [
+    "IRC §2031 (Definition of Gross Estate)",
+    "IRC §2032 (Alternate Valuation)",
+    "IRC §2032A (Special Use Valuation)",
+    "IRC §2033 (Property Owned at Death)",
+    "IRC §2034 (Dower/Curtesy)",
+    "IRC §2035 (Transfers Within 3 Years)",
+    "IRC §2036 (Retained Life Estate)",
+    "IRC §2037 (Reversionary Interests)",
+    "IRC §2038 (Revocable Transfers)",
+    "IRC §2039 (Annuities)",
+    "IRC §2040 (Joint Interests)",
+    "IRC §2041 (Powers of Appointment)",
+    "IRC §2042 (Life Insurance)",
+    "IRC §2043 (Insufficient Consideration)",
+    "IRC §2044 (QTIP Property)",
+    "Texas Family Code §3.001-§3.003 (Community Property)",
+    "Treas. Reg. §20.2031-1 (Valuation General)",
+    "Treas. Reg. §20.2031-2 (Stocks/Bonds)",
+    "Treas. Reg. §20.2031-8 (Valuation Notes)"
+  ],
+
+  "key_regulations": [
+    "Treas. Reg. §20.2031-1(b) (Fair Market Value)",
+    "Treas. Reg. §20.2032-1 (Alternate Valuation)",
+    "Treas. Reg. §20.2032A-3 (Special Use Valuation)",
+    "Treas. Reg. §20.2036-1 (Retained Interests)",
+    "Treas. Reg. §20.2038-1 (Revocable Transfers)",
+    "Treas. Reg. §20.2040-1 (Joint Tenancy)",
+    "Treas. Reg. §20.2042-1 (Life Insurance)"
+  ],
+
+  "issue_categories": [
+    "PROPERTY_CLASSIFICATION",
+    "INCLUSION_EXCLUSION",
+    "VALUATION_METHOD",
+    "DISCOUNT_APPLICABILITY",
+    "COMMUNITY_PROPERTY",
+    "RETAINED_INTERESTS",
+    "TRANSFER_TIMING",
+    "SPECIAL_VALUATION",
+    "JOINT_OWNERSHIP",
+    "LIFE_INSURANCE",
+    "BUSINESS_INTERESTS",
+    "MINERAL_RIGHTS"
+  ],
+
+  "confidence_levels": {
+    "DEFENSIBLE": "Clear statutory/regulatory authority, well-established precedent",
+    "AGGRESSIVE": "Favorable authority exists but IRS may challenge, disclosure recommended",
+    "DISCLOSURE": "Weak authority, high audit risk, mandatory disclosure",
+    "HIGH_RISK": "No favorable authority, near-certain challenge, consider alternatives"
+  },
+
+  "response_modes": {
+    "FAST": {
+      "description": "Concise classification and valuation guidance",
+      "max_latency_ms": 200,
+      "uses_doctrine_cache": true,
+      "uses_vector_search": false,
+      "detail_level": "summary"
+    },
+    "DEFENSE": {
+      "description": "Audit-ready analysis with full citation chain",
+      "max_latency_ms": 2000,
+      "uses_doctrine_cache": true,
+      "uses_vector_search": true,
+      "detail_level": "comprehensive"
+    },
+    "MEMO": {
+      "description": "Client memo format with explanation and alternatives",
+      "max_latency_ms": 5000,
+      "uses_doctrine_cache": true,
+      "uses_vector_search": true,
+      "detail_level": "exhaustive"
+    }
+  },
+
+  "analysis_zones": {
+    "PLANNING": "Pre-death estate planning, hypothetical scenarios",
+    "REPORTING": "Form 706 preparation, asset valuation for filing",
+    "AUDIT": "IRS examination defense, substantiation documentation"
+  },
+
+  "telemetry": {
+    "enabled": true,
+    "log_file": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P04_estate_asset_mapper/telemetry.jsonl",
+    "metrics_file": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P04_estate_asset_mapper/metrics.json",
+    "audit_trail": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P04_estate_asset_mapper/audit_trail.jsonl",
+    "drift_log": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/P04_estate_asset_mapper/drift.jsonl"
+  },
+
+  "performance_targets": {
+    "doctrine_cache_hit_rate": 0.85,
+    "fast_mode_p95_latency_ms": 150,
+    "defense_mode_p95_latency_ms": 1800,
+    "queries_per_hour": 1000
+  },
+
+  "valuation_approaches": {
+    "real_property": "highest_and_best_use_market_approach",
+    "business_interests": "net_asset_value_income_market_hybrid",
+    "mineral_rights": "discounted_cash_flow_comparable_sales",
+    "publicly_traded": "mean_high_low_date_of_death",
+    "closely_held_stock": "revenue_ruling_59_60_factors",
+    "partnership_interests": "section_754_adjusted_basis_fmv"
+  },
+
+  "discount_framework": {
+    "lack_of_control": "minority_interest_no_voting_power",
+    "lack_of_marketability": "restricted_securities_private_company",
+    "fractional_interest": "undivided_real_estate_interests",
+    "blockage": "large_blocks_publicly_traded_securities",
+    "key_person": "business_dependent_on_individual"
+  },
+
+  "texas_community_property": {
+    "presumption": "property_acquired_during_marriage",
+    "separate_property": "owned_before_marriage_gift_inheritance_personal_injury",
+    "tracing_required": "commingled_accounts_require_clear_and_convincing_evidence",
+    "inception_of_title": "character_at_acquisition_controls",
+    "rents_revenues": "community_if_from_community_property"
+  }
+}

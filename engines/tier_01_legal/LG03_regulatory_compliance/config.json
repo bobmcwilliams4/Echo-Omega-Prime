@@ -1,0 +1,155 @@
+{
+    "engine_id": "LG03",
+    "engine_name": "Regulatory Compliance Engine",
+    "engine_version": "1.0.0",
+    "tier": "T1_LEGAL",
+    "mode": "DET",
+    "port": 8393,
+    "author": "ECHO OMEGA PRIME",
+    "authority": "11.0 SOVEREIGN",
+
+    "architecture": {
+        "layer_1": "Doctrine Cache (0-200ms) - Pre-compiled regulatory reasoning",
+        "layer_2": "Semantic Retrieval (200-700ms) - CFR/FR search on cache miss",
+        "layer_3": "Deep Analysis (on-demand) - Multi-agency synthesis"
+    },
+
+    "response_modes": {
+        "FAST": "Doctrine-driven, minimal citations, sub-2 seconds",
+        "AUDIT": "Structured compliance check, audit-ready, gap analysis",
+        "REPORT": "Long-form, citation-heavy, regulatory filing documentation"
+    },
+
+    "determinism": {
+        "enabled": true,
+        "hash_algorithm": "sha256",
+        "semantic_normalization": true,
+        "governance_locked": true
+    },
+
+    "risk_scoring": {
+        "methodology": "severity_x_likelihood_x_detectability",
+        "scale_min": 1,
+        "scale_max": 1000,
+        "severity_weights": {
+            "criminal": 10,
+            "civil_penalty": 8,
+            "administrative_action": 6,
+            "warning_letter": 4,
+            "voluntary_disclosure": 2
+        },
+        "likelihood_weights": {
+            "certain": 10,
+            "likely": 8,
+            "possible": 6,
+            "unlikely": 4,
+            "rare": 2
+        },
+        "detectability_weights": {
+            "automatic_reporting": 10,
+            "routine_audit": 8,
+            "targeted_examination": 6,
+            "complaint_driven": 4,
+            "unlikely_detection": 2
+        }
+    },
+
+    "agencies": {
+        "federal": [
+            "SEC", "EPA", "OSHA", "IRS", "FTC", "FDA", "DOL", "DOJ",
+            "CFPB", "FINRA", "OCC", "FDIC", "FRB", "CFTC", "EEOC",
+            "HHS", "CMS", "NHTSA", "FAA", "FCC", "FERC", "NRC",
+            "ATF", "DEA", "CBP", "FINCEN", "OFAC", "SBA", "PBGC",
+            "TTB", "MSHA", "CPSC", "FMC", "STB", "PHMSA"
+        ],
+        "self_regulatory": [
+            "FINRA", "PCAOB", "MSRB", "NFA", "SIPC", "NYSE", "NASDAQ"
+        ]
+    },
+
+    "industry_codes": {
+        "system": "NAICS",
+        "version": "2022",
+        "supported_sectors": [
+            "11-Agriculture", "21-Mining", "22-Utilities", "23-Construction",
+            "31-33-Manufacturing", "42-Wholesale", "44-45-Retail",
+            "48-49-Transportation", "51-Information", "52-Finance",
+            "53-Real Estate", "54-Professional Services", "55-Management",
+            "56-Administrative", "61-Education", "62-Healthcare",
+            "71-Arts/Entertainment", "72-Accommodation/Food",
+            "81-Other Services", "92-Public Administration"
+        ]
+    },
+
+    "cfr_titles": {
+        "7": "Agriculture",
+        "10": "Energy",
+        "12": "Banks and Banking",
+        "14": "Aeronautics and Space",
+        "15": "Commerce and Foreign Trade",
+        "16": "Commercial Practices",
+        "17": "Commodity and Securities Exchanges",
+        "20": "Employees Benefits",
+        "21": "Food and Drugs",
+        "26": "Internal Revenue",
+        "29": "Labor",
+        "30": "Mineral Resources",
+        "33": "Navigation and Navigable Waters",
+        "40": "Protection of Environment",
+        "42": "Public Health",
+        "47": "Telecommunication",
+        "48": "Federal Acquisition Regulations",
+        "49": "Transportation"
+    },
+
+    "logging": {
+        "log_dir": "O:/ECHO_OMEGA_PRIME/SYSTEMS/engines/LG03_regulatory_compliance/logs",
+        "rotation": "50 MB",
+        "retention": "30 days",
+        "audit_trail": true,
+        "audit_file": "audit_trail.jsonl"
+    },
+
+    "thresholds": {
+        "high_risk_score": 500,
+        "critical_risk_score": 750,
+        "deadline_warning_days": 30,
+        "deadline_critical_days": 7,
+        "max_compliance_gap_acceptable": 0.15
+    },
+
+    "preemption_hierarchy": [
+        "constitutional",
+        "federal_statute",
+        "federal_regulation",
+        "executive_order",
+        "state_statute",
+        "state_regulation",
+        "local_ordinance",
+        "industry_standard",
+        "best_practice"
+    ],
+
+    "enforcement_severity_tiers": {
+        "tier_1_criminal": {
+            "description": "Criminal prosecution, imprisonment, criminal fines",
+            "severity_score": 10
+        },
+        "tier_2_civil_penalty": {
+            "description": "Civil monetary penalties, disgorgement, injunctions",
+            "severity_score": 8
+        },
+        "tier_3_administrative": {
+            "description": "Cease-and-desist, consent orders, license revocation",
+            "severity_score": 6
+        },
+        "tier_4_corrective": {
+            "description": "Warning letters, corrective action plans, compliance orders",
+            "severity_score": 4
+        },
+        "tier_5_advisory": {
+            "description": "Guidance letters, no-action letters, informal resolution",
+            "severity_score": 2
+        }
+    }
+}

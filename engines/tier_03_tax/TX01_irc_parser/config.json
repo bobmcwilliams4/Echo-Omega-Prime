@@ -1,0 +1,55 @@
+{
+  "engine_id": "TX01",
+  "engine_name": "IRC Parser Engine",
+  "version": "1.0.0",
+  "port": 8601,
+  "description": "Parse Internal Revenue Code sections, extract statutory elements, cross-reference regulations",
+  "domain": "tax_law",
+  "capabilities": [
+    "irc_section_parsing",
+    "statutory_element_extraction",
+    "cross_reference_resolution",
+    "regulation_mapping",
+    "effective_date_tracking",
+    "amendment_history",
+    "anti_abuse_detection",
+    "sunset_clause_analysis"
+  ],
+  "response_modes": ["FAST", "DEFENSE", "MEMO"],
+  "confidence_levels": ["DEFENSIBLE", "AGGRESSIVE", "DISCLOSURE", "HIGH_RISK"],
+  "analysis_zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "authority_hierarchy": {
+    "IRC": 1.0,
+    "Treasury_Regulation": 0.95,
+    "Revenue_Ruling": 0.85,
+    "Revenue_Procedure": 0.80,
+    "Private_Letter_Ruling": 0.60,
+    "Notice": 0.75,
+    "Announcement": 0.70,
+    "Technical_Advice_Memorandum": 0.65
+  },
+  "telemetry": {
+    "enabled": true,
+    "log_queries": true,
+    "track_latency": true,
+    "audit_trail": true
+  },
+  "drift_monitoring": {
+    "enabled": true,
+    "check_interval_hours": 24
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "interval_seconds": 60
+  },
+  "cors": {
+    "enabled": true,
+    "origins": ["*"]
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "json",
+    "rotation": "100 MB",
+    "retention": "30 days"
+  }
+}

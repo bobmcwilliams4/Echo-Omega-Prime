@@ -1,0 +1,70 @@
+{
+  "engine_id": "LM11",
+  "engine_name": "Lease Negotiation Engine",
+  "version": "1.0.0",
+  "port": 8511,
+  "domain": "oil_gas_lease_negotiation",
+  "authority_level": 11.0,
+  "description": "TIE Gold Standard engine for oil and gas lease negotiation strategy, clause analysis, royalty optimization, and lessor/lessee protective provisions across Permian Basin and multi-basin contexts.",
+  "components": {
+    "doctrine_cache": true,
+    "semantic_normalization": true,
+    "vector_search": true,
+    "telemetry": true,
+    "drift_watcher": true,
+    "coverage_map": true,
+    "metrics_collector": true,
+    "health_endpoint": true,
+    "audit_trail_jsonl": true,
+    "determinism_hash_sha256": true,
+    "fastapi_server": true,
+    "loguru_logging": true,
+    "three_layer_response": true,
+    "response_modes": true,
+    "authority_hardening": true,
+    "confidence_stratification": true,
+    "zoned_analysis": true,
+    "fact_fragility_scoring": true,
+    "multi_doctrine_decomposition": true,
+    "deep_analysis_mode": true
+  },
+  "response_modes": ["FAST", "DEFENSE", "MEMO"],
+  "confidence_levels": ["DEFENSIBLE", "AGGRESSIVE", "DISCLOSURE", "HIGH_RISK"],
+  "analysis_zones": ["PLANNING", "REPORTING", "AUDIT"],
+  "doctrine_domains": [
+    "royalty_clause", "bonus_consideration", "primary_term",
+    "habendum_clause", "continuous_drilling", "pugh_clause",
+    "surface_use", "pooling_unitization", "shut_in_royalty",
+    "cessation_of_production", "depth_limitation", "release_provisions",
+    "assignment_restrictions", "environmental_indemnification",
+    "audit_rights", "commencement_of_drilling", "operations_clause",
+    "top_lease_strategy", "lease_amendment", "mineral_vs_surface",
+    "lessor_protections", "market_enhancement"
+  ],
+  "basins": [
+    "permian_midland", "permian_delaware", "eagle_ford",
+    "haynesville", "marcellus", "bakken", "scoop_stack", "appalachian"
+  ],
+  "log_config": {
+    "rotation": "50 MB",
+    "retention": "30 days",
+    "level": "INFO",
+    "format": "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}"
+  },
+  "performance_targets": {
+    "doctrine_cache_hit_ms": 200,
+    "semantic_retrieval_ms": 700,
+    "deep_analysis_ms": 5000,
+    "max_concurrent_queries": 50
+  },
+  "tie_standard": {
+    "version": "TIE-20",
+    "min_doctrine_blocks": 40,
+    "min_engine_lines": 2500,
+    "min_doctrine_lines": 1000,
+    "min_semantic_lines": 400,
+    "min_search_lines": 300,
+    "min_telemetry_lines": 400,
+    "sha256_determinism": true
+  }
+}

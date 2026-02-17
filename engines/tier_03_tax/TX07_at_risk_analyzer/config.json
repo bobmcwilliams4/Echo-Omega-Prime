@@ -1,0 +1,139 @@
+{
+  "engine_id": "TX07_at_risk_analyzer",
+  "engine_name": "IRC §465 At-Risk Limitation Analyzer",
+  "version": "1.0.0",
+  "port": 8607,
+  "mode": "hybrid",
+  "domain": "tax_law",
+  "specialty": "at_risk_limitations",
+
+  "description": "Analyzes at-risk limitations under IRC §465 for loss deductibility, determines amounts at risk, evaluates non-recourse debt treatment, qualified nonrecourse financing exceptions, aggregation rules, and interaction with §469 passive activity and §461(l) excess business loss limitations.",
+
+  "irc_coverage": [
+    "IRC §465 - At-risk limitations",
+    "IRC §465(a) - Limitation on losses",
+    "IRC §465(b) - Amounts considered at risk",
+    "IRC §465(b)(1) - Money and adjusted basis of property",
+    "IRC §465(b)(2) - Amount borrowed for activity",
+    "IRC §465(b)(3) - Personal liability exclusion",
+    "IRC §465(b)(4) - Property pledged as security",
+    "IRC §465(b)(6) - Qualified nonrecourse financing",
+    "IRC §465(c) - Activities covered",
+    "IRC §465(d) - Definition of loss",
+    "IRC §465(e) - Recapture rules",
+    "IRC §469 - Passive activity loss interaction",
+    "IRC §461(l) - Excess business loss interaction"
+  ],
+
+  "doctrine_categories": [
+    "at_risk_computation",
+    "non_recourse_debt",
+    "qualified_nonrecourse_financing",
+    "aggregation_rules",
+    "stop_loss_agreements",
+    "guarantees_and_indemnities",
+    "partner_loans",
+    "related_party_analysis",
+    "loss_recapture",
+    "ordering_rules",
+    "pass_through_entities",
+    "real_estate_exception",
+    "oil_gas_exception",
+    "holding_activity",
+    "s_corp_shareholder_basis"
+  ],
+
+  "response_modes": {
+    "FAST": {
+      "max_tokens": 500,
+      "style": "concise",
+      "include_citations": false,
+      "description": "Quick at-risk determination for straightforward cases"
+    },
+    "DEFENSE": {
+      "max_tokens": 2000,
+      "style": "audit_ready",
+      "include_citations": true,
+      "description": "Examination-ready documentation with full statutory support"
+    },
+    "MEMO": {
+      "max_tokens": 4000,
+      "style": "comprehensive",
+      "include_citations": true,
+      "description": "Full technical memorandum with multiple authority layers"
+    }
+  },
+
+  "confidence_levels": {
+    "DEFENSIBLE": "Clear statutory basis, established regulations, settled case law",
+    "AGGRESSIVE": "Reasonable interpretation but lacks direct authority or contrary positions exist",
+    "DISCLOSURE": "Position requires Form 8275 disclosure due to substantial authority concerns",
+    "HIGH_RISK": "Audit target, penalty risk, or contrary to published IRS guidance"
+  },
+
+  "authority_hierarchy": {
+    "IRC": 10,
+    "Treasury_Regulations_Final": 9,
+    "Revenue_Rulings": 8,
+    "Revenue_Procedures": 7,
+    "PLR_TAM": 6,
+    "Court_SCOTUS": 10,
+    "Court_Circuit": 8,
+    "Court_Tax_Court": 7,
+    "IRS_Publications": 4,
+    "CCA_Legal_Memoranda": 5
+  },
+
+  "epistemic_guardrails": {
+    "banned_phrases": [
+      "guaranteed to work",
+      "IRS will never challenge",
+      "completely safe",
+      "zero audit risk",
+      "foolproof strategy"
+    ],
+    "required_disclosures": [
+      "at_risk_determination_fact_intensive",
+      "guarantee_analysis_requires_legal_review",
+      "related_party_rules_complex",
+      "qualified_nonrecourse_financing_strict_requirements",
+      "recapture_rules_multi_year_tracking"
+    ]
+  },
+
+  "telemetry": {
+    "track_query_latency": true,
+    "track_doctrine_hits": true,
+    "track_confidence_distribution": true,
+    "log_audit_trail": true,
+    "drift_detection_enabled": true,
+    "coverage_mapping_enabled": true
+  },
+
+  "integration": {
+    "cloud_retrieval": true,
+    "semantic_search_fallback": true,
+    "multi_doctrine_decomposition": true,
+    "cross_engine_references": [
+      "TX04_passive_activity_analyzer",
+      "TX06_partnership_tax_analyzer",
+      "TX08_s_corp_analyzer",
+      "TX13_real_estate_tax_analyzer"
+    ]
+  },
+
+  "logging": {
+    "level": "INFO",
+    "rotation": "100 MB",
+    "retention": "30 days",
+    "format": "json",
+    "include_determinism_hash": true
+  },
+
+  "performance_targets": {
+    "doctrine_cache_hit_rate": 0.70,
+    "average_query_latency_ms": 150,
+    "p95_latency_ms": 500,
+    "semantic_retrieval_timeout_ms": 3000
+  }
+}
