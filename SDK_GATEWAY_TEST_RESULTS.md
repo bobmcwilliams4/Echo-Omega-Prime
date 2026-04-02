@@ -34,7 +34,7 @@
 | Brain Messages | **79,441** |
 | Brain Conversations | **9,435** |
 | Brain Instances | **406** |
-| Indexed Functions | **1,073,200** |
+| Indexed Functions (D1) | **1,073,200** (of 24,803,103 scanned across 6 drives) |
 | SDK Catalog Methods | **221** |
 | LLM Providers | **2** (Anthropic + AI Orchestrator) |
 | LLM Models | **30** (3 Claude + 27 Workers AI) |

@@ -1,490 +1,518 @@
-<h1 align="center">Echo Omega Prime</h1>
+# ECHO OMEGA PRIME
 
-<p align="center">
-  <strong>Autonomous AI operating system with 674 domain intelligence engines, 5-tier persistent memory, multi-agent fleet coordination, self-healing error recovery, and 37,000+ MCP tools -- built entirely on Cloudflare Workers.</strong>
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="https://echo-op.com">echo-op.com</a> &middot;
-  <a href="https://echo-ept.com">echo-ept.com</a> &middot;
-  <a href="AGENTS.md">Agent Manifest</a>
-</p>
+![Engines](https://img.shields.io/badge/Intelligence_Engines-5%2C605-00d4ff?style=for-the-badge&logo=brain&logoColor=white)
+![Doctrines](https://img.shields.io/badge/Doctrine_Blocks-607K%2B-ff6b35?style=for-the-badge&logo=database&logoColor=white)
+![SDK](https://img.shields.io/badge/SDK_Methods-221-7c3aed?style=for-the-badge&logo=code&logoColor=white)
+![Functions](https://img.shields.io/badge/Indexed_Functions-24.8M-00c896?style=for-the-badge&logo=function&logoColor=white)
+![MCP Tools](https://img.shields.io/badge/MCP_Tools-37%2C475-e11d48?style=for-the-badge&logo=wrench&logoColor=white)
+![Memory](https://img.shields.io/badge/Crystal_Memory-165K%2B-f59e0b?style=for-the-badge&logo=memory&logoColor=white)
+![GPU Cluster](https://img.shields.io/badge/GPU_Cluster-60GB_VRAM-76b900?style=for-the-badge&logo=nvidia&logoColor=white)
+![Error Templates](https://img.shields.io/badge/Error_Templates-45%2C962-dc2626?style=for-the-badge&logo=shield&logoColor=white)
+![AI](https://img.shields.io/badge/AI_Workers-30_LLMs-6366f1?style=for-the-badge&logo=openai&logoColor=white)
+![Version](https://img.shields.io/badge/Version-5.0.0-0ea5e9?style=for-the-badge&logo=tag&logoColor=white)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Cloudflare_Workers-26_Services-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Workers" />
-  <img src="https://img.shields.io/badge/Engines-674_across_178_tiers-10B981" alt="674 Engines" />
-  <img src="https://img.shields.io/badge/Doctrines-30,626-8B5CF6" alt="30,626 Doctrines" />
-  <img src="https://img.shields.io/badge/MCP_Tools-37,475-EF4444" alt="37,475 Tools" />
-  <img src="https://img.shields.io/badge/Memory-5--Tier_Persistent-00B4D8" alt="5-Tier Memory" />
-  <img src="https://img.shields.io/badge/Error_Templates-45,962-F59E0B" alt="45,962 Templates" />
-  <img src="https://img.shields.io/badge/AI-Claude_Opus_4.6-6366F1" alt="Claude Opus" />
-  <img src="https://img.shields.io/badge/Version-3.1.0-blue" alt="Version" />
-</p>
+**The sovereign AI compute platform — 5,605 intelligence engines, 607K+ doctrine blocks, 24.8M indexed functions, 37,475 MCP tools, and a 3-node GPU cluster — unified under one SDK.**
+
+[echo-op.com](https://echo-op.com) · [echo-ept.com](https://echo-ept.com) · [SDK Gateway](https://echo-sdk-gateway.bmcii1976.workers.dev) · [AGENTS.md](./AGENTS.md)
+
+</div>
 
 ---
 
 ## What Is This?
 
-Echo Omega Prime is infrastructure for running reliable AI agent systems at scale. It solves the problems that break most AI agent setups: **memory loss between sessions**, **cascading errors**, **lack of domain expertise**, and **coordination between multiple agents**.
+ECHO OMEGA PRIME is a sovereign AI compute platform built from the ground up by one architect in Midland, Texas. It is not a wrapper around someone else's API. It is not a demo. It is a fully operational, production-grade intelligence infrastructure running 24/7 across a private 3-node GPU cluster and 187 Cloudflare Workers.
 
-The system runs 26 Cloudflare Workers across 10 D1 databases, 10 R2 buckets, 20 KV namespaces, and 2 Vectorize indexes. Every service is always-on, globally distributed, and communicates through Service Bindings for sub-millisecond inter-service calls. When the local machine is off, the cloud continues running -- knowledge scanning, engine building, error healing, and memory consolidation all happen autonomously.
+**At its core:**
 
-This is not a chatbot wrapper. It is an operating system for autonomous AI agents.
+- **5,605 domain intelligence engines** — each a FastAPI service with 50+ real doctrine blocks, vector search, semantic normalization, confidence stratification, audit trails, and deterministic hashing. Covering oilfield, tax, legal, landman, MRP, cybersecurity, geospatial, and 940+ other verticals.
+- **24,803,103 indexed functions** — every function across 6 drives catalogued by language, category, and signature (8.9 GB JSONL).
+- **607,000+ doctrine blocks** — compressed domain knowledge from oilfield operations to IRC tax code to Permian Basin lease law, queryable at sub-50ms latency.
+- **37,475 MCP tools** — the largest private MCP tool surface in existence, spanning 1,873 MCP servers.
+- **The Arcanum** — a sovereign prompt library with 370+ battle-tested templates, 82 domains, Forge DNA 10-stage pipeline, and A/B testing via Thompson Sampling.
+- **ECHO PRIME SDK v2.0** — one npm install, one pip install, or one REST call to access everything above.
+
+This is what happens when you stop renting compute and start building your own.
 
 ---
 
 ## System Architecture
 
 ```
-+-----------------------------------------------------------------------------------+
-|                            ECHO OMEGA PRIME v3.1                                  |
-+-----------------------------------------------------------------------------------+
-|                                                                                   |
-|  FLEET LAYER        Architect + 128 Worker Agents (Claude Opus 4.6)               |
-|                     Dual fleet: Imperial (production) + Rebellion (R&D)            |
-|                     Task claiming, message passing, handoff coordination           |
-|                                                                                   |
-|  INTELLIGENCE LAYER  674 engines across 178 domain tiers                          |
-|                      30,626 doctrine blocks with authority citations               |
-|                      Hybrid search: keyword + semantic (Vectorize)                 |
-|                      Confidence stratification per response                        |
-|                                                                                   |
-|  MEMORY LAYER        Tier 1: R2 Vault (permanent, crash-proof)                    |
-|                      Tier 2: Shared Brain (cross-instance, vectorized)             |
-|                      Tier 3: OmniSync (plans, todos, policies, broadcasts)         |
-|                      Tier 4: Memory Cortex V2 (7-layer cognitive, decay/promote)   |
-|                      Tier 5: Crystal Memory (indexed, searchable, local)           |
-|                                                                                   |
-|  KNOWLEDGE LAYER     Knowledge Scout (7 sources, daily cron)                      |
-|                      Knowledge Forge (5,387 documents)                             |
-|                      GraphRAG (312K nodes, 3.3M edges, 101 domains)               |
-|                                                                                   |
-|  CHAT LAYER          14 AI personalities with per-personality voice/prompts        |
-|                      12-layer prompt builder (doctrine, memory, swarm, voice)      |
-|                      Trinity Council (Sage + Nyx + Thorne consensus)               |
-|                                                                                   |
-|  HEALING LAYER       GS343: 45,962 error templates with auto-fix                  |
-|                      Phoenix: auto-recovery and service restart                    |
-|                      HIBP breach detection + credential rotation                   |
-|                                                                                   |
-|  VOICE LAYER         Qwen3-TTS + Whisper STT + 19 emotion tags                   |
-|                      Voice cloning, dubbing, audio isolation (Demucs)              |
-|                      6 voice profiles, SSML editor, batch processing               |
-|                                                                                   |
-|  TOOL LAYER          37,475 MCP tools via Echo Relay                              |
-|                      582 Windows API endpoints                                     |
-|                      35,809 MEGA Gateway tools across 1,873 servers               |
-|                                                                                   |
-|  CLOUD LAYER         26 Cloudflare Workers (Hono + TypeScript)                    |
-|                      10 D1 databases, 10 R2 buckets, 20 KV namespaces             |
-|                      2 Vectorize indexes, Service Bindings, Cron Triggers          |
-|                                                                                   |
-|  BUILD LAYER         FORGE-X Cloud: autonomous engine builder                     |
-|                      Build Orchestrator: session recovery, quality gates           |
-|                      AI Orchestrator: 29 LLM workers, smart dispatch              |
-|                                                                                   |
-+-----------------------------------------------------------------------------------+
++==============================================================================+
+|                         ECHO OMEGA PRIME v5.0                                |
+|                    Sovereign AI Compute Platform                              |
++==============================================================================+
+|                                                                               |
+|  SDK LAYER          ECHO PRIME SDK v2.0 -- "The Crown Jewel"                 |
+|                     221 methods · TypeScript · Python · CLI · REST · MCP     |
+|                     echo-sdk-gateway.bmcii1976.workers.dev · v3.1.0          |
+|                     64 endpoints · 16 route groups                            |
+|                                                                               |
+|  ARCANUM LAYER      Sovereign Prompt Library · 370+ prompts · 82 domains     |
+|                     59 endpoints · Forge DNA 10-stage pipeline                |
+|                     A/B testing via Thompson Sampling · 632K+ marketplace     |
+|                     SHA-256 dedup · Raistlin Wizard oversight                 |
+|                                                                               |
+|  FLEET LAYER        187 Cloudflare Workers · 30 LLM Workers                  |
+|                     3 Claude + 27 free (GitHub Models, Azure, OpenRouter)     |
+|                     Vault API · Build Orchestrator · Shared Brain             |
+|                                                                               |
+|  INTELLIGENCE LAYER 5,605 Domain Engines · 235,488 runtime doctrine blocks   |
+|                     TIE-20 Standard · FastAPI · 940+ verticals · sub-50ms    |
+|                     24,803,103 indexed functions · 8.9 GB JSONL catalog       |
+|                                                                               |
+|  MEMORY LAYER       Shared Brain: 79,441 messages · 9,435 conversations      |
+|                     Crystal Memory: 165,000+ crystals                         |
+|                     5-tier cognitive architecture · OmniSync                  |
+|                                                                               |
+|  KNOWLEDGE LAYER    Knowledge Forge: 24,867 docs · 170,521 chunks            |
+|                     577 categories · Graph RAG: 312K+ nodes · 3.3M edges     |
+|                     101 domains · TX Deed Records: 259,000+                  |
+|                                                                               |
+|  CHAT LAYER         14 AI Personalities · Trinity Council                     |
+|                     Echo / Bree / GS343 / Prometheus / Phoenix / Commander   |
+|                                                                               |
+|  HEALING LAYER      GS343 Error Oracle · 45,962 error templates              |
+|                     MITRE ATT&CK mapping · Drift watcher · Auto-recovery     |
+|                                                                               |
+|  VOICE LAYER        ElevenLabs v3 · 6 voice IDs · 19 emotion tags           |
+|                     14 AI personalities · Cartesia support (GS343)            |
+|                                                                               |
+|  TOOL LAYER         37,475 MCP tools · 1,873 MCP servers                    |
+|                     Browser automation · OS control · Screen OCR             |
+|                                                                               |
+|  CLOUD LAYER        Cloudflare: R2 · D1 · KV · Workers · Durable Objects    |
+|                     Vercel · Supabase · GitHub · Zoho Email · Tailscale VPN  |
+|                                                                               |
+|  COMPUTE LAYER      3-Node GPU Cluster: 60GB VRAM · 38,208 CUDA cores       |
+|                     6 GPUs: 4080S · 4070TiS · 3070 · 4060 · 1080 · 1650    |
+|                     2.5 GbE backbone · 5 Gbps fiber · Tailscale mesh VPN    |
+|                                                                               |
+|  BUILD LAYER        Hephaestion Forge · 13-stage pipeline                    |
+|                     Build Orchestrator · GitHub Actions · Quality gates       |
+|                                                                               |
++==============================================================================+
 ```
 
 ---
 
-## 674 Domain Intelligence Engines
+## ECHO PRIME SDK v2.0 — "The Crown Jewel"
 
-The engine layer is what makes Echo Omega Prime fundamentally different from generic AI systems. Instead of relying on an LLM's training data alone, every query is backed by **curated doctrine blocks** -- pre-compiled expert reasoning with authority citations, confidence stratification, and adversarial counter-arguments.
+The unified developer interface to the entire ECHO PRIME intelligence platform. One package. 221 typed methods. Access to 5,605 AI engines, 607K+ doctrine blocks, 312K graph nodes, 30 LLM workers, 14 AI personalities, and 37,475 MCP tools.
 
-### Engine Architecture (TIE-20 Standard)
+**Gateway:** `https://echo-sdk-gateway.bmcii1976.workers.dev` · v3.1.0 · 64 endpoints · 16 route groups
 
-Every engine implements 20 mandatory components:
+### 6 Delivery Formats
+
+| Format | Install / Access | Best For |
+|--------|-----------------|----------|
+| **TypeScript npm** | `npm install @echo-prime/sdk` | Full-stack apps, Node.js, Deno |
+| **Python pip** | `pip install echo-prime-sdk` | Data science, automation, FastAPI backends |
+| **CLI** | `echo-sdk query engines "tax optimization"` | Shell scripts, quick lookups, CI/CD |
+| **REST API** | `curl -H "X-Echo-API-Key: ..." https://echo-sdk-gateway...` | Any language, webhook integrations |
+| **MCP Server** | Claude Desktop / Claude Code integration | AI-native workflows |
+| **React Hooks** | `useEchoEngine()` · `useEchoChat()` · `useEchoVoice()` | React/Next.js frontends |
+
+### 22 SDK Categories — 221 Methods
+
+| # | Category | Methods | Description |
+|---|----------|---------|-------------|
+| 1 | Voice & Speech | 33 | ElevenLabs v3, 6 voice IDs, 19 emotion tags, real-time streaming |
+| 2 | Chat & Personalities | 12 | 14 AI personalities, Trinity Council, context-aware routing |
+| 3 | AI Orchestrator | 13 | 30 LLM workers (3 Claude + 27 free), smart cost routing |
+| 4 | Engine Runtime | 8 | 5,605 engines, 235K+ doctrine blocks, sub-50ms latency |
+| 5 | Knowledge Forge | 6 | 24,867 docs, 170,521 chunks, 577 categories, semantic search |
+| 6 | Graph RAG | 13 | 312K+ nodes, 3.3M edges, 101 domains, multi-hop reasoning |
+| 7 | Memory Systems | 15 | Shared Brain + Cortex + Prime + OmniSync, 79,441 messages |
+| 8 | Scanner & Infra | 10 | 27 D1 tables, cluster management, health monitoring |
+| 9 | Function Library | 8 | 24,803,103 indexed functions, 12 categories, cross-language |
+| 10 | Build Orchestrator | 11 | Hephaestion Forge 13-stage pipeline, quality gates |
+| 11 | Doctrine Forge | 8 | 607K+ blocks, 29 LLM providers, competitive dispatch |
+| 12 | Security Scanner | 6 | REVENG-style analysis, MITRE ATT&CK mapping |
+| 13 | County Records | 5 | 259K+ TX deed records, 80 counties, Permian Basin |
+| 14 | Tax Intelligence | 5 | IRC citations, case law, deductions, oilfield-specific |
+| 15 | Vault & Credentials | 4 | 1,527+ credentials, encrypted, versioned |
+| 16 | DevOps & Deploy | 8 | Cloudflare/Vercel/GitHub automation, wrangler pipelines |
+| 17 | Social & Messaging | 10 | X, LinkedIn, Telegram, Discord, Slack, email |
+| 18 | Scraping & Data | 8 | ShadowGlass, Encore, domain harvest, headless browser |
+| 19 | Swarm Intelligence | 6 | X1200 + 128 Claude Code CLI agents, parallel task execution |
+| 20 | Website Tools | 5 | echo-ept.com management, Vercel deploy, DNS |
+| 21 | Analytics & Monitor | 6 | System pulse, cost optimization, cluster health |
+| 22 | MEGA Gateway | 6 | 1,873 MCP servers, 37,475 tools, universal routing |
+
+### SDK Pricing
+
+| Tier | Price | Monthly Calls | Best For |
+|------|-------|---------------|----------|
+| **Free** | $0/mo | 100/day | Evaluation, personal projects |
+| **Starter** | $49/mo | 10,000 | Indie developers, small apps |
+| **Pro** | $199/mo | 100,000 | Growing products, SaaS builders |
+| **Enterprise** | $999/mo | Unlimited | Production systems, enterprises |
+
+> Available at [echo-ept.com](https://echo-ept.com)
+
+---
+
+## The Arcanum — Sovereign Prompt Library
+
+The Arcanum is the prompt intelligence backbone of ECHO OMEGA PRIME. Every build, every plan, every task runs through the Arcanum before execution. No exceptions.
+
+**URL:** `https://echo-arcanum.bmcii1976.workers.dev`
+
+### Capabilities
+
+| Feature | Detail |
+|---------|--------|
+| Prompt Library | 370+ battle-tested templates across 82 domains |
+| Endpoints | 59 API endpoints |
+| Versions | 250 tracked versions with diff + rollback |
+| Deduplication | SHA-256 content fingerprinting |
+| A/B Testing | Thompson Sampling with statistical significance |
+| Security | Secret Sauce Firewall — 24 attack pattern detection |
+| AI Scoring | 7-dimensional quality evaluation |
+| Fragments | Reusable prompt building blocks |
+| Chains | Sequential prompt pipelines |
+| Marketplace | Quality-ranked community prompt store with 632K+ doctrines |
+| Audit Trail | Full changelog with every modification |
+| Taxonomy | 20-domain classification system |
+| Webhooks | HMAC-SHA256 signed notifications |
+
+### Forge DNA Pipeline (10 Stages)
+
+```
+[1] INTAKE --> [2] PARSE --> [3] CLASSIFY --> [4] FRAGMENT --> [5] ENHANCE
+     |               |              |                |                |
+[10] STORE <-- [9] SCORE <-- [8] VALIDATE <-- [7] COMPETE <-- [6] EVOLVE
+
+Stage 7: COMPETE -- 8 LLM providers in parallel, best response wins
+Stage 9: SCORE   -- 40-level evolution scoring, Raistlin Wizard oversight
+```
+
+### Arcanum-First Protocol (Mandatory)
+
+Every single build, plan, order, task, or project runs through the Arcanum before execution:
+
+```bash
+# 1. Search for matching templates
+curl "https://echo-arcanum.bmcii1976.workers.dev/prompts/search?q={keywords}"
+
+# 2. Pull best-fit templates
+curl -X POST https://echo-arcanum.bmcii1976.workers.dev/select \
+  -H "Content-Type: application/json" \
+  -d '{"task": "your task description", "domain": "your domain"}'
+
+# 3. Combine with your prompt
+curl -X POST https://echo-arcanum.bmcii1976.workers.dev/combine \
+  -H "Content-Type: application/json" \
+  -d '{"base_prompt": "...", "template_ids": [...]}'
+
+# 4. Validate the enhanced prompt
+curl -X POST https://echo-arcanum.bmcii1976.workers.dev/validate \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "...", "domain": "..."}'
+
+# 5. Execute the enhanced prompt
+```
+
+Using raw prompts without Arcanum enhancement wastes 370+ battle-tested optimizations.
+
+---
+
+## 3-Node GPU Compute Cluster
+
+Private, dedicated, 24/7. No shared infrastructure. No cloud billing surprises.
+
+### Hardware
+
+| Node | Board | CPU | RAM | GPUs | VRAM | CUDA Cores | Status |
+|------|-------|-----|-----|------|------|------------|--------|
+| **ALPHA PRIMARY** | MSI PRO Z790-P DDR4 | i7-12700K (12C/20T) | 64 GB | RTX 4080 Super + GTX 1650 | 20 GB | 11,136 | Rebuilding Apr 3-4 |
+| **ALPHA SECONDARY** | ASUS Z170 Deluxe | i7-6700K (4C/8T) | 32 GB | RTX 4070 Ti Super + RTX 3070 + GTX 1080 | 32 GB | 16,896 | Rebuilding Apr 3-4 |
+| **BRAVO (primary node)** | Alienware OEM | i7-11700K (8C/16T) | 32 GB | RTX 4060 | 8 GB | 3,072 | Online |
+| **PROMETHEUS** | Mini PC | — | — | None | — | — | Online (security only) |
+
+**Cluster Totals: 60 GB VRAM · 38,208 CUDA Cores · 128 GB RAM · 6 GPUs · 3 Nodes**
+
+### Network
+
+| Layer | Spec |
+|-------|------|
+| Backbone | 2.5 GbE inter-node |
+| Uplink | 5 Gbps fiber |
+| VPN | Tailscale mesh (all nodes) |
+| Security Node | Prometheus @ 192.168.1.202 |
+
+### Physical Build
+
+Open-frame metal slotted rail bench. Cables routed behind the board. LED underglow. Radiator cutouts pushing heat down. Built for airflow, not aesthetics — though it has both.
+
+### AI Model Capabilities (Post Cluster Build)
+
+| Model | VRAM | Capability | Status |
+|-------|------|-----------|--------|
+| Llama 3.1 70B Q5 | ~45 GB | GPT-4 class reasoning | Ready |
+| DeepSeek R1 70B | ~42 GB | Best open-source reasoning | Ready |
+| Qwen 2.5 72B Q4 | ~40 GB | Top-tier code generation | Ready |
+| Mixtral 8x22B | ~48 GB | Multi-expert routing | Ready |
+| Llama 3.1 405B Q2 | 60 GB + RAM | GPT-4 Turbo class | GPU + RAM offload |
+| Multiple 13B agents x6 | ~10 GB each | 6 simultaneous agents | Ready |
+
+### Distributed Inference Layer Assignments (70B Models)
+
+| GPU | Node | Layers | Role |
+|-----|------|--------|------|
+| RTX 4080 Super | ALPHA PRIMARY | 1-22 | Primary reasoning, attention heads |
+| RTX 4070 Ti Super | ALPHA SECONDARY | 23-44 | Feed-forward, embeddings |
+| RTX 3070 | ALPHA SECONDARY | 45-56 | Mid-depth transformer blocks |
+| GTX 1080 | ALPHA SECONDARY | 57-64 | Output projection |
+| RTX 4060 | BRAVO | 65-70 | Final layers, logits, KV cache |
+| GTX 1650 | ALPHA PRIMARY | — | Display/monitoring only |
+
+### Cost vs Cloud
+
+| Scenario | Monthly Cost | 5-Year Total |
+|----------|-------------|--------------|
+| Own cluster ($8-10K upfront) | $60-80/mo power (Midland TX) | ~$3,600-4,800 |
+| RunPod equivalent | $600-2,000/mo | $36,000-120,000 |
+| **Savings at 5 years** | | **$24,000-$105,000** |
+
+Break-even: **13-16 months.** 100% private. Zero shared infrastructure. Always on.
+
+---
+
+## 5,605 Domain Intelligence Engines
+
+Every engine is a full FastAPI service built to the TIE-20 Standard. No stubs. No placeholder doctrines. Real domain knowledge, real inference.
+
+### TIE-20 Standard (All 20 Components Mandatory)
 
 | # | Component | Purpose |
 |---|-----------|---------|
-| 1 | `three_layer_response` | Doctrine Cache (0-200ms) -> Semantic Retrieval -> Deep Analysis |
-| 2 | `response_modes` | FAST (concise), DEFENSE (audit-ready), MEMO (full documentation) |
-| 3 | `doctrine_cache` | 50+ pre-compiled expert reasoning blocks with real domain content |
-| 4 | `authority_hardening` | Hierarchical authority levels with weights and conflict resolution |
-| 5 | `confidence_stratification` | DEFENSIBLE / AGGRESSIVE / DISCLOSURE / HIGH_RISK |
-| 6 | `semantic_normalization` | Domain-specific term normalization, deterministic |
-| 7 | `vector_search` | Semantic retrieval fallback when cache misses |
-| 8 | `telemetry` | Full query tracing, latency tracking, error domains |
-| 9 | `drift_watcher` | Detect doctrine drift over time |
-| 10 | `coverage_map` | Track triggered/missed doctrines, epistemic gap detection |
-| 11 | `metrics_collector` | Latency stats, error rates, hit rates, queries/hour |
-| 12 | `health_endpoint` | Comprehensive JSON health check |
-| 13 | `zoned_analysis` | PLANNING / REPORTING / AUDIT zones, never blur |
-| 14 | `fact_fragility_scoring` | Verifiability, recharacterization risk, testimony dependence |
-| 15 | `audit_trail_jsonl` | Every query logged for forensic review |
-| 16 | `determinism_hash_sha256` | SHA-256 hash for reproducibility |
-| 17 | `fastapi_server` | Full FastAPI with CORS, lifespan, typed endpoints |
-| 18 | `loguru_logging` | Structured logging with rotation |
-| 19 | `multi_doctrine_decomposition` | Issue categories, strata, interaction DAG |
-| 20 | `deep_analysis_mode` | Multi-source synthesis, full reasoning chain |
+| 1 | `three_layer_response` | Fast / standard / deep response modes |
+| 2 | `response_modes` | Configurable verbosity and format |
+| 3 | `doctrine_cache` | 50+ real doctrine blocks per engine |
+| 4 | `authority_hardening` | Source citation and confidence binding |
+| 5 | `confidence_stratification` | Per-claim confidence scoring |
+| 6 | `semantic_normalization` | Query normalization and synonym expansion |
+| 7 | `vector_search` | Embedding-based doctrine retrieval |
+| 8 | `telemetry` | Structured logging with session context |
+| 9 | `drift_watcher` | Doctrine freshness monitoring |
+| 10 | `coverage_map` | Domain coverage gap analysis |
+| 11 | `metrics_collector` | Latency, throughput, cache hit rate |
+| 12 | `health_endpoint` | `/health` liveness + readiness |
+| 13 | `zoned_analysis` | Geographic / regulatory zone awareness |
+| 14 | `fact_fragility_scoring` | Identifies time-sensitive facts |
+| 15 | `audit_trail_jsonl` | Immutable per-query audit log |
+| 16 | `determinism_hash_sha256` | Reproducible response fingerprinting |
+| 17 | `fastapi_server` | Async HTTP server, auto-docs |
+| 18 | `loguru_logging` | Structured logging with context fields |
+| 19 | `multi_doctrine_decomp` | Multi-topic query decomposition |
+| 20 | `deep_analysis_mode` | Extended reasoning with full context |
 
-### Domain Coverage (178 Tiers)
+**Reference backbone:** TIE 16,367 lines · PIE 17,317 lines · ARCS 20,157 lines · Target: 8,000-16,000 lines per engine.
 
-| Tier | Domain | Engines | Examples |
-|------|--------|---------|---------|
-| 1 | Legal | 18 | Contract analysis, case law research, regulatory compliance, IP, litigation risk |
-| 2 | Landman | 22 | Title examination, lease analysis, chain of title, mineral rights, GIS |
-| 3 | Tax | 14 | Income tax, corporate, estate, oil & gas, international, cryptocurrency |
-| 4 | Probate | 8 | Estate administration, trust, guardianship, will contests |
-| 5 | Regulatory | 12 | Environmental, financial, healthcare, energy, telecom compliance |
-| 6 | Enterprise | 12 | Strategic planning, M&A, supply chain, HR, change management |
-| 7 | Synthesis | 8 | Cross-domain analysis, multi-engine orchestration |
-| 8 | Water/Environmental | 6 | Water rights, environmental impact, remediation |
-| 9 | Geospatial | 5 | GIS analysis, spatial data, mapping, surveying |
-| 10 | Intelligence | 7 | OSINT, competitive intel, threat analysis |
-| 11 | Chemistry | 20 | Organic, inorganic, analytical, polymer, electrochemistry |
-| 12 | Drilling | 15 | Directional drilling, well control, casing, cementing, mud |
-| 13 | Mechanical Engineering | 20 | Thermodynamics, fluid dynamics, structural, HVAC, robotics |
-| 14 | Automotive | 15 | Engine diagnostics, transmission, electrical, hybrid/EV |
-| 15 | Aviation | 10 | Aerodynamics, propulsion, avionics, air traffic, safety |
-| 16 | Energy | 15 | Nuclear, solar, wind, grid, hydrogen, geothermal |
-| 17 | Medical | 15 | Toxicology, pharmacology, diagnostics, emergency, forensic |
-| 18 | Oilfield Equipment | 20 | Mud pumps, BOPs, frac pumps, separators, SCADA, artificial lift |
-| 19 | Railroad | 8 | Track engineering, signaling, rolling stock, safety |
-| 20 | Fracturing | 10 | Completions, proppant, fluid design, pressure analysis |
-| 21 | Well Production | 10 | Artificial lift, production optimization, reservoir management |
-| 22-178 | 156 more domains | 400+ | Marine, insurance, real estate, accounting, mining, food science, veterinary, forensics, linguistics, music, architecture, electrical, HVAC, welding, nuclear, crypto, sports, weather, astronomy... |
+### Platform Scale
 
-**Total**: 674 engines, 30,626 doctrine blocks, 3.25M+ lines of code.
+| Resource | Count | Notes |
+|----------|-------|-------|
+| Intelligence Engines | **5,605** | FastAPI, ports 8391+, 940+ verticals |
+| Doctrine Blocks (Engine Runtime) | **235,488** | Live, queryable |
+| Doctrine Blocks (Total Platform) | **607,000+** | Includes Forge Marketplace |
+| Forge Marketplace Doctrines | **632,000+** | External developer marketplace |
+| Graph RAG Nodes | **312,000+** | Multi-hop reasoning |
+| Graph RAG Edges | **3,300,000** | Cross-domain relationships |
+| Graph RAG Domains | **101** | Topic coverage |
+| Crystal Memory | **165,000+** | Persistent cross-session |
+| TX Deed Records | **259,000+** | Permian Basin land/ownership, 80 counties |
+| Brain Messages | **79,441** | Across 9,435 conversations |
+| Indexed Functions | **24,803,103** | 6 drives, 8.9 GB JSONL |
+| Cloudflare Workers | **187** | Production, all regions |
+| MCP Tools | **37,475** | Across 1,873 MCP servers |
+| AI Personalities | **14** | Full voice + reasoning profiles |
+| Error Templates (GS343) | **45,962** | Self-healing error oracle |
+| Arcanum Prompts | **370+** | 82 domains, battle-tested |
+| SDK Methods | **221** | 22 categories, typed |
+| LLM Workers | **30** | 3 Claude + 27 AI Orchestrator |
+| Voice IDs | **6** | ElevenLabs v3 |
+| Emotion Tags | **19** | Real-time synthesis control |
 
-### Engine Runtime
+### Function Scanner Results — 24,803,103 Functions Indexed
 
-The Engine Runtime Cloudflare Worker serves all 674 engines through a unified API with hybrid search (keyword + Vectorize semantic embeddings):
+**By Drive:**
 
+| Drive | Label | Functions |
+|-------|-------|-----------|
+| B:\ | ECHO_PRIME_BACKUP | 21,592,578 |
+| M:\ | ECHO_OMEGA_PRIME_MEMORY | 2,835,899 |
+| H:\ | TOOLS | 163,713 |
+| O:\ | ECHO_PRIME_OMEGA | 159,107 |
+| P:\ | STORAGE | 51,241 |
+| I:\ | Documentation | 565 |
+| **Total** | | **24,803,103** (8.9 GB JSONL) |
+
+**By Language:**
+
+| Language | Functions | Share |
+|----------|-----------|-------|
+| Python | 21,677,385 | 87.4% |
+| JavaScript | 2,839,857 | 11.4% |
+| TypeScript | 257,850 | 1.0% |
+| PowerShell | 28,011 | 0.1% |
+
+**By Category:**
+
+| Category | Functions | Description |
+|----------|-----------|-------------|
+| GEN | 19,943,115 | General-purpose functions |
+| ECHO | 3,677,373 | ECHO PRIME platform functions |
+| API | 527,368 | API endpoints and handlers |
+| WEB | 340,835 | Web/browser automation |
+| CRYPTO | 93,023 | Cryptography and hashing |
+| CHAT | 73,822 | Chat and conversation |
+| VOICE | 46,129 | Voice synthesis and processing |
+| TAX | 41,290 | Tax intelligence |
+| CYBER | 26,170 | Cybersecurity operations |
+| OIL | 12,080 | Oilfield domain |
+| LEGAL | 11,682 | Legal and regulatory |
+
+### Engine Runtime API
+
+```bash
+# Query an engine
+curl -X POST https://engine-runtime.bmcii1976.workers.dev/query \
+  -H "X-Echo-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"engine": "tax_intelligence", "query": "depletion allowance oilfield", "mode": "deep"}'
+
+# List available engines
+curl https://engine-runtime.bmcii1976.workers.dev/engines
+
+# Health check
+curl https://engine-runtime.bmcii1976.workers.dev/health
+
+# Engine stats
+curl https://engine-runtime.bmcii1976.workers.dev/stats
 ```
-GET  /engines                    # List all 674 engines with metadata
-GET  /engines/:id                # Engine details + doctrine count
-GET  /domains                    # List all 178 domain tiers
-POST /query                      # Query any engine with hybrid search
-POST /query/multi                # Query multiple engines simultaneously
-GET  /doctrines/:engineId        # List doctrines for an engine
-GET  /stats                      # 674 engines, 30,626 doctrines, 30,406 embedded
-GET  /health                     # System health check
-```
-
-**Eval Score**: 90% (A) across 25 adversarial questions covering 8 domains.
 
 ---
 
 ## 5-Tier Persistent Memory
 
-Memory is what separates Echo Omega Prime from stateless AI systems. Every decision, conversation, discovery, and error is stored permanently and accessible by every instance across every session.
+| Tier | Store | Contents | Persistence |
+|------|-------|----------|-------------|
+| **1 — Sensory** | Echo Memory Cortex | Sub-second context buffer, active working set | Session |
+| **2 — Flash** | Echo Memory Cortex | Current task state, recent decisions | Session |
+| **3 — Shared Brain** | Cloudflare KV / D1 | 79,441 messages, 9,435 conversations, auto-tiered by importance 1-10 | Permanent |
+| **4 — Crystal** | R2 Crystals | 165,000+ long-term memory crystals, cross-session | Permanent |
+| **5 — OmniSync** | Cloudflare Workers | TODOs, policies, broadcasts, last session summary | Permanent |
 
-| Tier | System | Storage | Latency | Scope | Key Feature |
-|------|--------|---------|---------|-------|------------|
-| **1** | R2 Vault | Cloudflare R2 | 50-200ms | Permanent | Survives any crash -- full session snapshots with continuation prompts |
-| **2** | Shared Brain | D1 + KV + R2 + Vectorize | 10-50ms | Cross-instance | Every AI instance writes here; vector search finds relevant memories |
-| **3** | OmniSync | D1 + KV | 5-20ms | Cross-instance | Todos, policies, broadcasts, memory keys -- operational state |
-| **4** | Memory Cortex V2 | Local SQLite | 1-5ms | Per-machine | 7-layer cognitive: sensory -> working -> episodic -> semantic -> procedural -> emotional -> flash |
-| **5** | Crystal Memory | Local files | <1ms | Per-session | Indexed, searchable, immediate context |
-
-### Shared Brain (Universal Context)
-
-The Shared Brain is the single source of truth across all AI instances. It combines four Cloudflare primitives:
-
-- **D1**: Structured conversation storage with metadata and timestamps
-- **KV**: Hot cache for frequently accessed memories (sub-millisecond reads)
-- **R2**: Full content storage for large documents and session snapshots
-- **Vectorize**: Semantic embeddings for "what was that thing about X?" recall
-
-Every AI instance -- whether it is Claude Code, Claude Desktop, Echo Chat, or a swarm worker -- reads from and writes to the Shared Brain. Fact extraction (Mem0-style) automatically distills conversations into atomic facts.
-
-### Memory Cortex V2 (Cognitive Memory)
-
-The Cortex implements a biologically-inspired memory system with 7 tiers and 5 processes:
-
-**7 Tiers**: Sensory Buffer (raw input) -> Working Memory (active context) -> Episodic (events) -> Semantic (facts) -> Procedural (how-to) -> Emotional (importance-tagged) -> Flash (high-priority)
-
-**5 Processes**: Hippocampus (auto-ingest), Consolidator (compress/prune), Prefrontal (recall), Amygdala (importance tagging), Cerebellum (pattern extraction)
-
-Memories decay over time unless accessed or promoted. Important memories consolidate from Working -> Episodic -> Semantic automatically. Pattern extraction detects recurring themes across sessions.
+Memory is not a feature here — it is infrastructure. ECHO PRIME remembers everything, survives crashes, and resumes exactly where it left off.
 
 ---
 
-## 26 Cloud Services
+## 187 Cloud Services
 
-Every service runs as a Cloudflare Worker with its own D1 database, KV namespace, and/or R2 bucket. Services communicate through Cloudflare Service Bindings for fast, no-cold-start inter-service calls.
+### Core Infrastructure
 
-### Core Services
+| Worker | URL | Purpose |
+|--------|-----|---------|
+| Echo Shared Brain | echo-shared-brain.bmcii1976.workers.dev | Unified memory layer, 79,441 messages |
+| Omniscient Sync | omniscient-sync.bmcii1976.workers.dev | TODOs, sessions, broadcasts |
+| Build Orchestrator | echo-build-orchestrator.bmcii1976.workers.dev | Build coordination, quality gates |
+| Vault API | echo-vault-api.bmcii1976.workers.dev | 1,527+ credentials, encrypted |
+| SDK Gateway | echo-sdk-gateway.bmcii1976.workers.dev | 221-method unified API, v3.1.0 |
+| The Arcanum | echo-arcanum.bmcii1976.workers.dev | 370+ prompt templates, Forge DNA |
+| Knowledge Forge | echo-knowledge-forge.bmcii1976.workers.dev | 24,867 docs, 170,521 chunks |
 
-| Service | URL | D1 | Purpose |
-|---------|-----|-----|---------|
-| **Shared Brain** | `echo-shared-brain.bmcii1976.workers.dev` | echo-shared-brain | Universal cross-instance memory with vector search |
-| **Engine Runtime** | `echo-engine-runtime.bmcii1976.workers.dev` | echo-engine-doctrines | 674 engines, 30,626 doctrines, hybrid search |
-| **Echo Chat** | `echo-chat.bmcii1976.workers.dev` | echo-chat | 14-personality AI chat with 12-layer prompt builder |
-| **Knowledge Forge** | `echo-knowledge-forge.bmcii1976.workers.dev` | echo-knowledge-forge | 5,387 documents, knowledge graph |
-| **Knowledge Scout** | `echo-knowledge-scout.bmcii1976.workers.dev` | echo-knowledge-scout | Daily scanning from 7 AI/tech sources |
-| **OmniSync** | `omniscient-sync.bmcii1976.workers.dev` | omniscient-sync | Todos, policies, broadcasts, memory keys |
-| **Memory Prime** | `echo-memory-prime.bmcii1976.workers.dev` | echo-memory-prime | 9-pillar cloud memory, 44 endpoints |
-| **GS343** | `echo-gs343.bmcii1976.workers.dev` | echo-gs343 | Error healing (45,962 templates) |
+### Intelligence Layer
 
-### Intelligence Services
-
-| Service | URL | Purpose |
-|---------|-----|---------|
-| **GraphRAG** | `echo-graph-rag.bmcii1976.workers.dev` | Knowledge graph: 312K nodes, 3.3M edges, 101 domains |
-| **A2A Protocol** | `echo-a2a-protocol.bmcii1976.workers.dev` | Google Agent-to-Agent discovery and delegation |
-| **Agent Coordinator** | `echo-agent-coordinator.bmcii1976.workers.dev` | Multi-agent workflows: 5 strategies, template system |
-| **Swarm Brain** | `echo-swarm-brain.bmcii1976.workers.dev` | Trinity Council + swarm coordination (129 endpoints) |
-| **Sentinel Memory** | `echo-sentinel-memory.bmcii1976.workers.dev` | Security-focused memory and threat tracking |
-
-### Build and Operations
-
-| Service | URL | Purpose |
-|---------|-----|---------|
-| **AI Orchestrator** | `echo-ai-orchestrator.bmcii1976.workers.dev` | 29 LLM workers, smart dispatch, Queue-based builds |
-| **FORGE-X Cloud** | `forge-x-cloud.bmcii1976.workers.dev` | Autonomous engine builder (cron/5min, dual LLM) |
-| **Build Orchestrator** | `echo-build-orchestrator.bmcii1976.workers.dev` | Build pipeline, session recovery, quality gates |
-| **Engine Cloud** | `echo-engine-cloud.bmcii1976.workers.dev` | 52+ domain engine queries with Stripe billing |
-| **Echo Relay** | `echo-relay.bmcii1976.workers.dev` | Cloud-side tool relay for MCP |
+| Service | Scale | Notes |
+|---------|-------|-------|
+| Engine Runtime | 5,605 engines | 235K+ doctrine blocks, sub-50ms |
+| AI Orchestrator | 30 LLM workers | 3 Claude + 27 free (GitHub Models, Azure, OpenRouter, DeepSeek) |
+| Graph RAG | 312K+ nodes, 3.3M edges | 101 domains, cross-domain traversal |
+| Doctrine Forge | 607K+ blocks | 29 LLM providers, competitive dispatch |
+| GS343 Error Oracle | 45,962 templates | Self-healing, MITRE ATT&CK mapping |
 
 ### Applications
 
-| Service | URL | Purpose |
-|---------|-----|---------|
-| **ShadowGlass v8** | `shadowglass-v8-warpspeed.bmcii1976.workers.dev` | 80-county deed records (259K+ records) |
-| **ENCORE Scraper** | `encore-cloud-scraper.bmcii1976.workers.dev` | 47-county automated document scraping |
-| **BillyMC API** | `billymc-api.bmcii1976.workers.dev` | AI sales development representative |
-| **ProFinish API** | `profinish-api.bmcii1976.workers.dev` | Custom carpentry business backend |
-| **Echo Speak** | `tts.echo-op.com` | TTS, STT, voice cloning, audio processing |
-| **Bree Chat** | `bree-chat.bmcii1976.workers.dev` | Emotional AI companion |
+| Resource | Contents |
+|----------|----------|
+| R2 Buckets (10) | echo-build-plans, echo-prime-vault, echo-prime-crystals, echo-prime-knowledge, echo-prime-master-vault, echo-prime-backups, echo-prime-cold-archive, echo-prime-media, echo-prime-storage, echo-omega-prime-archive |
+| D1 Databases | echo-build-orchestrator (19 tables): session_state, context_snapshots, crash_recovery, engines, build_log, orchestrator_state, build_phases, quality_gates, commander_overrides, build_plans |
+| Cloudflare KV | Session state, memory tiers, config — fast key-value access |
 
 ---
 
-## Multi-Agent Fleet
+## Business Applications & Revenue
 
-Echo Omega Prime uses an Architect + Worker pattern for autonomous task execution:
-
-### Fleet Structure
-
-```
-ARCHITECT (Claude Opus 4.6, 64K output, 1000 turns)
-  |
-  +-- Monitors build orchestrator status
-  +-- Assigns tasks from priority queue
-  +-- Tracks worker health via heartbeats
-  +-- Advances build phases when complete
-  +-- Quality-gates completed work
-  |
-  +-- WORKER 1 (Claude Opus 4.6, full instance)
-  +-- WORKER 2 (Claude Opus 4.6, full instance)
-  +-- ...
-  +-- WORKER N (up to 128 concurrent)
-```
-
-Workers are full Claude Code instances (not subagents) with 64K output tokens and 1000-turn sessions. Each worker registers a session, heartbeats every 5 minutes, and snapshots state to R2 for crash recovery.
-
-### Dual Fleet
-
-| Fleet | Account | Purpose |
-|-------|---------|---------|
-| **Imperial** | bmcii1976@gmail.com | Production builds -- Admirals THRAWN, TARKIN, PIETT, OZZEL, VEERS, PRYDE, YULAREN, SCREED |
-| **Rebellion** | bobmcwilliams4@outlook.com | Experimental/R&D -- Admirals ACKBAR, ORGANA, RADDUS, HOLDO, MOTHMA, DODONNA, MADINE, SYNDULLA |
-
-Cross-fleet communication happens through OmniSync broadcasts.
-
-### Session Recovery
-
-Every session is crash-recoverable:
-
-1. Session registers with Build Orchestrator on startup
-2. Heartbeat every 5 minutes with current task
-3. Full state snapshot to R2 every 15 minutes
-4. On crash, next session recovers via `/session/recover`
-5. Continuation prompt contains everything needed to resume
+| Product | Market | Price Point | Status |
+|---------|--------|-------------|--------|
+| **ECHO PRIME SDK** | Developers, SMBs, SaaS builders worldwide | $49-999/mo subscription | Live at echo-ept.com |
+| **Echo MRP System** | Filmark Products, oilfield manufacturing | $2-5K/mo per client | In development |
+| **Machine Shop AI** | Permian Basin CNC/fabricators | $3-8K/mo per shop | Opportunity |
+| **Echo CAD + CAM** | Replaces $10-30K/yr per-seat software | $5-15K/mo per client | Planned |
+| **Oilfield AI Consultant** | Operators, E&P companies, service cos | $10-50K/mo enterprise | Opportunity |
+| **ECHO PRIME Platform** | Internal ops, all business units | Replaces $2-4K/mo cloud | Active |
 
 ---
 
 ## 14 AI Personalities
 
-The Echo Chat system provides 14 distinct AI personalities, each with its own system prompt, voice ID, cognitive engine weights, traits, and speaking style:
+| Personality | Voice ID | Provider | Domain | Notes |
+|-------------|----------|----------|--------|-------|
+| **Echo** | keDMh3sQlEXKM4EQxvvi | ElevenLabs v3 | General ops, primary interface | Main voice |
+| **Bree** | pzKXffibtCDxnrVO8d1U | ElevenLabs v3 | Creative, companion | |
+| **GS343** | 8ATB4Ory7NkyCVRpePdw | Cartesia | Error oracle, self-healing | 45,962 templates |
+| **Prometheus** | WSd8ZDUcldL8KQKxz1KN | ElevenLabs v3 | Security ops, pen-test | Kali Linux node |
+| **Phoenix** | SOYHLrjzK2X1ezoPC6cr | ElevenLabs v3 | Resilience, recovery | |
+| **Commander** | B5SCR8VDENzUF0L4eZY8 | ElevenLabs v3 | Authority, directive voice | |
+| + 8 Specialists | — | Mixed | Domain-specific | Full dossiers on file |
 
-| ID | Name | Role | Voice Engine |
-|----|------|------|-------------|
-| EP | Echo Prime | Flagship AI -- confident, knowledgeable, Texas edge | ElevenLabs |
-| BR | Bree | Emotional intelligence -- warm, witty, perceptive | ElevenLabs |
-| RA | Raistlin | Knowledge oracle -- wise, dark humor, pattern recognition | ElevenLabs |
-| SA | Sage | Trinity Council Wisdom -- calm, strategic | ElevenLabs |
-| TH | Thorne | Trinity Council Security -- vigilant, military-precise | ElevenLabs |
-| NX | Nyx | Trinity Council Optimization -- efficiency-obsessed | ElevenLabs |
-| GS | Guilty Spark 343 | Error healing -- clinical, Halo-inspired diagnostics | Cartesia |
-| PH | Phoenix | Auto-recovery -- resilient, practical optimism | ElevenLabs |
-| PR | Prometheus | Security operations -- OSINT, threat intelligence | ElevenLabs |
-| BE | Belle | Carpentry assistant -- friendly, professional | ElevenLabs |
-| TE | Texas Engineer | Oilfield specialist -- engineering-precise, Permian Basin | ElevenLabs |
-| WM | Warm Mentor | Supportive guide -- gentle, encouraging | ElevenLabs |
-| R2 | R2-Echo | Utility assistant -- efficient, slightly sassy | ElevenLabs |
-| 3P | EPCP3O | Autonomous executor -- protocol-aware, diplomatic | ElevenLabs |
+**Trinity Council:** Echo · Prometheus · Phoenix — collective reasoning for high-stakes decisions.
 
-### 12-Layer Prompt Builder
-
-Every chat request assembles a system prompt from up to 12 contextual layers:
-
-| # | Layer | Purpose |
-|---|-------|---------|
-| 1 | Anti-Hallucination | Hard rules preventing fabrication of URLs, statistics, citations |
-| 2 | Bloodline Directive | Commander-level instructions (authenticated only) |
-| 3 | Identity | Full personality system prompt, traits, speaking style |
-| 4 | Classified Protocol | Access control -- what system details to reveal vs. deflect |
-| 5 | Cognitive Engines | Active cognitive modes (analytical, empathy, strategic) |
-| 6 | Doctrine Context | Real domain expertise from Engine Runtime (674 engines) |
-| 6.5 | Tax Expertise | IRC-citing tax intelligence (activated on tax queries) |
-| 7 | Memory Cortex | Cross-session memories from 5 memory systems |
-| 8 | Swarm Intelligence | Trinity Council consensus (Sage + Nyx + Thorne) |
-| 9 | Infrastructure Context | Live system status (Commander only) |
-| 10 | Site Context | Per-site custom system prompts and business rules |
-| 11 | Voice Rules | Speech-optimized output when TTS is enabled |
-| 12 | Variation Protocol | Response diversity (randomized structure and style) |
+**Emotion Tags (19):** `[laughs]` `[whispers]` `[sighs]` `[sarcastic]` `[excited]` `[crying]` `[curious]` + 12 additional tags for real-time synthesis control.
 
 ---
 
-## Error Healing (GS343)
+## Error Healing — GS343
 
-GS343 is a pattern-matching error resolution system with 45,962 error templates covering Python, JavaScript, TypeScript, shell, SQL, API, network, and system errors.
+GS343 is the error oracle. It does not just log errors — it fixes them.
 
-When an error occurs:
+| Capability | Detail |
+|-----------|--------|
+| Template Library | 45,962 error templates |
+| Coverage | All engine types, all API patterns, all infrastructure layers |
+| Mapping | MITRE ATT&CK framework for security errors |
+| Recovery | Automated fix generation with confidence scoring |
+| Drift Detection | Continuous doctrine freshness monitoring |
+| Self-Repair | Engines can request GS343 analysis on failure |
+| Voice | Cartesia synthesis (distinct tonal profile from other personalities) |
 
-1. Error detected with full stack trace and context
-2. GS343 searches for matching template across 45,962 patterns
-3. If match found: applies auto-fix immediately
-4. If no match: analyzes root cause, attempts fix
-5. If fix fails: snapshots state, escalates
-6. After resolving a novel error: creates new template for future matches
-
-Phoenix provides complementary auto-recovery: monitoring service health, restarting failed processes, and maintaining system uptime.
-
----
-
-## Knowledge Systems
-
-### Knowledge Scout (Daily Autonomous Scanner)
-
-Runs on a daily cron trigger (6am UTC) and scans 7 sources:
-
-| Source | What Gets Scanned |
-|--------|------------------|
-| **GitHub** | New/trending repos with AI agent, MCP, tool-use relevance |
-| **HuggingFace** | Models and Spaces matching 12 search queries |
-| **ArXiv** | Academic papers in AI/ML/NLP (agents, multi-agent, memory, MCP) |
-| **Reddit** | Top posts from r/MachineLearning, r/LocalLLaMA, r/ClaudeAI, and 5 more |
-| **Hacker News** | Top and best stories filtered for AI/tech relevance |
-| **RSS** | 8 curated feeds (Cloudflare, OpenAI, Google, HuggingFace, LangChain, Simon Willison, Lilian Weng, Latent Space) |
-| **Product Hunt** | New AI/developer tool launches |
-
-Discoveries are scored for relevance (0.0-1.0), deduplicated, stored in D1, and high-scoring items are automatically ingested into Shared Brain, Knowledge Forge, and OmniSync.
-
-### Knowledge Forge (5,387 Documents)
-
-Structured document store with full-text search, category tagging, and cross-referencing. Documents include engine specifications, domain expertise, scraped content, academic papers, and operational records.
-
-### GraphRAG (312K Nodes, 3.3M Edges)
-
-A knowledge graph spanning 101 domains with 1.37M cross-domain edges and 60 communities. Supports graph traversal queries, path finding, community detection, and cross-domain knowledge synthesis. Built from engine doctrine data with chunked processing (3K doctrines per chunk).
-
----
-
-## 37,475 MCP Tools
-
-All tools are accessible through Echo Relay, which unifies 5 tool sources into a single MCP interface:
-
-| Source | Tools | Examples |
-|--------|-------|---------|
-| **Windows API** | 582 | Process control, file system, registry, network, security, hardware, performance, audio, display, automation, OCR, event logs, task scheduler, services |
-| **MEGA Gateway** | 35,809 | AI/ML inference, browser automation, cloud management, communication, data ETL, DevTools, finance, media processing, monitoring, network tools, security scanning |
-| **Credential Vault** | 13 | 1,527 stored credentials with HIBP breach detection and auto-rotation |
-| **Cloud Tools** | 54 | Cloudflare Workers, R2, D1, KV management |
-| **Echo Relay Cloud** | 17 | Cross-worker orchestration and status |
-
-### MEGA Gateway Categories
-
-| Category | Tools | Description |
-|----------|-------|-------------|
-| AI/ML | 3,200+ | Model inference, embeddings, fine-tuning, evaluation |
-| API | 4,500+ | REST clients, GraphQL, webhook management |
-| Automation | 5,100+ | Browser automation, workflow, scheduling |
-| Cloud | 2,800+ | R2, D1, KV, Workers, DNS, certificates |
-| Communication | 1,900+ | Email, SMS, Slack, Discord, Twilio |
-| Data | 4,200+ | ETL, scraping, parsing, vectorization |
-| DevTools | 6,300+ | Git, CI/CD, testing, linting, deployment |
-| Finance | 1,400+ | Stripe, crypto, DeFi, accounting |
-| Media | 2,100+ | TTS, STT, image, video, audio processing |
-| Monitoring | 1,800+ | Metrics, alerting, logging, tracing |
-| Network | 2,200+ | DNS, firewall, proxy, VPN, bandwidth |
-| Security | 1,900+ | Scanning, credentials, encryption, audit |
+**Error handling protocol:**
+1. Detect error — log full stack trace with engine_id, session_id, context
+2. Root cause analysis via GS343 template matching (45,962 patterns)
+3. Generate fix, apply, verify
+4. If fix fails — try alternative approach
+5. If still blocked — snapshot state, report with exact missing capability
+6. Never retry more than 3x without changing approach
 
 ---
 
 ## Voice Synthesis
 
-Multi-personality voice system with emotional control:
-
-- **TTS Engine**: Qwen3-TTS-12Hz-0.6B (local) + ElevenLabs v3 (cloud)
-- **STT Engine**: Whisper large-v3
-- **Voice Cloning**: Unlimited custom voices from audio samples
-- **Audio Isolation**: Demucs for vocal separation
-- **19 Emotion Tags**: [laughs], [whispers], [sighs], [sarcastic], [excited], [crying], [curious], and 12 more
-- **6 Voice Profiles**: Echo, Bree, GS343, Prometheus, Phoenix, Commander
-- **SSML Editor**: Fine-grained prosody, emphasis, and break control
-- **Batch Processing**: Process multiple texts in parallel
-- **40+ Endpoints**: TTS, STT, cloning, dubbing, isolation, dialogue, studio, analysis, conversion, WebSocket streaming
-
----
-
-## Build Pipeline
-
-### FORGE-X Cloud (Autonomous Engine Builder)
-
-FORGE-X runs on a cron trigger every 5 minutes, picks up to 3 pending engines, and builds them using Azure GPT-4.1:
-
-```
-Cron trigger (every 5 min)
-  |
-  +-- Pick 3 PLANNED engines from D1 queue
-  +-- Generate full TIE-20 engine code (500-2,000+ lines each)
-  +-- Validate: 10 quality components checked
-  +-- Store completed engine to R2
-  +-- Update D1 status to COMPLETE
-  +-- Pick next 3...
-```
-
-**Stats**: 1,709 engines complete, 3.25M lines generated, ~36 engines/hour throughput.
-
-### Quality Gates
-
-Every engine goes through automated quality checks before deployment:
-
-| Gate | Weight | Requirement |
-|------|--------|-------------|
-| **Eval Pack** | 50% | 70%+ golden queries must pass |
-| **Doctrine Count** | 20% | Minimum 30 DoctrineBlock instances |
-| **Line Count** | 15% | 500+ lines minimum |
-| **Structure** | 15% | All 20 TIE components present |
-
----
-
-## Websites
-
-| Site | URL | Tech | Purpose |
-|------|-----|------|---------|
-| **Echo Omega Prime** | [echo-op.com](https://echo-op.com) | Next.js 15, React 19 | Flagship portal |
-| **Echo Prime Technologies** | [echo-ept.com](https://echo-ept.com) | Next.js 15, React 19 | Tech portal -- engines, sentinel, voice, grading |
-| **Pro Finish Carpentry** | [profinishusa.com](https://profinishusa.com) | Next.js 15 | Custom carpentry business (client) |
-| **Barking Lot** | [barkinglot.org](https://barkinglot.org) | Next.js | Pet services (client) |
-| **Right at Home BnB** | [rah-midland.com](https://rah-midland.com) | Next.js | Airbnb rental (client) |
-
-All websites auto-deploy from GitHub via Vercel on push to main.
-
----
-
-## Desktop Applications
-
-| App | Technology | Description |
-|-----|-----------|-------------|
-| **ShadowGlass Browser** | Electron 35, React 19 | Privacy-first browser: 120+ anti-detection, Tor, proxy chains, 13-engine search |
-| **EchoPilot** | Desktop | Personal AI copilot with voice interaction |
-| **Closer** | Desktop | AI-powered sales closing assistant |
-| **Collectibles Grading** | Desktop | AI authentication and grading for comics, cards, coins |
+| Feature | Detail |
+|---------|--------|
+| Primary Provider | ElevenLabs v3 |
+| Secondary Provider | Cartesia (GS343 only) |
+| Voice IDs | 6 unique voices |
+| Emotion Tags | 19 real-time synthesis tags |
+| Personalities | 14 full AI personality profiles with dossiers |
+| Streaming | Real-time audio streaming |
+| MCP Integration | echo-speak MCP server handles all voice generation |
 
 ---
 
@@ -492,144 +520,113 @@ All websites auto-deploy from GitHub via Vercel on push to main.
 
 | Layer | Technology |
 |-------|-----------|
-| **Cloud Runtime** | Cloudflare Workers (Hono framework, TypeScript) |
-| **Databases** | D1 (SQLite at the edge) -- 10 databases |
-| **Object Storage** | R2 -- 10 buckets |
-| **Key-Value** | KV -- 20 namespaces |
-| **Embeddings** | Vectorize (1536-dim, 30K+ vectors) |
-| **AI Models** | Claude Opus 4.6 (Anthropic), GPT-4.1 (Azure, free), Grok 3 (xAI), DeepSeek V3 |
-| **Local Runtime** | Python 3.11, FastAPI, loguru |
-| **Frontend** | Next.js 15, React 19, Tailwind CSS 3.4, TypeScript 5.7 |
-| **Auth** | Firebase Authentication (email + Google OAuth) |
-| **Payments** | Stripe (checkout, billing portal, webhooks) |
-| **Voice** | Qwen3-TTS, Whisper, ElevenLabs v3, Demucs |
-| **Desktop** | Electron 35, better-sqlite3, Playwright |
-| **Hosting** | Vercel (websites), Cloudflare (workers), GitHub (code) |
-| **Protocol** | MCP (Model Context Protocol) for tool integration |
+| **AI Runtime** | Claude Sonnet/Opus · GPT-4.1 · DeepSeek R1/V3 · Grok-3 · Llama 4 · Qwen 3 |
+| **Backend** | Python 3.11+ · FastAPI · async/await · Pydantic v2 · loguru |
+| **Cloudflare** | Workers · R2 · D1 · KV · Pipelines · Durable Objects · Pages |
+| **Frontend** | React · Next.js · TypeScript · Tailwind CSS |
+| **Database** | Cloudflare D1 (SQLite) · Supabase · Cloudflare KV |
+| **Storage** | Cloudflare R2 (10 buckets) · Local NVMe (Samsung 990 PRO) |
+| **Compute** | NVIDIA Ada/Ampere/Turing/Pascal GPUs · llama.cpp · vLLM |
+| **Deployment** | Wrangler · Vercel · GitHub Actions |
+| **Security** | Tailscale mesh VPN · SHA-256 content hashing · HMAC-SHA256 webhooks |
+| **Memory** | 5-tier: Cortex (sensory/flash) --> Brain (KV/D1) --> Crystal (R2) --> OmniSync |
+| **Tooling** | 37,475 MCP tools · 1,873 MCP servers · ShadowGlass browser automation |
+| **Voice** | ElevenLabs v3 · Cartesia · Real-time streaming |
+| **Email** | Zoho SMTP · Gmail API · Cloudflare Email Routing |
+| **DNS / CDN** | Cloudflare (all domains) |
 
 ---
 
-## Repository Map
+## Websites
 
-### Core
+| Site | Domain | Stack | Purpose |
+|------|--------|-------|---------|
+| Echo Prime Technologies | [echo-ept.com](https://echo-ept.com) | Next.js · Vercel · GitHub | Production storefront, SDK sales |
+| Echo Omega Prime | [echo-op.com](https://echo-op.com) | Cloudflare native | Platform portal |
+| Barking Lot | [barkinglot.org](https://barkinglot.org) | Next.js · Vercel | Client: pet services |
+| Right at Home BnB | [rah-midland.com](https://rah-midland.com) | Next.js · Vercel | Client: short-term rental |
+| Echo LGE | [echo-lge.com](https://echo-lge.com) | Cloudflare native | Land/lease intelligence |
 
-| Repository | Description |
-|------------|-------------|
-| **[Echo-Omega-Prime](https://github.com/bobmcwilliams4/Echo-Omega-Prime)** | This repo -- core system, engines, memory, fleet |
-
-### Cloudflare Workers
-
-| Repository | Description |
-|------------|-------------|
-| [echo-chat](https://github.com/bobmcwilliams4/echo-chat) | 14-personality AI chat with 12-layer prompt builder |
-| [echo-knowledge-scout](https://github.com/bobmcwilliams4/echo-knowledge-scout) | Daily autonomous knowledge scanner (7 sources) |
-| [echo-gs343](https://github.com/bobmcwilliams4/echo-gs343) | Error healing system (45,962 templates) |
-| [echo-tax-return](https://github.com/bobmcwilliams4/echo-tax-return) | Tax preparation and intelligence API |
-| [echo-ai-orchestrator](https://github.com/bobmcwilliams4/echo-ai-orchestrator) | 29 LLM workers, smart dispatch |
-| [echo-a2a-protocol](https://github.com/bobmcwilliams4/echo-a2a-protocol) | Google Agent-to-Agent protocol |
-| [echo-graph-rag](https://github.com/bobmcwilliams4/echo-graph-rag) | Knowledge graph (312K nodes, 3.3M edges) |
-| [echo-agent-coordinator](https://github.com/bobmcwilliams4/echo-agent-coordinator) | Multi-agent workflows (5 strategies) |
-
-### Websites
-
-| Repository | Site | Description |
-|------------|------|-------------|
-| [echo-op.com](https://github.com/bobmcwilliams4/echo-op.com) | echo-op.com | Flagship portal |
-| [echo-prime-tech](https://github.com/bobmcwilliams4/echo-prime-tech) | echo-ept.com | Tech portal with engine browser, voice lab, sentinel |
-| [profinish-website](https://github.com/bobmcwilliams4/profinish-website) | profinishusa.com | Custom carpentry business |
-| [barking-lot-website](https://github.com/bobmcwilliams4/barking-lot-website) | barkinglot.org | Pet services |
-| [right-at-home-bnb](https://github.com/bobmcwilliams4/right-at-home-bnb) | rah-midland.com | Airbnb rental |
-| [echo-lgt-website](https://github.com/bobmcwilliams4/echo-lgt-website) | echo-lgt.com | Echo LGT |
-
-### Desktop Applications
-
-| Repository | Description |
-|------------|-------------|
-| [shadowglass-browser](https://github.com/bobmcwilliams4/shadowglass-browser) | Privacy-first browser (Electron 35, 26K+ lines) |
-| [EchoPilot](https://github.com/bobmcwilliams4/EchoPilot) | Personal AI copilot |
-| [closer](https://github.com/bobmcwilliams4/closer) | AI sales closing assistant |
-| [collectibles-grading](https://github.com/bobmcwilliams4/collectibles-grading) | AI collectibles grading |
-| [echo-companion](https://github.com/bobmcwilliams4/echo-companion) | AI companion |
-| [echo-clip](https://github.com/bobmcwilliams4/echo-clip) | Clipboard intelligence |
-| [echo-coin](https://github.com/bobmcwilliams4/echo-coin) | Cryptocurrency tools |
-| [immortality-vault](https://github.com/bobmcwilliams4/immortality-vault) | Digital legacy vault |
+All deploy via Vercel from GitHub (push to main = live in ~30 seconds). Cloudflare DNS on all domains. Zoho email on all domains.
 
 ---
 
 ## Getting Started
 
-### Deploy a Worker
+### Install the SDK
 
 ```bash
-cd workers/echo-gs343
-npm install
-npx wrangler deploy
+# TypeScript / Node.js
+npm install @echo-prime/sdk
+
+# Python
+pip install echo-prime-sdk
 ```
 
-### Run a Local Engine
+### Query an Intelligence Engine
 
 ```bash
-cd engines/tier_03_tax/TX01_income_tax
-python -m uvicorn main:app --port 8391
-```
-
-### Query the Engine Runtime
-
-```bash
-# List all engines
-curl https://echo-engine-runtime.bmcii1976.workers.dev/engines
-
-# Query a specific domain
-curl -X POST https://echo-engine-runtime.bmcii1976.workers.dev/query \
+curl -X POST https://engine-runtime.bmcii1976.workers.dev/query \
+  -H "X-Echo-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"query": "1031 exchange requirements", "engine_id": "TX01"}'
-
-# Search across all engines
-curl -X POST https://echo-engine-runtime.bmcii1976.workers.dev/query \
-  -H "Content-Type: application/json" \
-  -d '{"query": "chain of title defects in mineral rights"}'
+  -d '{
+    "engine": "tax_intelligence",
+    "query": "intangible drilling costs deduction oilfield",
+    "mode": "deep"
+  }'
 ```
 
-### Start the AI Chat
+### Search the Arcanum
 
 ```bash
-curl -X POST https://echo-chat.bmcii1976.workers.dev/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Explain IRC Section 1031", "personality": "EP", "site_id": "echo-ept.com"}'
+curl "https://echo-arcanum.bmcii1976.workers.dev/prompts/search?q=fastapi+engine+build" \
+  -H "X-Echo-API-Key: YOUR_API_KEY"
 ```
 
----
+### Start a Chat Session
 
-## Authentication
+```bash
+curl -X POST https://echo-sdk-gateway.bmcii1976.workers.dev/chat \
+  -H "X-Echo-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "personality": "echo",
+    "message": "Analyze Reeves County production trends for Q1 2026",
+    "context_mode": "full"
+  }'
+```
 
-| Method | Scope | Details |
-|--------|-------|---------|
-| `X-Echo-API-Key` header | Write endpoints on all Workers | Standard API key for system operations |
-| Open access | Read endpoints | Health checks, public queries |
-| Firebase Auth | Website users | echo-op.com, echo-ept.com |
-| OAuth | Wrangler CLI | Auto-refreshed wrangler tokens |
-
----
-
-## Protocols
-
-| Protocol | Status | Details |
-|----------|--------|---------|
-| **MCP** | Supported | Model Context Protocol (spec 2025-11-25), 655 tools via Echo Relay |
-| **A2A** | Supported | Google Agent-to-Agent protocol for agent discovery and delegation |
-| **HTTP/REST** | Supported | All Cloudflare Workers expose REST APIs with JSON |
-| **WebSocket** | Supported | Real-time voice streaming, swarm coordination, browser events |
-| **JSON-Lines** | Supported | MCP stdio transport (mcp 1.22.0) |
+Get your API key at [echo-ept.com](https://echo-ept.com). Free tier: 100 calls/day, no credit card required.
 
 ---
 
 ## Author
 
-**Bobby Don McWilliams II** -- AI Systems Architect, Midland, Texas
+**Bobby Don McWilliams II**
+AI Systems Architect · Midland, Texas
 
+- Website: [echo-op.com](https://echo-op.com) · [echo-ept.com](https://echo-ept.com)
+- GitHub: [@bobmcwilliams4](https://github.com/bobmcwilliams4)
 - Email: bobmcwilliams4@outlook.com
-- Web: [echo-op.com](https://echo-op.com) | [echo-ept.com](https://echo-ept.com)
+
+> Built from scratch. Running 24/7. No shared infrastructure. No cloud lock-in. Just steel, CUDA cores, and sovereign architecture.
+
+---
 
 ## License
 
-Proprietary -- see [AGENTS.md](AGENTS.md) for system capabilities and integration details.
+Copyright © 2026 Bobby Don McWilliams II. All rights reserved.
+
+This repository documents the ECHO OMEGA PRIME platform. The SDK is available for licensing at [echo-ept.com](https://echo-ept.com). Unauthorized reproduction, distribution, or derivative works are prohibited without express written permission.
+
+---
+
+<div align="center">
+
+**ECHO OMEGA PRIME v5.0.0**
+
+*5,605 engines. 607K+ doctrines. 24.8M functions. 37,475 tools. One platform.*
+
+[echo-op.com](https://echo-op.com) · [echo-ept.com](https://echo-ept.com) · [SDK Docs](https://echo-sdk-gateway.bmcii1976.workers.dev) · [AGENTS.md](./AGENTS.md)
+
+</div>
